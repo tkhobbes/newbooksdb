@@ -1,4 +1,6 @@
+app/models/book.rb f7c2466d4aa7015cb1e712b08a818933bcd28e1f
 app/jobs/application_job.rb 57b53cb36811b7f4cd608d50033020943cf0005e
+app/models/concerns/rateable.rb 29a51c73ef0476cc7733d57d4ce06866c9a7d1b7
 app/models/application_record.rb f5bdea8616b96e0b81d4464e2d6b3ad58910fd91
 app/helpers/application_helper.rb 5799c2e92b822b0c8e76bad5438b4b782cff9311
 app/mailers/application_mailer.rb 742c061849b3d0b431deb2ca2c52da06416a823d

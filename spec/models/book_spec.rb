@@ -19,4 +19,19 @@ RSpec.describe Book, type: :model do
     book = Book.new(title: 'The Hobbit')
     expect(book.valid?).to eq(true)
   end
+
+  it 'defaults to not rated' do
+    book = Book.new(title: 'The Hobbit')
+    expect(book.rating).to eq('not_rated')
+  end
+
+  it 'translates rating to text' do
+    book = Book.new(title: 'The Hobbit', rating: 5)
+    expect(book.rating).to eq('favourite')
+  end
+
+  it 'responds to rated?' do
+    book = Book.new(title: 'The Hobbit', rating: 5)
+    expect(book.rated?).to eq(true)
+  end
 end

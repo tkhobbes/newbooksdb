@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>
-  Module: ApplicationCable
+  Module: Rateable
   
     &mdash; Documentation by YARD 0.9.28
   
@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="css/common.css" type="text/css" />
 
 <script type="text/javascript">
-  pathId = "ApplicationCable";
+  pathId = "Rateable";
   relpath = '';
 </script>
 
@@ -36,10 +36,10 @@
       <div id="header">
         <div id="menu">
   
-    <a href="_index.html">Index (A)</a> &raquo;
+    <a href="_index.html">Index (R)</a> &raquo;
     
     
-    <span class="title">ApplicationCable</span>
+    <span class="title">Rateable</span>
   
 </div>
 
@@ -59,7 +59,7 @@
         <div class="clear"></div>
       </div>
 
-      <div id="content"><h1>Module: ApplicationCable
+      <div id="content"><h1>Module: Rateable
   
   
   
@@ -69,18 +69,26 @@
 
   
   
+  <dl>
+      <dt>Extended by:</dt>
+      <dd>ActiveSupport::Concern</dd>
+  </dl>
+  
   
   
   
 
+  
+  <dl>
+    <dt>Included in:</dt>
+    <dd><span class='object_link'><a href="Book.html" title="Book (class)">Book</a></span></dd>
+  </dl>
   
 
   
   <dl>
     <dt>Defined in:</dt>
-    <dd>app/channels/application_cable/channel.rb<span class="defines">,<br />
-  app/channels/application_cable/connection.rb</span>
-</dd>
+    <dd>app/models/concerns/rateable.rb</dd>
   </dl>
   
 </div>
@@ -88,7 +96,7 @@
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
     
-<p>Standard Rails Application Cable</p>
+<p>A module / concern for all models that are rateable. Provides ENUMs for ratings as follows: 0 - not_rated, 1 - hated, 2 - bad, 3 - ok, 4 - good, 5 - favourite  Also provides a method rated? that returns true if a rating is set.</p>
 
 
   </div>
@@ -96,24 +104,15 @@
 <div class="tags">
   
 
-</div><h2>Defined Under Namespace</h2>
-<p class="children">
+</div>
+
+
+
+
+
+
+
   
-    
-  
-    
-      <strong class="classes">Classes:</strong> <span class='object_link'><a href="ApplicationCable/Channel.html" title="ApplicationCable::Channel (class)">Channel</a></span>, <span class='object_link'><a href="ApplicationCable/Connection.html" title="ApplicationCable::Connection (class)">Connection</a></span>
-    
-  
-</p>
-
-
-
-
-
-
-
-
 
 </div>
 
