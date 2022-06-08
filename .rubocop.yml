@@ -1,0 +1,7 @@
+inherit_from: .rubocop_todo.yml
+inherit_from:
+- /usr/local/lib/node_modules/@prettier/plugin-ruby/rubocop.yml
+require: rubocop-rails
+
+Style/Documentation:
+  Enabled: false

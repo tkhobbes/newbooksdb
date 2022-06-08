@@ -1,0 +1,22 @@
+attributes:
+  - content
+  - foreign_key
+  - inheritance
+disconnected: false
+filename: newbooksdb
+filetype: pdf
+indirect: true
+inheritance: false
+markup: true
+notation: simple
+orientation: horizontal
+polymorphism: true
+sort: true
+warn: true
+title: NewMovieDB Domain Model
+exclude: "ActiveStorage::Blob,ActiveStorage::Attachment,ActiveStorage::VariantRecord"
+only: null
+only_recursion_depth: null
+prepend_primary: false
+cluster: false
+splines: spline
