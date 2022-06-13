@@ -15,6 +15,10 @@
 #   @return [String]
 # @!attribute year
 #   @return [Integer]
+# @!attribute edition
+#   @return [String]
+# @!attribute condition
+#   @return [Integer]
 # @!attribute created_at
 #   @return [Time]
 # @!attribute updated_at
@@ -25,6 +29,15 @@ class Book < ApplicationRecord
   before_save :create_sort_title
 
   include Rateable
+
+  enum condition: {
+        like_new: 5,
+        used_ok: 4,
+        used: 3,
+        used_bad: 2,
+        damaged: 1,
+        not_given: 0
+  }
 
   private
 

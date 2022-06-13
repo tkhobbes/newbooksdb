@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_08_141852) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_13_094924) do
   create_table "books", charset: "utf8mb4", force: :cascade do |t|
     t.string "title", null: false
     t.string "sort_title"
@@ -18,6 +18,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_08_141852) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "rating", default: 0
+    t.string "original_title"
+    t.integer "condition", default: 0
+    t.string "edition"
   end
 
 end

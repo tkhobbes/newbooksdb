@@ -18,7 +18,7 @@ module Rateable
     # returns true if there is a rating set
     # @return [Boolean]
     def rated?
-      self.rating != :not_rated
+      self.rating != 'not_rated'
     end
   end
 end

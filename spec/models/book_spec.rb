@@ -34,4 +34,19 @@ RSpec.describe Book, type: :model do
     book = Book.new(title: 'The Hobbit', rating: 5)
     expect(book.rated?).to eq(true)
   end
+
+  it 'responds to not rated?' do
+    book = Book.new(title: 'The Hobbit')
+    expect(book.rated?).to eq(false)
+  end
+
+  it 'defaults to condition none' do
+    book = Book.new(title: 'The Hobbit')
+    expect(book.condition).to eq('not_given')
+  end
+
+  it 'translates condition to text' do
+    book = Book.new(title: 'The Hobbit', condition: 5)
+    expect(book.condition).to eq('like_new')
+  end
 end
