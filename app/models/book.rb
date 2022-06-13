@@ -1,6 +1,3 @@
-# Book Model
-# @author: tkhobbes
-#
 # == Schema Information
 #
 # Table name: books
@@ -23,6 +20,8 @@
 #   @return [Time]
 # @!attribute updated_at
 #   @return [Time]
+#
+# @author: tkhobbes
 class Book < ApplicationRecord
   validates :title, presence: true
 
