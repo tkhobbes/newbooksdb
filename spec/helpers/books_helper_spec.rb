@@ -11,5 +11,12 @@ require 'rails_helper'
 #   end
 # end
 RSpec.describe BooksHelper, type: :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  include ActionView::Helpers
+  context 'book view helpers' do
+    let(:book) { create(:german_translation) }
+
+    it 'displays the original title in brackets' do
+      expect(original_title(book)).to eq('(The Lord of the Rings)')
+    end
+  end
 end

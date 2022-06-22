@@ -1,5 +1,5 @@
 app/models/book.rb c8eae873c27b10a0285fae8aacbda51c1fa1ff84
-app/helpers/books_helper.rb 025ed1f47cd47e72aa73db6c26c6af90067bb6da
+app/helpers/books_helper.rb bdfab663e44180d07c67c739eef262e2430da20c
 app/jobs/application_job.rb 57b53cb36811b7f4cd608d50033020943cf0005e
 app/models/concerns/rateable.rb db8376d7d06698ccb451ebfd2f881134102a747f
 app/models/application_record.rb f5bdea8616b96e0b81d4464e2d6b3ad58910fd91

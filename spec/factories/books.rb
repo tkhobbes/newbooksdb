@@ -12,6 +12,12 @@ FactoryBot.define do
     year { 1980 }
   end
 
+  factory :german_translation, class: Book do
+    title { 'Der Herr der Ringe' }
+    year { 1955}
+    original_title { 'The Lord of the Rings' }
+  end
+
   factory :random_book, class: Book do
     title { Faker::Book.title }
     year { Random.rand(1920..2020) }
