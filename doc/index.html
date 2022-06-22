@@ -65,6 +65,23 @@
 
 <h2 id="technical-information">Technical Information</h2>
 
+<h3 id="models">Models</h3>
+
+<h4 id="books">Books</h4>
+
+<p>Main model - encapsulates any book stored in the DB.
+Fields:</p>
+
+<ul>
+  <li>Title (not null) - the title of the book. Must be unique in the DB (i. e. no book can exist twice)</li>
+  <li>Sort Title: Automatically generated from the title (lowercased and leading articles removed). Must also not be null</li>
+  <li>Original title: If the book was originally published in another language</li>
+  <li>Year: The publishing year of a book (integer)</li>
+  <li>Rating: An integer, used as an ENUM: not rated (0), hated (1), bad (2), ok (3), good (4), favourite (5)</li>
+  <li>Condition: The physical condition of the book, used as an ENUM: not given (0), damaged (1), used_bad (2), used (3), used_ok (4), like_new (5)</li>
+  <li>Edition: Free text string - first, second edition, etc etc.</li>
+</ul>
+
 <h3 id="ruby-version">Ruby Version</h3>
 
 <p>This application is setup using Ruby v 3.1.2</p>
@@ -87,6 +104,8 @@
   <li>Yard <a href="https://rubygems.org/gems/yard" target="_parent" title="https://rubygems.org/gems/yard">https://rubygems.org/gems/yard</a> is used for documentation</li>
   <li>Rails-ERD <a href="https://rubygems.org/gems/rails-erd" target="_parent" title="https://rubygems.org/gems/rails-erd">https://rubygems.org/gems/rails-erd</a> is used to draw the entity relationship diagrams as a PDF</li>
   <li>Bullet <a href="https://rubygems.org/gems/bullet" target="_parent" title="https://rubygems.org/gems/bullet">https://rubygems.org/gems/bullet</a> is used to detect N+1 issues.</li>
+  <li>Faker <a href="https://rubygems.org/gems/faker" target="_parent" title="https://rubygems.org/gems/faker">https://rubygems.org/gems/faker</a> to quickly generate data</li>
+  <li>Factory Bot <a href="https://rubygems.org/search?query=factory_bot_rails" target="_parent" title="https://rubygems.org/search?query=factory_bot_rails">https://rubygems.org/search?query=factory_bot_rails</a> to easily generate test data</li>
 </ul>
 
 <h4 id="core-rails--application">Core Rails / Application</h4>
@@ -104,7 +123,7 @@
 </div></div>
 
       <div id="footer">
-  Generated on Wed Jun  8 16:42:12 2022 by
+  Generated on Wed Jun 22 10:11:39 2022 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.28 (ruby-3.1.2).
 </div>

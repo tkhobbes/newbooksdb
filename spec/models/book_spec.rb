@@ -15,43 +15,36 @@ RSpec.describe Book, type: :model do
   end
 
   context 'logic tests' do
+    let(:book) { create(:hobbit) }
+    let(:book2) { create(:a_prefix_book) }
+
     it 'removes prefixing words from sort_title' do
-      book = Book.create(title: 'The Hobbit', year: 1937)
       expect(book.sort_title).to eq('hobbit')
-      book2 = Book.create(title: 'A wonderful story', year: 1937)
-      expect(book2.sort_title).to eq('wonderful story')
-      book3 = Book.create(title: 'An Unexpected Truth', year: 2000)
-      expect(book3.sort_title).to eq('unexpected truth')
+      expect(book2.sort_title).to eq('wonderful life of an ant')
     end
 
     it 'defaults to not rated' do
-      book = Book.new(title: 'The Hobbit')
-      expect(book.rating).to eq('not_rated')
+      expect(book2.rating).to eq('not_rated')
     end
 
       it 'translates rating to text' do
-        book = Book.new(title: 'The Hobbit', rating: 5)
         expect(book.rating).to eq('favourite')
       end
 
       it 'responds to rated?' do
-        book = Book.new(title: 'The Hobbit', rating: 5)
         expect(book.rated?).to eq(true)
       end
 
       it 'responds to not rated?' do
-        book = Book.new(title: 'The Hobbit')
-        expect(book.rated?).to eq(false)
+        expect(book2.rated?).to eq(false)
       end
 
       it 'defaults to condition none' do
-        book = Book.new(title: 'The Hobbit')
-        expect(book.condition).to eq('not_given')
+        expect(book2.condition).to eq('not_given')
       end
 
       it 'translates condition to text' do
-        book = Book.new(title: 'The Hobbit', condition: 5)
-        expect(book.condition).to eq('like_new')
+        expect(book.condition).to eq('used_ok')
       end
   end
 

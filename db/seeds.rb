@@ -6,4 +6,11 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-Book.create(title: 'The Hobbit', year: 1937, rating: 5, condition: 5)
+100.times do
+  Book.create(
+    title: Faker::Book.title,
+    year: Random.rand(1920..2020),
+    rating: Random.rand(0..5),
+    condition: Random.rand(0..5)
+  )
+end
