@@ -1,0 +1,93 @@
+:root {
+  /*
+@import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@300;400&family=Catamaran:wght@100;400;700&family=Josefin+Sans:wght@400;600;700&display=swap');
+*/
+
+  box-sizing: border-box;
+
+  --color-black: #2e2d3c;
+  --color-grey-black: #4e4d66;
+  --color-grey: #7e7c9d;
+  --color-grey-white: #a9a8bd;
+  --color-white: #f1f0f4;
+
+  --color-primary: #8cb0d9;
+  --color-primary-light: #d7e5f4;
+  --color-primary-dark: #407bbf;
+
+  --color-secondary: #e8c07d;
+  --color-secondary-light: #faebd1;
+  --color-secondary-dark: #ad781f;
+
+  --color-accent: #ec806d;
+  --color-accent-light: #f0b3a8;
+  --color-accent-dark: #a34129;
+
+  --paragraph: "Catamaran", sans-serif;
+  --menu-text: "Alegreya Sans SC", sans-serif;
+  --title-text: "Josefin Sans", sans-serif;
+}
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-primary-light);
+  font-family: var(--paragraph);
+}
+
+.container {
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.sidebar {
+  flex: 1;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+
+.search {
+  background-color: var(--color-accent);
+  padding: 0.5em 1em 0.5em 2em;
+}
+
+.menu {
+  flex: 1;
+  background-color: var(--color-accent-light);
+  padding: 0.5em 1em 0.5em 2em;
+  font-family: var(--menu-text);
+}
+
+.content {
+  flex: 5;
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+}
+
+.title {
+  background-color: var(--color-primary);
+  padding: 0.5em 1.5em;
+  font-family: var(--title-text);
+}
+
+.main {
+  flex: 1;
+  background-color: var(--color-primary-light);
+  padding: 1.5em 1.5em;
+}
+
+.footer {
+  background-color: var(--color-primary);
+  padding: 0.5em 1.5em;
+}
