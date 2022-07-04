@@ -38,6 +38,10 @@ group :development do
   gem "bullet", "~> 7.0.2"
 end
 
+group :test do
+gem 'simplecov', '~> 0.21.2'
+end
+
 # Database
 gem "mysql2", "~> 0.5.4"
 gem "redis", "~> 4.6.0"
