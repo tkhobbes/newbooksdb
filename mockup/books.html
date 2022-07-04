@@ -1,3 +1,15 @@
+<!-- Stuff to fix
+  - add a reset css
+  - style search bar
+  - add slight animation to hover effects
+  - add tabs
+  - add edit / delete icons next to title
+  - make the whole book card clickable and leading to book details page
+  - fix flex layout for cards so that they align next to each other
+  - fix book cover images - they need to cover the full card all the time (no blank space below)
+  - fix height of main container to fit screen exactly
+  - add burger menu functionality in javascript
+-->
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -11,6 +23,10 @@
       href="https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@300;400&family=Catamaran:wght@100;400;700&family=Josefin+Sans:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
+    <script
+      src="https://kit.fontawesome.com/72f73a2575.js"
+      crossorigin="anonymous"
+    ></script>
 
     <title>NewBookdB Mockup</title>
   </head>
@@ -18,12 +34,259 @@
     <div class="container">
       <aside class="sidebar">
         <section class="search">Searchbar</section>
-        <section class="menu">Menu</section>
+        <section class="menu">
+          <ul class="main-menu">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Books</a></li>
+            <li><a href="#">Genres</a></li>
+            <li><a href="#">Book Series</a></li>
+            <li><a href="#">Authors</a></li>
+            <li><a href="#">Publishers</a></li>
+            <li><a href="#">Shelves</a></li>
+          </ul>
+        </section>
       </aside>
       <div class="content">
-        <section class="title">Title</section>
-        <main class="main">Main content</main>
-        <footer class="footer">Footer</footer>
+        <section class="title">
+          <div class="title-container">
+            <div class="burgermenu">---</div>
+            <div class="maintitle">
+              <h1 class="heading1">Book Collector Database UZW18</h1>
+              <div class="quickicons">
+                <span class="quickicons-filler"></span>
+                <a href="#">
+                  <i class="fas fa-barcode" title="Scan Book"></i>
+                </a>
+                <a href="#">
+                  <i class="fas fa-book-medical" title="Add Book"></i>
+                </a>
+                <a href="#">
+                  <i class="fas fa-user" title="User"></i>
+                </a>
+                <a href="#">
+                  <i class="fas fa-cog" title="Settings"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+        <main class="main">
+          <nav class="tabs">Tabs</nav>
+          <nav class="pagination">
+            <span class="navitem"><a href="#">< Prev</a></span>
+            <span class="navitem"><a href="#">1</a></span>
+            <span class="navitem"><a href="#">2</a></span>
+            <span class="navitem"><a href="#">3</a></span>
+            <span class="navitem filler">..</span>
+            <span class="navitem current">6</span>
+            <span class="navitem filler">..</span>
+            <span class="navitem"><a href="#">9</a></span>
+            <span class="navitem"><a href="#">10</a></span>
+            <span class="navitem"><a href="#">11</a></span>
+            <span class="navitem"><a href="#">Next ></a></span>
+          </nav>
+          <div class="flexlist">
+            <div class="bookcard-big">
+              <div class="bookcard-big__cover">
+                <img src="../db/sample/images/cover-1.jpg" alt="" />
+              </div>
+              <div class="bookcard-big__content">
+                <div class="bookcard-big__title">
+                  <h2 class="heading3"><a href="#">Otherland Volume 1</a></h2>
+                  <div class="bookyear">1992</div>
+                </div>
+                <div class="author">Tad Williams</div>
+                <div class="publisher">Harper Collins Ltd</div>
+                <div class="genrelist">
+                  <span class="genre">
+                    <a href="#"> <i class="fas fa-tag"></i> Genre 1 </a>
+                  </span>
+                  <span class="genre">
+                    <a href="#"> <i class="fas fa-tag"></i> Genre 2 </a>
+                  </span>
+                  <span class="genre">
+                    <a href="#"> <i class="fas fa-tag"></i> Genre 3 </a>
+                  </span>
+                </div>
+                <p>
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Hic
+                  beatae delectus, maiores incidunt possimus distinctio mollitia
+                  asperiores libero quod corrupti, eum officiis iure tenetur
+                  quidem atque accusamus quisquam veritatis magni!
+                </p>
+              </div>
+            </div>
+            <div class="bookcard-big">
+              <div class="bookcard-big__cover">
+                <img src="../db/sample/images/cover-2.jpg" alt="" />
+              </div>
+              <div class="bookcard-big__content">
+                <div class="bookcard-big__title">
+                  <h2 class="heading3"><a href="#">Book Title</a></h2>
+                  <div class="bookyear">1937</div>
+                </div>
+                <div class="author">Author Author</div>
+                <div class="publisher">Publisher</div>
+                <div class="genrelist">
+                  <span class="genre">
+                    <a href="#"> <i class="fas fa-tag"></i> Genre 1 </a>
+                  </span>
+                  <span class="genre">
+                    <a href="#"> <i class="fas fa-tag"></i> Genre 2 </a>
+                  </span>
+                  <span class="genre">
+                    <a href="#"> <i class="fas fa-tag"></i> Genre 3 </a>
+                  </span>
+                </div>
+                <p>
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Hic
+                  beatae delectus, maiores incidunt possimus distinctio mollitia
+                  asperiores libero quod corrupti, eum officiis iure tenetur
+                  quidem atque accusamus quisquam veritatis magni!
+                </p>
+              </div>
+            </div>
+            <div class="bookcard-big">
+              <div class="bookcard-big__cover">
+                <img src="../db/sample/images/cover-3.jpg" alt="" />
+              </div>
+              <div class="bookcard-big__content">
+                <div class="bookcard-big__title">
+                  <h2><a href="#">Book Title</a></h2>
+                  <div class="bookyear">2001</div>
+                </div>
+                <div class="author">Author Author</div>
+                <div class="publisher">Publisher</div>
+                <div class="genrelist">
+                  <span class="genre">
+                    <a href="#"> <i class="fas fa-tag"></i> Genre 1 </a>
+                  </span>
+                  <span class="genre">
+                    <a href="#"> <i class="fas fa-tag"></i> Genre 2 </a>
+                  </span>
+                  <span class="genre">
+                    <a href="#"> <i class="fas fa-tag"></i> Genre 3 </a>
+                  </span>
+                </div>
+                <p>
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Hic
+                  beatae delectus, maiores incidunt possimus distinctio mollitia
+                  asperiores libero quod corrupti, eum officiis iure tenetur
+                  quidem atque accusamus quisquam veritatis magni!
+                </p>
+              </div>
+            </div>
+            <div class="bookcard-big">
+              <div class="bookcard-big__cover">
+                <img src="../db/sample/images/cover-4.jpg" alt="" />
+              </div>
+              <div class="bookcard-big__content">
+                <div class="bookcard-big__title">
+                  <h2 class="heading3"><a href="#">Book Title</a></h2>
+                  <div class="bookyear">1952</div>
+                </div>
+                <div class="author">Author Author</div>
+                <div class="publisher">Publisher</div>
+                <div class="genrelist">
+                  <span class="genre">
+                    <a href="#"> <i class="fas fa-tag"></i> Genre 1 </a>
+                  </span>
+                  <span class="genre">
+                    <a href="#"> <i class="fas fa-tag"></i> Genre 2 </a>
+                  </span>
+                  <span class="genre">
+                    <a href="#"> <i class="fas fa-tag"></i> Genre 3 </a>
+                  </span>
+                </div>
+                <p>
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Hic
+                  beatae delectus, maiores incidunt possimus distinctio mollitia
+                  asperiores libero quod corrupti, eum officiis iure tenetur
+                  quidem atque accusamus quisquam veritatis magni!
+                </p>
+              </div>
+            </div>
+            <div class="bookcard-big">
+              <div class="bookcard-big__cover">
+                <img src="../db/sample/images/cover-5.jpg" alt="" />
+              </div>
+              <div class="bookcard-big__content">
+                <div class="bookcard-big__title">
+                  <h2><a href="#">A long Book Title to see what happens</a></h2>
+                  <div class="bookyear">2020</div>
+                </div>
+                <div class="author">Author Author</div>
+                <div class="publisher">Publisher</div>
+                <div class="genrelist">
+                  <span class="genre">
+                    <a href="#"> <i class="fas fa-tag"></i> Genre 1 </a>
+                  </span>
+                  <span class="genre">
+                    <a href="#"> <i class="fas fa-tag"></i> Genre 2 </a>
+                  </span>
+                  <span class="genre">
+                    <a href="#"> <i class="fas fa-tag"></i> Genre 3 </a>
+                  </span>
+                </div>
+                <p>
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Hic
+                  beatae delectus, maiores incidunt possimus distinctio mollitia
+                  asperiores libero quod corrupti, eum officiis iure tenetur
+                  quidem atque accusamus quisquam veritatis magni!
+                </p>
+              </div>
+            </div>
+            <div class="bookcard-big">
+              <div class="bookcard-big__cover">
+                <img src="../db/sample/images/cover-6.jpg" alt="" />
+              </div>
+              <div class="bookcard-big__content">
+                <div class="bookcard-big__title">
+                  <h2><a href="#">Book Title</a></h2>
+                  <div class="bookyear">1975</div>
+                </div>
+                <div class="author">Author Author</div>
+                <div class="publisher">Publisher</div>
+                <div class="genrelist">
+                  <span class="genre">
+                    <a href="#"> <i class="fas fa-tag"></i> Genre 1 </a>
+                  </span>
+                  <span class="genre">
+                    <a href="#"> <i class="fas fa-tag"></i> Genre 2 </a>
+                  </span>
+                  <span class="genre">
+                    <a href="#"> <i class="fas fa-tag"></i> Genre 3 </a>
+                  </span>
+                </div>
+                <p>
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Hic
+                  beatae delectus, maiores incidunt possimus distinctio mollitia
+                  asperiores libero quod corrupti, eum officiis iure tenetur
+                  quidem atque accusamus quisquam veritatis magni!
+                </p>
+              </div>
+            </div>
+          </div>
+          <nav class="pagination">
+            <span class="navitem"><a href="#">< Prev</a></span>
+            <span class="navitem"><a href="#">1</a></span>
+            <span class="navitem"><a href="#">2</a></span>
+            <span class="navitem"><a href="#">3</a></span>
+            <span class="navitem filler">..</span>
+            <span class="navitem current">6</span>
+            <span class="navitem filler">..</span>
+            <span class="navitem"><a href="#">9</a></span>
+            <span class="navitem"><a href="#">10</a></span>
+            <span class="navitem"><a href="#">11</a></span>
+            <span class="navitem"><a href="#">Next ></a></span>
+          </nav>
+        </main>
+        <footer class="footer">
+          <p>
+            365 Books from 123 Publishers by 237 Authors, across 56 Genres in 6
+            Shelves for 5 Owners.
+          </p>
+        </footer>
       </div>
     </div>
   </body>

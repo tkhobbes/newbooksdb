@@ -1,14 +1,14 @@
 example_id                                    | status  | run_time        |
 --------------------------------------------- | ------- | --------------- |
-./spec/helpers/books_helper_spec.rb[1:1:1]    | passed  | 0.05701 seconds |
-./spec/models/book_spec.rb[1:1:1]             | passed  | 0.04387 seconds |
-./spec/models/book_spec.rb[1:1:2]             | passed  | 0.00506 seconds |
-./spec/models/book_spec.rb[1:2:1]             | passed  | 0.01711 seconds |
-./spec/models/book_spec.rb[1:2:2]             | passed  | 0.01189 seconds |
-./spec/models/book_spec.rb[1:2:3]             | passed  | 0.01153 seconds |
-./spec/models/book_spec.rb[1:2:4]             | passed  | 0.01109 seconds |
-./spec/models/book_spec.rb[1:2:5]             | passed  | 0.012 seconds   |
-./spec/models/book_spec.rb[1:2:6]             | passed  | 0.01131 seconds |
-./spec/models/book_spec.rb[1:2:7]             | passed  | 0.01458 seconds |
-./spec/requests/books_spec.rb[1:1:1:1]        | passed  | 0.07524 seconds |
-./spec/views/books/show.html.erb_spec.rb[1:1] | pending | 0.00001 seconds |
+./spec/helpers/books_helper_spec.rb[1:1:1]    | passed  | 0.12103 seconds |
+./spec/models/book_spec.rb[1:1:1]             | passed  | 0.0449 seconds  |
+./spec/models/book_spec.rb[1:1:2]             | passed  | 0.00606 seconds |
+./spec/models/book_spec.rb[1:2:1]             | passed  | 0.0303 seconds  |
+./spec/models/book_spec.rb[1:2:2]             | passed  | 0.03094 seconds |
+./spec/models/book_spec.rb[1:2:3]             | passed  | 0.01517 seconds |
+./spec/models/book_spec.rb[1:2:4]             | passed  | 0.11067 seconds |
+./spec/models/book_spec.rb[1:2:5]             | passed  | 0.01342 seconds |
+./spec/models/book_spec.rb[1:2:6]             | passed  | 0.07086 seconds |
+./spec/models/book_spec.rb[1:2:7]             | passed  | 0.0739 seconds  |
+./spec/requests/books_spec.rb[1:1:1:1]        | passed  | 0.29985 seconds |
+./spec/views/books/show.html.erb_spec.rb[1:1] | pending | 0.00003 seconds |

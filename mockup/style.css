@@ -31,6 +31,8 @@
 *::before,
 *::after {
   box-sizing: inherit;
+  margin: 0;
+  padding: 0;
 }
 
 body {
@@ -38,12 +40,11 @@ body {
   padding: 0;
   background-color: var(--color-primary-light);
   font-family: var(--paragraph);
+  color: var(--color-black);
 }
 
 .container {
   display: flex;
-  margin: 0;
-  padding: 0;
 }
 
 .sidebar {
@@ -51,7 +52,6 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  margin: 0;
 }
 
 .search {
@@ -68,26 +68,249 @@ body {
 
 .content {
   flex: 5;
-  padding: 1em;
   display: flex;
   flex-direction: column;
-  margin: 0;
-  padding: 0;
 }
 
 .title {
   background-color: var(--color-primary);
-  padding: 0.5em 1.5em;
-  font-family: var(--title-text);
+  padding: 1em 0.5em 0em;
+}
+
+.title-container {
+  display: flex;
+  align-items: start;
+}
+
+.burgermenu {
+}
+
+.maintitle {
+  flex: 1;
+  margin-left: 1em;
+}
+
+.quickicons {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  fonts-size: 1rem;
+}
+
+.quickicons-filler {
+  flex: 1;
+}
+
+.quickicons > a {
+  text-decoration: none;
+  color: var(--color-black);
+  display: block;
+  padding: 0.5em;
+}
+
+.quickicons > a:hover {
+  background-color: var(--color-accent-dark);
+  color: var(--color-accent-light);
 }
 
 .main {
   flex: 1;
   background-color: var(--color-primary-light);
   padding: 1.5em 1.5em;
+  /* height: 100% of view height subtracted by
+  - height of title: Paddin top 1em, font size: 3rem;
+  - height of quickmenu: font-size: 1rem, padding-bottom: 0.5em;
+  - height of footer: padding-top and bottom 0.5em, font-size: 1rem;*/
+  max-height: calc(100vh - 1em - 3rem - 1rem - 0.5em - 0.5em - 1rem - 0.5em);
+  overflow: scroll;
 }
 
 .footer {
   background-color: var(--color-primary);
   padding: 0.5em 1.5em;
+}
+
+.heading1 {
+  font-size: 3rem;
+  font-family: var(--title-text);
+}
+
+.heading2 {
+  font-size: 2.25rem;
+  font-family: var(--title-text);
+}
+
+.heading3 {
+  font-size: 1.5rem;
+  font-family: var(--title-text);
+}
+
+.heading4 {
+  font-size: 1.125rem;
+  font-family: var(--title-text);
+}
+
+.small {
+  font-size: 0.75rem;
+}
+
+.main-menu {
+  list-style-type: none;
+  margin-top: 2em;
+}
+
+.main-menu > li {
+  border-bottom: 1px solid var(--color-accent-dark);
+}
+
+.main-menu > li + li {
+  margin-top: 0.25em;
+}
+
+.main-menu > li > a {
+  text-decoration: none;
+  color: var(--color-black);
+  display: block;
+  padding: 0.5em;
+}
+
+.main-menu > li > a:hover {
+  background-color: var(--color-accent-dark);
+  color: var(--color-accent-light);
+}
+
+.pagination {
+  display: flex;
+  margin-top: 1em;
+  font-size: 0.8em;
+}
+
+.pagination .navitem {
+  border: 1px solid var(--color-primary-dark);
+  background-color: var(--color-secondary-light);
+  min-width: 3.5em;
+  text-align: center;
+}
+
+.pagination > .navitem + .navitem {
+  border-left: none;
+}
+
+.pagination > .navitem:first-child {
+  border-radius: 5px 0 0 5px;
+}
+
+.pagination > .navitem:last-child {
+  border-radius: 0 5px 5px 0;
+}
+
+.pagination .navitem > a {
+  text-decoration: none;
+  color: var(--color-black);
+  padding: 0.5em;
+  display: block;
+}
+
+.pagination .navitem > a:hover {
+  color: var(--color-secondary-light);
+  background-color: var(--color-primary-dark);
+}
+
+.pagination .current {
+  display: block;
+  padding: 0.5em;
+  background-color: var(--color-primary);
+  color: var(--color-secondary-light);
+}
+
+.pagination .filler {
+  display: block;
+  padding: 0.5em;
+}
+
+.flexlist {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 1em;
+}
+
+.bookcard-big {
+  display: flex;
+  border: 1px solid var(--color-black);
+  border-radius: 5px;
+  background-color: var(--color-secondary-light);
+  margin: 0.5em;
+  width: 30em;
+}
+
+.bookcard-big__cover {
+  max-width: 50%;
+}
+
+.bookcard-big__cover img {
+  width: 100%;
+  overflow: hidden;
+  display: block;
+  object-fit: cover;
+}
+
+.bookcard-big__content {
+  margin: 0 0.5em;
+}
+
+.bookcard-big__title {
+  margin: 0.5em 0 0;
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.bookcard-big__title h2 {
+  flex: 1;
+}
+
+.bookcard-big__title a {
+  text-decoration: none;
+  color: var(--color-black);
+}
+
+.bookcard-big .bookyear {
+  margin-left: auto;
+  font-size: 1.5rem;
+}
+
+.bookcard-big .author {
+  font-size: 1.5rem;
+}
+
+.bookcard-big .publisher {
+}
+
+.bookcard-big .genrelist {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0.5em 0;
+}
+
+.bookcard-big .genre {
+  background-color: var(--color-secondary-dark);
+  margin-bottom: 0.25em;
+  border-radius: 3px;
+}
+
+.bookcard-big .genre + .genre {
+  margin-left: 0.25em;
+}
+
+.bookcard-big .genre a {
+  color: var(--color-white);
+  text-decoration: none;
+  display: block;
+  padding: 0.1em 0.2em;
+}
+
+.bookcard-big p {
+  line-height: 1.1;
 }
