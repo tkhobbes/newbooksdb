@@ -34,6 +34,7 @@ group :development do
   gem "rubocop", " ~> 1.30.1"
   gem "rubocop-rails", "~> 2.14.2"
   gem "rubocop-performance", " ~> 1.14.2"
+  gem 'reek', '~> 6.1', '>= 6.1.1'
   gem "rails-erd", "1.7.0"
   gem "bullet", "~> 7.0.2"
   gem 'database_consistency', '~> 1.1', '>= 1.1.15'
