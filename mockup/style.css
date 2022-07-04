@@ -4,6 +4,8 @@
 */
 
   box-sizing: border-box;
+  font-size: calc(0.2em + 1vw);
+  /* use rems for font sizes, pixels for border, and ems for most other measures */
 
   --color-black: #2e2d3c;
   --color-grey-black: #4e4d66;
@@ -36,6 +38,7 @@
 }
 
 body {
+  line-height: 1.15;
   margin: 0;
   padding: 0;
   background-color: var(--color-primary-light);
@@ -43,8 +46,23 @@ body {
   color: var(--color-black);
 }
 
+/* proper order for link styles */
+a:link {
+}
+
+a:visited {
+}
+
+a:hover {
+}
+
+a:active {
+}
+
 .container {
   display: flex;
+  margin: 0 auto;
+  max-width: 1400px;
 }
 
 .sidebar {
@@ -79,7 +97,7 @@ body {
 
 .title-container {
   display: flex;
-  align-items: start;
+  align-items: flex-start;
 }
 
 .burgermenu {
@@ -231,6 +249,7 @@ body {
 
 .flexlist {
   display: flex;
+  align-content: flex-start;
   justify-content: space-between;
   flex-wrap: wrap;
   margin-top: 1em;
@@ -247,10 +266,11 @@ body {
 
 .bookcard-big__cover {
   max-width: 50%;
+  display: flex;
 }
 
 .bookcard-big__cover img {
-  width: 100%;
+  flex: 1;
   overflow: hidden;
   display: block;
   object-fit: cover;
@@ -263,7 +283,7 @@ body {
 .bookcard-big__title {
   margin: 0.5em 0 0;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   flex-wrap: nowrap;
 }
 

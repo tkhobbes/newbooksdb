@@ -56,3 +56,7 @@ RSpec is used for writing tests (using the rspec-rails gem {https://github.com/r
 Using Simplecov to analyze code coverage ({https://rubygems.org/gems/simplecov})
 
 ### Database creation and initialization
+
+### Styles and HTML
+
+This project is partially based on normalize.css {https://necolas.github.io/normalize.css/}
