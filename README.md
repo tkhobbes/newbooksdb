@@ -40,6 +40,7 @@ The following Gems are used in this project:
 - Yard {https://rubygems.org/gems/yard} is used for documentation
 - Rails-ERD {https://rubygems.org/gems/rails-erd} is used to draw the entity relationship diagrams as a PDF
 - Bullet {https://rubygems.org/gems/bullet} is used to detect N+1 issues.
+- Database consistency checker {https://rubygems.org/gems/database_consistency} is used to validate database constraints vs validations
 - Faker {https://rubygems.org/gems/faker} to quickly generate data
 - Factory Bot {https://rubygems.org/search?query=factory_bot_rails} to easily generate test data
 

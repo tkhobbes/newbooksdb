@@ -36,6 +36,7 @@ group :development do
   gem "rubocop-performance", " ~> 1.14.2"
   gem "rails-erd", "1.7.0"
   gem "bullet", "~> 7.0.2"
+  gem 'database_consistency', '~> 1.1', '>= 1.1.15'
 end
 
 group :test do
