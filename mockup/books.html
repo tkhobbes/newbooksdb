@@ -1,13 +1,7 @@
 <!-- Stuff to fix
-  - add a reset css
-  - style search bar
-  - add slight animation to hover effects
-  - add tabs
   - add edit / delete icons next to title
-  - make the whole book card clickable and leading to book details page
-  - fix flex layout for cards so that they align next to each other
-  - fix height of main container to fit screen exactly
   - add burger menu functionality in javascript
+  - swap icons for SVGs
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -33,7 +27,14 @@
   <body>
     <div class="container">
       <aside class="sidebar">
-        <section class="search">Searchbar</section>
+        <section class="search">
+          <form action="" class="searchform">
+            <input type="text" placeholder="Search..." />
+            <button type="submit" class="searchbutton">
+              <i class="fas fa-search"></i>
+            </button>
+          </form>
+        </section>
         <section class="menu">
           <ul class="main-menu">
             <li><a href="#">Home</a></li>
@@ -71,7 +72,17 @@
           </div>
         </section>
         <main class="main">
-          <nav class="tabs">Tabs</nav>
+          <nav class="tabs">
+            <ul>
+              <li class="placeholder-tab">&nbsp;</li>
+              <li><a href="#" class="active">Office T</a></li>
+              <li class="placeholder-tab">&nbsp;</li>
+              <li><a href="#">Office N</a></li>
+              <li class="placeholder-tab">&nbsp;</li>
+              <li><a href="#">Living Room</a></li>
+              <li class="placeholder-tab">&nbsp;</li>
+            </ul>
+          </nav>
           <nav class="pagination">
             <span class="navitem"><a href="#">< Prev</a></span>
             <span class="navitem"><a href="#">1</a></span>

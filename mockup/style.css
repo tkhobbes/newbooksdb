@@ -77,6 +77,36 @@ a:active {
   padding: 0.5em 1em 0.5em 2em;
 }
 
+.searchform {
+  display: flex;
+  align-items: center;
+  background-color: var(--color-white);
+  color: var(--color-grey-white);
+  border-radius: 5px;
+  border: 1px solid var(--color-white);
+}
+
+.searchform input,
+.searchform input:active,
+.searchform input:focus-visible,
+.searchform input:focus {
+  background-color: inherit;
+  color: inherit;
+  border: none;
+  outline: none;
+  font-family: var(--paragraph);
+  font-size: 0.9rem;
+  padding: 0.25em 0.5em;
+}
+
+.searchform button {
+  border: none;
+  outline: none;
+  color: inherit;
+  background-color: inherit;
+  padding: 0.25em 0.5em;
+}
+
 .menu {
   flex: 1;
   background-color: var(--color-accent-light);
@@ -137,11 +167,11 @@ a:active {
   background-color: var(--color-primary-light);
   padding: 1.5em 1.5em;
   /* height: 100% of view height subtracted by
-  - height of title: Paddin top 1em, font size: 3rem;
+  - height of title: Padding top 1em, font size: 3rem;
   - height of quickmenu: font-size: 1rem, padding-bottom: 0.5em;
   - height of footer: padding-top and bottom 0.5em, font-size: 1rem;*/
-  max-height: calc(100vh - 1em - 3rem - 1rem - 0.5em - 0.5em - 1rem - 0.5em);
-  overflow: scroll;
+  max-height: calc(98vh - 1em - 3rem - 1rem - 0.5em - 0.5em - 1rem - 0.5em);
+  overflow-y: scroll;
 }
 
 .footer {
@@ -196,6 +226,61 @@ a:active {
 .main-menu > li > a:hover {
   background-color: var(--color-accent-dark);
   color: var(--color-accent-light);
+}
+
+.tabs {
+  margin-bottom: 2em;
+  font-family: var(--menu-text);
+}
+
+.tabs > ul {
+  display: flex;
+  list-style-type: none;
+  align-content: flex-start;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+}
+
+.tabs li {
+  flex: 1;
+}
+
+.tabs .placeholder-tab {
+  border-bottom: 1px solid var(--color-primary-dark);
+}
+
+.tabs a {
+  color: var(--color-primary);
+  text-decoration: none;
+  display: block;
+  padding: 0.5em 1em;
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid var(--color-primary-dark);
+  border-left: 1px solid transparent;
+  border-right: 1px solid transparent;
+  border-radius: 5px 5px 0 0;
+  text-align: center;
+}
+
+.tabs a:hover {
+  border-top: 1px solid var(--color-primary);
+  border-right: 1px solid var(--color-primary);
+  border-left: 1px solid var(--color-primary);
+}
+
+.tabs .active {
+  color: var(--color-primary-dark);
+  border-top: 1px solid var(--color-primary-dark);
+  border-right: 1px solid var(--color-primary-dark);
+  border-left: 1px solid var(--color-primary-dark);
+  border-bottom: 1px solid transparent;
+  border-radius: 3px 3px 0 0;
+}
+
+.tabs .active:hover {
+  border-top: 1px solid var(--color-primary-dark);
+  border-right: 1px solid var(--color-primary-dark);
+  border-left: 1px solid var(--color-primary-dark);
 }
 
 .pagination {
@@ -261,11 +346,11 @@ a:active {
   border-radius: 5px;
   background-color: var(--color-secondary-light);
   margin: 0.5em;
-  width: 30em;
+  flex: 1;
 }
 
 .bookcard-big__cover {
-  max-width: 50%;
+  max-width: 15em;
   display: flex;
 }
 
@@ -283,7 +368,7 @@ a:active {
 .bookcard-big__title {
   margin: 0.5em 0 0;
   display: flex;
-  align-items: flex-start;
+  align-items: stretch;
   flex-wrap: nowrap;
 }
 
@@ -298,6 +383,7 @@ a:active {
 
 .bookcard-big .bookyear {
   margin-left: auto;
+  padding-left: 0.5em;
   font-size: 1.5rem;
 }
 
