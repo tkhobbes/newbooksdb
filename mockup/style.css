@@ -72,6 +72,10 @@ a:active {
   flex-direction: column;
 }
 
+.hidden {
+  display: none;
+}
+
 .search {
   background-color: var(--color-accent);
   padding: 0.5em 1em 0.5em 2em;
@@ -107,6 +111,10 @@ a:active {
   padding: 0.25em 0.5em;
 }
 
+.searchform button svg {
+  width: 1.1em;
+}
+
 .menu {
   flex: 1;
   background-color: var(--color-accent-light);
@@ -131,6 +139,12 @@ a:active {
 }
 
 .burgermenu {
+  font-family: var(--paragraph);
+  font-size: 3rem;
+}
+.burgermenu a {
+  color: var(--color-black);
+  text-decoration: none;
 }
 
 .maintitle {
@@ -154,12 +168,16 @@ a:active {
   text-decoration: none;
   color: var(--color-black);
   display: block;
-  padding: 0.5em;
+  padding: 0.4em;
 }
 
 .quickicons > a:hover {
   background-color: var(--color-accent-dark);
   color: var(--color-accent-light);
+}
+
+.quickicons svg {
+  width: 1.2em;
 }
 
 .main {
@@ -168,9 +186,9 @@ a:active {
   padding: 1.5em 1.5em;
   /* height: 100% of view height subtracted by
   - height of title: Padding top 1em, font size: 3rem;
-  - height of quickmenu: font-size: 1rem, padding-bottom: 0.5em;
+  - height of quickmenu: font-size: 1.2rem, padding-bottom: 0.5em;
   - height of footer: padding-top and bottom 0.5em, font-size: 1rem;*/
-  max-height: calc(98vh - 1em - 3rem - 1rem - 0.5em - 0.5em - 1rem - 0.5em);
+  max-height: calc(98vh - 1em - 3rem - 1.2rem - 0.5em - 0.5em - 1rem - 0.5em);
   overflow-y: scroll;
 }
 
@@ -345,6 +363,7 @@ a:active {
   border: 1px solid var(--color-black);
   border-radius: 5px;
   background-color: var(--color-secondary-light);
+  color: var(--color-black);
   margin: 0.5em;
   flex: 1;
 }
@@ -363,6 +382,7 @@ a:active {
 
 .bookcard-big__content {
   margin: 0 0.5em;
+  padding: 0.2em 0.3em;
 }
 
 .bookcard-big__title {
@@ -374,6 +394,20 @@ a:active {
 
 .bookcard-big__title h2 {
   flex: 1;
+}
+
+.bookcard-big__title .edit-icon {
+  color: var(--color-primary-dark);
+  width: 1em;
+  display: block;
+  margin: 0 0.2em;
+}
+
+.bookcard-big__title .delete-icon {
+  color: var(--color-accent-dark);
+  width: 1em;
+  display: block;
+  margin: 0 0.2em;
 }
 
 .bookcard-big__title a {
