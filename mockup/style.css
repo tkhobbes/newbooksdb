@@ -447,8 +447,8 @@ a:active {
 .bookcard-big .genre a {
   color: var(--color-white);
   text-decoration: none;
+  padding: 1.2em 0.3em;
   display: block;
-  padding: 0.1em 0.2em;
 }
 
 .bookcard-big p {
