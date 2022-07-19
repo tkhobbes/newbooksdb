@@ -1,0 +1,55 @@
+// variables.scss: defines all variables as SCSS variables
+// and then transforms them into CSS custom properties
+$color-black: #2e2d3c;
+$color-grey-black: #4e4d66;
+$color-grey: #7e7c9d;
+$color-grey-white: #a9a8bd;
+$color-white: #f1f0f4;
+
+$color-primary: #8cb0d9;
+$color-primary-light: #d7e5f4;
+$color-primary-dark: #407bbf;
+
+$color-secondary: #e8c07d;
+$color-secondary-light: #faebd1;
+$color-secondary-dark: #ad781f;
+
+$color-accent: #ec806d;
+$color-accent-light: #f0b3a8;
+$color-accent-dark: #a34129;
+
+$color-ok: #297b48;
+$color-warn: #e0bd1f;
+$color-error: #991c00;
+
+$paragraph: '"Catamaran", sans-serif';
+$menu-text: '"Alegreya Sans SC", sans-serif';
+$title-text: '"Josefin Sans", sans-serif';
+
+:root {
+  --color-black: #{$color-black};
+  --color-grey-black: #{$color-grey-black};
+  --color-grey: #{$color-grey};
+  --color-grey-white: #{$color-grey-white};
+  --color-white: #{$color-white};
+
+  --color-primary: #{$color-primary};
+  --color-primary-light: #{$color-primary-light};
+  --color-primary-dark: #{$color-primary-dark};
+
+  --color-secondary: #{$color-secondary};
+  --color-secondary-light: #{$color-secondary-light};
+  --color-secondary-dark: #{$color-secondary-dark};
+
+  --color-accent: #{$color-accent};
+  --color-accent-light: #{$color-accent-light};
+  --color-accent-dark: #{$color-accent-dark};
+
+  --color-ok: #{$color-ok};
+  --color-warn: #{$color-warn};
+  --color-error: #{$color-error};
+
+  --paragraph: #{$paragraph};
+  --menu-text: #{$menu-text};
+  --title-text: #{$title-text};
+}

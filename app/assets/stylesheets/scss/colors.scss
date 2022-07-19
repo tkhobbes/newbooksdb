@@ -1,0 +1,55 @@
+// Colors: defines background and foreground colors based on all available colours
+
+// Syntax:
+// .color-primary (for foreground color)
+// .color-hover-primary (for hover formats)
+// .bg-primary: Background color
+// .bg-hover-primary: Background hover color
+// .border-color-primary: Border color
+
+// a color map
+$colors: (
+  "primary": $color-primary,
+  "primary-light": $color-primary-light,
+  "primary-dark": $color-primary-dark,
+  "secondary": $color-secondary,
+  "secondary-light": $color-secondary-light,
+  "secondary-dark": $color-secondary-dark,
+  "accent": $color-accent,
+  "accent-light": $color-accent-light,
+  "accent-dark": $color-accent-dark,
+  "warning": $color-warn,
+  "error": $color-error,
+  "info": $color-ok,
+  "white": $color-white,
+  "grey-white": $color-grey-white,
+  "grey": $color-grey,
+  "grey-black": $color-grey-black,
+  "black": $color-black,
+);
+
+@each $key, $value in $colors {
+  .color-#{$key} {
+    color: $value;
+  }
+
+  .color-hover-#{$key} {
+    &:hover {
+      color: $value;
+    }
+  }
+
+  .bg-#{$key} {
+    background-color: $value;
+  }
+
+  .bg-hover-#{$key} {
+    &:hover {
+      background-color: $value;
+    }
+  }
+
+  .border-color-#{$key} {
+    border-color: $value;
+  }
+}

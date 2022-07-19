@@ -1,1 +1,15 @@
+@import url("https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@300;400&family=Catamaran:wght@100;400;700&family=Josefin+Sans:wght@400;600;700&display=swap");
 
+@import "reset.scss";
+
+@import "variables.scss";
+@import "colors.scss";
+@import "base.scss";
+@import "fonts.scss";
+@import "utilities.scss";
+
+@import "components/search.scss";
+@import "components/menu.scss";
+@import "components/header.scss";
+@import "components/tabs.scss";
+@import "components/pagination.scss";
