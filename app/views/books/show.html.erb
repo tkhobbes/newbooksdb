@@ -1,4 +1,7 @@
 <div>
+<%= image_tag @book.cover.variant(resize_to_limit: [150, 150]) %>
+</div>
+<div>
   <%= @book.title %>
   <%= original_title(@book) %>
 </div>

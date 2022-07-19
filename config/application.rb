@@ -33,5 +33,7 @@ module Newbooksdb
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    config.active_storage.variant_processor = :mini_magick
   end
 end

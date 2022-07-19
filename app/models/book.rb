@@ -38,6 +38,8 @@ class Book < ApplicationRecord
         not_given: 0
   }
 
+  has_one_attached :cover
+
   private
 
   # Removes common leading words from the title and converts it to downcase

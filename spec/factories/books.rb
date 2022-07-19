@@ -1,4 +1,28 @@
-# Users factory
+# == Schema Information
+#
+# Table name: books
+#
+# @!attribute id
+#   @return []
+# @!attribute condition
+#   @return [Integer]
+# @!attribute edition
+#   @return [String]
+# @!attribute original_title
+#   @return [String]
+# @!attribute rating
+#   @return [Integer]
+# @!attribute sort_title
+#   @return [String]
+# @!attribute title
+#   @return [String]
+# @!attribute year
+#   @return [Integer]
+# @!attribute created_at
+#   @return [Time]
+# @!attribute updated_at
+#   @return [Time]
+#
 FactoryBot.define do
   factory :hobbit, class: Book do
     title { 'The Hobbit' }
