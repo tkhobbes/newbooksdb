@@ -4,6 +4,8 @@
 @import "scss/main.scss";
 
 // import application specific components
+@import "local_components/bookdetails.scss";
+@import "local_components/genres.scss";
 @import "local_components/bookcard-big.scss";
 
 // application specific
@@ -44,57 +46,6 @@
 .footer {
   background-color: var(--color-primary);
   padding: 0.5em 1.5em;
-}
-
-// 1.1 Details Page
-.bookdetails {
-  margin: 1em 0em;
-  display: flex;
-
-  &__text {
-    margin: 0 1em;
-    flex: 1;
-  }
-
-  &__small {
-    font-size: 0.9rem;
-  }
-
-  &__genres {
-    display: flex;
-    flex-wrap: wrap;
-    margin: 0.5em 0;
-  }
-
-  & .genre {
-    background-color: var(--color-secondary-dark);
-    margin-bottom: 0.25em;
-    border-radius: 3px;
-  }
-
-  & .genre + .genre {
-    margin-left: 0.25em;
-  }
-
-  & .genre a {
-    color: var(--color-white);
-    text-decoration: none;
-    display: block;
-    padding: 0.2em 0.3em;
-  }
-
-  &__meta {
-    display: flex;
-    flex-wrap: wrap;
-    margin: 0.5em 0;
-    padding: 0.5em 1em;
-    width: 100%;
-    border-radius: 5px;
-  }
-
-  &__meta div {
-    flex: 1;
-  }
 }
 
 // 2. Images

@@ -1,54 +1,57 @@
+@use "sass:math";
+
 .tabs {
-  margin-bottom: 2em;
+  margin-bottom: $base-margin * 2;
   font-family: var(--menu-text);
-}
 
-.tabs > ul {
-  display: flex;
-  list-style-type: none;
-  align-content: flex-start;
-  justify-content: space-between;
-  flex-wrap: nowrap;
-}
+  & > ul {
+    display: flex;
+    list-style-type: none;
+    align-content: flex-start;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+  }
 
-.tabs li {
-  flex: 1;
-}
+  li {
+    flex: 1;
+  }
 
-.tabs .placeholder-tab {
-  border-bottom: 1px solid var(--color-primary-dark);
-}
+  .placeholder-tab {
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    @extend .border-color-primary-dark;
+  }
 
-.tabs a {
-  color: var(--color-primary);
-  text-decoration: none;
-  display: block;
-  padding: 0.5em 1em;
-  border-top: 1px solid transparent;
-  border-bottom: 1px solid var(--color-primary-dark);
-  border-left: 1px solid transparent;
-  border-right: 1px solid transparent;
-  border-radius: 5px 5px 0 0;
-  text-align: center;
-}
+  a {
+    @extend .color-primary;
+    display: block;
+    padding: math.div($base-padding, 2) $base-padding;
+    border-top: 1px solid transparent;
+    border-bottom: 1px solid var(--color-primary-dark);
+    border-left: 1px solid transparent;
+    border-right: 1px solid transparent;
+    border-radius: $base-border-radius $base-border-radius 0 0;
+    text-align: center;
 
-.tabs a:hover {
-  border-top: 1px solid var(--color-primary);
-  border-right: 1px solid var(--color-primary);
-  border-left: 1px solid var(--color-primary);
-}
+    &:hover {
+      border-top: 1px solid var(--color-primary);
+      border-right: 1px solid var(--color-primary);
+      border-left: 1px solid var(--color-primary);
+    }
+  }
 
-.tabs .active {
-  color: var(--color-primary-dark);
-  border-top: 1px solid var(--color-primary-dark);
-  border-right: 1px solid var(--color-primary-dark);
-  border-left: 1px solid var(--color-primary-dark);
-  border-bottom: 1px solid transparent;
-  border-radius: 3px 3px 0 0;
-}
+  .active {
+    @extend .color-primary-dark;
+    border-top: 1px solid var(--color-primary-dark);
+    border-right: 1px solid var(--color-primary-dark);
+    border-left: 1px solid var(--color-primary-dark);
+    border-bottom: 1px solid transparent;
+    border-radius: $base-border-radius $base-border-radius 0 0;
 
-.tabs .active:hover {
-  border-top: 1px solid var(--color-primary-dark);
-  border-right: 1px solid var(--color-primary-dark);
-  border-left: 1px solid var(--color-primary-dark);
+    &:hover {
+      border-top: 1px solid var(--color-primary-dark);
+      border-right: 1px solid var(--color-primary-dark);
+      border-left: 1px solid var(--color-primary-dark);
+    }
+  }
 }

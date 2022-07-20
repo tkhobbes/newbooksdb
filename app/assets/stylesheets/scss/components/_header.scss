@@ -1,25 +1,28 @@
-.title {
-  background-color: var(--color-primary);
-  padding: 1em 0.5em 0em;
-}
+@use "sass:math";
 
-.title-container {
-  display: flex;
-  align-items: flex-start;
+.title {
+  @extend .bg-primary;
+  padding: $base-padding math.div($base-padding, 2) 0;
+
+  &__container {
+    display: flex;
+    align-items: flex-start;
+  }
 }
 
 .burgermenu {
   font-family: var(--paragraph);
   font-size: 3rem;
-}
-.burgermenu a {
-  color: var(--color-black);
-  text-decoration: none;
+
+  a {
+    @extend .color-black;
+    text-decoration: none;
+  }
 }
 
 .maintitle {
   flex: 1;
-  margin-left: 1em;
+  margin-left: $base-margin;
 }
 
 .quickicons {
@@ -27,21 +30,20 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  fonts-size: 1rem;
-}
+  font-size: 1rem;
 
-.quickicons-filler {
-  flex: 1;
-}
+  &__filler {
+    flex: 1;
+  }
 
-.quickicons > a {
-  text-decoration: none;
-  color: var(--color-black);
-  display: block;
-  padding: 0.4em;
-}
+  & > a {
+    @extend .color-black;
+    display: block;
+    padding: math.div($base-padding, 4);
 
-.quickicons > a:hover {
-  background-color: var(--color-accent-dark);
-  color: var(--color-accent-light);
+    &:hover {
+      @extend .bg-accent-dark;
+      @extend .color-accent-light;
+    }
+  }
 }

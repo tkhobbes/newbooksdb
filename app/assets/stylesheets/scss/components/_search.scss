@@ -1,34 +1,39 @@
+@use "sass:math";
+
 .search {
-  background-color: var(--color-accent);
-  padding: 0.5em 1em 0.5em 2em;
-}
+  @extend .bg-accent;
+  padding: math.div($base-padding, 2) $base-padding math.div($base-padding, 2)
+    $base-padding * 2;
 
-.searchform {
-  display: flex;
-  align-items: center;
-  background-color: var(--color-white);
-  color: var(--color-grey-white);
-  border-radius: 5px;
-  border: 1px solid var(--color-white);
-}
+  &__form {
+    display: flex;
+    align-items: center;
+    @extend .bg-white;
+    @extend .color-grey-white;
+    border-radius: $base-border-radius;
+    border-width: 1px;
+    border-style: solid;
+    @extend .border-color-white;
 
-.searchform input,
-.searchform input:active,
-.searchform input:focus-visible,
-.searchform input:focus {
-  background-color: inherit;
-  color: inherit;
-  border: none;
-  outline: none;
-  font-family: var(--paragraph);
-  font-size: 0.9rem;
-  padding: 0.25em 0.5em;
-}
+    input,
+    input:active,
+    input:focus-visible,
+    input:focus {
+      background-color: inherit;
+      color: inherit;
+      border: none;
+      outline: none;
+      font-family: var(--paragraph);
+      font-size: 0.9rem;
+      padding: math.div($base-padding, 4) math.div($base-padding, 2);
+    }
 
-.searchform button {
-  border: none;
-  outline: none;
-  color: inherit;
-  background-color: inherit;
-  padding: 0.25em 0.5em;
+    button {
+      border: none;
+      outline: none;
+      color: inherit;
+      background-color: inherit;
+      padding: 0.25em 0.5em;
+    }
+  }
 }

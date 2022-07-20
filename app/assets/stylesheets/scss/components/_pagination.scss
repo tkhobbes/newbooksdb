@@ -1,48 +1,51 @@
+@use "sass:math";
+
 .pagination {
   display: flex;
-  margin-top: 1em;
+  margin-top: $base-margin;
   font-size: 0.8em;
-}
 
-.pagination .navitem {
-  border: 1px solid var(--color-primary-dark);
-  background-color: var(--color-secondary-light);
-  min-width: 3.5em;
-  text-align: center;
-}
+  .navitem {
+    border-width: 1px;
+    border-style: solid;
+    @extend .border-color-primary-dark;
+    @extend .bg-secondary-light;
+    min-width: 3.5em;
+    text-align: center;
 
-.pagination > .navitem + .navitem {
-  border-left: none;
-}
+    &:first-child {
+      border-radius: $base-border-radius 0 0 $base-border-radius;
+    }
 
-.pagination > .navitem:first-child {
-  border-radius: 5px 0 0 5px;
-}
+    &:last-child {
+      border-radius: 0 $base-border-radius $base-border-radius 0;
+    }
 
-.pagination > .navitem:last-child {
-  border-radius: 0 5px 5px 0;
-}
+    & > a {
+      @extend .color-black;
+      padding: math.div($base-padding, 2);
+      display: block;
 
-.pagination .navitem > a {
-  text-decoration: none;
-  color: var(--color-black);
-  padding: 0.5em;
-  display: block;
-}
+      &:hover {
+        @extend .color-secondary-light;
+        @extend .bg-primary-dark;
+      }
+    }
+  }
 
-.pagination .navitem > a:hover {
-  color: var(--color-secondary-light);
-  background-color: var(--color-primary-dark);
-}
+  & > .navitem + .navitem {
+    border-left: none;
+  }
 
-.pagination .current {
-  display: block;
-  padding: 0.5em;
-  background-color: var(--color-primary);
-  color: var(--color-secondary-light);
-}
+  .current {
+    display: block;
+    padding: math.div($base-padding, 2);
+    @extend .bg-primary;
+    @extend .color-secondary-light;
+  }
 
-.pagination .filler {
-  display: block;
-  padding: 0.5em;
+  .filler {
+    display: block;
+    padding: math.div($base-padding, 2);
+  }
 }

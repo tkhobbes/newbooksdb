@@ -29,6 +29,14 @@ FactoryBot.define do
     year { 1937 }
     rating { 5 }
     condition { 4 }
+
+    after(:build) do |hobbit|
+      hobbit.cover.attach(
+        io: File.open(Rails.root.join('db', 'sample', 'images', 'cover-1.jpg')),
+        filename: 'cover.jpg',
+        content_type: 'image/jpeg'
+      )
+    end
   end
 
   factory :a_prefix_book, class: Book do
@@ -40,7 +48,7 @@ FactoryBot.define do
     title { 'Der Herr der Ringe' }
     year { 1955}
     original_title { 'The Lord of the Rings' }
-    rating { 3}
+    rating { 3 }
   end
 
   factory :random_book, class: Book do

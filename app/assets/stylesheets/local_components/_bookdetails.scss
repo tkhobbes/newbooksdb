@@ -1,0 +1,25 @@
+// Styles for the Book Detail page
+
+@use "sass:math";
+
+.bookdetails {
+  margin: $base-margin 0;
+  display: flex;
+
+  &__text {
+    margin: 0 $base-margin;
+    flex: 1;
+  }
+
+  &__meta {
+    display: flex;
+    flex-wrap: wrap;
+    margin: math.div($base-margin, 2) 0;
+    padding: math.div($base-padding, 2) 1em;
+    width: 100%;
+  }
+
+  &__meta div {
+    flex: 1;
+  }
+}

@@ -26,6 +26,10 @@ $paragraph: '"Catamaran", sans-serif';
 $menu-text: '"Alegreya Sans SC", sans-serif';
 $title-text: '"Josefin Sans", sans-serif';
 
+$base-padding: 1em;
+$base-margin: 1em;
+$base-border-radius: 5px;
+
 :root {
   --color-black: #{$color-black};
   --color-grey-black: #{$color-grey-black};
