@@ -18,5 +18,9 @@ RSpec.describe BooksHelper, type: :helper do
     it 'displays the original title in brackets' do
       expect(original_title(book)).to eq('(The Lord of the Rings)')
     end
+
+    it 'shows filled svg icons for the book rating' do
+      expect(rating_stars(book.rating_before_type_cast).scan('fill="currentColor"').size).to eq(book.rating_before_type_cast)
+    end
   end
 end

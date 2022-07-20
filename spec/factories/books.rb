@@ -40,6 +40,7 @@ FactoryBot.define do
     title { 'Der Herr der Ringe' }
     year { 1955}
     original_title { 'The Lord of the Rings' }
+    rating { 3}
   end
 
   factory :random_book, class: Book do
