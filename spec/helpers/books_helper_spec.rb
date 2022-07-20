@@ -12,15 +12,18 @@ require 'rails_helper'
 # end
 RSpec.describe BooksHelper, type: :helper do
   include ActionView::Helpers
-  context 'book view helpers' do
-    let(:book) { create(:german_translation) }
 
+  before(:all) do
+    @book = create(:german_translation)
+  end
+
+  context 'book view helpers' do
     it 'displays the original title in brackets' do
-      expect(original_title(book)).to eq('(The Lord of the Rings)')
+      expect(original_title(@book)).to eq('(The Lord of the Rings)')
     end
 
     it 'shows filled svg icons for the book rating' do
-      expect(rating_stars(book.rating_before_type_cast).scan('fill="currentColor"').size).to eq(book.rating_before_type_cast)
+      expect(rating_stars(@book.rating_before_type_cast).scan('fill="currentColor"').size).to eq(@book.rating_before_type_cast)
     end
   end
 end

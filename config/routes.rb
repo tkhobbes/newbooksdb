@@ -2,8 +2,7 @@
 #
 
 Rails.application.routes.draw do
-  resources :books, only: [:show]
+  root "books#index"
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  resources :books, only: [:index, :show]
 end

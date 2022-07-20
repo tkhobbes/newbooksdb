@@ -2,6 +2,10 @@
 class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update, :destroy]
 
+  # standard index method - show all books
+  def index
+    @books = Book.all
+  end
   # Standard show method - empty, only for Rails RESTful routes
   def show
   end

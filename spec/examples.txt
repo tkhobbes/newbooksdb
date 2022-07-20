@@ -1,15 +1,15 @@
 example_id                                      | status | run_time        |
 ----------------------------------------------- | ------ | --------------- |
-./spec/helpers/books_helper_spec.rb[1:1:1]      | passed | 0.01582 seconds |
-./spec/helpers/books_helper_spec.rb[1:1:2]      | passed | 0.0146 seconds  |
-./spec/models/book_spec.rb[1:1:1]               | passed | 0.00753 seconds |
-./spec/models/book_spec.rb[1:1:2]               | passed | 0.01655 seconds |
-./spec/models/book_spec.rb[1:2:1]               | passed | 0.02511 seconds |
-./spec/models/book_spec.rb[1:2:2]               | passed | 0.01495 seconds |
-./spec/models/book_spec.rb[1:2:3]               | passed | 0.0132 seconds  |
-./spec/models/book_spec.rb[1:2:4]               | passed | 0.01216 seconds |
-./spec/models/book_spec.rb[1:2:5]               | passed | 0.01421 seconds |
-./spec/models/book_spec.rb[1:2:6]               | passed | 0.01266 seconds |
-./spec/models/book_spec.rb[1:2:7]               | passed | 0.01257 seconds |
-./spec/requests/books_spec.rb[1:1:1:1]          | passed | 0.13319 seconds |
-./spec/views/books/show.html.erb_spec.rb[1:1:1] | passed | 0.70019 seconds |
+./spec/helpers/books_helper_spec.rb[1:1:1]      | passed | 0.01012 seconds |
+./spec/helpers/books_helper_spec.rb[1:1:2]      | passed | 0.01064 seconds |
+./spec/models/book_spec.rb[1:1:1]               | passed | 0.00652 seconds |
+./spec/models/book_spec.rb[1:1:2]               | passed | 0.00897 seconds |
+./spec/models/book_spec.rb[1:2:1]               | passed | 0.00628 seconds |
+./spec/models/book_spec.rb[1:2:2]               | passed | 0.00672 seconds |
+./spec/models/book_spec.rb[1:2:3]               | passed | 0.00624 seconds |
+./spec/models/book_spec.rb[1:2:4]               | passed | 0.00628 seconds |
+./spec/models/book_spec.rb[1:2:5]               | passed | 0.0058 seconds  |
+./spec/models/book_spec.rb[1:2:6]               | passed | 0.00573 seconds |
+./spec/models/book_spec.rb[1:2:7]               | passed | 0.00614 seconds |
+./spec/requests/books_spec.rb[1:1:1:1]          | passed | 0.55035 seconds |
+./spec/views/books/show.html.erb_spec.rb[1:1:1] | passed | 0.02986 seconds |
