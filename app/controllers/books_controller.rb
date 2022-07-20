@@ -4,7 +4,7 @@ class BooksController < ApplicationController
 
   # standard index method - show all books
   def index
-    @books = Book.all
+    @books = Book.includes([cover_attachment: :blob]).order(:sort_title).limit(10)
   end
   # Standard show method - empty, only for Rails RESTful routes
   def show
