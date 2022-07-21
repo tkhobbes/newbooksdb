@@ -1,6 +1,6 @@
 <div class="bookdetails">
   <div class="cover-large">
-    <%= image_tag @book.cover.variant(resize_to_limit: [500, 500]) %>
+    <%= cover_image(@book) %>
   </div>
   <div class="bookdetails__text">
     <h1 class="heading3">

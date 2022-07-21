@@ -1,12 +1,6 @@
 <div class="bookcard-big">
   <div class="bookcard-big__cover">
-    <% if book.cover.attached? %>
-      <%= image_tag book.cover.variant(resize_to_limit: [500, 500]) %>
-    <% else %>
-      <svg xmlns="http://www.w3.org/2000/svg" class="placeholder" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-      </svg>
-    <% end %>
+    <%= cover_image(book) %>
   </div>
   <div class="bookcard-big__content">
     <div class="icons">
@@ -42,7 +36,9 @@
       </a>
     </div>
     <div class="bookcard-big__title">
-      <h2 class="heading3"><a href="#"><%= book.title %></a></h2>
+      <h2 class="heading3">
+        <%= link_to book.title, book_path(book) %>
+      </h2>
       <div class="bookyear"><%= book.year %></div>
     </div>
     <div class="author">Author Name</div>

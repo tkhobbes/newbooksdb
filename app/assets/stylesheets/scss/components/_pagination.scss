@@ -40,8 +40,8 @@
   .current {
     display: block;
     padding: math.div($base-padding, 2);
-    @extend .bg-primary;
-    @extend .color-secondary-light;
+    background-color: var(--color-primary);
+    color: var(--color-secondary-light);
   }
 
   .filler {
