@@ -12,3 +12,8 @@ svg.smallicon {
 svg.bigicon {
   width: 1.2em;
 }
+
+svg.placeholder {
+  width: 15em;
+  @extend .color-primary-dark;
+}

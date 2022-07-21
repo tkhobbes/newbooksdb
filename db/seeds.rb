@@ -6,7 +6,15 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-100.times do |index|
+# the first book has no cover image and it's alphabetically the first
+Book.create(
+  title: 'AAA Title comes first',
+  year: Random.rand(1920..2020),
+  rating: Random.rand(0..5),
+  condition: Random.rand(0..5)
+)
+
+99.times do |index|
   book = Book.create(
     title: Faker::Book.title,
     year: Random.rand(1920..2020),

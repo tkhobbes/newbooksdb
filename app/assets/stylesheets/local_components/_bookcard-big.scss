@@ -1,96 +1,80 @@
+@use "sass:math";
+
 .bookcard-big {
   display: flex;
   border: 1px solid var(--color-black);
-  border-radius: 5px;
-  background-color: var(--color-secondary-light);
-  color: var(--color-black);
-  margin: 0.5em;
+  border-radius: $base-border-radius;
+  @extend .bg-secondary-light;
+  @extend .color-black;
+  margin: math.div($base-margin, 2);
   flex: 1;
-}
 
-.bookcard-big__cover {
-  max-width: 15em;
-  display: flex;
-}
+  &__cover {
+    max-width: 15em;
+    display: flex;
 
-.bookcard-big__cover img {
-  flex: 1;
-  overflow: hidden;
-  display: block;
-  object-fit: cover;
-}
+    img {
+      flex: 1;
+      overflow: hidden;
+      display: block;
+      object-fit: cover;
+    }
+  }
 
-.bookcard-big__content {
-  margin: 0 0.5em;
-  padding: 0.2em 0.3em;
-}
+  &__content {
+    margin: 0 math.div($base-margin, 2);
+    padding: 0.2em 0.3em;
 
-.bookcard-big__title {
-  margin: 0.5em 0 0;
-  display: flex;
-  align-items: stretch;
-  flex-wrap: nowrap;
-}
+    .icons {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
 
-.bookcard-big__title h2 {
-  flex: 1;
-}
+      .edit-icon {
+        @extend .color-primary-dark;
+        width: 1em;
+        display: block;
+        margin: 0 0.2em;
+      }
 
-.bookcard-big__title .edit-icon {
-  color: var(--color-primary-dark);
-  width: 1em;
-  display: block;
-  margin: 0 0.2em;
-}
+      .delete-icon {
+        @extend .color-accent-dark;
+        width: 1em;
+        display: block;
+        margin: 0 0.2em;
+      }
+    }
+  }
 
-.bookcard-big__title .delete-icon {
-  color: var(--color-accent-dark);
-  width: 1em;
-  display: block;
-  margin: 0 0.2em;
-}
+  &__title {
+    margin: math.div($base-margin, 2) 0 0;
+    display: flex;
+    align-items: stretch;
+    flex-wrap: nowrap;
 
-.bookcard-big__title a {
-  text-decoration: none;
-  color: var(--color-black);
-}
+    h2 {
+      flex: 1;
+    }
 
-.bookcard-big .bookyear {
-  margin-left: auto;
-  padding-left: 0.5em;
-  font-size: 1.5rem;
-}
+    a {
+      @extend .color-black;
+    }
+  }
 
-.bookcard-big .author {
-  font-size: 1.5rem;
-}
+  .bookyear {
+    margin-left: auto;
+    padding-left: math.div($base-padding, 2);
+    font-size: 1.5rem;
+  }
 
-.bookcard-big .publisher {
-}
+  .author {
+    font-size: 1.5rem;
+  }
 
-.bookcard-big .genrelist {
-  display: flex;
-  flex-wrap: wrap;
-  margin: 0.5em 0;
-}
+  .publisher {
+  }
 
-.bookcard-big .genre {
-  background-color: var(--color-secondary-dark);
-  margin-bottom: 0.25em;
-  border-radius: 3px;
-}
-
-.bookcard-big .genre + .genre {
-  margin-left: 0.25em;
-}
-
-.bookcard-big .genre a {
-  color: var(--color-white);
-  text-decoration: none;
-  display: block;
-  padding: 0.1em 0.2em;
-}
-
-.bookcard-big p {
-  line-height: 1.1;
+  p {
+    line-height: 1.1;
+  }
 }
