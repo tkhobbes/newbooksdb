@@ -15,6 +15,7 @@ RSpec.describe BooksHelper, type: :helper do
 
   before(:all) do
     @book = create(:german_translation)
+    @book2 = create(:hobbit)
   end
 
   context 'book view helpers' do
@@ -24,6 +25,14 @@ RSpec.describe BooksHelper, type: :helper do
 
     it 'shows filled svg icons for the book rating' do
       expect(rating_stars(@book.rating_before_type_cast).scan('fill="currentColor"').size).to eq(@book.rating_before_type_cast)
+    end
+
+    it 'shows a picture when a cover is attached' do
+      expect(cover_image(@book2)).to include('img')
+    end
+
+    it 'shows an svg when no cover is attached' do
+            expect(cover_image(@book)).to include('svg')
     end
   end
 end
