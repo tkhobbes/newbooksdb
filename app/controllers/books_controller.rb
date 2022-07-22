@@ -6,8 +6,10 @@ class BooksController < ApplicationController
   def index
     @books = Book.includes([cover_attachment: :blob]).order(:sort_title).limit(10)
   end
-  # Standard show method - empty, only for Rails RESTful routes
+
+  # as we are using a view component, we need to render the component (and now show.htmlerb view required)
   def show
+    render(BookDetailComponent.new(book: @book))
   end
 
   private
