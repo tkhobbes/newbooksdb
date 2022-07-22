@@ -4,7 +4,7 @@ class BooksController < ApplicationController
 
   # standard index method - show all books
   def index
-    @books = Book.includes([cover_attachment: :blob]).order(:sort_title).limit(10)
+    @pagy, @books = pagy(Book.includes([cover_attachment: :blob]).order(:sort_title))
   end
 
   # as we are using a view component, we need to render the component (and now show.htmlerb view required)

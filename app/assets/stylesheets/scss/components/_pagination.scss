@@ -5,7 +5,7 @@
   margin-top: $base-margin;
   font-size: 0.8em;
 
-  .navitem {
+  .page {
     border-width: 1px;
     border-style: solid;
     @extend .border-color-primary-dark;
@@ -33,19 +33,25 @@
     }
   }
 
-  & > .navitem + .navitem {
+  & > .page + .page {
     border-left: none;
   }
 
-  .current {
+  .active {
     display: block;
     padding: math.div($base-padding, 2);
     background-color: var(--color-primary);
     color: var(--color-secondary-light);
   }
 
-  .filler {
+  .gap {
     display: block;
     padding: math.div($base-padding, 2);
+  }
+
+  .disabled {
+    display: block;
+    padding: math.div($base-padding, 2);
+    @extend .color-grey;
   }
 }

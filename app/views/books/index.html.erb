@@ -1,3 +1,7 @@
+<%== pagy_nav(@pagy) %>
+
 <div class="flexlist">
   <%= render(BookCardComponent.with_collection(@books)) %>
 </div>
+
+<%== pagy_nav(@pagy) %>

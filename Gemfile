@@ -65,5 +65,6 @@ gem 'view_component', '~> 2.61', '>= 2.61.1'
 # Image processing etc
 gem "image_processing", "~> 1.12.2"
 
-
 # Core application Gems
+# Pagination for large collections
+gem 'pagy', '~> 5.10', '>= 5.10.1'
