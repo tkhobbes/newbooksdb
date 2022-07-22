@@ -153,6 +153,30 @@
 </li>
 
       
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#index-instance_method" title="#index (instance method)">#<strong>index</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>standard index method - show all books.</p>
+</div></span>
+  
+</li>
+
+      
         <li class="private ">
   <span class="summary_signature">
     
@@ -195,7 +219,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Standard show method - empty, only for Rails RESTful routes.</p>
+<p>as we are using a view component, we need to render the component (and now show.htmlerb view required).</p>
 </div></span>
   
 </li>
@@ -243,15 +267,56 @@
       <pre class="lines">
 
 
-17
-18
-19</pre>
+23
+24
+25</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/books_controller.rb', line 17</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/books_controller.rb', line 23</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_book_params'>book_params</span>
-  <span class='id identifier rubyid_params'>params</span><span class='period'>.</span><span class='id identifier rubyid_require'>require</span><span class='lparen'>(</span><span class='symbol'>:book</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_permit'>permit</span><span class='lparen'>(</span><span class='symbol'>:title</span><span class='comma'>,</span> <span class='symbol'>:original_title</span><span class='comma'>,</span> <span class='symbol'>:sort_title</span><span class='comma'>,</span> <span class='symbol'>:edition</span><span class='comma'>,</span> <span class='symbol'>:rating</span><span class='comma'>,</span> <span class='symbol'>:condition</span><span class='comma'>,</span> <span class='symbol'>:year</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_params'>params</span><span class='period'>.</span><span class='id identifier rubyid_require'>require</span><span class='lparen'>(</span><span class='symbol'>:book</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_permit'>permit</span><span class='lparen'>(</span><span class='symbol'>:title</span><span class='comma'>,</span> <span class='symbol'>:original_title</span><span class='comma'>,</span> <span class='symbol'>:sort_title</span><span class='comma'>,</span> <span class='symbol'>:edition</span><span class='comma'>,</span> <span class='symbol'>:rating</span><span class='comma'>,</span> <span class='symbol'>:condition</span><span class='comma'>,</span> <span class='symbol'>:year</span><span class='comma'>,</span> <span class='symbol'>:cover</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="index-instance_method">
+  
+    #<strong>index</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>standard index method - show all books</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+6
+7
+8</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/controllers/books_controller.rb', line 6</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_index'>index</span>
+  <span class='ivar'>@books</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Book.html" title="Book (class)">Book</a></span></span><span class='period'>.</span><span class='id identifier rubyid_includes'>includes</span><span class='lparen'>(</span><span class='lbracket'>[</span><span class='label'>cover_attachment:</span> <span class='symbol'>:blob</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_order'>order</span><span class='lparen'>(</span><span class='symbol'>:sort_title</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_limit'>limit</span><span class='lparen'>(</span><span class='int'>10</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -284,12 +349,12 @@
       <pre class="lines">
 
 
-12
-13
-14</pre>
+18
+19
+20</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/books_controller.rb', line 12</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/books_controller.rb', line 18</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_set_book'>set_book</span>
   <span class='ivar'>@book</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Book.html" title="Book (class)">Book</a></span></span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
@@ -311,7 +376,7 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Standard show method - empty, only for Rails RESTful routes</p>
+<p>as we are using a view component, we need to render the component (and now show.htmlerb view required)</p>
 
 
   </div>
@@ -325,13 +390,15 @@
       <pre class="lines">
 
 
-6
-7</pre>
+11
+12
+13</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/books_controller.rb', line 6</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/books_controller.rb', line 11</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_show'>show</span>
+  <span class='id identifier rubyid_render'>render</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="BookDetailComponent.html" title="BookDetailComponent (class)">BookDetailComponent</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="BookDetailComponent.html#initialize-instance_method" title="BookDetailComponent#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='label'>book:</span> <span class='ivar'>@book</span><span class='rparen'>)</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -343,7 +410,7 @@
 </div>
 
       <div id="footer">
-  Generated on Mon Jul  4 16:10:16 2022 by
+  Generated on Fri Jul 22 13:50:28 2022 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.28 (ruby-3.1.2).
 </div>

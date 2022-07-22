@@ -2,12 +2,15 @@
 module BooksHelper
 
   # returns the original title of a book in brackets if it is available
+  # @return [String] (original title in brackets)
   def original_title(book)
     if book.original_title.present?
       "(" + book.original_title + ")"
     end
   end
 
+  # returns either the cover image of a book or a placeholder SVG
+  # @return [String] (HTML image tag or SVG tag)
   def cover_image(book)
     if book.cover.attached?
       image_tag book.cover.variant(resize_to_limit: [500, 500])
@@ -31,6 +34,8 @@ module BooksHelper
     end
   end
 
+  # returns span tags with filled stars equal to the rating and empty stars to fill up to 5
+  # @return [String] (HTML span tags)
   def rating_stars(rating)
     content_tag(:span, class: "color-accent") do
       content_tag(
