@@ -1,6 +1,6 @@
 <div class="bookcard-big">
   <div class="bookcard-big__cover">
-    <%= cover_image(book) %>
+    <%= cover_image(@book) %>
   </div>
   <div class="bookcard-big__content">
     <div class="icons">
@@ -37,9 +37,9 @@
     </div>
     <div class="bookcard-big__title">
       <h2 class="heading3">
-        <%= link_to book.title, book_path(book) %>
+        <%= link_to @book.title, book_path(@book) %>
       </h2>
-      <div class="bookyear"><%= book.year %></div>
+      <div class="bookyear"><%= @book.year %></div>
     </div>
     <div class="author">Author Name</div>
     <div class="publisher">Publisher Name</div>
@@ -77,3 +77,4 @@
     </p>
   </div>
 </div>
+

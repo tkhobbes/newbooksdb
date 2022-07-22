@@ -58,8 +58,9 @@ gem "stimulus-rails", "~> 1.0.4"
 gem "sprockets-rails", "~> 3.4.2"
 gem "jsbundling-rails", "~> 1.0.2"
 gem "cssbundling-rails", "~> 1.1.0"
-# Use Sass to process CSS
-# gem "sassc-rails"
+
+# Rails / Ruby development gems
+gem 'view_component', '~> 2.61', '>= 2.61.1'
 
 # Image processing etc
 gem "image_processing", "~> 1.12.2"

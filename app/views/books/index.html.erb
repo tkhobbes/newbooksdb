@@ -1,5 +1,3 @@
 <div class="flexlist">
-<% @books.each do |book| %>
-  <%= render 'books/bookcard-big', book: book %>
-<% end %>
+  <%= render(BookCardComponent.with_collection(@books)) %>
 </div>
