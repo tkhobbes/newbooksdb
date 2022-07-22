@@ -3,7 +3,19 @@
 require "rails_helper"
 
 RSpec.describe BookCardComponent, type: :component do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  before(:all) do
+    @book = create(:hobbit)
+  end
+
+  context 'Book Card Component' do
+    it 'displays the book title in the book card component' do
+      expect(
+        render_inline(described_class.new(book: @book)).to_html
+      ).to include(@book.title)
+    end
+  end
+
 
   # it "renders something useful" do
   #   expect(
