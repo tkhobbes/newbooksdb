@@ -8,9 +8,8 @@ class BooksController < ApplicationController
     @pagy, @books = pagy(Book.includes([cover_attachment: :blob]).order(:sort_title))
   end
 
-  # as we are using a view component, we need to render the component (and now show.htmlerb view required)
+  # Standard show method - show book details
   def show
-    render(BookDetailComponent.new(book: @book))
   end
 
   # standard new method - show form for new book
