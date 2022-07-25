@@ -20,7 +20,13 @@ class BooksController < ApplicationController
 
   # creation / storage of a new book
   def create
+    @book = Book.new(book_params)
 
+    if @book.save
+      redirect_to book_path(@book), notice: "Book saved"
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   # standard edit method - show form for editing book
