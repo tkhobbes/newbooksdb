@@ -44,6 +44,7 @@ The following Gems are used in this project:
 - Database consistency checker {https://rubygems.org/gems/database_consistency} is used to validate database constraints vs validations
 - Faker {https://rubygems.org/gems/faker} to quickly generate data
 - Factory Bot {https://rubygems.org/search?query=factory_bot_rails} to easily generate test data
+- Better_errors (and dependency binding_of_caller) for nicer error messages {https://rubygems.org/gems/better_errors}
 
 #### Core Rails / Application
 

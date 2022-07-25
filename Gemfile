@@ -38,6 +38,8 @@ group :development do
   gem "rails-erd", "1.7.0"
   gem "bullet", "~> 7.0.2"
   gem 'database_consistency', '~> 1.1', '>= 1.1.15'
+  gem 'better_errors', '~> 2.9', '>= 2.9.1'
+  gem 'binding_of_caller', '~> 1.0' # required for better_errors
 end
 
 group :test do
