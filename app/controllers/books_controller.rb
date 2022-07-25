@@ -30,17 +30,21 @@ class BooksController < ApplicationController
 
   # standard edit method - show form for editing book
   def edit
-
   end
 
   # update of a book
   def update
-
+    if @book.update(book_params)
+      redirect_to @book, notice: "Book updated"
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   # standard destroy method
   def destroy
-
+    @book.destroy
+    redirect_to books_path, notice: "Book removed"
   end
 
   private

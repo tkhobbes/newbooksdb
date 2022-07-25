@@ -1,0 +1,19 @@
+.icons {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  .edit-icon {
+    @extend .color-primary-dark;
+    width: 1em;
+    display: block;
+    margin: 0 0.2em;
+  }
+
+  .delete-icon {
+    @extend .color-accent-dark;
+    width: 1em;
+    display: block;
+    margin: 0 0.2em;
+  }
+}

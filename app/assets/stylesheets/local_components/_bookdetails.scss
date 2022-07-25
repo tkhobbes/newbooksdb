@@ -9,6 +9,11 @@
   &__text {
     margin: 0 $base-margin;
     flex: 1;
+
+    &-title {
+      display: flex;
+      justify-content: space-between;
+    }
   }
 
   &__meta {

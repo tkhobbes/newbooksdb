@@ -17,3 +17,9 @@ svg.placeholder {
   width: 15em;
   @extend .color-primary-dark;
 }
+
+.nobutton {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
