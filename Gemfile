@@ -68,3 +68,7 @@ gem "image_processing", "~> 1.12.2"
 # Core application Gems
 # Pagination for large collections
 gem 'pagy', '~> 5.10', '>= 5.10.1'
+# Simple form for form inputs
+gem 'simple_form', '~> 5.1'
+# simple form helpers for ENUMs
+gem 'enum_help', '~> 0.0.19'

@@ -1,0 +1,128 @@
+@use "sass:math";
+
+.big-form {
+  display: flex;
+  margin: $base-margin 0;
+
+  & & {
+    margin: 0;
+  }
+
+  .form-col + .form-col {
+    margin-left: math.div($base-margin, 2);
+  }
+
+  .form-col {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .col-wide {
+    flex: 3;
+  }
+
+  .input {
+    margin: math.div($base-margin, 2) 0;
+    display: flex; // for the "after" elements
+
+    input {
+      padding: math.div($base-padding, 2) math.div($base-padding, 2);
+      @extend .border-color-primary;
+      @extend .color-black;
+      border-style: solid;
+      border-width: 1px;
+      border-radius: $base-border-radius;
+      width: 100%;
+
+      &::placeholder {
+        @extend .color-grey-white;
+      }
+
+      &:focus,
+      &:active,
+      &:focus-visible {
+        outline: none;
+        border: solid 1px $color-primary-dark;
+      }
+    }
+  }
+
+  div.enum_radio_buttons {
+    display: flex;
+    flex-direction: column;
+
+    & > label {
+      @extend .heading4;
+      margin-bottom: 0.5em;
+    }
+
+    span.radio {
+      position: relative;
+      cursor: pointer;
+      display: inline-block;
+
+      label {
+        cursor: pointer;
+        display: block;
+        margin: 0 0 0.5em 1.5em;
+
+        &::before {
+          height: 1em;
+          width: 1em;
+          border: 1px solid $color-primary;
+          border-radius: 50%;
+          display: inline-block;
+          position: absolute;
+          left: 0;
+          top: 0;
+          content: "";
+        }
+      }
+    }
+
+    input[type="radio"] {
+      display: none;
+    }
+  }
+
+  .required::after {
+    font-family: var(--paragraph);
+    @extend .color-error;
+    margin-left: math.div($base-margin, 4);
+    @extend .small;
+    content: "req";
+  }
+}
+
+input[type="submit"].btn {
+  @extend .bg-accent-dark;
+  @extend .color-white;
+  @extend .border-color-black;
+  font-family: var(--paragraph);
+  border-style: solid;
+  border-width: 1px;
+  border-radius: $base-border-radius;
+  padding: math.div($base-padding, 2) math.div($base-padding, 2);
+  cursor: pointer;
+
+  &:hover {
+    @extend .bg-primary-dark;
+    @extend .color-primary-light;
+  }
+}
+
+.form-cancel-button {
+  @extend .bg-accent-light;
+  @extend .color-black;
+  @extend .border-color-black;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: $base-border-radius;
+  padding: math.div($base-padding, 4) math.div($base-padding, 2);
+
+  &:hover {
+    @extend .bg-primary-light;
+    @extend .color-primary-dark;
+  }
+}

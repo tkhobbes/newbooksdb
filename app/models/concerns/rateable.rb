@@ -7,12 +7,12 @@ module Rateable
 
   included do
     enum rating: {
-      not_rated: 0,
-      hated: 1,
-      bad: 2,
-      ok: 3,
+      favourite: 5,
       good: 4,
-      favourite: 5
+      ok: 3,
+      bad: 2,
+      hated: 1,
+      not_rated: 0,
     }
 
     # returns true if there is a rating set

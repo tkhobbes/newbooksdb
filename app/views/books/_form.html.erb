@@ -1,0 +1,24 @@
+  <%= simple_form_for book do |f| %>
+    <div class="big-form">
+      <div class="form-col col-wide">
+        <%= f.input :title, placeholder: 'Book Title', label: false %>
+        <%= f.input :original_title, placeholder: 'Original Title', label: false %>
+        <div class="big-form">
+          <div class="form-col">
+            <%= f.input :edition, placeholder: 'Edition', label: false %>
+          </div>
+          <div class="form-col">
+            <%= f.input :year, placeholder: 'Year', label: false %>
+          </div>
+        </div>
+      </div>
+      <div class="form-col">
+        <%= f.input :rating, as: :radio_buttons %>
+      </div>
+      <div class="form-col">
+        <%= f.input :condition, as: :radio_buttons %>
+      </div>
+    </div>
+    <%= f.button :submit %>
+    <%= link_to 'Cancel', books_path, class: 'form-cancel-button' %>
+  <% end %>
