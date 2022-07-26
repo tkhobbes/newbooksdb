@@ -56,6 +56,7 @@ The following Gems are used in this project:
 ### Test Suite
 
 RSpec is used for writing tests (using the rspec-rails gem {https://github.com/rspec/rspec-rails})
+RSpec is enhanced with Rails-controller-testing {https://rubygems.org/gems/rails-controller-testing}
 Using Simplecov to analyze code coverage ({https://rubygems.org/gems/simplecov})
 
 ### Database creation and initialization
