@@ -7,5 +7,8 @@ import { application } from "./application"
 import BurgermenuController from "./burgermenu_controller.js"
 application.register("burgermenu", BurgermenuController)
 
+import CoverdropController from "./coverdrop_controller.js"
+application.register("coverdrop", CoverdropController)
+
 import HelloController from "./hello_controller.js"
 application.register("hello", HelloController)

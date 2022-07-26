@@ -13,8 +13,23 @@ svg.bigicon {
   width: 1.2em;
 }
 
-svg.placeholder {
+svg.placeholder-large {
   width: 15em;
+  @extend .color-primary-dark;
+}
+
+svg.placeholder-medium {
+  width: 10em;
+  @extend .color-primary-dark;
+}
+
+svg.placeholder-small {
+  width: 5em;
+  @extend .color-primary-dark;
+}
+
+svg.placeholder-default {
+  width: 2em;
   @extend .color-primary-dark;
 }
 

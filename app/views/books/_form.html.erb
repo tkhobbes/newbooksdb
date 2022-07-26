@@ -12,6 +12,24 @@
             <%= f.input :year, placeholder: 'Year', label: false %>
           </div>
         </div>
+        <div class="big-form">
+          <div
+            class="form-col col-wide dropzone dropzone-default dz-clickable"
+            data-controller="coverdrop"
+            data-coverdrop-max-file-size="3"
+            data-coverdrop-max-files="1"
+          >
+            <%= f.file_field :cover, direct_upload: true,
+              'data-coverdrop-target': 'input' %>
+            <div class="dropzone-msg dz-message">
+              <h3 class="dropzone-msg-title heading4">Drag cover image here or click to browse</h3>
+              <span class="dropzone-msg-desc small">3 MB file size maximum. Allowed are only image file types.</span>
+            </div>
+          </div>
+          <div class="form-col">
+            <%= cover_image(book, size: "small") %>
+          </div>
+        </div>
       </div>
       <div class="form-col">
         <%= f.input :rating, as: :radio_buttons %>
@@ -20,6 +38,6 @@
         <%= f.input :condition, as: :radio_buttons %>
       </div>
     </div>
-    <%= f.button :submit %>
+    <%= f.button :submit, 'data-action': 'click->coverdrop#submitAll' %>
     <%= link_to 'Cancel', books_path, class: 'form-cancel-button' %>
   <% end %>

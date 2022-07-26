@@ -11,14 +11,34 @@ module BooksHelper
 
   # returns either the cover image of a book or a placeholder SVG
   # @return [String] (HTML image tag or SVG tag)
-  def cover_image(book)
+  def cover_image(book, options = {})
     if book.cover.attached?
-      image_tag book.cover.variant(resize_to_limit: [500, 500])
+      case options[:size]
+      when "large"
+        image_tag book.cover.variant(resize_to_limit: [500, 500])
+      when "medium"
+        image_tag book.cover.variant(resize_to_limit: [300, 300])
+      when "small"
+        image_tag book.cover.variant(resize_to_limit: [150, 150])
+      else
+        image_tag book.cover.variant(resize_to_limit: [50, 50])
+      end
     else
+      size = case options[:size]
+      when "large"
+        "placeholder-large"
+      when "medium"
+        "placeholder-medium"
+      when "small"
+        "placeholder-small"
+      else
+        "placeholder-default"
+      end
+
       content_tag(
         :svg,
         xlmns: "http://www.w3.org/2000/svg",
-        class: "placeholder",
+        class: size,
         viewBox: "0 0 24 24",
         fill: "none",
         stroke: "currentColor",
