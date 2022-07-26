@@ -1,0 +1,13 @@
+<% if form.object.errors.any? %>
+    <div id="form-errors" class="error-box">
+        <h4 class="heading4">
+            <%= pluralize(form.object.errors.count, "error") %> prohibited
+            <%= form.object.class.name.downcase %> from being saved:
+        </h4>
+        <ul>
+            <% form.object.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+        </ul>
+    </div>
+<% end %>

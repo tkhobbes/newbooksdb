@@ -24,7 +24,6 @@
 
   .input {
     margin: math.div($base-margin, 2) 0;
-    display: flex; // for the "after" elements
 
     input {
       padding: math.div($base-padding, 2) math.div($base-padding, 2);
@@ -46,6 +45,24 @@
         border: solid 1px $color-primary-dark;
       }
     }
+  }
+
+  .field_with_errors {
+    input {
+      border-color: $color-error;
+      @extend .color-error;
+
+      &::placeholder {
+        @extend .color-error;
+      }
+    }
+  }
+
+  span.error {
+    @extend .color-error;
+    @extend .small;
+    display: block;
+    margin-top: math.div($base-margin, 4);
   }
 
   div.enum_radio_buttons {
@@ -84,14 +101,6 @@
     input[type="radio"] {
       display: none;
     }
-  }
-
-  .required::after {
-    font-family: var(--paragraph);
-    @extend .color-error;
-    margin-left: math.div($base-margin, 4);
-    @extend .small;
-    content: "req";
   }
 }
 
