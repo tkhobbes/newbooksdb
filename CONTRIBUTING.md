@@ -6,8 +6,11 @@ For information on how to setup your environment, dependencies etc, please check
 
 ## My vision for BooksDB
 
+<<<<<<< HEAD
 Vision goes here
 
+=======
+>>>>>>> b154de0b065137160d89f82a47a4edf9ca6ec6e6
 ### Contributions I am looking for
 
 - refactoring
@@ -24,7 +27,10 @@ Contact details
 ## Bugs and small contributions
 
 ### Found a bug?
+<<<<<<< HEAD
 
+=======
+>>>>>>> b154de0b065137160d89f82a47a4edf9ca6ec6e6
 Guideline on how to file a bug
 
 ### Wrote a patch that fixes a bug?
@@ -32,11 +38,17 @@ Guideline on how to file a bug
 Guideline on how to submit patches
 
 ### Refactored code?
+<<<<<<< HEAD
 
 Guideline on how to submit refactored code
 
 ### Fixed whitespace or format code (cosmetic patches)?
 
+=======
+Guideline on how to submit refactored code
+
+### Fixed whitespace or format code (cosmetic patches)?
+>>>>>>> b154de0b065137160d89f82a47a4edf9ca6ec6e6
 Guideline on how to submit cosmetic patches
 
 ## Add new functionality / big contributions
@@ -50,13 +62,19 @@ Guideline on how to request a new feature
 Guideline on how to fork
 
 ### Want to contribute to the documentation?
+<<<<<<< HEAD
 
+=======
+>>>>>>> b154de0b065137160d89f82a47a4edf9ca6ec6e6
 Guideline for documentation contribution
 
 ## Questions and Support
 
 ### Have a question about the code?
+<<<<<<< HEAD
 
+=======
+>>>>>>> b154de0b065137160d89f82a47a4edf9ca6ec6e6
 How to ask a question
 
 ### Require help?
