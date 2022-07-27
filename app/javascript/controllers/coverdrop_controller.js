@@ -19,26 +19,17 @@ export default class extends Controller {
     this.hideFileInput();
     this.bindEvents();
     Dropzone.autoDiscover = false;
-    // Dropzone.options.coverDropZone = {
-    //   paramName: "file",
-    //   maxFilesize: 3, // MB
-    //   acceptedFiles: "image/*",
-    //   autoProcessQueue: false,
-    //   uploadMultiple: false,
-    //   init: function () {
-    //     this.this.on("complete", function (file) {
-    //       location.reload();
-    //     });
-    //   },
-    // };
   }
 
   // Private
+
+  // hide the file input field
   hideFileInput() {
     this.inputTarget.disabled = true;
     this.inputTarget.style.display = "none";
   }
 
+  // bind the different dropzone events
   bindEvents() {
     this.dropZone.on("addedfile", (file) => {
       setTimeout(() => {
@@ -55,14 +46,17 @@ export default class extends Controller {
     });
   }
 
+  // get the cross-forgery token
   get headers() {
     return { "X-CSRF-Token": getMetaValue("csrf-token") };
   }
 
+  // get the URL from the file input field
   get url() {
     return this.inputTarget.getAttribute("data-direct-upload-url");
   }
 
+  // below are the getters for various variables
   get maxFiles() {
     return this.data.get("max-files") || 1;
   }
@@ -80,9 +74,12 @@ export default class extends Controller {
   }
 }
 
+// Basic ES6 class
 class DirectUploadController {
   constructor(source, file) {
+    // create new directUpload from activestorage
     this.directUpload = createDirectUpload(file, source.url, this);
+    // make variables available within the class
     this.source = source;
     this.file = file;
   }
@@ -90,17 +87,20 @@ class DirectUploadController {
   start() {
     this.file.controller = this;
     this.hiddenInput = this.createHiddenInput();
+    // activestorage
     this.directUpload.create((error, attributes) => {
       if (error) {
         removeElement(this.hiddenInput);
         this.emitDropzoneError(error);
       } else {
+        // below is part of Ajax
         this.hiddenInput.value = attributes.signed_id;
         this.emitDropzoneSuccess();
       }
     });
   }
 
+  // create a hidden input field on the fly
   createHiddenInput() {
     const input = document.createElement("input");
     input.type = "hidden";
@@ -109,6 +109,7 @@ class DirectUploadController {
     return input;
   }
 
+  // activestorage ajax
   directUploadWillStoreFileWithXHR(xhr) {
     this.bindProgressEvent(xhr);
     this.emitDropzoneUploading();
@@ -121,6 +122,7 @@ class DirectUploadController {
     );
   }
 
+  // check how much progress has been made
   uploadRequestDidProgress(event) {
     const element = this.source.element;
     const progress = (event.loaded / event.total) * 100;
@@ -130,6 +132,7 @@ class DirectUploadController {
     ).style.width = `${progress}%`;
   }
 
+  // some text to show based on various events
   emitDropzoneUploading() {
     this.file.status = Dropzone.UPLOADING;
     this.source.dropZone.emit("processing", this.file);
@@ -148,16 +151,20 @@ class DirectUploadController {
   }
 }
 
+// simple wrapper to create an uploadController defined above
 function createDirectUploadController(source, file) {
   return new DirectUploadController(source, file);
 }
 
+// wrapper for activestorage method
 function createDirectUpload(file, url, controller) {
   return new DirectUpload(file, url, controller);
 }
 
+// create the dropzone
 function createDropZone(controller) {
   return new Dropzone(controller.element, {
+    // parameters come from the getter methods above
     url: controller.url,
     headers: controller.headers,
     maxFiles: controller.maxFiles,

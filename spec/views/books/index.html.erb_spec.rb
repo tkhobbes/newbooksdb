@@ -1,5 +1,7 @@
 require 'rails_helper'
 
+ include Pagy::Backend
+
 RSpec.describe "books/index.html.erb", type: :view do
 
   before(:all) do
