@@ -22,7 +22,8 @@ class BooksController < ApplicationController
     @book = Book.new(book_params)
 
     if @book.save
-      redirect_to book_path(@book), notice: "Book saved"
+      flash[:success] = "Book saved"
+      redirect_to book_path(@book)
     else
       render :new, status: :unprocessable_entity
     end
@@ -35,7 +36,8 @@ class BooksController < ApplicationController
   # update of a book
   def update
     if @book.update(book_params)
-      redirect_to @book, notice: "Book updated"
+      flash[:success] = "Book updated"
+      redirect_to @book
     else
       render :edit, status: :unprocessable_entity
     end
@@ -44,7 +46,8 @@ class BooksController < ApplicationController
   # standard destroy method
   def destroy
     @book.destroy
-    redirect_to books_path, notice: "Book removed"
+    flash[:alert] = "Book removed"
+    redirect_to books_path
   end
 
   private

@@ -1,0 +1,6 @@
+<% flash.each do |type, message| %>
+  <div data-controller="notification">
+    <input data-notification-target="type" value="<%= type %>" type="hidden">
+    <input data-notification-target="message" value="<%= message %>" type="hidden">
+  </div>
+<% end %>

@@ -12,3 +12,6 @@ application.register("coverdrop", CoverdropController)
 
 import HelloController from "./hello_controller.js"
 application.register("hello", HelloController)
+
+import NotificationController from "./notification_controller.js"
+application.register("notification", NotificationController)
