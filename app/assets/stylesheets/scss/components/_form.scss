@@ -104,6 +104,25 @@
   }
 }
 
+.rich-text-input {
+  margin-top: $base-margin;
+
+  h4 {
+    margin-bottom: math.div($base-margin, 4);
+  }
+
+  button {
+    border: 1px solid $color-primary-dark;
+    @extend .color-primary-dark;
+  }
+
+  trix-editor {
+    @extend .bg-white;
+    border: 1px solid $color-primary-dark;
+    border-radius: $base-border-radius;
+  }
+}
+
 input[type="submit"].btn {
   @extend .bg-accent-dark;
   @extend .color-white;

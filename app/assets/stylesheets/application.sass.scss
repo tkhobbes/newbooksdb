@@ -1,5 +1,8 @@
 // Entry point for your Sass build
 
+// Rails core stuff
+@import "actiontext.css";
+
 // import the design system
 @import "scss/main.scss";
 
@@ -67,4 +70,9 @@
     display: block;
     object-fit: cover;
   }
+}
+
+// 3. Action Text
+.trix-content ul {
+  list-style-type: disc;
 }

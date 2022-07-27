@@ -88,4 +88,17 @@ module BooksHelper
         end * (5- rating)
     end
   end
+
+  # Displays the book synopsis if it is present
+  def book_synopsis(book)
+    if book.synopsis.present?
+      content_tag(:div, class: "bookdetails__synopsis") do
+        content_tag(:h3, class: "bookdetails__synposis-title") do
+          "Synopsis"
+        end <<
+        raw(book.synopsis)
+      end
+    end
+  end
+
 end

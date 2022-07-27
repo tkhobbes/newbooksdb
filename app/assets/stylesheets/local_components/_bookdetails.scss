@@ -27,4 +27,15 @@
   &__meta div {
     flex: 1;
   }
+
+  &__synposis {
+    margin-top: $base-margin;
+    font-size: 0.9rem;
+
+    &-title {
+      @extend .color-primary-dark;
+      @extend .heading4;
+      margin-bottom: math.div($base-margin, 2);
+    }
+  }
 }

@@ -81,6 +81,7 @@
         Rating: <%= rating_stars(@book.rating_before_type_cast) %> (<%= @book.rating.humanize %>)
       </div>
     </div>
+    <%= book_synopsis(@book) %>
   </div>
 </div>
 
