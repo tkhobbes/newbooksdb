@@ -117,6 +117,30 @@
         <li class="public ">
   <span class="summary_signature">
     
+      <a href="#book_synopsis-instance_method" title="#book_synopsis (instance method)">#<strong>book_synopsis</strong>(book)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Displays the book synopsis if it is present.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#cover_image-instance_method" title="#cover_image (instance method)">#<strong>cover_image</strong>(book, options = {})  &#x21d2; String </a>
     
 
@@ -196,7 +220,62 @@
 
     
       <div class="method_details first">
-  <h3 class="signature first" id="cover_image-instance_method">
+  <h3 class="signature first" id="book_synopsis-instance_method">
+  
+    #<strong>book_synopsis</strong>(book)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Displays the book synopsis if it is present</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/helpers/books_helper.rb', line 93</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_book_synopsis'>book_synopsis</span><span class='lparen'>(</span><span class='id identifier rubyid_book'>book</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_book'>book</span><span class='period'>.</span><span class='id identifier rubyid_synopsis'>synopsis</span><span class='period'>.</span><span class='id identifier rubyid_present?'>present?</span>
+    <span class='id identifier rubyid_content_tag'>content_tag</span><span class='lparen'>(</span><span class='symbol'>:div</span><span class='comma'>,</span> <span class='label'>class:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>bookdetails__synopsis</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>do</span>
+      <span class='id identifier rubyid_content_tag'>content_tag</span><span class='lparen'>(</span><span class='symbol'>:h3</span><span class='comma'>,</span> <span class='label'>class:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>bookdetails__synposis-title</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>do</span>
+        <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Synopsis</span><span class='tstring_end'>&quot;</span></span>
+      <span class='kw'>end</span> <span class='op'>&lt;&lt;</span>
+      <span class='id identifier rubyid_raw'>raw</span><span class='lparen'>(</span><span class='id identifier rubyid_book'>book</span><span class='period'>.</span><span class='id identifier rubyid_synopsis'>synopsis</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="cover_image-instance_method">
   
     #<strong>cover_image</strong>(book, options = {})  &#x21d2; <tt>String</tt> 
   
@@ -517,7 +596,7 @@
 </div>
 
       <div id="footer">
-  Generated on Tue Jul 26 19:04:49 2022 by
+  Generated on Wed Jul 27 11:19:05 2022 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.28 (ruby-3.1.2).
 </div>
