@@ -2,6 +2,9 @@
 class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update, :destroy]
 
+  # delete backlinks stack on book show page
+  before_action :dissolve, only: [:show]
+
   # standard index method - show all books
   # books ordered by sort_title; additional variable @pagy for pagination
   def index
@@ -47,7 +50,7 @@ class BooksController < ApplicationController
   def destroy
     @book.destroy
     flash[:alert] = "Book removed"
-    redirect_to books_path
+    stepback
   end
 
   private

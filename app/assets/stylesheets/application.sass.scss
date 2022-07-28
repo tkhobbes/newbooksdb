@@ -79,3 +79,8 @@
 .trix-content ul {
   list-style-type: disc;
 }
+
+// 4. Various due to specific packages or gems
+.back_link {
+  @extend .form-cancel-button;
+}

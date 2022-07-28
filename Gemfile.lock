@@ -70,6 +70,7 @@ GEM
       activerecord (>= 3.2, < 8.0)
       rake (>= 10.4, < 14.0)
     ast (2.4.2)
+    backpedal (0.2.1)
     backport (1.2.0)
     benchmark (0.2.0)
     better_errors (2.9.1)
@@ -330,6 +331,7 @@ PLATFORMS
 
 DEPENDENCIES
   annotate (~> 3.2)
+  backpedal (~> 0.2.1)
   better_errors (~> 2.9, >= 2.9.1)
   binding_of_caller (~> 1.0)
   bootsnap

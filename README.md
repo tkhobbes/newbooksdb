@@ -32,6 +32,7 @@ The following Gems are used in this project:
 #### Application
 
 - For active-storage, image_processing {https://rubygems.org/gems/image_processing} is used
+- for easy going back to previous pages, backpedal {https://rubygems.org/gems/backpedal}
 
 #### Development
 
