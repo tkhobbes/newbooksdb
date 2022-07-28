@@ -12,6 +12,8 @@
 #   @return [String]
 # @!attribute rating
 #   @return [Integer]
+# @!attribute slug
+#   @return [String]
 # @!attribute sort_title
 #   @return [String]
 # @!attribute title
@@ -22,6 +24,10 @@
 #   @return [Time]
 # @!attribute updated_at
 #   @return [Time]
+#
+# Indexes
+#
+#  index_books_on_slug  (slug) UNIQUE
 #
 FactoryBot.define do
   factory :hobbit, class: Book do

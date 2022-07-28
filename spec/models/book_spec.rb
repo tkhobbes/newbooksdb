@@ -48,6 +48,10 @@ RSpec.describe Book, type: :model do
       it 'translates condition to text' do
         expect(@book.condition).to eq('used_ok')
       end
+
+      it 'has a slug' do
+        expect(@book.slug).to eq('the-hobbit')
+      end
   end
 
 end

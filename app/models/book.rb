@@ -4,24 +4,31 @@
 #
 # @!attribute id
 #   @return []
+# @!attribute condition
+#   @return [Integer]
+# @!attribute edition
+#   @return [String]
+# @!attribute original_title
+#   @return [String]
 # @!attribute rating
 #   @return [Integer]
+# @!attribute slug
+#   @return [String]
 # @!attribute sort_title
 #   @return [String]
 # @!attribute title
 #   @return [String]
 # @!attribute year
 #   @return [Integer]
-# @!attribute edition
-#   @return [String]
-# @!attribute condition
-#   @return [Integer]
 # @!attribute created_at
 #   @return [Time]
 # @!attribute updated_at
 #   @return [Time]
 #
-# @author: tkhobbes
+# Indexes
+#
+#  index_books_on_slug  (slug) UNIQUE
+#
 class Book < ApplicationRecord
   validates :title, presence: true
 
@@ -40,6 +47,10 @@ class Book < ApplicationRecord
 
   has_one_attached :cover
   has_rich_text :synopsis
+
+  # friendly ID uses slug
+  extend FriendlyId
+  friendly_id :title, use: :slugged
 
   private
 

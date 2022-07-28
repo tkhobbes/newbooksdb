@@ -15,6 +15,7 @@ Fields:
 
 - Title (not null) - the title of the book. Must be unique in the DB (i. e. no book can exist twice)
 - Sort Title: Automatically generated from the title (lowercased and leading articles removed). Must also not be null
+- slug: The slug to use in the books URL
 - Original title: If the book was originally published in another language
 - Year: The publishing year of a book (integer)
 - Rating: An integer, used as an ENUM: not rated (0), hated (1), bad (2), ok (3), good (4), favourite (5)
@@ -33,6 +34,7 @@ The following Gems are used in this project:
 
 - For active-storage, image_processing {https://rubygems.org/gems/image_processing} is used
 - for easy going back to previous pages, backpedal {https://rubygems.org/gems/backpedal}
+- to display URLs like /books/hobbit instead of /books/3, friendly_id {https://rubygems.org/gems/friendly_id}
 
 #### Development
 

@@ -57,7 +57,7 @@ class BooksController < ApplicationController
 
   # define an instance variable @book
   def set_book
-    @book = Book.find(params[:id])
+    @book = Book.friendly.find(params[:id])
   end
 
   # define allowed parameters

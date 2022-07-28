@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_27_084341) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_28_161809) do
   create_table "action_text_rich_texts", charset: "utf8mb4", force: :cascade do |t|
     t.string "name", null: false
     t.text "body", size: :long
@@ -59,6 +59,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_27_084341) do
     t.string "original_title"
     t.integer "condition", default: 0
     t.string "edition"
+    t.string "slug"
+    t.index ["slug"], name: "index_books_on_slug", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

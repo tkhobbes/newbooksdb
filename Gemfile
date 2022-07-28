@@ -77,3 +77,5 @@ gem 'simple_form', '~> 5.1'
 gem 'enum_help', '~> 0.0.19'
 # go back to previous pages easily
 gem 'backpedal', '~> 0.2.1'
+# use nice IDs instead of numbers
+gem 'friendly_id', '~> 5.4', '>= 5.4.2'
