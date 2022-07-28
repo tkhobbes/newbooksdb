@@ -53,6 +53,16 @@ The following Gems are used in this project:
 - ViewComponents to replace partials {https://rubygems.org/gems/view_component}
 - pagy to paginate big collections {https://rubygems.org/gems/pagy}
 
+### JS Packages
+
+The following packages have to be added via yarn:
+
+- dropzone (for uploading images interactively) {https://www.dropzone.dev/js/}
+- noty (for nice animated notifications) {https://ned.im/noty/#/}
+- sweetalert2 to replace the boring browser dialogs {https://sweetalert2.github.io}
+
+Check package.json for all dependencies that were added.
+
 ### Test Suite
 
 RSpec is used for writing tests (using the rspec-rails gem {https://github.com/rspec/rspec-rails})

@@ -15,3 +15,6 @@ application.register("hello", HelloController)
 
 import NotificationController from "./notification_controller.js"
 application.register("notification", NotificationController)
+
+import SweetalertController from "./sweetalert_controller.js"
+application.register("sweetalert", SweetalertController)
