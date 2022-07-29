@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 # Specs in this file have access to a helper object that includes
@@ -24,7 +26,12 @@ RSpec.describe BooksHelper, type: :helper do
     end
 
     it 'shows filled svg icons for the book rating' do
-      expect(rating_stars(@book.rating_before_type_cast).scan('fill="currentColor"').size).to eq(@book.rating_before_type_cast)
+      expect(
+        rating_stars(
+          @book.rating_before_type_cast
+        ).scan(
+          'fill="currentColor"'
+        ).size).to eq(@book.rating_before_type_cast)
     end
 
     it 'shows a picture when a cover is attached' do

@@ -1,8 +1,9 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
- include Pagy::Backend
-
-RSpec.describe "books/index.html.erb", type: :view do
+RSpec.describe 'books/index.html.erb', type: :view do
+  include Pagy::Backend
 
   before(:all) do
     @pagy, @books = pagy(Array.new(3) { create(:random_book) })

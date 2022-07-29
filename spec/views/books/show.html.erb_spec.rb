@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe "books/show.html.erb", type: :view do
+RSpec.describe 'books/show.html.erb', type: :view do
 
   before(:all) do
     @book = create(:hobbit)

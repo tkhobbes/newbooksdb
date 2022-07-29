@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: books
@@ -57,6 +59,7 @@ class Book < ApplicationRecord
   # Removes common leading words from the title and converts it to downcase
   # @return [String] The sort title (stored in DB)
   def create_sort_title
-    self.sort_title = self.title.gsub(/^ein |^eine |^der |^die |^das |^the |^a |^an /i, '').gsub(/'|"|!|\?|-/, '').gsub(/(?<!\w) /,'').downcase
+    self.sort_title = title.gsub(/^ein |^eine |^der |^die |^das |^the |^a |^an /i, '').gsub(/'|"|!|\?|-/, '').gsub(
+/(?<!\w) /,'').downcase
   end
 end

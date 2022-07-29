@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # A module / concern for all models that are rateable.
 # Provides ENUMs for ratings as follows:
 # 0 - not_rated, 1 - hated, 2 - bad, 3 - ok, 4 - good, 5 - favourite
@@ -18,7 +20,7 @@ module Rateable
     # returns true if there is a rating set
     # @return [Boolean]
     def rated?
-      self.rating != 'not_rated'
+      rating != 'not_rated'
     end
   end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Standard Rails Application Controller
 # Includes the Pagy Backend helper
 # registers the path where somebody is coming from

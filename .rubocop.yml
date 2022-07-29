@@ -8,3 +8,14 @@ require:
 
 Style/Documentation:
   Enabled: false
+
+AllCops:
+  Exclude:
+    - "db/**/*"
+    - "bin/*"
+    - "doc/**/*"
+    - "log"
+    - "mockup"
+    - "node_modules/**/*"
+    - "storage/**/*"
+    - "tmp/**/*"

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # standard Rails controller for the books model
 class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update, :destroy]
@@ -12,8 +14,7 @@ class BooksController < ApplicationController
   end
 
   # Standard show method - show book details
-  def show
-  end
+  def show; end
 
   # standard new method - show form for new book
   def new
@@ -25,7 +26,7 @@ class BooksController < ApplicationController
     @book = Book.new(book_params)
 
     if @book.save
-      flash[:success] = "Book saved"
+      flash[:success] = 'Book saved'
       redirect_to book_path(@book)
     else
       render :new, status: :unprocessable_entity
@@ -33,13 +34,12 @@ class BooksController < ApplicationController
   end
 
   # standard edit method - show form for editing book
-  def edit
-  end
+  def edit; end
 
   # update of a book
   def update
     if @book.update(book_params)
-      flash[:success] = "Book updated"
+      flash[:success] = 'Book updated'
       redirect_to @book
     else
       render :edit, status: :unprocessable_entity
@@ -49,7 +49,7 @@ class BooksController < ApplicationController
   # standard destroy method
   def destroy
     @book.destroy
-    flash[:alert] = "Book removed"
+    flash[:alert] = 'Book removed'
     redirect_to books_path, status: :see_other
   end
 
@@ -62,6 +62,16 @@ class BooksController < ApplicationController
 
   # define allowed parameters
   def book_params
-    params.require(:book).permit(:title, :original_title, :sort_title, :edition, :rating, :condition, :year, :cover, :synopsis)
+    params.require(:book).permit(
+      :title,
+      :original_title,
+      :sort_title,
+      :edition,
+      :rating,
+      :condition,
+      :year,
+      :cover,
+      :synopsis
+    )
   end
 end

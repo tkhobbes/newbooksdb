@@ -8,6 +8,7 @@ class BookCardComponent < ViewComponent::Base
 
   # initializer - takes an instance of a book active record as a parameter
   def initialize(book:)
+    super
     @book = book
   end
 
