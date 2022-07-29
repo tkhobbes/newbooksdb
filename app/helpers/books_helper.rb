@@ -4,54 +4,30 @@ module BooksHelper
   # returns the original title of a book in brackets if it is available
   # @return [String] (original title in brackets)
   def original_title(book)
-    if book.original_title.present?
-      "(" + book.original_title + ")"
+    original = book.original_title
+    if original.present?
+      "(" + original + ")"
     end
   end
 
   # returns either the cover image of a book or a placeholder SVG
   # @return [String] (HTML image tag or SVG tag)
+  # This method smells of :reek:DublicateMethodCall
+  # This method smells of :reek:TooManyStatements
   def cover_image(book, options = {})
-    if book.cover.attached?
-      case options[:size]
-      when "large"
-        image_tag book.cover.variant(resize_to_limit: [500, 500])
-      when "medium"
-        image_tag book.cover.variant(resize_to_limit: [300, 300])
-      when "small"
-        image_tag book.cover.variant(resize_to_limit: [150, 150])
-      else
-        image_tag book.cover.variant(resize_to_limit: [50, 50])
-      end
-    else
-      size = case options[:size]
-      when "large"
-        "placeholder-large"
-      when "medium"
-        "placeholder-medium"
-      when "small"
-        "placeholder-small"
-      else
-        "placeholder-default"
-      end
+    cover_map = {
+      "large": [500, "placeholder-large"],
+      "medium": [300, "placeholder-medium"],
+      "small": [150, "placeholder-small"],
+      "default": [50, "placeholder-default"]
+    }
+    size = options[:size]&.to_sym || "default"
+    # below the duplicate method call
+    img_size = cover_map[size][0]
+    css_tag = cover_map[size][1]
 
-      content_tag(
-        :svg,
-        xlmns: "http://www.w3.org/2000/svg",
-        class: size,
-        viewBox: "0 0 24 24",
-        fill: "none",
-        stroke: "currentColor",
-        "stroke-width": "2"
-      ) do
-        tag(
-          :path,
-          "stroke-linecap": "round",
-          "stroke-linejoin": "round",
-          d: "M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
-        )
-      end
-    end
+    cover = book.cover
+    cover.attached? ? image_tag(cover.variant(resize_to_limit: [img_size, img_size])) : generate_book_cover_svg(css_tag)
   end
 
   # returns span tags with filled stars equal to the rating and empty stars to fill up to 5
@@ -91,13 +67,35 @@ module BooksHelper
 
   # Displays the book synopsis if it is present
   def book_synopsis(book)
-    if book.synopsis.present?
+    synopsis = book.synopsis
+    if synopsis.present?
       content_tag(:div, class: "bookdetails__synopsis") do
         content_tag(:h3, class: "bookdetails__synposis-title") do
           "Synopsis"
         end <<
-        raw(book.synopsis)
+        raw(synopsis)
       end
+    end
+  end
+
+  private
+
+  def generate_book_cover_svg(css)
+    content_tag(
+      :svg,
+      xlmns: "http://www.w3.org/2000/svg",
+      class: css,
+      viewBox: "0 0 24 24",
+      fill: "none",
+      stroke: "currentColor",
+      "stroke-width": "2"
+    ) do
+      tag(
+        :path,
+        "stroke-linecap": "round",
+        "stroke-linejoin": "round",
+        d: "M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+      )
     end
   end
 
