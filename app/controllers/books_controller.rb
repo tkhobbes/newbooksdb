@@ -50,7 +50,7 @@ class BooksController < ApplicationController
   def destroy
     @book.destroy
     flash[:alert] = "Book removed"
-    stepback
+    redirect_to books_path, status: :see_other
   end
 
   private

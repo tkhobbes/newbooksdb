@@ -17,7 +17,7 @@ RSpec.describe BooksController, type: :controller do
       describe 'DELETE /destroy' do
         it 'deletes a book' do
           delete :destroy, params: { id: @book.to_param }
-          expect(response).to have_http_status(302)
+          expect(response).to have_http_status(303)
         end
       end
 
