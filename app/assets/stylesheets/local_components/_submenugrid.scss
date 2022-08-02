@@ -1,0 +1,37 @@
+.submenugrid {
+  display: grid;
+  grid-template-columns: [menu-start] 1fr [menu-end content-start] 3fr [content-end];
+  margin-top: $base-margin;
+}
+
+.submenu {
+  grid-column: menu-start / menu-end;
+
+  ul {
+    li {
+      margin-bottom: $margin-4;
+      a {
+        display: block;
+        padding: $padding-4 $padding-2;
+        @extend .border-color-primary-dark;
+        border-radius: $base-border-radius;
+        @extend .color-primary-dark;
+
+        &:hover {
+          @extend .bg-primary;
+          @extend .color-primary-light;
+        }
+
+        &.active {
+          @extend .bg-primary-dark;
+          @extend .color-white;
+        }
+      }
+    }
+  }
+}
+
+.submenucontent {
+  grid-column: content-start / content-end;
+  margin-left: $base-margin;
+}

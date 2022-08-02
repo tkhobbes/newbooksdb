@@ -8,6 +8,7 @@ RSpec.describe BooksController, type: :controller do
   before(:all) do
     @book = create(:hobbit)
     @book2 = create(:a_prefix_book)
+    @hardcover = create(:hardcover)
   end
 
   context 'Basic book routes' do
@@ -26,7 +27,8 @@ RSpec.describe BooksController, type: :controller do
 
       describe 'CREATE /new' do
         it 'creates a book when the title and format is present' do
-          post :create, params: { book: { title: 'A new book', book_format_id: '0' } }
+          post :create, params: { book: { title: 'A new book', book_format_id: @hardcover.id } }
+          debugger
           expect(response).to redirect_to(assigns(:book))
         end
 
