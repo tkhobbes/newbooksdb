@@ -26,10 +26,13 @@
 #   @return [Time]
 # @!attribute updated_at
 #   @return [Time]
+# @!attribute book_format_id
+#   @return []
 #
 # Indexes
 #
-#  index_books_on_slug  (slug) UNIQUE
+#  index_books_on_book_format_id  (book_format_id)
+#  index_books_on_slug            (slug) UNIQUE
 #
 class Book < ApplicationRecord
   validates :title, presence: true
@@ -49,6 +52,9 @@ class Book < ApplicationRecord
 
   has_one_attached :cover
   has_rich_text :synopsis
+
+  # relationships to other models
+  belongs_to :book_format
 
   # friendly ID uses slug
   extend FriendlyId

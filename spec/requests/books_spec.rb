@@ -25,8 +25,8 @@ RSpec.describe BooksController, type: :controller do
       end
 
       describe 'CREATE /new' do
-        it 'creates a book when the title is present' do
-          post :create, params: { book: { title: 'A new book' } }
+        it 'creates a book when the title and format is present' do
+          post :create, params: { book: { title: 'A new book', book_format_id: '0' } }
           expect(response).to redirect_to(assigns(:book))
         end
 

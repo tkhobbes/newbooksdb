@@ -17,7 +17,7 @@ RSpec.describe Book, type: :model do
     end
 
     it 'is valid with title' do
-      book = Book.new(title: 'The Hobbit')
+      book = Book.new(title: 'The Hobbit', book_format_id: 1)
       expect(book.valid?).to eq(true)
     end
   end

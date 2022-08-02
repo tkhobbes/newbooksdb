@@ -26,12 +26,14 @@
 #   @return [Time]
 # @!attribute updated_at
 #   @return [Time]
+# @!attribute book_format_id
+#   @return []
 #
 # Indexes
 #
-#  index_books_on_slug  (slug) UNIQUE
+#  index_books_on_book_format_id  (book_format_id)
+#  index_books_on_slug            (slug) UNIQUE
 #
-# rubocop:disable Metrics/BlockLength
 FactoryBot.define do
   factory :hobbit, class: Book do
     title { 'The Hobbit' }
@@ -39,6 +41,7 @@ FactoryBot.define do
     rating { 5 }
     condition { 4 }
     synopsis {  "<p>#{Faker::Lorem.paragraphs(number: 30).join(' ')}</p>" }
+    association :book_format, factory: :hardcover
 
     after(:build) do |hobbit|
       hobbit.cover.attach(
@@ -54,6 +57,7 @@ FactoryBot.define do
   factory :a_prefix_book, class: Book do
     title { 'A wonderful Life of an Ant' }
     year { 1980 }
+    association :book_format, factory: :softcover
   end
 
   factory :german_translation, class: Book do
@@ -61,6 +65,7 @@ FactoryBot.define do
     year { 1955}
     original_title { 'The Lord of the Rings' }
     rating { 3 }
+    association :book_format, factory: :hardcover
   end
 
   factory :random_book, class: Book do
@@ -68,6 +73,7 @@ FactoryBot.define do
     year { Random.rand(1920..2020) }
     rating { Random.rand(0..5) }
     condition { Random.rand(0..5) }
+    association :book_format, factory: :not_defined
   end
 end
 # rubocop:enable Metrics/BlockLength
