@@ -85,6 +85,10 @@ module BooksHelper
     end
   end
 
+  def trunc_synopsis(book)
+    truncate(strip_tags(book.synopsis.to_s), length: 100)
+  end
+
   private
 
   # rubocop:disable Metrics/MethodLength

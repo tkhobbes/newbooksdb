@@ -38,6 +38,7 @@ FactoryBot.define do
     year { 1937 }
     rating { 5 }
     condition { 4 }
+    synopsis {  "<p>#{Faker::Lorem.paragraphs(number: 30).join(' ')}</p>" }
 
     after(:build) do |hobbit|
       hobbit.cover.attach(

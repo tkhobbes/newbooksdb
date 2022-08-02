@@ -11,7 +11,8 @@ Book.create(
   title: 'AAA Title comes first',
   year: Random.rand(1920..2020),
   rating: Random.rand(0..5),
-  condition: Random.rand(0..5)
+  condition: Random.rand(0..5),
+  synopsis: "<b>Synopsis</b><br /><p>#{Faker::Lorem.paragraphs(number: 10).join(' ')}</p>"
 )
 
 99.times do |index|
@@ -19,7 +20,8 @@ Book.create(
     title: Faker::Book.title,
     year: Random.rand(1920..2020),
     rating: Random.rand(0..5),
-    condition: Random.rand(0..5)
+    condition: Random.rand(0..5),
+    synopsis: "<p>#{Faker::Lorem.paragraphs(number: 20).join(' ')}</p>"
   )
 
   cover_number = index.modulo(10) + 1

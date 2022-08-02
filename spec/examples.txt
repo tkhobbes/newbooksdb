@@ -1,10 +1,12 @@
 example_id                                           | status | run_time        |
 ---------------------------------------------------- | ------ | --------------- |
 ./spec/components/book_card_component_spec.rb[1:1:1] | passed | 0.05887 seconds |
-./spec/helpers/books_helper_spec.rb[1:1:1]           | passed | 0.07898 seconds |
-./spec/helpers/books_helper_spec.rb[1:1:2]           | passed | 0.00865 seconds |
-./spec/helpers/books_helper_spec.rb[1:1:3]           | passed | 0.00904 seconds |
-./spec/helpers/books_helper_spec.rb[1:1:4]           | passed | 0.01189 seconds |
+./spec/helpers/books_helper_spec.rb[1:1:1]           | passed | 0.01577 seconds |
+./spec/helpers/books_helper_spec.rb[1:1:2]           | passed | 0.04796 seconds |
+./spec/helpers/books_helper_spec.rb[1:1:3]           | passed | 0.02154 seconds |
+./spec/helpers/books_helper_spec.rb[1:1:4]           | passed | 0.01741 seconds |
+./spec/helpers/books_helper_spec.rb[1:1:5]           | passed | 0.39837 seconds |
+./spec/helpers/books_helper_spec.rb[1:1:6]           | passed | 0.0147 seconds  |
 ./spec/models/book_spec.rb[1:1:1]                    | passed | 0.00532 seconds |
 ./spec/models/book_spec.rb[1:1:2]                    | passed | 0.09491 seconds |
 ./spec/models/book_spec.rb[1:2:1]                    | passed | 0.00929 seconds |

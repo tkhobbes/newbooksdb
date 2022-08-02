@@ -41,5 +41,13 @@ RSpec.describe BooksHelper, type: :helper do
     it 'shows an svg when no cover is attached' do
             expect(cover_image(@book)).to include('svg')
     end
+
+    it 'displays the synopsis if there is one' do
+      expect(book_synopsis(@book2)).to include('<p>')
+    end
+
+    it 'does not display anything if there is no synopsis' do
+      expect(book_synopsis(@book)).to eq(nil)
+    end
   end
 end

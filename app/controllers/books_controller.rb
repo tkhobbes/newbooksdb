@@ -10,7 +10,7 @@ class BooksController < ApplicationController
   # standard index method - show all books
   # books ordered by sort_title; additional variable @pagy for pagination
   def index
-    @pagy, @books = pagy(Book.includes([cover_attachment: :blob]).order(:sort_title))
+    @pagy, @books = pagy(Book.includes([cover_attachment: :blob]).includes([:rich_text_synopsis]).order(:sort_title))
   end
 
   # Standard show method - show book details
