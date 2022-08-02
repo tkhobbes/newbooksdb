@@ -61,6 +61,7 @@ class BooksController < ApplicationController
   end
 
   # define allowed parameters
+  # rubocop:disable Metrics/MethodLength
   def book_params
     params.require(:book).permit(
       :title,
@@ -74,4 +75,5 @@ class BooksController < ApplicationController
       :synopsis
     )
   end
+  # rubocop:enable Metrics/MethodLength
 end

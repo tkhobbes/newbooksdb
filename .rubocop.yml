@@ -13,8 +13,11 @@ AllCops:
   Exclude:
     - "db/**/*"
     - "bin/*"
+    - "config/*"
+    - "config/environments/*"
     - "doc/**/*"
-    - "log"
+    - "lib/**/*"
+    - "log/**/*"
     - "mockup"
     - "node_modules/**/*"
     - "storage/**/*"

@@ -2,6 +2,7 @@
 
 require 'rails_helper'
 
+# rubocop:disable Metrics/BlockLength
 RSpec.describe BooksController, type: :controller do
 
   before(:all) do
@@ -51,3 +52,4 @@ RSpec.describe BooksController, type: :controller do
   end
 
 end
+# rubocop:enable Metrics/BlockLength

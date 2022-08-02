@@ -31,6 +31,7 @@
 #
 #  index_books_on_slug  (slug) UNIQUE
 #
+# rubocop:disable Metrics/BlockLength
 FactoryBot.define do
   factory :hobbit, class: Book do
     title { 'The Hobbit' }
@@ -40,7 +41,9 @@ FactoryBot.define do
 
     after(:build) do |hobbit|
       hobbit.cover.attach(
+        # rubocop:disable Rails/FilePath
         io: File.open(Rails.root.join('db', 'sample', 'images', 'cover-1.jpg')),
+        # rubocop:enable Rails/FilePath
         filename: 'cover.jpg',
         content_type: 'image/jpeg'
       )
@@ -66,3 +69,4 @@ FactoryBot.define do
     condition { Random.rand(0..5) }
   end
 end
+# rubocop:enable Metrics/BlockLength
