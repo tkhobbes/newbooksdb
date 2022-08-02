@@ -1,10 +1,9 @@
-@use "sass:math";
+// Styles for the left hand menu
 
 .menu {
   flex: 1;
   background-color: var(--color-accent-light);
-  padding: math.div($base-padding, 2) $base-padding math.div($base-padding, 2)
-    $base-padding * 2;
+  padding: $padding-2 $base-padding $padding-2 $base-padding * 2;
   font-family: var(--menu-text);
 
   &__main {
@@ -12,14 +11,12 @@
     margin-top: $base-margin * 2;
 
     & > li {
-      border-bottom-width: 1px;
-      border-bottom-style: solid;
-      @extend .border-color-accent-dark;
+      border-bottom: 1px solid var(--color-accent-dark);
 
       & > a {
         @extend .color-black;
         display: block;
-        padding: math.div($base-padding, 2);
+        padding: $padding-2;
 
         &:hover {
           @extend .bg-accent-dark;
@@ -29,7 +26,7 @@
     }
 
     & > li + li {
-      margin-top: math.div($base-margin, 4);
+      margin-top: $padding-4;
     }
   }
 }

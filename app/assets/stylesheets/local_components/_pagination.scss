@@ -1,4 +1,4 @@
-@use "sass:math";
+// Styles for the pagination
 
 .pagination {
   display: flex;
@@ -6,8 +6,6 @@
   font-size: 0.8em;
 
   .page {
-    border-width: 1px;
-    border-style: solid;
     @extend .border-color-primary-dark;
     @extend .bg-secondary-light;
     min-width: 3.5em;
@@ -23,7 +21,7 @@
 
     & > a {
       @extend .color-black;
-      padding: math.div($base-padding, 2);
+      padding: $padding-2;
       display: block;
 
       &:hover {
@@ -39,19 +37,19 @@
 
   .active {
     display: block;
-    padding: math.div($base-padding, 2);
+    padding: $padding-2;
     background-color: var(--color-primary);
     color: var(--color-secondary-light);
   }
 
   .gap {
     display: block;
-    padding: math.div($base-padding, 2);
+    padding: $padding-2;
   }
 
   .disabled {
     display: block;
-    padding: math.div($base-padding, 2);
+    padding: $padding-2;
     @extend .color-grey;
   }
 }

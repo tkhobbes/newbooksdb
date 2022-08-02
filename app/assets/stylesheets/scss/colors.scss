@@ -50,6 +50,6 @@ $colors: (
   }
 
   .border-color-#{$key} {
-    border-color: $value;
+    border: 1px solid $value;
   }
 }

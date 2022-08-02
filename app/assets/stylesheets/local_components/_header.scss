@@ -1,8 +1,7 @@
-@use "sass:math";
-
+// Styles for the header
 .title {
   @extend .bg-primary;
-  padding: $base-padding math.div($base-padding, 2) 0;
+  padding: $base-padding $padding-2 0;
 
   &__container {
     display: flex;
@@ -39,7 +38,7 @@
   & > a {
     @extend .color-black;
     display: block;
-    padding: math.div($base-padding, 4);
+    padding: $padding-4;
 
     &:hover {
       @extend .bg-accent-dark;

@@ -1,7 +1,4 @@
 // Styles for the Book Detail page
-
-@use "sass:math";
-
 .bookdetails {
   margin: $base-margin 0;
   display: flex;
@@ -19,8 +16,8 @@
   &__meta {
     display: flex;
     flex-wrap: wrap;
-    margin: math.div($base-margin, 2) 0;
-    padding: math.div($base-padding, 2) 1em;
+    margin: $margin-2 0;
+    padding: $padding-2 1em;
     width: 100%;
   }
 
@@ -35,7 +32,7 @@
     &-title {
       @extend .color-primary-dark;
       @extend .heading4;
-      margin-bottom: math.div($base-margin, 2);
+      margin-bottom: $margin-2;
     }
   }
 }

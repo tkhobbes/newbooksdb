@@ -38,3 +38,11 @@ svg.placeholder-default {
   background: transparent;
   cursor: pointer;
 }
+
+.flexlist {
+  display: flex;
+  align-content: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: $base-margin;
+}

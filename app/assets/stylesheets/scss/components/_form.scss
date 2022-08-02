@@ -1,5 +1,4 @@
-@use "sass:math";
-
+// Styles for all forms
 .big-form {
   display: flex;
   margin: $base-margin 0;
@@ -9,7 +8,7 @@
   }
 
   .form-col + .form-col {
-    margin-left: math.div($base-margin, 2);
+    margin-left: $margin-2;
   }
 
   .form-col {
@@ -23,14 +22,12 @@
   }
 
   .input {
-    margin: math.div($base-margin, 2) 0;
+    margin: $margin-2 0;
 
     input {
-      padding: math.div($base-padding, 2) math.div($base-padding, 2);
+      padding: $padding-2 $padding-2;
       @extend .border-color-primary;
       @extend .color-black;
-      border-style: solid;
-      border-width: 1px;
       border-radius: $base-border-radius;
       width: 100%;
 
@@ -42,14 +39,14 @@
       &:active,
       &:focus-visible {
         outline: none;
-        border: solid 1px $color-primary-dark;
+        @extend .border-color-primary-dark;
       }
     }
   }
 
   .field_with_errors {
     input {
-      border-color: $color-error;
+      @extend .border-color-error;
       @extend .color-error;
 
       &::placeholder {
@@ -62,7 +59,7 @@
     @extend .color-error;
     @extend .small;
     display: block;
-    margin-top: math.div($base-margin, 4);
+    margin-top: $margin-4;
   }
 
   div.enum_radio_buttons {
@@ -87,7 +84,7 @@
         &::before {
           height: 1em;
           width: 1em;
-          border: 1px solid $color-primary;
+          @extend .border-color-primary;
           border-radius: 50%;
           display: inline-block;
           position: absolute;
@@ -108,17 +105,17 @@
   margin-top: $base-margin;
 
   h4 {
-    margin-bottom: math.div($base-margin, 4);
+    margin-bottom: $margin-4;
   }
 
   button {
-    border: 1px solid $color-primary-dark;
+    @extend .border-color-primary-dark;
     @extend .color-primary-dark;
   }
 
   trix-editor {
     @extend .bg-white;
-    border: 1px solid $color-primary-dark;
+    @extend .border-color-primary-dark;
     border-radius: $base-border-radius;
   }
 }
@@ -127,11 +124,9 @@ input[type="submit"].btn {
   @extend .bg-accent-dark;
   @extend .color-white;
   @extend .border-color-black;
-  font-family: var(--paragraph);
-  border-style: solid;
-  border-width: 1px;
   border-radius: $base-border-radius;
-  padding: math.div($base-padding, 2) math.div($base-padding, 2);
+  font-family: var(--paragraph);
+  padding: $padding-2 $padding-2;
   cursor: pointer;
 
   &:hover {
@@ -144,10 +139,8 @@ input[type="submit"].btn {
   @extend .bg-accent-light;
   @extend .color-black;
   @extend .border-color-black;
-  border-style: solid;
-  border-width: 1px;
   border-radius: $base-border-radius;
-  padding: math.div($base-padding, 4) math.div($base-padding, 2);
+  padding: $padding-4 $padding-2;
 
   &:hover {
     @extend .bg-primary-light;

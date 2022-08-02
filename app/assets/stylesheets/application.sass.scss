@@ -9,9 +9,12 @@
 // import application specific components
 @import "local_components/genres.scss";
 @import "local_components/icons.scss";
-@import "local_components/error-box.scss";
+//@import "local_components/error-box.scss";
 @import "local_components/bookdetails.scss";
 @import "local_components/bookcard-big.scss";
+@import "local_components/header.scss";
+@import "local_components/menu.scss";
+@import "local_components/pagination.scss";
 
 // JS Plugin specific
 @import "dropzone/dist/dropzone.css";

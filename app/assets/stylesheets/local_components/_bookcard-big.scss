@@ -1,12 +1,11 @@
-@use "sass:math";
-
+// Styles that go with the BookCard ViewComponent
 .bookcard-big {
   display: flex;
-  border: 1px solid var(--color-black);
+  @extend .border-color-black;
   border-radius: $base-border-radius;
   @extend .bg-secondary-light;
   @extend .color-black;
-  margin: math.div($base-margin, 2);
+  margin: $margin-2;
   flex: 1;
 
   &__cover {
@@ -22,12 +21,12 @@
   }
 
   &__content {
-    margin: 0 math.div($base-margin, 2);
+    margin: 0 $margin-2;
     padding: 0.2em 0.3em;
   }
 
   &__title {
-    margin: math.div($base-margin, 2) 0 0;
+    margin: $margin-2 0 0;
     display: flex;
     align-items: stretch;
     flex-wrap: nowrap;
@@ -43,7 +42,7 @@
 
   .bookyear {
     margin-left: auto;
-    padding-left: math.div($base-padding, 2);
+    padding-left: $padding-2;
     font-size: 1.5rem;
   }
 

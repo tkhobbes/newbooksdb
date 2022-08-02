@@ -1,5 +1,8 @@
 // variables.scss: defines all variables as SCSS variables
 // and then transforms them into CSS custom properties
+
+@use "sass:math";
+
 $color-black: #2e2d3c;
 $color-grey-black: #4e4d66;
 $color-grey: #7e7c9d;
@@ -29,6 +32,14 @@ $title-text: '"Josefin Sans", sans-serif';
 $base-padding: 1em;
 $base-margin: 1em;
 $base-border-radius: 5px;
+
+$margin-2: math.div($base-margin, 2);
+$margin-3: math.div($base-margin, 3);
+$margin-4: math.div($base-margin, 4);
+
+$padding-2: math.div($base-padding, 2);
+$padding-3: math.div($base-padding, 3);
+$padding-4: math.div($base-padding, 4);
 
 :root {
   --color-black: #{$color-black};

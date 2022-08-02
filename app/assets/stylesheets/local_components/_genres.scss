@@ -1,18 +1,17 @@
-@use "sass:math";
-
+// Styles for a genre-list (tags)
 .genre-list {
   display: flex;
   flex-wrap: wrap;
-  margin: math.div($base-margin, 2) 0;
+  margin: $margin-2 0;
 
   & .genre {
     @extend .bg-secondary-dark;
-    margin-bottom: math.div($base-margin, 4);
+    margin-bottom: $margin-4;
     border-radius: $base-border-radius;
   }
 
   & .genre + .genre {
-    margin-left: math.div($base-margin, 4);
+    margin-left: $margin-4;
   }
 
   & .genre a {
