@@ -9,7 +9,11 @@ require:
 Style/Documentation:
   Enabled: false
 
+Rails/I18nLocaleTexts:
+  Enabled: false
+
 AllCops:
+  NewCops: enable
   Exclude:
     - "db/**/*"
     - "bin/*"
