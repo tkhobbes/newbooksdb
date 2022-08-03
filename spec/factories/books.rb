@@ -34,6 +34,8 @@
 #  index_books_on_book_format_id  (book_format_id)
 #  index_books_on_slug            (slug) UNIQUE
 #
+
+# rubocop:disable Metrics/BlockLength
 FactoryBot.define do
   factory :hobbit, class: Book do
     title { 'The Hobbit' }

@@ -1,13 +1,4 @@
-Inspecting 34 files
-........W.........................
+Inspecting 42 files
+..........................................
 
-Offenses:
-
-app/helpers/books_helper.rb:40:7: W: [Correctable] Lint/AmbiguousOperatorPrecedence: Wrap expressions with varying precedence with parentheses to avoid ambiguity.
-      content_tag( ...
-      ^^^^^^^^^^^^
-app/helpers/books_helper.rb:52:7: W: [Correctable] Lint/AmbiguousOperatorPrecedence: Wrap expressions with varying precedence with parentheses to avoid ambiguity.
-      content_tag( ...
-      ^^^^^^^^^^^^
-
-34 files inspected, 2 offenses detected, 2 offenses autocorrectable
+42 files inspected, no offenses detected

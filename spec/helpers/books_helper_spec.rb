@@ -12,6 +12,8 @@ require 'rails_helper'
 #     end
 #   end
 # end
+
+# rubocop:disable Metrics/BlockLength
 RSpec.describe BooksHelper, type: :helper do
   include ActionView::Helpers
 
@@ -51,3 +53,4 @@ RSpec.describe BooksHelper, type: :helper do
     end
   end
 end
+# rubocop:enable Metrics/BlockLength
