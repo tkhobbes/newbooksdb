@@ -1,0 +1,10 @@
+<%= turbo_frame_tag('settings-content') do %>
+  <h3 class="heading4">Available book formats</h3>
+  <ul class="simple_list">
+    <% @formats.each do |format| %>
+      <li>
+        <%= link_to format.format, edit_book_format_path(format) %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>

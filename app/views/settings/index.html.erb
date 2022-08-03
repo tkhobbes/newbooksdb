@@ -3,12 +3,22 @@
   <div class="submenu">
     <ul>
       <li><a href="#">Shelves</a></li>
-      <li><a href="#" class="active">Book Formats</a></li>
+      <li>
+        <%= link_to(
+          'Book Formats',
+          book_formats_path,
+          data: {
+            'turbo-frame': 'settings-content'
+          }
+        )
+        %>
+      </li>
       <li><a href="#">Blah</a></li>
       <li><a href="#">Blubb</a></li>
     </ul>
   </div>
   <div class="submenucontent">
-    Here is the submenu content
+    <%= turbo_frame_tag('settings-content') do %>
+    <% end %>
   </div>
 </div>

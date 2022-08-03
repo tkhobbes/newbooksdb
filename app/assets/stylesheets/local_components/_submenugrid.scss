@@ -1,6 +1,7 @@
 .submenugrid {
   display: grid;
   grid-template-columns: [menu-start] 1fr [menu-end content-start] 3fr [content-end];
+  gap: $base-margin;
   margin-top: $base-margin;
 }
 
@@ -33,5 +34,4 @@
 
 .submenucontent {
   grid-column: content-start / content-end;
-  margin-left: $base-margin;
 }

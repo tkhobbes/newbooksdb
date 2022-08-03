@@ -8,4 +8,5 @@ Rails.application.routes.draw do
 
   resources :books
   resources :settings, only: [:index]
+  resources :book_formats, except: [:show]
 end
