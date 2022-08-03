@@ -1,0 +1,23 @@
+.simple-list {
+  li {
+    border-bottom: 1px solid transparent;
+
+    &:hover {
+      border-bottom: 1px solid $color-primary-dark;
+    }
+
+    turbo-frame {
+      display: inline;
+    }
+  }
+
+  a {
+    display: block;
+    padding: $padding-4 $padding-2;
+    @extend .color-primary-dark;
+
+    &.alternate {
+      @extend .color-accent-dark;
+    }
+  }
+}

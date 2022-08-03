@@ -1,0 +1,5 @@
+  <%= simple_form_for format, html: { class: 'inline-form' } do |f| %>
+    <%= f.input :format, placeholder: 'Bookformat Name', label: false %>
+    <%= f.button :submit, raw('&#x23ce'), class: 'inline-button' %>
+  <% end %>
+

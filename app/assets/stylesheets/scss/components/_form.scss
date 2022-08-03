@@ -147,3 +147,43 @@ input[type="submit"].btn {
     @extend .color-primary-dark;
   }
 }
+
+// Style for turbo frame inline forms
+.inline-form {
+  margin-top: $base-margin;
+  display: flex;
+
+  input {
+    border: none;
+    @extend .color-black;
+    padding: $padding-4 $padding-2;
+    width: 100%;
+
+    &::placeholder {
+      @extend .color-grey-white;
+    }
+
+    &:focus,
+    &:active,
+    &:focus-visible {
+      outline: none;
+    }
+  }
+
+  input[type="submit"].btn {
+    @extend .small;
+    @extend .width-25;
+    @extend .bg-primary-dark;
+    @extend .color-white;
+    @extend .border-color-black;
+    border-radius: $base-border-radius;
+    font-family: var(--paragraph);
+    padding: $padding-4 $padding-4;
+    cursor: pointer;
+
+    &:hover {
+      @extend .bg-primary-light;
+      @extend .color-primary-dark;
+    }
+  }
+}
