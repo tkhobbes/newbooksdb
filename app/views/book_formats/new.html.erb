@@ -1,3 +1,5 @@
 <%= turbo_frame_tag('new-format') do %>
-  <%= render 'book_formats/form', format: @format %>
+<li>
+  <%= render 'book_formats/form', book_format: @book_format %>
+</li>
 <% end %>

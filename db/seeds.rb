@@ -7,12 +7,12 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 # First create some book formats
-BookFormat.create(format: 'Not specified')
-BookFormat.create(format: 'Hardcover')
-BookFormat.create(format: 'Softcover')
-BookFormat.create(format: 'Paperback')
-BookFormat.create(format: 'Coffee Table')
-BookFormat.create(format: 'ebook')
+BookFormat.create(name: 'Not specified')
+BookFormat.create(name: 'Hardcover')
+BookFormat.create(name: 'Softcover')
+BookFormat.create(name: 'Paperback')
+BookFormat.create(name: 'Coffee Table')
+BookFormat.create(name: 'ebook')
 
 # the first book has no cover image and it's alphabetically the first
 Book.create(

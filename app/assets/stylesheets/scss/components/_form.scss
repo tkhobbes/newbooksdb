@@ -44,24 +44,6 @@
     }
   }
 
-  .field_with_errors {
-    input {
-      @extend .border-color-error;
-      @extend .color-error;
-
-      &::placeholder {
-        @extend .color-error;
-      }
-    }
-  }
-
-  span.error {
-    @extend .color-error;
-    @extend .small;
-    display: block;
-    margin-top: $margin-4;
-  }
-
   div.enum_radio_buttons {
     display: flex;
     flex-direction: column;
@@ -99,6 +81,24 @@
       display: none;
     }
   }
+}
+
+.field_with_errors {
+  input {
+    @extend .border-color-error;
+    @extend .color-error;
+
+    &::placeholder {
+      @extend .color-error;
+    }
+  }
+}
+
+span.error {
+  @extend .color-error;
+  @extend .small;
+  display: block;
+  margin-top: $margin-4;
 }
 
 .rich-text-input {

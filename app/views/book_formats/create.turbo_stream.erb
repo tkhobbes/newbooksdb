@@ -1,0 +1,6 @@
+<%= turbo_stream.append 'book-formats' do %>
+  <%= render 'book_format', book_format: @book_format %>
+<% end %>
+<%= turbo_stream.replace 'new-format' do %>
+  <%= render 'new_form_entry' %>
+<% end %>

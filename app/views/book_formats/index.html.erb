@@ -1,26 +1,8 @@
-<%= turbo_frame_tag('settings-content') do %>
+<%= turbo_frame_tag 'settings-content' do %>
   <h3 class="heading4">Available book formats</h3>
-  <ul class="simple-list width-25">
-    <% @formats.each do |format| %>
-      <li>
-        <%= turbo_frame_tag(dom_id(format)) do %>
-          <div class="flexlist">
-            <%= link_to format.format, edit_book_format_path(format) %>
-            <%= render 'shared/crud_icons',
-              edit_path: edit_book_format_path(format),
-              delete_path: book_format_path(format),
-              item_name: format.format,
-              url: "/settings"
-            %>
-          </div>
-        <% end %>
-      </li>
-    <% end %>
-    <li>
-      <%= turbo_frame_tag('new-format') do %>
-        <div class="flexlist">
-          <%= link_to 'Add new book format...', new_book_format_path, class: 'alternate' %>
-        </div>
-      <% end %>
+  <ul class="simple-list width-33" id="book-formats">
+  <%= render 'new_form_entry' %>
+    <%= render @book_formats %>
   </ul>
 <% end %>
+

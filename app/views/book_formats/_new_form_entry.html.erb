@@ -1,0 +1,12 @@
+<%= turbo_frame_tag('new-format') do %>
+  <li>
+    <div class="flexlist">
+      <%= link_to(
+        'Add new book format...',
+        new_book_format_path,
+        class: 'alternate',
+        data: { turbo_frame: 'new-format' }
+      ) %>
+    </div>
+  </li>
+<% end %>

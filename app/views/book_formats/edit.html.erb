@@ -1,3 +1,3 @@
-<%= turbo_frame_tag(dom_id(@format)) do %>
-  <%= render 'book_formats/form', format: @format %>
+<%= turbo_frame_tag(@book_format) do %>
+  <%= render 'book_formats/form', book_format: @book_format %>
 <% end %>
