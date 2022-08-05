@@ -6,9 +6,12 @@
   </ul>
 
   <h3 class="heading4 margin-top-1 margin-bottom-50">Default Book Format</h3>
-  <%= turbo_frame_tag 'default-format' do %>
-    <%= @default_book_format.name %>
-  <% end %>
+  <div class="width-25">
+    <%= turbo_frame_tag 'default-format' do %>
+      <%= @default_book_format.name %>
+      <%= link_to 'Change', set_default_book_formats_path %>
+    <% end %>
+  </div>
 
 <% end %>
 

@@ -1,0 +1,6 @@
+<%= turbo_frame_tag 'default-format' do %>
+  <%= simple_form_for :book_format, url: update_default_book_formats_path, html: { class: 'inline-form', method: :post } do |f| %>
+    <%= f.input :name, collection: @book_formats, label: false, label_method: :name, value_method: :name, selected: @default_book_format.name %>
+    <%= f.button :submit, raw('&#x23ce'), class: 'inline-button' %>
+  <% end %>
+<% end %>

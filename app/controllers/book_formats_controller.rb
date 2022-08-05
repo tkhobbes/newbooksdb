@@ -2,6 +2,7 @@
 
 class BookFormatsController < ApplicationController
   before_action :set_book_format, only: [:show, :edit, :update, :destroy]
+  before_action :set_default_book_format, only: [:index, :set_default, :update_default]
 
   # delete backlinks stack on book show page
   before_action :dissolve, only: [:index]
@@ -9,7 +10,6 @@ class BookFormatsController < ApplicationController
   #index action - displayed in a turbo frame within the settings page
   def index
     @book_formats = BookFormat.all.order(:name)
-    @default_book_format = BookFormat.find_by(fallback: true)
   end
 
   #new action - displayed in a turbo frame within the settings page
@@ -54,11 +54,29 @@ class BookFormatsController < ApplicationController
     end
   end
 
+  # custom method to define the default book format (form display)
+  def set_default
+    @book_formats = BookFormat.all.order(:name)
+  end
+
+  # custom method to actually update the default book format
+  def update_default
+    debugger
+    new_default = BookFormat.find_by(name: book_format_params[:name])
+    @default_book_format.update(fallback: false)
+    new_default.update(fallback: true)
+    redirect_to book_formats_path
+  end
+
   private
 
   # retrieve a book format from the database
   def set_book_format
     @book_format = BookFormat.find(params[:id])
+  end
+
+  def set_default_book_format
+    @default_book_format = BookFormat.find_by(fallback: true)
   end
 
   def book_format_params
