@@ -7,7 +7,7 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 # First create some book formats
-BookFormat.create(name: 'Not specified')
+BookFormat.create(name: 'Not specified', fallback: true)
 BookFormat.create(name: 'Hardcover')
 BookFormat.create(name: 'Softcover')
 BookFormat.create(name: 'Paperback')

@@ -1,10 +1,12 @@
 // utilities.scss
 // various utili classes
 
+@use "sass:math";
+
 $width_map: (
   "100": 100%,
   "75": 75%,
-  "66": 66%,
+  "66": 66.66666%,
   "50": 50%,
   "33": 33.33333%,
   "25": 25%,
@@ -13,6 +15,68 @@ $width_map: (
 @each $key, $value in $width_map {
   .width-#{$key} {
     width: $value;
+  }
+}
+
+$margin_map: (
+  "1": $base-margin,
+  "75": $base-margin * 0.75,
+  "66": $base-margin * 0.6666666,
+  "50": $base-margin * 0.5,
+  "33": $base-margin * 0.3333333,
+  "25": $base-margin * 0.25,
+);
+
+@each $key, $value in $margin_map {
+  .margin-#{$key} {
+    margin: $value;
+  }
+
+  .margin-top-#{$key} {
+    margin-top: $value;
+  }
+
+  .margin-bottom-#{$key} {
+    margin-bottom: $value;
+  }
+
+  .margin-left-#{$key} {
+    margin-left: $value;
+  }
+
+  .margin-right-#{$key} {
+    margin-right: $value;
+  }
+}
+
+$padding_map: (
+  "1": $base-padding,
+  "75": $base-padding * 0.75,
+  "66": $base-padding * 0.6666666,
+  "50": $base-padding * 0.5,
+  "33": $base-padding * 0.3333333,
+  "25": $base-padding * 0.25,
+);
+
+@each $key, $value in $padding_map {
+  .padding-#{$key} {
+    padding: $value;
+  }
+
+  .padding-top-#{$key} {
+    padding-top: $value;
+  }
+
+  .padding-bottom-#{$key} {
+    padding-bottom: $value;
+  }
+
+  .padding-left-#{$key} {
+    padding-left: $value;
+  }
+
+  .padding-right-#{$key} {
+    padding-right: $value;
   }
 }
 

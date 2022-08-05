@@ -9,6 +9,7 @@ class BookFormatsController < ApplicationController
   #index action - displayed in a turbo frame within the settings page
   def index
     @book_formats = BookFormat.all.order(:name)
+    @default_book_format = BookFormat.find_by(fallback: true)
   end
 
   #new action - displayed in a turbo frame within the settings page
@@ -61,7 +62,7 @@ class BookFormatsController < ApplicationController
   end
 
   def book_format_params
-    params.require(:book_format).permit(:name)
+    params.require(:book_format).permit(:name, :fallback)
   end
 
 end

@@ -1,7 +1,10 @@
 <li>
   <%= turbo_frame_tag(book_format) do %>
     <div class="flexlist">
-      <%= link_to book_format.name, edit_book_format_path(book_format) %>
+      <%= link_to(
+        "#{book_format.name}#{is_fallback(book_format)}",
+        edit_book_format_path(book_format)
+       ) %>
       <%= render 'shared/crud_icons',
         edit_path: edit_book_format_path(book_format),
         delete_path: book_format_path(book_format),

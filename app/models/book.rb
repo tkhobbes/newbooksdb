@@ -10,8 +10,6 @@
 #   @return [Integer]
 # @!attribute edition
 #   @return [String]
-# @!attribute original_title
-#   @return [String]
 # @!attribute rating
 #   @return [Integer]
 # @!attribute slug
@@ -33,6 +31,10 @@
 #
 #  index_books_on_book_format_id  (book_format_id)
 #  index_books_on_slug            (slug) UNIQUE
+#
+# Foreign Keys
+#
+#  fk_rails_...  (book_format_id => book_formats.id)
 #
 class Book < ApplicationRecord
   validates :title, presence: true
