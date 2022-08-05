@@ -35,6 +35,7 @@ The following Gems are used in this project:
 - For active-storage, image_processing {https://rubygems.org/gems/image_processing} is used
 - for easy going back to previous pages, backpedal {https://rubygems.org/gems/backpedal}
 - to display URLs like /books/hobbit instead of /books/3, friendly_id {https://rubygems.org/gems/friendly_id}
+- pagy to paginate big collections {https://rubygems.org/gems/pagy}
 
 #### Development
 
@@ -54,7 +55,7 @@ The following Gems are used in this project:
 - CSS is processed using cssbundling-rails {https://rubygems.org/gems/cssbundling-rails}
 - Javascript is processed using jsbundling-rails {https://rubygems.org/gems/jsbundling-rails}
 - ViewComponents to replace partials {https://rubygems.org/gems/view_component}
-- pagy to paginate big collections {https://rubygems.org/gems/pagy}
+- RequestJS-rails to improve JS/Rails interaction {https://rubygems.org/gems/requestjs-rails}
 
 ### JS Packages
 

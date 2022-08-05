@@ -1,6 +1,6 @@
 import { Controller } from "@hotwired/stimulus";
 import Swal from "sweetalert2";
-import { getMetaValue } from "../helpers/index";
+import { destroy } from "@rails/request.js";
 
 // Connects to data-controller="sweetalert"
 export default class extends Controller {
@@ -11,7 +11,6 @@ export default class extends Controller {
 
   confirm(event) {
     event.preventDefault();
-    const csrfToken = getMetaValue("csrf-token");
 
     Swal.fire({
       titleText: "Are you sure?",
@@ -21,15 +20,15 @@ export default class extends Controller {
       confirmButtonColor: "#991c00",
       cancelButtonColor: "#407bbf",
       confirmButtonText: "Yes, delete it!",
-    }).then((result) => {
+    }).then(async (result) => {
       if (result.isConfirmed) {
-        fetch(this.urlValue, {
-          method: "DELETE",
-          credentials: "same-origin",
-          headers: {
-            "X-CSRF-Token": csrfToken,
-          },
+        const response = await destroy(this.urlValue, {
+          contentType: "text/vnd.turbo-stream.html",
+          responseKind: "turbo-stream",
         });
+        if (response.ok) {
+          console.log(response);
+        }
       }
     });
   }

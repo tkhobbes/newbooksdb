@@ -64,6 +64,7 @@ gem 'turbo-rails', '~> 1.1.1'
 gem 'cssbundling-rails', '~> 1.1.0'
 gem 'jsbundling-rails', '~> 1.0.2'
 gem 'sprockets-rails', '~> 3.4.2'
+gem 'requestjs-rails', '~> 0.0.9'
 
 # Rails / Ruby development gems
 gem 'view_component', '~> 2.61', '>= 2.61.1'
