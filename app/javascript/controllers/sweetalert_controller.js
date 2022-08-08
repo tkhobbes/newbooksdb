@@ -26,9 +26,9 @@ export default class extends Controller {
           contentType: "text/vnd.turbo-stream.html",
           responseKind: "turbo-stream",
         });
-        if (response.ok) {
-          console.log(response);
-        }
+        // if (response.ok) {
+        //   console.log(response);
+        // }
       }
     });
   }

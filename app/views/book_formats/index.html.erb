@@ -1,8 +1,10 @@
 <%= turbo_frame_tag 'settings-content' do %>
   <h3 class="heading4">Available book formats</h3>
   <ul class="simple-list width-33" id="book-formats">
-  <%= render 'new_form_entry' %>
-    <%= render @book_formats %>
+    <%= render 'new_form_entry' %>
+    <%= turbo_frame_tag 'format-list' do %>
+      <%= render @book_formats %>
+    <% end %>
   </ul>
 
   <h3 class="heading4 margin-top-1 margin-bottom-50">Default Book Format</h3>

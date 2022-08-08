@@ -49,7 +49,8 @@ class BookFormatsController < ApplicationController
     return if @book_format.id == 1 # prevent deletion of "Not specified"
     @book_format.destroy
     respond_to do |format|
-      format.turbo_stream { render turbo_stream: turbo_stream.remove(@book_format) }
+      # format.turbo_stream { render turbo_stream: turbo_stream.remove(@book_format) }
+      format.turbo_stream
       format.html { redirect_to book_formats_path, status: :see_other }
     end
   end
@@ -57,14 +58,22 @@ class BookFormatsController < ApplicationController
   # custom method to define the default book format (form display)
   def set_default
     @book_formats = BookFormat.all.order(:name)
+    respond_to do |format|
+      format.turbo_stream
+    end
   end
 
   # custom method to actually update the default book format
   def update_default
-    new_default = BookFormat.find_by(name: book_format_params[:name])
+    @new_default = BookFormat.find_by(name: book_format_params[:name])
     @default_book_format.update(fallback: false)
-    new_default.update(fallback: true)
-    redirect_to book_formats_path
+    @new_default.update(fallback: true)
+    @default_book_format = @new_default
+    @book_formats = BookFormat.all.order(:name)
+    respond_to do |format|
+      format.turbo_stream
+      format.html { redirect_to book_formats_path }
+    end
   end
 
   private
