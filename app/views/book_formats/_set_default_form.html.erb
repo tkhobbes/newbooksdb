@@ -1,0 +1,11 @@
+<div class="flexlist">
+  <%= link_to(
+    set_default_book_formats_path,
+    class: 'color-primary-dark'
+  ) do %>
+    <%= @default_book_format.name %>
+    <div class="icons">
+      <%= render 'shared/edit_icon', edit_path: set_default_book_formats_path %>
+    </div>
+  <% end %>
+</div>

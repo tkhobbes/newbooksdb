@@ -176,6 +176,7 @@ input[type="submit"].btn {
     @extend .bg-primary-dark;
     @extend .color-white;
     @extend .border-color-black;
+    @extend .margin-left-25;
     border-radius: $base-border-radius;
     font-family: var(--paragraph);
     padding: $padding-4 $padding-4;
@@ -184,6 +185,22 @@ input[type="submit"].btn {
     &:hover {
       @extend .bg-primary-light;
       @extend .color-primary-dark;
+    }
+  }
+
+  select {
+    @extend .bg-primary-light;
+    @extend .color-primary-dark;
+    @extend .border-color-black;
+    border-radius: $base-border-radius;
+    font-family: var(--paragraph);
+    padding: 0.1em;
+    cursor: pointer;
+
+    &:focus,
+    &:active,
+    &:focus-visible {
+      outline: none;
     }
   }
 }

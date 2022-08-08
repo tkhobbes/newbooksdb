@@ -1,4 +1,3 @@
 <%= turbo_frame_tag 'default-format' do %>
-      <%= @default_book_format.name %>
-      <%= link_to 'Change', set_default_book_formats_path %>
+      <%= render 'book_formats/set_default_form' %>
 <% end %>
