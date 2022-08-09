@@ -7,6 +7,7 @@ export default class extends Controller {
   static values = {
     item: String,
     url: String,
+    answer: String,
   };
 
   confirm(event) {
@@ -23,8 +24,11 @@ export default class extends Controller {
     }).then(async (result) => {
       if (result.isConfirmed) {
         const response = await destroy(this.urlValue, {
-          contentType: "text/vnd.turbo-stream.html",
-          responseKind: "turbo-stream",
+          contentType:
+            this.answerValue == "turbo"
+              ? "text/vnd.turbo-stream.html"
+              : "text/html",
+          responseKind: this.answerValue == "turbo" ? "turbo-stream" : "html",
         });
         // if (response.ok) {
         //   console.log(response);

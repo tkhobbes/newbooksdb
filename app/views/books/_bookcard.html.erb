@@ -7,14 +7,15 @@
         edit_path: edit_book_path(book),
         delete_path: book_path(book),
         item_name: book.title,
-        url: "/books/#{book.id}"
+        url: "/books/#{book.id}",
+        answer: "turbo"
       %>
       <div class="bookcard-big__title">
         <h2 class="heading3">
           <%= link_to(
             book.title,
             book_path(book),
-            data: { "turbo-frame": "_top" }
+            data: { turbo_frame: "_top" }
             )%>
         </h2>
         <div class="bookyear"><%= book.year %></div>

@@ -51,7 +51,7 @@ class BooksController < ApplicationController
     @book.destroy
     respond_to do |format|
       format.turbo_stream
-      format.html { redirect_to books_path }
+      format.html { redirect_to books_path, alert: 'Book removed', status: :see_other }
     end
   end
 
