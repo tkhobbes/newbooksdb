@@ -1,7 +1,8 @@
+<% data_content = { turbo_frame: "_top" } if answer == "html" %>
 <%= link_to(
   edit_path,
   class: "edit-icon",
-  data: { turbo_frame: "_top"}
+  data: data_content
   ) do %>
   <svg
     xmlns="http://www.w3.org/2000/svg"

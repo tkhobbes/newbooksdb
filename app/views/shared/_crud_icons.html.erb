@@ -1,5 +1,5 @@
 <div class="icons">
-  <%= render 'shared/edit_icon', edit_path: edit_path %>
+  <%= render 'shared/edit_icon', edit_path: edit_path, answer: answer %>
   <%= button_to "delete_path", method: :delete, title: "Remove Book",
             form: { data: {
               turbo_confirm: "Are you sure?",
