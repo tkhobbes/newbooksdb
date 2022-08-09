@@ -15,13 +15,13 @@
 #
 FactoryBot.define do
   factory :not_defined, class: BookFormat  do
-    format { 'Not defined'}
+    name { 'Not defined'}
   end
   factory :hardcover, class: BookFormat do
-    format { 'Hardcover' }
+    name { 'Hardcover' }
   end
 
   factory :softcover, class: BookFormat do
-    format { 'Softcover' }
+    name { 'Softcover' }
   end
 end
