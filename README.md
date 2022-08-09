@@ -54,7 +54,6 @@ The following Gems are used in this project:
 
 - CSS is processed using cssbundling-rails {https://rubygems.org/gems/cssbundling-rails}
 - Javascript is processed using jsbundling-rails {https://rubygems.org/gems/jsbundling-rails}
-- ViewComponents to replace partials {https://rubygems.org/gems/view_component}
 - RequestJS-rails to improve JS/Rails interaction {https://rubygems.org/gems/requestjs-rails}
 
 ### JS Packages

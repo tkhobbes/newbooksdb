@@ -49,8 +49,10 @@ class BooksController < ApplicationController
   # standard destroy method
   def destroy
     @book.destroy
-    flash[:alert] = 'Book removed'
-    redirect_to books_path, status: :see_other
+    respond_to do |format|
+      format.turbo_stream
+      format.html { redirect_to books_path }
+    end
   end
 
   private

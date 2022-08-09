@@ -1,7 +1,9 @@
 <%== pagy_nav(@pagy) %>
 
 <div class="flexlist">
-  <%= render(BookCardComponent.with_collection(@books)) %>
+  <% @books.each do |book| %>
+    <%= render('books/bookcard', book: book) %>
+  <% end %>
 </div>
 
 <%== pagy_nav(@pagy) %>

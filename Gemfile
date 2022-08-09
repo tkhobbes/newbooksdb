@@ -66,9 +66,6 @@ gem 'jsbundling-rails', '~> 1.0.2'
 gem 'sprockets-rails', '~> 3.4.2'
 gem 'requestjs-rails', '~> 0.0.9'
 
-# Rails / Ruby development gems
-gem 'view_component', '~> 2.61', '>= 2.61.1'
-
 # Image processing etc
 gem 'image_processing', '~> 1.12.2'
 
