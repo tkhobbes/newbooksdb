@@ -74,7 +74,8 @@ class BooksController < ApplicationController
       :condition,
       :year,
       :cover,
-      :synopsis
+      :synopsis,
+      :book_format_id
     )
   end
   # rubocop:enable Metrics/MethodLength

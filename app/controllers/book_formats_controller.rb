@@ -2,7 +2,7 @@
 
 class BookFormatsController < ApplicationController
   before_action :set_book_format, only: [:show, :edit, :update, :destroy]
-  before_action :set_default_book_format, only: [:index, :set_default, :update_default]
+  before_action :set_default_book_format, only: [:index, :set_default, :update_default, :destroy]
 
   # delete backlinks stack on book show page
   before_action :dissolve, only: [:index]
@@ -46,7 +46,12 @@ class BookFormatsController < ApplicationController
 
   #standard rails destroy action
   def destroy
-    return if @book_format.id == 1 # prevent deletion of "Not specified"
+    # check whether we want to delete the fall back format
+    return if @book_format.id == @default_book_format.id
+    books_with_format = @book_format.books
+    books_with_format.each do |b|
+      b.update(book_format: @default_book_format)
+    end
     @book_format.destroy
     respond_to do |format|
       # format.turbo_stream { render turbo_stream: turbo_stream.remove(@book_format) }
