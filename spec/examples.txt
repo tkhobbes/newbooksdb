@@ -28,7 +28,7 @@ example_id                                            | status  | run_time      
 ./spec/requests/books_spec.rb[1:1:1:4:2]              | passed  | 0.04372 seconds |
 ./spec/requests/settings_spec.rb[1:1:1]               | passed  | 0.19172 seconds |
 ./spec/views/book_formats/index.html.erb_spec.rb[1:1] | pending | 0.00001 seconds |
-./spec/views/books/index.html.erb_spec.rb[1:1:1]      | failed  | 0.00002 seconds |
-./spec/views/books/new.html.erb_spec.rb[1:1:1]        | passed  | 0.1938 seconds  |
-./spec/views/books/show.html.erb_spec.rb[1:1:1]       | passed  | 0.03634 seconds |
+./spec/views/books/index.html.erb_spec.rb[1:1:1]      | failed  | 9.74 seconds    |
+./spec/views/books/new.html.erb_spec.rb[1:1:1]        | passed  | 0.0814 seconds  |
+./spec/views/books/show.html.erb_spec.rb[1:1:1]       | passed  | 0.16422 seconds |
 ./spec/views/settings/index.html.erb_spec.rb[1:1]     | pending | 0.00004 seconds |

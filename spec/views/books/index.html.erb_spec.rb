@@ -6,7 +6,8 @@ RSpec.describe 'books/index.html.erb', type: :view do
   include Pagy::Backend
 
   before(:all) do
-    @pagy, @books = pagy(Array.new(3) { create(:random_book) })
+    3.times { FactoryBot.create(:random_book) }
+    @pagy, @books = pagy(Book.all)
   end
 
   context 'Index page' do

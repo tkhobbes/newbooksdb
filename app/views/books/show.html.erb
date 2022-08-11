@@ -12,7 +12,8 @@
           delete_path: book_path(@book),
           item_name: @book.title,
           url: "/books/#{@book.id}",
-          answer: "html"
+          answer: "html",
+          use_turbo: false
         %>
     </div>
     <h2 class="heading4"><%= original_title(@book) %></h2>

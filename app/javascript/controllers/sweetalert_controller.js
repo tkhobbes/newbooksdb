@@ -1,6 +1,7 @@
 import { Controller } from "@hotwired/stimulus";
 import Swal from "sweetalert2";
 import { destroy } from "@rails/request.js";
+import { Turbo } from "@hotwired/turbo-rails";
 
 // Connects to data-controller="sweetalert"
 export default class extends Controller {
@@ -11,6 +12,8 @@ export default class extends Controller {
   };
 
   confirm(event) {
+    console.log(this.urlValue);
+    console.log(this.answerValue);
     event.preventDefault();
 
     Swal.fire({
@@ -30,9 +33,9 @@ export default class extends Controller {
               : "text/html",
           responseKind: this.answerValue == "turbo" ? "turbo-stream" : "html",
         });
-        // if (response.ok) {
-        //   console.log(response);
-        // }
+        if (response.ok && this.answerValue == "html") {
+          Turbo.visit("/books");
+        }
       }
     });
   }
