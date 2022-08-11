@@ -18,8 +18,9 @@
     </div>
     <h2 class="heading4"><%= original_title(@book) %></h2>
     <div class="medium-small">
-      <%= @book.year %>
+      <%= @book.book_format.name %>
       <%= @book.edition %>
+      <%= @book.year %>
     </div>
     <div class="genre-list">
       <span class="genre">

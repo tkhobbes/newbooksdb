@@ -28,6 +28,7 @@
       padding: $padding-2 $padding-2;
       @extend .border-color-primary;
       @extend .color-black;
+      @extend .bg-white;
       border-radius: $base-border-radius;
       width: 100%;
 
@@ -79,6 +80,22 @@
 
     input[type="radio"] {
       display: none;
+    }
+  }
+
+  select {
+    @extend .bg-white;
+    @extend .color-black;
+    @extend .border-color-primary;
+    border-radius: $base-border-radius;
+    font-family: var(--paragraph);
+    padding: 0.1em;
+    cursor: pointer;
+
+    &:focus,
+    &:active,
+    &:focus-visible {
+      outline: none;
     }
   }
 }
