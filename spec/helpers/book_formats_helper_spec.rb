@@ -13,5 +13,10 @@ require 'rails_helper'
 #   end
 # end
 RSpec.describe BookFormatsHelper, type: :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  before(:all) do
+    @book_format = create(:not_defined)
+  end
+  it 'displays "(default)" if format is defined as fallback' do
+    expect(is_fallback(@book_format)).to eq(' (default)')
+  end
 end

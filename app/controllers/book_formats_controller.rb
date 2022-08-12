@@ -46,17 +46,16 @@ class BookFormatsController < ApplicationController
 
   #standard rails destroy action
   def destroy
-    # check whether we want to delete the fall back format
-    return if @book_format.id == @default_book_format.id
-    books_with_format = @book_format.books
-    books_with_format.each do |b|
-      b.update(book_format: @default_book_format)
-    end
     @book_format.destroy
-    respond_to do |format|
-      # format.turbo_stream { render turbo_stream: turbo_stream.remove(@book_format) }
-      format.turbo_stream
-      format.html { redirect_to book_formats_path, status: :see_other }
+    if @book_format.destroyed?
+      respond_to do |format|
+        # format.turbo_stream { render turbo_stream: turbo_stream.remove(@book_format) }
+        format.turbo_stream
+        format.html { redirect_to book_formats_path, status: :see_other }
+      end
+    else
+      # in the rare occasion where the format is not deleted - as it is the default - ensure that the corresponding turbo stream is not removed
+      render json: { nothing: true }
     end
   end
 

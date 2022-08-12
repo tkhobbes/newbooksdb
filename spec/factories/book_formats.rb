@@ -16,6 +16,7 @@
 FactoryBot.define do
   factory :not_defined, class: BookFormat  do
     name { 'Not defined'}
+    fallback { true }
   end
   factory :hardcover, class: BookFormat do
     name { 'Hardcover' }

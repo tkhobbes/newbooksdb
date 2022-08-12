@@ -15,14 +15,23 @@
 #
 class BookFormat < ApplicationRecord
   validates :name, presence: true
+  before_destroy :destroy_fallback
 
   # relation to other models
   # rubocop:disable Rails/HasManyOrHasOneDependent
   has_many :books
   # rubocop:enable Rails/HasManyOrHasOneDependent
 
+  private
   # ensure that all books are assigned to the book format "not specified"
-  before_destroy do
-    # Book.update_all(book_format_id: 1)
+  def destroy_fallback
+    unless self.fallback?
+      format_fallback = BookFormat.find_by(fallback: true)
+      Book.where(book_format_id: self.id).update(book_format_id: format_fallback.id)
+    else
+      errors.add(:base, :undestroyable)
+      throw :abort
+    end
   end
+
 end
