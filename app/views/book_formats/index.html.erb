@@ -1,20 +1,23 @@
-<%= turbo_frame_tag 'settings-content' do %>
-  <h3 class="heading4">Available book formats</h3>
-  <ul class="simple-list width-33" id="book-formats">
-    <%= render 'new_form_entry' %>
-    <%= turbo_frame_tag 'format-list' do %>
-      <%= render @book_formats %>
-    <% end %>
-  </ul>
-
-  <h3 class="heading4 margin-top-1 margin-bottom-50">Default Book Format</h3>
-  <ul class="simple-list width-25">
-    <li>
-      <%= turbo_frame_tag 'default-format' do %>
-        <%= render 'book_formats/set_default_form' %>
+<h2 class="heading3">Settings</h3>
+<%= render 'settings/settings_menu' %>
+  <div class="submenucontent">
+    <h3 class="heading4">Available book formats</h3>
+    <ul class="simple-list width-33" id="book-formats">
+      <%= render 'new_form_entry' %>
+      <%= turbo_frame_tag 'format-list' do %>
+        <%= render @book_formats %>
       <% end %>
-    </li>
-  </ul>
+    </ul>
 
-<% end %>
+    <h3 class="heading4 margin-top-1 margin-bottom-50">Default Book Format</h3>
+    <ul class="simple-list width-25">
+      <li>
+        <%= turbo_frame_tag 'default-format' do %>
+          <%= render 'book_formats/set_default_form' %>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+</div>
+
 

@@ -1,24 +1,5 @@
 <h2 class="heading3">Settings</h3>
-<div class="submenugrid">
-  <div class="submenu">
-    <ul>
-      <li><a href="#">Shelves</a></li>
-      <li>
-        <%= link_to(
-          'Book Formats',
-          book_formats_path,
-          data: {
-            turbo_frame: 'settings-content'
-          }
-        )
-        %>
-      </li>
-      <li><a href="#">Blah</a></li>
-      <li><a href="#">Blubb</a></li>
-    </ul>
-  </div>
+<%= render 'settings_menu' %>
   <div class="submenucontent">
-    <%= turbo_frame_tag 'settings-content' do %>
-    <% end %>
   </div>
 </div>
