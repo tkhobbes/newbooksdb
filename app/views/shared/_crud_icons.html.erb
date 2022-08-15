@@ -2,14 +2,8 @@
   <%= render 'shared/edit_icon', edit_path: edit_path, answer: answer %>
   <%= button_to delete_path, method: :delete, title: "Remove Book",
             form: { data: {
-              turbo_confirm: "Are you sure?",
-              turbo: use_turbo,
-              controller: "sweetalert",
-              action: 'click->sweetalert#confirm',
-              "sweetalert-item-value": item_name,
-              "sweetalert-url-value": url,
-              "sweetalert-redirect-value": redirect_url,
-              "sweetalert-answer-value": answer
+              turbo_confirm: "You are about to delete \"#{item_name}\"",
+              confirm_button_text: "Delete"
             } },
             class: "delete-icon nobutton" do %>
     <svg

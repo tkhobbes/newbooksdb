@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus";
 import Swal from "sweetalert2";
 import { destroy } from "@rails/request.js";
-import { Turbo } from "@hotwired/turbo-rails";
+import * as Turbo from "@hotwired/turbo-rails";
 
 // Connects to data-controller="sweetalert"
 export default class extends Controller {
