@@ -9,6 +9,7 @@ export default class extends Controller {
     item: String,
     url: String,
     answer: String,
+    redirect: String,
   };
 
   confirm(event) {
@@ -34,7 +35,7 @@ export default class extends Controller {
           responseKind: this.answerValue == "turbo" ? "turbo-stream" : "html",
         });
         if (response.ok && this.answerValue == "html") {
-          Turbo.visit("/books");
+          Turbo.visit(this.redirectValue);
         }
       }
     });
