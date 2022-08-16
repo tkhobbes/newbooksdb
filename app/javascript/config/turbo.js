@@ -1,3 +1,6 @@
+import * as Turbo from "@hotwired/turbo"
+import Swal from "sweetalert2"
+
 // From Discord
 // Takes the following data-elements:
 // data-title-text
@@ -6,8 +9,6 @@
 // data-confirm-button-color
 // data-cancel-button-color
 // data-confirm-button-text
-import Swal from "sweetalert2";
-
 Turbo.setConfirmMethod((text, formElement) => {
   const defaults = {
     titleText: "Are you sure?",
