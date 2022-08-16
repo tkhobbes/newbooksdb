@@ -1,5 +1,5 @@
-import * as Turbo from "@hotwired/turbo"
-import Swal from "sweetalert2"
+import * as Turbo from "@hotwired/turbo";
+import Swal from "sweetalert2";
 
 // From Discord
 // Takes the following data-elements:
