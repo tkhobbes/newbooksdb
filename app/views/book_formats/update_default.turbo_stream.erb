@@ -1,6 +1,6 @@
-<%= turbo_stream.replace 'format-list' do %>
+<%= turbo_stream.update 'format-list' do %>
       <%= render @book_formats %>
 <% end %>
-<%= turbo_stream.replace 'default-format' do %>
+<%= turbo_stream.update 'default-format' do %>
       <%= render 'book_formats/set_default_form' %>
 <% end %>
