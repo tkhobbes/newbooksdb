@@ -64,6 +64,19 @@ SimpleForm.setup do |config|
     # b.use :full_error, wrap_with: { tag: :span, class: :error }
   end
 
+  config.wrappers :enum_radio,
+   hint_class: :field_with_hint, error_class: :field_with_errors, valid_class: :field_without_errors do |b|
+    # we need the radio button first, and then the label
+    # the label should not wrap the button
+    b.use :html5
+    b.use :placeholder
+    b.use :input
+
+    # copied from :default wrapper
+    b.use :hint,  wrap_with: { tag: :span, class: :hint }
+    b.use :error, wrap_with: { tag: :span, class: :error }
+  end
+
   # The default wrapper to be used by the FormBuilder.
   config.default_wrapper = :default
 
