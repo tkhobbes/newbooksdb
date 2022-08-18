@@ -20,9 +20,16 @@
             <%= f.input :edition, placeholder: 'Edition', label: false %>
           </div>
           <div class="form-col">
-            <%= f.association :book_format, label: false,
-              data_controller: 'book-format-select'
-             %>
+            <%= f.association(
+              :book_format,
+              label: false,
+              input_html:
+                { data:
+                  {
+                    controller: 'book-format-select'
+                  }
+                }
+            ) %>
           </div>
         </div>
         <div class="big-form">
