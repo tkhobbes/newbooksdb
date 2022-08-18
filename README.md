@@ -63,6 +63,7 @@ The following packages have to be added via yarn:
 - dropzone (for uploading images interactively) {https://www.dropzone.dev/js/}
 - noty (for nice animated notifications) {https://ned.im/noty/#/}
 - sweetalert2 to replace the boring browser dialogs {https://sweetalert2.github.io}
+- tom-select {h}ttps://tom-select.js.org} for the nice tag-like selection in form select fields - I used this guide: {https://blog.corsego.com/select-or-create-with-tom-select}
 
 Check package.json for all dependencies that were added.
 

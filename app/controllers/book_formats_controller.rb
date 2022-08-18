@@ -25,6 +25,7 @@ class BookFormatsController < ApplicationController
       if @book_format.save
         format.turbo_stream
         format.html { redirect_to book_format_path(@book_format) }
+        format.json { render json: @book_format }
       else
         format.html { render :new, status: :unprocessable_entity }
       end

@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import BookFormatSelectController from "./book_format_select_controller.js"
+application.register("book-format-select", BookFormatSelectController)
+
 import BurgermenuController from "./burgermenu_controller.js"
 application.register("burgermenu", BurgermenuController)
 
