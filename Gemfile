@@ -75,8 +75,6 @@ gem 'image_processing', '~> 1.12.2'
 gem 'pagy', '~> 5.10', '>= 5.10.1'
 # Simple form for form inputs
 gem 'simple_form', '~> 5.1'
-# simple form helpers for ENUMs
-gem 'enum_help', '~> 0.0.19'
 # go back to previous pages easily
 gem 'backpedal', '~> 0.2.1'
 # use nice IDs instead of numbers

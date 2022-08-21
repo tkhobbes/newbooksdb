@@ -71,6 +71,7 @@ SimpleForm.setup do |config|
     b.use :html5
     b.use :placeholder
     b.use :input
+    b.use :label
 
     # copied from :default wrapper
     b.use :hint,  wrap_with: { tag: :span, class: :hint }

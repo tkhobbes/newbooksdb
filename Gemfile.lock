@@ -106,8 +106,6 @@ GEM
     digest (3.1.0)
     docile (1.4.0)
     e2mmap (0.1.0)
-    enum_help (0.0.19)
-      activesupport (>= 3.0.0)
     erubi (1.10.0)
     factory_bot (6.2.1)
       activesupport (>= 5.0.0)
@@ -347,7 +345,6 @@ DEPENDENCIES
   database_cleaner-active_record (~> 2.0, >= 2.0.1)
   database_consistency (~> 1.1, >= 1.1.15)
   debug
-  enum_help (~> 0.0.19)
   factory_bot_rails (~> 6.2)
   faker (~> 2.21)
   friendly_id (~> 5.4, >= 5.4.2)

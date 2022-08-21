@@ -55,11 +55,29 @@
           <%= f.rich_text_area :synopsis %>
         </div>
       </div>
-      <div class="form-col">
-        <%= f.input :rating, as: :radio_buttons %>
+      <div class="form-col enum_radio_buttons">
+        <% Book.ratings.each do |k,v| %>
+          <span class="radio">
+            <%= f.radio_button :rating, k.to_sym, class: 'hidden-button' %>
+            <%= f.label :rating, for: "book_rating_#{k}" do %>
+              <span class="fake-button">
+              </span>
+              <%= k.humanize %>
+            <% end %>
+          </span>
+        <% end %>
       </div>
-      <div class="form-col">
-        <%= f.input :condition, as: :radio_buttons %>
+      <div class="form-col enum_radio_buttons">
+        <% Book.conditions.each do |k,v| %>
+          <span class="radio">
+            <%= f.radio_button :condition, k.to_sym, class: 'hidden-button' %>
+            <%= f.label :condition, for: "book_condition_#{k}" do %>
+              <span class="fake-button">
+              </span>
+              <%= k.humanize %>
+            <% end %>
+          </span>
+        <% end %>
       </div>
     </div>
     <%= f.button :submit, 'data-action': 'click->coverdrop#submitAll' %>

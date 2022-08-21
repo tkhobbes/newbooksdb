@@ -49,22 +49,21 @@
     display: flex;
     flex-direction: column;
 
-    & > label {
-      @extend .heading4;
-      margin-bottom: 0.5em;
-    }
-
     span.radio {
       position: relative;
       cursor: pointer;
       display: inline-block;
+
+      .hidden-button {
+        display: none;
+      }
 
       label {
         cursor: pointer;
         display: block;
         margin: 0 0 0.5em 1.5em;
 
-        &::before {
+        .fake-button {
           height: 1em;
           width: 1em;
           @extend .border-color-primary;
@@ -73,13 +72,26 @@
           position: absolute;
           left: 0;
           top: 0;
-          content: "";
+
+          &::after {
+            content: "";
+            display: block;
+            height: 0.7em;
+            width: 0.7em;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: $color-primary;
+            opacity: 0;
+          }
         }
       }
-    }
 
-    input[type="radio"] {
-      display: none;
+      .hidden-button:checked ~ label .fake-button::after {
+        opacity: 1;
+      }
     }
   }
 
