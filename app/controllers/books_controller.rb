@@ -7,6 +7,9 @@ class BooksController < ApplicationController
   # delete backlinks stack on book show page
   before_action :dissolve, only: [:show]
 
+  # allow for turbo frame variants
+  before_action :turbo_frame_request_variant
+
   # standard index method - show all books
   # books ordered by sort_title; additional variable @pagy for pagination
   def index
@@ -56,6 +59,11 @@ class BooksController < ApplicationController
   end
 
   private
+
+  # enable turbo frame variants
+  def turbo_frame_request_variant
+    request.variant = :turbo_frame if turbo_frame_request?
+  end
 
   # define an instance variable @book
   def set_book

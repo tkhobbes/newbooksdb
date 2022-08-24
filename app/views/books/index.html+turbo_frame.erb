@@ -1,0 +1,12 @@
+<%= turbo_frame_tag 'page' do %>
+  <%= turbo_stream_action_tag(
+    'append',
+    target: 'books',
+    template: %(#{render @books})
+  ) %>
+  <%= turbo_stream_action_tag(
+    'replace',
+    target: 'pager',
+    template: %(#{render 'shared/pager', pagy: @pagy})
+    ) %>
+<% end %>

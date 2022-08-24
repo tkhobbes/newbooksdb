@@ -2,22 +2,22 @@
 // Run that command whenever you add a new controller or create them with
 // ./bin/rails generate stimulus controllerName
 
-import { application } from "./application"
+import { application } from "./application";
 
-import BookFormatSelectController from "./book_format_select_controller.js"
-application.register("book-format-select", BookFormatSelectController)
+import BookFormatSelectController from "./book_format_select_controller.js";
+application.register("book-format-select", BookFormatSelectController);
 
-import BurgermenuController from "./burgermenu_controller.js"
-application.register("burgermenu", BurgermenuController)
+import BurgermenuController from "./burgermenu_controller.js";
+application.register("burgermenu", BurgermenuController);
 
-import CoverdropController from "./coverdrop_controller.js"
-application.register("coverdrop", CoverdropController)
+import CoverdropController from "./coverdrop_controller.js";
+application.register("coverdrop", CoverdropController);
 
-import HelloController from "./hello_controller.js"
-application.register("hello", HelloController)
+import HelloController from "./hello_controller.js";
+application.register("hello", HelloController);
 
-import NotificationController from "./notification_controller.js"
-application.register("notification", NotificationController)
+import NotificationController from "./notification_controller.js";
+application.register("notification", NotificationController);
 
-import SweetalertController from "./sweetalert_controller.js"
-application.register("sweetalert", SweetalertController)
+import SweetalertController from "./sweetalert_controller.js";
+application.register("sweetalert", SweetalertController);

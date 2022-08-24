@@ -1,0 +1,13 @@
+<nav id="pager" class="pagy-nav pagination">
+  <% if pagy.next %>
+    <span class="page">
+        <%= link_to(
+          'Load more',
+          books_path(page: pagy.next),
+          data: {
+            turbo_frame: 'page'
+          }
+        ) %>
+    </span>
+  <% end %>
+</nav>

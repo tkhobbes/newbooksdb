@@ -1,9 +1,7 @@
-<%== pagy_nav(@pagy) %>
-
-<div class="flexlist">
-  <% @books.each do |book| %>
-    <%= render('books/bookcard', book: book) %>
-  <% end %>
+<%= turbo_frame_tag 'page' %>
+<div class="flexlist" id="books">
+  <%= render @books %>
 </div>
 
-<%== pagy_nav(@pagy) %>
+<%= render 'shared/pager', pagy: @pagy %>
+
