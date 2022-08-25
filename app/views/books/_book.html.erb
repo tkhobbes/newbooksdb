@@ -1,1 +1,3 @@
-<%= render('books/bookcard', book: book) %>
+<%= params[:show] == 'list' ?
+  render('books/booklist', book: book) :
+  render('books/bookcard', book: book) %>

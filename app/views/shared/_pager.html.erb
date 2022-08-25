@@ -3,7 +3,7 @@
     <span class="page">
         <%= link_to(
           'Load more',
-          books_path(page: pagy.next),
+          books_path(page: pagy.next, show: params[:show]),
           data: {
             turbo_frame: 'page'
           }

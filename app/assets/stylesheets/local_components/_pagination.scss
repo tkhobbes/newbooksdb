@@ -53,3 +53,10 @@
     @extend .color-grey;
   }
 }
+
+.list-select-type {
+  a.list-select-item {
+    display: block;
+    padding: 0.2em;
+  }
+}

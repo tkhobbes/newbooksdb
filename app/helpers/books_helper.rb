@@ -85,8 +85,11 @@ module BooksHelper
     end
   end
 
-  def trunc_synopsis(book)
-    truncate(strip_tags(book.synopsis.to_s), length: 100)
+  # shows the first <length> characters of the book synopsis.
+  # if no length is given, it is set to 100
+
+  def trunc_synopsis(book, length = 100)
+    truncate(strip_tags(book.synopsis.to_s), length: length)
   end
 
   private
