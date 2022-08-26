@@ -62,6 +62,10 @@ class Book < ApplicationRecord
   extend FriendlyId
   friendly_id :title, use: :slugged
 
+  # ensure cache is updated after creation and removal of book
+  after_create { Rails.cache.increment('books-count') }
+  after_destroy { Rails.cache.decrement('books-count') }
+
   private
 
   # Removes common leading words from the title and converts it to downcase

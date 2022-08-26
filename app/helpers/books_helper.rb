@@ -3,6 +3,11 @@
 # Book Helper module includes various view helpers
 module BooksHelper
 
+  # store the number of books in a cache
+  def books_count
+    Rails.cache.fetch('books-count') { Book.count }
+  end
+
   # returns the original title of a book in brackets if it is available
   # @return [String] (original title in brackets)
   def original_title(book)
