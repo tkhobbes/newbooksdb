@@ -31,7 +31,10 @@ class BooksController < ApplicationController
 
   # creation / storage of a new book
   def create
-    @book = Book.new(book_params)
+    book_params[:book_format_id].blank? ?
+      new_params = book_params.merge(book_format_id: BookFormat.find_by(fallback: true).id) :
+      new_params = book_params.clone
+    @book = Book.new(new_params)
 
     if @book.save
       flash[:success] = 'Book saved'

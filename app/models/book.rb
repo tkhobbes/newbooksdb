@@ -56,7 +56,7 @@ class Book < ApplicationRecord
   has_rich_text :synopsis
 
   # relationships to other models
-  belongs_to :book_format
+  belongs_to :book_format, optional: true
 
   # friendly ID uses slug
   extend FriendlyId
