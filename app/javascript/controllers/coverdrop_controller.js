@@ -11,6 +11,7 @@ import {
 } from "../helpers/index";
 
 // Connects to data-controller="coverdrop"
+// enables drag and drop attachments
 export default class extends Controller {
   static targets = ["input"];
 

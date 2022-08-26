@@ -4,6 +4,7 @@ import { destroy } from "@rails/request.js";
 import { Turbo } from "@hotwired/turbo-rails";
 
 // Connects to data-controller="sweetalert"
+// replaces boring "are you sure" with sweetalert modals
 export default class extends Controller {
   static values = {
     item: String,
@@ -13,8 +14,6 @@ export default class extends Controller {
   };
 
   confirm(event) {
-    console.log(this.urlValue);
-    console.log(this.answerValue);
     event.preventDefault();
 
     Swal.fire({

@@ -12,6 +12,7 @@ class BooksController < ApplicationController
 
   # standard index method - show all books
   # books ordered by sort_title; additional variable @pagy for pagination
+  # This method smells of :reek:DuplicateMethodCall
   def index
     if params[:show] == 'list'
       @pagy, @books = pagy(Book.includes([cover_attachment: :blob]).order(:sort_title), items: 20)
@@ -58,7 +59,7 @@ class BooksController < ApplicationController
     @book.destroy
     respond_to do |format|
       format.turbo_stream
-      format.html { redirect_to books_url, alert: "Book was successfully destroyed.", status: :see_other }
+      format.html { redirect_to books_url, alert: 'Book was successfully destroyed.', status: :see_other }
     end
   end
 

@@ -17,7 +17,7 @@ module BooksHelper
 
   # returns either the cover image of a book or a placeholder SVG
   # @return [String] (HTML image tag or SVG tag)
-  # This method smells of :reek:DublicateMethodCall
+  # This method smells of :reek:DuplicateMethodCall
   # This method smells of :reek:TooManyStatements
   # rubocop:disable Metrics/MethodLength
   def cover_image(book, options = {})
@@ -92,13 +92,13 @@ module BooksHelper
 
   # shows the first <length> characters of the book synopsis.
   # if no length is given, it is set to 100
-
-  def trunc_synopsis(book, length = 100)
-    truncate(strip_tags(book.synopsis.to_s), length: length)
+  def trunc_synopsis(book, characters = 100)
+    truncate(strip_tags(book.synopsis.to_s), length: characters)
   end
 
   private
 
+  # generates a SVG tag with the given class
   # rubocop:disable Metrics/MethodLength
   def generate_book_cover_svg(css)
     content_tag(

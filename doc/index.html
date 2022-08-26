@@ -75,11 +75,22 @@ Fields:</p>
 <ul>
   <li>Title (not null) - the title of the book. Must be unique in the DB (i. e. no book can exist twice)</li>
   <li>Sort Title: Automatically generated from the title (lowercased and leading articles removed). Must also not be null</li>
+  <li>slug: The slug to use in the books URL</li>
   <li>Original title: If the book was originally published in another language</li>
   <li>Year: The publishing year of a book (integer)</li>
   <li>Rating: An integer, used as an ENUM: not rated (0), hated (1), bad (2), ok (3), good (4), favourite (5)</li>
   <li>Condition: The physical condition of the book, used as an ENUM: not given (0), damaged (1), used_bad (2), used (3), used_ok (4), like_new (5)</li>
   <li>Edition: Free text string - first, second edition, etc etc.</li>
+</ul>
+
+<h4 id="book-format">Book Format</h4>
+
+<p>Model that holds the format of a book (hardcover, softcover, paperback etc). Every book belongs to a book_format and every format has many books.
+Fields:</p>
+
+<ul>
+  <li>name: Free text string, the name of the format (“hardcover”)</li>
+  <li>fallback: boolean. This defines the “default” (or “fallback”) format that is used if there is no format given, but also that is used for any books of a format if that format is deleted</li>
 </ul>
 
 <h3 id="ruby-version">Ruby Version</h3>
@@ -93,48 +104,69 @@ Fields:</p>
 <h4 id="application">Application</h4>
 
 <ul>
-  <li>For active-storage, image_processing <a href="https://rubygems.org/gems/image_processing" target="_parent" title="https://rubygems.org/gems/image_processing">https://rubygems.org/gems/image_processing</a> is used</li>
+  <li>For active-storage, image_processing { https://rubygems.org/gems/image_processing } is used</li>
+  <li>for easy going back to previous pages, backpedal { https://rubygems.org/gems/backpedal }</li>
+  <li>to display URLs like /books/hobbit instead of /books/3, friendly_id { https://rubygems.org/gems/friendly_id }</li>
+  <li>pagy to paginate big collections { https://rubygems.org/gems/pagy }. The “load more” concept is coming from here: { https://dev.to/davidcolbyatx/pagination-and-infinite-scrolling-with-rails-and-the-hotwire-stack-34om }</li>
 </ul>
 
 <h4 id="development">Development</h4>
 
 <ul>
-  <li>For formatting and linting, solargraph <a href="https://rubygems.org/gems/solargraph" target="_parent" title="https://rubygems.org/gems/solargraph">https://rubygems.org/gems/solargraph</a>, solargraph-rails <a href="https://rubygems.org/gems/solargraph-rails" target="_parent" title="https://rubygems.org/gems/solargraph-rails">https://rubygems.org/gems/solargraph-rails</a>, rubocop <a href="https://rubygems.org/gems/rubocop" target="_parent" title="https://rubygems.org/gems/rubocop">https://rubygems.org/gems/rubocop</a>, rubocop-rails <a href="https://rubygems.org/gems/rubocop-rails" target="_parent" title="https://rubygems.org/gems/rubocop-rails">https://rubygems.org/gems/rubocop-rails</a> and rubocop-performance <a href="https://rubygems.org/gems/rubocop-performance" target="_parent" title="https://rubygems.org/gems/rubocop-performance">https://rubygems.org/gems/rubocop-performance</a> are included.</li>
-  <li>Annotate <a href="https://rubygems.org/gems/annotate" target="_parent" title="https://rubygems.org/gems/annotate">https://rubygems.org/gems/annotate</a> is used to auto-annotate models and routes</li>
-  <li>Yard <a href="https://rubygems.org/gems/yard" target="_parent" title="https://rubygems.org/gems/yard">https://rubygems.org/gems/yard</a> is used for documentation</li>
-  <li>Rails-ERD <a href="https://rubygems.org/gems/rails-erd" target="_parent" title="https://rubygems.org/gems/rails-erd">https://rubygems.org/gems/rails-erd</a> is used to draw the entity relationship diagrams as a PDF</li>
-  <li>Bullet <a href="https://rubygems.org/gems/bullet" target="_parent" title="https://rubygems.org/gems/bullet">https://rubygems.org/gems/bullet</a> is used to detect N+1 issues.</li>
-  <li>Reek <a href="https://github.com/troessner/reek" target="_parent" title="https://github.com/troessner/reek">https://github.com/troessner/reek</a> to detect code smells</li>
-  <li>Database consistency checker <a href="https://rubygems.org/gems/database_consistency" target="_parent" title="https://rubygems.org/gems/database_consistency">https://rubygems.org/gems/database_consistency</a> is used to validate database constraints vs validations</li>
-  <li>Faker <a href="https://rubygems.org/gems/faker" target="_parent" title="https://rubygems.org/gems/faker">https://rubygems.org/gems/faker</a> to quickly generate data</li>
-  <li>Factory Bot <a href="https://rubygems.org/search?query=factory_bot_rails" target="_parent" title="https://rubygems.org/search?query=factory_bot_rails">https://rubygems.org/search?query=factory_bot_rails</a> to easily generate test data</li>
-  <li>Better_errors (and dependency binding_of_caller) for nicer error messages <a href="https://rubygems.org/gems/better_errors" target="_parent" title="https://rubygems.org/gems/better_errors">https://rubygems.org/gems/better_errors</a></li>
+  <li>For formatting and linting, solargraph { https://rubygems.org/gems/solargraph }, solargraph-rails { https://rubygems.org/gems/solargraph-rails }, rubocop { https://rubygems.org/gems/rubocop }, rubocop-rails { https://rubygems.org/gems/rubocop-rails } and rubocop-performance { https://rubygems.org/gems/rubocop-performance } are included.</li>
+  <li>Annotate { https://rubygems.org/gems/annotate } is used to auto-annotate models and routes</li>
+  <li>Yard { https://rubygems.org/gems/yard } is used for documentation</li>
+  <li>Rails-ERD { https://rubygems.org/gems/rails-erd } is used to draw the entity relationship diagrams as a PDF</li>
+  <li>Bullet { https://rubygems.org/gems/bullet } is used to detect N+1 issues.</li>
+  <li>Reek { https://github.com/troessner/reek } to detect code smells</li>
+  <li>Database consistency checker { https://rubygems.org/gems/database_consistency } is used to validate database constraints vs validations</li>
+  <li>Faker { https://rubygems.org/gems/faker } to quickly generate data</li>
+  <li>Factory Bot { https://rubygems.org/search?query=factory_bot_rails } to easily generate test data</li>
+  <li>Better_errors (and dependency binding_of_caller) for nicer error messages { https://rubygems.org/gems/better_errors }</li>
 </ul>
 
 <h4 id="core-rails--application">Core Rails / Application</h4>
 
 <ul>
-  <li>CSS is processed using cssbundling-rails <a href="https://rubygems.org/gems/cssbundling-rails" target="_parent" title="https://rubygems.org/gems/cssbundling-rails">https://rubygems.org/gems/cssbundling-rails</a></li>
-  <li>Javascript is processed using jsbundling-rails <a href="https://rubygems.org/gems/jsbundling-rails" target="_parent" title="https://rubygems.org/gems/jsbundling-rails">https://rubygems.org/gems/jsbundling-rails</a></li>
-  <li>ViewComponents to replace partials <a href="https://rubygems.org/gems/view_component" target="_parent" title="https://rubygems.org/gems/view_component">https://rubygems.org/gems/view_component</a></li>
-  <li>pagy to paginate big collections <a href="https://rubygems.org/gems/pagy" target="_parent" title="https://rubygems.org/gems/pagy">https://rubygems.org/gems/pagy</a></li>
+  <li>CSS is processed using cssbundling-rails { https://rubygems.org/gems/cssbundling-rails }</li>
+  <li>Javascript is processed using jsbundling-rails { https://rubygems.org/gems/jsbundling-rails }</li>
+  <li>RequestJS-rails to improve JS/Rails interaction { https://rubygems.org/gems/requestjs-rails }</li>
 </ul>
+
+<h3 id="js-packages"> JS Packages</h3>
+
+<p>The following packages have to be added via yarn:</p>
+
+<ul>
+  <li>dropzone (for uploading images interactively) { https://www.dropzone.dev/js/ }</li>
+  <li>noty (for nice animated notifications) { https://ned.im/noty/#/ }</li>
+  <li>sweetalert2 to replace the boring browser dialogs { https://sweetalert2.github.io }</li>
+  <li>tom-select { https://tom-select.js.org } for the nice tag-like selection in form select fields - I used this guide: { https://blog.corsego.com/select-or-create-with-tom-select }</li>
+</ul>
+
+<p>Check package.json for all dependencies that were added.</p>
 
 <h3 id="test-suite">Test Suite</h3>
 
-<p>RSpec is used for writing tests (using the rspec-rails gem <a href="https://github.com/rspec/rspec-rails" target="_parent" title="https://github.com/rspec/rspec-rails">https://github.com/rspec/rspec-rails</a>)
-RSpec is enhanced with Rails-controller-testing <a href="https://rubygems.org/gems/rails-controller-testing" target="_parent" title="https://rubygems.org/gems/rails-controller-testing">https://rubygems.org/gems/rails-controller-testing</a>
-Using Simplecov to analyze code coverage (<a href="https://rubygems.org/gems/simplecov" target="_parent" title="https://rubygems.org/gems/simplecov">https://rubygems.org/gems/simplecov</a>)</p>
+<ul>
+  <li>RSpec is used for writing tests (using the rspec-rails gem { https://github.com/rspec/rspec-rails })</li>
+  <li>
+    <ul>
+      <li>RSpec is enhanced with Rails-controller-testing { https://rubygems.org/gems/rails-controller-testing }
+Using Simplecov to analyze code coverage ({ https://rubygems.org/gems/simplecov })</li>
+    </ul>
+  </li>
+</ul>
 
 <h3 id="database-creation-and-initialization">Database creation and initialization</h3>
 
 <h3 id="styles-and-html">Styles and HTML</h3>
 
-<p>This project is partially based on normalize.css <a href="https://necolas.github.io/normalize.css/" target="_parent" title="https://necolas.github.io/normalize.css/">https://necolas.github.io/normalize.css/</a></p>
+<p>This project is partially based on normalize.css { https://necolas.github.io/normalize.css/ }</p>
 </div></div>
 
       <div id="footer">
-  Generated on Wed Jul 27 11:19:05 2022 by
+  Generated on Fri Aug 26 13:44:27 2022 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.28 (ruby-3.1.2).
 </div>

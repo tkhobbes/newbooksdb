@@ -2,6 +2,7 @@ import { Controller } from "@hotwired/stimulus";
 import Noty from "noty";
 
 // Connects to data-controller="notification"
+// enables noty for flash messages
 export default class extends Controller {
   static targets = ["type", "message"];
 

@@ -6,8 +6,10 @@
 #
 # @!attribute id
 #   @return []
-# @!attribute format
-#   @return [Integer]
+# @!attribute name
+#   @return [string]
+# @!attribute fallback
+#  @return [boolean]
 # @!attribute created_at
 #   @return [Time]
 # @!attribute updated_at
@@ -15,6 +17,8 @@
 #
 class BookFormat < ApplicationRecord
   validates :name, presence: true
+
+  # call method to ensure that we assign books to a fallback format if their format is destroyed
   before_destroy :destroy_fallback
 
   # relation to other models

@@ -1,11 +1,13 @@
 # frozen_string_literal: true
 
+# Standard Rails controller for the book format model
 class BookFormatsController < ApplicationController
-  before_action :set_book_format, only: [:show, :edit, :update, :destroy]
+  before_action :set_book_format, only: [:edit, :update, :destroy]
+  # ensure we know the default format for any method where it matters
   before_action :set_default_book_format, only: [:index, :set_default, :update_default, :destroy]
 
-  # delete backlinks stack on book show page
-  before_action :dissolve, only: [:index]
+  # delete backlinks stack on all bookformat actions except create
+  before_action :dissolve, except: [:new, :create]
 
   #index action - displayed in a turbo frame within the settings page
   def index
@@ -17,7 +19,12 @@ class BookFormatsController < ApplicationController
     @book_format = BookFormat.new
   end
 
-  #standard rails create action
+  #standard rails create action; answers to:
+  # -normal html (fallback and not used)
+  # -turbo stream - default response format, used on the settings page
+  # -json - used as we can create formats on the fly in the book form
+  # This method smells of :reek:DuplicateMethodCall
+  # This method smells of :reek:DTooManyStatements
   def create
     @book_format = BookFormat.new(book_format_params)
 
@@ -45,7 +52,10 @@ class BookFormatsController < ApplicationController
     end
   end
 
-  #standard rails destroy action
+  #standard rails destroy action - responds to
+  # -html (not used)
+  # -turbo-stream - default response format, used on the settings page
+  # This method smells of :reek:TooManyStatements
   def destroy
     @book_format.destroy
     if @book_format.destroyed?
@@ -55,7 +65,9 @@ class BookFormatsController < ApplicationController
         format.html { redirect_to book_formats_path, status: :see_other }
       end
     else
-      # in the rare occasion where the format is not deleted - as it is the default - ensure that the corresponding turbo stream is not removed
+      # in the rare occasion where the format is not deleted -
+      # as it is the default - ensure that the corresponding
+      # turbo stream is not removed
       render json: { nothing: true }
     end
   end
@@ -66,6 +78,7 @@ class BookFormatsController < ApplicationController
   end
 
   # custom method to actually update the default book format
+  # removes the fallback flag from the previous default book format
   def update_default
     @new_default = BookFormat.find_by(name: book_format_params[:name])
     @default_book_format.update(fallback: false)
@@ -81,10 +94,12 @@ class BookFormatsController < ApplicationController
     @book_format = BookFormat.find(params[:id])
   end
 
+  # retrieves the default format - the format with fallback = true
   def set_default_book_format
     @default_book_format = BookFormat.find_by(fallback: true)
   end
 
+  # standard rails safe parameter method
   def book_format_params
     params.require(:book_format).permit(:name, :fallback)
   end

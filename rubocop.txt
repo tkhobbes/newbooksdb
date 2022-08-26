@@ -1,4 +1,19 @@
 Inspecting 42 files
-..........................................
+................C..........W..............
 
-42 files inspected, no offenses detected
+Offenses:
+
+app/models/book_format.rb:32:8: C: [Correctable] Style/RedundantSelf: Redundant self detected.
+    if self.fallback?
+       ^^^^
+app/models/book_format.rb:37:34: C: [Correctable] Style/RedundantSelf: Redundant self detected.
+      Book.where(book_format_id: self.id).update(book_format_id: format_fallback.id)
+                                 ^^^^
+config/initializers/simple_form.rb:192:1: W: Lint/MissingCopEnableDirective: Re-enable Metrics/BlockLength cop with # rubocop:enable after disabling it.
+# rubocop:disable Metrics/BlockLength
+^
+config/initializers/simple_form.rb:192:1: W: [Correctable] Lint/RedundantCopDisableDirective: Unnecessary disabling of Metrics/BlockLength.
+# rubocop:disable Metrics/BlockLength
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+42 files inspected, 4 offenses detected, 3 offenses autocorrectable

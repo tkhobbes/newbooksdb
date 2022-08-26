@@ -2,6 +2,7 @@ import { Controller } from "@hotwired/stimulus";
 import TomSelect from "tom-select";
 
 // Connects to data-controller="book-format-select"
+// hooks tom-select to the book-format-select element
 export default class extends Controller {
   connect() {
     const selectInput = document.getElementById("book_book_format_id");

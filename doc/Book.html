@@ -89,6 +89,11 @@
 
   
   
+  <dl>
+      <dt>Extended by:</dt>
+      <dd>FriendlyId</dd>
+  </dl>
+  
   
   
   <dl>
@@ -115,7 +120,16 @@
 
 <p>Table name: books</p>
 
-<p>@author: tkhobbes</p>
+<p>Indexes</p>
+
+<pre class="code ruby"><code class="ruby">index_books_on_book_format_id  (book_format_id)
+index_books_on_slug            (slug) UNIQUE
+</code></pre>
+
+<p>Foreign Keys</p>
+
+<pre class="code ruby"><code class="ruby">fk_rails_...  (book_format_id =&gt; book_formats.id)
+</code></pre>
 
 
   </div>
@@ -129,6 +143,33 @@
 
   <h2>Instance Attribute Summary <small><a href="#" class="summary_toggle">collapse</a></small></h2>
   <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#book_format_id-instance_method" title="#book_format_id (instance method)">#<strong>book_format_id</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>[].</p>
+</div></span>
+  
+</li>
+
     
       <li class="public ">
   <span class="summary_signature">
@@ -236,6 +277,31 @@
   <span class="summary_signature">
     
       <a href="#rating-instance_method" title="#rating (instance method)">#<strong>rating</strong>  &#x21d2; Integer </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#slug-instance_method" title="#slug (instance method)">#<strong>slug</strong>  &#x21d2; String </a>
     
 
     
@@ -412,13 +478,147 @@
   
   
   
+  
   <div id="instance_attr_details" class="attr_details">
     <h2>Instance Attribute Details</h2>
     
       
-      <span id="condition=-instance_method"></span>
+      <span id="book_format_id=-instance_method"></span>
       <div class="method_details first">
-  <h3 class="signature first" id="condition-instance_method">
+  <h3 class="signature first" id="book_format_id-instance_method">
+  
+    #<strong>book_format_id</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns [].</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'><dl class="rdoc-list label-list"><dt>
+<dd></dd></dl>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/models/book.rb', line 39</span>
+
+<span class='kw'>class</span> <span class='const'><span class='object_link'><a href="" title="Book (class)">Book</a></span></span> <span class='op'>&lt;</span> <span class='const'><span class='object_link'><a href="ApplicationRecord.html" title="ApplicationRecord (class)">ApplicationRecord</a></span></span>
+  <span class='id identifier rubyid_validates'>validates</span> <span class='symbol'>:title</span><span class='comma'>,</span> <span class='label'>presence:</span> <span class='kw'>true</span>
+
+  <span class='id identifier rubyid_before_save'>before_save</span> <span class='symbol'>:create_sort_title</span>
+
+  <span class='id identifier rubyid_include'>include</span> <span class='const'><span class='object_link'><a href="Rateable.html" title="Rateable (module)">Rateable</a></span></span>
+
+  <span class='id identifier rubyid_enum'>enum</span> <span class='label'>condition:</span> <span class='lbrace'>{</span>
+        <span class='label'>like_new:</span> <span class='int'>5</span><span class='comma'>,</span>
+        <span class='label'>used_ok:</span> <span class='int'>4</span><span class='comma'>,</span>
+        <span class='label'>used:</span> <span class='int'>3</span><span class='comma'>,</span>
+        <span class='label'>used_bad:</span> <span class='int'>2</span><span class='comma'>,</span>
+        <span class='label'>damaged:</span> <span class='int'>1</span><span class='comma'>,</span>
+        <span class='label'>not_given:</span> <span class='int'>0</span>
+  <span class='rbrace'>}</span>
+
+  <span class='id identifier rubyid_has_one_attached'>has_one_attached</span> <span class='symbol'>:cover</span>
+  <span class='id identifier rubyid_has_rich_text'>has_rich_text</span> <span class='symbol'>:synopsis</span>
+
+  <span class='comment'># relationships to other models
+</span>  <span class='id identifier rubyid_belongs_to'>belongs_to</span> <span class='symbol'>:book_format</span>
+
+  <span class='comment'># friendly ID uses slug
+</span>  <span class='id identifier rubyid_extend'>extend</span> <span class='const'>FriendlyId</span>
+  <span class='id identifier rubyid_friendly_id'>friendly_id</span> <span class='symbol'>:title</span><span class='comma'>,</span> <span class='label'>use:</span> <span class='symbol'>:slugged</span>
+
+  <span class='comment'># ensure cache is updated after creation and removal of book
+</span>  <span class='id identifier rubyid_after_create'>after_create</span> <span class='lbrace'>{</span> <span class='const'>Rails</span><span class='period'>.</span><span class='id identifier rubyid_cache'>cache</span><span class='period'>.</span><span class='id identifier rubyid_increment'>increment</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>books-count</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+  <span class='id identifier rubyid_after_destroy'>after_destroy</span> <span class='lbrace'>{</span> <span class='const'>Rails</span><span class='period'>.</span><span class='id identifier rubyid_cache'>cache</span><span class='period'>.</span><span class='id identifier rubyid_decrement'>decrement</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>books-count</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+
+  <span class='id identifier rubyid_private'>private</span>
+
+  <span class='comment'># Removes common leading words from the title and converts it to downcase
+</span>  <span class='comment'># @return [String] The sort title (stored in DB)
+</span>  <span class='kw'>def</span> <span class='id identifier rubyid_create_sort_title'>create_sort_title</span>
+    <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_sort_title'>sort_title</span> <span class='op'>=</span> <span class='id identifier rubyid_title'>title</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^ein |^eine |^der |^die |^das |^the |^a |^an </span><span class='regexp_end'>/i</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>&#39;|&quot;|!|\?|-</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span>
+<span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>(?&lt;!\w) </span><span class='regexp_end'>/</span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_downcase'>downcase</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="condition=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="condition-instance_method">
   
     #<strong>condition</strong>  &#x21d2; <tt>Integer</tt> 
   
@@ -454,20 +654,6 @@
       <pre class="lines">
 
 
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
 39
 40
 41
@@ -480,10 +666,36 @@
 48
 49
 50
-51</pre>
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/book.rb', line 25</span>
+      <pre class="code"><span class="info file"># File 'app/models/book.rb', line 39</span>
 
 <span class='kw'>class</span> <span class='const'><span class='object_link'><a href="" title="Book (class)">Book</a></span></span> <span class='op'>&lt;</span> <span class='const'><span class='object_link'><a href="ApplicationRecord.html" title="ApplicationRecord (class)">ApplicationRecord</a></span></span>
   <span class='id identifier rubyid_validates'>validates</span> <span class='symbol'>:title</span><span class='comma'>,</span> <span class='label'>presence:</span> <span class='kw'>true</span>
@@ -504,12 +716,24 @@
   <span class='id identifier rubyid_has_one_attached'>has_one_attached</span> <span class='symbol'>:cover</span>
   <span class='id identifier rubyid_has_rich_text'>has_rich_text</span> <span class='symbol'>:synopsis</span>
 
+  <span class='comment'># relationships to other models
+</span>  <span class='id identifier rubyid_belongs_to'>belongs_to</span> <span class='symbol'>:book_format</span>
+
+  <span class='comment'># friendly ID uses slug
+</span>  <span class='id identifier rubyid_extend'>extend</span> <span class='const'>FriendlyId</span>
+  <span class='id identifier rubyid_friendly_id'>friendly_id</span> <span class='symbol'>:title</span><span class='comma'>,</span> <span class='label'>use:</span> <span class='symbol'>:slugged</span>
+
+  <span class='comment'># ensure cache is updated after creation and removal of book
+</span>  <span class='id identifier rubyid_after_create'>after_create</span> <span class='lbrace'>{</span> <span class='const'>Rails</span><span class='period'>.</span><span class='id identifier rubyid_cache'>cache</span><span class='period'>.</span><span class='id identifier rubyid_increment'>increment</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>books-count</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+  <span class='id identifier rubyid_after_destroy'>after_destroy</span> <span class='lbrace'>{</span> <span class='const'>Rails</span><span class='period'>.</span><span class='id identifier rubyid_cache'>cache</span><span class='period'>.</span><span class='id identifier rubyid_decrement'>decrement</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>books-count</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+
   <span class='id identifier rubyid_private'>private</span>
 
   <span class='comment'># Removes common leading words from the title and converts it to downcase
 </span>  <span class='comment'># @return [String] The sort title (stored in DB)
 </span>  <span class='kw'>def</span> <span class='id identifier rubyid_create_sort_title'>create_sort_title</span>
-    <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_sort_title'>sort_title</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_title'>title</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^ein |^eine |^der |^die |^das |^the |^a |^an </span><span class='regexp_end'>/i</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>&#39;|&quot;|!|\?|-</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>(?&lt;!\w) </span><span class='regexp_end'>/</span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_downcase'>downcase</span>
+    <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_sort_title'>sort_title</span> <span class='op'>=</span> <span class='id identifier rubyid_title'>title</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^ein |^eine |^der |^die |^das |^the |^a |^an </span><span class='regexp_end'>/i</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>&#39;|&quot;|!|\?|-</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span>
+<span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>(?&lt;!\w) </span><span class='regexp_end'>/</span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_downcase'>downcase</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -556,20 +780,6 @@
       <pre class="lines">
 
 
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
 39
 40
 41
@@ -582,10 +792,36 @@
 48
 49
 50
-51</pre>
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/book.rb', line 25</span>
+      <pre class="code"><span class="info file"># File 'app/models/book.rb', line 39</span>
 
 <span class='kw'>class</span> <span class='const'><span class='object_link'><a href="" title="Book (class)">Book</a></span></span> <span class='op'>&lt;</span> <span class='const'><span class='object_link'><a href="ApplicationRecord.html" title="ApplicationRecord (class)">ApplicationRecord</a></span></span>
   <span class='id identifier rubyid_validates'>validates</span> <span class='symbol'>:title</span><span class='comma'>,</span> <span class='label'>presence:</span> <span class='kw'>true</span>
@@ -606,12 +842,24 @@
   <span class='id identifier rubyid_has_one_attached'>has_one_attached</span> <span class='symbol'>:cover</span>
   <span class='id identifier rubyid_has_rich_text'>has_rich_text</span> <span class='symbol'>:synopsis</span>
 
+  <span class='comment'># relationships to other models
+</span>  <span class='id identifier rubyid_belongs_to'>belongs_to</span> <span class='symbol'>:book_format</span>
+
+  <span class='comment'># friendly ID uses slug
+</span>  <span class='id identifier rubyid_extend'>extend</span> <span class='const'>FriendlyId</span>
+  <span class='id identifier rubyid_friendly_id'>friendly_id</span> <span class='symbol'>:title</span><span class='comma'>,</span> <span class='label'>use:</span> <span class='symbol'>:slugged</span>
+
+  <span class='comment'># ensure cache is updated after creation and removal of book
+</span>  <span class='id identifier rubyid_after_create'>after_create</span> <span class='lbrace'>{</span> <span class='const'>Rails</span><span class='period'>.</span><span class='id identifier rubyid_cache'>cache</span><span class='period'>.</span><span class='id identifier rubyid_increment'>increment</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>books-count</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+  <span class='id identifier rubyid_after_destroy'>after_destroy</span> <span class='lbrace'>{</span> <span class='const'>Rails</span><span class='period'>.</span><span class='id identifier rubyid_cache'>cache</span><span class='period'>.</span><span class='id identifier rubyid_decrement'>decrement</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>books-count</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+
   <span class='id identifier rubyid_private'>private</span>
 
   <span class='comment'># Removes common leading words from the title and converts it to downcase
 </span>  <span class='comment'># @return [String] The sort title (stored in DB)
 </span>  <span class='kw'>def</span> <span class='id identifier rubyid_create_sort_title'>create_sort_title</span>
-    <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_sort_title'>sort_title</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_title'>title</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^ein |^eine |^der |^die |^das |^the |^a |^an </span><span class='regexp_end'>/i</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>&#39;|&quot;|!|\?|-</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>(?&lt;!\w) </span><span class='regexp_end'>/</span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_downcase'>downcase</span>
+    <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_sort_title'>sort_title</span> <span class='op'>=</span> <span class='id identifier rubyid_title'>title</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^ein |^eine |^der |^die |^das |^the |^a |^an </span><span class='regexp_end'>/i</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>&#39;|&quot;|!|\?|-</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span>
+<span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>(?&lt;!\w) </span><span class='regexp_end'>/</span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_downcase'>downcase</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -658,20 +906,6 @@
       <pre class="lines">
 
 
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
 39
 40
 41
@@ -684,10 +918,36 @@
 48
 49
 50
-51</pre>
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/book.rb', line 25</span>
+      <pre class="code"><span class="info file"># File 'app/models/book.rb', line 39</span>
 
 <span class='kw'>class</span> <span class='const'><span class='object_link'><a href="" title="Book (class)">Book</a></span></span> <span class='op'>&lt;</span> <span class='const'><span class='object_link'><a href="ApplicationRecord.html" title="ApplicationRecord (class)">ApplicationRecord</a></span></span>
   <span class='id identifier rubyid_validates'>validates</span> <span class='symbol'>:title</span><span class='comma'>,</span> <span class='label'>presence:</span> <span class='kw'>true</span>
@@ -708,12 +968,24 @@
   <span class='id identifier rubyid_has_one_attached'>has_one_attached</span> <span class='symbol'>:cover</span>
   <span class='id identifier rubyid_has_rich_text'>has_rich_text</span> <span class='symbol'>:synopsis</span>
 
+  <span class='comment'># relationships to other models
+</span>  <span class='id identifier rubyid_belongs_to'>belongs_to</span> <span class='symbol'>:book_format</span>
+
+  <span class='comment'># friendly ID uses slug
+</span>  <span class='id identifier rubyid_extend'>extend</span> <span class='const'>FriendlyId</span>
+  <span class='id identifier rubyid_friendly_id'>friendly_id</span> <span class='symbol'>:title</span><span class='comma'>,</span> <span class='label'>use:</span> <span class='symbol'>:slugged</span>
+
+  <span class='comment'># ensure cache is updated after creation and removal of book
+</span>  <span class='id identifier rubyid_after_create'>after_create</span> <span class='lbrace'>{</span> <span class='const'>Rails</span><span class='period'>.</span><span class='id identifier rubyid_cache'>cache</span><span class='period'>.</span><span class='id identifier rubyid_increment'>increment</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>books-count</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+  <span class='id identifier rubyid_after_destroy'>after_destroy</span> <span class='lbrace'>{</span> <span class='const'>Rails</span><span class='period'>.</span><span class='id identifier rubyid_cache'>cache</span><span class='period'>.</span><span class='id identifier rubyid_decrement'>decrement</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>books-count</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+
   <span class='id identifier rubyid_private'>private</span>
 
   <span class='comment'># Removes common leading words from the title and converts it to downcase
 </span>  <span class='comment'># @return [String] The sort title (stored in DB)
 </span>  <span class='kw'>def</span> <span class='id identifier rubyid_create_sort_title'>create_sort_title</span>
-    <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_sort_title'>sort_title</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_title'>title</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^ein |^eine |^der |^die |^das |^the |^a |^an </span><span class='regexp_end'>/i</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>&#39;|&quot;|!|\?|-</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>(?&lt;!\w) </span><span class='regexp_end'>/</span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_downcase'>downcase</span>
+    <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_sort_title'>sort_title</span> <span class='op'>=</span> <span class='id identifier rubyid_title'>title</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^ein |^eine |^der |^die |^das |^the |^a |^an </span><span class='regexp_end'>/i</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>&#39;|&quot;|!|\?|-</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span>
+<span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>(?&lt;!\w) </span><span class='regexp_end'>/</span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_downcase'>downcase</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -767,20 +1039,6 @@
       <pre class="lines">
 
 
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
 39
 40
 41
@@ -793,10 +1051,36 @@
 48
 49
 50
-51</pre>
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/book.rb', line 25</span>
+      <pre class="code"><span class="info file"># File 'app/models/book.rb', line 39</span>
 
 <span class='kw'>class</span> <span class='const'><span class='object_link'><a href="" title="Book (class)">Book</a></span></span> <span class='op'>&lt;</span> <span class='const'><span class='object_link'><a href="ApplicationRecord.html" title="ApplicationRecord (class)">ApplicationRecord</a></span></span>
   <span class='id identifier rubyid_validates'>validates</span> <span class='symbol'>:title</span><span class='comma'>,</span> <span class='label'>presence:</span> <span class='kw'>true</span>
@@ -817,12 +1101,24 @@
   <span class='id identifier rubyid_has_one_attached'>has_one_attached</span> <span class='symbol'>:cover</span>
   <span class='id identifier rubyid_has_rich_text'>has_rich_text</span> <span class='symbol'>:synopsis</span>
 
+  <span class='comment'># relationships to other models
+</span>  <span class='id identifier rubyid_belongs_to'>belongs_to</span> <span class='symbol'>:book_format</span>
+
+  <span class='comment'># friendly ID uses slug
+</span>  <span class='id identifier rubyid_extend'>extend</span> <span class='const'>FriendlyId</span>
+  <span class='id identifier rubyid_friendly_id'>friendly_id</span> <span class='symbol'>:title</span><span class='comma'>,</span> <span class='label'>use:</span> <span class='symbol'>:slugged</span>
+
+  <span class='comment'># ensure cache is updated after creation and removal of book
+</span>  <span class='id identifier rubyid_after_create'>after_create</span> <span class='lbrace'>{</span> <span class='const'>Rails</span><span class='period'>.</span><span class='id identifier rubyid_cache'>cache</span><span class='period'>.</span><span class='id identifier rubyid_increment'>increment</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>books-count</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+  <span class='id identifier rubyid_after_destroy'>after_destroy</span> <span class='lbrace'>{</span> <span class='const'>Rails</span><span class='period'>.</span><span class='id identifier rubyid_cache'>cache</span><span class='period'>.</span><span class='id identifier rubyid_decrement'>decrement</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>books-count</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+
   <span class='id identifier rubyid_private'>private</span>
 
   <span class='comment'># Removes common leading words from the title and converts it to downcase
 </span>  <span class='comment'># @return [String] The sort title (stored in DB)
 </span>  <span class='kw'>def</span> <span class='id identifier rubyid_create_sort_title'>create_sort_title</span>
-    <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_sort_title'>sort_title</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_title'>title</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^ein |^eine |^der |^die |^das |^the |^a |^an </span><span class='regexp_end'>/i</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>&#39;|&quot;|!|\?|-</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>(?&lt;!\w) </span><span class='regexp_end'>/</span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_downcase'>downcase</span>
+    <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_sort_title'>sort_title</span> <span class='op'>=</span> <span class='id identifier rubyid_title'>title</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^ein |^eine |^der |^die |^das |^the |^a |^an </span><span class='regexp_end'>/i</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>&#39;|&quot;|!|\?|-</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span>
+<span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>(?&lt;!\w) </span><span class='regexp_end'>/</span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_downcase'>downcase</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -869,20 +1165,6 @@
       <pre class="lines">
 
 
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
 39
 40
 41
@@ -895,10 +1177,36 @@
 48
 49
 50
-51</pre>
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/book.rb', line 25</span>
+      <pre class="code"><span class="info file"># File 'app/models/book.rb', line 39</span>
 
 <span class='kw'>class</span> <span class='const'><span class='object_link'><a href="" title="Book (class)">Book</a></span></span> <span class='op'>&lt;</span> <span class='const'><span class='object_link'><a href="ApplicationRecord.html" title="ApplicationRecord (class)">ApplicationRecord</a></span></span>
   <span class='id identifier rubyid_validates'>validates</span> <span class='symbol'>:title</span><span class='comma'>,</span> <span class='label'>presence:</span> <span class='kw'>true</span>
@@ -919,12 +1227,150 @@
   <span class='id identifier rubyid_has_one_attached'>has_one_attached</span> <span class='symbol'>:cover</span>
   <span class='id identifier rubyid_has_rich_text'>has_rich_text</span> <span class='symbol'>:synopsis</span>
 
+  <span class='comment'># relationships to other models
+</span>  <span class='id identifier rubyid_belongs_to'>belongs_to</span> <span class='symbol'>:book_format</span>
+
+  <span class='comment'># friendly ID uses slug
+</span>  <span class='id identifier rubyid_extend'>extend</span> <span class='const'>FriendlyId</span>
+  <span class='id identifier rubyid_friendly_id'>friendly_id</span> <span class='symbol'>:title</span><span class='comma'>,</span> <span class='label'>use:</span> <span class='symbol'>:slugged</span>
+
+  <span class='comment'># ensure cache is updated after creation and removal of book
+</span>  <span class='id identifier rubyid_after_create'>after_create</span> <span class='lbrace'>{</span> <span class='const'>Rails</span><span class='period'>.</span><span class='id identifier rubyid_cache'>cache</span><span class='period'>.</span><span class='id identifier rubyid_increment'>increment</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>books-count</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+  <span class='id identifier rubyid_after_destroy'>after_destroy</span> <span class='lbrace'>{</span> <span class='const'>Rails</span><span class='period'>.</span><span class='id identifier rubyid_cache'>cache</span><span class='period'>.</span><span class='id identifier rubyid_decrement'>decrement</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>books-count</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+
   <span class='id identifier rubyid_private'>private</span>
 
   <span class='comment'># Removes common leading words from the title and converts it to downcase
 </span>  <span class='comment'># @return [String] The sort title (stored in DB)
 </span>  <span class='kw'>def</span> <span class='id identifier rubyid_create_sort_title'>create_sort_title</span>
-    <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_sort_title'>sort_title</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_title'>title</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^ein |^eine |^der |^die |^das |^the |^a |^an </span><span class='regexp_end'>/i</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>&#39;|&quot;|!|\?|-</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>(?&lt;!\w) </span><span class='regexp_end'>/</span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_downcase'>downcase</span>
+    <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_sort_title'>sort_title</span> <span class='op'>=</span> <span class='id identifier rubyid_title'>title</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^ein |^eine |^der |^die |^das |^the |^a |^an </span><span class='regexp_end'>/i</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>&#39;|&quot;|!|\?|-</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span>
+<span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>(?&lt;!\w) </span><span class='regexp_end'>/</span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_downcase'>downcase</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="slug=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="slug-instance_method">
+  
+    #<strong>slug</strong>  &#x21d2; <tt>String</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/models/book.rb', line 39</span>
+
+<span class='kw'>class</span> <span class='const'><span class='object_link'><a href="" title="Book (class)">Book</a></span></span> <span class='op'>&lt;</span> <span class='const'><span class='object_link'><a href="ApplicationRecord.html" title="ApplicationRecord (class)">ApplicationRecord</a></span></span>
+  <span class='id identifier rubyid_validates'>validates</span> <span class='symbol'>:title</span><span class='comma'>,</span> <span class='label'>presence:</span> <span class='kw'>true</span>
+
+  <span class='id identifier rubyid_before_save'>before_save</span> <span class='symbol'>:create_sort_title</span>
+
+  <span class='id identifier rubyid_include'>include</span> <span class='const'><span class='object_link'><a href="Rateable.html" title="Rateable (module)">Rateable</a></span></span>
+
+  <span class='id identifier rubyid_enum'>enum</span> <span class='label'>condition:</span> <span class='lbrace'>{</span>
+        <span class='label'>like_new:</span> <span class='int'>5</span><span class='comma'>,</span>
+        <span class='label'>used_ok:</span> <span class='int'>4</span><span class='comma'>,</span>
+        <span class='label'>used:</span> <span class='int'>3</span><span class='comma'>,</span>
+        <span class='label'>used_bad:</span> <span class='int'>2</span><span class='comma'>,</span>
+        <span class='label'>damaged:</span> <span class='int'>1</span><span class='comma'>,</span>
+        <span class='label'>not_given:</span> <span class='int'>0</span>
+  <span class='rbrace'>}</span>
+
+  <span class='id identifier rubyid_has_one_attached'>has_one_attached</span> <span class='symbol'>:cover</span>
+  <span class='id identifier rubyid_has_rich_text'>has_rich_text</span> <span class='symbol'>:synopsis</span>
+
+  <span class='comment'># relationships to other models
+</span>  <span class='id identifier rubyid_belongs_to'>belongs_to</span> <span class='symbol'>:book_format</span>
+
+  <span class='comment'># friendly ID uses slug
+</span>  <span class='id identifier rubyid_extend'>extend</span> <span class='const'>FriendlyId</span>
+  <span class='id identifier rubyid_friendly_id'>friendly_id</span> <span class='symbol'>:title</span><span class='comma'>,</span> <span class='label'>use:</span> <span class='symbol'>:slugged</span>
+
+  <span class='comment'># ensure cache is updated after creation and removal of book
+</span>  <span class='id identifier rubyid_after_create'>after_create</span> <span class='lbrace'>{</span> <span class='const'>Rails</span><span class='period'>.</span><span class='id identifier rubyid_cache'>cache</span><span class='period'>.</span><span class='id identifier rubyid_increment'>increment</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>books-count</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+  <span class='id identifier rubyid_after_destroy'>after_destroy</span> <span class='lbrace'>{</span> <span class='const'>Rails</span><span class='period'>.</span><span class='id identifier rubyid_cache'>cache</span><span class='period'>.</span><span class='id identifier rubyid_decrement'>decrement</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>books-count</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+
+  <span class='id identifier rubyid_private'>private</span>
+
+  <span class='comment'># Removes common leading words from the title and converts it to downcase
+</span>  <span class='comment'># @return [String] The sort title (stored in DB)
+</span>  <span class='kw'>def</span> <span class='id identifier rubyid_create_sort_title'>create_sort_title</span>
+    <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_sort_title'>sort_title</span> <span class='op'>=</span> <span class='id identifier rubyid_title'>title</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^ein |^eine |^der |^die |^das |^the |^a |^an </span><span class='regexp_end'>/i</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>&#39;|&quot;|!|\?|-</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span>
+<span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>(?&lt;!\w) </span><span class='regexp_end'>/</span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_downcase'>downcase</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -971,20 +1417,6 @@
       <pre class="lines">
 
 
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
 39
 40
 41
@@ -997,10 +1429,36 @@
 48
 49
 50
-51</pre>
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/book.rb', line 25</span>
+      <pre class="code"><span class="info file"># File 'app/models/book.rb', line 39</span>
 
 <span class='kw'>class</span> <span class='const'><span class='object_link'><a href="" title="Book (class)">Book</a></span></span> <span class='op'>&lt;</span> <span class='const'><span class='object_link'><a href="ApplicationRecord.html" title="ApplicationRecord (class)">ApplicationRecord</a></span></span>
   <span class='id identifier rubyid_validates'>validates</span> <span class='symbol'>:title</span><span class='comma'>,</span> <span class='label'>presence:</span> <span class='kw'>true</span>
@@ -1021,12 +1479,24 @@
   <span class='id identifier rubyid_has_one_attached'>has_one_attached</span> <span class='symbol'>:cover</span>
   <span class='id identifier rubyid_has_rich_text'>has_rich_text</span> <span class='symbol'>:synopsis</span>
 
+  <span class='comment'># relationships to other models
+</span>  <span class='id identifier rubyid_belongs_to'>belongs_to</span> <span class='symbol'>:book_format</span>
+
+  <span class='comment'># friendly ID uses slug
+</span>  <span class='id identifier rubyid_extend'>extend</span> <span class='const'>FriendlyId</span>
+  <span class='id identifier rubyid_friendly_id'>friendly_id</span> <span class='symbol'>:title</span><span class='comma'>,</span> <span class='label'>use:</span> <span class='symbol'>:slugged</span>
+
+  <span class='comment'># ensure cache is updated after creation and removal of book
+</span>  <span class='id identifier rubyid_after_create'>after_create</span> <span class='lbrace'>{</span> <span class='const'>Rails</span><span class='period'>.</span><span class='id identifier rubyid_cache'>cache</span><span class='period'>.</span><span class='id identifier rubyid_increment'>increment</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>books-count</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+  <span class='id identifier rubyid_after_destroy'>after_destroy</span> <span class='lbrace'>{</span> <span class='const'>Rails</span><span class='period'>.</span><span class='id identifier rubyid_cache'>cache</span><span class='period'>.</span><span class='id identifier rubyid_decrement'>decrement</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>books-count</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+
   <span class='id identifier rubyid_private'>private</span>
 
   <span class='comment'># Removes common leading words from the title and converts it to downcase
 </span>  <span class='comment'># @return [String] The sort title (stored in DB)
 </span>  <span class='kw'>def</span> <span class='id identifier rubyid_create_sort_title'>create_sort_title</span>
-    <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_sort_title'>sort_title</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_title'>title</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^ein |^eine |^der |^die |^das |^the |^a |^an </span><span class='regexp_end'>/i</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>&#39;|&quot;|!|\?|-</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>(?&lt;!\w) </span><span class='regexp_end'>/</span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_downcase'>downcase</span>
+    <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_sort_title'>sort_title</span> <span class='op'>=</span> <span class='id identifier rubyid_title'>title</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^ein |^eine |^der |^die |^das |^the |^a |^an </span><span class='regexp_end'>/i</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>&#39;|&quot;|!|\?|-</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span>
+<span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>(?&lt;!\w) </span><span class='regexp_end'>/</span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_downcase'>downcase</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -1073,20 +1543,6 @@
       <pre class="lines">
 
 
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
 39
 40
 41
@@ -1099,10 +1555,36 @@
 48
 49
 50
-51</pre>
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/book.rb', line 25</span>
+      <pre class="code"><span class="info file"># File 'app/models/book.rb', line 39</span>
 
 <span class='kw'>class</span> <span class='const'><span class='object_link'><a href="" title="Book (class)">Book</a></span></span> <span class='op'>&lt;</span> <span class='const'><span class='object_link'><a href="ApplicationRecord.html" title="ApplicationRecord (class)">ApplicationRecord</a></span></span>
   <span class='id identifier rubyid_validates'>validates</span> <span class='symbol'>:title</span><span class='comma'>,</span> <span class='label'>presence:</span> <span class='kw'>true</span>
@@ -1123,12 +1605,24 @@
   <span class='id identifier rubyid_has_one_attached'>has_one_attached</span> <span class='symbol'>:cover</span>
   <span class='id identifier rubyid_has_rich_text'>has_rich_text</span> <span class='symbol'>:synopsis</span>
 
+  <span class='comment'># relationships to other models
+</span>  <span class='id identifier rubyid_belongs_to'>belongs_to</span> <span class='symbol'>:book_format</span>
+
+  <span class='comment'># friendly ID uses slug
+</span>  <span class='id identifier rubyid_extend'>extend</span> <span class='const'>FriendlyId</span>
+  <span class='id identifier rubyid_friendly_id'>friendly_id</span> <span class='symbol'>:title</span><span class='comma'>,</span> <span class='label'>use:</span> <span class='symbol'>:slugged</span>
+
+  <span class='comment'># ensure cache is updated after creation and removal of book
+</span>  <span class='id identifier rubyid_after_create'>after_create</span> <span class='lbrace'>{</span> <span class='const'>Rails</span><span class='period'>.</span><span class='id identifier rubyid_cache'>cache</span><span class='period'>.</span><span class='id identifier rubyid_increment'>increment</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>books-count</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+  <span class='id identifier rubyid_after_destroy'>after_destroy</span> <span class='lbrace'>{</span> <span class='const'>Rails</span><span class='period'>.</span><span class='id identifier rubyid_cache'>cache</span><span class='period'>.</span><span class='id identifier rubyid_decrement'>decrement</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>books-count</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+
   <span class='id identifier rubyid_private'>private</span>
 
   <span class='comment'># Removes common leading words from the title and converts it to downcase
 </span>  <span class='comment'># @return [String] The sort title (stored in DB)
 </span>  <span class='kw'>def</span> <span class='id identifier rubyid_create_sort_title'>create_sort_title</span>
-    <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_sort_title'>sort_title</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_title'>title</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^ein |^eine |^der |^die |^das |^the |^a |^an </span><span class='regexp_end'>/i</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>&#39;|&quot;|!|\?|-</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>(?&lt;!\w) </span><span class='regexp_end'>/</span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_downcase'>downcase</span>
+    <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_sort_title'>sort_title</span> <span class='op'>=</span> <span class='id identifier rubyid_title'>title</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^ein |^eine |^der |^die |^das |^the |^a |^an </span><span class='regexp_end'>/i</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>&#39;|&quot;|!|\?|-</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span>
+<span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>(?&lt;!\w) </span><span class='regexp_end'>/</span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_downcase'>downcase</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -1175,20 +1669,6 @@
       <pre class="lines">
 
 
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
 39
 40
 41
@@ -1201,10 +1681,36 @@
 48
 49
 50
-51</pre>
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/book.rb', line 25</span>
+      <pre class="code"><span class="info file"># File 'app/models/book.rb', line 39</span>
 
 <span class='kw'>class</span> <span class='const'><span class='object_link'><a href="" title="Book (class)">Book</a></span></span> <span class='op'>&lt;</span> <span class='const'><span class='object_link'><a href="ApplicationRecord.html" title="ApplicationRecord (class)">ApplicationRecord</a></span></span>
   <span class='id identifier rubyid_validates'>validates</span> <span class='symbol'>:title</span><span class='comma'>,</span> <span class='label'>presence:</span> <span class='kw'>true</span>
@@ -1225,12 +1731,24 @@
   <span class='id identifier rubyid_has_one_attached'>has_one_attached</span> <span class='symbol'>:cover</span>
   <span class='id identifier rubyid_has_rich_text'>has_rich_text</span> <span class='symbol'>:synopsis</span>
 
+  <span class='comment'># relationships to other models
+</span>  <span class='id identifier rubyid_belongs_to'>belongs_to</span> <span class='symbol'>:book_format</span>
+
+  <span class='comment'># friendly ID uses slug
+</span>  <span class='id identifier rubyid_extend'>extend</span> <span class='const'>FriendlyId</span>
+  <span class='id identifier rubyid_friendly_id'>friendly_id</span> <span class='symbol'>:title</span><span class='comma'>,</span> <span class='label'>use:</span> <span class='symbol'>:slugged</span>
+
+  <span class='comment'># ensure cache is updated after creation and removal of book
+</span>  <span class='id identifier rubyid_after_create'>after_create</span> <span class='lbrace'>{</span> <span class='const'>Rails</span><span class='period'>.</span><span class='id identifier rubyid_cache'>cache</span><span class='period'>.</span><span class='id identifier rubyid_increment'>increment</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>books-count</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+  <span class='id identifier rubyid_after_destroy'>after_destroy</span> <span class='lbrace'>{</span> <span class='const'>Rails</span><span class='period'>.</span><span class='id identifier rubyid_cache'>cache</span><span class='period'>.</span><span class='id identifier rubyid_decrement'>decrement</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>books-count</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+
   <span class='id identifier rubyid_private'>private</span>
 
   <span class='comment'># Removes common leading words from the title and converts it to downcase
 </span>  <span class='comment'># @return [String] The sort title (stored in DB)
 </span>  <span class='kw'>def</span> <span class='id identifier rubyid_create_sort_title'>create_sort_title</span>
-    <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_sort_title'>sort_title</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_title'>title</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^ein |^eine |^der |^die |^das |^the |^a |^an </span><span class='regexp_end'>/i</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>&#39;|&quot;|!|\?|-</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>(?&lt;!\w) </span><span class='regexp_end'>/</span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_downcase'>downcase</span>
+    <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_sort_title'>sort_title</span> <span class='op'>=</span> <span class='id identifier rubyid_title'>title</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^ein |^eine |^der |^die |^das |^the |^a |^an </span><span class='regexp_end'>/i</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>&#39;|&quot;|!|\?|-</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span>
+<span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>(?&lt;!\w) </span><span class='regexp_end'>/</span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_downcase'>downcase</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -1277,20 +1795,6 @@
       <pre class="lines">
 
 
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
 39
 40
 41
@@ -1303,10 +1807,36 @@
 48
 49
 50
-51</pre>
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/book.rb', line 25</span>
+      <pre class="code"><span class="info file"># File 'app/models/book.rb', line 39</span>
 
 <span class='kw'>class</span> <span class='const'><span class='object_link'><a href="" title="Book (class)">Book</a></span></span> <span class='op'>&lt;</span> <span class='const'><span class='object_link'><a href="ApplicationRecord.html" title="ApplicationRecord (class)">ApplicationRecord</a></span></span>
   <span class='id identifier rubyid_validates'>validates</span> <span class='symbol'>:title</span><span class='comma'>,</span> <span class='label'>presence:</span> <span class='kw'>true</span>
@@ -1327,12 +1857,24 @@
   <span class='id identifier rubyid_has_one_attached'>has_one_attached</span> <span class='symbol'>:cover</span>
   <span class='id identifier rubyid_has_rich_text'>has_rich_text</span> <span class='symbol'>:synopsis</span>
 
+  <span class='comment'># relationships to other models
+</span>  <span class='id identifier rubyid_belongs_to'>belongs_to</span> <span class='symbol'>:book_format</span>
+
+  <span class='comment'># friendly ID uses slug
+</span>  <span class='id identifier rubyid_extend'>extend</span> <span class='const'>FriendlyId</span>
+  <span class='id identifier rubyid_friendly_id'>friendly_id</span> <span class='symbol'>:title</span><span class='comma'>,</span> <span class='label'>use:</span> <span class='symbol'>:slugged</span>
+
+  <span class='comment'># ensure cache is updated after creation and removal of book
+</span>  <span class='id identifier rubyid_after_create'>after_create</span> <span class='lbrace'>{</span> <span class='const'>Rails</span><span class='period'>.</span><span class='id identifier rubyid_cache'>cache</span><span class='period'>.</span><span class='id identifier rubyid_increment'>increment</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>books-count</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+  <span class='id identifier rubyid_after_destroy'>after_destroy</span> <span class='lbrace'>{</span> <span class='const'>Rails</span><span class='period'>.</span><span class='id identifier rubyid_cache'>cache</span><span class='period'>.</span><span class='id identifier rubyid_decrement'>decrement</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>books-count</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+
   <span class='id identifier rubyid_private'>private</span>
 
   <span class='comment'># Removes common leading words from the title and converts it to downcase
 </span>  <span class='comment'># @return [String] The sort title (stored in DB)
 </span>  <span class='kw'>def</span> <span class='id identifier rubyid_create_sort_title'>create_sort_title</span>
-    <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_sort_title'>sort_title</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_title'>title</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^ein |^eine |^der |^die |^das |^the |^a |^an </span><span class='regexp_end'>/i</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>&#39;|&quot;|!|\?|-</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>(?&lt;!\w) </span><span class='regexp_end'>/</span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_downcase'>downcase</span>
+    <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_sort_title'>sort_title</span> <span class='op'>=</span> <span class='id identifier rubyid_title'>title</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^ein |^eine |^der |^die |^das |^the |^a |^an </span><span class='regexp_end'>/i</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>&#39;|&quot;|!|\?|-</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span>
+<span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>(?&lt;!\w) </span><span class='regexp_end'>/</span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_downcase'>downcase</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -1391,15 +1933,17 @@
       <pre class="lines">
 
 
-48
-49
-50</pre>
+73
+74
+75
+76</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/book.rb', line 48</span>
+      <pre class="code"><span class="info file"># File 'app/models/book.rb', line 73</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_create_sort_title'>create_sort_title</span>
-  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_sort_title'>sort_title</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_title'>title</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^ein |^eine |^der |^die |^das |^the |^a |^an </span><span class='regexp_end'>/i</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>&#39;|&quot;|!|\?|-</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>(?&lt;!\w) </span><span class='regexp_end'>/</span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_downcase'>downcase</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_sort_title'>sort_title</span> <span class='op'>=</span> <span class='id identifier rubyid_title'>title</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^ein |^eine |^der |^die |^das |^the |^a |^an </span><span class='regexp_end'>/i</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>&#39;|&quot;|!|\?|-</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span>
+<span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>(?&lt;!\w) </span><span class='regexp_end'>/</span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_downcase'>downcase</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1411,7 +1955,7 @@
 </div>
 
       <div id="footer">
-  Generated on Wed Jul 27 11:19:05 2022 by
+  Generated on Fri Aug 26 13:44:29 2022 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.28 (ruby-3.1.2).
 </div>
