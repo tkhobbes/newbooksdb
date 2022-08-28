@@ -15,11 +15,13 @@ gem 'tzinfo-data', platforms: %i[ mingw mswin x64_mingw jruby ]
 # gem "bcrypt", "~> 3.1.7"
 
 group :development, :test do
+  gem 'capybara', '~> 3.37', '>= 3.37.1'
   gem 'debug', platforms: %i[ mri mingw x64_mingw ]
   gem 'factory_bot_rails', '~> 6.2'
   gem 'faker', '~> 2.21'
   gem 'rails-controller-testing', '~> 1.0', '>= 1.0.5'
   gem 'rspec-rails', '~> 6.0.0.rc1'
+  gem 'webdrivers', '~> 5.0'
 end
 
 group :development do
