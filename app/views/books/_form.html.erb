@@ -27,7 +27,8 @@
                 { data:
                   {
                     controller: 'book-format-select'
-                  }
+                  },
+                  placeholder: 'Book Format'
                 }
             ) %>
           </div>
@@ -59,7 +60,7 @@
         <% Book.ratings.each do |k,v| %>
           <span class="radio">
             <%= f.radio_button :rating, k.to_sym, class: 'hidden-button' %>
-            <%= f.label :rating, for: "book_rating_#{k}" do %>
+            <%= f.label :rating, id: "label_rating_#{k}", for: "book_rating_#{k}" do %>
               <span class="fake-button">
               </span>
               <%= k.humanize %>
@@ -71,10 +72,10 @@
         <% Book.conditions.each do |k,v| %>
           <span class="radio">
             <%= f.radio_button :condition, k.to_sym, class: 'hidden-button' %>
-            <%= f.label :condition, for: "book_condition_#{k}" do %>
+            <%= f.label :condition, id: "label_condition_#{k}", for: "book_condition_#{k}" do %>
               <span class="fake-button">
               </span>
-              <%= k.humanize %>
+              ><%= k.humanize %>
             <% end %>
           </span>
         <% end %>

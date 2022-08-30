@@ -6,55 +6,46 @@ require 'rails_helper'
 RSpec.describe Book, type: :model do
 
   before(:all) do
-    @book = create(:hobbit)
-    @book2 = create(:a_prefix_book)
+    @book_model = create(:hobbit)
+    @book2_model = create(:a_prefix_book)
+    @book_model_no_format = create(:random_book)
   end
 
-  context 'validation tests' do
-    it 'is not valid without title' do
-      book = Book.new(year: 1937)
-      expect(book.valid?).to eq(false)
-    end
-
-    it 'is valid with title' do
-      book = Book.new(title: 'The Hobbit', book_format_id: 1)
-      expect(book.valid?).to eq(true)
-    end
-  end
-
-  context 'logic tests' do
+  context 'titles and slugs' do
     it 'removes prefixing words from sort_title' do
-      expect(@book.sort_title).to eq('hobbit')
-      expect(@book2.sort_title).to eq('wonderful life of an ant')
+      expect(@book_model.sort_title).to eq('hobbit')
+      expect(@book2_model.sort_title).to eq('wonderful life of an ant')
     end
 
+    it 'has a slug' do
+      expect(@book_model.slug).to eq('the-hobbit')
+    end
+  end
+
+  context 'ENUMs' do
     it 'defaults to not rated' do
-      expect(@book2.rating).to eq('not_rated')
+      expect(@book2_model.rating).to eq('not_rated')
     end
 
-      it 'translates rating to text' do
-        expect(@book.rating).to eq('favourite')
-      end
+    it 'translates rating to text' do
+      expect(@book_model.rating).to eq('favourite')
+    end
 
-      it 'responds to rated?' do
-        expect(@book.rated?).to eq(true)
-      end
+    it 'responds to rated? with true if book is rated' do
+      expect(@book_model.rated?).to eq(true)
+    end
 
-      it 'responds to not rated?' do
-        expect(@book2.rated?).to eq(false)
-      end
+    it 'responds to rated? with false if book is not rated' do
+      expect(@book2_model.rated?).to eq(false)
+    end
 
-      it 'defaults to condition none' do
-        expect(@book2.condition).to eq('not_given')
-      end
+    it 'defaults to condition "not_given"' do
+      expect(@book2_model.condition).to eq('not_given')
+    end
 
-      it 'translates condition to text' do
-        expect(@book.condition).to eq('used_ok')
-      end
-
-      it 'has a slug' do
-        expect(@book.slug).to eq('the-hobbit')
-      end
+    it 'translates condition to text' do
+      expect(@book_model.condition).to eq('used_ok')
+    end
   end
 
 end

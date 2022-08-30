@@ -1,7 +1,8 @@
 <div class="flexlist">
   <%= link_to(
     set_default_book_formats_path,
-    class: 'color-primary-dark'
+    class: 'color-primary-dark',
+    id: 'change-default'
   ) do %>
     <%= @default_book_format.name %>
     <div class="icons">
