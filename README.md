@@ -30,6 +30,14 @@ Fields:
 - name: Free text string, the name of the format ("hardcover")
 - fallback: boolean. This defines the "default" (or "fallback") format that is used if there is no format given, but also that is used for any books of a format if that format is deleted
 
+#### Users
+
+Model to store user data. Fields:
+
+- name: The username of a user (must be unique)
+- email: The email of a user (must be unique)
+- password_digest (for the has_secure_password method)
+
 ### Ruby Version
 
 This application is setup using Ruby v 3.1.2

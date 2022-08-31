@@ -6,13 +6,13 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.1.2'
 
 # Rails & Core Gems
+# Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
+gem 'bcrypt', '~> 3.1', '>= 3.1.18'
 gem 'bootsnap', require: false
 gem 'jbuilder', '~> 2.11.5'
 gem 'puma', '~> 5.6.4'
 gem 'rails', '~> 7.0.3'
 gem 'tzinfo-data', platforms: %i[ mingw mswin x64_mingw jruby ]
-# Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
-# gem "bcrypt", "~> 3.1.7"
 
 group :development, :test do
   gem 'capybara', '~> 3.37', '>= 3.37.1'

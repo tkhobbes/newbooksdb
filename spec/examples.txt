@@ -11,7 +11,8 @@ example_id                                    | status  | run_time              
 ./spec/models/book_spec.rb[1:2:4]             | passed  | 0.03109 seconds        |
 ./spec/models/book_spec.rb[1:2:5]             | passed  | 0.01322 seconds        |
 ./spec/models/book_spec.rb[1:2:6]             | passed  | 0.00947 seconds        |
-./spec/requests/book_formats_spec.rb[1:1]     | passed  | 0.05532 seconds        |
+./spec/models/user_spec.rb[1:1]               | passed  | 0.44779 seconds        |
+./spec/models/user_spec.rb[1:2]               | passed  | 0.01672 seconds        |
 ./spec/system/book_format_system_spec.rb[1:1] | passed  | 1.79 seconds           |
 ./spec/system/book_format_system_spec.rb[1:2] | passed  | 8.57 seconds           |
 ./spec/system/create_book_spec.rb[1:1]        | passed  | 4.94 seconds           |

@@ -6,7 +6,21 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-# First create some book formats
+# add two users
+User.create(
+  name: 'tkhobbes',
+  email: 'tkhobbes@gmail.com',
+  password: 'password',
+  password_confirmation: 'password'
+)
+User.create(
+  name: 'jdoe',
+  email: 'jdoe@example.com',
+  password: 'password',
+  password_confirmation: 'password'
+)
+
+# We need some book formats
 BookFormat.create(name: 'Not specified', fallback: true)
 BookFormat.create(name: 'Hardcover')
 BookFormat.create(name: 'Softcover')
