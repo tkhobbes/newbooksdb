@@ -412,9 +412,6 @@
       <pre class="lines">
 
 
-80
-81
-82
 83
 84
 85
@@ -425,10 +422,13 @@
 90
 91
 92
-93</pre>
+93
+94
+95
+96</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/books_controller.rb', line 80</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/books_controller.rb', line 83</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_book_params'>book_params</span>
   <span class='id identifier rubyid_params'>params</span><span class='period'>.</span><span class='id identifier rubyid_require'>require</span><span class='lparen'>(</span><span class='symbol'>:book</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_permit'>permit</span><span class='lparen'>(</span>
@@ -484,13 +484,19 @@
 39
 40
 41
-42</pre>
+42
+43
+44
+45</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'app/controllers/books_controller.rb', line 33</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_create'>create</span>
-  <span class='ivar'>@book</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Book.html" title="Book (class)">Book</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_book_params'>book_params</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_book_params'>book_params</span><span class='lbracket'>[</span><span class='symbol'>:book_format_id</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_blank?'>blank?</span> <span class='op'>?</span>
+    <span class='id identifier rubyid_new_params'>new_params</span> <span class='op'>=</span> <span class='id identifier rubyid_book_params'>book_params</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='label'>book_format_id:</span> <span class='const'><span class='object_link'><a href="BookFormat.html" title="BookFormat (class)">BookFormat</a></span></span><span class='period'>.</span><span class='id identifier rubyid_find_by'>find_by</span><span class='lparen'>(</span><span class='label'>fallback:</span> <span class='kw'>true</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span> <span class='op'>:</span>
+    <span class='id identifier rubyid_new_params'>new_params</span> <span class='op'>=</span> <span class='id identifier rubyid_book_params'>book_params</span><span class='period'>.</span><span class='id identifier rubyid_clone'>clone</span>
+  <span class='ivar'>@book</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Book.html" title="Book (class)">Book</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_new_params'>new_params</span><span class='rparen'>)</span>
 
   <span class='kw'>if</span> <span class='ivar'>@book</span><span class='period'>.</span><span class='id identifier rubyid_save'>save</span>
     <span class='id identifier rubyid_flash'>flash</span><span class='lbracket'>[</span><span class='symbol'>:success</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Book saved</span><span class='tstring_end'>&#39;</span></span>
@@ -530,16 +536,16 @@
       <pre class="lines">
 
 
-58
-59
-60
 61
 62
 63
-64</pre>
+64
+65
+66
+67</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/books_controller.rb', line 58</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/books_controller.rb', line 61</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_destroy'>destroy</span>
   <span class='ivar'>@book</span><span class='period'>.</span><span class='id identifier rubyid_destroy'>destroy</span>
@@ -579,10 +585,10 @@
       <pre class="lines">
 
 
-45</pre>
+48</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/books_controller.rb', line 45</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/books_controller.rb', line 48</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_edit'>edit</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -706,12 +712,12 @@
       <pre class="lines">
 
 
-74
-75
-76</pre>
+77
+78
+79</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/books_controller.rb', line 74</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/books_controller.rb', line 77</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_set_book'>set_book</span>
   <span class='ivar'>@book</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Book.html" title="Book (class)">Book</a></span></span><span class='period'>.</span><span class='id identifier rubyid_friendly'>friendly</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
@@ -784,12 +790,12 @@
       <pre class="lines">
 
 
-69
-70
-71</pre>
+72
+73
+74</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/books_controller.rb', line 69</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/books_controller.rb', line 72</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_turbo_frame_request_variant'>turbo_frame_request_variant</span>
   <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_variant'>variant</span> <span class='op'>=</span> <span class='symbol'>:turbo_frame</span> <span class='kw'>if</span> <span class='id identifier rubyid_turbo_frame_request?'>turbo_frame_request?</span>
@@ -825,17 +831,17 @@
       <pre class="lines">
 
 
-48
-49
-50
 51
 52
 53
 54
-55</pre>
+55
+56
+57
+58</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/books_controller.rb', line 48</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/books_controller.rb', line 51</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_update'>update</span>
   <span class='kw'>if</span> <span class='ivar'>@book</span><span class='period'>.</span><span class='id identifier rubyid_update'>update</span><span class='lparen'>(</span><span class='id identifier rubyid_book_params'>book_params</span><span class='rparen'>)</span>
@@ -855,7 +861,7 @@
 </div>
 
       <div id="footer">
-  Generated on Fri Aug 26 13:44:29 2022 by
+  Generated on Thu Sep  1 10:54:20 2022 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.28 (ruby-3.1.2).
 </div>

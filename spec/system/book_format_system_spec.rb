@@ -2,7 +2,6 @@
 
 require 'rails_helper'
 
-# rubocop:disable Metrics/BlockLength
 RSpec.describe 'fiddling with book formats', type: :system do
   before(:all) do
     @default_format = create(:not_defined)
@@ -24,4 +23,3 @@ RSpec.describe 'fiddling with book formats', type: :system do
     expect(page).to have_content('Hardcover (default)')
   end
 end
-# rubocop:disable Metrics/BlockLength

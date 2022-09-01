@@ -24,7 +24,7 @@ class BookFormatsController < ApplicationController
   # -turbo stream - default response format, used on the settings page
   # -json - used as we can create formats on the fly in the book form
   # This method smells of :reek:DuplicateMethodCall
-  # This method smells of :reek:DTooManyStatements
+  # This method smells of :reek:TooManyStatements
   def create
     @book_format = BookFormat.new(book_format_params)
 

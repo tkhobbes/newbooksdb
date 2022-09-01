@@ -31,9 +31,7 @@ class BooksController < ApplicationController
 
   # creation / storage of a new book
   def create
-    book_params[:book_format_id].blank? ?
-      new_params = book_params.merge(book_format_id: BookFormat.find_by(fallback: true).id) :
-      new_params = book_params.clone
+    new_params = update_book_format_param(book_params)
     @book = Book.new(new_params)
 
     if @book.save
@@ -71,6 +69,13 @@ class BooksController < ApplicationController
   # enable turbo frame variants
   def turbo_frame_request_variant
     request.variant = :turbo_frame if turbo_frame_request?
+  end
+
+  # merges the fallback book format into params if no format specified
+    # This method smells of :reek:UtilityFunction
+  def update_book_format_param(book_params)
+    return book_params if book_params[:book_format_id].present?
+    book_params.merge(book_format_id: BookFormat.find_by(fallback: true).id)
   end
 
   # define an instance variable @book

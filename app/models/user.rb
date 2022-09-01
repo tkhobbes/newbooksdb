@@ -20,7 +20,7 @@
 #  index_users_on_email  (email) UNIQUE
 #
 class User < ApplicationRecord
-  validates :name, presence: true, uniqueness: true
+  validates :name, presence: true
   # this is from Michael Hartl's Rails Tutorial
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness: true

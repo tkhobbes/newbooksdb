@@ -93,6 +93,16 @@ Fields:</p>
   <li>fallback: boolean. This defines the “default” (or “fallback”) format that is used if there is no format given, but also that is used for any books of a format if that format is deleted</li>
 </ul>
 
+<h4 id="users">Users</h4>
+
+<p>Model to store user data. Fields:</p>
+
+<ul>
+  <li>name: The username of a user (must be unique)</li>
+  <li>email: The email of a user (must be unique)</li>
+  <li>password_digest (for the has_secure_password method)</li>
+</ul>
+
 <h3 id="ruby-version">Ruby Version</h3>
 
 <p>This application is setup using Ruby v 3.1.2</p>
@@ -166,7 +176,7 @@ Using Simplecov to analyze code coverage ({ https://rubygems.org/gems/simplecov 
 </div></div>
 
       <div id="footer">
-  Generated on Fri Aug 26 13:44:27 2022 by
+  Generated on Thu Sep  1 10:54:18 2022 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.28 (ruby-3.1.2).
 </div>

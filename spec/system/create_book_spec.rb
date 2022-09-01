@@ -85,4 +85,4 @@ RSpec.describe 'creating a book', type: :system do
     expect(page).to have_css('div.cover-large img')
   end
 end
-# rubocop:disable Metrics/BlockLength
+# rubocop:enable Metrics/BlockLength
