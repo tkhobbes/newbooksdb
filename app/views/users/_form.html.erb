@@ -1,0 +1,18 @@
+  <%= simple_form_for user do |f| %>
+    <%= render 'shared/form_errors', form: f %>
+
+    <div class="big-form">
+      <div class="form-col">
+        <%= f.input :name , placeholder: 'Username', label: false %>
+        <%= f.input :email, placeholder: 'E-Mail', label: false %>
+        <%= f.input :password, placeholder: 'Password', label: false %>
+        <%= f.input :password_confirmation, placeholder: 'Confirm Password', label: false %>
+      </div>
+      <div class="form-col">
+      placeholder for picture etc.
+      </div>
+    </div>
+
+    <%= f.button :submit %>
+    <%= back_link %>
+<% end %>

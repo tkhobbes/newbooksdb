@@ -1,0 +1,48 @@
+.userdetails {
+  margin: $base-margin 0;
+  display: flex;
+
+  .userimage {
+  }
+  &__text {
+    margin: 0 $base-margin;
+    flex: 1;
+  }
+
+  &__title {
+    margin-bottom: $base-margin;
+  }
+
+  &__details {
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: $base-margin;
+
+    .btn {
+      margin-right: $base-margin;
+      padding: $padding-2 $base-padding;
+    }
+
+    .btn-primary {
+      @extend .bg-primary-dark;
+      @extend .color-white;
+      @extend .bg-hover-primary;
+      @extend .border-color-black;
+      border-radius: $base-border-radius;
+    }
+
+    .btn-error {
+      @extend .bg-error;
+      @extend .bg-hover-accent-light;
+      @extend .color-white;
+      @extend .border-color-black;
+      border-radius: $base-border-radius;
+      font-family: var(--paragraph);
+      cursor: pointer;
+    }
+  }
+}

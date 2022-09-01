@@ -39,7 +39,8 @@
             />
           </svg>
         <% end %>
-        <a href="#">
+        <!-- we need the logic here: if logged in: go to user show; if not, go to login -->
+        <%= link_to new_user_path, title: 'User' do %>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             class="bigicon"
@@ -54,7 +55,7 @@
               d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"
             />
           </svg>
-        </a>
+        <% end %>
         <%= link_to settings_path, title: "Settings" do %>
           <svg
             xmlns="http://www.w3.org/2000/svg"

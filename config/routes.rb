@@ -12,4 +12,5 @@ Rails.application.routes.draw do
     get 'set_default', on: :collection
     post 'update_default', on: :collection
   end
+  resources :users
 end
