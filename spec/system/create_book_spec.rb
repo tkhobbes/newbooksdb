@@ -79,8 +79,9 @@ RSpec.describe 'creating a book', type: :system do
   scenario 'displays a cover image if there is one', js: true do
     visit new_book_path
     fill_in 'Book Title', with: 'Catcher in the Rye'
-    el = find('#book_cover', visible: false)
-    el.attach_file('db/sample/images/cover-1.jpg')
+    attach_file('db/sample/images/cover-1.jpg') do
+      find('#book_cover', visible: false).click
+    end
     click_on 'Create Book'
     expect(page).to have_css('div.cover-large img')
   end

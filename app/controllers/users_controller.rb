@@ -4,6 +4,9 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
+  # delete backlinks stack on book show page
+  before_action :dissolve, only: [:destroy]
+
   # Standard Rails method to showe a new user form
   def new
     @user = User.new
@@ -14,6 +17,8 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
+      reset_session # rails built in
+      log_in @user # directly log in the user after creation
       flash[:success] = 'You successfully signed up'
       redirect_to user_path(@user)
     else

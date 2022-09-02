@@ -1,0 +1,17 @@
+<h1 class="heading2">Login</h1>
+<%= form_with(url: login_path, scope: :session) do |f| %>
+
+  <div class="big-form">
+    <div class="form-col">
+      <div class="input">
+        <%= f.email_field :email, placeholder: 'E-Mail'%>
+      </div>
+      <div class="input">
+        <%= f.password_field :password, placeholder: 'Password'%>
+      </div>
+    </div>
+  </div>
+
+  <%= f.submit 'Log in', class: 'btn' %>
+  <%= link_to 'New User? Register here', new_user_path, class: 'form-cancel-button' %>
+<% end %>

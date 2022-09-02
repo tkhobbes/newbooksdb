@@ -39,8 +39,7 @@
             />
           </svg>
         <% end %>
-        <!-- we need the logic here: if logged in: go to user show; if not, go to login -->
-        <%= link_to new_user_path, title: 'User' do %>
+        <%= link_to login_or_user_path, title: 'User' do %>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             class="bigicon"
