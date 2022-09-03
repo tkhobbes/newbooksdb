@@ -50,6 +50,7 @@ class User < ApplicationRecord
   def remember
     self.remember_token = User.new_token
     update_attribute(:remember_digest, User.digest(remember_token))
+    remember_digest
   end
 
   # forgets a user
@@ -61,5 +62,11 @@ class User < ApplicationRecord
   def authenticated?(remember_token)
     return false if remember_digest.nil?
     BCrypt::Password.new(remember_digest).is_password?(remember_token)
+  end
+
+  # returns a session token to prevent session hijacking
+  # we reuse the remember digest for convenience
+  def session_token
+    remember_digest || remember
   end
 end

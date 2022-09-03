@@ -1,0 +1,19 @@
+  <li class="booklist__item">
+    <div class="booklist__cover">
+      Profile pic goes here
+    </div>
+    <div class="booklist__title">
+      <%= link_to user.name, user %>
+    </div>
+    <div class="booklist__icons">
+      <%= render 'shared/crud_icons',
+        edit_path: edit_user_path(user),
+        delete_path: user_path(user),
+        item_name: user.name,
+        url: "/users/#{user.id}",
+        redirect_url: "/users",
+        answer: "turbo",
+        use_turbo: true
+      %>
+    </div>
+  </li>
