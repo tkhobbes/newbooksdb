@@ -25,6 +25,7 @@ FactoryBot.define do
     email { 'tkhobbes@gmail.com' }
     password { 'password' }
     password_confirmation { 'password' }
+    admin { true }
   end
 
   factory :random_user, class: User do

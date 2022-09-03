@@ -3,8 +3,12 @@
 # standard Rails controller for the books model
 class UsersController < ApplicationController
   # users need to be logged in as the right user for certain actions
-  before_action :logged_in_user, only: [:index, :edit, :update]
+  before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
   before_action :correct_user, only: [:edit, :update]
+  before_action :admin_user, only: :index
+
+  # set user instance variable
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :correct_user]
 
   # delete backlinks stack on book show page
   before_action :dissolve, only: [:destroy]
@@ -25,8 +29,7 @@ class UsersController < ApplicationController
     if @user.save
       reset_session # rails built in
       log_in @user # directly log in the user after creation
-      flash[:success] = 'You successfully signed up'
-      redirect_to user_path(@user)
+      redirect_to @user, success: 'You successfully signed up'
     else
       render :new, status: :unprocessable_entity
     end
@@ -34,21 +37,15 @@ class UsersController < ApplicationController
   end
 
   # standard Rails method to show a user - only used for view
-  def show
-    @user = User.find(params[:id])
-  end
+  def show; end
 
   # standard Rails method to show user edit form
-  def edit
-    @user = User.find(params[:id])
-  end
+  def edit; end
 
   # standard Rails method to update a user
   def update
-    @user= User.find(params[:id])
     if @user.update(user_params)
-      flash[:success] = 'Your profile has been updated'
-      redirect_to @user
+      redirect_to @user, success: 'Your profile has been updated'
     else
       render :edit, status: :unprocessable_entity
     end
@@ -56,8 +53,9 @@ class UsersController < ApplicationController
 
   # Standard Rails method to destroy a user
   def destroy
+    redirect_to root_path unless current_user.admin? || current_user?(@user)
     @user.destroy
-    redirect_to root_path, alert: 'User destroyed.', status: :see_other
+    redirect_to root_path, alert: 'User removed.', status: :see_other
   end
 
   private
@@ -73,11 +71,16 @@ class UsersController < ApplicationController
 
   # confirms the correct user
   def correct_user
-    @user = User.find(params[:id])
     redirect_to(root_path, status: :see_other) unless current_user?(@user)
   end
 
+  # confirms a admin user
+  def admin_user
+    redirect_to root_path, status: :see_other unless current_user.admin?
+  end
+
   # allowing params for user
+  # admin is NOT part of the strong params - users are not allowed to update themselves to admins
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end

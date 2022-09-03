@@ -11,9 +11,11 @@
     <div class="userdetails__details">
       More details here
     </div>
-    <div class="userdetails__buttons">
-      <%= link_to 'Edit my Profile', edit_user_path(@user) , class: 'btn btn-primary' %>
-      <%= link_to 'Logout', logout_path, class: 'btn btn-primary' %>
-      <%= button_to 'Delete my Profile', user_path(@user), method: :delete, class: 'btn btn-error' %>
-    </div>
+    <% if @user == current_user %>
+      <div class="userdetails__buttons">
+        <%= link_to 'Edit my Profile', edit_user_path(@user) , class: 'btn btn-primary' %>
+        <%= link_to 'Logout', logout_path, class: 'btn btn-primary' %>
+        <%= button_to 'Delete my Profile', user_path(@user), method: :delete, class: 'btn btn-error' %>
+      </div>
+    <% end %>
 </div>

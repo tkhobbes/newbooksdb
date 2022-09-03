@@ -11,7 +11,8 @@ User.create(
   name: 'tkhobbes',
   email: 'tkhobbes@gmail.com',
   password: 'password',
-  password_confirmation: 'password'
+  password_confirmation: 'password',
+  admin: true
 )
 User.create(
   name: 'jdoe',
