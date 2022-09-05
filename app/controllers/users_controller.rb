@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   before_action :admin_user, only: :index
 
   # set user instance variable
-  before_action :set_user, only: [:show, :edit, :update, :destroy, :correct_user]
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   # delete backlinks stack on book show page
   before_action :dissolve, only: [:destroy]
@@ -37,7 +37,9 @@ class UsersController < ApplicationController
   end
 
   # standard Rails method to show a user - only used for view
-  def show; end
+  def show;
+    console
+  end
 
   # standard Rails method to show user edit form
   def edit; end
@@ -71,6 +73,7 @@ class UsersController < ApplicationController
 
   # confirms the correct user
   def correct_user
+    @user = User.find(params[:id])
     redirect_to(root_path, status: :see_other) unless current_user?(@user)
   end
 
@@ -82,7 +85,13 @@ class UsersController < ApplicationController
   # allowing params for user
   # admin is NOT part of the strong params - users are not allowed to update themselves to admins
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    params.require(:user).permit(
+      :name,
+      :email,
+      :password,
+      :password_confirmation,
+      :avatar
+    )
   end
 
   # find a user

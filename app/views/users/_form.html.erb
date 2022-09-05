@@ -3,13 +3,26 @@
 
     <div class="big-form">
       <div class="form-col">
+        <div class="cover-small">
+          <%= avatar_image(@user, size: 'small') %>
+        </div>
         <%= f.input :name , placeholder: 'Username', label: false %>
         <%= f.input :email, placeholder: 'E-Mail', label: false %>
         <%= f.input :password, placeholder: 'Password', label: false %>
         <%= f.input :password_confirmation, placeholder: 'Confirm Password', label: false %>
       </div>
-      <div class="form-col">
-      placeholder for picture etc.
+      <div
+        class="form-col dropzone dropzone-default dz-clickable"
+        data-controller="coverdrop"
+        data-coverdrop-max-file-size="3"
+        data-coverdrop-max-files="1"
+      >
+        <%= f.file_field :avatar, direct_upload: true,
+          'data-coverdrop-target': 'input' %>
+        <div class="dropzone-msg dz-message">
+          <h3 class="dropzone-msg-title heading4 color-primary-dark">Drag cover image here or click to browse</h3>
+          <span class="dropzone-msg-desc small color-primary-dark">3 MB file size maximum. Allowed are only image file types.</span>
+        </div>
       </div>
     </div>
 
