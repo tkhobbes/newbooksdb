@@ -20,6 +20,12 @@ User.create(
   password: 'password',
   password_confirmation: 'password'
 )
+User.create(
+  name: 'jane',
+  email: 'jane@example.com',
+  password: 'password',
+  password_confirmation: 'password'
+)
 
 # We need some book formats
 BookFormat.create(name: 'Not specified', fallback: true)

@@ -9,7 +9,14 @@
           params[:controller] == 'book_formats' ? { class: 'active' } : {}
         ) %>
       </li>
-      <li><a href="#">Blah</a></li>
-      <li><a href="#">Blubb</a></li>
+      <% if current_user&.admin %>
+        <li>
+          <%= link_to(
+            'Users',
+            users_path,
+            params[:controller] == 'users' ? { class: 'active' } : {}
+          ) %>
+        </li>
+      <% end %>
     </ul>
   </div>

@@ -14,7 +14,7 @@ class UsersController < ApplicationController
   before_action :dissolve, only: [:destroy]
 
   def index
-    @users = User.all
+    @users = User.includes([avatar_attachment: :blob]).order(:name)
   end
 
   # Standard Rails method to showe a new user form
@@ -55,7 +55,10 @@ class UsersController < ApplicationController
   def destroy
     redirect_to root_path unless current_user.admin? || current_user?(@user)
     @user.destroy
-    redirect_to root_path, alert: 'User removed.', status: :see_other
+    respond_to do |format|
+      format.turbo_stream
+      format.html { redirect_to book_formats_path, status: :see_other }
+    end
   end
 
   private

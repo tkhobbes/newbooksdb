@@ -1,5 +1,9 @@
-<h1 class="heading2">All Users</h1>
-
-<ul class="booklist" id="users">
-  <%= render @users %>
-</ul>
+<h2 class="heading3">Settings</h3>
+<%= render 'settings/settings_menu' %>
+  <div class="submenucontent">
+    <h3 class="heading4">All Users</h3>
+    <ul class="simple-list width-66" id="users">
+      <%= turbo_frame_tag 'format-list' do %>
+        <%= render @users %>
+      <% end %>
+    </ul>

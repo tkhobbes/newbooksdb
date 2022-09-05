@@ -1,6 +1,7 @@
+<%= turbo_frame_tag(user) do %>
   <li class="itemlist__item">
     <div class="itemlist__cover">
-      Profile pic goes here
+      <%= avatar_image(user, size: 'default') %>
     </div>
     <div class="itemlist__title">
       <%= link_to user.name, user %>
@@ -17,3 +18,4 @@
       %>
     </div>
   </li>
+<% end %>
