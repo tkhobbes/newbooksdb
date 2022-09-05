@@ -27,9 +27,8 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      reset_session # rails built in
-      log_in @user # directly log in the user after creation
-      redirect_to @user, success: 'You successfully signed up'
+      @user.send_activation_email
+      redirect_to root_path, success: 'Please check your e-mail to activate your account'
     else
       render :new, status: :unprocessable_entity
     end

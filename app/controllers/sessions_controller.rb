@@ -14,12 +14,16 @@ class SessionsController < ApplicationController
   def create
     user = User.find_by(email: params[:session][:email].downcase)
     if user && user.authenticate(params[:session][:password])
-      forwarding_url = session[:forwarding_url] # if a user has to login first
-      reset_session # rails built in
-      params[:session][:remember_me] == '1' ? remember(user) : forget(user)
-      log_in user
-      redirect_to forwarding_url || user
-    else
+      if user.activated?
+        forwarding_url = session[:forwarding_url] # if a user has to login first
+        reset_session # rails built in
+        params[:session][:remember_me] == '1' ? remember(user) : forget(user)
+        log_in user
+        redirect_to forwarding_url || user
+      else # user not activated
+        redirect_to root_path, error: 'Account not activated. Check your e-mail for the activation link.'
+      end
+    else # user not found or password wrong
       flash.now[:error] = 'Invalid email/password combination'
       render 'new', status: :unprocessable_entity
     end

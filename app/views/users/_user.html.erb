@@ -6,6 +6,9 @@
     <div class="itemlist__title">
       <%= link_to user.name, user %>
     </div>
+    <div class="itemlist__title">
+      (<%= user.activated? ? user.activated_at.strftime("%d-%b-%Y") : 'not activated' %>)
+    </div>
     <div class="itemlist__icons">
       <%= render 'shared/crud_icons',
         edit_path: edit_user_path(user),
