@@ -1,13 +1,13 @@
-<%= turbo_frame_tag book, class: "booklist__border" do %>
-  <li class="booklist__item">
-    <div class="booklist__cover">
+<%= turbo_frame_tag book, class: "itemlist__border" do %>
+  <li class="itemlist__item">
+    <div class="itemlist__cover">
       <%= cover_image(book, size: "default") %>
     </div>
-    <div class="booklist__title">
+    <div class="itemlist__title">
       <%= link_to book.title, book_path(book) %>
       (by Author Author )
     </div>
-    <div class="booklist__icons">
+    <div class="itemlist__icons">
       <%= render 'shared/crud_icons',
         edit_path: edit_book_path(book),
         delete_path: book_path(book),

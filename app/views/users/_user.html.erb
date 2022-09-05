@@ -1,11 +1,11 @@
-  <li class="booklist__item">
-    <div class="booklist__cover">
+  <li class="itemlist__item">
+    <div class="itemlist__cover">
       Profile pic goes here
     </div>
-    <div class="booklist__title">
+    <div class="itemlist__title">
       <%= link_to user.name, user %>
     </div>
-    <div class="booklist__icons">
+    <div class="itemlist__icons">
       <%= render 'shared/crud_icons',
         edit_path: edit_user_path(user),
         delete_path: user_path(user),

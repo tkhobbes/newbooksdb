@@ -9,9 +9,15 @@
       <div class="input">
         <%= f.password_field :password, placeholder: 'Password'%>
       </div>
-      <div class="input">
-        <%= f.check_box :remember_me %>
-        <span>Remember me on this computer</span>
+      <div class="input checkbox-container">
+        <span class="check">
+          <%= f.check_box :remember_me, class: 'hidden-button' %>
+          <label id="label_remember_me" for="session_remember_me">
+            <span class="fake-button">
+            </span>
+            Remember me on this computer
+          </label>
+        </span>
       </div>
     </div>
   </div>

@@ -1,8 +1,8 @@
-<%= turbo_frame_tag book, class: 'bookcard-big' do %>
-    <div class="bookcard-big__cover">
+<%= turbo_frame_tag book, class: 'itemcard-big' do %>
+    <div class="itemcard-big__cover">
       <%= cover_image(book, size: "medium") %>
     </div>
-    <div class="bookcard-big__content">
+    <div class="itemcard-big__content">
       <%= render 'shared/crud_icons',
         edit_path: edit_book_path(book),
         delete_path: book_path(book),
@@ -12,7 +12,7 @@
         answer: "turbo",
         use_turbo: true
       %>
-      <div class="bookcard-big__title">
+      <div class="itemcard-big__title">
         <h2 class="heading3">
           <%= link_to(
             book.title,

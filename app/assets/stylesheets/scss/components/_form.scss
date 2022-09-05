@@ -95,6 +95,56 @@
     }
   }
 
+  div.checkbox-container {
+    display: flex;
+    flex-direction: column;
+
+    span.check {
+      position: relative;
+      cursor: pointer;
+      display: inline-block;
+
+      .hidden-button {
+        display: none;
+      }
+
+      label {
+        cursor: pointer;
+        display: block;
+        margin: 0 0 0.5em 1.5em;
+
+        .fake-button {
+          height: 1em;
+          width: 1em;
+          @extend .border-color-primary;
+          border-radius: $base-border-radius;
+          display: inline-block;
+          position: absolute;
+          left: 0;
+          top: 0;
+
+          &::after {
+            content: "✓";
+            display: block;
+            height: 0.7em;
+            width: 0.7em;
+            border-radius: $base-border-radius;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -70%);
+            color: $color-primary-dark;
+            opacity: 0;
+          }
+        }
+      }
+
+      .hidden-button:checked ~ label .fake-button::after {
+        opacity: 1;
+      }
+    }
+  }
+
   select {
     @extend .bg-white;
     @extend .color-black;
