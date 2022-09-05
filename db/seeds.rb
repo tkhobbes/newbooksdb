@@ -12,19 +12,25 @@ User.create(
   email: 'tkhobbes@gmail.com',
   password: 'password',
   password_confirmation: 'password',
-  admin: true
+  admin: true,
+  activated: true,
+  activated_at: Time.zone.now
 )
 User.create(
   name: 'jdoe',
   email: 'jdoe@example.com',
   password: 'password',
-  password_confirmation: 'password'
+  password_confirmation: 'password',
+  activated: true,
+  activated_at: Time.zone.now
 )
 User.create(
   name: 'jane',
   email: 'jane@example.com',
   password: 'password',
-  password_confirmation: 'password'
+  password_confirmation: 'password',
+  activated: true,
+  activated_at: Time.zone.now
 )
 
 # We need some book formats

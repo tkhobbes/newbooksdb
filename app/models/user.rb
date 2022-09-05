@@ -36,11 +36,13 @@ class User < ApplicationRecord
     BCrypt::Password.create(string, cost: cost)
   end
 
-  # we need an attribute 'remember_token' to store the token
-  attr_accessor :remember_token
+  # we need an attribute 'remember_token' and 'activation_token' to store the token
+  attr_accessor :remember_token, :activation_token
 
   # convert e-mail address to lowercase before saving
-  before_save { self.email = email.downcase }
+  before_save :downcase_email
+  # automatically create an activation digest
+  before_create :create_activation_digest
 
   # returns a random token.
   # this is a CLASS method
@@ -70,5 +72,18 @@ class User < ApplicationRecord
   # we reuse the remember digest for convenience
   def session_token
     remember_digest || remember
+  end
+
+  private
+
+  # convert email to all lowercase
+  def downcase_email
+    self.email = email.downcase
+  end
+
+  # creates and assignes the activation token and digest
+  def create_activation_digest
+    self.activation_token = User.new_token
+    self.activation_digest = User.digest(activation_token)
   end
 end

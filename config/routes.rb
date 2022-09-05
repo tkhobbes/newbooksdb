@@ -13,7 +13,10 @@ Rails.application.routes.draw do
     post 'update_default', on: :collection
   end
   resources :users
+
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
   get 'logout', to: 'sessions#destroy'
+
+  resources :account_activations, only: [:edit]
 end
