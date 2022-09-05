@@ -24,4 +24,4 @@ example_id                                    | status  | run_time        |
 ./spec/system/create_book_spec.rb[1:6]        | passed  | 3.51 seconds    |
 ./spec/system/create_book_spec.rb[1:7]        | passed  | 2.07 seconds    |
 ./spec/system/create_book_spec.rb[1:8]        | passed  | 35.55 seconds   |
-./spec/system/create_book_spec.rb[1:9]        | failed  | 3.9 seconds     |
+./spec/system/create_book_spec.rb[1:9]        | failed  | 8.2 seconds     |

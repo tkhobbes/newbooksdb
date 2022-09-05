@@ -37,9 +37,7 @@ class UsersController < ApplicationController
   end
 
   # standard Rails method to show a user - only used for view
-  def show;
-    console
-  end
+  def show; end
 
   # standard Rails method to show user edit form
   def edit; end
