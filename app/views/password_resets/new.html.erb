@@ -1,0 +1,13 @@
+<h1 class="heading2">Forgot Password</h1>
+<%= form_with(url: password_resets_path, scope: :password_reset) do |f| %>
+
+  <div class="big-form">
+    <div class="form-col">
+      <div class="input">
+        <%= f.email_field :email, placeholder: 'E-Mail'%>
+      </div>
+    </div>
+  </div>
+
+  <%= f.submit 'Submit', class: 'btn' %>
+<% end %>
