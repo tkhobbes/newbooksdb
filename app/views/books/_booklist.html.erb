@@ -8,15 +8,17 @@
       (by Author Author )
     </div>
     <div class="itemlist__icons">
-      <%= render 'shared/crud_icons',
-        edit_path: edit_book_path(book),
-        delete_path: book_path(book),
-        item_name: book.title,
-        url: "/books/#{book.id}",
-        redirect_url: "/books",
-        answer: "turbo",
-        use_turbo: true
-      %>
+      <% if logged_in? %>
+        <%= render 'shared/crud_icons',
+          edit_path: edit_book_path(book),
+          delete_path: book_path(book),
+          item_name: book.title,
+          url: "/books/#{book.id}",
+          redirect_url: "/books",
+          answer: "turbo",
+          use_turbo: true
+        %>
+      <% end %>
     </div>
   </li>
 <% end %>

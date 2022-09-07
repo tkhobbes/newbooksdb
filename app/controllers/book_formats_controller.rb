@@ -2,7 +2,15 @@
 
 # Standard Rails controller for the book format model
 class BookFormatsController < ApplicationController
+  # we need the session helper and the user concerns to ensure only logged in users can tamper with formats
+  include SessionsHelper
+  include UserConcerns
+
+  before_action :logged_in_user
+
+  # set the book format for some actions
   before_action :set_book_format, only: [:edit, :update, :destroy]
+
   # ensure we know the default format for any method where it matters
   before_action :set_default_book_format, only: [:index, :set_default, :update_default, :destroy]
 

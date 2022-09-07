@@ -64,14 +64,6 @@ class UsersController < ApplicationController
 
   private
 
-  # confirms a logged-in user
-  def logged_in_user
-    return if logged_in?
-    store_location
-    flash[:warning] = 'Please log in'
-    redirect_to login_path, status: :see_other
-  end
-
   # confirms the correct user
   def correct_user
     @user = User.find(params[:id])

@@ -3,15 +3,17 @@
       <%= cover_image(book, size: "medium") %>
     </div>
     <div class="itemcard-big__content">
-      <%= render 'shared/crud_icons',
-        edit_path: edit_book_path(book),
-        delete_path: book_path(book),
-        item_name: book.title,
-        url: "/books/#{book.id}",
-        redirect_url: "/books",
-        answer: "turbo",
-        use_turbo: true
-      %>
+    <% if logged_in? %>
+        <%= render 'shared/crud_icons',
+          edit_path: edit_book_path(book),
+          delete_path: book_path(book),
+          item_name: book.title,
+          url: "/books/#{book.id}",
+          redirect_url: "/books",
+          answer: "turbo",
+          use_turbo: true
+        %>
+      <% end %>
       <div class="itemcard-big__title">
         <h2 class="heading3">
           <%= link_to(

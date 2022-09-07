@@ -2,6 +2,14 @@
 
 # standard Rails controller for the books model
 class BooksController < ApplicationController
+  # we need the session helper and the user concerns to ensure only logged in users can tamper with books
+  include SessionsHelper
+  include UserConcerns
+
+  # everybody can see index and an individual book, but only logged in users can add / update / delete
+  before_action :logged_in_user, only: [:new, :create, :edit, :update, :destroy]
+
+  # standard rails - set instance variable for standard actions
   before_action :set_book, only: [:show, :edit, :update, :destroy]
 
   # delete backlinks stack on book show page

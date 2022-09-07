@@ -7,15 +7,17 @@
       <h1 class="heading3">
         <%= @book.title %>
       </h1>
-        <%= render 'shared/crud_icons',
-          edit_path: edit_book_path(@book),
-          delete_path: book_path(@book),
-          item_name: @book.title,
-          url: "/books/#{@book.id}",
-          redirect_url: "/books",
-          answer: "html",
-          use_turbo: false
-        %>
+        <% if logged_in? %>
+          <%= render 'shared/crud_icons',
+            edit_path: edit_book_path(@book),
+            delete_path: book_path(@book),
+            item_name: @book.title,
+            url: "/books/#{@book.id}",
+            redirect_url: "/books",
+            answer: "html",
+            use_turbo: false
+          %>
+        <% end %>
     </div>
     <h2 class="heading4"><%= original_title(@book) %></h2>
     <div class="medium-small">
