@@ -59,6 +59,9 @@
         Rating: <%= rating_stars(@book.rating_before_type_cast) %> (<%= @book.rating.humanize %>)
       </div>
     </div>
+    <div class="margin-1">
+      Owned by <%= @book.user.name %>
+    </div>
     <%= book_synopsis(@book) %>
   </div>
 </div>

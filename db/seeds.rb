@@ -48,7 +48,8 @@ Book.create(
   rating: Random.rand(0..5),
   condition: Random.rand(0..5),
   synopsis: "<b>Synopsis</b><br /><p>#{Faker::Lorem.paragraphs(number: 10).join(' ')}</p>",
-  book_format_id: 2
+  book_format_id: 2,
+  user_id: User.first.id
 )
 
 99.times do |index|
@@ -58,7 +59,8 @@ Book.create(
     rating: Random.rand(0..5),
     condition: Random.rand(0..5),
     synopsis: "<p>#{Faker::Lorem.paragraphs(number: 20).join(' ')}</p>",
-    book_format_id: Random.rand(1..6)
+    book_format_id: Random.rand(1..6),
+    user_id: User.find(Random.rand(1..3)).id
   )
 
   cover_number = index.modulo(10) + 1

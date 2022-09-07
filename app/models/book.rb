@@ -6,31 +6,36 @@
 #
 # @!attribute id
 #   @return []
-# @!attribute title
-#   @return [String]
-# @!attribute sort_title
-#   @return [String]
-# @!attribute slug
-#   @return [String]
-# @!attribute year
+# @!attribute condition
 #   @return [Integer]
 # @!attribute edition
 #   @return [String]
-# @!attribute condition
-#   @return [Integer]
+# @!attribute original_title
+#   @return [String]
 # @!attribute rating
 #   @return [Integer]
-# @!attribute book_format_id
-#   @return []
+# @!attribute slug
+#   @return [String]
+# @!attribute sort_title
+#   @return [String]
+# @!attribute title
+#   @return [String]
+# @!attribute year
+#   @return [Integer]
 # @!attribute created_at
 #   @return [Time]
 # @!attribute updated_at
 #   @return [Time]
+# @!attribute book_format_id
+#   @return []
+# @!attribute user_id
+#   @return []
 #
 # Indexes
 #
 #  index_books_on_book_format_id  (book_format_id)
 #  index_books_on_slug            (slug) UNIQUE
+#  index_books_on_user_id         (user_id)
 #
 # Foreign Keys
 #
@@ -57,6 +62,7 @@ class Book < ApplicationRecord
 
   # relationships to other models
   belongs_to :book_format, optional: true
+  belongs_to :user
 
   # friendly ID uses slug
   extend FriendlyId

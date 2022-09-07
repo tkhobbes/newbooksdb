@@ -55,6 +55,8 @@
 }
 
 .list-select-type {
+  @extend .margin-left-50;
+
   a.list-select-item {
     display: block;
     padding: 0.2em;

@@ -12,14 +12,17 @@ app/models/book_format.rb:32:8: C: [Correctable] Style/RedundantSelf: Redundant 
 app/models/book_format.rb:37:34: C: [Correctable] Style/RedundantSelf: Redundant self detected.
       Book.where(book_format_id: self.id).update(book_format_id: format_fallback.id)
                                  ^^^^
-app/models/user.rb:50:7: C: [Correctable] Style/ClassMethods: Use self.digest instead of User.digest.
+app/models/user.rb:50:3: C: Rails/HasManyOrHasOneDependent: Specify a :dependent option.
+  has_many :books
+  ^^^^^^^^
+app/models/user.rb:53:7: C: [Correctable] Style/ClassMethods: Use self.digest instead of User.digest.
   def User.digest(string)
       ^^^^
-app/models/user.rb:52:43: C: [Correctable] Style/HashSyntax: Omit the hash value.
+app/models/user.rb:55:43: C: [Correctable] Style/HashSyntax: Omit the hash value.
     BCrypt::Password.create(string, cost: cost)
                                           ^^^^
-app/models/user.rb:66:7: C: [Correctable] Style/ClassMethods: Use self.new_token instead of User.new_token.
+app/models/user.rb:69:7: C: [Correctable] Style/ClassMethods: Use self.new_token instead of User.new_token.
   def User.new_token
       ^^^^
 
-50 files inspected, 6 offenses detected, 6 offenses autocorrectable
+50 files inspected, 7 offenses detected, 6 offenses autocorrectable

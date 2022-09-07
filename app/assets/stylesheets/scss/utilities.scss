@@ -80,6 +80,10 @@ $padding_map: (
   }
 }
 
+.border-radius-1 {
+  border-radius: $base-border-radius;
+}
+
 .hidden {
   display: none !important;
 }
@@ -125,4 +129,12 @@ svg.placeholder-default {
   justify-content: space-between;
   flex-wrap: wrap;
   margin-top: $base-margin;
+}
+
+.flex {
+  display: flex;
+  flex-direction: row;
+  align-content: flex-start;
+  justify-content: flex-start;
+  flex-wrap: wrap;
 }
