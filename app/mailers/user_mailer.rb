@@ -1,20 +1,16 @@
+# frozen_string_literal: true
+
+# UserMailer for various account related e-mails
+# from M. Hartl's Rails tutorial
 class UserMailer < ApplicationMailer
 
-  # Subject can be set in your I18n file at config/locales/en.yml
-  # with the following lookup:
-  #
-  #   en.user_mailer.account_activation.subject
-  #
+  # sends a note to the user to activate account
   def account_activation(user)
     @user = user
     mail to: user.email, subject: 'Account activation'
   end
 
-  # Subject can be set in your I18n file at config/locales/en.yml
-  # with the following lookup:
-  #
-  #   en.user_mailer.password_reset.subject
-  #
+  # sends a note to a user to reset the password
   def password_reset(user)
     @user = user
     mail to: user.email, subject: 'Password reset'

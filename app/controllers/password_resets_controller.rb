@@ -4,15 +4,15 @@
 # Taken from Michael Hartl's Rails Tutorial
 class PasswordResetsController < ApplicationController
   # we need a user, we need a valid user, and we need the token not to be expired
-  before_action :get_user, only: [:edit, :update]
+  before_action :set_user, only: [:edit, :update]
   before_action :valid_user, only: [:edit, :update]
   before_action :check_expiration, only: [:edit, :update]
 
   # dummy 'new' method to show the form
-  def new
-  end
+  def new; end
 
   # create method will actually trigger the e-mail to be sent
+  # This method smells of :reek:TooManyStatements
   def create
     @user = User.find_by(email: params[:password_reset][:email].downcase)
     if @user
@@ -26,9 +26,10 @@ class PasswordResetsController < ApplicationController
   end
 
   # edit method will show the form to change the password
-  def edit
-  end
+  def edit; end
 
+  # This method smells of :reek:DuplicateMethodCall
+  # This method smells of :reek:TooManyStatements
   def update
     if params[:user][:password].empty?
       @user.errors.add(:password, "can't be empty")
@@ -50,21 +51,19 @@ class PasswordResetsController < ApplicationController
   end
 
   # finds a user by email
-  def get_user
+  def set_user
     @user = User.find_by(email: params[:email])
   end
 
   # confirms a valid user
   def valid_user
-    unless (@user && @user.activated? && @user.authenticated?(:reset, params[:id]))
-      redirect_to root_path
-    end
+    return if @user&.activated? && @user&.authenticated?(:reset, params[:id])
+    redirect_to root_path
   end
 
   # check expiration of reset token
   def check_expiration
-    if @user.password_reset_expired?
-      redirect_to new_password_reset_path, error: 'Password reset has expired.'
-    end
+    return unless @user.password_reset_expired?
+    redirect_to new_password_reset_path, error: 'Password reset has expired.'
   end
 end

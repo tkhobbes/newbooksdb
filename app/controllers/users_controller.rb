@@ -13,6 +13,7 @@ class UsersController < ApplicationController
   # delete backlinks stack on book show page
   before_action :dissolve, only: [:destroy]
 
+  # lists all users; only accessible for admins
   def index
     @users = User.includes([avatar_attachment: :blob]).order(:name)
   end
@@ -51,6 +52,7 @@ class UsersController < ApplicationController
   end
 
   # Standard Rails method to destroy a user
+  # This method smells of :reek:TooManyStatements
   def destroy
     redirect_to root_path unless current_user.admin? || current_user?(@user)
     @user.destroy
@@ -64,11 +66,10 @@ class UsersController < ApplicationController
 
   # confirms a logged-in user
   def logged_in_user
-    unless logged_in?
-      store_location
-      flash[:warning] = "Please log in"
-      redirect_to login_path, status: :see_other
-    end
+    return if logged_in?
+    store_location
+    flash[:warning] = 'Please log in'
+    redirect_to login_path, status: :see_other
   end
 
   # confirms the correct user

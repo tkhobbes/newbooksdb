@@ -369,6 +369,30 @@
 </li>
 
       
+        <li class="private ">
+  <span class="summary_signature">
+    
+      <a href="#update_book_format_param-instance_method" title="#update_book_format_param (instance method)">#<strong>update_book_format_param</strong>(book_params)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  <span class="note title private">private</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>This method smells of :reek:UtilityFunction.</p>
+</div></span>
+  
+</li>
+
+      
     </ul>
   
 
@@ -379,6 +403,17 @@
   
   
   
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="SessionsHelper.html" title="SessionsHelper (module)">SessionsHelper</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="SessionsHelper.html#current_user-instance_method" title="SessionsHelper#current_user (method)">#current_user</a></span>, <span class='object_link'><a href="SessionsHelper.html#current_user%3F-instance_method" title="SessionsHelper#current_user? (method)">#current_user?</a></span>, <span class='object_link'><a href="SessionsHelper.html#forget-instance_method" title="SessionsHelper#forget (method)">#forget</a></span>, <span class='object_link'><a href="SessionsHelper.html#log_in-instance_method" title="SessionsHelper#log_in (method)">#log_in</a></span>, <span class='object_link'><a href="SessionsHelper.html#log_out-instance_method" title="SessionsHelper#log_out (method)">#log_out</a></span>, <span class='object_link'><a href="SessionsHelper.html#logged_in%3F-instance_method" title="SessionsHelper#logged_in? (method)">#logged_in?</a></span>, <span class='object_link'><a href="SessionsHelper.html#remember-instance_method" title="SessionsHelper#remember (method)">#remember</a></span>, <span class='object_link'><a href="SessionsHelper.html#store_location-instance_method" title="SessionsHelper#store_location (method)">#store_location</a></span></p>
+
   
   
 
@@ -412,11 +447,6 @@
       <pre class="lines">
 
 
-83
-84
-85
-86
-87
 88
 89
 90
@@ -425,10 +455,15 @@
 93
 94
 95
-96</pre>
+96
+97
+98
+99
+100
+101</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/books_controller.rb', line 83</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/books_controller.rb', line 88</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_book_params'>book_params</span>
   <span class='id identifier rubyid_params'>params</span><span class='period'>.</span><span class='id identifier rubyid_require'>require</span><span class='lparen'>(</span><span class='symbol'>:book</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_permit'>permit</span><span class='lparen'>(</span>
@@ -485,17 +520,13 @@
 40
 41
 42
-43
-44
-45</pre>
+43</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'app/controllers/books_controller.rb', line 33</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_create'>create</span>
-  <span class='id identifier rubyid_book_params'>book_params</span><span class='lbracket'>[</span><span class='symbol'>:book_format_id</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_blank?'>blank?</span> <span class='op'>?</span>
-    <span class='id identifier rubyid_new_params'>new_params</span> <span class='op'>=</span> <span class='id identifier rubyid_book_params'>book_params</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='label'>book_format_id:</span> <span class='const'><span class='object_link'><a href="BookFormat.html" title="BookFormat (class)">BookFormat</a></span></span><span class='period'>.</span><span class='id identifier rubyid_find_by'>find_by</span><span class='lparen'>(</span><span class='label'>fallback:</span> <span class='kw'>true</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span> <span class='op'>:</span>
-    <span class='id identifier rubyid_new_params'>new_params</span> <span class='op'>=</span> <span class='id identifier rubyid_book_params'>book_params</span><span class='period'>.</span><span class='id identifier rubyid_clone'>clone</span>
+  <span class='id identifier rubyid_new_params'>new_params</span> <span class='op'>=</span> <span class='id identifier rubyid_update_book_format_param'>update_book_format_param</span><span class='lparen'>(</span><span class='id identifier rubyid_book_params'>book_params</span><span class='rparen'>)</span>
   <span class='ivar'>@book</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Book.html" title="Book (class)">Book</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_new_params'>new_params</span><span class='rparen'>)</span>
 
   <span class='kw'>if</span> <span class='ivar'>@book</span><span class='period'>.</span><span class='id identifier rubyid_save'>save</span>
@@ -536,16 +567,16 @@
       <pre class="lines">
 
 
+59
+60
 61
 62
 63
 64
-65
-66
-67</pre>
+65</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/books_controller.rb', line 61</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/books_controller.rb', line 59</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_destroy'>destroy</span>
   <span class='ivar'>@book</span><span class='period'>.</span><span class='id identifier rubyid_destroy'>destroy</span>
@@ -585,10 +616,10 @@
       <pre class="lines">
 
 
-48</pre>
+46</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/books_controller.rb', line 48</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/books_controller.rb', line 46</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_edit'>edit</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -712,12 +743,12 @@
       <pre class="lines">
 
 
-77
-78
-79</pre>
+82
+83
+84</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/books_controller.rb', line 77</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/books_controller.rb', line 82</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_set_book'>set_book</span>
   <span class='ivar'>@book</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Book.html" title="Book (class)">Book</a></span></span><span class='period'>.</span><span class='id identifier rubyid_friendly'>friendly</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
@@ -790,12 +821,12 @@
       <pre class="lines">
 
 
-72
-73
-74</pre>
+70
+71
+72</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/books_controller.rb', line 72</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/books_controller.rb', line 70</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_turbo_frame_request_variant'>turbo_frame_request_variant</span>
   <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_variant'>variant</span> <span class='op'>=</span> <span class='symbol'>:turbo_frame</span> <span class='kw'>if</span> <span class='id identifier rubyid_turbo_frame_request?'>turbo_frame_request?</span>
@@ -831,17 +862,17 @@
       <pre class="lines">
 
 
+49
+50
 51
 52
 53
 54
 55
-56
-57
-58</pre>
+56</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/books_controller.rb', line 51</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/books_controller.rb', line 49</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_update'>update</span>
   <span class='kw'>if</span> <span class='ivar'>@book</span><span class='period'>.</span><span class='id identifier rubyid_update'>update</span><span class='lparen'>(</span><span class='id identifier rubyid_book_params'>book_params</span><span class='rparen'>)</span>
@@ -856,12 +887,55 @@
 </table>
 </div>
     
+      <div class="method_details ">
+  <h3 class="signature " id="update_book_format_param-instance_method">
+  
+    #<strong>update_book_format_param</strong>(book_params)  &#x21d2; <tt>Object</tt>  <span class="extras">(private)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>This method smells of :reek:UtilityFunction</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+76
+77
+78
+79</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/controllers/books_controller.rb', line 76</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_update_book_format_param'>update_book_format_param</span><span class='lparen'>(</span><span class='id identifier rubyid_book_params'>book_params</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='id identifier rubyid_book_params'>book_params</span> <span class='kw'>if</span> <span class='id identifier rubyid_book_params'>book_params</span><span class='lbracket'>[</span><span class='symbol'>:book_format_id</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_present?'>present?</span>
+  <span class='id identifier rubyid_book_params'>book_params</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='label'>book_format_id:</span> <span class='const'><span class='object_link'><a href="BookFormat.html" title="BookFormat (class)">BookFormat</a></span></span><span class='period'>.</span><span class='id identifier rubyid_find_by'>find_by</span><span class='lparen'>(</span><span class='label'>fallback:</span> <span class='kw'>true</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
   </div>
 
 </div>
 
       <div id="footer">
-  Generated on Thu Sep  1 10:54:20 2022 by
+  Generated on Wed Sep  7 12:04:34 2022 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.28 (ruby-3.1.2).
 </div>

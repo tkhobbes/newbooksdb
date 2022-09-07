@@ -6,26 +6,26 @@
 #
 # @!attribute id
 #   @return []
-# @!attribute condition
-#   @return [Integer]
-# @!attribute edition
-#   @return [String]
-# @!attribute rating
-#   @return [Integer]
-# @!attribute slug
+# @!attribute title
 #   @return [String]
 # @!attribute sort_title
 #   @return [String]
-# @!attribute title
+# @!attribute slug
 #   @return [String]
 # @!attribute year
 #   @return [Integer]
+# @!attribute edition
+#   @return [String]
+# @!attribute condition
+#   @return [Integer]
+# @!attribute rating
+#   @return [Integer]
+# @!attribute book_format_id
+#   @return []
 # @!attribute created_at
 #   @return [Time]
 # @!attribute updated_at
 #   @return [Time]
-# @!attribute book_format_id
-#   @return []
 #
 # Indexes
 #

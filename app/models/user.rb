@@ -6,10 +6,26 @@
 #
 # @!attribute id
 #   @return []
-# @!attribute email
-#   @return [String]
 # @!attribute name
 #   @return [String]
+# @!attribute email
+#   @return [String]
+# @!attribute admin
+#   @return [Boolean]
+# @!attribute password_digest
+#   @return [String]
+# @!attribute remember_digest
+#   @return [String]
+# @!attribute activation_digest
+#   @return [String]
+# @!attribute reset_digest
+#   @return [String]
+# @!attribute activated
+#   @return [Boolean]
+# @!attribute activated_at
+#   @return [Time]
+# @!attribute reset_sent_at
+#   @return [Time]
 # @!attribute created_at
 #   @return [Time]
 # @!attribute updated_at
@@ -37,6 +53,7 @@ class User < ApplicationRecord
   end
 
   # we need an attribute 'remember_token', 'activation_token' and 'reset_token' to store the token
+  # this line smells of :reek:Attribute
   attr_accessor :remember_token, :activation_token, :reset_token
 
   # convert e-mail address to lowercase before saving
@@ -53,16 +70,21 @@ class User < ApplicationRecord
   # Remembers a user in the database for use in persistent sessions
   def remember
     self.remember_token = User.new_token
+    # rubocop:disable Rails/SkipsModelValidations
     update_attribute(:remember_digest, User.digest(remember_token))
+    # rubocop:enable Rails/SkipsModelValidations
     remember_digest
   end
 
   # forgets a user
   def forget
+    # rubocop:disable Rails/SkipsModelValidations
     update_attribute(:remember_digest, nil)
+    # rubocop:enable Rails/SkipsModelValidations
   end
 
   # returns true if the given token matches the digest
+  # this method smells of :reek:NilCheck
   def authenticated?(attribute, token)
     digest = send("#{attribute}_digest")
     return false if digest.nil?
@@ -77,8 +99,10 @@ class User < ApplicationRecord
 
   # activates an account
   def activate
+    # rubocop:disable Rails/SkipsModelValidations
     update_attribute(:activated, true)
     update_attribute(:activated_at, Time.zone.now)
+    # rubocop:enable Rails/SkipsModelValidations
   end
 
   # sends an activation e-mail
@@ -89,8 +113,10 @@ class User < ApplicationRecord
   # sets password reset attributes
   def create_reset_digest
     self.reset_token = User.new_token
+    # rubocop:disable Rails/SkipsModelValidations
     update_attribute(:reset_digest, User.digest(reset_token))
     update_attribute(:reset_sent_at, Time.zone.now)
+    # rubocop:enable Rails/SkipsModelValidations
   end
 
   # sends password reset email

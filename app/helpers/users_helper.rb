@@ -20,7 +20,9 @@ module UsersHelper
     css_tag = avatar_map[size][1]
 
     avatar = user.avatar
+    # rubocop:disable Layout/LineLength
     avatar.attached? ? image_tag(avatar.variant(resize_to_limit: [img_size, img_size])) : generate_user_avatar_svg(css_tag)
+    # rubocop:enable Layout/LineLength
   end
   # rubocop:enable Metrics/MethodLength
 
