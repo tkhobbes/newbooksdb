@@ -57,7 +57,7 @@ end
 gem 'mysql2', '~> 0.5.4'
 gem 'redis', '~> 4.6.0'
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
-# gem "kredis"
+gem 'kredis', '~> 1.3'
 
 # Turbo and Stimulus
 gem 'stimulus-rails', '~> 1.0.4'
