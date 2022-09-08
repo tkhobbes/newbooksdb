@@ -8,6 +8,7 @@ class BooksController < ApplicationController
 
   # everybody can see index and an individual book, but only logged in users can add / update / delete
   before_action :logged_in_user, only: [:new, :create, :edit, :update, :destroy]
+  before_action :correct_user, only: [:edit, :update, :destroy]
 
   # standard rails - set instance variable for standard actions
   before_action :set_book, only: [:show, :edit, :update, :destroy]
@@ -73,6 +74,12 @@ class BooksController < ApplicationController
   end
 
   private
+
+  # ensure the correct user can edit / update / delete a book
+  def correct_user
+    @book = current_user.books.find_by(slug: (params[:id]))
+    redirect_to root_path, status: :see_other, error: "You cannot change or delete other user's books" if @book.nil?
+  end
 
   # enable turbo frame variants
   def turbo_frame_request_variant
