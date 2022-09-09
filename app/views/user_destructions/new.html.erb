@@ -1,0 +1,37 @@
+<h1 class="heading2 color-error">
+  Are you sure you want to remove user <%= @user.name %>?
+</h1>
+
+<div class="color-error margin-top-1">
+  Apart from removing the user profile, you will need to decide what happens to
+  <%= @user.books.size %> books that are owned by this user.
+</div>
+
+  <%= form_with url: user_destructions_path, method: :post do |f| %>
+    <%= f.hidden_field :userid, value: @user.id %>
+
+    <div class="big-form">
+      <div class="form-col enum_radio_buttons">
+        <span class="radio">
+          <%= f.radio_button :book_selection, 'transfer', class: 'hidden-button', checked: true %>
+          <%= f.label :book_selection_transfer do %>
+            <span class="fake-button">
+            </span>
+            Transfer books to new owner:
+            <%= f.collection_select :user, User.all_but(@user.id), :email, :name %>
+          <% end %>
+        </span>
+        <span class="radio">
+          <%= f.radio_button :book_selection, 'delete', class: 'hidden-button' %>
+          <%= f.label :book_selection_delete do %>
+            <span class="fake-button">
+            </span>
+            Delete books from database
+          <% end %>
+        </span>
+      </div>
+    </div>
+
+    <%= f.submit 'Confirm', class: 'btn btn-primary-dark' %>
+    <%= back_link %>
+<% end %>

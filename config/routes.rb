@@ -14,6 +14,9 @@ Rails.application.routes.draw do
   end
   resources :users
 
+  get 'user_destructions/new/:id', to: 'user_destructions#new', as: 'new_user_destructions'
+  resources :user_destructions, only: [:create]
+
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
   get 'logout', to: 'sessions#destroy'
