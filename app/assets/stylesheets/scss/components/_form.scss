@@ -159,6 +159,10 @@
     &:focus-visible {
       outline: none;
     }
+
+    &.larger {
+      padding: 0.1em 0.4em;
+    }
   }
 }
 

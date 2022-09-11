@@ -60,7 +60,7 @@
       </div>
     </div>
     <div class="margin-1">
-      Owned by <%= @book.user.name %>
+      <%= link_to 'Owned by ' + @book.user.name, user_path(@book.user), class: 'color-accent-dark color-hover-accent' %>
     </div>
     <%= book_synopsis(@book) %>
   </div>

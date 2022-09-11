@@ -2,7 +2,7 @@
 <%= render 'settings/settings_menu' %>
   <div class="submenucontent">
     <h3 class="heading4">All Users</h3>
-    <ul class="simple-list width-66" id="users">
+    <ul class="simple-list-with-text width-100" id="users">
       <%= turbo_frame_tag 'format-list' do %>
         <%= render @users %>
       <% end %>

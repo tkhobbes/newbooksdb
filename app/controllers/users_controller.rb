@@ -57,13 +57,11 @@ class UsersController < ApplicationController
   # Standard Rails method to destroy a user
   # This method smells of :reek:TooManyStatements
   def destroy
-    redirect_to new_user_destruction_path(user: @user)
-    # redirect_to root_path unless current_user.admin? || current_user?(@user)
-    # @user.destroy
-    # respond_to do |format|
-    #   format.turbo_stream
-    #   format.html { redirect_to book_formats_path, status: :see_other }
-    # end
+    @user.destroy
+    respond_to do |format|
+      format.turbo_stream
+      format.html { redirect_to book_formats_path, status: :see_other }
+    end
   end
 
   private

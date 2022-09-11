@@ -8,7 +8,7 @@
 </div>
 
   <%= form_with url: user_destructions_path, method: :post do |f| %>
-    <%= f.hidden_field :userid, value: @user.id %>
+    <%= f.hidden_field :current_user_id, value: @user.id %>
 
     <div class="big-form">
       <div class="form-col enum_radio_buttons">
@@ -18,7 +18,10 @@
             <span class="fake-button">
             </span>
             Transfer books to new owner:
-            <%= f.collection_select :user, User.all_but(@user.id), :email, :name %>
+            <%= f.collection_select :transfer_to_user,
+              User.all_but(@user.id), :email, :name, {},
+              class: 'larger'
+            %>
           <% end %>
         </span>
         <span class="radio">

@@ -9,6 +9,7 @@ class BooksController < ApplicationController
   # everybody can see index and an individual book, but only logged in users can add / update / delete
   before_action :logged_in_user, only: [:new, :create, :edit, :update, :destroy]
   before_action :correct_user, only: [:edit, :update, :destroy]
+  before_action :current_user, only: [:create]
 
   # standard rails - set instance variable for standard actions
   before_action :set_book, only: [:show, :edit, :update, :destroy]
@@ -41,7 +42,7 @@ class BooksController < ApplicationController
   # creation / storage of a new book
   def create
     new_params = update_book_format_param(book_params)
-    @book = Book.new(new_params)
+    @book = Book.new(new_params.merge(user_id: @current_user.id))
 
     if @book.save
       flash[:success] = 'Book saved'

@@ -10,15 +10,15 @@ class UserDestructionsController < ApplicationController
 
   # decide what to do with the books and then destroy the user
   def create
-    @user = User.find(params[:userid])
+    user = User.find(params[:current_user_id])
     # are we even allowed to do that?
     redirect_to root_path unless current_user.admin? || current_user?(@user)
     # transfer books to another user
     if params[:book_selection] == 'transfer'
-      transfer_books(User.find_by(email: params[:user]))
-      action_message = 'books transferred to user ' + params[:user]
+      transfer_books(user, User.find_by(email: params[:transer_to_user]))
+      action_message = 'books transferred to user ' + params[:transfer_to_user]
     elsif params[:book_selection] == 'delete'
-      delete_books
+      delete_books(user)
       action_message = 'books removed'
     end
     @user.destroy
@@ -28,15 +28,15 @@ class UserDestructionsController < ApplicationController
   private
 
   # transfer books to another user
-  def transfer_books(new_user)
-    @user.books.each do |book|
+  def transfer_books(old_user, new_user)
+    old_user.books.each do |book|
       book.update(user_id: new_user.id)
     end
   end
 
   # delete books
-  def delete_books
-    Books.delete_all(where: { user_id: @user.id })
+  def delete_books(user)
+    Books.delete_all(where: { user_id: user.id })
   end
 
 end

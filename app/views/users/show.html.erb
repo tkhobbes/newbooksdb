@@ -9,7 +9,7 @@
       </h1>
     </div>
     <div class="userdetails__details">
-      More details here
+      Registered <%= time_ago_in_words(@user.created_at) %> ago
     </div>
     <% if @user == current_user %>
       <div class="userdetails__buttons">
@@ -17,22 +17,6 @@
         <%= link_to 'Change my Password', edit_user_path(@user), class: 'btn btn-primary' %>
         <%= link_to 'Logout', logout_path, class: 'btn btn-primary' %>
         <%= link_to 'Delete my Profile', new_user_destructions_path(@user), class: 'btn btn-error' %>
-        <%= button_to 'Delete my Profile (old)',
-          user_path(@user),
-          method: :delete,
-          form: {
-            data: {
-              turbo_confirm: "Are you sure?",
-              use_turbo: false,
-              controller: "sweetalert",
-              action: 'click->sweetalert#confirm',
-              "sweetalert-item-value": @user.name,
-              "sweetalert-url-value": user_path(@user),
-              "sweetalert-redirect-value": root_path,
-              "sweetalert-answer-value": 'html'
-            }
-          },
-          class: 'btn btn-error' %>
       </div>
     <% end %>
 </div>
