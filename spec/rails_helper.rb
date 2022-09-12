@@ -4,6 +4,9 @@
 require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
+
+# added support module
+require_relative 'support/user_auth_helper'
 # Prevent database truncation if the environment is production
 abort('The Rails environment is running in production mode!') if Rails.env.production?
 require 'rspec/rails'
@@ -36,6 +39,9 @@ RSpec.configure do |config|
   # config.fixture_path = "#{::Rails.root}/spec/fixtures"
   # for factory bot, commented out above line and added below:
   config.include FactoryBot::Syntax::Methods
+
+  # use test helpers
+  config.include TestHelpers::UserAuth
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false

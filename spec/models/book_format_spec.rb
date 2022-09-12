@@ -8,6 +8,10 @@ RSpec.describe BookFormat, type: :model do
     @book_format_default = create(:not_defined)
   end
 
+  it 'displays the proper book format for a book with that format' do
+    expect(@book.book_format.name).to eq('Hardcover')
+  end
+
   it 'should reassign to the fallback book_format if their book_format is deleted' do
     format = @book.book_format
     format.destroy
@@ -20,7 +24,4 @@ RSpec.describe BookFormat, type: :model do
     expect(format).to be_truthy
   end
 
-  it 'displays the proper book format for a book with that format' do
-    expect(@book.book_format.name).to eq('Hardcover')
-  end
 end
