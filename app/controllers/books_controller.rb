@@ -78,7 +78,7 @@ class BooksController < ApplicationController
 
   # ensure the correct user can edit / update / delete a book
   def correct_user
-    return if current_user.books.friendly.find(params[:id])
+    return if current_user == Book.friendly.find(params[:id]).user
     redirect_to root_path, status: :see_other, error: "You cannot change or delete other user's books"
   end
 

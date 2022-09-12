@@ -12,16 +12,16 @@ class UserDestructionsController < ApplicationController
   def create
     user = User.find(params[:current_user_id])
     # are we even allowed to do that?
-    redirect_to root_path unless current_user.admin? || current_user?(@user)
+    redirect_to root_path unless current_user.admin? || current_user?(user)
     # transfer books to another user
     if params[:book_selection] == 'transfer'
-      transfer_books(user, User.find_by(email: params[:transer_to_user]))
+      transfer_books(user, User.find_by(email: params[:transfer_to_user]))
       action_message = 'books transferred to user ' + params[:transfer_to_user]
     elsif params[:book_selection] == 'delete'
       delete_books(user)
       action_message = 'books removed'
     end
-    @user.destroy
+    user.destroy
     redirect_to root_path, info: 'Profile destroyed; ' + action_message
   end
 

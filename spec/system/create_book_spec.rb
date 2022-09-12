@@ -12,6 +12,11 @@ RSpec.describe 'creating a book', type: :system do
     @user = create(:me) # :me is an admin
   end
 
+  scenario 'only logged in users can create books' do
+    visit new_book_path
+    expect(page).to have_content('Login')
+  end
+
   scenario 'Valid input and format given' do
     log_me_in(@user)
     visit new_book_path
