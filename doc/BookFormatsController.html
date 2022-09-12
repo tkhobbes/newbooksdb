@@ -91,6 +91,11 @@
   
   
   
+  <dl>
+      <dt>Includes:</dt>
+      <dd><span class='object_link'><a href="SessionsHelper.html" title="SessionsHelper (module)">SessionsHelper</a></span>, <span class='object_link'><a href="UserConcerns.html" title="UserConcerns (module)">UserConcerns</a></span></dd>
+  </dl>
+  
   
 
   
@@ -405,6 +410,12 @@
   
   
   
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="UserConcerns.html" title="UserConcerns (module)">UserConcerns</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="UserConcerns.html#logged_in_user-instance_method" title="UserConcerns#logged_in_user (method)">#logged_in_user</a></span></p>
+
+  
+  
+  
   
   
   
@@ -414,6 +425,12 @@
   <h3 class="inherited">Methods included from <span class='object_link'><a href="SessionsHelper.html" title="SessionsHelper (module)">SessionsHelper</a></span></h3>
   <p class="inherited"><span class='object_link'><a href="SessionsHelper.html#current_user-instance_method" title="SessionsHelper#current_user (method)">#current_user</a></span>, <span class='object_link'><a href="SessionsHelper.html#current_user%3F-instance_method" title="SessionsHelper#current_user? (method)">#current_user?</a></span>, <span class='object_link'><a href="SessionsHelper.html#forget-instance_method" title="SessionsHelper#forget (method)">#forget</a></span>, <span class='object_link'><a href="SessionsHelper.html#log_in-instance_method" title="SessionsHelper#log_in (method)">#log_in</a></span>, <span class='object_link'><a href="SessionsHelper.html#log_out-instance_method" title="SessionsHelper#log_out (method)">#log_out</a></span>, <span class='object_link'><a href="SessionsHelper.html#logged_in%3F-instance_method" title="SessionsHelper#logged_in? (method)">#logged_in?</a></span>, <span class='object_link'><a href="SessionsHelper.html#remember-instance_method" title="SessionsHelper#remember (method)">#remember</a></span>, <span class='object_link'><a href="SessionsHelper.html#store_location-instance_method" title="SessionsHelper#store_location (method)">#store_location</a></span></p>
 
+  
+  
+  
+  
+  
+  
   
   
 
@@ -447,12 +464,12 @@
       <pre class="lines">
 
 
-103
-104
-105</pre>
+111
+112
+113</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/book_formats_controller.rb', line 103</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/book_formats_controller.rb', line 111</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_book_format_params'>book_format_params</span>
   <span class='id identifier rubyid_params'>params</span><span class='period'>.</span><span class='id identifier rubyid_require'>require</span><span class='lparen'>(</span><span class='symbol'>:book_format</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_permit'>permit</span><span class='lparen'>(</span><span class='symbol'>:name</span><span class='comma'>,</span> <span class='symbol'>:fallback</span><span class='rparen'>)</span>
@@ -488,23 +505,23 @@
       <pre class="lines">
 
 
-28
-29
-30
-31
-32
-33
-34
-35
 36
 37
 38
 39
 40
-41</pre>
+41
+42
+43
+44
+45
+46
+47
+48
+49</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/book_formats_controller.rb', line 28</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/book_formats_controller.rb', line 36</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_create'>create</span>
   <span class='ivar'>@book_format</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="BookFormat.html" title="BookFormat (class)">BookFormat</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_book_format_params'>book_format_params</span><span class='rparen'>)</span>
@@ -551,24 +568,24 @@
       <pre class="lines">
 
 
-59
-60
-61
-62
-63
-64
-65
-66
 67
 68
 69
 70
 71
 72
-73</pre>
+73
+74
+75
+76
+77
+78
+79
+80
+81</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/book_formats_controller.rb', line 59</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/book_formats_controller.rb', line 67</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_destroy'>destroy</span>
   <span class='ivar'>@book_format</span><span class='period'>.</span><span class='id identifier rubyid_destroy'>destroy</span>
@@ -616,10 +633,10 @@
       <pre class="lines">
 
 
-44</pre>
+52</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/book_formats_controller.rb', line 44</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/book_formats_controller.rb', line 52</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_edit'>edit</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -653,12 +670,12 @@
       <pre class="lines">
 
 
-13
-14
-15</pre>
+21
+22
+23</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/book_formats_controller.rb', line 13</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/book_formats_controller.rb', line 21</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_index'>index</span>
   <span class='ivar'>@book_formats</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="BookFormat.html" title="BookFormat (class)">BookFormat</a></span></span><span class='period'>.</span><span class='id identifier rubyid_all'>all</span><span class='period'>.</span><span class='id identifier rubyid_order'>order</span><span class='lparen'>(</span><span class='symbol'>:name</span><span class='rparen'>)</span>
@@ -694,12 +711,12 @@
       <pre class="lines">
 
 
-18
-19
-20</pre>
+26
+27
+28</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/book_formats_controller.rb', line 18</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/book_formats_controller.rb', line 26</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_new'>new</span>
   <span class='ivar'>@book_format</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="BookFormat.html" title="BookFormat (class)">BookFormat</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
@@ -735,12 +752,12 @@
       <pre class="lines">
 
 
-93
-94
-95</pre>
+101
+102
+103</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/book_formats_controller.rb', line 93</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/book_formats_controller.rb', line 101</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_set_book_format'>set_book_format</span>
   <span class='ivar'>@book_format</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="BookFormat.html" title="BookFormat (class)">BookFormat</a></span></span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
@@ -776,12 +793,12 @@
       <pre class="lines">
 
 
-76
-77
-78</pre>
+84
+85
+86</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/book_formats_controller.rb', line 76</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/book_formats_controller.rb', line 84</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_set_default'>set_default</span>
   <span class='ivar'>@book_formats</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="BookFormat.html" title="BookFormat (class)">BookFormat</a></span></span><span class='period'>.</span><span class='id identifier rubyid_all'>all</span><span class='period'>.</span><span class='id identifier rubyid_order'>order</span><span class='lparen'>(</span><span class='symbol'>:name</span><span class='rparen'>)</span>
@@ -817,12 +834,12 @@
       <pre class="lines">
 
 
-98
-99
-100</pre>
+106
+107
+108</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/book_formats_controller.rb', line 98</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/book_formats_controller.rb', line 106</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_set_default_book_format'>set_default_book_format</span>
   <span class='ivar'>@default_book_format</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="BookFormat.html" title="BookFormat (class)">BookFormat</a></span></span><span class='period'>.</span><span class='id identifier rubyid_find_by'>find_by</span><span class='lparen'>(</span><span class='label'>fallback:</span> <span class='kw'>true</span><span class='rparen'>)</span>
@@ -858,16 +875,16 @@
       <pre class="lines">
 
 
-47
-48
-49
-50
-51
-52
-53</pre>
+55
+56
+57
+58
+59
+60
+61</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/book_formats_controller.rb', line 47</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/book_formats_controller.rb', line 55</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_update'>update</span>
   <span class='kw'>if</span> <span class='ivar'>@book_format</span><span class='period'>.</span><span class='id identifier rubyid_update'>update</span><span class='lparen'>(</span><span class='id identifier rubyid_book_format_params'>book_format_params</span><span class='rparen'>)</span>
@@ -907,16 +924,16 @@
       <pre class="lines">
 
 
-82
-83
-84
-85
-86
-87
-88</pre>
+90
+91
+92
+93
+94
+95
+96</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/book_formats_controller.rb', line 82</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/book_formats_controller.rb', line 90</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_update_default'>update_default</span>
   <span class='ivar'>@new_default</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="BookFormat.html" title="BookFormat (class)">BookFormat</a></span></span><span class='period'>.</span><span class='id identifier rubyid_find_by'>find_by</span><span class='lparen'>(</span><span class='label'>name:</span> <span class='id identifier rubyid_book_format_params'>book_format_params</span><span class='lbracket'>[</span><span class='symbol'>:name</span><span class='rbracket'>]</span><span class='rparen'>)</span>
@@ -935,7 +952,7 @@
 </div>
 
       <div id="footer">
-  Generated on Wed Sep  7 12:04:34 2022 by
+  Generated on Mon Sep 12 18:37:04 2022 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.28 (ruby-3.1.2).
 </div>

@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Module assembles methods that deal with user authentication
 module UserConcerns
     extend ActiveSupport::Concern
 
