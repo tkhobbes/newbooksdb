@@ -1,5 +1,5 @@
-<li>
-  <%= turbo_frame_tag(book_format) do %>
+<%= turbo_frame_tag(book_format) do %>
+  <li>
     <div class="flexlist">
       <%= link_to(
         "#{book_format.name}#{print_fallback(book_format)}",
@@ -15,5 +15,5 @@
         redirect_url: '/book_formats'
       %>
     </div>
-  <% end %>
-</li>
+  </li>
+<% end %>

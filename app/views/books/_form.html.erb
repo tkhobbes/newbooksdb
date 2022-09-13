@@ -57,6 +57,7 @@
         </div>
       </div>
       <div class="form-col enum_radio_buttons">
+        <div class="color-primary-dark margin-bottom-50">Book Rating</div>
         <% Book.ratings.each do |k,v| %>
           <span class="radio">
             <%= f.radio_button :rating, k.to_sym, class: 'hidden-button' %>
@@ -69,13 +70,14 @@
         <% end %>
       </div>
       <div class="form-col enum_radio_buttons">
+        <div class="color-primary-dark margin-bottom-50">Book Condition</div>
         <% Book.conditions.each do |k,v| %>
           <span class="radio">
             <%= f.radio_button :condition, k.to_sym, class: 'hidden-button' %>
             <%= f.label :condition, id: "label_condition_#{k}", for: "book_condition_#{k}" do %>
               <span class="fake-button">
               </span>
-              ><%= k.humanize %>
+              <%= k.humanize %>
             <% end %>
           </span>
         <% end %>

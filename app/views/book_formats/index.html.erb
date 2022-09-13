@@ -5,7 +5,9 @@
     <ul class="simple-list width-33" id="book-formats">
       <%= render 'new_form_entry' %>
       <%= turbo_frame_tag 'format-list' do %>
-        <%= render @book_formats %>
+        <ul>
+          <%= render @book_formats %>
+        </ul>
       <% end %>
     </ul>
 
