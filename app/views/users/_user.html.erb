@@ -5,10 +5,10 @@
     </div>
     <div class="itemlist__title">
       <%= link_to user.name, user %>
-      (<%= user.books.size %> books)
+      (<%= user.books_count %> books)
     </div>
     <div class="itemlist__title">
-      (<%= user.activated? ? user.activated_at.strftime("%d-%b-%Y") : 'not activated' %>)
+      (Active since <%= user.activated? ? user.activated_at.strftime("%d-%b-%Y") : 'not activated' %>)
     </div>
     <div class="itemlist__icons">
       <%= render 'shared/crud_icons',

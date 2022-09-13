@@ -2,13 +2,13 @@
   <li>
     <div class="flexlist">
       <%= link_to(
-        "#{book_format.name}#{print_fallback(book_format)} - #{book_format.books.size} books",
+        "#{book_format.name}#{print_fallback(book_format)} - #{book_format.books_count} books",
         edit_book_format_path(book_format)
        ) %>
       <%= render 'shared/crud_icons',
         edit_path: edit_book_format_path(book_format),
         delete_path: book_format_path(book_format),
-        item_name: "#{book_format.name}, (#{book_format.books.size} books will be reassigned to the default book format '#{@default_book_format.name}')",
+        item_name: "#{book_format.name}, (#{book_format.books_count} books will be reassigned to the default book format '#{@default_book_format.name}')",
         url: book_format_path(book_format),
         answer: 'turbo',
         use_turbo: true,
