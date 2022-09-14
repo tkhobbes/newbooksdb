@@ -77,6 +77,8 @@ gem 'image_processing', '~> 1.12.2'
 gem 'backpedal', '~> 0.2.1'
 # use nice IDs instead of numbers
 gem 'friendly_id', '~> 5.4', '>= 5.4.2'
+# better way to use SVGs
+gem 'inline_svg', '~> 1.8'
 # Pagination for large collections
 gem 'pagy', '~> 5.10', '>= 5.10.1'
 # Simple form for form inputs

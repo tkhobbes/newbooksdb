@@ -87,6 +87,10 @@
   list-style-type: disc;
 }
 
+.trix-button-row .trix-button-group--file-tools {
+  display: none;
+}
+
 // 4. Various due to specific packages or gems
 .back_link {
   @extend .form-cancel-button;
