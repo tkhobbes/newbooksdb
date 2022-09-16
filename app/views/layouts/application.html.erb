@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>UZW18 Books Database</title>
+    <title><%= yield :browser_title %>UZW18 Books Database</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -28,6 +28,7 @@
               <li class="placeholder-tab">&nbsp;</li>
             </ul>
           </nav>
+            <%= yield :title %>
             <%= yield %>
         </main>
         <%= render 'shared/footer' %>

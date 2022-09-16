@@ -1,4 +1,5 @@
-<h1 class="heading2">Reset Password</h1>
+<%= page_title('Reset Password','', 'heading2') %>
+
 <%= form_with(model: @user, url: password_reset_path(params[:id])) do |f| %>
   <%= render 'shared/form_errors', form: f %>
 

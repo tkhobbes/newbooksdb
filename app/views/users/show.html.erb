@@ -1,3 +1,5 @@
+<%= page_title("Profile for #{@user.name}", '', 'heading3') %>
+
 <div class="userdetails">
   <div class="cover-medium">
     <%= avatar_image(@user, size: 'medium') %>
@@ -5,7 +7,7 @@
   <div class="userdetails__text">
     <div class="userdetails__title">
       <h1 class="heading3">
-        Profile Page for <%= @user.name %>
+        <%= @user.name %>
       </h1>
     </div>
     <div class="userdetails__details">
