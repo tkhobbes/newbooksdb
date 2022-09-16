@@ -25,9 +25,9 @@ class BooksController < ApplicationController
   # This method smells of :reek:DuplicateMethodCall
   def index
     if params[:show] == 'list'
-      @pagy, @books = pagy(Book.includes([cover_attachment: :blob]).order(:sort_title), items: 20)
+      @pagy, @books = pagy(Book.includes([cover_attachment: :blob]).includes([:user]).order(:sort_title), items: 20)
     else
-      @pagy, @books = pagy(Book.includes([cover_attachment: :blob]).includes([:rich_text_synopsis]).order(:sort_title))
+      @pagy, @books = pagy(Book.includes([cover_attachment: :blob]).includes([:rich_text_synopsis]).includes([:user]).order(:sort_title))
     end
   end
 
