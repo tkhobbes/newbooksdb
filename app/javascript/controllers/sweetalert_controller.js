@@ -7,9 +7,13 @@ import { Turbo } from "@hotwired/turbo-rails";
 // replaces boring "are you sure" with sweetalert modals
 export default class extends Controller {
   static values = {
+    // the item text - "you destroy xyz"
     item: String,
+    // the URL to the destroy path
     url: String,
+    // do we want turbo or HTML answer?
     answer: String,
+    // where do we want to redirect to once the item is destroyed?
     redirect: String,
   };
 
