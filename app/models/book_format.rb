@@ -10,6 +10,8 @@
 #   @return [string]
 # @!attribute fallback
 #  @return [boolean]
+# @!attribute books_count
+#  @return [integer]
 # @!attribute created_at
 #   @return [Time]
 # @!attribute updated_at

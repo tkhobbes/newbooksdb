@@ -52,6 +52,7 @@ FactoryBot.define do
     synopsis {  "<p>#{Faker::Lorem.paragraphs(number: 30).join(' ')}</p>" }
     association :book_format, factory: :hardcover
     association :user, factory: :me
+    association :genre, factory: :fiction
 
     after(:build) do |hobbit|
       hobbit.cover.attach(

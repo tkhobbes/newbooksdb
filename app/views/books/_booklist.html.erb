@@ -4,7 +4,11 @@
       <%= cover_image(book, size: "default") %>
     </div>
     <div class="itemlist__title">
-      <%= link_to book.title, book_path(book) %>
+      <%= link_to(
+        book.title,
+        book_path(book),
+        data: { turbo_frame: "_top" }
+        )%>
       (by Author Author )
     </div>
     <div class="itemlist__icons">
