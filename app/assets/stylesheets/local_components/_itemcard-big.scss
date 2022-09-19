@@ -57,10 +57,12 @@
     line-height: 1.1;
   }
 
-  &__listcontent {
-    ul {
-      li {
-      }
+  &__footer {
+    text-align: right;
+
+    a {
+      @extend .color-secondary-dark;
+      @extend .color-hover-secondary;
     }
   }
 }

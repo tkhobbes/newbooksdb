@@ -1,15 +1,20 @@
-<%= turbo_frame_tag genre, class: 'itemcard-big min-width-25' do %>
-    <div class="itemcard-big__content">
-      <div class="itemcard-big__title">
-        <h2 class="heading3">
-          <%= genre.name %>
-        </h2>
-      </div>
-      <div class="itemcard-big__listcontent">
-        <ul>
-        <% genre.books.each do |book| %>
-          <li><%= book.title %></li>
-        <% end %>
-      </div>
+<div class="itemcard-big min-width-25 max-width-33">
+  <div class="itemcard-big__content">
+    <div class="itemcard-big__title">
+      <h2 class="heading3">
+        <%= genre.name %>
+      </h2>
     </div>
-<% end %>
+    <div class="itemcard-big__listcontent margin-top-25">
+      <ul class="booklist margin-bottom-50">
+      <% genre.books.first(5).each do |book| %>
+        <%= render 'books/booklist_small', book: book %>
+      <% end %>
+      </ul>
+      <ul>
+    </div>
+    <div class="itemcard-big__footer margin-top-33 margin-bottom-33">
+      <%= link_to "#{genre.books.size - 5} more books...", genre_path(genre) %>
+    </div>
+  </div>
+</div>

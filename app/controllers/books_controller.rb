@@ -24,17 +24,14 @@ class BooksController < ApplicationController
   # books ordered by sort_title; additional variable @pagy for pagination
   def index
     all_books = Book
-      .includes([cover_attachment: :blob])
-      .includes([:user])
+      .includes([:user, cover_attachment: :blob])
       .order(:sort_title)
     if params[:show] == 'list'
       @pagy, @books = pagy(all_books, items: 20)
     else
       @pagy, @books = pagy(
         all_books
-          .includes([:rich_text_synopsis])
-          .includes([:books_genres])
-          .includes([:genres])
+          .includes([:rich_text_synopsis, :books_genres, :genres])
       )
     end
   end

@@ -16,11 +16,13 @@ $width_map: (
   .width-#{$key} {
     width: $value;
   }
-}
 
-@each $key, $value in $width_map {
   .min-width-#{$key} {
     min-width: $value;
+  }
+
+  .max-width-#{$key} {
+    max-width: $value;
   }
 }
 
