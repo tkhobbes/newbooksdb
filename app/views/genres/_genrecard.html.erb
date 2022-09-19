@@ -1,0 +1,15 @@
+<%= turbo_frame_tag genre, class: 'itemcard-big min-width-25' do %>
+    <div class="itemcard-big__content">
+      <div class="itemcard-big__title">
+        <h2 class="heading3">
+          <%= genre.name %>
+        </h2>
+      </div>
+      <div class="itemcard-big__listcontent">
+        <ul>
+        <% genre.books.each do |book| %>
+          <li><%= book.title %></li>
+        <% end %>
+      </div>
+    </div>
+<% end %>

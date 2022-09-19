@@ -18,6 +18,12 @@ $width_map: (
   }
 }
 
+@each $key, $value in $width_map {
+  .min-width-#{$key} {
+    min-width: $value;
+  }
+}
+
 $margin_map: (
   "1": $base-margin,
   "75": $base-margin * 0.75,

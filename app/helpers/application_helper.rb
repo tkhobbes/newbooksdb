@@ -39,7 +39,7 @@ module ApplicationHelper
       },
       {
         name: 'Genres',
-        path: '#'
+        path: genres_path,
       },
       {
         name: 'Book Series',

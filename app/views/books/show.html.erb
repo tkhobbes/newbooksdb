@@ -27,24 +27,9 @@
       <%= @book.year %>
     </div>
     <div class="genre-list">
-      <span class="genre">
-        <a href="#">
-          <%= inline_svg_tag 'tag.svg', class: 'smallicon' %>
-          Genre 1
-        </a>
-      </span>
-      <span class="genre">
-        <a href="#">
-          <%= inline_svg_tag 'tag.svg', class: 'smallicon' %>
-          Genre 2
-        </a>
-      </span>
-      <span class="genre">
-        <a href="#">
-          <%= inline_svg_tag 'tag.svg', class: 'smallicon' %>
-          Genre 3
-        </a>
-      </span>
+      <% @book.genres.each do |g| %>
+        <%= render 'genres/genre_tag', genre: g %>
+      <% end %>
     </div>
     <div class="bookdetails__meta">
       <div>

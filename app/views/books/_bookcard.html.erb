@@ -27,12 +27,7 @@
       <div class="publisher">Publisher Name</div>
       <div class="genre-list">
         <% book.genres.each do |g| %>
-          <span class="genre">
-            <a href="#">
-              <%= inline_svg_tag 'tag.svg', class: 'smallicon' %>
-              <%= g.name %>
-            </a>
-          </span>
+          <%= render 'genres/genre_tag', genre: g %>
         <% end %>
       </div>
       <%= trunc_synopsis(book) %>
