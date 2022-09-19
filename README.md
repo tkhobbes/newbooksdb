@@ -52,6 +52,7 @@ The following Gems are used in this project:
 - for easy going back to previous pages, backpedal { https://rubygems.org/gems/backpedal }
 - to display URLs like /books/hobbit instead of /books/3, friendly_id { https://rubygems.org/gems/friendly_id }
 - pagy to paginate big collections { https://rubygems.org/gems/pagy }. The "load more" concept is coming from here: { https://dev.to/davidcolbyatx/pagination-and-infinite-scrolling-with-rails-and-the-hotwire-stack-34om }
+- inline_svg to display SVGs { https://rubygems.org/gems/inline_svg }
 
 #### Development
 

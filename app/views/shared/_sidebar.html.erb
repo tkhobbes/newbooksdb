@@ -22,13 +22,11 @@
   </section>
   <section class="menu">
     <ul class="menu__main">
-      <li><a href="/">Home</a></li>
-      <li><%= link_to 'Books', books_path %></li>
-      <li><a href="#">Genres</a></li>
-      <li><a href="#">Book Series</a></li>
-      <li><a href="#">Authors</a></li>
-      <li><a href="#">Publishers</a></li>
-      <li><a href="#">Shelves</a></li>
+      <% menu_items.each do |item| %>
+        <li>
+          <%= link_to item[:name], item[:path], class: item[:active] ? 'active' : '' %>
+        </li>
+      <% end %>
     </ul>
   </section>
 </aside>

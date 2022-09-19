@@ -25,4 +25,40 @@ module ApplicationHelper
       end
     end
   end
+
+  # method to list out all menu items for main menu
+  def menu_items
+    [
+      {
+        name: 'Home',
+        path: root_path
+      },
+      {
+        name: 'Books',
+        path: books_path,
+      },
+      {
+        name: 'Genres',
+        path: '#'
+      },
+      {
+        name: 'Book Series',
+        path: '#'
+      },
+      {
+        name: 'Authors',
+        path: '#'
+      },
+      {
+        name: 'Publishers',
+        path: '#'
+      }
+    ].map do |item|
+      {
+        name: item[:name],
+        path: item[:path],
+        active: current_page?(item[:path])
+      }
+    end
+  end
 end

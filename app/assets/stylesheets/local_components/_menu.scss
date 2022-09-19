@@ -22,6 +22,11 @@
           @extend .bg-accent-dark;
           @extend .color-accent-light;
         }
+
+        &.active {
+          @extend .bg-accent-dark;
+          @extend .color-accent-light;
+        }
       }
     }
 
