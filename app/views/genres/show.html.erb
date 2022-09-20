@@ -1,6 +1,8 @@
 <%= page_title("#{@genre.name} Books", '', 'heading2') %>
-<ul class="booklist margin-top-50">
-  <% @genre.books.each do |book| %>
+
+<%= turbo_frame_tag 'page' %>
+<ul class="booklist margin-top-50" id="genre_books">
+  <% @books.each do |book| %>
     <%= turbo_frame_tag book, class: "itemlist__border" do %>
       <li class="itemlist__item">
         <div class="itemlist__cover">
@@ -30,3 +32,5 @@
     <% end %>
   <% end %>
 </ul>
+
+<%= render 'shared/pager', pagy: @pagy, model_path: genre_path(@genre, page: @pagy.next, show: 'list') %>

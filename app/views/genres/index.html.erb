@@ -1,5 +1,10 @@
+<%= page_title('All Genres','', 'heading2') %>
+
+<%= turbo_frame_tag 'page' %>
 <div class="flexlist" id="genres">
   <% @genres.each do |genre| %>
     <%= render 'genrecard', genre: genre  %>
   <% end %>
 </div>
+
+<%= render 'shared/pager', pagy: @pagy, model_path: genres_path(page: @pagy.next, show: params[:show]) %>
