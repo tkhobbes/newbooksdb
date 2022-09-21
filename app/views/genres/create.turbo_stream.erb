@@ -1,0 +1,6 @@
+<%= turbo_stream.append 'genres' do %>
+  <%= render 'genresettings', genre: @genre %>
+<% end %>
+<%= turbo_stream.replace 'new-genre' do %>
+  <%= render 'new_form_entry' %>
+<% end %>

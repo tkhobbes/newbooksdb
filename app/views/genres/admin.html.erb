@@ -1,0 +1,16 @@
+<%= page_title('Settings', '', 'heading3') %>
+
+<%= render 'settings/settings_menu' %>
+  <div class="submenucontent">
+    <h3 class="heading4">Available Genres</h3>
+    <ul class="simple-list width-50" id="genres">
+      <%= render 'new_form_entry' %>
+      <%= turbo_frame_tag 'format-list' do %>
+        <%= render @genres %>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+
+

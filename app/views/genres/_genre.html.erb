@@ -1,1 +1,3 @@
-<%= render 'genres/genrecard', genre: genre %>
+<%= params[:show] == 'settings' ?
+  render('genresettings', genre: genre) :
+  render('genres/genrecard', genre: genre) %>

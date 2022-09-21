@@ -9,6 +9,12 @@
           params[:controller] == 'book_formats' ? { class: 'active' } : {}
         ) %>
       </li>
+      <li>
+        <%= link_to(
+          'Genres',
+          genres_path(show: 'settings'),
+          params[:controller] == 'genres' ? { class: 'active' } : {}
+        ) %>
       <% if current_user&.admin %>
         <li>
           <%= link_to(

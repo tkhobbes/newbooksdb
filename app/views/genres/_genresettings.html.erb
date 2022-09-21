@@ -1,0 +1,18 @@
+<%= turbo_frame_tag(genre) do %>
+  <li>
+    <div class="flexlist">
+      <%= link_to(
+        "#{genre.name} - #{genre.books.size} books",
+        edit_genre_path(genre)
+       ) %>
+      <%= render 'shared/crud_icons',
+        edit_path: edit_genre_path(genre),
+        delete_path: genre_path(genre),
+        item_name: "#{genre.name}, (#{genre.books.size} books affected",
+        url: genre_path(genre),
+        answer: 'turbo',
+        redirect_url: '/genres?show=settings'
+      %>
+    </div>
+  </li>
+<% end %>
