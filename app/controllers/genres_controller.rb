@@ -11,6 +11,8 @@ class GenresController < ApplicationController
 
   before_action :logged_in_user, only: [:new, :create, :edit, :update, :destroy]
 
+  before_action :set_genre, only: [:show, :edit, :update, :destroy]
+
   # index action can answer to either 'settings' page (to administer genres)
   # or otherwise it will display all genres and the first 5 books within each genre
   def index
@@ -53,6 +55,38 @@ class GenresController < ApplicationController
         format.html { render :new, status: :unprocessable_entity }
       end
 
+    end
+  end
+
+  #edit action - displayed in a turbo frame within the settings page
+  def edit; end
+
+  #standard rails update action
+  def update
+    if @genre.update(genre_params)
+      redirect_to genres_path(show: 'settings')
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
+
+  #standard rails destroy action - responds to
+  # -html (not used)
+  # -turbo-stream - default response format, used on the settings page
+  # This method smells of :reek:TooManyStatements
+  def destroy
+    @genre.destroy
+    if @genre.destroyed?
+      respond_to do |format|
+        format.turbo_stream
+        format.html { redirect_to genres, status: :see_other }
+      end
+    else
+      # in the rare occasion where the format is not deleted -
+      # as it is the default - ensure that the corresponding
+      # turbo stream is not removed
+      render json: { nothing: true }
     end
   end
 

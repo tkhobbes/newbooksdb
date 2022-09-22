@@ -23,6 +23,13 @@
             params[:controller] == 'users' ? { class: 'active' } : {}
           ) %>
         </li>
+        <li>
+          <%= link_to(
+            'Bulk Actions',
+            bulk_actions_settings_path,
+            params[:controller] == 'settings' && params[:action] == 'bulk_actions' ? { class: 'active' } : {}
+          ) %>
+        </li>
       <% end %>
     </ul>
   </div>
