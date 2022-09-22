@@ -4,14 +4,18 @@
 #
 # @!attribute id
 #   @return []
-# @!attribute books_count
-#   @return [Integer]
 # @!attribute name
+#   @return [String]
+# @!attribute slug
 #   @return [String]
 # @!attribute created_at
 #   @return [Time]
 # @!attribute updated_at
 #   @return [Time]
+#
+# Indexes
+#
+#  index_genres_on_slug  (slug) UNIQUE
 #
 FactoryBot.define do
   factory :fiction, class: Genre do

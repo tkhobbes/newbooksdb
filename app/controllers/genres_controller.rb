@@ -28,7 +28,7 @@ class GenresController < ApplicationController
 
   # shows a genre in detail and lists all books within that genre
   def show
-    @genre = Genre.find(params[:id])
+    @genre = Genre.friendly.find(params[:id])
     @pagy, @books = pagy(@genre.books.includes([:user, cover_attachment: :blob]))
   end
 
@@ -103,7 +103,7 @@ class GenresController < ApplicationController
   private
 
   def set_genre
-    @genre = Genre.find(params[:id])
+    @genre = Genre.friendly.find(params[:id])
   end
 
   def genre_params

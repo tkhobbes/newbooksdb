@@ -1,6 +1,6 @@
 <span class="genre">
-  <a href="#">
+  <%= link_to genre, data: { turbo_frame: '_top' } do %>
     <%= inline_svg_tag 'tag.svg', class: 'smallicon' %>
     <%= genre.name %>
-  </a>
+  <% end %>
 </span>
