@@ -117,7 +117,8 @@ class BooksController < ApplicationController
       :year,
       :cover,
       :synopsis,
-      :book_format_id
+      :book_format_id,
+      genre_ids: []
     )
   end
   # rubocop:enable Metrics/MethodLength
