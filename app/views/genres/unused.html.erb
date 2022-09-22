@@ -1,0 +1,19 @@
+<%= page_title('Settings','', 'heading3') %>
+
+<%= render 'settings/settings_menu' %>
+  <div class="submenucontent">
+    <h3 class="heading4">Genres without Books</h3>
+    <% if @genres.size == 0 %>
+      <div>There are no genres without any books.</div>
+      <%= back_link %>
+    <% else %>
+      <ul class="booklist margin-bottom-1">
+        <% @genres.each do |genre| %>
+          <li class="itemlist__border padding-25"><%= genre.name %></li>
+        <% end %>
+      </ul>
+      <%= link_to 'Delete these genres', remove_unused_genres_path, class: 'form-cancel-button' %>
+    <% end %>
+  </div>
+</div>
+

@@ -13,4 +13,6 @@
 #
 class Genre < ApplicationRecord
   has_and_belongs_to_many :books
+
+  scope :no_books, -> { left_joins(:books).where(books: { id: [0, nil, ""] }) }
 end

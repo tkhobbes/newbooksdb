@@ -70,7 +70,6 @@ class GenresController < ApplicationController
     end
   end
 
-
   #standard rails destroy action - responds to
   # -html (not used)
   # -turbo-stream - default response format, used on the settings page
@@ -88,6 +87,17 @@ class GenresController < ApplicationController
       # turbo stream is not removed
       render json: { nothing: true }
     end
+  end
+
+  # show genres not used
+  def unused
+    @genres = Genre.no_books.order(:name)
+  end
+
+  # removes all actors not in a movie
+  def remove_unused
+    Genre.no_books.destroy_all
+    redirect_to bulk_actions_settings_path, notice: 'Unused Genres removed.'
   end
 
   private
