@@ -4,12 +4,14 @@
 #
 #  id         :bigint           not null, primary key
 #  name       :string(255)
+#  slug       :string(255)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  user_id    :bigint           not null
 #
 # Indexes
 #
+#  index_tags_on_slug     (slug) UNIQUE
 #  index_tags_on_user_id  (user_id)
 #
 # Foreign Keys
