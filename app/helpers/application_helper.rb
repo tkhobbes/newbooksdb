@@ -27,6 +27,8 @@ module ApplicationHelper
   end
 
   # method to list out all menu items for main menu
+  # rubocop:disable Metrics/MethodLength
+  # this method smells of :reek:DuplicateMethodCall
   def menu_items
     [
       {
@@ -61,4 +63,5 @@ module ApplicationHelper
       }
     end
   end
+  # rubocop:enable Metrics/MethodLength
 end

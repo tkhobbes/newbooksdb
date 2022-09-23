@@ -12,6 +12,9 @@ Style/Documentation:
 Rails/I18nLocaleTexts:
   Enabled: false
 
+Style/HashAsLastArrayItem:
+  Enabled: false
+
 AllCops:
   NewCops: enable
   Exclude:

@@ -23,9 +23,7 @@ class BooksController < ApplicationController
   # standard index method - show all books
   # books ordered by sort_title; additional variable @pagy for pagination
   def index
-    all_books = Book
-      .includes([:user, cover_attachment: :blob])
-      .order(:sort_title)
+    all_books = books_with_includes_sorted
     if params[:show] == 'list'
       @pagy, @books = pagy(all_books, items: 20)
     else
@@ -102,6 +100,14 @@ class BooksController < ApplicationController
   # define an instance variable @book
   def set_book
     @book = Book.friendly.find(params[:id])
+  end
+
+  # returns all books sorted by sort_title, with associations included to avoid n+1
+  # this method smells of :reek:UtilityFunction
+  def books_with_includes_sorted
+    Book
+      .includes([:user, cover_attachment: :blob])
+      .order(:sort_title)
   end
 
   # define allowed parameters
