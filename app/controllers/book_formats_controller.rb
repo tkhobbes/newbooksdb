@@ -104,7 +104,7 @@ class BookFormatsController < ApplicationController
 
   # retrieves the default format - the format with fallback = true
   def set_default_book_format
-    @default_book_format = BookFormat.find_by(fallback: true)
+    @default_book_format ||= BookFormat.find_by(fallback: true)
   end
 
   # standard rails safe parameter method

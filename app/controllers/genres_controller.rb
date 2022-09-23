@@ -13,6 +13,8 @@ class GenresController < ApplicationController
 
   before_action :set_genre, only: [:show, :edit, :update, :destroy]
 
+  before_action :dissolve, only: [:show]
+
   # index action can answer to either 'settings' page (to administer genres)
   # or otherwise it will display all genres and the first 5 books within each genre
   def index
