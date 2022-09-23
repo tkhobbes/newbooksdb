@@ -1,9 +1,9 @@
 example_id                                    | status  | run_time        |
 --------------------------------------------- | ------- | --------------- |
 ./spec/helpers/sessions_helper_spec.rb[1:1]   | pending | 0.00005 seconds |
-./spec/models/book_format_spec.rb[1:1]        | passed  | 0.01402 seconds |
-./spec/models/book_format_spec.rb[1:2]        | passed  | 0.05266 seconds |
-./spec/models/book_format_spec.rb[1:3]        | passed  | 0.1112 seconds  |
+./spec/models/book_format_spec.rb[1:1]        | passed  | 0.04136 seconds |
+./spec/models/book_format_spec.rb[1:2]        | passed  | 0.07611 seconds |
+./spec/models/book_format_spec.rb[1:3]        | passed  | 0.07085 seconds |
 ./spec/models/book_spec.rb[1:1:1]             | passed  | 0.01256 seconds |
 ./spec/models/book_spec.rb[1:1:2]             | passed  | 0.01136 seconds |
 ./spec/models/book_spec.rb[1:2:1]             | passed  | 0.01184 seconds |

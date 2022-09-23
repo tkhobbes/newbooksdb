@@ -1,5 +1,9 @@
   <%= simple_form_for genre, html: { class: 'inline-form' } do |f| %>
-    <%= f.input :name, placeholder: 'Genre Name', label: false %>
+    <%= f.input :name,
+      placeholder: 'Genre Name',
+      label: false,
+      wrapper_html: { class: 'width-100' }
+    %>
     <%= f.button :submit, raw('&#x23ce'), class: 'inline-button' %>
   <% end %>
 

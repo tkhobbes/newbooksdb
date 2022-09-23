@@ -7,6 +7,7 @@
   @extend .color-black;
   margin: $margin-2;
   flex: 1;
+  @extend .max-width-50;
 
   &__cover {
     max-width: 15em;

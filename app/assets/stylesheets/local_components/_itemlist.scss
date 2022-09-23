@@ -10,11 +10,13 @@
       border-top-width: 1px;
       border-top-left-radius: $base-border-radius;
       border-top-right-radius: $base-border-radius;
+      overflow: hidden;
     }
 
     &:last-child {
       border-bottom-left-radius: $base-border-radius;
       border-bottom-right-radius: $base-border-radius;
+      overflow: hidden;
     }
   }
 
