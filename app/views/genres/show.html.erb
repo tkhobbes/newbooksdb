@@ -1,7 +1,7 @@
 <%= page_title("#{@genre.name} Books", '', 'heading2') %>
 
 <%= turbo_frame_tag 'page' %>
-<ul class="booklist margin-top-50" id="genre_books">
+<ul class="itemlist margin-top-50" id="genre_books">
   <% @books.each do |book| %>
     <%= turbo_frame_tag book, class: "itemlist__border" do %>
       <li class="itemlist__item">

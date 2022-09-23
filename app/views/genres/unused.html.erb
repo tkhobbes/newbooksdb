@@ -4,10 +4,10 @@
   <div class="submenucontent">
     <h3 class="heading4">Genres without Books</h3>
     <% if @genres.size == 0 %>
-      <div>There are no genres without any books.</div>
+      <div class="margin-bottom-1">There are no genres without any books.</div>
       <%= back_link %>
     <% else %>
-      <ul class="booklist margin-bottom-1">
+      <ul class="itemlist margin-bottom-1">
         <% @genres.each do |genre| %>
           <li class="itemlist__border padding-25"><%= genre.name %></li>
         <% end %>
