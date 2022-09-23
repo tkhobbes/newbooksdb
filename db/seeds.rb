@@ -46,6 +46,14 @@ BookFormat.create(name: 'ebook')
   Genre.create(name: Faker::Book.unique.genre)
 end
 
+3.times do
+  Tag.create(name: Faker::Color.unique.color_name, user_id: User.first.id)
+end
+
+6.times do
+  Tag.create(name: Faker::Color.unique.color_name, user_id: Random.rand(2..3))
+end
+
 # the first book has no cover image and it's alphabetically the first
 Book.create(
   title: 'AAA Title comes first',
@@ -55,10 +63,13 @@ Book.create(
   synopsis: "<b>Synopsis</b><br /><p>#{Faker::Lorem.paragraphs(number: 10).join(' ')}</p>",
   book_format_id: 2,
   user_id: User.first.id,
-  genres: Genre.all.sample(3)
+  genres: Genre.all.sample(3),
+  tags: User.first.tags.sample(1)
 )
 
 99.times do |index|
+  user = User.find(Random.rand(1..3))
+
   book = Book.create(
     title: Faker::Book.unique.title,
     year: Random.rand(1920..2020),
@@ -66,8 +77,9 @@ Book.create(
     condition: Random.rand(0..5),
     synopsis: "<p>#{Faker::Lorem.paragraphs(number: 20).join(' ')}</p>",
     book_format_id: Random.rand(1..6),
-    user_id: User.find(Random.rand(1..3)).id,
-    genres: Genre.all.sample(3)
+    user_id: user.id,
+    genres: Genre.all.sample(3),
+    tags: user.tags.sample(2)
   )
 
   cover_number = index.modulo(10) + 1

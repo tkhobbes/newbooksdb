@@ -53,6 +53,7 @@ class Book < ApplicationRecord
 
   # rubocop:disable Rails/HasAndBelongsToMany
   has_and_belongs_to_many :genres, optional: true
+  has_and_belongs_to_many :tags, optional: true
   # rubocop:enable Rails/HasAndBelongsToMany
 
   # friendly ID uses slug

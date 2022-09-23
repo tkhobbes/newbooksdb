@@ -37,6 +37,9 @@ class User < ApplicationRecord
   # application relations
   has_many :books, dependent: :destroy
 
+  # users are OWNING tags, but tags aren't used to TAG users
+  has_many :tags, dependent: :destroy
+
   # scopes
   # all users but the one with a specific ID
   scope :all_but, ->(user) { where.not(id: user) }
