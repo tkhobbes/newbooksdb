@@ -31,6 +31,13 @@
         <%= render 'genres/genre_tag', genre: g %>
       <% end %>
     </div>
+    <% if @book.user == current_user %>
+      <div class="tag-list">
+        <% @book.tags.each do |t| %>
+          <%= render 'tags/tag_tag', tag: t %>
+        <% end %>
+      </div>
+    <% end %>
     <div class="bookdetails__meta">
       <div>
         Condition: <%= @book.condition.humanize %>

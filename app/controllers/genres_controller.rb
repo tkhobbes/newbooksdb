@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# standard Rails controller for the books model
+# standard Rails controller for the genre model
 class GenresController < ApplicationController
   # allow for turbo frame variants
   before_action :turbo_frame_request_variant

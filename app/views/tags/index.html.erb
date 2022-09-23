@@ -1,0 +1,7 @@
+All tags for user <%= @user.name %>
+
+<ul>
+  <% @tags.each do |tag| %>
+    <li><%= tag.name %></li>
+  <% end %>
+</ul>

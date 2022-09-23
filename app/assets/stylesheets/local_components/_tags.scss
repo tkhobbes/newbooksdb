@@ -1,0 +1,23 @@
+// Styles for a tag-list
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin: $margin-2 0;
+
+  & .tag {
+    @extend .bg-grey;
+    margin-bottom: $margin-4;
+    border-radius: $base-border-radius;
+    @extend .medium-small;
+  }
+
+  & .tag + .tag {
+    margin-left: $margin-4;
+  }
+
+  & .tag a {
+    @extend .color-white;
+    display: block;
+    padding: 0.2em 0.3em;
+  }
+}

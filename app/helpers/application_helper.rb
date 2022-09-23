@@ -54,6 +54,10 @@ module ApplicationHelper
       {
         name: 'Publishers',
         path: '#'
+      },
+      {
+        name: 'Tags',
+        path: tags_path
       }
     ].map do |item|
       {

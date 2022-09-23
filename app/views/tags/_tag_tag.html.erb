@@ -1,0 +1,6 @@
+<span class="tag">
+  <%= link_to tag, data: { turbo_frame: '_top' } do %>
+    <%= inline_svg_tag 'tag.svg', class: 'smallicon' %>
+    <%= tag.name %>
+  <% end %>
+</span>

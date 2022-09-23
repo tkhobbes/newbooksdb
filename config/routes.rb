@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     get 'unused', on: :collection
     get 'remove_unused', on: :collection
   end
+  resources :tags
   resources :users
 
   get 'user_destructions/new/:id', to: 'user_destructions#new', as: 'new_user_destructions'
