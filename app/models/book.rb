@@ -4,32 +4,19 @@
 #
 # Table name: books
 #
-# @!attribute id
-#   @return []
-# @!attribute condition
-#   @return [Integer]
-# @!attribute edition
-#   @return [String]
-# @!attribute original_title
-#   @return [String]
-# @!attribute rating
-#   @return [Integer]
-# @!attribute slug
-#   @return [String]
-# @!attribute sort_title
-#   @return [String]
-# @!attribute title
-#   @return [String]
-# @!attribute year
-#   @return [Integer]
-# @!attribute created_at
-#   @return [Time]
-# @!attribute updated_at
-#   @return [Time]
-# @!attribute book_format_id
-#   @return []
-# @!attribute user_id
-#   @return []
+#  id             :bigint           not null, primary key
+#  condition      :integer          default("not_given")
+#  edition        :string(255)
+#  original_title :string(255)
+#  rating         :integer          default("not_rated")
+#  slug           :string(255)
+#  sort_title     :string(255)
+#  title          :string(255)      not null
+#  year           :integer
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#  book_format_id :bigint           not null
+#  user_id        :bigint           not null
 #
 # Indexes
 #

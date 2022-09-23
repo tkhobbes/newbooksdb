@@ -4,16 +4,20 @@
 #
 # Table name: users
 #
-# @!attribute id
-#   @return []
-# @!attribute email
-#   @return [String]
-# @!attribute name
-#   @return [String]
-# @!attribute created_at
-#   @return [Time]
-# @!attribute updated_at
-#   @return [Time]
+#  id                :bigint           not null, primary key
+#  activated         :boolean          default(FALSE)
+#  activated_at      :datetime
+#  activation_digest :string(255)
+#  admin             :boolean          default(FALSE)
+#  books_count       :integer
+#  email             :string(255)
+#  name              :string(255)
+#  password_digest   :string(255)
+#  remember_digest   :string(255)
+#  reset_digest      :string(255)
+#  reset_sent_at     :datetime
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
 #
 # Indexes
 #

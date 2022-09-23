@@ -4,18 +4,12 @@
 #
 # Table name: book_formats
 #
-# @!attribute id
-#   @return []
-# @!attribute name
-#   @return [string]
-# @!attribute fallback
-#  @return [boolean]
-# @!attribute books_count
-#  @return [integer]
-# @!attribute created_at
-#   @return [Time]
-# @!attribute updated_at
-#   @return [Time]
+#  id          :bigint           not null, primary key
+#  books_count :integer
+#  fallback    :boolean          default(FALSE)
+#  name        :string(255)
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
 #
 class BookFormat < ApplicationRecord
   validates :name, presence: true

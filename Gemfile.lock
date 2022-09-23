@@ -413,7 +413,6 @@ DEPENDENCIES
   tzinfo-data
   web-console
   webdrivers (~> 5.0)
-  yard (~> 0.9.28)
 
 RUBY VERSION
    ruby 3.1.2p20

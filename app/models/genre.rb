@@ -4,16 +4,11 @@
 #
 # Table name: genres
 #
-# @!attribute id
-#   @return []
-# @!attribute name
-#   @return [String]
-# @!attribute slug
-#   @return [String]
-# @!attribute created_at
-#   @return [Time]
-# @!attribute updated_at
-#   @return [Time]
+#  id         :bigint           not null, primary key
+#  name       :string(255)
+#  slug       :string(255)
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
 #
 # Indexes
 #

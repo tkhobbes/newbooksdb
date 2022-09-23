@@ -4,32 +4,20 @@
 #
 # Table name: users
 #
-# @!attribute id
-#   @return []
-# @!attribute name
-#   @return [String]
-# @!attribute email
-#   @return [String]
-# @!attribute admin
-#   @return [Boolean]
-# @!attribute password_digest
-#   @return [String]
-# @!attribute remember_digest
-#   @return [String]
-# @!attribute activation_digest
-#   @return [String]
-# @!attribute reset_digest
-#   @return [String]
-# @!attribute activated
-#   @return [Boolean]
-# @!attribute activated_at
-#   @return [Time]
-# @!attribute reset_sent_at
-#   @return [Time]
-# @!attribute created_at
-#   @return [Time]
-# @!attribute updated_at
-#   @return [Time]
+#  id                :bigint           not null, primary key
+#  activated         :boolean          default(FALSE)
+#  activated_at      :datetime
+#  activation_digest :string(255)
+#  admin             :boolean          default(FALSE)
+#  books_count       :integer
+#  email             :string(255)
+#  name              :string(255)
+#  password_digest   :string(255)
+#  remember_digest   :string(255)
+#  reset_digest      :string(255)
+#  reset_sent_at     :datetime
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
 #
 # Indexes
 #

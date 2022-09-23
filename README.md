@@ -30,6 +30,15 @@ Fields:
 - name: Free text string, the name of the format ("hardcover")
 - fallback: boolean. This defines the "default" (or "fallback") format that is used if there is no format given, but also that is used for any books of a format if that format is deleted
 
+#### Genre
+
+Model that holds book genres (fantasy, adventure, non-fiction etc). Every book can have
+many genres and every genre can have many books.
+Fields:
+
+- name: Free text string, the name of the genre ("fantasy")
+- slug: The slug to use in the genre URL
+
 #### Users
 
 Model to store user data. Fields:
@@ -58,7 +67,6 @@ The following Gems are used in this project:
 
 - For formatting and linting, solargraph { https://rubygems.org/gems/solargraph }, solargraph-rails { https://rubygems.org/gems/solargraph-rails }, rubocop { https://rubygems.org/gems/rubocop }, rubocop-rails { https://rubygems.org/gems/rubocop-rails } and rubocop-performance { https://rubygems.org/gems/rubocop-performance } are included.
 - Annotate { https://rubygems.org/gems/annotate } is used to auto-annotate models and routes
-- Yard { https://rubygems.org/gems/yard } is used for documentation
 - Rails-ERD { https://rubygems.org/gems/rails-erd } is used to draw the entity relationship diagrams as a PDF
 - Bullet { https://rubygems.org/gems/bullet } is used to detect N+1 issues.
 - Reek { https://github.com/troessner/reek } to detect code smells
