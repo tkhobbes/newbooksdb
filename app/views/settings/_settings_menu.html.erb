@@ -15,7 +15,22 @@
           genres_path(show: 'settings'),
           params[:controller] == 'genres' ? { class: 'active' } : {}
         ) %>
+      </li>
+      <li>
+        <%= link_to(
+          'Tags',
+          '#',
+          params[:controller] == 'tags' && params[:action] == 'settings' ? { class: 'active' } : {}
+        ) %>
+      </li>
       <% if current_user&.admin %>
+        <li>
+          <%= link_to(
+            'Tag Admin',
+            '#',
+            params[:controller] == 'tags' && params[:action] == 'admin' ? { class: 'active' } : {}
+          )%>
+        </li>
         <li>
           <%= link_to(
             'Users',

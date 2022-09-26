@@ -17,7 +17,11 @@ class TagsController < ApplicationController
   # index method only lists tags from the currently logged in user
   def index
     @user = current_user
-    if params[:show] == 'settings'
+    case params[:show]
+    when 'settings'
+      @tags = @user.tags
+      render 'settings', tags: @tags
+    when 'admin'
       @tags = Genre.all.order(:name)
       render 'admin', tags: @tags
     else
