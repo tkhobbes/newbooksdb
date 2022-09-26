@@ -1,7 +1,10 @@
-All tags for user <%= @user.name %>
+<%= page_title("All Tags for user #{@user.name}",'', 'heading2') %>
 
-<ul>
+<%= turbo_frame_tag 'page' %>
+<div class="flexlist" id="tags">
   <% @tags.each do |tag| %>
-    <li><%= tag.name %></li>
+    <%= render 'genres/genrecard', genre: tag  %>
   <% end %>
-</ul>
+</div>
+
+<%= render 'shared/pager', pagy: @pagy, model_path: tags_path(page: @pagy.next, show: params[:show]) %>

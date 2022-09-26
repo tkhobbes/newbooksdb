@@ -17,7 +17,15 @@ class TagsController < ApplicationController
   # index method only lists tags from the currently logged in user
   def index
     @user = current_user
-    @tags = @user.tags
+    if params[:show] == 'settings'
+      @tags = Genre.all.order(:name)
+      render 'admin', tags: @tags
+    else
+      @pagy, @tags = pagy(Tag
+        .where(user_id: @user.id)
+        .includes([:books_tags, books: [:user, cover_attachment: :blob]])
+        .order(:name))
+    end
   end
 
   # this lists ALL tags from all users
@@ -26,7 +34,7 @@ class TagsController < ApplicationController
   end
 
   def show
-
+    @pagy, @books = pagy(@tag.books.includes([:user, cover_attachment: :blob]))
   end
 
   def new
