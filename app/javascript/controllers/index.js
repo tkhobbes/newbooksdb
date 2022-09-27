@@ -24,3 +24,6 @@ application.register("notification", NotificationController)
 
 import SweetalertController from "./sweetalert_controller.js"
 application.register("sweetalert", SweetalertController)
+
+import TagSelectController from "./tag_select_controller.js"
+application.register("tag-select", TagSelectController)

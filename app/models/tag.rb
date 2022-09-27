@@ -29,6 +29,9 @@ class Tag < ApplicationRecord
   has_and_belongs_to_many :books
   # rubocop:enable Rails/HasAndBelongsToMany
 
+  # scope needed for the bulk action "remove genres without books"
+  scope :no_books, -> { left_joins(:books).where(books: { id: [0, nil, ''] }) }
+
   private
 
   def name_user

@@ -100,6 +100,17 @@ class TagsController < ApplicationController
     end
   end
 
+  # show tags not used
+  def unused
+    @tags = Tag.no_books.order(:name)
+  end
+
+  # removes all actors not in a movie
+  def remove_unused
+    Tag.no_books.destroy_all
+    redirect_to bulk_actions_settings_path, notice: 'Unused Tags removed.'
+  end
+
   private
 
     # confirms the correct user

@@ -97,6 +97,18 @@
               placeholder: 'Genres'
             }
         ) %>
+        <div class="color-primary-dark margin-bottom-50 margin-top-50">Tags</div>
+        <%= f.association(
+          :tags, collection: Tag.where(user_id: current_user.id).order(:name),
+          label: false,
+          input_html:
+            { data:
+              {
+                controller: 'tag-select'
+              },
+              placeholder: 'Tags'
+            }
+        ) %>
       </div>
     </div>
     <%= f.button :submit, 'data-action': 'click->coverdrop#submitAll' %>

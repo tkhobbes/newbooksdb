@@ -1,0 +1,21 @@
+<%= page_title('Settings','', 'heading3') %>
+
+<%= render 'settings/settings_menu' %>
+  <div class="submenucontent">
+    <h3 class="heading4">Tags not used</h3>
+    <% if @tags.size == 0 %>
+      <div class="margin-bottom-1">There are no unused tags.</div>
+      <%= back_link %>
+    <% else %>
+      <ul class="itemlist margin-bottom-1">
+        <% @tags.each do |tag| %>
+          <li class="itemlist__border padding-25">
+            <%= tag.name %> (created by <%= tag.user.name %>)
+            </li>
+        <% end %>
+      </ul>
+      <%= link_to 'Delete these tags', remove_unused_tags_path, class: 'form-cancel-button' %>
+    <% end %>
+  </div>
+</div>
+

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   root 'books#index'
 
   resources :books
+  resources :users
   resources :settings, only: [:index] do
     get 'bulk_actions', on: :collection
   end
@@ -18,8 +19,10 @@ Rails.application.routes.draw do
     get 'unused', on: :collection
     get 'remove_unused', on: :collection
   end
-  resources :tags
-  resources :users
+  resources :tags do
+    get 'unused', on: :collection
+    get 'remove_unused', on: :collection
+  end
 
   get 'user_destructions/new/:id', to: 'user_destructions#new', as: 'new_user_destructions'
   resources :user_destructions, only: [:create]
