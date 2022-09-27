@@ -41,6 +41,12 @@ BookFormat.create(name: 'Paperback')
 BookFormat.create(name: 'Coffee Table')
 BookFormat.create(name: 'ebook')
 
+# create 2 shelves for each user
+User.all.each do |u|
+  Shelf.create(name: "Office #{u.name}", user: u)
+  Shelf.create(name: Faker::Lorem.word, user: u)
+end
+
 # some genres
 10.times do
   Genre.create(name: Faker::Book.unique.genre)
@@ -63,6 +69,7 @@ Book.create(
   synopsis: "<b>Synopsis</b><br /><p>#{Faker::Lorem.paragraphs(number: 10).join(' ')}</p>",
   book_format_id: 2,
   user_id: User.first.id,
+  shelf: User.first.shelves.sample,
   genres: Genre.all.sample(3),
   tags: User.first.tags.sample(1)
 )
@@ -78,6 +85,7 @@ Book.create(
     synopsis: "<p>#{Faker::Lorem.paragraphs(number: 20).join(' ')}</p>",
     book_format_id: Random.rand(1..6),
     user_id: user.id,
+    shelf: user.shelves.sample,
     genres: Genre.all.sample(3),
     tags: user.tags.sample(2)
   )

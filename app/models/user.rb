@@ -36,6 +36,7 @@ class User < ApplicationRecord
 
   # application relations
   has_many :books, dependent: :destroy
+  has_many :shelves, dependent: :destroy
 
   # users are OWNING tags, but tags aren't used to TAG users
   has_many :tags, dependent: :destroy

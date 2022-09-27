@@ -16,6 +16,7 @@
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #  book_format_id :bigint           not null
+#  shelf_id       :integer
 #  user_id        :bigint           not null
 #
 # Indexes
@@ -50,11 +51,16 @@ class Book < ApplicationRecord
   # relationships to other models
   belongs_to :book_format, optional: true, counter_cache: true
   belongs_to :user, counter_cache: true
+  belongs_to :shelf, optional: true
 
   # rubocop:disable Rails/HasAndBelongsToMany
   has_and_belongs_to_many :genres, optional: true
   has_and_belongs_to_many :tags, optional: true
   # rubocop:enable Rails/HasAndBelongsToMany
+
+  # a scope for my books
+  scope :my_books, -> (uid) { where(user_id: uid) }
+  scope :shelf_books, -> (s) { where(shelf_id: s) }
 
   # friendly ID uses slug
   extend FriendlyId
