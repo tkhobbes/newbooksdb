@@ -1,0 +1,17 @@
+<nav class="tabs">
+  <ul>
+    <li class="placeholder-tab">&nbsp;</li>
+    <li>
+      <%= link_to 'All Books', books_path, class: 'active' %>
+    </li>
+    <% if @current_user.present? %>
+    <li class="placeholder-tab">&nbsp;</li>
+    <li>
+      <%= link_to 'My Books', books_path(filter: 'my_books'), class: 'active' %>
+    </li>
+    <% end %>
+    <li class="placeholder-tab">&nbsp;</li>
+    <li><a href="#">Shelf A</a></li>
+    <li class="placeholder-tab">&nbsp;</li>
+  </ul>
+</nav>

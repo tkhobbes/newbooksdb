@@ -17,17 +17,7 @@
         <%= render 'shared/title' %>
         <main class="main">
         <%= render "shared/notification" %>
-          <nav class="tabs">
-            <ul>
-              <li class="placeholder-tab">&nbsp;</li>
-              <li><a href="#" class="active">Office T</a></li>
-              <li class="placeholder-tab">&nbsp;</li>
-              <li><a href="#">Office N</a></li>
-              <li class="placeholder-tab">&nbsp;</li>
-              <li><a href="#">Living Room</a></li>
-              <li class="placeholder-tab">&nbsp;</li>
-            </ul>
-          </nav>
+        <%= render 'shelves/shelves_menu' %>
             <%= yield :title %>
             <%= yield %>
         </main>
