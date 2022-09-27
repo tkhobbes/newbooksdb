@@ -1,0 +1,6 @@
+<%= turbo_stream.append 'tags' do %>
+  <%= render 'tagsettings', tag: @tag %>
+<% end %>
+<%= turbo_stream.replace 'new-tag' do %>
+  <%= render 'new_form_entry' %>
+<% end %>

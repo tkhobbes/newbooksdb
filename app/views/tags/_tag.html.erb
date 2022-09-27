@@ -1,0 +1,4 @@
+<%= params[:show] == 'settings' || params[:show] == 'admin' ?
+  render('tagsettings', tag: tag) :
+  render('tagcard', tag: tag) %>
+

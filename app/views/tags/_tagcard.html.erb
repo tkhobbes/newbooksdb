@@ -1,0 +1,20 @@
+<div class="itemcard-big min-width-25 max-width-33">
+  <div class="itemcard-big__content">
+    <div class="itemcard-big__title">
+      <h2 class="heading3">
+        <%= tag.name %>
+      </h2>
+    </div>
+    <div class="itemcard-big__listcontent margin-top-25">
+      <ul class="itemlist margin-bottom-50">
+      <% tag.books.first(5).each do |book| %>
+        <%= render 'books/booklist_small', book: book %>
+      <% end %>
+      </ul>
+      <ul>
+    </div>
+    <div class="itemcard-big__footer margin-top-33 margin-bottom-33">
+      <%= link_to "Show all (#{tag.books.size} books)...", tag_path(tag) %>
+    </div>
+  </div>
+</div>

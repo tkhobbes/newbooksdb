@@ -3,7 +3,7 @@
 <%= turbo_frame_tag 'page' %>
 <div class="flexlist" id="tags">
   <% @tags.each do |tag| %>
-    <%= render 'genres/genrecard', genre: tag  %>
+    <%= render 'tagcard', tag: tag  %>
   <% end %>
 </div>
 

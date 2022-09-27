@@ -1,0 +1,18 @@
+<%= turbo_frame_tag(tag) do %>
+  <li>
+    <div class="flexlist">
+      <%= link_to(
+        "#{tag.name} - #{tag.books.size} books",
+        edit_tag_path(tag)
+       ) %>
+      <%= render 'shared/crud_icons',
+        edit_path: edit_tag_path(tag),
+        delete_path: tag_path(tag),
+        item_name: "#{tag.name}, (#{tag.books.size} books affected)",
+        url: tag_path(tag),
+        answer: 'turbo',
+        redirect_url: '/tags?show=settings'
+      %>
+    </div>
+  </li>
+<% end %>

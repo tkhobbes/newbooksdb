@@ -1,0 +1,17 @@
+<%= page_title('Settings', '', 'heading3') %>
+
+<%= render 'settings/settings_menu' %>
+  <div class="submenucontent">
+    <h3 class="heading4">Your Tags</h3>
+    <ul class="simple-list width-50" id="tags">
+      <%= render 'new_form_entry' %>
+      <%= turbo_frame_tag 'format-list' do %>
+        <%= render @tags %>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+
+
+
