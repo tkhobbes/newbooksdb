@@ -13,43 +13,50 @@
   }
 
   li {
-    flex: 1;
-  }
-
-  .placeholder-tab {
-    border-bottom: 1px solid var(--color-primary-dark);
-  }
-
-  a {
-    @extend .color-primary;
-    display: block;
-    padding: $padding-2 $base-padding;
     border-top: 1px solid transparent;
     border-bottom: 1px solid var(--color-primary-dark);
     border-left: 1px solid transparent;
     border-right: 1px solid transparent;
     border-radius: $base-border-radius $base-border-radius 0 0;
-    text-align: center;
 
-    &:hover {
-      border-top: 1px solid var(--color-primary);
-      border-right: 1px solid var(--color-primary);
-      border-left: 1px solid var(--color-primary);
+    a {
+      @extend .color-primary;
+      display: block;
+      padding: $padding-2 $base-padding;
+      text-align: center;
     }
-  }
 
-  .active {
-    @extend .color-primary-dark;
-    border-top: 1px solid var(--color-primary-dark);
-    border-right: 1px solid var(--color-primary-dark);
-    border-left: 1px solid var(--color-primary-dark);
-    border-bottom: 1px solid transparent;
-    border-radius: $base-border-radius $base-border-radius 0 0;
+    &.content-tab {
+      flex: 2;
 
-    &:hover {
+      &:hover {
+        border-top: 1px solid var(--color-primary);
+        border-right: 1px solid var(--color-primary);
+        border-left: 1px solid var(--color-primary);
+      }
+    }
+
+    &.active {
       border-top: 1px solid var(--color-primary-dark);
       border-right: 1px solid var(--color-primary-dark);
       border-left: 1px solid var(--color-primary-dark);
+      border-bottom: 1px solid transparent;
+      border-radius: $base-border-radius $base-border-radius 0 0;
+
+      &:hover {
+        border-top: 1px solid var(--color-primary-dark);
+        border-right: 1px solid var(--color-primary-dark);
+        border-left: 1px solid var(--color-primary-dark);
+      }
+
+      a {
+        @extend .color-primary-dark;
+      }
+    }
+
+    .placeholder-tab {
+      border-bottom: 1px solid var(--color-primary-dark);
+      flex: 1;
     }
   }
 }

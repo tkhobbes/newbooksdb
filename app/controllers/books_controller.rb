@@ -20,10 +20,15 @@ class BooksController < ApplicationController
   # allow for turbo frame variants
   before_action :turbo_frame_request_variant
 
+  # scopes as filters - repeating from model
+  has_scope :my_books
+  has_scope :shelf_books
+  has_scope :no_shelf
+
   # standard index method - show all books
   # books ordered by sort_title; additional variable @pagy for pagination
   def index
-    all_books = books_with_includes_sorted
+    all_books = apply_scopes(books_with_includes_sorted)
     if params[:show] == 'list'
       @pagy, @books = pagy(all_books, items: 20)
     else

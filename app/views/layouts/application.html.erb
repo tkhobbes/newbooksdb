@@ -17,7 +17,7 @@
         <%= render 'shared/title' %>
         <main class="main">
         <%= render "shared/notification" %>
-        <%= render 'shelves/shelves_menu' %>
+        <%= render 'shelves/shelves_menu' if params[:controller] == 'books' %>
             <%= yield :title %>
             <%= yield %>
         </main>

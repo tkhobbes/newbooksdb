@@ -82,3 +82,5 @@ gem 'inline_svg', '~> 1.8'
 gem 'pagy', '~> 5.10', '>= 5.10.1'
 # Simple form for form inputs
 gem 'simple_form', '~> 5.1'
+# using scoped routes for our shelves etc
+gem 'has_scope', '~> 0.8.0'
