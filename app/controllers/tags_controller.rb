@@ -12,8 +12,7 @@ class TagsController < ApplicationController
   include UserConcerns
 
   before_action :logged_in_user, only: [:index, :new, :create, :edit, :update, :destroy]
-  before_action :correct_user, only: [:show, :edit, :update, :destroy]
-  before_action :admin_user, only: :full_index
+  before_action :correct_or_admin_user, only: [:show, :edit, :update, :destroy]
 
   before_action :dissolve, only: [:show]
 
@@ -28,7 +27,7 @@ class TagsController < ApplicationController
       @tags = @user.tags
       render 'settings', tags: @tags
     when 'admin'
-      @tags = Genre.all.order(:name)
+      @tags = Tag.all.order(:name).includes([:user])
       render 'admin', tags: @tags
     else
       @pagy, @tags = pagy(Tag
@@ -76,7 +75,7 @@ class TagsController < ApplicationController
   #standard rails update action - can only be used from within turbo frames
   def update
     if @tag.update(tag_params)
-      redirect_to tags_path(show: 'settings')
+      params[:show] == 'settings' ? redirect_to(tags_path(show: 'settings')) : redirect_to(tags_path(show: 'admin'))
     else
       render :edit, status: :unprocessable_entity
     end
@@ -104,7 +103,8 @@ class TagsController < ApplicationController
   private
 
     # confirms the correct user
-  def correct_user
+  def correct_or_admin_user
+    return if current_user.admin?
     @user = @tag.user
     redirect_to(root_path, status: :see_other) unless current_user?(@user)
   end
