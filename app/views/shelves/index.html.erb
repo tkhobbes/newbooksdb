@@ -4,6 +4,7 @@
   <div class="submenucontent">
     <h3 class="heading4">All Shelves</h3>
     <ul class="simple-list width-66" id="shelves">
+      <%= render 'new_form_entry' %>
       <%= turbo_frame_tag 'shelf-list' do %>
         <%= render @shelves %>
       <% end %>

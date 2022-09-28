@@ -1,0 +1,6 @@
+<%= turbo_stream.append 'shelves' do %>
+  <%= render 'shelf', shelf: @shelf %>
+<% end %>
+<%= turbo_stream.replace 'new-shelf' do %>
+  <%= render 'new_form_entry' %>
+<% end %>

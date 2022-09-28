@@ -1,0 +1,12 @@
+<%= turbo_frame_tag('new-shelf') do %>
+  <li>
+    <div class="flexlist">
+      <%= link_to(
+        'Add new shelf...',
+        new_shelf_path,
+        class: 'alternate',
+        data: { turbo_frame: 'new-shelf' }
+      ) %>
+    </div>
+  </li>
+<% end %>
