@@ -1,0 +1,48 @@
+.dropdown {
+  position: relative;
+
+  &:hover .dropdown-menu {
+    display: block;
+  }
+}
+
+.dropdown-label {
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 2.1em;
+  min-width: 100%;
+  background-color: $color-grey;
+}
+
+.submenu {
+  @extend .border-color-primary-dark;
+
+  & > li {
+    @extend .bg-primary-light;
+    border-radius: 0;
+
+    &:last-child {
+      border-bottom: 0;
+    }
+
+    &:hover {
+      @extend .bg-primary;
+
+      & a {
+        @extend .color-primary-light;
+      }
+    }
+
+    &.submenu-active {
+      @extend .bg-primary;
+
+      & a {
+        @extend .color-primary-light;
+      }
+    }
+  }
+}

@@ -14,10 +14,11 @@ module ShelvesHelper
         menu << {name: s.name, path: books_path(shelf_books: s.id)}
       end
     end
-    menu.map do |item|
+    menu.map.with_index do |item, index|
       {
         name: item[:name],
         path: item[:path],
+        i: index,
         active: current_page?(item[:path], check_parameters: true)
       }
     end

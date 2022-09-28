@@ -1,11 +1,24 @@
 <nav class="tabs">
   <ul>
-    <% shelf_menu(@current_user).each do |item| %>
+    <% shelf_menu(@current_user)[0..3].each do |item| %>
       <li class="placeholder-tab">&nbsp;</li>
       <li class="content-tab <%= item[:active] ? 'active' : '' %>">
         <%= link_to item[:name], item[:path] %>
       </li>
     <% end %>
+    <li class="placeholder-tab">&nbsp;</li>
+    <li class="content-tab dropdown">
+      <%= link_to 'More...', '#', class: 'dropdown-label' %>
+      <div class='dropdown-menu'>
+        <ul class="submenu">
+          <% shelf_menu(@current_user)[4..-1].each do |item| %>
+            <li class="<%= item[:active] ? 'submenu-active' : '' %>">
+              <%= link_to item[:name], item[:path] %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </li>
     <li class="placeholder-tab">&nbsp;</li>
   </ul>
 </nav>
