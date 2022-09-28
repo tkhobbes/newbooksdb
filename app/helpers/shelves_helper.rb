@@ -5,7 +5,8 @@ module ShelvesHelper
 
   def shelf_menu(user)
     menu = [
-      {name: 'All Books', path: books_path}
+      {name: 'All Books', path: books_path},
+      {name: 'Books in no Shelf', path: books_path(no_shelf: true)},
     ]
     if user
       menu << {name: 'My Books', path: books_path(my_books: user.id)}
