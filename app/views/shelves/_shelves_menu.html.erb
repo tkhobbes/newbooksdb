@@ -7,18 +7,20 @@
       </li>
     <% end %>
     <li class="placeholder-tab">&nbsp;</li>
-    <li class="content-tab dropdown">
-      <%= link_to 'More...', '#', class: 'dropdown-label' %>
-      <div class='dropdown-menu'>
-        <ul class="submenu">
-          <% shelf_menu(@current_user)[4..-1].each do |item| %>
-            <li class="<%= item[:active] ? 'submenu-active' : '' %>">
-              <%= link_to item[:name], item[:path] %>
-            </li>
-          <% end %>
-        </ul>
-      </div>
-    </li>
-    <li class="placeholder-tab">&nbsp;</li>
+    <% if shelf_menu(@current_user).size > 4 %>
+      <li class="content-tab dropdown">
+        <%= link_to 'More...', '#', class: 'dropdown-label' %>
+        <div class='dropdown-menu'>
+          <ul class="dropdown-submenu">
+            <% shelf_menu(@current_user)[4..-1].each do |item| %>
+              <li class="<%= item[:active] ? 'submenu-active' : '' %>">
+                <%= link_to item[:name], item[:path] %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </li>
+      <li class="placeholder-tab">&nbsp;</li>
+    <% end %>
   </ul>
 </nav>

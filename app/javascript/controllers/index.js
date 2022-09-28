@@ -22,6 +22,9 @@ application.register("hello", HelloController)
 import NotificationController from "./notification_controller.js"
 application.register("notification", NotificationController)
 
+import ShelfSelectController from "./shelf_select_controller.js"
+application.register("shelf-select", ShelfSelectController)
+
 import SweetalertController from "./sweetalert_controller.js"
 application.register("sweetalert", SweetalertController)
 

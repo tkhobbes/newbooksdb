@@ -129,6 +129,7 @@ class BooksController < ApplicationController
       :cover,
       :synopsis,
       :book_format_id,
+      :shelf_id,
       genre_ids: [],
       tag_ids: []
     )

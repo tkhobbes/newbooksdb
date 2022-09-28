@@ -109,6 +109,18 @@
               placeholder: 'Tags'
             }
         ) %>
+        <div class="color-primary-dark margin-bottom-50 margin-top-50">Shelf</div>
+        <%= f.association(
+          :shelf, collection: Shelf.where(user_id: current_user.id).order(:name),
+          label: false,
+          input_html:
+            { data:
+              {
+                  controller: 'shelf-select'
+              },
+              placeholder: 'Shelf',
+            }
+        ) %>
       </div>
     </div>
     <%= f.button :submit, 'data-action': 'click->coverdrop#submitAll' %>
