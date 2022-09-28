@@ -3,6 +3,17 @@
 # Book Helper module includes various view helpers
 module BooksHelper
 
+  # sets the title to display on the index page for books, depending on what we see
+  def book_index_title
+    if params[:my_books]
+      'My Books'
+    elsif params[:shelf_books]
+      "Books in Shelf '#{Shelf.find(params[:shelf_books]).name}'"
+    else
+      'All Books'
+    end
+  end
+
   # store the number of books in a cache
   def books_count
     Rails.cache.fetch('books-count') { Book.count }
