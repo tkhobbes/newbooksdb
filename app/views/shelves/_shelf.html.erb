@@ -1,0 +1,18 @@
+<%= turbo_frame_tag(shelf) do %>
+  <li>
+    <div class="flexlist">
+      <%= link_to(
+        "#{shelf.name} - #{shelf.books.size} books, owned by #{shelf.user.name}",
+        edit_shelf_path(shelf)
+       ) %>
+      <%= render 'shared/crud_icons',
+        edit_path: edit_shelf_path(shelf),
+        delete_path: shelf_path(shelf),
+        item_name: "#{shelf.name}, (#{shelf.books.size} books affected)",
+        url: shelf_path(shelf),
+        answer: 'turbo',
+        redirect_url: '/shelves'
+      %>
+    </div>
+  </li>
+<% end %>

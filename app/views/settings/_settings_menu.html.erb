@@ -1,7 +1,13 @@
 <div class="submenugrid">
   <div class="submenu">
     <ul>
-      <li><a href="#">Shelves</a></li>
+      <li>
+        <%= link_to(
+          'Shelves',
+          shelves_path,
+          params[:controller] == 'shelves' ? { class: 'active' } : {}
+        ) %>
+      </li>
       <li>
         <%= link_to(
           'Book Formats',

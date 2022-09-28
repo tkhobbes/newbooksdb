@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     get 'set_default', on: :collection
     post 'update_default', on: :collection
   end
+  resources :shelves, except: :show
   resources :genres do
     get 'unused', on: :collection
     get 'remove_unused', on: :collection
