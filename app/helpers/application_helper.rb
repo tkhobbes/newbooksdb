@@ -44,10 +44,6 @@ module ApplicationHelper
         path: genres_path,
       },
       {
-        name: 'Book Series',
-        path: '#'
-      },
-      {
         name: 'Authors',
         path: '#'
       },

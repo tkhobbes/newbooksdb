@@ -18,8 +18,12 @@ class GenresController < ApplicationController
   # index action can answer to either 'settings' page (to administer genres)
   # or otherwise it will display all genres and the first 5 books within each genre
   def index
-    if params[:show] == 'settings'
+    case params[:show]
+    when 'settings'
       @genres = Genre.all.order(:name)
+      render 'admin', genres: @genres
+    when 'unused'
+      @genres = Genre.no_books.order(:name)
       render 'admin', genres: @genres
     else
       @pagy, @genres = pagy(Genre
@@ -89,11 +93,6 @@ class GenresController < ApplicationController
       # turbo stream is not removed
       render json: { nothing: true }
     end
-  end
-
-  # show genres not used
-  def unused
-    @genres = Genre.no_books.order(:name)
   end
 
   # removes all actors not in a movie

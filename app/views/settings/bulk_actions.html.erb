@@ -6,12 +6,14 @@
     <ul class="simple-list width-50">
       <li><a href="#">Remove Authors without Books</a></li>
       <li><a href="#">Remove Publishers without Books</a></li>
-      <li><a href="#">Remove Book Series without Books</a></li>
       <li>
-        <%= link_to 'Remove Genres without Books', unused_genres_path %>
+        <%= link_to 'Remove empty Shelves', shelves_path(show: 'unused') %>
       </li>
       <li>
-        <%= link_to 'Remove Tags not used', unused_tags_path %>
+        <%= link_to 'Remove Genres without Books', genres_path(show: 'unused') %>
+      </li>
+      <li>
+        <%= link_to 'Remove Tags not used', tags_path(show: 'unused') %>
       </li>
     </ul>
   </div>

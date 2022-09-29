@@ -2,12 +2,23 @@
 
 <%= render 'settings/settings_menu' %>
   <div class="submenucontent">
-    <h3 class="heading4">All Shelves</h3>
-    <ul class="simple-list width-66" id="shelves">
-      <%= render 'new_form_entry' %>
-      <%= turbo_frame_tag 'shelf-list' do %>
-        <%= render @shelves %>
+    <h3 class="heading4">
+      <%= params[:show] == 'unused' ? 'Empty Shelves' : 'All Shelves' %>
+    </h3>
+    <ul class="simple-list width-66 margin-bottom-1" id="shelves">
+      <% if params[:show] != 'unused' %>
+        <%= render 'new_form_entry' %>
+      <% end %>
+      <% if @shelves.size > 0 %>
+        <%= turbo_frame_tag 'shelf-list' do %>
+          <%= render @shelves %>
+        <% end %>
+      <% else %>
+        <div class="margin-top-1">No Shelves</div>
       <% end %>
     </ul>
+    <% if params[:show] == 'unused' && @shelves.size > 0 %>
+      <%= link_to 'Delete these shelves', remove_unused_shelves_path, class: 'form-cancel-button' %>
+    <% end %>
   </div>
 </div>

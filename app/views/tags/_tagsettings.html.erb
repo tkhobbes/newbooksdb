@@ -5,8 +5,7 @@
         "#{tag.name} - #{tag.books.size} books",
         edit_tag_path(tag)
        ) %>
-      <%= tag.user.name if params[:show] == 'admin' %>
-      <% params[:show] == 'settings' ? redir_url = '/tags?show=settings' : redir_url = '/tags?show=admin' %>
+      <%= tag.user.name %>
       <%= render 'shared/crud_icons',
         edit_path: edit_tag_path(tag),
         delete_path: tag_path(tag),
@@ -14,7 +13,7 @@
         url: tag_path(tag),
         edit_answer: 'turbo',
         delete_answer: 'turbo',
-        redirect_url: redir_url
+        redirect_url: '/tags?show=settings'
       %>
     </div>
   </li>

@@ -24,11 +24,15 @@ class TagsController < ApplicationController
     @user = current_user
     case params[:show]
     when 'settings'
-      @tags = @user.tags
-      render 'settings', tags: @tags
-    when 'admin'
-      @tags = Tag.all.order(:name).includes([:user])
+      if current_user.admin?
+        @tags = Tag.all.order(:name).includes([:user])
+      else
+        @tags = @user.tags.includes([:user]).order(:name)
+      end
       render 'admin', tags: @tags
+    when 'unused'
+      @tags = Tag.no_books.order(:name)
+      render 'admin'
     else
       @pagy, @tags = pagy(Tag
         .where(user_id: @user.id)
@@ -100,12 +104,7 @@ class TagsController < ApplicationController
     end
   end
 
-  # show tags not used
-  def unused
-    @tags = Tag.no_books.order(:name)
-  end
-
-  # removes all actors not in a movie
+  # removes all unused tags
   def remove_unused
     Tag.no_books.destroy_all
     redirect_to bulk_actions_settings_path, notice: 'Unused Tags removed.'

@@ -24,4 +24,7 @@ class Shelf < ApplicationRecord
   # ensure cache is updated after creation and removal of shelf
   after_create { Rails.cache.increment('shelves-count') }
   after_destroy { Rails.cache.decrement('shelves-count') }
+
+  # scope needed for the bulk action "remove genres without books"
+  scope :no_books, -> { left_joins(:books).where(books: { id: [0, nil, ''] }) }
 end

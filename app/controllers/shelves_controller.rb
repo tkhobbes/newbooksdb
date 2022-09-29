@@ -20,10 +20,11 @@ class ShelvesController < ApplicationController
   # lists all shelves - only user owned if user is not admin
   def index
     if current_user.admin?
-      @shelves = Shelf.all.order(:name).includes([:user])
+      shelves = Shelf.all.order(:name).includes([:user])
     else
-      @shelves = current_user.shelves.all.order(:name).includes([:user])
+      shelves = current_user.shelves.all.order(:name).includes([:user])
     end
+    params[:show] == 'unused' ? @shelves = shelves.no_books : @shelves = shelves
   end
 
   # standard rails method to edit a shelf
@@ -82,6 +83,11 @@ class ShelvesController < ApplicationController
       # turbo stream is not removed
       render json: { nothing: true }
     end
+  end
+
+  def remove_unused
+    Shelf.no_books.destroy_all
+    redirect_to bulk_actions_settings_path, notice: 'Empty Shelves removed.'
   end
 
   private
