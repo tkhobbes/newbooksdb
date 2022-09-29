@@ -22,6 +22,13 @@ Fields:
 - Condition: The physical condition of the book, used as an ENUM: not given (0), damaged (1), used_bad (2), used (3), used_ok (4), like_new (5)
 - Edition: Free text string - first, second edition, etc etc.
 
+#### Shelves
+
+Model that holds the "storage place" for books. This is per user - other users
+cannot filter by shelves that don't belong to them (but everybody can see all books).
+Shelves can reference to something like "Office Fred" or "left bookshelf".
+The first two shelves are shown on the books index page; the rest are hidden behind a "more" tab with a drop down.
+
 #### Book Format
 
 Model that holds the format of a book (hardcover, softcover, paperback etc). Every book belongs to a book_format and every format has many books.

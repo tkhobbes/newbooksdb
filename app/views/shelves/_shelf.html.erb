@@ -8,7 +8,7 @@
       <%= render 'shared/crud_icons',
         edit_path: edit_shelf_path(shelf),
         delete_path: shelf_path(shelf),
-        item_name: "#{shelf.name}, (#{shelf.books.size} books affected)",
+        item_name: "#{shelf.name}, (#{shelf.books_count} books affected)",
         url: shelf_path(shelf),
         answer: 'turbo',
         redirect_url: '/shelves'

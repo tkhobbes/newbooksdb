@@ -48,6 +48,9 @@
     </div>
     <div class="margin-1">
       <%= link_to 'Owned by ' + @book.user.name, user_path(@book.user), class: 'color-accent-dark color-hover-accent' %>
+      <% if logged_in? && @book.user == current_user %>
+        in shelf <%= link_to @book.shelf.name, shelf_path(@book.shelf), class: 'color-accent-dark color-hover-accent' %>
+      <% end %>
     </div>
     <%= book_synopsis(@book) %>
   </div>
