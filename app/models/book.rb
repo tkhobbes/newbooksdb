@@ -60,7 +60,7 @@ class Book < ApplicationRecord
 
   # a scope for my books
   scope :my_books, -> (uid) { where(user_id: uid) }
-  scope :shelf_books, -> (s) { where(shelf_id: s) }
+  scope :shelf_books, -> (shelf) { where(shelf_id: helf) }
   scope :no_shelf, -> { where(shelf_id: nil) }
 
   # friendly ID uses slug

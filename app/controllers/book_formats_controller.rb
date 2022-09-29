@@ -12,7 +12,7 @@ class BookFormatsController < ApplicationController
   before_action :set_book_format, only: [:edit, :update, :destroy]
 
   # ensure we know the default format for any method where it matters
-  before_action :set_default_book_format, only: [:index, :set_default, :update_default, :destroy]
+  before_action :default_book_format, only: [:index, :set_default, :update_default, :destroy]
 
   # delete backlinks stack on all bookformat actions except create
   before_action :dissolve, except: [:new, :create]
@@ -103,7 +103,7 @@ class BookFormatsController < ApplicationController
   end
 
   # retrieves the default format - the format with fallback = true
-  def set_default_book_format
+  def default_book_format
     @default_book_format ||= BookFormat.find_by(fallback: true)
   end
 

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 # Standard Rails controller for the tag model
+# this class smells of :reek:TooManyInstanceVariables
 class TagsController < ApplicationController
   # allow for turbo frame variants
   before_action :turbo_frame_request_variant
@@ -19,16 +20,18 @@ class TagsController < ApplicationController
   # index method only lists tags from the currently logged in user by default
   # if param[:show] is settings, will allow user to manage their tags
   # if param[:show] is admin, will allow an admin to administer all tags
-
+  # rubocop:disable Metrics/AbcSize
+  # rubocop:disable Metrics/MethodLength
+  # this method smells of :reek:TooManyStatements
   def index
     @user = current_user
     case params[:show]
     when 'settings'
-      if current_user.admin?
-        @tags = Tag.all.order(:name).includes([:user])
-      else
-        @tags = @user.tags.includes([:user]).order(:name)
-      end
+      @tags = if current_user.admin?
+                Tag.all.order(:name).includes([:user])
+              else
+                @user.tags.includes([:user]).order(:name)
+              end
       render 'admin', tags: @tags
     when 'unused'
       @tags = Tag.no_books.order(:name)
@@ -40,6 +43,8 @@ class TagsController < ApplicationController
         .order(:name))
     end
   end
+  # rubocop:enable Metrics/MethodLength
+  # rubocop:enable Metrics/AbcSize
 
   # standard rails show method to display a tag and get all books within that tag
   def show
@@ -57,6 +62,7 @@ class TagsController < ApplicationController
   # -json - used as we can create formats on the fly in the book form
   # This method smells of :reek:DuplicateMethodCall
   # This method smells of :reek:TooManyStatements
+  # rubocop:disable Metrics/MethodLength
   def create
     @tag = Tag.new(tag_params)
     @tag.user_id = current_user.id
@@ -72,6 +78,7 @@ class TagsController < ApplicationController
 
     end
   end
+  # rubocop:enable Metrics/MethodLength
 
   #edit action - displayed in a turbo frame within the settings page
   def edit; end
@@ -117,11 +124,6 @@ class TagsController < ApplicationController
     return if current_user.admin?
     @user = @tag.user
     redirect_to(root_path, status: :see_other) unless current_user?(@user)
-  end
-
-  # confirms a admin user
-  def admin_user
-    redirect_to root_path, status: :see_other unless current_user.admin?
   end
 
   # standard rails method to find a tag

@@ -4,6 +4,7 @@
 module BooksHelper
 
   # sets the title to display on the index page for books, depending on what we see
+  # this method smells of :reek:DuplicateMethodCall
   def book_index_title
     if params[:my_books]
       'My Books'

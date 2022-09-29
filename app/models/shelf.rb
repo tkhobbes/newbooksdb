@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: shelves
@@ -19,7 +21,7 @@
 #
 class Shelf < ApplicationRecord
   belongs_to :user
-  has_many :books
+  has_many :books, dependent: :nullify
 
   # ensure cache is updated after creation and removal of shelf
   after_create { Rails.cache.increment('shelves-count') }

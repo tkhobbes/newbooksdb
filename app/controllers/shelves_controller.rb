@@ -6,7 +6,7 @@ class ShelvesController < ApplicationController
   # allow for turbo frame variants
   before_action :turbo_frame_request_variant
 
-  before_action :set_shelf, only: [:show, :edit, :update, :destroy]
+  before_action :set_shelf, only: [:edit, :update, :destroy]
 
   # we need the session helper and the user concerns to ensure only logged in users can tamper with formats
   include SessionsHelper
@@ -19,12 +19,16 @@ class ShelvesController < ApplicationController
 
   # lists all shelves - only user owned if user is not admin
   def index
-    if current_user.admin?
-      shelves = Shelf.all.order(:name).includes([:user])
-    else
-      shelves = current_user.shelves.all.order(:name).includes([:user])
-    end
-    params[:show] == 'unused' ? @shelves = shelves.no_books : @shelves = shelves
+    shelves = if current_user.admin?
+                Shelf.all.order(:name).includes([:user])
+              else
+                current_user.shelves.all.order(:name).includes([:user])
+              end
+    @shelves = if params[:show] == 'unused'
+                shelves.no_books
+              else
+                shelves
+              end
   end
 
   # standard rails method to edit a shelf
@@ -49,6 +53,7 @@ class ShelvesController < ApplicationController
   # -json - used as we can create formats on the fly in the book form
   # This method smells of :reek:DuplicateMethodCall
   # This method smells of :reek:TooManyStatements
+  # rubocop:disable Metrics/MethodLength
   def create
     @shelf = Shelf.new(shelf_params)
     @shelf.user_id = current_user.id
@@ -64,6 +69,7 @@ class ShelvesController < ApplicationController
 
     end
   end
+# rubocop:enable Metrics/MethodLength
 
 
   #standard rails destroy action - responds to
