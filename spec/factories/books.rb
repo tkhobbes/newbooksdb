@@ -41,6 +41,7 @@ FactoryBot.define do
     association :book_format, factory: :hardcover
     association :user, factory: :me
     genres { [ create(:fiction) ] }
+    association :shelf, factory: :office_tk
 
     after(:build) do |hobbit|
       hobbit.cover.attach(

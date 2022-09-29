@@ -18,8 +18,13 @@
 #  fk_rails_...  (user_id => users.id)
 #
 FactoryBot.define do
-  factory :shelf do
-    name { "MyString" }
-    user { nil }
+  factory :office_tk, class: Shelf do
+    name { 'Office tk' }
+    association :user, factory: :me
+  end
+
+  factory :randomshelf, class: Shelf do
+    name { Faker::Lorem.word }
+    association :user, factory: :random_user
   end
 end
