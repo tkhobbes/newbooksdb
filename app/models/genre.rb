@@ -22,6 +22,10 @@ class Genre < ApplicationRecord
   extend FriendlyId
   friendly_id :name, use: :slugged
 
+  # ensure cache is updated after creation and removal of book
+  after_create { Rails.cache.increment('genres-count') }
+  after_destroy { Rails.cache.decrement('genres-count') }
+
   # scope needed for the bulk action "remove genres without books"
   scope :no_books, -> { left_joins(:books).where(books: { id: [0, nil, ''] }) }
 end

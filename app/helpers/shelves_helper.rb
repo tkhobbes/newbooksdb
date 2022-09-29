@@ -3,6 +3,7 @@
 # iterates through all shelves and a few extra items to create a dictionary for the shelf tabs
 module ShelvesHelper
 
+  # create a dictionnary for all shelves with index
   def shelf_menu(user)
     menu = [
       {name: 'All Books', path: books_path},
@@ -22,6 +23,11 @@ module ShelvesHelper
         active: current_page?(item[:path], check_parameters: true)
       }
     end
+  end
+
+  # helper method to get number of shelves from cache
+  def shelves_count
+    Rails.cache.fetch('genres-count') { Shelf.count }
   end
 
 end

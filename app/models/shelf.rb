@@ -20,4 +20,8 @@
 class Shelf < ApplicationRecord
   belongs_to :user
   has_many :books
+
+  # ensure cache is updated after creation and removal of shelf
+  after_create { Rails.cache.increment('shelves-count') }
+  after_destroy { Rails.cache.decrement('shelves-count') }
 end

@@ -31,4 +31,9 @@ module UsersHelper
     inline_svg_tag('avatar.svg', class: css)
   end
 
+  # helper method to get number of users from cache
+  def users_count
+    Rails.cache.fetch('users-count') { User.count }
+  end
+
 end

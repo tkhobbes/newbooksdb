@@ -45,6 +45,10 @@ class User < ApplicationRecord
   # all users but the one with a specific ID
   scope :all_but, ->(user) { where.not(id: user) }
 
+  # ensure cache is updated after creation and removal of user
+  after_create { Rails.cache.increment('users-count') }
+  after_destroy { Rails.cache.decrement('users-count') }
+
   # returns the hash digest of the given string
   def User.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
