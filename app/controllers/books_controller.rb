@@ -90,11 +90,6 @@ class BooksController < ApplicationController
     redirect_to root_path, status: :see_other, error: "You cannot change or delete other user's books"
   end
 
-  # enable turbo frame variants
-  def turbo_frame_request_variant
-    request.variant = :turbo_frame if turbo_frame_request?
-  end
-
   # merges the fallback book format into params if no format specified
     # This method smells of :reek:UtilityFunction
   def update_book_format_param(book_params)

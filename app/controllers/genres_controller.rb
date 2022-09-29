@@ -112,8 +112,4 @@ class GenresController < ApplicationController
     params.require(:genre).permit(:name)
   end
 
-  # enable turbo frame variants
-  def turbo_frame_request_variant
-    request.variant = :turbo_frame if turbo_frame_request?
-  end
 end

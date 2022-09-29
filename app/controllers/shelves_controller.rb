@@ -97,11 +97,6 @@ class ShelvesController < ApplicationController
     params.require(:shelf).permit(:name)
   end
 
-  # allow turbo frames
-  def turbo_frame_request_variant
-    request.variant = :turbo_frame if turbo_frame_request?
-  end
-
   # set shelf consistently
    def set_shelf
     @shelf = Shelf.find(params[:id])

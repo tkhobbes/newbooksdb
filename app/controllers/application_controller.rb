@@ -17,4 +17,10 @@ class ApplicationController < ActionController::Base
 
   # register more flash types
   add_flash_types :info, :error, :success
+
+
+  # enable turbo frame variants
+  def turbo_frame_request_variant
+    request.variant = :turbo_frame if turbo_frame_request?
+  end
 end

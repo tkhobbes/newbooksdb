@@ -134,9 +134,4 @@ class TagsController < ApplicationController
   def tag_params
     params.require(:tag).permit(:name, :user_id)
   end
-
-  # enable turbo frame variants
-  def turbo_frame_request_variant
-    request.variant = :turbo_frame if turbo_frame_request?
-  end
 end
