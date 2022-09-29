@@ -11,15 +11,14 @@
       (Active since <%= user.activated? ? user.activated_at.strftime("%d-%b-%Y") : 'not activated' %>)
     </div>
     <div class="itemlist__icons">
-      <%= render 'shared/crud_icons',
-        edit_path: edit_user_path(user),
-        delete_path: user_path(user),
-        item_name: user.name,
-        url: "/users/#{user.id}",
-        redirect_url: '/users',
-        edit_answer: 'turbo',
-        delete_answer: 'turbo'
-      %>
+      <div class="icons">
+        <%= link_to new_user_destructions_path(user),
+          title: "Remove User",
+          class: "delete-icon",
+          data: { turbo_frame: "_top" } do %>
+          <%= inline_svg_tag 'delete.svg' %>
+        <% end %>
+      </div>
     </div>
   </li>
 <% end %>
