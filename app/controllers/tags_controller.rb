@@ -32,7 +32,7 @@ class TagsController < ApplicationController
     else
       @pagy, @tags = pagy(Tag
         .where(user_id: @user.id)
-        .includes([:books_tags, books: [:user, cover_attachment: :blob]])
+        .includes([:books_tags, books: [cover_attachment: :blob]])
         .order(:name))
     end
   end

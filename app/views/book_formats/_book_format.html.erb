@@ -10,7 +10,8 @@
         delete_path: book_format_path(book_format),
         item_name: "#{book_format.name}, (#{book_format.books_count} books will be reassigned to the default book format '#{@default_book_format.name}')",
         url: book_format_path(book_format),
-        answer: 'turbo',
+        edit_answer: 'turbo',
+        delete_answer: 'turbo',
         redirect_url: '/book_formats'
       %>
     </div>

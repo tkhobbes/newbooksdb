@@ -23,7 +23,7 @@ class GenresController < ApplicationController
       render 'admin', genres: @genres
     else
       @pagy, @genres = pagy(Genre
-        .includes([:books_genres, books: [:user, cover_attachment: :blob]])
+        .includes([:books_genres, books: [cover_attachment: :blob]])
         .order(:name))
     end
   end

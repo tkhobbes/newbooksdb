@@ -10,7 +10,8 @@
         delete_path: genre_path(genre),
         item_name: "#{genre.name}, (#{genre.books.size} books affected)",
         url: genre_path(genre),
-        answer: 'turbo',
+        edit_answer: 'turbo',
+        delete_answer: 'turbo',
         redirect_url: '/genres?show=settings'
       %>
     </div>
