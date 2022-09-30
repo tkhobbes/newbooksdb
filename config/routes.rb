@@ -8,9 +8,7 @@ Rails.application.routes.draw do
 
   resources :books
   resources :users
-  resources :settings, only: [:index] do
-    get 'bulk_actions', on: :collection
-  end
+  resources :publishers
   resources :book_formats, except: [:show] do
     get 'set_default', on: :collection
     post 'update_default', on: :collection
@@ -23,6 +21,10 @@ Rails.application.routes.draw do
   end
   resources :tags do
     get 'remove_unused', on: :collection
+  end
+
+  resources :settings, only: [:index] do
+    get 'bulk_actions', on: :collection
   end
 
   get 'user_destructions/new/:id', to: 'user_destructions#new', as: 'new_user_destructions'

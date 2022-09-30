@@ -1,0 +1,10 @@
+<%= page_title('All Publishers','', 'heading2') %>
+
+<%= turbo_frame_tag 'page' %>
+<div class="flexlist" id="publishers">
+  <% @publishers.each do |publisher| %>
+    <%= render 'publishercard', publisher: publisher  %>
+  <% end %>
+</div>
+
+<%= render 'shared/pager', pagy: @pagy, model_path: publishers_path(page: @pagy.next, show: params[:show]) %>

@@ -49,7 +49,7 @@ module ApplicationHelper
       },
       {
         name: 'Publishers',
-        path: '#'
+        path: publishers_path
       },
       {
         name: 'Tags',

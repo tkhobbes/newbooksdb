@@ -23,10 +23,16 @@ class Publisher < ApplicationRecord
   extend FriendlyId
   friendly_id :slug_candidates, use: :slugged
 
+  # define possibilities for slug: name or name-location
   def slug_candidates
     [
       :name,
       [:name, :location]
     ]
   end
+
+  # ensure cache is updated after creation and removal of book
+  after_create { Rails.cache.increment('publishers-count') }
+  after_destroy { Rails.cache.decrement('publishers-count') }
+
 end

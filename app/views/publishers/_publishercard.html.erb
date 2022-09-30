@@ -1,0 +1,20 @@
+<div class="itemcard-big min-width-25 max-width-33">
+  <div class="itemcard-big__content">
+    <div class="itemcard-big__title">
+      <h2 class="heading3">
+        <%= publisher.name %>
+      </h2>
+    </div>
+    <div class="itemcard-big__listcontent margin-top-25">
+      <ul class="itemlist margin-bottom-50">
+      <% publisher.books.first(5).each do |book| %>
+        <%= render 'books/booklist_small', book: book %>
+      <% end %>
+      </ul>
+      <ul>
+    </div>
+    <div class="itemcard-big__footer margin-top-33 margin-bottom-33">
+      <%= link_to "Show all (#{publisher.books_count} books)...", publisher_path(publisher) %>
+    </div>
+  </div>
+</div>
