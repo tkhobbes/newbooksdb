@@ -12,7 +12,7 @@ example_id                                    | status | run_time        |
 ./spec/models/book_spec.rb[1:2:5]             | passed | 0.01136 seconds |
 ./spec/models/book_spec.rb[1:2:6]             | passed | 0.01156 seconds |
 ./spec/models/genre_spec.rb[1:1]              | failed | 0.00003 seconds |
-./spec/models/shelf_spec.rb[1:1]              | failed | 0.00003 seconds |
+./spec/models/shelf_spec.rb[1:1]              | failed | 0.00002 seconds |
 ./spec/models/user_spec.rb[1:1]               | passed | 0.4094 seconds  |
 ./spec/models/user_spec.rb[1:2]               | passed | 0.07749 seconds |
 ./spec/system/book_format_system_spec.rb[1:1] | passed | 5.13 seconds    |

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_29_083839) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_30_134137) do
   create_table "action_text_rich_texts", charset: "utf8mb4", force: :cascade do |t|
     t.string "name", null: false
     t.text "body", size: :long
@@ -71,6 +71,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_29_083839) do
     t.string "original_title"
     t.bigint "user_id", null: false
     t.integer "shelf_id"
+    t.integer "publisher_id"
     t.index ["book_format_id"], name: "index_books_on_book_format_id"
     t.index ["slug"], name: "index_books_on_slug", unique: true
     t.index ["user_id"], name: "index_books_on_user_id"
@@ -94,6 +95,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_29_083839) do
     t.datetime "updated_at", null: false
     t.string "slug"
     t.index ["slug"], name: "index_genres_on_slug", unique: true
+  end
+
+  create_table "publishers", charset: "utf8mb4", force: :cascade do |t|
+    t.string "name"
+    t.string "location"
+    t.string "slug"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "books_count"
+    t.index ["slug"], name: "index_publishers_on_slug", unique: true
   end
 
   create_table "shelves", charset: "utf8mb4", force: :cascade do |t|

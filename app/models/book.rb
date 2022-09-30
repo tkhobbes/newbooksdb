@@ -16,6 +16,7 @@
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #  book_format_id :bigint           not null
+#  publisher_id   :integer
 #  shelf_id       :integer
 #  user_id        :bigint           not null
 #
@@ -52,6 +53,7 @@ class Book < ApplicationRecord
   belongs_to :book_format, optional: true, counter_cache: true
   belongs_to :user, counter_cache: true
   belongs_to :shelf, optional: true, counter_cache: true
+  belongs_to :publisher, optional: true, counter_cache: true
 
   # rubocop:disable Rails/HasAndBelongsToMany
   has_and_belongs_to_many :genres, optional: true

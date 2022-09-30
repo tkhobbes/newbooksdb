@@ -16,6 +16,7 @@
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #  book_format_id :bigint           not null
+#  publisher_id   :integer
 #  shelf_id       :integer
 #  user_id        :bigint           not null
 #

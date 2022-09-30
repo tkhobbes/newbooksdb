@@ -60,6 +60,20 @@ end
   Tag.create(name: Faker::Color.unique.color_name, user_id: Random.rand(2..3))
 end
 
+# 1 explicit publisher
+Publisher.create(
+  name: 'AAAA Press',
+  location: 'Dornach'
+)
+
+# 29 publishers to which we distribute books randomly
+29.times do
+  Publisher.create(
+    name: Faker::Book.unique.publisher,
+    location: Faker::Address.city
+  )
+end
+
 # the first book has no cover image and it's alphabetically the first
 Book.create(
   title: 'AAA Title comes first',
@@ -71,7 +85,8 @@ Book.create(
   user_id: User.first.id,
   shelf: User.first.shelves.sample,
   genres: Genre.all.sample(3),
-  tags: User.first.tags.sample(1)
+  tags: User.first.tags.sample(1),
+  publisher: Publisher.first
 )
 
 99.times do |index|
@@ -87,7 +102,8 @@ Book.create(
     user_id: user.id,
     shelf: user.shelves.sample,
     genres: Genre.all.sample(3),
-    tags: user.tags.sample(2)
+    tags: user.tags.sample(2),
+    publisher: Publisher.all.sample
   )
 
   cover_number = index.modulo(10) + 1
