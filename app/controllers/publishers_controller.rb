@@ -44,6 +44,28 @@ class PublishersController < ApplicationController
     @pagy, @books = pagy(@publisher.books.includes([:user, cover_attachment: :blob]))
   end
 
+  #edit action - displayed in a turbo frame within the settings page
+  def edit; end
+
+  #standard rails update action
+  def update
+    if @publisher.update(publisher_params)
+      flash[:success] = 'Publisher updated'
+      redirect_to publisher_path(@publisher)
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
+  # standard destroy method
+  def destroy
+    @publisher.destroy
+    respond_to do |format|
+      format.turbo_stream
+      format.html { redirect_to publishers_path, alert: 'Publisher was successfully destroyed.', status: :see_other }
+    end
+  end
+
   private
 
   # Rails strong params
