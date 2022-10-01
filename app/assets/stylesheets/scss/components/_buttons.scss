@@ -1,0 +1,57 @@
+// Buttons: Defines buttons in the main colours
+
+// Syntax:
+// .button-color-primary
+
+$button-colors: (
+  "primary": $color-primary,
+  "secondary": $color-secondary,
+  "accent": $color-accent,
+);
+
+@each $key, $value in $button-colors {
+  .button-color-#{$key} {
+    border-radius: $base-border-radius;
+    @extend .border-color-#{$key}-dark;
+    @extend .color-#{$key}-dark;
+    @extend .bg-#{$key}-light;
+    font-family: var(--paragraph);
+    padding: $padding-2 $padding-2;
+    cursor: pointer;
+
+    &:hover {
+      @extend .bg-#{$key}-dark;
+      @extend .color-#{$key}-light;
+    }
+  }
+}
+
+.button-color-black {
+  border-radius: $base-border-radius;
+  @extend .border-color-black;
+  @extend .color-white;
+  @extend .bg-black;
+  font-family: var(--paragraph);
+  padding: $padding-2 $padding-2;
+  cursor: pointer;
+
+  &:hover {
+    @extend .bg-grey-black;
+    @extend .color-white;
+  }
+}
+
+.button-color-white {
+  border-radius: $base-border-radius;
+  @extend .border-color-grey-black;
+  @extend .color-grey-black;
+  @extend .bg-white;
+  font-family: var(--paragraph);
+  padding: $padding-2 $padding-2;
+  cursor: pointer;
+
+  &:hover {
+    @extend .bg-grey;
+    @extend .color-white;
+  }
+}

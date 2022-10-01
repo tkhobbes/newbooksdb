@@ -1,0 +1,3 @@
+<%= params[:show] == 'settings' || params[:show] == 'unused' ?
+  render('publishersettings', publisher: publisher) :
+  render('publishercard', publisher: publisher) %>
