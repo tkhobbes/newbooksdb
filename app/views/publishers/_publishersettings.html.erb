@@ -1,0 +1,19 @@
+<%= turbo_frame_tag(publisher) do %>
+  <li>
+    <div class="flexlist">
+      <%= link_to(
+        "#{publisher.name} - #{publisher.books_count} books",
+        edit_publisher_path(publisher)
+       ) %>
+      <%= render 'shared/crud_icons',
+        edit_path: edit_publisher_path(publisher),
+        delete_path: publisher_path(publisher),
+        item_name: "#{publisher.name}, (#{publisher.books_count} books affected)",
+        url: publisher_path(publisher),
+        edit_answer: 'turbo',
+        delete_answer: 'turbo',
+        redirect_url: '/publishers'
+      %>
+    </div>
+  </li>
+<% end %>

@@ -6,7 +6,17 @@
         <%= f.input :original_title, placeholder: 'Original Title', label: false %>
         <div class="big-form">
           <div class="form-col">
-            Placeholder: Publisher
+            <%= f.association(
+              :publisher,
+              label: false,
+              input_html:
+                { data:
+                  {
+                    controller: 'publisher-select'
+                  },
+                  placeholder: 'Publisher'
+                }
+            ) %>
           </div>
           <div class="form-col">
             <%= f.input :year, placeholder: 'Year', label: false %>

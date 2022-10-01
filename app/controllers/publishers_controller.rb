@@ -17,9 +17,14 @@ class PublishersController < ApplicationController
 
   # index method uses pagy
   def index
-    @pagy, @publishers = pagy(Publisher.all
-      .includes([books: [cover_attachment: :blob]])
-      .order(:name))
+    if params[:show] == 'unused'
+      @publishers = Publisher.no_books.order(:name)
+      render 'admin', publishers: @publishers
+    else
+      @pagy, @publishers = pagy(Publisher.all
+        .includes([books: [cover_attachment: :blob]])
+        .order(:name))
+    end
   end
 
   # new method to display form
@@ -28,12 +33,15 @@ class PublishersController < ApplicationController
   end
 
   # creation / storage of a new publisher
+  # also responds to json for on the fly creation through books form
   def create
     @publisher = Publisher.new(publisher_params)
 
     if @publisher.save
-      flash[:success] = 'Publisher saved'
-      redirect_to publisher_path(@publisher)
+      respond_to do |format|
+        format.html { redirect_to publisher_path(@publisher), success: 'Publisher saved' }
+        format.json { render json: @publisher }
+      end
     else
       render :new, status: :unprocessable_entity
     end
@@ -64,6 +72,12 @@ class PublishersController < ApplicationController
       format.turbo_stream
       format.html { redirect_to publishers_path, alert: 'Publisher was successfully destroyed.', status: :see_other }
     end
+  end
+
+  # removes publishers with no books
+  def remove_unused
+    Publisher.no_books.destroy_all
+    redirect_to bulk_actions_settings_path, notice: 'Publishers without books removed.'
   end
 
   private

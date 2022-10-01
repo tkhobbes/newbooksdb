@@ -125,6 +125,7 @@ class BooksController < ApplicationController
       :synopsis,
       :book_format_id,
       :shelf_id,
+      :publisher_id,
       genre_ids: [],
       tag_ids: []
     )

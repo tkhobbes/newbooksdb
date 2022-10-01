@@ -22,6 +22,9 @@ application.register("hello", HelloController)
 import NotificationController from "./notification_controller.js"
 application.register("notification", NotificationController)
 
+import PublisherSelectController from "./publisher_select_controller.js"
+application.register("publisher-select", PublisherSelectController)
+
 import ShelfSelectController from "./shelf_select_controller.js"
 application.register("shelf-select", ShelfSelectController)
 

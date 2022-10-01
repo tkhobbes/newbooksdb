@@ -1,0 +1,19 @@
+<%= page_title('Settings', '', 'heading3') %>
+
+<%= render 'settings/settings_menu' %>
+  <div class="submenucontent">
+    <h3 class="heading4">Publishers with no Books</h3>
+    <ul class="simple-list width-66 margin-bottom-1" id="publishers">
+      <% if @publishers.size > 0 %>
+        <%= turbo_frame_tag 'shelf-list' do %>
+          <%= render @publishers %>
+        <% end %>
+      <% else %>
+        <div class="margin-top-1">No Publishers without books.</div>
+      <% end %>
+    </ul>
+    <% if @publishers.size > 0 %>
+      <%= link_to 'Delete these publishers', remove_unused_publishers_path, class: 'form-cancel-button' %>
+    <% end %>
+  </div>
+</div>

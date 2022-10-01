@@ -8,7 +8,9 @@ Rails.application.routes.draw do
 
   resources :books
   resources :users
-  resources :publishers
+  resources :publishers do
+    get 'remove_unused', on: :collection
+  end
   resources :book_formats, except: [:show] do
     get 'set_default', on: :collection
     post 'update_default', on: :collection

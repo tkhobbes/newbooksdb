@@ -5,7 +5,9 @@
     <h3 class="heading4">Bulk Actions</h3>
     <ul class="simple-list width-50">
       <li><a href="#">Remove Authors without Books</a></li>
-      <li><a href="#">Remove Publishers without Books</a></li>
+      <li>
+        <%= link_to 'Remove Publishers without Books', publishers_path(show: 'unused') %>
+      </li>
       <li>
         <%= link_to 'Remove empty Shelves', shelves_path(show: 'unused') %>
       </li>

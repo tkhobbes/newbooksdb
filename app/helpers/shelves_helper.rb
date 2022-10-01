@@ -31,6 +31,12 @@ module ShelvesHelper
   # rubocop:enable Metrics/MethodLength
   # rubocop:enable Metrics/AbcSize
 
+  def show_shelf(book)
+    if logged_in? && @book.user == current_user && book.shelf
+      "in shelf #{link_to(book.shelf.name, shelf_path(book.shelf), class: 'color-accent-dark color-hover-accent')}"
+    end
+  end
+
   # helper method to get number of shelves from cache
   def shelves_count
     Rails.cache.fetch('genres-count') { Shelf.count }

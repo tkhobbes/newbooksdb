@@ -35,4 +35,7 @@ class Publisher < ApplicationRecord
   after_create { Rails.cache.increment('publishers-count') }
   after_destroy { Rails.cache.decrement('publishers-count') }
 
+  # scopes to delete publishers that have no books
+  scope :no_books, -> { left_joins(:books).where(books: { id: [0, nil, ''] }) }
+
 end
