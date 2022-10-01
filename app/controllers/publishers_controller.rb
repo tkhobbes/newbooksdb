@@ -39,6 +39,11 @@ class PublishersController < ApplicationController
     end
   end
 
+  # shows a publisher in detail and lists all books from that publisher
+  def show
+    @pagy, @books = pagy(@publisher.books.includes([:user, cover_attachment: :blob]))
+  end
+
   private
 
   # Rails strong params
