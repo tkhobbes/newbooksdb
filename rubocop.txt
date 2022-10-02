@@ -1,5 +1,5 @@
-Inspecting 67 files
-..............................C....C...............................
+Inspecting 72 files
+................................C.....C.................................
 
 Offenses:
 
@@ -19,4 +19,4 @@ app/models/user.rb:69:7: C: [Correctable] Style/ClassMethods: Use self.new_token
   def User.new_token
       ^^^^
 
-67 files inspected, 5 offenses detected, 5 offenses autocorrectable
+72 files inspected, 5 offenses detected, 5 offenses autocorrectable

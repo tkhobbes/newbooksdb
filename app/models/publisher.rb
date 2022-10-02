@@ -17,7 +17,7 @@
 #  index_publishers_on_slug  (slug) UNIQUE
 #
 class Publisher < ApplicationRecord
-  has_many :books
+  has_many :books, dependent: :nullify
 
   # friendly ID uses slug
   extend FriendlyId

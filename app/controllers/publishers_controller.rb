@@ -34,6 +34,7 @@ class PublishersController < ApplicationController
 
   # creation / storage of a new publisher
   # also responds to json for on the fly creation through books form
+  # this method smells of :reek:TooManyStatements
   def create
     @publisher = Publisher.new(publisher_params)
 

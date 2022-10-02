@@ -31,10 +31,11 @@ module ShelvesHelper
   # rubocop:enable Metrics/MethodLength
   # rubocop:enable Metrics/AbcSize
 
+  # shows the shelf for a book if available
+  # This method smells of :reek:DuplicateMethodCall
   def show_shelf(book)
-    if logged_in? && @book.user == current_user && book.shelf
-      "in shelf #{link_to(book.shelf.name, shelf_path(book.shelf), class: 'color-accent-dark color-hover-accent')}"
-    end
+    return unless logged_in? && book.user == current_user && book.shelf
+    "in shelf #{link_to(book.shelf.name, shelf_path(book.shelf), class: 'color-accent-dark color-hover-accent')}"
   end
 
   # helper method to get number of shelves from cache

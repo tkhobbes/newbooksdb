@@ -22,6 +22,15 @@ Fields:
 - Condition: The physical condition of the book, used as an ENUM: not given (0), damaged (1), used_bad (2), used (3), used_ok (4), like_new (5)
 - Edition: Free text string - first, second edition, etc etc.
 
+#### Publishers
+Model to encapsulate a book publisher in the DB.
+Fields:
+
+- name: The name of the publisher. Must be unique
+- location: The location of the publisher ("London, New York")
+
+The slug for friendly ID is derived from either the name or the combination of name and location.
+
 #### Shelves
 
 Model that holds the "storage place" for books. This is per user - other users
