@@ -1,5 +1,18 @@
 <%= page_title("Books tagged '#{@tag.name}'", '', 'heading2') %>
 
+<div class="flexlist">
+  <h4 class="heading3">All Books tagged</h4>
+  <%= render 'shared/crud_icons',
+    edit_path: edit_tag_path(@tag),
+    delete_path: tag_path(@tag),
+    item_name: @tag.name,
+    url: "/tags/#{@tag.id}",
+    redirect_url: '/tags',
+    edit_answer: 'html',
+    delete_answer: 'html'
+  %>
+</div>
+
 <%= turbo_frame_tag 'page' %>
 <ul class="itemlist margin-top-50" id="tag_books">
   <% @books.each do |book| %>
