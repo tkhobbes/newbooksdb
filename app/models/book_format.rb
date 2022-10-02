@@ -12,7 +12,8 @@
 #  updated_at  :datetime         not null
 #
 class BookFormat < ApplicationRecord
-  validates :name, presence: true
+  # each format can exist only once and must have a name
+  validates :name, presence: true, uniqueness: true
 
   # call method to ensure that we assign books to a fallback format if their format is destroyed
   before_destroy :destroy_fallback

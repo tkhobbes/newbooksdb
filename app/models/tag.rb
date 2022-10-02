@@ -21,6 +21,9 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class Tag < ApplicationRecord
+  # each tag must have a name
+  validates :name, presence: true
+
   extend FriendlyId
   friendly_id :name_user, use: :slugged
 

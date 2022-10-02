@@ -20,6 +20,9 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class Shelf < ApplicationRecord
+  # each shelf must have a name (but not necessarily unique, as different users can have shelfs with the same name)
+  validates :name, presence: true
+
   belongs_to :user
   has_many :books, dependent: :nullify
 

@@ -17,6 +17,9 @@
 #  index_publishers_on_slug  (slug) UNIQUE
 #
 class Publisher < ApplicationRecord
+  # each publisher must have a name and can exist only once
+  validates :name, presence: true, uniqueness: true
+
   has_many :books, dependent: :nullify
 
   # friendly ID uses slug

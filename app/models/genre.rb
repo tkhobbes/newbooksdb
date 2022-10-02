@@ -15,6 +15,8 @@
 #  index_genres_on_slug  (slug) UNIQUE
 #
 class Genre < ApplicationRecord
+  # each genre must have a name and can exist only once
+  validates :name, presence: true, uniqueness: true
   # rubocop:disable Rails/HasAndBelongsToMany
   has_and_belongs_to_many :books
   # rubocop:enable Rails/HasAndBelongsToMany
