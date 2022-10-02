@@ -22,7 +22,17 @@
             <%= f.input :year, placeholder: 'Year', label: false %>
           </div>
           <div class="form-col">
-            Placeholder: Country
+            <%= f.input :country,
+              priority: ['United States', 'Germany', 'Switzerland', 'United Kingdom'],
+              prompt: 'Country...',
+              label: false,
+              input_html: {
+                data: {
+                  controller: 'country-select'
+                },
+                placeholder: 'Country',
+              }
+            %>
           </div>
         </div>
         <div class="big-form">

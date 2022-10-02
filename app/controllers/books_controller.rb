@@ -121,6 +121,7 @@ class BooksController < ApplicationController
       :rating,
       :condition,
       :year,
+      :country,
       :cover,
       :synopsis,
       :book_format_id,

@@ -18,6 +18,7 @@ Fields:
 - slug: The slug to use in the books URL
 - Original title: If the book was originally published in another language
 - Year: The publishing year of a book (integer)
+- country: country of origin
 - Rating: An integer, used as an ENUM: not rated (0), hated (1), bad (2), ok (3), good (4), favourite (5)
 - Condition: The physical condition of the book, used as an ENUM: not given (0), damaged (1), used_bad (2), used (3), used_ok (4), like_new (5)
 - Edition: Free text string - first, second edition, etc etc.
@@ -79,6 +80,7 @@ The following Gems are used in this project:
 - pagy to paginate big collections { https://rubygems.org/gems/pagy }. The "load more" concept is coming from here: { https://dev.to/davidcolbyatx/pagination-and-infinite-scrolling-with-rails-and-the-hotwire-stack-34om }
 - inline_svg to display SVGs { https://rubygems.org/gems/inline_svg }
 - has_scope for scoped routes and similar { https://rubygems.org/gems/has_scope }
+- country_select for book country selection (https://rubygems.org/gems/country_select)
 
 #### Development
 

@@ -10,6 +10,9 @@ application.register("book-format-select", BookFormatSelectController)
 import BurgermenuController from "./burgermenu_controller.js"
 application.register("burgermenu", BurgermenuController)
 
+import CountrySelectController from "./country_select_controller.js"
+application.register("country-select", CountrySelectController)
+
 import CoverdropController from "./coverdrop_controller.js"
 application.register("coverdrop", CoverdropController)
 

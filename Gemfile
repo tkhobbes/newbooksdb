@@ -84,3 +84,5 @@ gem 'pagy', '~> 5.10', '>= 5.10.1'
 gem 'simple_form', '~> 5.1'
 # using scoped routes for our shelves etc
 gem 'has_scope', '~> 0.8.0'
+# country selection for books
+gem 'country_select', '~> 8.0'

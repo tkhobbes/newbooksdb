@@ -6,6 +6,7 @@
 #
 #  id             :bigint           not null, primary key
 #  condition      :integer          default("not_given")
+#  country        :string(255)
 #  edition        :string(255)
 #  original_title :string(255)
 #  rating         :integer          default("not_rated")
