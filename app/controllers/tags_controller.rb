@@ -86,7 +86,7 @@ class TagsController < ApplicationController
   #standard rails update action - can only be used from within turbo frames
   def update
     if @tag.update(tag_params)
-      params[:show] == 'settings' ? redirect_to(tags_path(show: 'settings')) : redirect_to(tags_path(show: 'admin'))
+      redirect_to(tags_path(show: 'settings'))
     else
       render :edit, status: :unprocessable_entity
     end

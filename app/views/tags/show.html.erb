@@ -2,15 +2,14 @@
 
 <div class="flexlist">
   <h4 class="heading3">All Books tagged</h4>
-  <%= render 'shared/crud_icons',
-    edit_path: edit_tag_path(@tag),
-    delete_path: tag_path(@tag),
-    item_name: @tag.name,
-    url: "/tags/#{@tag.id}",
-    redirect_url: '/tags',
-    edit_answer: 'html',
-    delete_answer: 'html'
-  %>
+  <div class="icons">
+    <%= render 'shared/delete_icon',
+      delete_path: tag_path(@tag),
+      item_name: @tag.name,
+      url: "/tags/#{@tag.id}",
+      redirect_url: '/tags',
+      answer: 'html' %>
+  </div>
 </div>
 
 <%= turbo_frame_tag 'page' %>
