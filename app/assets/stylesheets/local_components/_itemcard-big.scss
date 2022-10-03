@@ -7,10 +7,10 @@
   @extend .color-black;
   margin: $margin-2;
   flex: 1;
-  @extend .max-width-50;
+  max-width: 48%;
 
   &__cover {
-    max-width: 15em;
+    max-width: 40%;
     display: flex;
 
     img {
@@ -24,7 +24,6 @@
   &__content {
     margin: 0 $margin-2;
     padding: 0.2em 0.3em;
-    width: 100%;
   }
 
   &__title {
