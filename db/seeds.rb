@@ -1,10 +1,5 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
 
 # add two users
 User.create(
@@ -74,6 +69,36 @@ Publisher.create(
   )
 end
 
+# some authors
+genders = ['male', 'female']
+
+Author.create(
+  first_name: 'John Ronald Reuel',
+  last_name: 'Tolkien',
+  born: 1892,
+  died: 1973,
+  gender: 'male',
+  rating: 5
+)
+
+60.times do
+  age = Random.rand(20..100)
+  if [true, false].sample
+    died = Random.rand(1920..2022)
+    birth = died - age
+  else
+    birth = Random.rand(1930..20000)
+  end
+  Author.create(
+    last_name: Faker::Name.first_name,
+    first_name: Faker::Name.unique.last_name,
+    born: birth,
+    died: died,
+    gender: genders.sample,
+    rating: Random.rand(0..5)
+  )
+end
+
 # the first book has no cover image and it's alphabetically the first
 Book.create(
   title: 'AAA Title comes first',
@@ -86,7 +111,8 @@ Book.create(
   shelf: User.first.shelves.sample,
   genres: Genre.all.sample(3),
   tags: User.first.tags.sample(1),
-  publisher: Publisher.first
+  publisher: Publisher.first,
+  author: Author.first
 )
 
 99.times do |index|
@@ -103,7 +129,8 @@ Book.create(
     shelf: user.shelves.sample,
     genres: Genre.all.sample(3),
     tags: user.tags.sample(2),
-    publisher: Publisher.all.sample
+    publisher: Publisher.all.sample,
+    author: Author.all.sample
   )
 
   cover_number = index.modulo(10) + 1

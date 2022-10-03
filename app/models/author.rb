@@ -45,6 +45,17 @@ class Author < ApplicationRecord
   after_destroy { Rails.cache.decrement('genres-count') }
 
   scope :no_books, -> { left_joins(:books).where(books: { id: [0, nil, ''] }) }
+  scope :dead, -> { where("died > 0" ) }
+  scope :alive, -> { where(died: [nil, '']) }
+
+  # some easy helper methods
+  def dead?
+    died.present?
+  end
+
+  def age
+    dead? ? died - born : Time.now.year - born
+  end
 
   private
 
