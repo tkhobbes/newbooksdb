@@ -73,7 +73,7 @@ class GenresController < ApplicationController
   #standard rails update action
   def update
     if @genre.update(genre_params)
-      params[:show] == 'settings' ? redirect_to(genres_path(show: 'settings')) : redirect_to(@genre)
+      redirect_to(genres_path(show: 'settings'))
     else
       render :edit, status: :unprocessable_entity
     end
