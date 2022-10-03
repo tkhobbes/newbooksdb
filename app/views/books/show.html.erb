@@ -7,7 +7,7 @@
   <div class="bookdetails__text">
     <div class="bookdetails__text-title">
       <h1 class="heading3">
-        <%= @book.title %>
+        <%= @book.title %> (<%= @book.author.display_name %>)
       </h1>
         <% if logged_in? && @book.user == current_user %>
           <%= render 'shared/crud_icons',

@@ -34,7 +34,7 @@ class BooksController < ApplicationController
     else
       @pagy, @books = pagy(
         all_books
-          .includes([:rich_text_synopsis, :books_genres, :genres])
+          .includes([:publisher, :rich_text_synopsis, :books_genres, :genres])
       )
     end
   end
@@ -106,7 +106,7 @@ class BooksController < ApplicationController
   # this method smells of :reek:UtilityFunction
   def books_with_includes_sorted
     Book
-      .includes([:user, cover_attachment: :blob])
+      .includes([:user, :author, cover_attachment: :blob])
       .order(:sort_title)
   end
 

@@ -24,8 +24,8 @@
         </h2>
         <div class="bookyear"><%= book.year %></div>
       </div>
-      <div class="author">Author Name</div>
-      <div class="publisher">Publisher Name</div>
+      <div class="author"><%= book.author.display_name %></div>
+      <div class="publisher"><%= book.publisher.name %></div>
       <div class="genre-list">
         <% book.genres.each do |g| %>
           <%= render 'genres/genre_tag', genre: g %>
