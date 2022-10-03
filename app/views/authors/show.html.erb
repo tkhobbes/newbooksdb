@@ -1,0 +1,44 @@
+
+<%= page_title('', @author.display_name, 'heading2') %>
+
+<div class="bookdetails">
+  <div class="cover-large">
+    Portrait goes here
+  </div>
+  <div class="bookdetails__text">
+    <div class="bookdetails__text-title">
+      <h1 class="heading3">
+        <%= @author.display_name %>
+      </h1>
+        <% if logged_in? %>
+          <%= render 'shared/crud_icons',
+            edit_path: edit_author_path(@author),
+            delete_path: author_path(@author),
+            item_name: @author.display_name,
+            url: "/authors/#{@author.id}",
+            redirect_url: '/authors',
+            edit_answer: 'html',
+            delete_answer: 'html'
+          %>
+        <% end %>
+    </div>
+    <div class="medium-small">
+      <%= @author.born %> -
+      <%= @author.died %> |
+      <%= @author.gender %>
+    </div>
+
+      <div class="tag-list">
+        Tag list
+      </div>
+    <div class="bookdetails__meta">
+      <div>
+        Rating: <%= rating_stars(@author.rating_before_type_cast) %> (<%= @author.rating.humanize %>)
+      </div>
+    </div>
+  </div>
+</div>
+
+<h2 class="heading3">Books</h2>
+Here we look through each book with pagy and in book list format
+

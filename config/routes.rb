@@ -8,6 +8,9 @@ Rails.application.routes.draw do
 
   resources :books
   resources :users
+  resources :authors do
+    get 'remove_unused', on: :collection
+  end
   resources :publishers do
     get 'remove_unused', on: :collection
   end

@@ -90,8 +90,8 @@ Author.create(
     birth = Random.rand(1930..20000)
   end
   Author.create(
-    last_name: Faker::Name.first_name,
-    first_name: Faker::Name.unique.last_name,
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.unique.last_name,
     born: birth,
     died: died,
     gender: genders.sample,

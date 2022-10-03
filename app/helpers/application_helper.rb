@@ -45,7 +45,7 @@ module ApplicationHelper
       },
       {
         name: 'Authors',
-        path: '#'
+        path: authors_path,
       },
       {
         name: 'Publishers',
