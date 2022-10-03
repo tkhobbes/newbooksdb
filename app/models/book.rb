@@ -56,6 +56,7 @@ class Book < ApplicationRecord
   belongs_to :user, counter_cache: true
   belongs_to :shelf, optional: true, counter_cache: true
   belongs_to :publisher, optional: true, counter_cache: true
+  belongs_to :author, optional: true, counter_cache: true
 
   # rubocop:disable Rails/HasAndBelongsToMany
   has_and_belongs_to_many :genres, optional: true

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_03_132757) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_03_133652) do
   create_table "action_text_rich_texts", charset: "utf8mb4", force: :cascade do |t|
     t.string "name", null: false
     t.text "body", size: :long
@@ -49,6 +49,23 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_03_132757) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "authors", charset: "utf8mb4", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "sort_name"
+    t.string "display_name"
+    t.integer "born"
+    t.integer "died"
+    t.string "gender"
+    t.integer "rating"
+    t.string "slug"
+    t.integer "books_count"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["first_name", "last_name"], name: "index_authors_on_first_name_and_last_name", unique: true
+    t.index ["slug"], name: "index_authors_on_slug", unique: true
+  end
+
   create_table "book_formats", charset: "utf8mb4", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
@@ -78,6 +95,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_03_132757) do
     t.index ["slug"], name: "index_books_on_slug", unique: true
     t.index ["title", "user_id"], name: "index_books_on_title_and_user_id", unique: true
     t.index ["user_id"], name: "index_books_on_user_id"
+  end
+
+  create_table "books_authors", charset: "utf8mb4", force: :cascade do |t|
+    t.bigint "book_id", null: false
+    t.bigint "author_id", null: false
+    t.index ["author_id"], name: "index_books_authors_on_author_id"
+    t.index ["book_id", "author_id"], name: "index_books_authors_on_book_id_and_author_id", unique: true
+    t.index ["book_id"], name: "index_books_authors_on_book_id"
   end
 
   create_table "books_genres", id: false, charset: "utf8mb4", force: :cascade do |t|
@@ -153,6 +178,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_03_132757) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "books", "book_formats"
+  add_foreign_key "books_authors", "authors"
+  add_foreign_key "books_authors", "books"
   add_foreign_key "books_tags", "books"
   add_foreign_key "books_tags", "tags"
   add_foreign_key "shelves", "users"
