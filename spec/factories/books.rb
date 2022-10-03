@@ -23,9 +23,10 @@
 #
 # Indexes
 #
-#  index_books_on_book_format_id  (book_format_id)
-#  index_books_on_slug            (slug) UNIQUE
-#  index_books_on_user_id         (user_id)
+#  index_books_on_book_format_id     (book_format_id)
+#  index_books_on_slug               (slug) UNIQUE
+#  index_books_on_title_and_user_id  (title,user_id) UNIQUE
+#  index_books_on_user_id            (user_id)
 #
 # Foreign Keys
 #

@@ -5,7 +5,7 @@
 # Table name: tags
 #
 #  id         :bigint           not null, primary key
-#  name       :string(255)
+#  name       :string(255)      not null
 #  slug       :string(255)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
@@ -13,8 +13,9 @@
 #
 # Indexes
 #
-#  index_tags_on_slug     (slug) UNIQUE
-#  index_tags_on_user_id  (user_id)
+#  index_tags_on_name_and_user_id  (name,user_id) UNIQUE
+#  index_tags_on_slug              (slug) UNIQUE
+#  index_tags_on_user_id           (user_id)
 #
 # Foreign Keys
 #
@@ -22,7 +23,7 @@
 #
 class Tag < ApplicationRecord
   # each tag must have a name
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: { scope: :user_id }
 
   extend FriendlyId
   friendly_id :name_user, use: :slugged

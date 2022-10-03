@@ -7,9 +7,13 @@
 #  id          :bigint           not null, primary key
 #  books_count :integer
 #  fallback    :boolean          default(FALSE)
-#  name        :string(255)
+#  name        :string(255)      not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#
+# Indexes
+#
+#  index_book_formats_on_name  (name) UNIQUE
 #
 class BookFormat < ApplicationRecord
   # each format can exist only once and must have a name
