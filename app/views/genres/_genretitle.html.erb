@@ -1,0 +1,14 @@
+<%= turbo_frame_tag genre do %>
+  <div class="flexlist">
+    <h1 class="heading2"><%= genre.name %></h1>
+    <%= render 'shared/crud_icons',
+      edit_path: edit_genre_path(genre),
+      delete_path: genre_path(genre),
+      item_name: genre.name,
+      url: "/genres/#{genre.id}",
+      redirect_url: '/genres',
+      edit_answer: 'turbo',
+      delete_answer: 'html'
+    %>
+  </div>
+<% end %>

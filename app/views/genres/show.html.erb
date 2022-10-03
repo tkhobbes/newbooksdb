@@ -1,17 +1,7 @@
-<%= page_title("#{@genre.name}", '', 'heading2') %>
+<%= page_title('', "#{@genre.name}", 'heading2') %>
 
-<div class="flexlist">
-  <h4 class="heading3">All Books in Genre</h4>
-  <%= render 'shared/crud_icons',
-    edit_path: edit_genre_path(@genre),
-    delete_path: genre_path(@genre),
-    item_name: @genre.name,
-    url: "/genres/#{@genre.id}",
-    redirect_url: '/genres',
-    edit_answer: 'html',
-    delete_answer: 'html'
-  %>
-</div>
+
+<%= render 'genretitle', genre: @genre %>
 
 <%= turbo_frame_tag 'page' %>
 <ul class="itemlist margin-top-50" id="genre_books">

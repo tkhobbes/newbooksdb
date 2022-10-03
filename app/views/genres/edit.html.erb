@@ -1,5 +1,9 @@
 <%= turbo_frame_tag(@genre) do %>
-  <li>
-    <%= render 'form', genre: @genre %>
-  </li>
+  <% if params[:show] == 'settings' %>
+    <li>
+      <%= render 'form', genre: @genre %>
+    </li>
+  <% else %>
+    <%= render 'titleform', genre: @genre %>
+  <% end %>
 <% end %>

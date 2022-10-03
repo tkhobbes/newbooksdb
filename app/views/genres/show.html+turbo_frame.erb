@@ -1,3 +1,7 @@
+<%= turbo_frame_tag(@genre) do %>
+  <%= render 'genretitle', genre: @genre %>
+<% end %>
+
 <%= turbo_frame_tag 'page' do %>
   <%= turbo_stream_action_tag(
     'append',
