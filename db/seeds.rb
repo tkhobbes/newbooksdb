@@ -89,7 +89,7 @@ Author.first.portrait.attach(io: File.open("db/sample/authors/tolkien.jpg"), fil
     died = Random.rand(1920..2022)
     birth = died - age
   else
-    birth = Random.rand(1930..20000)
+    birth = Random.rand(1930..2000)
   end
   author = Author.create(
     first_name: Faker::Name.first_name,

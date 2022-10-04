@@ -1,0 +1,30 @@
+<%= turbo_frame_tag author, class: 'itemcard-big' do %>
+    <div class="itemcard-big__cover">
+      <%= portrait_image(author, size: "medium") %>
+    </div>
+    <div class="itemcard-big__content">
+    <% if logged_in? %>
+        <%= render 'shared/crud_icons',
+          edit_path: edit_author_path(author),
+          delete_path: author_path(author),
+          item_name: author.display_name,
+          url: "/authors/#{author.id}",
+          redirect_url: '/authors',
+          edit_answer: 'html',
+          delete_answer: 'turbo'
+        %>
+      <% end %>
+      <div class="itemcard-big__title">
+        <h2 class="heading3">
+          <%= link_to(
+            author.display_name,
+            author_path(author),
+            data: { turbo_frame: "_top" }
+            )%>
+        </h2>
+        <div class="bookyear"><%= gender_icon(author) %></div>
+      </div>
+      <div class="author"><%= author.born %> - <%= author.died %></div>
+      <div class="author"><%= author.books.size %> Books</div>
+    </div>
+<% end %>

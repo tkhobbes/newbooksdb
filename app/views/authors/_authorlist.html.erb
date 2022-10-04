@@ -1,0 +1,28 @@
+<%= turbo_frame_tag author, class: "itemlist__border" do %>
+  <li class="itemlist__item">
+    <div class="itemlist__cover">
+      <%= portrait_image(author, size: "default") %>
+    </div>
+    <div class="itemlist__title">
+      <%= link_to(
+        author.display_name,
+        author_path(author),
+        data: { turbo_frame: "_top" }
+        )%>
+      (<%= author.books.size %> Books)
+    </div>
+    <div class="itemlist__icons">
+      <% if logged_in? %>
+        <%= render 'shared/crud_icons',
+          edit_path: edit_author_path(author),
+          delete_path: author_path(author),
+          item_name: author.display_name,
+          url: "/authors/#{author.id}",
+          redirect_url: '/authors',
+          edit_answer: 'html',
+          delete_answer: 'turbo'
+        %>
+      <% end %>
+    </div>
+  </li>
+<% end %>

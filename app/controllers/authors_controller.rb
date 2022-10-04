@@ -9,7 +9,7 @@ class AuthorsController < ApplicationController
   before_action :dissolve, only: :index
 
   def index
-    @authors = Author.all.order(:sort_name)
+    @pagy, @authors = pagy(Author.includes([portrait_attachment: :blob]).order(:sort_name))
   end
 
   def show
