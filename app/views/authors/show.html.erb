@@ -23,10 +23,8 @@
           %>
         <% end %>
     </div>
-    <div class="medium-small">
-      <%= @author.born %> -
-      <%= @author.died %> |
-      <%= @author.gender %>
+    <div class="medium">
+      <%= living_years(@author) %>
     </div>
 
       <div class="tag-list">

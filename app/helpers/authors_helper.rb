@@ -6,6 +6,12 @@ module AuthorsHelper
   def gender_icon(author)
     author.gender == 'male' ? inline_svg_tag('male.svg', class: 'smallicon') : inline_svg_tag('female.svg', class: 'smallicon')
   end
+
+  # returns the birth and dead year if dead, otherwise just the birth year
+  def living_years(author)
+    author.dead? ? "#{author.born} - #{author.died}" : "Born #{author.born}"
+  end
+
   # returns either the portrait of an author or a placeholder SVG
   # This method smells of :reek:DuplicateMethodCall
   # This method smells of :reek:TooManyStatements
