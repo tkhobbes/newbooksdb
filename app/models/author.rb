@@ -27,6 +27,8 @@ class Author < ApplicationRecord
   # must have a unique combination of first name and last name
   validates :first_name, uniqueness: { scope: :last_name }
 
+  has_one_attached :portrait
+
   # database relations
   has_many :books
 

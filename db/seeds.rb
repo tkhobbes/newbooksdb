@@ -81,7 +81,9 @@ Author.create(
   rating: 5
 )
 
-60.times do
+Author.first.portrait.attach(io: File.open("db/sample/authors/tolkien.jpg"), filename: 'tolkien.jpg')
+
+60.times do |index|
   age = Random.rand(20..100)
   if [true, false].sample
     died = Random.rand(1920..2022)
@@ -89,7 +91,7 @@ Author.create(
   else
     birth = Random.rand(1930..20000)
   end
-  Author.create(
+  author = Author.create(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.unique.last_name,
     born: birth,
@@ -97,6 +99,10 @@ Author.create(
     gender: genders.sample,
     rating: Random.rand(0..5)
   )
+
+  portrait_number = index.modulo(10) + 1
+
+  author.portrait.attach(io: File.open("db/sample/authors/author#{portrait_number}.jpg"), filename: 'portrait.jpg')
 end
 
 # the first book has no cover image and it's alphabetically the first

@@ -25,7 +25,8 @@ class AuthorsController < ApplicationController
       :born,
       :died,
       :gender,
-      :rating
+      :rating,
+      :portrait
     )
   end
 
