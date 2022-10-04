@@ -1,6 +1,11 @@
 # frozen_string_literal: true
 
 module AuthorsHelper
+
+  # returns the male / female icon
+  def gender_icon(author)
+    author.gender == 'male' ? inline_svg_tag('male.svg', class: 'smallicon') : inline_svg_tag('female.svg', class: 'smallicon')
+  end
   # returns either the portrait of an author or a placeholder SVG
   # This method smells of :reek:DuplicateMethodCall
   # This method smells of :reek:TooManyStatements

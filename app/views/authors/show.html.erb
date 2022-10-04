@@ -7,8 +7,9 @@
   </div>
   <div class="bookdetails__text">
     <div class="bookdetails__text-title">
-      <h1 class="heading3">
+      <h1 class="heading3" style="">
         <%= @author.display_name %>
+        <%= gender_icon(@author) %>
       </h1>
         <% if logged_in? %>
           <%= render 'shared/crud_icons',
