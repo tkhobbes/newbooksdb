@@ -38,41 +38,47 @@
   </div>
 </div>
 
-<h2 class="heading3">Books</h2>
+<% if @books.size == 0 %>
+  <div>
+    (No books by this author in the database)
+  </div>
+<% else %>
+  <h2 class="heading3">Books</h2>
 
-<%= turbo_frame_tag 'page' %>
-<ul class="itemlist margin-top-50" id="author_books">
-  <% @books.each do |book| %>
-    <%= turbo_frame_tag book, class: "itemlist__border" do %>
-      <li class="itemlist__item">
-        <div class="itemlist__cover">
-          <%= cover_image(book, size: "default") %>
-        </div>
-        <div class="itemlist__title">
-          <%= link_to(
-            book.title,
-            book_path(book),
-            data: { turbo_frame: "_top" }
-            )%>
-        </div>
-        <div class="itemlist__icons">
-          <% if logged_in? && book.user == current_user %>
-            <%= render 'shared/crud_icons',
-              edit_path: edit_book_path(book),
-              delete_path: book_path(book),
-              item_name: book.title,
-              url: "/books/#{book.id}",
-              redirect_url: '/books',
-              edit_answer: 'html',
-              delete_answer: 'turbo'
-            %>
-          <% end %>
-        </div>
-      </li>
+  <%= turbo_frame_tag 'page' %>
+  <ul class="itemlist margin-top-50" id="author_books">
+    <% @books.each do |book| %>
+      <%= turbo_frame_tag book, class: "itemlist__border" do %>
+        <li class="itemlist__item">
+          <div class="itemlist__cover">
+            <%= cover_image(book, size: "default") %>
+          </div>
+          <div class="itemlist__title">
+            <%= link_to(
+              book.title,
+              book_path(book),
+              data: { turbo_frame: "_top" }
+              )%>
+          </div>
+          <div class="itemlist__icons">
+            <% if logged_in? && book.user == current_user %>
+              <%= render 'shared/crud_icons',
+                edit_path: edit_book_path(book),
+                delete_path: book_path(book),
+                item_name: book.title,
+                url: "/books/#{book.id}",
+                redirect_url: '/books',
+                edit_answer: 'html',
+                delete_answer: 'turbo'
+              %>
+            <% end %>
+          </div>
+        </li>
+      <% end %>
     <% end %>
-  <% end %>
-</ul>
+  </ul>
 
-<%= render 'shared/pager', pagy: @pagy, model_path: author_path(@author, page: @pagy.next, show: 'list') %>
+  <%= render 'shared/pager', pagy: @pagy, model_path: author_path(@author, page: @pagy.next, show: 'list') %>
+<% end %>
 
 

@@ -9,7 +9,12 @@ module AuthorsHelper
 
   # returns the birth and dead year if dead, otherwise just the birth year
   def living_years(author)
-    author.dead? ? "#{author.born} - #{author.died}" : "Born #{author.born}"
+    return unless author.born && author.died
+    if author.dead?
+      author.born ? "#{author.born} - #{author.died}" : "Died #{author.died}"
+    else
+      "Born #{author.born}"
+    end
   end
 
   # returns either the portrait of an author or a placeholder SVG

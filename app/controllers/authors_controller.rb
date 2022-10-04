@@ -16,6 +16,21 @@ class AuthorsController < ApplicationController
       @pagy, @books = pagy(@author.books.includes([:user, cover_attachment: :blob]).order(:sort_title))
   end
 
+  def new
+    @author = Author.new
+  end
+
+  def create
+    @author = Author.new(author_params)
+
+    if @author.save
+      flash[:success] = 'Author saved'
+      redirect_to author_path(@author)
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
+
   def edit; end
 
   def update
@@ -24,6 +39,14 @@ class AuthorsController < ApplicationController
       redirect_to @author
     else
       render :edit, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    @author.destroy
+    respond_to do |format|
+      format.turbo_stream
+      format.html { redirect_to authors_url, alert: 'Author removed', status: :see_other }
     end
   end
 

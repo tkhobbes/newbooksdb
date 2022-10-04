@@ -9,7 +9,7 @@
         author_path(author),
         data: { turbo_frame: "_top" }
         )%>
-      (<%= author.books.size %> Books)
+      (<%= pluralize(author.books.size, 'Book') %>)
     </div>
     <div class="itemlist__icons">
       <% if logged_in? %>
