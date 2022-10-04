@@ -1,0 +1,57 @@
+  <%= simple_form_for author do |f| %>
+    <%= render 'shared/form_errors', form: f %>
+    <div class="big-form">
+      <div class="form-col col-wide">
+        <%= f.input :first_name, placeholder: 'First Name', label: false %>
+        <%= f.input :last_name, placeholder: 'Last Name', label: false %>
+        <div class="big-form">
+          <div class="form-col">
+            <%= f.input :born, placeholder: 'Birth Year', label: false %>
+          </div>
+          <div class="form-col">
+            <%= f.input :died, placeholder: 'Death Year', label: false %>
+          </div>
+          <div class="form-col">
+            <%= f.input :gender, collection: ['male', 'female'], label: false %>
+          </div>
+        </div>
+        <div class="big-form">
+          <div
+            class="form-col col-wide dropzone dropzone-default dz-clickable"
+            data-controller="coverdrop"
+            data-coverdrop-max-file-size="3"
+            data-coverdrop-max-files="1"
+          >
+            <%= f.file_field :portrait, direct_upload: true,
+              'data-coverdrop-target': 'input' %>
+            <div class="dropzone-msg dz-message">
+              <h3 class="dropzone-msg-title heading4 color-primary-dark">Drag portrait image here or click to browse</h3>
+              <span class="dropzone-msg-desc small color-primary-dark">3 MB file size maximum. Allowed are only image file types.</span>
+            </div>
+          </div>
+          <div class="form-col">
+            <%= portrait_image(author, size: "small") %>
+          </div>
+        </div>
+      </div>
+      <div class="form-col">
+        <div class="big-form">
+          <div class="form-col enum_radio_buttons">
+            <div class="color-primary-dark margin-bottom-50">Author Rating</div>
+            <% Author.ratings.each do |k,v| %>
+              <span class="radio">
+                <%= f.radio_button :rating, k.to_sym, class: 'hidden-button' %>
+                <%= f.label :rating, id: "label_rating_#{k}", for: "author_rating_#{k}" do %>
+                  <span class="fake-button">
+                  </span>
+                  <%= k.humanize %>
+                <% end %>
+              </span>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <%= f.button :submit, 'data-action': 'click->portraitdrop#submitAll' %>
+    <%= back_link %>
+  <% end %>

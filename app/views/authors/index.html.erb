@@ -1,5 +1,9 @@
 <%= page_title('Authors','', 'heading2') %>
 
+<div class="margin-top-1 margin-left-50 margin-bottom-1">
+  <%= link_to 'Add Author', new_author_path, class: 'button-color-secondary' %>
+</div>
+
 <%= turbo_frame_tag 'page' %>
 <nav class="pagination list-select-type">
   <span class="page">

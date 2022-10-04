@@ -16,6 +16,17 @@ class AuthorsController < ApplicationController
       @pagy, @books = pagy(@author.books.includes([:user, cover_attachment: :blob]).order(:sort_title))
   end
 
+  def edit; end
+
+  def update
+    if @author.update(author_params)
+      flash[:success] = 'Author updated'
+      redirect_to @author
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   private
 
   def author_params
