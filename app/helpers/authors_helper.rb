@@ -13,7 +13,7 @@ module AuthorsHelper
 
   # returns the birth and dead year if dead, otherwise just the birth year
   def living_years(author)
-    return unless author.born && author.died
+    return unless author.born || author.died
     if author.dead?
       author.born ? "#{author.born} - #{author.died}" : "Died #{author.died}"
     else

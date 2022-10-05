@@ -26,6 +26,7 @@
       </div>
       <div class="author"><%= book.author.display_name %></div>
       <div class="publisher"><%= book.publisher.name %></div>
+      <div class="rating"><%= rating_stars(book.rating_before_type_cast) %></div>
       <div class="genre-list">
         <% book.genres.each do |g| %>
           <%= render 'genres/genre_tag', genre: g %>

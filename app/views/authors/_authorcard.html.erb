@@ -22,9 +22,10 @@
             data: { turbo_frame: "_top" }
             )%>
         </h2>
-        <div class="bookyear"><%= gender_icon(author) %></div>
+        <div class="gender"><%= gender_icon(author) %></div>
       </div>
-      <div class="author"><%= living_years(author) %></div>
-      <div class="author"><%= pluralize(author.books.size, 'Book') %></div>
+      <div class="livingyear"><%= living_years(author) %></div>
+      <div class="books"><%= pluralize(author.books.size, 'Book') %></div>
+      <div class="rating"><%= rating_stars(author.rating_before_type_cast) %></div>
     </div>
 <% end %>

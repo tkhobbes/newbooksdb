@@ -42,13 +42,16 @@
     }
   }
 
-  .bookyear {
+  .bookyear,
+  .gender {
     margin-left: auto;
     padding-left: $padding-2;
     font-size: 1.5rem;
   }
 
-  .author {
+  .author,
+  .livingyear,
+  .books {
     font-size: 1.5rem;
   }
 
