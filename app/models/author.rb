@@ -30,7 +30,7 @@ class Author < ApplicationRecord
   has_one_attached :portrait
 
   # database relations
-  has_many :books
+  has_many :books, dependent: :nullify
 
   # authors can be rated
   include Rateable

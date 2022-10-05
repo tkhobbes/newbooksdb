@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import AuthorSelectController from "./author_select_controller.js"
+application.register("author-select", AuthorSelectController)
+
 import BookFormatSelectController from "./book_format_select_controller.js"
 application.register("book-format-select", BookFormatSelectController)
 

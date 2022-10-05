@@ -4,6 +4,21 @@
       <div class="form-col col-wide">
         <%= f.input :title, placeholder: 'Book Title', label: false %>
         <%= f.input :original_title, placeholder: 'Original Title', label: false %>
+        <%= f.association(
+          :author,
+          label: false,
+          collection: Author.order(:sort_name),
+          label_method: :display_name, value_method: :id,
+          prompt: 'Author...',
+          input_html:
+            { data:
+              {
+                controller: 'author-select'
+              },
+              placeholder: 'Author',
+              class: 'width-100'
+            }
+        ) %>
         <div class="big-form">
           <div class="form-col">
             <%= f.association(
