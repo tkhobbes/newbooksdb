@@ -4,21 +4,31 @@
       <div class="form-col col-wide">
         <%= f.input :title, placeholder: 'Book Title', label: false %>
         <%= f.input :original_title, placeholder: 'Original Title', label: false %>
-        <%= f.association(
-          :author,
-          label: false,
-          collection: Author.order(:sort_name),
-          label_method: :display_name, value_method: :id,
-          prompt: 'Author...',
-          input_html:
-            { data:
-              {
-                controller: 'author-select'
-              },
-              placeholder: 'Author',
-              class: 'width-100'
-            }
-        ) %>
+        <div class="big-form flex-align-center">
+          <div class="form-col col-wide">
+            <%= f.association(
+              :author,
+              label: false,
+              collection: Author.order(:sort_name),
+              label_method: :display_name, value_method: :id,
+              prompt: 'Author...',
+              input_html:
+                { data:
+                  {
+                    controller: 'author-select'
+                  },
+                  placeholder: 'Author',
+                  class: 'width-100'
+                }
+            ) %>
+          </div>
+          <div class="form-col">
+            <%= link_to 'Create new Author',
+            new_author_path,
+            class: 'button-color-primary text-center',
+            data: { action: "click->modal#open", turbo_stream: "" } %>
+          </div>
+        </div>
         <div class="big-form">
           <div class="form-col">
             <%= f.association(
@@ -73,8 +83,7 @@
             class="form-col col-wide dropzone dropzone-default dz-clickable"
             data-controller="coverdrop"
             data-coverdrop-max-file-size="3"
-            data-coverdrop-max-files="1"
-          >
+            data-coverdrop-max-files="1">
             <%= f.file_field :cover, direct_upload: true,
               'data-coverdrop-target': 'input' %>
             <div class="dropzone-msg dz-message">
@@ -99,8 +108,7 @@
               <span class="radio">
                 <%= f.radio_button :rating, k.to_sym, class: 'hidden-button' %>
                 <%= f.label :rating, id: "label_rating_#{k}", for: "book_rating_#{k}" do %>
-                  <span class="fake-button">
-                  </span>
+                  <span class="fake-button"></span>
                   <%= k.humanize %>
                 <% end %>
               </span>
@@ -112,8 +120,7 @@
               <span class="radio">
                 <%= f.radio_button :condition, k.to_sym, class: 'hidden-button' %>
                 <%= f.label :condition, id: "label_condition_#{k}", for: "book_condition_#{k}" do %>
-                  <span class="fake-button">
-                  </span>
+                  <span class="fake-button"></span>
                   <%= k.humanize %>
                 <% end %>
               </span>

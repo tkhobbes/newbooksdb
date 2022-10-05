@@ -25,6 +25,9 @@ application.register("genre-select", GenreSelectController)
 import HelloController from "./hello_controller.js"
 application.register("hello", HelloController)
 
+import ModalController from "./modal_controller.js"
+application.register("modal", ModalController)
+
 import NotificationController from "./notification_controller.js"
 application.register("notification", NotificationController)
 

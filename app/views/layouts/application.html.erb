@@ -10,7 +10,7 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
-  <body>
+  <body <%= yield :body_attributes %>>
     <div class="container" data-controller="burgermenu">
       <%= render 'shared/sidebar' %>
       <div class="content">
@@ -25,4 +25,5 @@
       </div>
     </div>
   </body>
+  <%= render 'shared/modal' %>
 </html>
