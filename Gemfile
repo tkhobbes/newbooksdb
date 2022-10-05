@@ -59,8 +59,8 @@ gem 'redis', '~> 4.6.0'
 gem 'kredis', '~> 1.3'
 
 # Turbo and Stimulus
-gem 'stimulus-rails', '~> 1.0.4'
-gem 'turbo-rails', '~> 1.1.1'
+gem 'stimulus-rails', '~> 1.1.0' # was 1.0.4
+gem 'turbo-rails', '~> 1.3.0' # was 1.1.1
 
 # Assets, Javascript, CSS
 gem 'cssbundling-rails', '~> 1.1.0'
