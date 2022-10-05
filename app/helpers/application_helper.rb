@@ -23,7 +23,7 @@ module ApplicationHelper
       content_tag(:h1, class: title_class) do
         title
       end
-    end
+    end unless title.blank?
   end
 
   # method to list out all menu items for main menu
