@@ -9,7 +9,12 @@ class AuthorsController < ApplicationController
   before_action :dissolve, only: :index
 
   def index
-    @pagy, @authors = pagy(Author.includes([portrait_attachment: :blob]).order(:sort_name))
+    if params[:show] == 'unused'
+      @authors = Author.no_books.order(:sort_name)
+      render 'admin'
+    else
+      @pagy, @authors = pagy(Author.includes([portrait_attachment: :blob]).order(:sort_name))
+    end
   end
 
   def show
@@ -48,6 +53,12 @@ class AuthorsController < ApplicationController
       format.turbo_stream
       format.html { redirect_to authors_url, alert: 'Author removed', status: :see_other }
     end
+  end
+
+ # removes authors with no books
+  def remove_unused
+    Author.no_books.destroy_all
+    redirect_to bulk_actions_settings_path, notice: 'Authors without books removed.'
   end
 
   private

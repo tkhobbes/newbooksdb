@@ -1,0 +1,19 @@
+<%= page_title('Settings', '', 'heading3') %>
+
+<%= render 'settings/settings_menu' %>
+  <div class="submenucontent">
+    <h3 class="heading4">Authors with no Books</h3>
+    <ul class="simple-list width-66 margin-bottom-1" id="publishers">
+      <% if @authors.size > 0 %>
+        <%= turbo_frame_tag 'shelf-list' do %>
+          <%= render @authors %>
+        <% end %>
+      <% else %>
+        <div class="margin-top-1">No Authors without books.</div>
+      <% end %>
+    </ul>
+    <% if @authors.size > 0 %>
+      <%= link_to 'Delete these authors', remove_unused_authors_path, class: 'form-cancel-button' %>
+    <% end %>
+  </div>
+</div>

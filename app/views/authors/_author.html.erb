@@ -1,3 +1,6 @@
-<%= params[:show] == 'list' ?
-  render('authorlist', author: author) :
-  render('authorcard', author: author) %>
+<%= case params[:show]
+    when 'list' then render('authorlist', author: author)
+    when 'unused' then render('authorsettings', author: author)
+    else render('authorcard', author: author)
+    end
+%>
