@@ -45,8 +45,8 @@ class Author < ApplicationRecord
   friendly_id :sort_name, use: :slugged
 
   # ensure cache is updated after creation and removal of book
-  after_create { Rails.cache.increment('genres-count') }
-  after_destroy { Rails.cache.decrement('genres-count') }
+  after_create { Rails.cache.increment('authors-count') }
+  after_destroy { Rails.cache.decrement('authors-count') }
 
   scope :no_books, -> { left_joins(:books).where(books: { id: [0, nil, ''] }) }
   scope :dead, -> { where("died > 0" ) }
