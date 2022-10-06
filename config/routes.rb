@@ -21,9 +21,8 @@ Rails.application.routes.draw do
   resources :shelves, except: :show do
     get 'remove_unused', on: :collection
   end
-  resources :genres do
-    get 'remove_unused', on: :collection
-  end
+  resources :genres
+
   resources :tags do
     get 'remove_unused', on: :collection
   end
@@ -31,6 +30,8 @@ Rails.application.routes.draw do
   resources :settings, only: [:index] do
     get 'bulk_actions', on: :collection
   end
+
+  resources :unused_items, only: [:index, :destroy]
 
   get 'user_destructions/new/:id', to: 'user_destructions#new', as: 'new_user_destructions'
   resources :user_destructions, only: [:create]

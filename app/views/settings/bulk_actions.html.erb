@@ -14,7 +14,7 @@
         <%= link_to 'Remove empty Shelves', shelves_path(show: 'unused') %>
       </li>
       <li>
-        <%= link_to 'Remove Genres without Books', genres_path(show: 'unused') %>
+        <%= link_to 'Remove Genres without Books', unused_items_path(model: 'Genre', method: 'no_books') %>
       </li>
       <li>
         <%= link_to 'Remove Tags not used', tags_path(show: 'unused') %>

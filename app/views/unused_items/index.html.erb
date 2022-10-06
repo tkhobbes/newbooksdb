@@ -1,0 +1,26 @@
+<%= page_title('Settings','', 'heading3') %>
+
+<%= render 'settings/settings_menu' %>
+  <div class="submenucontent">
+    <h3 class="heading4"><%= "#{@model.humanize} without Books" %></h3>
+    <% if @items.size == 0 %>
+      <div class="margin-bottom-1">
+        There are no <%= @model %>s without any books.
+      </div>
+      <%= back_link %>
+    <% else %>
+      <ul class="itemlist margin-bottom-1">
+        <% @items.each do |item| %>
+          <li class="itemlist__border padding-25"><%= item.name %></li>
+        <% end %>
+      </ul>
+      <%= link_to "Delete #{pluralize(@items.size, @model)}",
+        unused_item_path(1, model: @model, method: 'no_books'),
+        data: { turbo_method: :delete },
+        class: 'form-cancel-button'
+      %>
+    <% end %>
+  </div>
+</div>
+
+

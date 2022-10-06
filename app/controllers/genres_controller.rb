@@ -98,12 +98,6 @@ class GenresController < ApplicationController
     end
   end
 
-  # removes all actors not in a movie
-  def remove_unused
-    Genre.no_books.destroy_all
-    redirect_to bulk_actions_settings_path, notice: 'Unused Genres removed.'
-  end
-
   private
 
   def set_genre
