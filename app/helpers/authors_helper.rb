@@ -8,6 +8,7 @@ module AuthorsHelper
 
   # returns the male / female icon
   def gender_icon(author)
+    return unless author.gender.nil? || author.gender != ''
     author.gender == 'male' ? inline_svg_tag('male.svg', class: 'smallicon') : inline_svg_tag('female.svg', class: 'smallicon')
   end
 
