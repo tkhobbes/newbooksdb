@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: authors
@@ -10,7 +12,7 @@
 #  first_name   :string(255)
 #  gender       :string(255)
 #  last_name    :string(255)
-#  rating       :integer          default("not_rated")
+#  rating       :integer          default('not_rated')
 #  slug         :string(255)
 #  sort_name    :string(255)
 #  created_at   :datetime         not null
@@ -23,15 +25,15 @@
 #
 FactoryBot.define do
   factory :author do
-    first_name { "MyString" }
-    last_name { "MyString" }
-    sort_name { "MyString" }
-    display_name { "MyString" }
+    first_name { 'MyString' }
+    last_name { 'MyString' }
+    sort_name { 'MyString' }
+    display_name { 'MyString' }
     born { 1 }
     died { 1 }
-    gender { "MyString" }
+    gender { 'MyString' }
     rating { 1 }
-    slug { "MyString" }
+    slug { 'MyString' }
     books_count { 1 }
   end
 end

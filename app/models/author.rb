@@ -36,9 +36,9 @@ class Author < ApplicationRecord
   include Rateable
 
   # create all names that are required
-  after_create :create_sort_name
   before_save :create_sort_name
   before_save :create_display_name
+  after_create :create_sort_name
 
   # use sort name for friendly_id
   extend FriendlyId
@@ -49,7 +49,7 @@ class Author < ApplicationRecord
   after_destroy { Rails.cache.decrement('authors-count') }
 
   scope :no_books, -> { left_joins(:books).where(books: { id: [0, nil, ''] }) }
-  scope :dead, -> { where("died > 0" ) }
+  scope :dead, -> { where('died > 0') }
   scope :alive, -> { where(died: [nil, '']) }
 
   # some easy helper methods
@@ -58,7 +58,7 @@ class Author < ApplicationRecord
   end
 
   def age
-    dead? ? died - born : Time.now.year - born
+    dead? ? died - born : Time.zone.now.year - born
   end
 
   private

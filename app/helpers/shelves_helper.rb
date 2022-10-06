@@ -33,10 +33,12 @@ module ShelvesHelper
 
   # shows the shelf for a book if available
   # This method smells of :reek:DuplicateMethodCall
+  # rubocop:disable Layout/LineLength
   def show_shelf(book)
     return unless logged_in? && book.user == current_user && book.shelf
     "in shelf #{link_to(book.shelf.name, books_path(shelf_books: book.shelf.id), class: 'color-accent-dark color-hover-accent')}"
   end
+  # rubocop:enable Layout/LineLength
 
   # helper method to get number of shelves from cache
   def shelves_count

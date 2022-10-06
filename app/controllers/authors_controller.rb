@@ -1,4 +1,4 @@
-# frozen_string_literal: true
+# frozen_string_literal: true
 
 class AuthorsController < ApplicationController
   # allow for turbo frame variants
@@ -25,6 +25,7 @@ class AuthorsController < ApplicationController
     @author = Author.new
   end
 
+  # rubocop:disable Metrics/MethodLength
   def create
     @author = Author.new(author_params)
 
@@ -39,6 +40,7 @@ class AuthorsController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
+  # rubocop:enable Metrics/MethodLength
 
   def edit; end
 

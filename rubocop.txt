@@ -1,12 +1,12 @@
-Inspecting 72 files
-................................C.....C.................................
+Inspecting 77 files
+...................................C.....C...................................
 
 Offenses:
 
-app/models/book_format.rb:28:8: C: [Correctable] Style/RedundantSelf: Redundant self detected.
+app/models/book_format.rb:33:8: C: [Correctable] Style/RedundantSelf: Redundant self detected.
     if self.fallback?
        ^^^^
-app/models/book_format.rb:33:34: C: [Correctable] Style/RedundantSelf: Redundant self detected.
+app/models/book_format.rb:38:34: C: [Correctable] Style/RedundantSelf: Redundant self detected.
       Book.where(book_format_id: self.id).update(book_format_id: format_fallback.id)
                                  ^^^^
 app/models/user.rb:53:7: C: [Correctable] Style/ClassMethods: Use self.digest instead of User.digest.
@@ -19,4 +19,4 @@ app/models/user.rb:69:7: C: [Correctable] Style/ClassMethods: Use self.new_token
   def User.new_token
       ^^^^
 
-72 files inspected, 5 offenses detected, 5 offenses autocorrectable
+77 files inspected, 5 offenses detected, 5 offenses autocorrectable

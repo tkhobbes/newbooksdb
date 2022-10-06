@@ -7,12 +7,19 @@ module AuthorsHelper
   end
 
   # returns the male / female icon
+  # this method smells of :reek:DuplicateMethodCall
+  # this method smells of :reek:FeatureEnvy
   def gender_icon(author)
-    return unless author.gender.nil? || author.gender != ''
-    author.gender == 'male' ? inline_svg_tag('male.svg', class: 'smallicon') : inline_svg_tag('female.svg', class: 'smallicon')
+    return unless author.gender.present?
+    if author.gender == 'male'
+      inline_svg_tag('male.svg', class: 'smallicon')
+    else
+      inline_svg_tag('female.svg', class: 'smallicon')
+    end
   end
 
   # returns the birth and dead year if dead, otherwise just the birth year
+  # this method smells of :reek:DuplicateMethodCall
   def living_years(author)
     return unless author.born || author.died
     if author.dead?
@@ -39,7 +46,11 @@ module AuthorsHelper
     css_tag = portrait_map[size][1]
 
     portrait = author.portrait
-    portrait.attached? ? image_tag(portrait.variant(resize_to_limit: [img_size, img_size])) : generate_author_portrait_svg(css_tag)
+    if portrait.attached?
+      image_tag(portrait.variant(resize_to_limit: [img_size, img_size]))
+    else
+      generate_author_portrait_svg(css_tag)
+    end
   end
   # rubocop:enable Metrics/MethodLength
 
