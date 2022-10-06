@@ -1,9 +1,11 @@
   <%= simple_form_for author do |f| %>
     <%= render 'shared/form_errors', form: f %>
     <div class="big-form">
+      <%= f.hidden_field :source, value: params[:source] %>
       <div class="form-col col-wide">
         <%= f.input :first_name, placeholder: 'First Name', label: false %>
         <%= f.input :last_name, placeholder: 'Last Name', label: false %>
+        <%= params[:from] %>
         <div class="big-form">
           <div class="form-col">
             <%= f.input :born, placeholder: 'Birth Year', label: false %>
@@ -53,5 +55,9 @@
       </div>
     </div>
     <%= f.button :submit, 'data-action': 'click->portraitdrop#submitAll' %>
-    <%= back_link %>
+    <% if params[:source] == 'book' %>
+      <%= link_to 'Cancel', '#', class: 'back_link', data: {action: 'click->modal#close'} %>
+    <% else %>
+      <%= back_link %>
+    <% end %>
   <% end %>

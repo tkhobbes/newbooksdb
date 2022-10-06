@@ -29,8 +29,12 @@ class AuthorsController < ApplicationController
     @author = Author.new(author_params)
 
     if @author.save
-      flash[:success] = 'Author saved'
-      redirect_to author_path(@author)
+      if params[:author][:source] == 'book'
+        redirect_to new_book_path
+      else
+        flash[:success] = 'Author saved'
+        redirect_to author_path(@author)
+      end
     else
       render :new, status: :unprocessable_entity
     end
