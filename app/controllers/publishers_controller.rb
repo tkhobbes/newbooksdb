@@ -17,14 +17,9 @@ class PublishersController < ApplicationController
 
   # index method uses pagy
   def index
-    if params[:show] == 'unused'
-      @publishers = Publisher.no_books.order(:name)
-      render 'admin', publishers: @publishers
-    else
-      @pagy, @publishers = pagy(Publisher.all
-        .includes([books: [cover_attachment: :blob]])
-        .order(:name))
-    end
+    @pagy, @publishers = pagy(Publisher.all
+      .includes([books: [cover_attachment: :blob]])
+      .order(:name))
   end
 
   # new method to display form
@@ -73,12 +68,6 @@ class PublishersController < ApplicationController
       format.turbo_stream
       format.html { redirect_to publishers_path, alert: 'Publisher was successfully destroyed.', status: :see_other }
     end
-  end
-
-  # removes publishers with no books
-  def remove_unused
-    Publisher.no_books.destroy_all
-    redirect_to bulk_actions_settings_path, notice: 'Publishers without books removed.'
   end
 
   private

@@ -5,19 +5,24 @@
     <h3 class="heading4">Bulk Actions</h3>
     <ul class="simple-list width-50">
       <li>
-        <%= link_to 'Remove Authors without Books', authors_path(show: 'unused') %>
+        <%= link_to 'Remove Authors without Books',
+          unused_items_path(model: 'Author', method: 'no_books') %>
       </li>
       <li>
-        <%= link_to 'Remove Publishers without Books', publishers_path(show: 'unused') %>
+        <%= link_to 'Remove Publishers without Books',
+          unused_items_path(model: 'Publisher', method: 'no_books') %>
       </li>
       <li>
-        <%= link_to 'Remove empty Shelves', shelves_path(show: 'unused') %>
+        <%= link_to 'Remove empty Shelves',
+          unused_items_path(model: 'Shelf', method: 'no_books') %>
       </li>
       <li>
-        <%= link_to 'Remove Genres without Books', unused_items_path(model: 'Genre', method: 'no_books') %>
+        <%= link_to 'Remove Genres without Books',
+          unused_items_path(model: 'Genre', method: 'no_books') %>
       </li>
       <li>
-        <%= link_to 'Remove Tags not used', tags_path(show: 'unused') %>
+        <%= link_to 'Remove Tags not used',
+          unused_items_path(model: 'Tag', method: 'no_books') %>
       </li>
     </ul>
   </div>

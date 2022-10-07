@@ -2,13 +2,9 @@
 
 <%= render 'settings/settings_menu' %>
   <div class="submenucontent">
-    <h3 class="heading4">
-      <%= params[:show] == 'unused' ? 'Unused Genres' : 'Available Genres' %>
-    </h3>
+    <h3 class="heading4">Available Genres</h3>
     <ul class="simple-list width-66 margin-bottom-1" id="genres">
-      <% if params[:show] != 'unused' %>
-        <%= render 'new_form_entry' %>
-      <% end %>
+      <%= render 'new_form_entry' %>
       <% if @genres.size > 0 %>
         <%= turbo_frame_tag 'format-list' do %>
           <%= render @genres %>
@@ -17,9 +13,6 @@
         <div class="margin-top-1">No genres</div>
       <% end %>
     </ul>
-    <% if params[:show] == 'unused' && @genres.size > 0 %>
-      <%= link_to 'Delete these genres', remove_unused_genres_path, class: 'form-cancel-button' %>
-    <% end %>
   </div>
 </div>
 

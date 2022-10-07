@@ -33,9 +33,6 @@ class TagsController < ApplicationController
                 @user.tags.includes([:user]).order(:name)
               end
       render 'admin', tags: @tags
-    when 'unused'
-      @tags = Tag.no_books.order(:name)
-      render 'admin'
     else
       @pagy, @tags = pagy(Tag
         .where(user_id: @user.id)
@@ -109,12 +106,6 @@ class TagsController < ApplicationController
       # turbo stream is not removed
       render json: { nothing: true }
     end
-  end
-
-  # removes all unused tags
-  def remove_unused
-    Tag.no_books.destroy_all
-    redirect_to bulk_actions_settings_path, notice: 'Unused Tags removed.'
   end
 
   private

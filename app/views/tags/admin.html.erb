@@ -2,13 +2,9 @@
 
 <%= render 'settings/settings_menu' %>
   <div class="submenucontent">
-    <h3 class="heading4">
-      <%= params[:show] == 'unused' ? 'Unused Tags' : 'All Tags' %>
-    </h3>
+    <h3 class="heading4">All Tags</h3>
     <ul class="simple-list width-66 margin-bottom-1" id="tags">
-      <% if params[:show] != 'unused' %>
-        <%= render 'new_form_entry' %>
-      <% end %>
+      <%= render 'new_form_entry' %>
       <% if @tags.size > 0 %>
         <%= turbo_frame_tag 'format-list' do %>
           <%= render @tags %>
@@ -17,8 +13,5 @@
         <div class="margin-top-1">No tags</div>
       <% end %>
     </ul>
-    <% if params[:show] == 'unused' && @tags.size > 0 %>
-      <%= link_to 'Delete these tags', remove_unused_tags_path, class: 'form-cancel-button' %>
-    <% end %>
   </div>
 </div>

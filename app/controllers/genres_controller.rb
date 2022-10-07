@@ -24,9 +24,6 @@ class GenresController < ApplicationController
     when 'settings'
       @genres = Genre.all.order(:name)
       render 'admin', genres: @genres
-    when 'unused'
-      @genres = Genre.no_books.order(:name)
-      render 'admin', genres: @genres
     else
       @pagy, @genres = pagy(Genre
         .includes([:books_genres, books: [cover_attachment: :blob]])

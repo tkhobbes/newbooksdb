@@ -61,6 +61,11 @@ class Author < ApplicationRecord
     dead? ? died - born : Time.zone.now.year - born
   end
 
+  # used for the standard unused items views
+  def name
+    display_name
+  end
+
   private
 
   def create_sort_name
