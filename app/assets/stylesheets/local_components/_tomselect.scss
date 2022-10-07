@@ -1,0 +1,63 @@
+// Overwrite Tom Select styles to match application
+
+// some complicated styling to get the background colours and the widths correct
+.ts-wrapper,
+.full {
+  .ts-control {
+    @extend .bg-white;
+  }
+
+  &.single.input-active {
+    .ts-control {
+      @extend .bg-white;
+    }
+  }
+
+  &.single {
+    .ts-control {
+      input {
+        width: initial;
+      }
+    }
+  }
+}
+
+// overwrite standard styles for the ts-control input form - essentially mirroring the standard input styles
+.ts-control {
+  @extend .border-color-primary;
+  @extend .color-black;
+  @extend .bg-white;
+  border-radius: $base-border-radius;
+
+  &::placeholder {
+    @extend .color-grey-white;
+  }
+
+  &:focus,
+  &:active,
+  &:focus-visible {
+    outline: none;
+    @extend .border-color-primary-dark;
+  }
+
+  & > input[type="select-multiple"] {
+    width: initial;
+  }
+}
+
+// overwriting styles for the ts-dropdown menu
+.ts-dropdown {
+  @extend .border-color-primary;
+  @extend .color-black;
+  @extend .bg-primary-light;
+
+  .active {
+    @extend .bg-primary-dark;
+    @extend .color-white;
+  }
+
+  .selected {
+    @extend .bg-primary;
+    @extend .color-primary-dark;
+  }
+}
