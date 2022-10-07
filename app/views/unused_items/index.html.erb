@@ -15,7 +15,7 @@
         <% end %>
       </ul>
       <%= link_to "Delete #{pluralize(@items.size, @model)}",
-        unused_item_path(1, model: @model, method: 'no_books'),
+        unused_item_path(1, model: @model, method: params[:method]),
         data: { turbo_method: :delete },
         class: 'form-cancel-button'
       %>

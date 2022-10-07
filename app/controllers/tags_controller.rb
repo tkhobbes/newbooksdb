@@ -94,6 +94,9 @@ class TagsController < ApplicationController
   # -turbo-stream - default response format, used on the settings page
   # This method smells of :reek:TooManyStatements
   def destroy
+    Tagging.where(tag_id: @tag.id).find_each do |t|
+      t.destroy
+    end
     @tag.destroy
     if @tag.destroyed?
       respond_to do |format|

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_04_113346) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_07_125605) do
   create_table "action_text_rich_texts", charset: "utf8mb4", force: :cascade do |t|
     t.string "name", null: false
     t.text "body", size: :long
@@ -111,13 +111,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_04_113346) do
     t.bigint "book_id", null: false
   end
 
-  create_table "books_tags", charset: "utf8mb4", force: :cascade do |t|
-    t.bigint "book_id", null: false
-    t.bigint "tag_id", null: false
-    t.index ["book_id"], name: "index_books_tags_on_book_id"
-    t.index ["tag_id"], name: "index_books_tags_on_tag_id"
-  end
-
   create_table "genres", charset: "utf8mb4", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
@@ -146,6 +139,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_04_113346) do
     t.integer "books_count"
     t.index ["name", "user_id"], name: "index_shelves_on_name_and_user_id", unique: true
     t.index ["user_id"], name: "index_shelves_on_user_id"
+  end
+
+  create_table "taggings", charset: "utf8mb4", force: :cascade do |t|
+    t.integer "tag_id", null: false
+    t.string "taggable_type"
+    t.integer "taggable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tag_id"], name: "index_taggings_on_tag_id"
   end
 
   create_table "tags", charset: "utf8mb4", force: :cascade do |t|
@@ -181,8 +183,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_04_113346) do
   add_foreign_key "books", "book_formats"
   add_foreign_key "books_authors", "authors"
   add_foreign_key "books_authors", "books"
-  add_foreign_key "books_tags", "books"
-  add_foreign_key "books_tags", "tags"
   add_foreign_key "shelves", "users"
   add_foreign_key "tags", "users"
 end

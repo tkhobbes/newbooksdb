@@ -127,6 +127,7 @@ class BooksController < ApplicationController
       :book_format_id,
       :shelf_id,
       :publisher_id,
+      :tag_list, # is this needed?
       genre_ids: [],
       tag_ids: []
     )

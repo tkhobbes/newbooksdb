@@ -31,12 +31,12 @@ class Tag < ApplicationRecord
   # tag are OWNED by a user but are not used to TAG users
   belongs_to :user
 
-  # rubocop:disable Rails/HasAndBelongsToMany
-  has_and_belongs_to_many :books
-  # rubocop:enable Rails/HasAndBelongsToMany
+
+  has_many :taggings
+  has_many :books, through: :taggings, :source => 'taggable', :source_type => 'Book'
 
   # scope needed for the bulk action "remove genres without books"
-  scope :no_books, -> { left_joins(:books).where(books: { id: [0, nil, ''] }) }
+  scope :no_taggings, -> { left_joins(:taggings).where(taggings: { id: [0, nil, ''] }) }
 
   private
 

@@ -12,7 +12,7 @@
 #  first_name   :string(255)
 #  gender       :string(255)
 #  last_name    :string(255)
-#  rating       :integer          default('not_rated')
+#  rating       :integer          default("not_rated")
 #  slug         :string(255)
 #  sort_name    :string(255)
 #  created_at   :datetime         not null

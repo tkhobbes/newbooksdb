@@ -61,8 +61,10 @@ class Book < ApplicationRecord
 
   # rubocop:disable Rails/HasAndBelongsToMany
   has_and_belongs_to_many :genres, optional: true
-  has_and_belongs_to_many :tags, optional: true
   # rubocop:enable Rails/HasAndBelongsToMany
+
+  has_many :taggings, as: :taggable, dependent: :destroy
+  has_many :tags, through: :taggings
 
   # a scope for my books
   scope :my_books, -> (uid) { where(user_id: uid) }
