@@ -19,6 +19,10 @@
       border-radius: 0 $base-border-radius $base-border-radius 0;
     }
 
+    &:only-child {
+      border-radius: $base-border-radius;
+    }
+
     & > a {
       @extend .color-black;
       padding: $padding-2;
