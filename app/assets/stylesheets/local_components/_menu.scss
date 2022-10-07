@@ -17,6 +17,7 @@
         @extend .color-black;
         display: block;
         padding: $padding-2;
+        transition: background-color 0.1s ease-in, color 0.1s ease-in;
 
         &:hover {
           @extend .bg-accent-dark;

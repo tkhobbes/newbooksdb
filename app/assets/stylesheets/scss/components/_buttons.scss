@@ -19,10 +19,12 @@ $button-colors: (
     padding: $padding-2 $padding-2;
     cursor: pointer;
     text-align: center;
+    transition: background-color 0.2s ease-in, color 0.2s ease-in;
 
     &:hover {
       @extend .bg-#{$key}-dark;
       @extend .color-#{$key}-light;
+      border-radius: $base-border-radius;
     }
   }
 }

@@ -9,6 +9,12 @@
     margin-bottom: $margin-4;
     border-radius: $base-border-radius;
     @extend .medium-small;
+    transition: background-color 0.2s linear;
+
+    :hover {
+      @extend .bg-grey-white;
+      border-radius: $base-border-radius;
+    }
   }
 
   & .tag + .tag {

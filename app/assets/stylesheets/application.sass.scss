@@ -33,6 +33,10 @@
 
 // 1. Layout
 
+a {
+  transition: color 0.1s ease-in, background-color 0.1s ease-in;
+}
+
 .container {
   display: flex;
   margin: 0 auto;

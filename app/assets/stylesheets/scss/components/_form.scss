@@ -211,10 +211,12 @@ input[type="submit"].btn {
   font-family: var(--paragraph);
   padding: $padding-2 $padding-2;
   cursor: pointer;
+  transition: background-color 0.2s ease-in, color 0.2s ease-in;
 
   &:hover {
     @extend .bg-primary-dark;
     @extend .color-primary-light;
+    border-radius: $base-border-radius;
   }
 }
 
@@ -224,10 +226,12 @@ input[type="submit"].btn {
   @extend .border-color-black;
   border-radius: $base-border-radius;
   padding: $padding-4 $padding-2;
+  transition: background-color 0.2s ease-in, color 0.2s ease-in;
 
   &:hover {
     @extend .bg-primary-light;
     @extend .color-primary-dark;
+    border-radius: $base-border-radius;
   }
 }
 
@@ -268,6 +272,8 @@ input[type="submit"].btn {
     &:hover {
       @extend .bg-primary-light;
       @extend .color-primary-dark;
+      border-radius: $base-border-radius;
+      transition: background-color 0.2s ease-in, color 0.2s ease-in;
     }
   }
 
@@ -322,10 +328,12 @@ input[type="submit"].btn {
     font-family: var(--paragraph);
     padding: $padding-4 $padding-4;
     cursor: pointer;
+    transition: background-color 0.2s ease-in, color 0.2s ease-in;
 
     &:hover {
       @extend .bg-primary-light;
       @extend .color-primary-dark;
+      border-radius: $base-border-radius;
     }
   }
 }
