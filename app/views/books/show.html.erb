@@ -7,10 +7,12 @@
   <div class="bookdetails__text">
     <div class="bookdetails__text-title">
       <h1 class="heading3">
-        <%= @book.title %> (by
-        <%= link_to @book.author.display_name,
-        author_path(@book.author),
-        class: 'color-accent-dark color-hover-accent' %>)
+        <%= @book.title %>
+        <% if @book.author %>
+          (by <%= link_to @book.author.display_name,
+          author_path(@book.author),
+          class: 'color-accent-dark color-hover-accent' %>)
+        <% end %>
       </h1>
         <% if logged_in? && @book.user == current_user %>
           <%= render 'shared/crud_icons',

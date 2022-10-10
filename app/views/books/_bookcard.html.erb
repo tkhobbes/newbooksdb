@@ -24,8 +24,8 @@
         </h2>
         <div class="bookyear"><%= book.year %></div>
       </div>
-      <div class="author"><%= book.author.display_name %></div>
-      <div class="publisher"><%= book.publisher.name %></div>
+      <div class="author"><%= book.author ? book.author.display_name : 'anonymous' %></div>
+      <div class="publisher"><%= book.publisher ? book.publisher.name : 'no publisher' %></div>
       <div class="rating"><%= rating_stars(book.rating_before_type_cast) %></div>
       <div class="genre-list">
         <% book.genres.each do |g| %>

@@ -26,10 +26,13 @@
     <div class="medium">
       <%= living_years(@author) %>
     </div>
-
-      <div class="tag-list">
-        Tag list
-      </div>
+    <div class="tag-list">
+      <% @author.tags.each do |t| %>
+        <% if t.user == current_user %>
+          <%= render 'tags/tag_tag', tag: t %>
+        <% end %>
+      <% end %>
+    </div>
     <div class="bookdetails__meta">
       <div>
         Rating: <%= rating_stars(@author.rating_before_type_cast) %> (<%= @author.rating.humanize %>)

@@ -5,7 +5,7 @@ import TomSelect from "tom-select";
 // hooks tom-select to the genre-select element
 export default class extends Controller {
   connect() {
-    const selectInput = document.getElementById("book_tag_ids");
+    const selectInput = this.element;
     if (selectInput) {
       new TomSelect(selectInput, {
         plugins: {
