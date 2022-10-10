@@ -1,7 +1,7 @@
-<%= page_title("Books tagged '#{@tag.name}'", '', 'heading2') %>
+<%= page_title('', "Everything tagged '#{@tag.name}'", 'heading2') %>
 
 <div class="flexlist">
-  <h4 class="heading3">All Books tagged</h4>
+  <h1 class="heading2">Everything tagged '<%= @tag.name %>'</h1>
   <div class="icons">
     <%= render 'shared/delete_icon',
       delete_path: tag_path(@tag),
@@ -12,38 +12,25 @@
   </div>
 </div>
 
-<%= turbo_frame_tag 'page' %>
-<ul class="itemlist margin-top-50" id="tag_books">
-  <% @books.each do |book| %>
-    <%= turbo_frame_tag book, class: "itemlist__border" do %>
-      <li class="itemlist__item">
-        <div class="itemlist__cover">
-          <%= cover_image(book, size: "default") %>
-        </div>
-        <div class="itemlist__title">
-          <%= link_to(
-            book.title,
-            book_path(book),
-            data: { turbo_frame: "_top" }
-            )%>
-          (by Author Author )
-        </div>
-        <div class="itemlist__icons">
-          <% if logged_in? && book.user == current_user %>
-            <%= render 'shared/crud_icons',
-              edit_path: edit_book_path(book),
-              delete_path: book_path(book),
-              item_name: book.title,
-              url: "/books/#{book.id}",
-              redirect_url: '/books',
-              edit_answer: 'html',
-              delete_answer: 'turbo'
-            %>
-          <% end %>
-        </div>
-      </li>
-    <% end %>
-  <% end %>
-</ul>
+<div class="tabs margin-top-1">
+  <ul>
+    <li class="placeholder-tab">&nbsp;</li>
+    <li class="content-tab <%= params[:list] == 'books' ? 'active' : '' %>">
+      <%= link_to 'Books', tag_path(@tag, list: 'books') %>
+    </li>
+    <li class="placeholder-tab">&nbsp;</li>
+    <li class="content-tab <%= params[:list] == 'authors' ? 'active' : '' %>">
+      <%= link_to 'Authors', tag_path(@tag, list: 'authors') %>
+    </li>
+    <li class="placeholder-tab">&nbsp;</li>
+  </ul>
+</div>
 
-<%= render 'shared/pager', pagy: @pagy, model_path: tag_path(@tag, page: @pagy.next, show: 'list') %>
+
+<%= turbo_frame_tag @tag do %>
+  <% if params[:list] == 'authors' %>
+    <%= render 'details_author' %>
+  <% else %>
+    <%= render 'details_book' %>
+  <% end %>
+<% end %>

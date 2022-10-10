@@ -45,7 +45,8 @@ class TagsController < ApplicationController
 
   # standard rails show method to display a tag and get all books within that tag
   def show
-    @pagy, @books = pagy(@tag.books.includes([:user, cover_attachment: :blob]))
+    @pagy, @books = pagy(@tag.books.includes([:author, :user, cover_attachment: :blob]))
+    @pagy_authors, @authors = pagy(@tag.authors.includes([portrait_attachment: :blob]))
   end
 
   #new action - displayed in a turbo frame within the settings page

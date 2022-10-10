@@ -1,0 +1,41 @@
+<%= turbo_frame_tag 'page' %>
+<% if @books.size >0 %>
+  <ul class="itemlist margin-top-50" id="tag_books">
+    <% @books.each do |book| %>
+      <%= turbo_frame_tag book, class: "itemlist__border" do %>
+        <li class="itemlist__item">
+          <div class="itemlist__cover">
+            <%= cover_image(book, size: "default") %>
+          </div>
+          <div class="itemlist__title">
+            <%= link_to(
+              book.title,
+              book_path(book),
+              data: { turbo_frame: "_top" }
+              )%>
+            <% if book.author %>
+              (by <%= book.author.display_name %>)
+            <% end %>
+          </div>
+          <div class="itemlist__icons">
+            <% if logged_in? && book.user == current_user %>
+              <%= render 'shared/crud_icons',
+                edit_path: edit_book_path(book),
+                delete_path: book_path(book),
+                item_name: book.title,
+                url: "/books/#{book.id}",
+                redirect_url: '/books',
+                edit_answer: 'html',
+                delete_answer: 'turbo'
+              %>
+            <% end %>
+          </div>
+        </li>
+      <% end %>
+    <% end %>
+  </ul>
+<% else %>
+  <div>No books tagged</div>
+<% end %>
+
+<%= render 'shared/pager', pagy: @pagy, model_path: tag_path(@tag, page: @pagy.next, show: 'list') %>

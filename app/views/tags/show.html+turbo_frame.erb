@@ -1,12 +1,25 @@
 <%= turbo_frame_tag 'page' do %>
-  <%= turbo_stream_action_tag(
-    'append',
-    target: 'tag_books',
-    template: %(#{render @books})
-  ) %>
-  <%= turbo_stream_action_tag(
-    'replace',
-    target: 'pager',
-    template: %(#{render 'shared/pager', pagy: @pagy, model_path: tag_path(@tag, page: @pagy.next, show: 'list')})
+  <% if params[:list] == 'books' %>
+    <%= turbo_stream_action_tag(
+      'append',
+      target: 'tag_books',
+      template: %(#{render @books})
     ) %>
+    <%= turbo_stream_action_tag(
+      'replace',
+      target: 'pager',
+      template: %(#{render 'shared/pager', pagy: @pagy, model_path: tag_path(@tag, page: @pagy.next, show: 'list')})
+      ) %>
+    <% else %>
+    <%= turbo_stream_action_tag(
+      'append',
+      target: 'tag_authors',
+      template: %(#{render @authors})
+    ) %>
+    <%= turbo_stream_action_tag(
+      'replace',
+      target: 'pager',
+      template: %(#{render 'shared/pager', pagy: @pagy_authors, model_path: tag_path(@tag, page: @pagy_authors.next, show: 'list')})
+      ) %>
+    <% end %>
 <% end %>
