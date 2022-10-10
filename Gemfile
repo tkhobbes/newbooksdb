@@ -43,7 +43,7 @@ group :development do
   gem 'rubocop-performance', ' ~> 1.14.2', require: false
   gem 'rubocop-rails', '~> 2.14.2', require: false
   gem 'rubocop-rspec', '~> 2.11', '>= 2.11.1', require: false
-  gem 'solargraph', '~> 0.45.0'
+  gem 'solargraph', '~> 0.47.2'
   gem 'solargraph-rails', '~> 0.3.1'
 end
 

@@ -78,7 +78,8 @@ Author.create(
   born: 1892,
   died: 1973,
   gender: 'male',
-  rating: 5
+  rating: 5,
+  tags: User.first.tags.sample(1)
 )
 
 Author.first.portrait.attach(io: File.open("db/sample/authors/tolkien.jpg"), filename: 'tolkien.jpg')
@@ -97,7 +98,8 @@ Author.first.portrait.attach(io: File.open("db/sample/authors/tolkien.jpg"), fil
     born: birth,
     died: died,
     gender: genders.sample,
-    rating: Random.rand(0..5)
+    rating: Random.rand(0..5),
+    tags: Tag.all.sample(2)
   )
 
   portrait_number = index.modulo(10) + 1

@@ -32,6 +32,9 @@ class Author < ApplicationRecord
   # database relations
   has_many :books, dependent: :nullify
 
+    has_many :taggings, as: :taggable, dependent: :destroy
+  has_many :tags, through: :taggings
+
   # authors can be rated
   include Rateable
 

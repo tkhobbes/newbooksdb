@@ -66,7 +66,9 @@ class AuthorsController < ApplicationController
       :died,
       :gender,
       :rating,
-      :portrait
+      :portrait,
+      :tag_list,
+      tag_ids: []
     )
   end
 
