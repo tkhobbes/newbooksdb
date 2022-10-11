@@ -24,23 +24,22 @@ class TagsController < ApplicationController
   # rubocop:disable Metrics/MethodLength
   # this method smells of :reek:TooManyStatements
   def index
-    @user = current_user
     case params[:show]
     when 'settings'
       @tags = if current_user.admin?
                 Tag.all.order(:name).includes([:user])
               else
-                @user.tags.includes([:user]).order(:name)
+                current_user.tags.includes([:user]).order(:name)
               end
       render 'admin', tags: @tags
     when 'authors'
       @pagy, @tags = pagy(Tag
-        .where(user_id: @user.id)
+        .where(user_id: current_user.id)
         .includes([authors: [portrait_attachment: :blob]])
         .order(:name))
     else
       @pagy, @tags = pagy(Tag
-        .where(user_id: @user.id)
+        .where(user_id: current_user.id)
         .includes([books: [cover_attachment: :blob]])
         .order(:name))
     end
@@ -69,7 +68,6 @@ class TagsController < ApplicationController
   def create
     @tag = Tag.new(tag_params)
     @tag.user_id = current_user.id
-
     respond_to do |format|
       if @tag.save
         format.turbo_stream
@@ -78,7 +76,6 @@ class TagsController < ApplicationController
       else
         format.html { render :new, status: :unprocessable_entity }
       end
-
     end
   end
   # rubocop:enable Metrics/MethodLength
@@ -98,6 +95,7 @@ class TagsController < ApplicationController
   #standard rails destroy action - responds to
   # -html (not used)
   # -turbo-stream - default response format, used on the settings page
+  # the method also takes care of destroying the taggings in scope (as tags are polymorphic)
   # This method smells of :reek:TooManyStatements
   def destroy
     Tagging.where(tag_id: @tag.id).find_each do |t|
@@ -119,7 +117,7 @@ class TagsController < ApplicationController
 
   private
 
-    # confirms the correct user
+  # confirms the correct user
   def correct_or_admin_user
     return if current_user.admin?
     @user = @tag.user

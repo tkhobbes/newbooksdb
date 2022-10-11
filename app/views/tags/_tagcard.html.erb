@@ -7,7 +7,7 @@
     </div>
     <div class="itemcard-big__listcontent margin-top-25">
       <ul class="itemlist margin-bottom-50">
-        <% if show == 'books' %>
+        <% if params[:show] == 'books' %>
           <% tag.books.first(5).each do |book| %>
             <%= render 'books/booklist_small', book: book %>
           <% end %>

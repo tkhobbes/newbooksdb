@@ -8,9 +8,9 @@
     <%= turbo_stream_action_tag(
       'replace',
       target: 'pager',
-      template: %(#{render 'shared/pager', pagy: @pagy, model_path: tag_path(@tag, page: @pagy.next, show: 'list')})
+      template: %(#{render 'shared/pager', pagy: @pagy, model_path: tag_path(@tag, page: @pagy.next, list: 'books', show: 'list')})
       ) %>
-    <% else %>
+  <% else %>
     <%= turbo_stream_action_tag(
       'append',
       target: 'tag_authors',
@@ -19,7 +19,7 @@
     <%= turbo_stream_action_tag(
       'replace',
       target: 'pager',
-      template: %(#{render 'shared/pager', pagy: @pagy_authors, model_path: tag_path(@tag, page: @pagy_authors.next, show: 'list')})
+      template: %(#{render 'shared/pager', pagy: @pagy_authors, model_path: tag_path(@tag, page: @pagy_authors.next, list: 'authors', show: 'list')})
       ) %>
-    <% end %>
+  <% end %>
 <% end %>

@@ -38,4 +38,4 @@
   <div>No books tagged</div>
 <% end %>
 
-<%= render 'shared/pager', pagy: @pagy, model_path: tag_path(@tag, page: @pagy.next, show: 'list') %>
+<%= render 'shared/pager', pagy: @pagy, model_path: tag_path(@tag, page: @pagy.next, list: 'books', show: 'list') %>

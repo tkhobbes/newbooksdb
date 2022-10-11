@@ -6,6 +6,22 @@
 
 ## Technical Information
 
+### Params
+
+A lot of views have the possibility to display different things or switch between
+different modes. This is done by passing parameters to the view. The following
+parameters are commonly used:
+:show - This specifies "how to display" something. Three typical values are possible:
+
+- 'grid': This renders cards with thumbnails and details
+- 'list': This renders items as lists
+- 'settings': This is used for admin views - rendering shorter lists
+
+:list - This specifies WHAT to list out: Mainly used for "tags" which are polymorphic. Examples:
+
+- 'books': lists books
+- 'authors': lists authors
+
 ### Models
 
 #### Books

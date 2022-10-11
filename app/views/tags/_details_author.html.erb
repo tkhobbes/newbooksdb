@@ -36,4 +36,4 @@
   <div>No authors tagged</div>
 <% end %>
 
-<%= render 'shared/pager', pagy: @pagy_authors, model_path: tag_path(@tag, page: @pagy_authors.next, show: 'list') %>
+<%= render 'shared/pager', pagy: @pagy_authors, model_path: tag_path(@tag, page: @pagy_authors.next, list: 'authors', show: 'list') %>
