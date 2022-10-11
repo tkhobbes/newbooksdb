@@ -2,43 +2,43 @@
 // Run that command whenever you add a new controller or create them with
 // ./bin/rails generate stimulus controllerName
 
-import { application } from "./application"
+import { application } from "./application";
 
-import AuthorSelectController from "./author_select_controller.js"
-application.register("author-select", AuthorSelectController)
+import BookFormatSelectController from "./book_format_select_controller";
+application.register("book-format-select", BookFormatSelectController);
 
-import BookFormatSelectController from "./book_format_select_controller.js"
-application.register("book-format-select", BookFormatSelectController)
+import BurgermenuController from "./burgermenu_controller";
+application.register("burgermenu", BurgermenuController);
 
-import BurgermenuController from "./burgermenu_controller.js"
-application.register("burgermenu", BurgermenuController)
+import CoverdropController from "./coverdrop_controller";
+application.register("coverdrop", CoverdropController);
 
-import CountrySelectController from "./country_select_controller.js"
-application.register("country-select", CountrySelectController)
+import GenreSelectController from "./genre_select_controller";
+application.register("genre-select", GenreSelectController);
 
-import CoverdropController from "./coverdrop_controller.js"
-application.register("coverdrop", CoverdropController)
+import HelloController from "./hello_controller";
+application.register("hello", HelloController);
 
-import GenreSelectController from "./genre_select_controller.js"
-application.register("genre-select", GenreSelectController)
+import ModalController from "./modal_controller";
+application.register("modal", ModalController);
 
-import HelloController from "./hello_controller.js"
-application.register("hello", HelloController)
+import NotificationController from "./notification_controller";
+application.register("notification", NotificationController);
 
-import ModalController from "./modal_controller.js"
-application.register("modal", ModalController)
+import PublisherSelectController from "./publisher_select_controller";
+application.register("publisher-select", PublisherSelectController);
 
-import NotificationController from "./notification_controller.js"
-application.register("notification", NotificationController)
+import ShelfSelectController from "./shelf_select_controller";
+application.register("shelf-select", ShelfSelectController);
 
-import PublisherSelectController from "./publisher_select_controller.js"
-application.register("publisher-select", PublisherSelectController)
+import SweetalertController from "./sweetalert_controller";
+application.register("sweetalert", SweetalertController);
 
-import ShelfSelectController from "./shelf_select_controller.js"
-application.register("shelf-select", ShelfSelectController)
+import TagSelectController from "./tag_select_controller";
+application.register("tag-select", TagSelectController);
 
-import SweetalertController from "./sweetalert_controller.js"
-application.register("sweetalert", SweetalertController)
+import TomSelectAddController from "./tom_select_add_controller";
+application.register("tom-select-add", TomSelectAddController);
 
-import TagSelectController from "./tag_select_controller.js"
-application.register("tag-select", TagSelectController)
+import TomSelectController from "./tom_select_controller";
+application.register("tom-select", TomSelectController);
