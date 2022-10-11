@@ -4,20 +4,11 @@
 
 import { application } from "./application";
 
-import BookFormatSelectController from "./book_format_select_controller";
-application.register("book-format-select", BookFormatSelectController);
-
 import BurgermenuController from "./burgermenu_controller";
 application.register("burgermenu", BurgermenuController);
 
 import CoverdropController from "./coverdrop_controller";
 application.register("coverdrop", CoverdropController);
-
-import GenreSelectController from "./genre_select_controller";
-application.register("genre-select", GenreSelectController);
-
-import HelloController from "./hello_controller";
-application.register("hello", HelloController);
 
 import ModalController from "./modal_controller";
 application.register("modal", ModalController);
@@ -25,17 +16,8 @@ application.register("modal", ModalController);
 import NotificationController from "./notification_controller";
 application.register("notification", NotificationController);
 
-import PublisherSelectController from "./publisher_select_controller";
-application.register("publisher-select", PublisherSelectController);
-
-import ShelfSelectController from "./shelf_select_controller";
-application.register("shelf-select", ShelfSelectController);
-
 import SweetalertController from "./sweetalert_controller";
 application.register("sweetalert", SweetalertController);
-
-import TagSelectController from "./tag_select_controller";
-application.register("tag-select", TagSelectController);
 
 import TomSelectAddController from "./tom_select_add_controller";
 application.register("tom-select-add", TomSelectAddController);
