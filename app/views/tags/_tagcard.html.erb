@@ -7,9 +7,15 @@
     </div>
     <div class="itemcard-big__listcontent margin-top-25">
       <ul class="itemlist margin-bottom-50">
-      <% tag.books.first(5).each do |book| %>
-        <%= render 'books/booklist_small', book: book %>
-      <% end %>
+        <% if show == 'books' %>
+          <% tag.books.first(5).each do |book| %>
+            <%= render 'books/booklist_small', book: book %>
+          <% end %>
+        <% else %>
+          <% tag.authors.first(5).each do |author| %>
+            <%= render 'authors/authorlist_small', author: author %>
+          <% end %>
+        <% end %>
       </ul>
       <ul>
     </div>

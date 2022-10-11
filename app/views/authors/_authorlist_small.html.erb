@@ -1,0 +1,14 @@
+<%= turbo_frame_tag author, class: "itemlist__border" do %>
+  <li class="itemlist__item">
+    <div class="itemlist__cover">
+      <%= portrait_image(author, size: "default") %>
+    </div>
+    <div class="itemlist__title">
+      <%= link_to(
+        author.display_name,
+        author_path(author),
+        data: { turbo_frame: "_top" }
+        )%>
+    </div>
+  </li>
+<% end %>

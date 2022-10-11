@@ -33,6 +33,11 @@ class TagsController < ApplicationController
                 @user.tags.includes([:user]).order(:name)
               end
       render 'admin', tags: @tags
+    when 'authors'
+      @pagy, @tags = pagy(Tag
+        .where(user_id: @user.id)
+        .includes([authors: [portrait_attachment: :blob]])
+        .order(:name))
     else
       @pagy, @tags = pagy(Tag
         .where(user_id: @user.id)

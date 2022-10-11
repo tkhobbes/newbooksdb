@@ -53,7 +53,7 @@ module ApplicationHelper
       },
       {
         name: 'Tags',
-        path: tags_path
+        path: tags_path(show: 'books')
       }
     ].map do |item|
       {
