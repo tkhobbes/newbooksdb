@@ -6,23 +6,23 @@
     <ul class="simple-list width-50">
       <li>
         <%= link_to 'Remove Authors without Books',
-          unused_items_path(model: 'Author', method: 'no_books') %>
+          unused_items_path(items_in: 'Author', show: 'no_books') %>
       </li>
       <li>
         <%= link_to 'Remove Publishers without Books',
-          unused_items_path(model: 'Publisher', method: 'no_books') %>
+          unused_items_path(items_in: 'Publisher', show: 'no_books') %>
       </li>
       <li>
         <%= link_to 'Remove empty Shelves',
-          unused_items_path(model: 'Shelf', method: 'no_books') %>
+          unused_items_path(items_in: 'Shelf', show: 'no_books') %>
       </li>
       <li>
         <%= link_to 'Remove Genres without Books',
-          unused_items_path(model: 'Genre', method: 'no_books') %>
+          unused_items_path(items_in: 'Genre', show: 'no_books') %>
       </li>
       <li>
         <%= link_to 'Remove Tags not used',
-          unused_items_path(model: 'Tag', method: 'no_taggings') %>
+          unused_items_path(items_in: 'Tag', show: 'no_taggings') %>
       </li>
     </ul>
   </div>

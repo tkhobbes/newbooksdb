@@ -3,20 +3,20 @@
 <%= turbo_frame_tag 'page' %>
 <nav class="pagination list-select-type">
   <span class="page">
-    <%= link_to tags_path(show: 'books'), title: 'Show Books', class: 'list-select-item' do %>
+    <%= link_to tags_path(list: 'books'), title: 'Show Books', class: 'list-select-item' do %>
       <%= inline_svg_tag 'book.svg', class: 'smallicon' %>
     <% end %>
   </span>
   <span class="page">
-    <%= link_to tags_path(show: 'authors'), title: 'Show Authors', class: 'list-select-item' do %>
+    <%= link_to tags_path(list: 'authors'), title: 'Show Authors', class: 'list-select-item' do %>
       <%= inline_svg_tag 'person.svg', class: 'smallicon' %>
     <% end %>
   </span>
 </nav>
 <div class="flexlist" id="tags">
   <% @tags.each do |tag| %>
-    <%= render 'tagcard', tag: tag, show: params[:show]  %>
+    <%= render 'tagcard', tag: tag  %>
   <% end %>
 </div>
 
-<%= render 'shared/pager', pagy: @pagy, model_path: tags_path(page: @pagy.next, show: params[:show]) %>
+<%= render 'shared/pager', pagy: @pagy, model_path: tags_path(page: @pagy.next, list: params[:list]) %>

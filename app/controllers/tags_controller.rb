@@ -24,24 +24,26 @@ class TagsController < ApplicationController
   # rubocop:disable Metrics/MethodLength
   # this method smells of :reek:TooManyStatements
   def index
-    case params[:show]
-    when 'settings'
+    if params[:show] == 'settings'
       @tags = if current_user.admin?
                 Tag.all.order(:name).includes([:user])
               else
                 current_user.tags.includes([:user]).order(:name)
               end
       render 'admin', tags: @tags
-    when 'authors'
-      @pagy, @tags = pagy(Tag
-        .where(user_id: current_user.id)
-        .includes([authors: [portrait_attachment: :blob]])
-        .order(:name))
     else
-      @pagy, @tags = pagy(Tag
-        .where(user_id: current_user.id)
-        .includes([books: [cover_attachment: :blob]])
-        .order(:name))
+      case params[:list]
+      when 'authors'
+        @pagy, @tags = pagy(Tag
+          .where(user_id: current_user.id)
+          .includes([authors: [portrait_attachment: :blob]])
+          .order(:name))
+      else
+        @pagy, @tags = pagy(Tag
+          .where(user_id: current_user.id)
+          .includes([books: [cover_attachment: :blob]])
+          .order(:name))
+      end
     end
   end
   # rubocop:enable Metrics/MethodLength
