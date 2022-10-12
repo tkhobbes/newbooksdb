@@ -7,11 +7,11 @@
   <div class="bookdetails__text">
     <div class="bookdetails__text-title">
       <h1 class="heading3">
-        <%= @book.title %>
+        <%= @book.title %><br />
         <% if @book.author %>
-          (by <%= link_to @book.author.display_name,
+          <%= link_to @book.author.display_name,
           author_path(@book.author),
-          class: 'color-accent-dark color-hover-accent' %>)
+          class: 'color-accent-dark color-hover-accent' %>
         <% end %>
       </h1>
         <% if logged_in? && @book.user == current_user %>
@@ -28,10 +28,18 @@
     </div>
     <h2 class="heading4"><%= original_title(@book) %></h2>
     <div class="medium-small">
-      <%= @book.book_format.name %>
+      <%= @book.book_format.name %> |
       <%= @book.edition %>
+      <%= @book.country %>
       <%= @book.year %>
     </div>
+    <% if @book.publisher %>
+      <div class="medium">
+        <%= link_to @book.publisher.name,
+          publisher_path(@book.publisher),
+          class: 'color-accent-dark color-hover-accent' %>
+      </div>
+    <% end %>
     <div class="genre-list">
       <% @book.genres.each do |g| %>
         <%= render 'genres/genre_tag', genre: g %>

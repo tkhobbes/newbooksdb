@@ -120,6 +120,7 @@ Book.create(
   genres: Genre.all.sample(3),
   tags: User.first.tags.sample(1),
   publisher: Publisher.first,
+  country: 'Switzerland',
   author: Author.first
 )
 
@@ -137,6 +138,7 @@ Book.create(
     shelf: user.shelves.sample,
     genres: Genre.all.sample(3),
     tags: user.tags.sample(2),
+    country: Faker::Address.country,
     publisher: Publisher.all.sample,
     author: Author.all.sample
   )
