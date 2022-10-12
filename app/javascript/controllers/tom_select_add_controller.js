@@ -7,7 +7,6 @@ export default class extends Controller {
 
   connect() {
     const url = this.urlValue;
-    console.log(this.urlValue);
     new TomSelect(this.element, {
       plugins: {
         remove_button: {
