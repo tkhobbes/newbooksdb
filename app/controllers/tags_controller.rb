@@ -105,7 +105,7 @@ class TagsController < ApplicationController
     if @tag.destroyed?
       respond_to do |format|
         format.turbo_stream
-        format.html { redirect_to tags, status: :see_other }
+        format.html { redirect_to tags_path, show: 'books', status: :see_other }
       end
     else
       # in the rare occasion where the format is not deleted -
