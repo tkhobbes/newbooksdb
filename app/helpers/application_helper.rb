@@ -59,7 +59,7 @@ module ApplicationHelper
       {
         name: item[:name],
         path: item[:path],
-        active: current_page?(item[:path])
+        active: current_page?(item[:path]) || "/#{params[:controller]}" == item[:path]
       }
     end
   end

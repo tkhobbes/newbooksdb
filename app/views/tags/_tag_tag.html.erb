@@ -1,5 +1,5 @@
 <span class="tag">
-  <%= link_to tag, data: { turbo_frame: '_top' } do %>
+  <%= link_to tag_path(tag, list: 'books'), data: { turbo_frame: '_top' } do %>
     <%= inline_svg_tag 'tag.svg', class: 'smallicon' %>
     <%= tag.name %>
   <% end %>

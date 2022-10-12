@@ -4,7 +4,7 @@ class AuthorsController < ApplicationController
   # allow for turbo frame variants
   before_action :turbo_frame_request_variant
 
-  before_action :set_author, only: %i[show edit update destroy]
+  before_action :set_author, only: %i[edit update destroy]
 
   before_action :dissolve, only: :index
 
@@ -13,7 +13,11 @@ class AuthorsController < ApplicationController
   end
 
   def show
-      @pagy, @books = pagy(@author.books.includes([:user, cover_attachment: :blob]).order(:sort_title))
+      @author = Author.includes(tags: [:user]).friendly.find(params[:id])
+      @pagy, @books = pagy(@author
+        .books
+        .includes([:user, cover_attachment: :blob])
+        .order(:sort_title))
   end
 
   def new
