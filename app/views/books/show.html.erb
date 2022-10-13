@@ -8,11 +8,9 @@
     <div class="bookdetails__text-title">
       <h1 class="heading3">
         <%= @book.title %><br />
-        <% if @book.author %>
-          <%= link_to @book.author.display_name,
-          author_path(@book.author),
-          class: 'color-accent-dark color-hover-accent' %>
-        <% end %>
+        <%= @book.decorate.author_link(
+          'color-accent-dark color-hover-accent'
+        ) %>
       </h1>
         <% if logged_in? && @book.user == current_user %>
           <%= render 'shared/crud_icons',
@@ -26,20 +24,18 @@
           %>
         <% end %>
     </div>
-    <h2 class="heading4"><%= original_title(@book) %></h2>
+    <%= @book.decorate.show_original_title('h2', 'heading4') %>
     <div class="medium-small">
       <%= @book.book_format.name %> |
       <%= @book.edition %>
       <%= @book.country %>
       <%= @book.year %>
     </div>
-    <% if @book.publisher %>
-      <div class="medium">
-        <%= link_to @book.publisher.name,
-          publisher_path(@book.publisher),
-          class: 'color-accent-dark color-hover-accent' %>
-      </div>
-    <% end %>
+    <%= @book.decorate.publisher_link(
+      'color-accent-dark color-hover-accent',
+      'div',
+      'medium'
+    ) %>
     <div class="genre-list">
       <% @book.genres.each do |g| %>
         <%= render 'genres/genre_tag', genre: g %>
@@ -64,6 +60,6 @@
       <%= link_to 'Owned by ' + @book.user.name, user_path(@book.user), class: 'color-accent-dark color-hover-accent' %>
       <%== show_shelf(@book) %>
     </div>
-    <%= book_synopsis(@book) %>
+    <%= @book.decorate.show_synopsis('div', 'bookdetails__synposis', true) %>
   </div>
 </div>

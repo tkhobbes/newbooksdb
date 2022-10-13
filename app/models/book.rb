@@ -40,6 +40,8 @@ class Book < ApplicationRecord
 
   include Rateable
 
+  include Presentable
+
   enum condition: {
         like_new: 5,
         used_ok: 4,

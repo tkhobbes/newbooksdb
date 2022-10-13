@@ -26,6 +26,14 @@ module ApplicationHelper
     end if title.present?
   end
 
+  # returns span tags with filled stars equal to the rating and empty stars to fill up to 5
+  def rating_stars(rating)
+    content_tag(:span, class: 'color-accent') do
+      (inline_svg_tag('star-filled.svg', class: 'smallicon') * rating) <<
+      (inline_svg_tag('star.svg', class: 'smallicon') * (5- rating))
+    end
+  end
+
   # method to list out all menu items for main menu
   # rubocop:disable Metrics/MethodLength
   # this method smells of :reek:DuplicateMethodCall

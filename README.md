@@ -6,6 +6,23 @@
 
 ## Technical Information
 
+### Programming ideas
+
+#### Presenter Pattern
+
+Moving away from helpers and use the patterns described in this article.
+{ https://pawelurbanek.com/rails-presenter-pattern }
+
+##### Book Presenter;
+
+Implements presenter methods:
+
+- show_original_title(wrapper, wrapper_styles): Displays original title in brackets and wrapped into optional tag with styles
+- author_link(styles='', wrapper=nil, wrapper_styles=''): Displays link to author page with styles on the link, as well as optional wrapper tag with its own styles
+- publisher_link(styles='', wrapper=nil, wrapper_styles=''): Displays link to publisher page with styles on the link as well as optional wrapper tag with its own styles
+- show_synopsis(wrapper=nil, wrapper_styles='', title=false): Displays the rich text synopsis of the book, wrapped in optional tag with styles, and with optional title; if title=true, displays a h3 tag with <wrapper_styles>-title class and the text "Synopsis"
+- show_trunc_synopsis(characters = 100): Shows a truncated synopsis of the book with a number of characters (default: 100)
+
 ### Params
 
 A lot of views have the possibility to display different things or switch between

@@ -24,14 +24,14 @@
         </h2>
         <div class="bookyear"><%= book.year %></div>
       </div>
-      <div class="author"><%= book.author ? book.author.display_name : 'anonymous' %></div>
-      <div class="publisher"><%= book.publisher ? book.publisher.name : 'no publisher' %></div>
+      <%= book.decorate.author_link('color-accent-dark color-hover-accent', 'div', 'author') %>
+      <%= book.decorate.publisher_link('color-black color-hover-grey', 'div', 'publisher') %>
       <div class="rating"><%= rating_stars(book.rating_before_type_cast) %></div>
       <div class="genre-list">
         <% book.genres.each do |g| %>
           <%= render 'genres/genre_tag', genre: g %>
         <% end %>
       </div>
-      <%= trunc_synopsis(book) %>
+      <%= book.decorate.show_trunc_synopsis %>
     </div>
 <% end %>
