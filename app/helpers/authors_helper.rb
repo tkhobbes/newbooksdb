@@ -6,29 +6,6 @@ module AuthorsHelper
     Rails.cache.fetch('authors-count') { Author.count }
   end
 
-  # returns the male / female icon
-  # this method smells of :reek:DuplicateMethodCall
-  # this method smells of :reek:FeatureEnvy
-  def gender_icon(author)
-    return unless author.gender.present?
-    if author.gender == 'male'
-      inline_svg_tag('male.svg', class: 'smallicon')
-    else
-      inline_svg_tag('female.svg', class: 'smallicon')
-    end
-  end
-
-  # returns the birth and dead year if dead, otherwise just the birth year
-  # this method smells of :reek:DuplicateMethodCall
-  def living_years(author)
-    return unless author.born || author.died
-    if author.dead?
-      author.born ? "#{author.born} - #{author.died}" : "Died #{author.died}"
-    else
-      "Born #{author.born}"
-    end
-  end
-
   # returns either the portrait of an author or a placeholder SVG
   # This method smells of :reek:DuplicateMethodCall
   # This method smells of :reek:TooManyStatements

@@ -9,7 +9,7 @@
     <div class="bookdetails__text-title">
       <h1 class="heading3" style="">
         <%= @author.display_name %>
-        <%= gender_icon(@author) %>
+        <%= @author.decorate.gender_icon %>
       </h1>
         <% if logged_in? %>
           <%= render 'shared/crud_icons',
@@ -24,7 +24,7 @@
         <% end %>
     </div>
     <div class="medium">
-      <%= living_years(@author) %>
+      <%= @author.decorate.living_years %>
     </div>
     <div class="tag-list">
       <% @author.tags.each do |t| %>
