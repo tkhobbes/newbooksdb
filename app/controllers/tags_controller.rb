@@ -23,6 +23,7 @@ class TagsController < ApplicationController
   # rubocop:disable Metrics/AbcSize
   # rubocop:disable Metrics/MethodLength
   # this method smells of :reek:TooManyStatements
+  # this method smells of :reek:DuplicateMethodCall
   def index
     if params[:show] == 'settings'
       @tags = if current_user.admin?
@@ -100,9 +101,7 @@ class TagsController < ApplicationController
   # the method also takes care of destroying the taggings in scope (as tags are polymorphic)
   # This method smells of :reek:TooManyStatements
   def destroy
-    Tagging.where(tag_id: @tag.id).find_each do |t|
-      t.destroy
-    end
+    Tagging.where(tag_id: @tag.id).find_each(&:destroy)
     @tag.destroy
     if @tag.destroyed?
       respond_to do |format|

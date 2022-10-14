@@ -17,7 +17,6 @@ class GenresController < ApplicationController
 
   # index action can answer to either 'settings' page (to administer genres)
   # or otherwise it will display all genres and the first 5 books within each genre
-  # rubocop:disable Metrics/MethodLength
   # this method smells of :reek:DuplicateMethodCall
   def index
     case params[:show]
@@ -30,7 +29,6 @@ class GenresController < ApplicationController
         .order(:name))
     end
   end
-  # rubocop:enable Metrics/MethodLength
 
   # shows a genre in detail and lists all books within that genre
   def show

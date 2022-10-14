@@ -32,9 +32,9 @@ class Tag < ApplicationRecord
   belongs_to :user
 
 
-  has_many :taggings
-  has_many :books, through: :taggings, :source => 'taggable', :source_type => 'Book'
-  has_many :authors, through: :taggings, :source => 'taggable', :source_type => 'Author'
+  has_many :taggings, dependent: :destroy
+  has_many :books, through: :taggings, source: 'taggable', source_type: 'Book'
+  has_many :authors, through: :taggings, source: 'taggable', source_type: 'Author'
 
   # scope needed for the bulk action "remove genres without books"
   scope :no_taggings, -> { left_joins(:taggings).where(taggings: { id: [0, nil, ''] }) }

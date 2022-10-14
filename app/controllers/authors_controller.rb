@@ -62,6 +62,7 @@ class AuthorsController < ApplicationController
 
   private
 
+  # rubocop:disable Metrics/MethodLength
   def author_params
     params.require(:author).permit(
       :first_name,
@@ -75,6 +76,7 @@ class AuthorsController < ApplicationController
       tag_ids: []
     )
   end
+  # rubocop:enable Metrics/MethodLength
 
   def set_author
     @author = Author.friendly.find(params[:id])

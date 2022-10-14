@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This is an abstract class using Ruby metaprogramming to dynamically
 # define a presenter class with enforced naming conventions.
 # taken from https://pawelurbanek.com/rails-presenter-pattern

@@ -8,8 +8,7 @@
     <div class="bookdetails__text-title">
       <h1 class="heading3">
         <%= @book.title %><br />
-        <%= @book.decorate.author_link(
-          'color-accent-dark color-hover-accent'
+        <%= @book.decorate.author_link(styles: 'color-accent-dark color-hover-accent'
         ) %>
       </h1>
         <% if logged_in? && @book.user == current_user %>
@@ -24,7 +23,7 @@
           %>
         <% end %>
     </div>
-    <%= @book.decorate.show_original_title('h2', 'heading4') %>
+    <%= @book.decorate.show_original_title(wrapper: 'h2', wrapper_styles: 'heading4') %>
     <div class="medium-small">
       <%= @book.book_format.name %> |
       <%= @book.edition %>
@@ -32,9 +31,9 @@
       <%= @book.year %>
     </div>
     <%= @book.decorate.publisher_link(
-      'color-accent-dark color-hover-accent',
-      'div',
-      'medium'
+      styles: 'color-accent-dark color-hover-accent',
+      wrapper: 'div',
+      wrapper_styles: 'medium'
     ) %>
     <div class="genre-list">
       <% @book.genres.each do |g| %>
@@ -60,6 +59,9 @@
       <%= link_to 'Owned by ' + @book.user.name, user_path(@book.user), class: 'color-accent-dark color-hover-accent' %>
       <%== show_shelf(@book) %>
     </div>
-    <%= @book.decorate.show_synopsis('div', 'bookdetails__synposis', true) %>
+    <%= @book.decorate.show_synopsis(
+      wrapper: 'div',
+      wrapper_styles: 'bookdetails__synposis',
+      title: true) %>
   </div>
 </div>

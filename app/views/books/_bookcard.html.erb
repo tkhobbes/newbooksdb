@@ -24,8 +24,14 @@
         </h2>
         <div class="bookyear"><%= book.year %></div>
       </div>
-      <%= book.decorate.author_link('color-accent-dark color-hover-accent', 'div', 'author') %>
-      <%= book.decorate.publisher_link('color-black color-hover-grey', 'div', 'publisher') %>
+      <%= book.decorate.author_link(
+        styles: 'color-accent-dark color-hover-accent',
+        wrapper: 'div',
+        wrapper_styles: 'author') %>
+      <%= book.decorate.publisher_link(
+        styles: 'color-black color-hover-grey',
+        wrapper: 'div',
+        wrapper_styles: 'publisher') %>
       <div class="rating"><%= rating_stars(book.rating_before_type_cast) %></div>
       <div class="genre-list">
         <% book.genres.each do |g| %>

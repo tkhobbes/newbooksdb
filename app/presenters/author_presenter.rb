@@ -8,7 +8,7 @@ class AuthorPresenter < SimpleDelegator
 
   # shows either a male or a female icon (or none), dependent on the gender
   def gender_icon
-    return unless gender.present?
+    return if gender.blank?
     if gender == 'male'
       inline_svg_tag('male.svg', class: 'smallicon')
     else
