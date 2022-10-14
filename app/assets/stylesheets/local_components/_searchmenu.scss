@@ -1,0 +1,38 @@
+.quicksearch {
+  position: relative;
+
+  &__list {
+    @extend .margin-top-50;
+    position: absolute;
+    width: 20em;
+    visibility: hidden;
+  }
+
+  &__result {
+    @extend .medium-small;
+    @extend .border-color-accent-dark;
+    border-top-width: 0;
+
+    &:first-child {
+      border-top-left-radius: $base-border-radius;
+      border-top-right-radius: $base-border-radius;
+      border-top-width: 1px;
+      overflow: hidden;
+    }
+
+    &:last-child {
+      border-bottom-left-radius: $base-border-radius;
+      border-bottom-right-radius: $base-border-radius;
+      overflow: hidden;
+    }
+
+    a {
+      display: block;
+      padding: $padding-4 $padding-2;
+      @extend .color-accent-dark;
+      @extend .color-hover-accent-light;
+      @extend .bg-accent-light;
+      @extend .bg-hover-accent-dark;
+    }
+  }
+}
