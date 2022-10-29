@@ -4,7 +4,7 @@ class SearchController < ApplicationController
 
   # method to respond to quicksearch menu form
   def quicksearch
-    @books = params[:query] ? Book.where('title LIKE ?', "%#{params[:query]}%") : []
+    @results_books = params[:query] ? Book.where('title LIKE ?', "%#{params[:query]}%") : []
     respond_to do |format|
       format.html {}
       format.turbo_stream {
