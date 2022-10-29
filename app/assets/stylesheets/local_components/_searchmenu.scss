@@ -1,12 +1,18 @@
+.empty\:hidden:empty {
+  display: none;
+}
+.peer:invalid ~ .peer-invalid\:hidden {
+  display: none;
+}
+
+#quicksearch__list {
+  @extend .margin-top-50;
+  position: absolute;
+  width: 20em;
+}
+
 .quicksearch {
   position: relative;
-
-  &__list {
-    @extend .margin-top-50;
-    position: absolute;
-    width: 20em;
-    visibility: hidden;
-  }
 
   &__result {
     @extend .medium-small;

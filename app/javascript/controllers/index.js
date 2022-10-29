@@ -2,25 +2,28 @@
 // Run that command whenever you add a new controller or create them with
 // ./bin/rails generate stimulus controllerName
 
-import { application } from "./application";
+import { application } from "./application"
 
-import BurgermenuController from "./burgermenu_controller";
-application.register("burgermenu", BurgermenuController);
+import BurgermenuController from "./burgermenu_controller"
+application.register("burgermenu", BurgermenuController)
 
-import CoverdropController from "./coverdrop_controller";
-application.register("coverdrop", CoverdropController);
+import CoverdropController from "./coverdrop_controller"
+application.register("coverdrop", CoverdropController)
 
-import ModalController from "./modal_controller";
-application.register("modal", ModalController);
+import ModalController from "./modal_controller"
+application.register("modal", ModalController)
 
-import NotificationController from "./notification_controller";
-application.register("notification", NotificationController);
+import NotificationController from "./notification_controller"
+application.register("notification", NotificationController)
 
-import SweetalertController from "./sweetalert_controller";
-application.register("sweetalert", SweetalertController);
+import QuickSearchController from "./quick_search_controller"
+application.register("quick-search", QuickSearchController)
 
-import TomSelectAddController from "./tom_select_add_controller";
-application.register("tom-select-add", TomSelectAddController);
+import SweetalertController from "./sweetalert_controller"
+application.register("sweetalert", SweetalertController)
 
-import TomSelectController from "./tom_select_controller";
-application.register("tom-select", TomSelectController);
+import TomSelectAddController from "./tom_select_add_controller"
+application.register("tom-select-add", TomSelectAddController)
+
+import TomSelectController from "./tom_select_controller"
+application.register("tom-select", TomSelectController)

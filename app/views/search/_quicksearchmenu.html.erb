@@ -1,0 +1,26 @@
+<%= form_with url: quicksearch_path,
+  class: 'search__form peer',
+  data: {
+    controller: 'quick-search',
+    action: 'invalid->quick-search#hideValidationMessage:capture input->quick-search#search'
+  } do |f| %>
+  <input id="query" name="query" type="search"
+    pattern=".*\w+.*" required
+    placeholder="Search..." data-quick-search-target="searchinput" />
+  <button type="submit" class="searchbutton">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="smallicon"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      stroke-width="2"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+      />
+    </svg>
+  </button>
+<% end %>

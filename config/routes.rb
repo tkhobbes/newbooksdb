@@ -25,6 +25,9 @@ Rails.application.routes.draw do
   # Functional controllers without models
   resources :unused_items, only: [:index, :destroy]
 
+  resources :search, only: [:index]
+  get 'quicksearch', to: 'search#quicksearch'
+
   resources :user_destructions, only: [:create]
   get 'user_destructions/new/:id', to: 'user_destructions#new', as: 'new_user_destructions'
 

@@ -1,0 +1,12 @@
+<turbo-frame id="quicksearch_results"
+  class="empty:hidden peer-invalid:hidden">
+  <div class="quicksearch">
+    <ul id="quicksearch__list">
+      <% @books.each do |book| %>
+        <li class="quicksearch__result">
+          <%= link_to book.title, book_path(book), data: { turbo_frame: '_top' } %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</turbo-frame>

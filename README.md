@@ -8,6 +8,12 @@
 
 ### Programming ideas
 
+#### Quick Search
+
+This is adapted from the Drifting Ruby Episode 369 https://youtu.be/cVKRSF2Td7E
+and then augmented from https://thoughtbot.com/blog/hotwire-typeahead-searching
+(especially the styling and the form invalidations)
+
 #### Presenter Pattern
 
 Moving away from helpers and use the patterns described in this article.
