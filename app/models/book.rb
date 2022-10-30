@@ -42,7 +42,7 @@ class Book < ApplicationRecord
   # search cop setup
   search_scope :search do
     attributes :title, :original_title
-    attributes author: "author.display_name"
+    attributes author: 'author.display_name'
   end
 
   include Rateable
