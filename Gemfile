@@ -86,3 +86,5 @@ gem 'simple_form', '~> 5.1'
 gem 'has_scope', '~> 0.8.0'
 # country selection for books
 gem 'country_select', '~> 8.0'
+# Search
+gem 'search_cop', '~> 1.2', '>= 1.2.3'

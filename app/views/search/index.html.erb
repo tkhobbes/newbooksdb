@@ -1,1 +1,12 @@
 <%= page_title("Search Results",'', 'heading2') %>
+
+<%= turbo_frame_tag 'page' %>
+<% if @books.size > 0 %>
+  <ul class="itemlist" id="books">
+    <%= render @books %>
+  </ul>
+<% else %>
+No results.
+<% end %>
+
+<%= render 'shared/pager', pagy: @pagy, model_path: search_index_path(page: @pagy.next, show: params[:show], query: params[:query]) %>

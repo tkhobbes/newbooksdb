@@ -12,10 +12,7 @@
     border-radius: $base-border-radius;
     @extend .border-color-white;
 
-    input,
-    input:active,
-    input:focus-visible,
-    input:focus {
+    input {
       background-color: inherit;
       color: inherit;
       border: none;
@@ -23,14 +20,25 @@
       font-family: var(--paragraph);
       font-size: 0.9rem;
       padding: $padding-4 $padding-2;
+
+      &:active,
+      &:focus-visible,
+      &:focus {
+        color: $color-black;
+      }
     }
 
     button {
       border: none;
       outline: none;
-      color: inherit;
+      color: $color-black;
       background-color: inherit;
       padding: 0.25em 0.5em;
+      cursor: pointer;
+
+      &:hover {
+        color: $color-accent-dark;
+      }
     }
   }
 }

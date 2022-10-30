@@ -38,6 +38,13 @@ class Book < ApplicationRecord
 
   before_save :create_sort_title
 
+  include SearchCop
+  # search cop setup
+  search_scope :search do
+    attributes :title, :original_title
+    attributes author: "author.display_name"
+  end
+
   include Rateable
 
   include Presentable

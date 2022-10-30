@@ -8,11 +8,14 @@
 
 ### Programming ideas
 
-#### Quick Search
+#### Quick Search and Search
 
-This is adapted from the Drifting Ruby Episode 369 https://youtu.be/cVKRSF2Td7E
+Quick search code is adapted from the Drifting Ruby Episode 369 https://youtu.be/cVKRSF2Td7E
 and then augmented from https://thoughtbot.com/blog/hotwire-typeahead-searching
 (especially the styling and the form invalidations)
+
+Quick search and search use search_cop. Search is scoped for book titles, book
+original titles.
 
 #### Presenter Pattern
 
@@ -120,6 +123,7 @@ The following Gems are used in this project:
 - inline_svg to display SVGs { https://rubygems.org/gems/inline_svg }
 - has_scope for scoped routes and similar { https://rubygems.org/gems/has_scope }
 - country_select for book country selection (https://rubygems.org/gems/country_select)
+- search_cop for searching (https://rubygems.org/gems/search_cop)
 
 #### Development
 
