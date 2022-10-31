@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_07_125605) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_31_132557) do
   create_table "action_text_rich_texts", charset: "utf8mb4", force: :cascade do |t|
     t.string "name", null: false
     t.text "body", size: :long
@@ -118,6 +118,18 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_07_125605) do
     t.string "slug"
     t.index ["name"], name: "index_genres_on_name", unique: true
     t.index ["slug"], name: "index_genres_on_slug", unique: true
+  end
+
+  create_table "owners", charset: "utf8mb4", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_owners_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_owners_on_reset_password_token", unique: true
   end
 
   create_table "publishers", charset: "utf8mb4", force: :cascade do |t|
