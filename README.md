@@ -124,6 +124,7 @@ The following Gems are used in this project:
 - has_scope for scoped routes and similar { https://rubygems.org/gems/has_scope }
 - country_select for book country selection (https://rubygems.org/gems/country_select)
 - search_cop for searching (https://rubygems.org/gems/search_cop)
+- Devise for user management (https://rubygems.org/gems/devise); the fixes to make turbo work with turbo and hotwired are from https://gorails.com/episodes/devise-hotwire-turbo
 
 #### Development
 
