@@ -29,7 +29,7 @@ class Tag < ApplicationRecord
   friendly_id :name_user, use: :slugged
 
   # tag are OWNED by a user but are not used to TAG users
-  belongs_to :user
+  belongs_to :owner
 
 
   has_many :taggings, dependent: :destroy

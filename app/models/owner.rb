@@ -27,4 +27,9 @@ class Owner < ApplicationRecord
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness: true
 
   has_one :profile
+
+  # application relations
+  has_many :books, dependent: :destroy
+  has_many :shelves, dependent: :destroy
+
 end

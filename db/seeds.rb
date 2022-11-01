@@ -1,32 +1,41 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 
-# add two users
-User.create(
+# add three owners
+
+p1 = Profile.build(
   name: 'tkhobbes',
+  admin: true
+)
+
+p2 = Profile.build(
+  name: 'jdoe'
+)
+
+p3 = Profile.build(
+  name: 'jane'
+)
+
+Owner.create(
   email: 'tkhobbes@gmail.com',
   password: 'password',
-  password_confirmation: 'password',
-  admin: true,
-  activated: true,
-  activated_at: Time.zone.now
+  profile: p1
 )
-User.create(
-  name: 'jdoe',
+
+Owner.create(
   email: 'jdoe@example.com',
   password: 'password',
-  password_confirmation: 'password',
-  activated: true,
-  activated_at: Time.zone.now
+  profile: p2
 )
-User.create(
-  name: 'jane',
+Owner.create(
   email: 'jane@example.com',
   password: 'password',
-  password_confirmation: 'password',
-  activated: true,
-  activated_at: Time.zone.now
+  profile: p3
 )
+
+p1.save
+p2.save
+p3.save
 
 # We need some book formats
 BookFormat.create(name: 'Not specified', fallback: true)
@@ -36,10 +45,10 @@ BookFormat.create(name: 'Paperback')
 BookFormat.create(name: 'Coffee Table')
 BookFormat.create(name: 'ebook')
 
-# create 2 shelves for each user
-User.all.each do |u|
-  Shelf.create(name: "Office #{u.name}", user: u)
-  Shelf.create(name: Faker::Lorem.word, user: u)
+# create 2 shelves for each owner
+Owner.all.each do |u|
+  Shelf.create(name: "Office #{u.name}", owner: u)
+  Shelf.create(name: Faker::Lorem.word, owner: u)
 end
 
 # some genres
@@ -48,11 +57,11 @@ end
 end
 
 3.times do
-  Tag.create(name: Faker::Color.unique.color_name, user_id: User.first.id)
+  Tag.create(name: Faker::Color.unique.color_name, owner_id: Owner.first.id)
 end
 
 6.times do
-  Tag.create(name: Faker::Color.unique.color_name, user_id: Random.rand(2..3))
+  Tag.create(name: Faker::Color.unique.color_name, owner_id: Random.rand(2..3))
 end
 
 # 1 explicit publisher
@@ -79,7 +88,7 @@ Author.create(
   died: 1973,
   gender: 'male',
   rating: 5,
-  tags: User.first.tags.sample(1)
+  tags: Owner.first.tags.sample(1)
 )
 
 Author.first.portrait.attach(io: File.open("db/sample/authors/tolkien.jpg"), filename: 'tolkien.jpg')
@@ -115,17 +124,17 @@ Book.create(
   condition: Random.rand(0..5),
   synopsis: "<b>Synopsis</b><br /><p>#{Faker::Lorem.paragraphs(number: 10).join(' ')}</p>",
   book_format_id: 2,
-  user_id: User.first.id,
-  shelf: User.first.shelves.sample,
+  owner_id: Owner.first.id,
+  shelf: Owner.first.shelves.sample,
   genres: Genre.all.sample(3),
-  tags: User.first.tags.sample(1),
+  tags: Owner.first.tags.sample(1),
   publisher: Publisher.first,
   country: 'Switzerland',
   author: Author.first
 )
 
 99.times do |index|
-  user = User.find(Random.rand(1..3))
+  owner = Owner.find(Random.rand(1..3))
 
   book = Book.create(
     title: Faker::Book.unique.title,
@@ -134,10 +143,10 @@ Book.create(
     condition: Random.rand(0..5),
     synopsis: "<p>#{Faker::Lorem.paragraphs(number: 20).join(' ')}</p>",
     book_format_id: Random.rand(1..6),
-    user_id: user.id,
-    shelf: user.shelves.sample,
+    owner: owner,
+    shelf: owner.shelves.sample,
     genres: Genre.all.sample(3),
-    tags: user.tags.sample(2),
+    tags: owner.tags.sample(2),
     country: Faker::Address.country,
     publisher: Publisher.all.sample,
     author: Author.all.sample

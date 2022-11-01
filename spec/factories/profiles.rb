@@ -3,7 +3,7 @@
 # Table name: profiles
 #
 #  id         :bigint           not null, primary key
-#  admin      :boolean
+#  admin      :boolean          default(FALSE)
 #  name       :string(255)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
