@@ -88,3 +88,5 @@ gem 'has_scope', '~> 0.8.0'
 gem 'country_select', '~> 8.0'
 # Search
 gem 'search_cop', '~> 1.2', '>= 1.2.3'
+# authentication with devise
+gem 'devise', '~> 4.8', '>= 4.8.1'

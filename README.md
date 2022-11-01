@@ -106,6 +106,11 @@ Model to store user data. Fields:
 - email: The email of a user (must be unique)
 - password_digest (for the has_secure_password method)
 
+#### Owners and Profiles
+
+Owners are used to store owners of books and the model serves as the authentication
+model for Devise. Profiles are used to store more info about a owner (name, picture etc).
+
 ### Ruby Version
 
 This application is setup using Ruby v 3.1.2
@@ -124,6 +129,7 @@ The following Gems are used in this project:
 - has_scope for scoped routes and similar { https://rubygems.org/gems/has_scope }
 - country_select for book country selection (https://rubygems.org/gems/country_select)
 - search_cop for searching (https://rubygems.org/gems/search_cop)
+- devise for user authentication (https://rubygems.org/gems/devise)
 
 #### Development
 
