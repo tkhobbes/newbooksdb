@@ -106,6 +106,11 @@ Model to store user data. Fields:
 - email: The email of a user (must be unique)
 - password_digest (for the has_secure_password method)
 
+#### Owners and Profiles
+
+Model to store book owner data. "Owners" is used with devise for basic login stuff,
+"Profile" holds additional data about each owner.
+
 ### Ruby Version
 
 This application is setup using Ruby v 3.1.2

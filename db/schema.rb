@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_31_132557) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_01_141832) do
   create_table "action_text_rich_texts", charset: "utf8mb4", force: :cascade do |t|
     t.string "name", null: false
     t.text "body", size: :long
@@ -132,6 +132,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_31_132557) do
     t.index ["reset_password_token"], name: "index_owners_on_reset_password_token", unique: true
   end
 
+  create_table "profiles", charset: "utf8mb4", force: :cascade do |t|
+    t.string "name"
+    t.bigint "owner_id", null: false
+    t.boolean "admin"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["owner_id"], name: "index_profiles_on_owner_id"
+  end
+
   create_table "publishers", charset: "utf8mb4", force: :cascade do |t|
     t.string "name", null: false
     t.string "location"
@@ -174,19 +183,19 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_31_132557) do
   end
 
   create_table "users", charset: "utf8mb4", force: :cascade do |t|
-    t.string "name"
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "password_digest"
     t.string "remember_digest"
-    t.boolean "admin", default: false
     t.string "activation_digest"
     t.boolean "activated", default: false
     t.datetime "activated_at"
     t.string "reset_digest"
     t.datetime "reset_sent_at"
     t.integer "books_count"
+    t.boolean "admin"
+    t.string "name"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
@@ -195,6 +204,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_31_132557) do
   add_foreign_key "books", "book_formats"
   add_foreign_key "books_authors", "authors"
   add_foreign_key "books_authors", "books"
+  add_foreign_key "profiles", "owners"
   add_foreign_key "shelves", "users"
   add_foreign_key "tags", "users"
 end

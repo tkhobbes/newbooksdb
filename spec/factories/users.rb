@@ -8,7 +8,7 @@
 #  activated         :boolean          default(FALSE)
 #  activated_at      :datetime
 #  activation_digest :string(255)
-#  admin             :boolean          default(FALSE)
+#  admin             :boolean
 #  books_count       :integer
 #  email             :string(255)
 #  name              :string(255)
