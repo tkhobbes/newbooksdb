@@ -9,16 +9,12 @@
 #  name        :string(255)      not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
-#  user_id     :bigint           not null
+#  owner_id    :bigint           not null
 #
 # Indexes
 #
-#  index_shelves_on_name_and_user_id  (name,user_id) UNIQUE
-#  index_shelves_on_user_id           (user_id)
-#
-# Foreign Keys
-#
-#  fk_rails_...  (user_id => users.id)
+#  index_shelves_on_name_and_owner_id  (name,owner_id) UNIQUE
+#  index_shelves_on_owner_id           (owner_id)
 #
 FactoryBot.define do
   factory :office_tk, class: Shelf do

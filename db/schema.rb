@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_01_173054) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_01_182704) do
   create_table "action_text_rich_texts", charset: "utf8mb4", force: :cascade do |t|
     t.string "name", null: false
     t.text "body", size: :long
@@ -87,15 +87,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_01_173054) do
     t.string "slug"
     t.bigint "book_format_id", null: false
     t.string "original_title"
-    t.bigint "user_id", null: false
     t.integer "shelf_id"
     t.integer "publisher_id"
     t.string "country"
     t.integer "author_id"
+    t.bigint "owner_id", null: false
     t.index ["book_format_id"], name: "index_books_on_book_format_id"
+    t.index ["owner_id"], name: "index_books_on_owner_id"
     t.index ["slug"], name: "index_books_on_slug", unique: true
-    t.index ["title", "user_id"], name: "index_books_on_title_and_user_id", unique: true
-    t.index ["user_id"], name: "index_books_on_user_id"
+    t.index ["title", "owner_id"], name: "index_books_on_title_and_owner_id", unique: true
   end
 
   create_table "books_authors", charset: "utf8mb4", force: :cascade do |t|
@@ -154,12 +154,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_01_173054) do
 
   create_table "shelves", charset: "utf8mb4", force: :cascade do |t|
     t.string "name", null: false
-    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "books_count"
-    t.index ["name", "user_id"], name: "index_shelves_on_name_and_user_id", unique: true
-    t.index ["user_id"], name: "index_shelves_on_user_id"
+    t.bigint "owner_id", null: false
+    t.index ["name", "owner_id"], name: "index_shelves_on_name_and_owner_id", unique: true
+    t.index ["owner_id"], name: "index_shelves_on_owner_id"
   end
 
   create_table "taggings", charset: "utf8mb4", force: :cascade do |t|
@@ -173,13 +173,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_01_173054) do
 
   create_table "tags", charset: "utf8mb4", force: :cascade do |t|
     t.string "name", null: false
-    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "slug"
-    t.index ["name", "user_id"], name: "index_tags_on_name_and_user_id", unique: true
+    t.bigint "owner_id", null: false
+    t.index ["owner_id"], name: "index_tags_on_owner_id"
     t.index ["slug"], name: "index_tags_on_slug", unique: true
-    t.index ["user_id"], name: "index_tags_on_user_id"
   end
 
   create_table "users", charset: "utf8mb4", force: :cascade do |t|
@@ -205,6 +204,4 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_01_173054) do
   add_foreign_key "books_authors", "authors"
   add_foreign_key "books_authors", "books"
   add_foreign_key "profiles", "owners"
-  add_foreign_key "shelves", "users"
-  add_foreign_key "tags", "users"
 end

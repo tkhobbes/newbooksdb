@@ -18,16 +18,16 @@
 #  updated_at     :datetime         not null
 #  author_id      :integer
 #  book_format_id :bigint           not null
+#  owner_id       :bigint           not null
 #  publisher_id   :integer
 #  shelf_id       :integer
-#  user_id        :bigint           not null
 #
 # Indexes
 #
-#  index_books_on_book_format_id     (book_format_id)
-#  index_books_on_slug               (slug) UNIQUE
-#  index_books_on_title_and_user_id  (title,user_id) UNIQUE
-#  index_books_on_user_id            (user_id)
+#  index_books_on_book_format_id      (book_format_id)
+#  index_books_on_owner_id            (owner_id)
+#  index_books_on_slug                (slug) UNIQUE
+#  index_books_on_title_and_owner_id  (title,owner_id) UNIQUE
 #
 # Foreign Keys
 #
