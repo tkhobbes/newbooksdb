@@ -19,4 +19,6 @@
 #
 class Profile < ApplicationRecord
   belongs_to :owner
+
+  has_one_attached :avatar
 end

@@ -28,6 +28,34 @@ User.create(
   activated_at: Time.zone.now
 )
 
+# add three owners and their profiles
+
+o1 = Owner.create(
+  email: 'tkhobbes@gmail.com',
+  password: 'password',
+)
+o2 = Owner.create(
+  email: 'jdoe@example.com',
+  password: 'password'
+)
+o3 = Owner.create(
+  email: 'jane@example.com',
+  password: 'password'
+)
+Profile.create(
+  name: 'tkhobbes',
+  admin: true,
+  owner_id: o1.id
+)
+Profile.create(
+  name: 'jdoe',
+  owner_id: o2.id
+)
+Profile.create(
+  name: 'jane',
+  owner_id: o3.id
+)
+
 # We need some book formats
 BookFormat.create(name: 'Not specified', fallback: true)
 BookFormat.create(name: 'Hardcover')
