@@ -8,17 +8,13 @@ class TagsController < ApplicationController
 
   before_action :set_tag, only: [:show, :edit, :update, :destroy]
 
-  # we need the session helper and the user concerns to ensure only logged in users can tamper with formats
-  include SessionsHelper
-  include UserConcerns
-
-  before_action :logged_in_user, only: [:index, :new, :create, :edit, :update, :destroy]
+  before_action :authenticate_owner!, only: [:index, :new, :create, :edit, :update, :destroy]
   before_action :correct_or_admin_user, only: [:show, :edit, :update, :destroy]
 
   before_action :dissolve, only: [:show]
 
-  # index method only lists tags from the currently logged in user by default
-  # if param[:show] is settings, will allow user to manage their tags
+  # index method only lists tags from the currently logged in owner by default
+  # if param[:show] is settings, will allow owners to manage their tags
   # if param[:show] is admin, will allow an admin to administer all tags
   # rubocop:disable Metrics/AbcSize
   # rubocop:disable Metrics/MethodLength
@@ -26,22 +22,22 @@ class TagsController < ApplicationController
   # this method smells of :reek:DuplicateMethodCall
   def index
     if params[:show] == 'settings'
-      @tags = if current_user.admin?
-                Tag.all.order(:name).includes([:user])
+      @tags = if current_owner.admin?
+                Tag.all.order(:name).includes([:owner])
               else
-                current_user.tags.includes([:user]).order(:name)
+                current_owner.tags.includes([:owner]).order(:owner)
               end
       render 'admin', tags: @tags
     else
       case params[:list]
       when 'authors'
         @pagy, @tags = pagy(Tag
-          .where(user_id: current_user.id)
+          .where(owner_id: current_owner.id)
           .includes([authors: [portrait_attachment: :blob]])
           .order(:name))
       else
         @pagy, @tags = pagy(Tag
-          .where(user_id: current_user.id)
+          .where(owner_id: current_owner.id)
           .includes([books: [cover_attachment: :blob]])
           .order(:name))
       end
@@ -52,7 +48,7 @@ class TagsController < ApplicationController
 
   # standard rails show method to display a tag and get all books within that tag
   def show
-    @pagy, @books = pagy(@tag.books.includes([:author, :user, cover_attachment: :blob]))
+    @pagy, @books = pagy(@tag.books.includes([:author, :owner, cover_attachment: :blob]))
     @pagy_authors, @authors = pagy(@tag.authors.includes([portrait_attachment: :blob]))
   end
 
@@ -70,7 +66,7 @@ class TagsController < ApplicationController
   # rubocop:disable Metrics/MethodLength
   def create
     @tag = Tag.new(tag_params)
-    @tag.user_id = current_user.id
+    @tag.owner_id = current_owner.id
     respond_to do |format|
       if @tag.save
         format.turbo_stream
@@ -118,11 +114,11 @@ class TagsController < ApplicationController
 
   private
 
-  # confirms the correct user
+  # confirms the correct owner
   def correct_or_admin_user
     return if current_user.admin?
-    @user = @tag.user
-    redirect_to(root_path, status: :see_other) unless current_user?(@user)
+    @owner = @tag.owner
+    redirect_to(root_path, status: :see_other) unless current_owner?(@owner)
   end
 
   # standard rails method to find a tag
@@ -132,6 +128,6 @@ class TagsController < ApplicationController
 
   # strong parameters
   def tag_params
-    params.require(:tag).permit(:name, :user_id)
+    params.require(:tag).permit(:name, :owner_id)
   end
 end

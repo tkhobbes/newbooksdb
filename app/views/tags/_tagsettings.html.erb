@@ -5,7 +5,7 @@
         "#{tag.name} - #{tag.books.size} books",
         edit_tag_path(tag)
        ) %>
-      <%= tag.user.name %>
+      <%= tag.owner.name %>
       <%= render 'shared/crud_icons',
         edit_path: edit_tag_path(tag),
         delete_path: tag_path(tag),

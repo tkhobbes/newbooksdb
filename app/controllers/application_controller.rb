@@ -9,9 +9,6 @@ class ApplicationController < ActionController::Base
   # include the Pagy Backend helper
   include Pagy::Backend
 
-  # include session methods for user state management
-  include SessionsHelper
-
   # by default, we capture the path
   before_action :capture_path
 

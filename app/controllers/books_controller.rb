@@ -2,14 +2,10 @@
 
 # standard Rails controller for the books model
 class BooksController < ApplicationController
-  # we need the session helper and the user concerns to ensure only logged in users can tamper with books
-  include SessionsHelper
-  include UserConcerns
 
-  # everybody can see index and an individual book, but only logged in users can add / update / delete
-  before_action :logged_in_user, only: [:new, :create, :edit, :update, :destroy]
+  # everybody can see index and an individual book, but only logged in owners can add / update / delete
+  before_action :authenticate_owner!, only: %i[new create edit update destroy]
   before_action :correct_user, only: [:edit, :update, :destroy]
-  before_action :current_user, only: [:create]
 
   # standard rails - set instance variable for standard actions
   before_action :set_book, only: [:show, :edit, :update, :destroy]
@@ -50,7 +46,7 @@ class BooksController < ApplicationController
   # creation / storage of a new book
   def create
     new_params = update_book_format_param(book_params)
-    @book = Book.new(new_params.merge(user_id: @current_user.id))
+    @book = Book.new(new_params.merge(owner_id: current_owner.id))
 
     if @book.save
       flash[:success] = 'Book saved'
@@ -86,8 +82,8 @@ class BooksController < ApplicationController
 
   # ensure the correct user can edit / update / delete a book
   def correct_user
-    return if current_user == Book.friendly.find(params[:id]).user
-    redirect_to root_path, status: :see_other, error: "You cannot change or delete other user's books"
+    return if current_owner == Book.friendly.find(params[:id]).owner
+    redirect_to root_path, status: :see_other, error: "You cannot change or delete other owner's books"
   end
 
   # merges the fallback book format into params if no format specified
@@ -106,7 +102,7 @@ class BooksController < ApplicationController
   # this method smells of :reek:UtilityFunction
   def books_with_includes_sorted
     Book
-      .includes([:user, :author, cover_attachment: :blob])
+      .includes([:owner, :author, cover_attachment: :blob])
       .order(:sort_title)
   end
 

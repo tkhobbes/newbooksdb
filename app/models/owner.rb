@@ -23,4 +23,6 @@ class Owner < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_one :profile, dependent: :destroy
+
+  delegate :name, :admin , to: :profile
 end

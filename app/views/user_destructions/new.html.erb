@@ -1,12 +1,12 @@
-<%= page_title("Are you sure you want to remove user #{@user.name}?", "Remove user #{@user.name}", 'heading2 color-error') %>
+<%= page_title("Are you sure you want to remove owner #{@owner.name}?", "Remove owner #{@owner.name}", 'heading2 color-error') %>
 
 <div class="color-error margin-top-1">
-  Apart from removing the user profile, you will need to decide what happens to
-  <%= @user.books.size %> books that are owned by this user.
+  Apart from removing the owner's profile, you will need to decide what happens to
+  <%= @owner.books.size %> books that are owned by this owner.
 </div>
 
   <%= form_with url: user_destructions_path, method: :post do |f| %>
-    <%= f.hidden_field :current_user_id, value: @user.id %>
+    <%= f.hidden_field :current_owner_id, value: @owner.id %>
 
     <div class="big-form">
       <div class="form-col enum_radio_buttons">
@@ -16,8 +16,8 @@
             <span class="fake-button">
             </span>
             Transfer books to new owner:
-            <%= f.collection_select :transfer_to_user,
-              User.all_but(@user.id), :email, :name, {},
+            <%= f.collection_select :transfer_to_owner,
+              Owner.all_but(@owner.id), :email, :name, {},
               class: 'larger'
             %>
           <% end %>

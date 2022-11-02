@@ -4,8 +4,11 @@
 #
 
 Rails.application.routes.draw do
-  devise_for :owners
   root 'books#index'
+
+  devise_for :owners, controllers: {
+    registrations: 'owners/registrations'
+  }
 
   resources :books
   resources :users

@@ -8,14 +8,14 @@ module ShelvesHelper
   # rubocop:disable Metrics/MethodLength
   # this method smells of :reek:DuplicateMethodCall
   # this method smells of :reek:TooManyStatements
-  def shelf_menu(user)
+  def shelf_menu(owner)
     menu = [
       {name: 'All Books', path: books_path},
       {name: 'Books in no Shelf', path: books_path(no_shelf: true)},
     ]
-    if user
-      menu << {name: 'My Books', path: books_path(my_books: user.id)}
-      user.shelves.each do |shelf|
+    if owner
+      menu << {name: 'My Books', path: books_path(my_books: owner.id)}
+      owner.shelves.each do |shelf|
         menu << {name: shelf.name, path: books_path(shelf_books: shelf.id)}
       end
     end
@@ -35,7 +35,7 @@ module ShelvesHelper
   # This method smells of :reek:DuplicateMethodCall
   # rubocop:disable Layout/LineLength
   def show_shelf(book)
-    return unless logged_in? && book.user == current_user && book.shelf
+    return unless owner_signed_in? && book.owner == current_owner && book.shelf
     "in shelf #{link_to(book.shelf.name, books_path(shelf_books: book.shelf.id), class: 'color-accent-dark color-hover-accent')}"
   end
   # rubocop:enable Layout/LineLength

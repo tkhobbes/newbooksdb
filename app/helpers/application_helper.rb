@@ -5,9 +5,9 @@
 module ApplicationHelper
   include Pagy::Frontend
 
-  # figures out what path we need to show for the user menu in the title
-  def login_or_user_path
-    logged_in? ? user_path(current_user) : login_path
+  # figures out what path we need to show for the owner menu in the title
+  def login_or_owner_path
+    owner_signed_in? ? edit_owner_registration_path(current_owner) : new_owner_session_path
   end
 
   # standard method to set page title and browser window title

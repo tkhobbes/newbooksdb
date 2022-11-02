@@ -16,7 +16,7 @@
             (<%= pluralize(author.books.size, 'Book') %>)
           </div>
           <div class="itemlist__icons">
-            <% if logged_in? %>
+            <% if owner_signed_in? %>
               <%= render 'shared/crud_icons',
                 edit_path: edit_author_path(author),
                 delete_path: author_path(author),

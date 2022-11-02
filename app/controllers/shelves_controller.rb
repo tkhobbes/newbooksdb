@@ -8,21 +8,17 @@ class ShelvesController < ApplicationController
 
   before_action :set_shelf, only: [:edit, :update, :destroy]
 
-  # we need the session helper and the user concerns to ensure only logged in users can tamper with formats
-  include SessionsHelper
-  include UserConcerns
-
-  before_action :logged_in_user
+  before_action :authenticate_owner!
   before_action :correct_or_admin_user, only: [:edit, :update, :destroy]
 
   before_action :dissolve
 
-  # lists all shelves - only user owned if user is not admin
+  # lists all shelves - only owner owned if owner is not admin
   def index
-    @shelves = if current_user.admin?
-                Shelf.all.order(:name).includes([:user])
+    @shelves = if current_owner.admin?
+                Shelf.all.order(:name).includes([:owner])
               else
-                current_user.shelves.all.order(:name).includes([:user])
+                current_owner.shelves.all.order(:name).includes([:owner])
               end
   end
 
@@ -51,7 +47,7 @@ class ShelvesController < ApplicationController
   # rubocop:disable Metrics/MethodLength
   def create
     @shelf = Shelf.new(shelf_params)
-    @shelf.user_id = current_user.id
+    @shelf.owner_id = current_owner.id
 
     respond_to do |format|
       if @shelf.save
@@ -87,11 +83,11 @@ class ShelvesController < ApplicationController
   end
 
   private
-  # confirms the correct user, or user is an admin
+  # confirms the correct owner, or owner is an admin
   def correct_or_admin_user
-    return if current_user.admin?
-    @user = @shelf.user
-    redirect_to(root_path, status: :see_other) unless current_user?(@user)
+    return if current_owner.admin?
+    @owner = @shelf.owner
+    redirect_to(root_path, status: :see_other) unless current_owner?(@owner)
   end
 
   # rails strong params

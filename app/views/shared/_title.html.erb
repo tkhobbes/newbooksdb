@@ -13,10 +13,10 @@
         <%= link_to new_book_path, title: 'Add Book' do %>
           <%= inline_svg_tag 'book.svg', class: 'bigicon' %>
         <% end %>
-        <%= link_to login_or_user_path, title: 'My Profile' do %>
+        <%= link_to login_or_owner_path, title: 'My Profile' do %>
           <%= inline_svg_tag 'profile.svg', class: 'bigicon' %>
         <% end %>
-        <% if logged_in? %>
+        <% if owner_signed_in? %>
           <%= link_to settings_path, title: 'Settings' do %>
             <%= inline_svg_tag 'settings.svg', class: 'bigicon' %>
           <% end %>

@@ -2,11 +2,7 @@
 
 # Standard rails controller for the settings page
 class SettingsController < ApplicationController
-  # we need the session helper and the user concerns to ensure only logged in users can tamper with formats
-  include SessionsHelper
-  include UserConcerns
-
-  before_action :logged_in_user
+  before_action :authenticate_owner!
   before_action :admin_user, only: [:bulk_actions]
 
   # standard method to display the index page
@@ -16,9 +12,9 @@ class SettingsController < ApplicationController
   def bulk_actions; end
 
   private
-  # confirms the correct user, or user is an admin
+  # confirms the correct owner, or owner is an admin
   def admin_user
-    return if current_user.admin?
+    return if current_owner.admin?
     redirect_to(root_path, status: :see_other)
   end
 end

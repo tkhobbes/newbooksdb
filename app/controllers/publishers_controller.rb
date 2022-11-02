@@ -5,11 +5,7 @@ class PublishersController < ApplicationController
   # allow for turbo frame variants
   before_action :turbo_frame_request_variant
 
-  # we need the session helper and the user concerns to ensure only logged in users can tamper with formats
-  include SessionsHelper
-  include UserConcerns
-
-  before_action :logged_in_user, only: [:new, :create, :edit, :update, :destroy]
+  before_action :authenticate_owner!, only: [:new, :create, :edit, :update, :destroy]
 
   before_action :set_publisher, only: [:show, :edit, :update, :destroy]
 
@@ -45,7 +41,7 @@ class PublishersController < ApplicationController
 
   # shows a publisher in detail and lists all books from that publisher
   def show
-    @pagy, @books = pagy(@publisher.books.includes([:user, cover_attachment: :blob]))
+    @pagy, @books = pagy(@publisher.books.includes([:owner, cover_attachment: :blob]))
   end
 
   #edit action - displayed in a turbo frame within the settings page

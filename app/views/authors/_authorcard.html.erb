@@ -3,7 +3,7 @@
       <%= portrait_image(author, size: "medium") %>
     </div>
     <div class="itemcard-big__content">
-    <% if logged_in? %>
+    <% if owner_signed_in? %>
         <%= render 'shared/crud_icons',
           edit_path: edit_author_path(author),
           delete_path: author_path(author),

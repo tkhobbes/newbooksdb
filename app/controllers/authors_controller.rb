@@ -4,6 +4,9 @@ class AuthorsController < ApplicationController
   # allow for turbo frame variants
   before_action :turbo_frame_request_variant
 
+  # only signed in owners can create, edit and delete authors
+  before_action :authenticate_owner!, except: %i[index show]
+
   before_action :set_author, only: %i[edit update destroy]
 
   before_action :dissolve, only: :index
@@ -13,10 +16,10 @@ class AuthorsController < ApplicationController
   end
 
   def show
-      @author = Author.includes(tags: [:user]).friendly.find(params[:id])
+      @author = Author.includes(tags: [:owner]).friendly.find(params[:id])
       @pagy, @books = pagy(@author
         .books
-        .includes([:user, cover_attachment: :blob])
+        .includes([:owner, cover_attachment: :blob])
         .order(:sort_title))
   end
 

@@ -34,7 +34,7 @@
 #  fk_rails_...  (book_format_id => book_formats.id)
 #
 class Book < ApplicationRecord
-  validates :title, presence: true, uniqueness: { scope: :user_id }
+  validates :title, presence: true, uniqueness: { scope: :owner_id }
 
   before_save :create_sort_title
 
@@ -63,7 +63,7 @@ class Book < ApplicationRecord
 
   # relationships to other models
   belongs_to :book_format, optional: true, counter_cache: true
-  belongs_to :user, counter_cache: true
+  belongs_to :owner, counter_cache: true
   belongs_to :shelf, optional: true, counter_cache: true
   belongs_to :publisher, optional: true, counter_cache: true
   belongs_to :author, optional: true, counter_cache: true
@@ -76,7 +76,7 @@ class Book < ApplicationRecord
   has_many :tags, through: :taggings
 
   # a scope for my books
-  scope :my_books, -> (uid) { where(user_id: uid) }
+  scope :my_books, -> (uid) { where(owner_id: uid) }
   scope :shelf_books, -> (shelf) { where(shelf_id: shelf) }
   scope :no_shelf, -> { where(shelf_id: nil) }
 

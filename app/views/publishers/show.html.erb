@@ -30,7 +30,7 @@
           (by Author Author )
         </div>
         <div class="itemlist__icons">
-          <% if logged_in? && book.user == current_user %>
+          <% if owner_signed_in? && book.owner == current_owner %>
             <%= render 'shared/crud_icons',
               edit_path: edit_book_path(book),
               delete_path: book_path(book),

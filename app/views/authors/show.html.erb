@@ -11,7 +11,7 @@
         <%= @author.display_name %>
         <%= @author.decorate.gender_icon %>
       </h1>
-        <% if logged_in? %>
+        <% if owner_signed_in? %>
           <%= render 'shared/crud_icons',
             edit_path: edit_author_path(@author),
             delete_path: author_path(@author),
@@ -28,7 +28,7 @@
     </div>
     <div class="tag-list">
       <% @author.tags.each do |t| %>
-        <% if t.user == current_user %>
+        <% if t.owner == current_owner %>
           <%= render 'tags/tag_tag', tag: t %>
         <% end %>
       <% end %>
@@ -64,7 +64,7 @@
               )%>
           </div>
           <div class="itemlist__icons">
-            <% if logged_in? && book.user == current_user %>
+            <% if owner_signed_in? && book.owner == current_owner %>
               <%= render 'shared/crud_icons',
                 edit_path: edit_book_path(book),
                 delete_path: book_path(book),

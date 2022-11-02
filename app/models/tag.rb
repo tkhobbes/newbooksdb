@@ -18,13 +18,13 @@
 #
 class Tag < ApplicationRecord
   # each tag must have a name
-  validates :name, presence: true, uniqueness: { scope: :user_id }
+  validates :name, presence: true, uniqueness: { scope: :owner_id }
 
   extend FriendlyId
-  friendly_id :name_user, use: :slugged
+  friendly_id :name_owner, use: :slugged
 
-  # tag are OWNED by a user but are not used to TAG users
-  belongs_to :user
+  # tag are OWNED by a owner but are not used to TAG owners
+  belongs_to :owner
 
 
   has_many :taggings, dependent: :destroy
@@ -36,7 +36,7 @@ class Tag < ApplicationRecord
 
   private
 
-  def name_user
-    "#{name}-#{user.name}"
+  def name_owner
+    "#{name}-#{owner.name}"
   end
 end

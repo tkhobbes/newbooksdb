@@ -11,7 +11,7 @@
         <%= @book.decorate.author_link(styles: 'color-accent-dark color-hover-accent'
         ) %>
       </h1>
-        <% if logged_in? && @book.user == current_user %>
+        <% if owner_signed_in? && @book.owner == current_owner %>
           <%= render 'shared/crud_icons',
             edit_path: edit_book_path(@book),
             delete_path: book_path(@book),
@@ -40,7 +40,7 @@
         <%= render 'genres/genre_tag', genre: g %>
       <% end %>
     </div>
-    <% if @book.user == current_user %>
+    <% if @book.owner == current_owner %>
       <div class="tag-list">
         <% @book.tags.each do |t| %>
           <%= render 'tags/tag_tag', tag: t %>
@@ -56,7 +56,8 @@
       </div>
     </div>
     <div class="margin-1">
-      <%= link_to 'Owned by ' + @book.user.name, user_path(@book.user), class: 'color-accent-dark color-hover-accent' %>
+      <!-- this needs to become a link to the profile path -->
+      <%= link_to 'Owned by ' + @book.owner.name, '#', class: 'color-accent-dark color-hover-accent' %>
       <%== show_shelf(@book) %>
     </div>
     <%= @book.decorate.show_synopsis(

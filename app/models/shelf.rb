@@ -17,10 +17,10 @@
 #  index_shelves_on_owner_id           (owner_id)
 #
 class Shelf < ApplicationRecord
-  # each shelf must have a name (but not necessarily unique, as different users can have shelfs with the same name)
-  validates :name, presence: true, uniqueness: { scope: :user_id }
+  # each shelf must have a name (but not necessarily unique, as different owners can have shelfs with the same name)
+  validates :name, presence: true, uniqueness: { scope: :owner_id }
 
-  belongs_to :user
+  belongs_to :owner
   has_many :books, dependent: :nullify
 
   # ensure cache is updated after creation and removal of shelf

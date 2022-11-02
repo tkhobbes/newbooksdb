@@ -5,11 +5,7 @@ class GenresController < ApplicationController
   # allow for turbo frame variants
   before_action :turbo_frame_request_variant
 
-  # we need the session helper and the user concerns to ensure only logged in users can tamper with formats
-  include SessionsHelper
-  include UserConcerns
-
-  before_action :logged_in_user, only: [:new, :create, :edit, :update, :destroy]
+  before_action :authenticate_owner!, only: [:new, :create, :edit, :update, :destroy]
 
   before_action :set_genre, only: [:show, :edit, :update, :destroy]
 
@@ -33,7 +29,7 @@ class GenresController < ApplicationController
   # shows a genre in detail and lists all books within that genre
   def show
     @genre = Genre.friendly.find(params[:id])
-    @pagy, @books = pagy(@genre.books.includes([:user, cover_attachment: :blob]))
+    @pagy, @books = pagy(@genre.books.includes([:owner, cover_attachment: :blob]))
   end
 
   #new action - displayed in a turbo frame within the settings page
