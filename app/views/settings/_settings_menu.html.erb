@@ -29,7 +29,7 @@
           params[:controller] == 'tags' && params[:show] == 'settings' ? { class: 'active' } : {}
         ) %>
       </li>
-      <% if current_member&.admin %>
+      <% if current_owner&.admin %>
         <li>
           <!-- this needs to link to the members index for admins -->
           <%= link_to(

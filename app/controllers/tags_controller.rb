@@ -22,7 +22,7 @@ class TagsController < ApplicationController
   # this method smells of :reek:DuplicateMethodCall
   def index
     if params[:show] == 'settings'
-      @tags = if current_owner.admin?
+      @tags = if current_owner.admin
                 Tag.all.order(:name).includes([:owner])
               else
                 current_owner.tags.includes([:owner]).order(:owner)
@@ -116,7 +116,7 @@ class TagsController < ApplicationController
 
   # confirms the correct owner
   def correct_or_admin_user
-    return if current_user.admin?
+    return if current_user.admin
     @owner = @tag.owner
     redirect_to(root_path, status: :see_other) unless current_owner?(@owner)
   end

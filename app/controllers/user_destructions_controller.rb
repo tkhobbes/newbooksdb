@@ -16,7 +16,7 @@ class UserDestructionsController < ApplicationController
   def create
     owner = Owner.find(params[:current_owner_id])
     # are we even allowed to do that?
-    redirect_to root_path unless current_owner.admin? || current_owner?(owner)
+    redirect_to root_path unless current_owner.admin || current_owner?(owner)
     # transfer books to another owner
     case params[:book_selection]
     when 'transfer'

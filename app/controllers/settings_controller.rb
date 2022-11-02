@@ -14,7 +14,7 @@ class SettingsController < ApplicationController
   private
   # confirms the correct owner, or owner is an admin
   def admin_user
-    return if current_owner.admin?
+    return if current_owner.admin
     redirect_to(root_path, status: :see_other)
   end
 end
