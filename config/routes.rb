@@ -9,9 +9,9 @@ Rails.application.routes.draw do
   devise_for :owners, controllers: {
     registrations: 'owners/registrations'
   }
+  resources :profiles, only: %i[show edit update]
 
   resources :books
-  resources :users
   resources :authors
   resources :publishers
   resources :book_formats, except: [:show] do

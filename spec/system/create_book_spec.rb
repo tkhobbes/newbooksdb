@@ -18,7 +18,6 @@ RSpec.describe 'creating a book', type: :system do
   end
 
   scenario 'Valid input and format given' do
-    log_me_in(@user)
     visit new_book_path
     fill_in 'Book Title', with: 'The Hobbit'
     fill_in 'Book Format', with: 'Hardcover'
@@ -28,7 +27,6 @@ RSpec.describe 'creating a book', type: :system do
   end
 
   scenario 'Valid input and no format given' do
-    log_me_in(@user)
     visit new_book_path
     fill_in 'Book Title', with: 'The Hobbit'
     click_on 'Create Book'
@@ -36,14 +34,12 @@ RSpec.describe 'creating a book', type: :system do
   end
 
   scenario 'Invalid input given' do
-    log_me_in(@user)
     visit new_book_path
     click_on 'Create Book'
     expect(page).to have_content("Title can't be blank")
   end
 
   scenario 'Original title displayed in brackets' do
-    log_me_in(@user)
     visit new_book_path
     fill_in 'Book Title', with: 'Der kleine Hobbit'
     fill_in 'Original Title', with: 'The Hobbit'
@@ -56,7 +52,6 @@ RSpec.describe 'creating a book', type: :system do
   # we should do something like
   # scan('fill="currentColor"').size).to eq(@book.rating_before_type_cast)
   scenario 'rating is expressed with stars' do
-    log_me_in(@user)
     visit new_book_path
     fill_in 'Book Title', with: 'The Hobbit'
     find('#label_rating_good').click
@@ -66,7 +61,6 @@ RSpec.describe 'creating a book', type: :system do
   end
 
   scenario 'show a synopsis if there is one' do
-    log_me_in(@user)
     visit new_book_path
     fill_in 'Book Title', with: 'Lord of the Rings'
     find('#book_synopsis').click.set('A great book')
@@ -75,7 +69,6 @@ RSpec.describe 'creating a book', type: :system do
   end
 
   scenario 'Do not show a synopsis if there is none' do
-    log_me_in(@user)
     visit new_book_path
     fill_in 'Book Title', with: 'Lord of the Rings'
     click_on 'Create Book'
@@ -83,7 +76,6 @@ RSpec.describe 'creating a book', type: :system do
   end
 
   scenario 'display fallback svg if there is no image' do
-    log_me_in(@user)
     visit new_book_path
     fill_in 'Book Title', with: 'The Hobbit'
     click_on 'Create Book'
@@ -91,7 +83,6 @@ RSpec.describe 'creating a book', type: :system do
   end
 
   scenario 'displays a cover image if there is one', js: true do
-    log_me_in(@user)
     visit new_book_path
     fill_in 'Book Title', with: 'Catcher in the Rye'
     # Capybara.match = :first

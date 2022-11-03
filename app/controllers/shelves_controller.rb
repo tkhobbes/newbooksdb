@@ -16,7 +16,7 @@ class ShelvesController < ApplicationController
   # lists all shelves - only owner owned if owner is not admin
   def index
     @shelves = if current_owner.admin
-                Shelf.all.order(:name).includes([:owner])
+                Shelf.all.order(:name).includes([owner: [:profile]])
               else
                 current_owner.shelves.all.order(:name).includes([:owner])
               end

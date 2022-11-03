@@ -11,13 +11,11 @@ RSpec.describe 'fiddling with book formats', type: :system do
   end
 
   scenario 'The fallback format shows " (default)" after its name' do
-    log_me_in(@user)
     visit book_formats_path
     expect(page).to have_content('Not defined (default)')
   end
 
   scenario 'if the fallback format is changed, so is the "default" prefix' do
-    log_me_in(@user)
     visit book_formats_path
     Capybara.match = :first
     find('#change-default').click

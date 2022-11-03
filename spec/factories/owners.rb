@@ -20,11 +20,11 @@
 FactoryBot.define do
   factory :me, class: Owner do
     email { 'tkhobbes@gmail.com' }
-    encrypted_password { Devise::Encryptor.digest(Owner, 'password') }
+    password { 'password' }
   end
 
   factory :random_user, class: Owner do
     email { Faker::Internet.email }
-    password { Devise::Encryptor.digest(Owner, 'password') }
+    password { 'password' }
   end
 end

@@ -1,0 +1,24 @@
+<%= page_title("Profile for #{@profile.name}", '', 'heading3') %>
+
+<div class="userdetails">
+  <div class="cover-medium">
+    <%= avatar_image(@profile, size: 'medium') %>
+  </div>
+  <div class="userdetails__text">
+    <div class="userdetails__title">
+      <h1 class="heading3">
+        <%= @profile.name %>
+      </h1>
+    </div>
+    <div class="userdetails__details">
+      Registered <%= time_ago_in_words(@profile.created_at) %> ago
+    </div>
+    <% if @profile == current_owner.profile %>
+      <div class="userdetails__buttons">
+        <%= link_to 'Edit my Profile', edit_profile_path(@profile) , class: 'btn btn-primary' %>
+        <%= link_to 'Change my Password', '#', class: 'btn btn-primary' %>
+        <%= link_to 'Logout', '#', class: 'btn btn-primary' %>
+        <%= link_to 'Delete my Profile', new_user_destructions_path(@profile), class: 'btn btn-error' %>
+      </div>
+    <% end %>
+</div>

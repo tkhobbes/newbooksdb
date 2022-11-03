@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_02_132335) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_03_170156) do
   create_table "action_text_rich_texts", charset: "utf8mb4", force: :cascade do |t|
     t.string "name", null: false
     t.text "body", size: :long
@@ -180,23 +180,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_02_132335) do
     t.bigint "owner_id", null: false
     t.index ["owner_id"], name: "index_tags_on_owner_id"
     t.index ["slug"], name: "index_tags_on_slug", unique: true
-  end
-
-  create_table "users", charset: "utf8mb4", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "password_digest"
-    t.string "remember_digest"
-    t.boolean "admin", default: false
-    t.string "activation_digest"
-    t.boolean "activated", default: false
-    t.datetime "activated_at"
-    t.string "reset_digest"
-    t.datetime "reset_sent_at"
-    t.integer "books_count"
-    t.index ["email"], name: "index_users_on_email", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

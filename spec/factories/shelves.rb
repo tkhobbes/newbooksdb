@@ -19,11 +19,11 @@
 FactoryBot.define do
   factory :office_tk, class: Shelf do
     name { 'Office tk' }
-    association :user, factory: :me
+    association :owner, factory: :me
   end
 
   factory :randomshelf, class: Shelf do
     name { Faker::Lorem.word }
-    association :user, factory: :random_user
+    association :owner, factory: :random_user
   end
 end
