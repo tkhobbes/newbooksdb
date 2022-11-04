@@ -45,6 +45,7 @@ group :development do
   gem 'rubocop-rspec', '~> 2.11', '>= 2.11.1', require: false
   gem 'solargraph', '~> 0.47.2'
   gem 'solargraph-rails', '~> 0.3.1'
+  gem 'letter_opener', '~> 1.8', '>= 1.8.1'
 end
 
 group :test do

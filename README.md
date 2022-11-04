@@ -142,6 +142,7 @@ The following Gems are used in this project:
 - Faker { https://rubygems.org/gems/faker } to quickly generate data
 - Factory Bot { https://rubygems.org/search?query=factory_bot_rails } to easily generate test data
 - Better_errors (and dependency binding_of_caller) for nicer error messages { https://rubygems.org/gems/better_errors }
+- letter_opener to to test e-mails (https://rubygems.org/gems/letter_opener)
 
 #### Core Rails / Application
 
