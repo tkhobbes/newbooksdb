@@ -184,6 +184,10 @@ span.error {
   margin-top: $margin-4;
 }
 
+span.hint {
+  @extend .small;
+}
+
 .rich-text-input {
   margin-top: $base-margin;
 
