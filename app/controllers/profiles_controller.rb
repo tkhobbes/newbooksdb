@@ -3,18 +3,24 @@
 class ProfilesController < ApplicationController
   before_action :authenticate_owner!
 
-  before_action :set_profile
+  before_action :set_profile, except: :index
 
-  def show
-
+  # we list all profiles / owners through the index action here
+  # accessible only for admins and deleting profiles will delete the owners too
+  def index
+    @profiles = Profile.all.order(:name).includes([avatar_attachment: :blob])
   end
 
-  def edit
+  def show; end
 
-  end
+  def edit; end
 
   def update
-
+    if @profile.update(profile_params)
+      redirect_to(profile_path(@profile))
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   private

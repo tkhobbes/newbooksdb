@@ -1,15 +1,14 @@
-  <%= simple_form_for user do |f| %>
+<%= page_title('Edit your Profile','', 'heading2') %>
+
+  <%= simple_form_for @profile do |f| %>
     <%= render 'shared/form_errors', form: f %>
 
     <div class="big-form">
       <div class="form-col">
         <div class="cover-small">
-          <%= avatar_image(@user, size: 'small') %>
+          <%= avatar_image(@profile, size: 'small') %>
         </div>
         <%= f.input :name , placeholder: 'Username', label: false %>
-        <%= f.input :email, placeholder: 'E-Mail', label: false %>
-        <%= f.input :password, placeholder: 'Password', label: false %>
-        <%= f.input :password_confirmation, placeholder: 'Confirm Password', label: false %>
       </div>
       <div
         class="form-col dropzone dropzone-default dz-clickable"
@@ -29,3 +28,4 @@
     <%= f.button :submit %>
     <%= back_link %>
 <% end %>
+

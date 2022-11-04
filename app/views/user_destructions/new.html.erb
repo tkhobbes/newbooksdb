@@ -17,7 +17,7 @@
             </span>
             Transfer books to new owner:
             <%= f.collection_select :transfer_to_owner,
-              Owner.all_but(@owner.id), :email, :name, {},
+              Owner.all_but(@owner.id).includes([:profile]), :email, :name, {},
               class: 'larger'
             %>
           <% end %>

@@ -1,18 +1,18 @@
-<%= turbo_frame_tag(user) do %>
+<%= turbo_frame_tag(profile) do %>
   <li class="itemlist__item">
     <div class="itemlist__cover">
-      <%= avatar_image(user, size: 'default') %>
+      <%= avatar_image(profile, size: 'default') %>
     </div>
     <div class="itemlist__title">
-      <%= link_to user.name, user %>
-      (<%= user.books_count %> books)
+      <%= link_to profile.name, profile %>
+      (300 books)
     </div>
     <div class="itemlist__title">
-      (Active since <%= user.activated? ? user.activated_at.strftime("%d-%b-%Y") : 'not activated' %>)
+      (Active since bla)
     </div>
     <div class="itemlist__icons">
       <div class="icons">
-        <%= link_to new_user_destructions_path(user),
+        <%= link_to new_user_destructions_path(profile),
           title: "Remove User",
           class: "delete-icon",
           data: { turbo_frame: "_top" } do %>

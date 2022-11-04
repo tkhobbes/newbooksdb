@@ -16,8 +16,8 @@
     <% if @profile == current_owner.profile %>
       <div class="userdetails__buttons">
         <%= link_to 'Edit my Profile', edit_profile_path(@profile) , class: 'btn btn-primary' %>
-        <%= link_to 'Change my Password', '#', class: 'btn btn-primary' %>
-        <%= link_to 'Logout', '#', class: 'btn btn-primary' %>
+        <%= link_to 'Change my Password', edit_owner_registration_path, class: 'btn btn-primary' %>
+        <%= button_to 'Logout', destroy_owner_session_path, method: 'delete', class: 'btn btn-primary nobutton' %>
         <%= link_to 'Delete my Profile', new_user_destructions_path(@profile), class: 'btn btn-error' %>
       </div>
     <% end %>
