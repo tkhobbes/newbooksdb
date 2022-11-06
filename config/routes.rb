@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   devise_for :owners, controllers: {
     registrations: 'owners/registrations'
   }
+  get 'owners/:id', to: 'owners#show', as: 'owner'
   resources :profiles, only: %i[index show edit update]
 
   resources :books

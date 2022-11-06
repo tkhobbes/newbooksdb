@@ -45,6 +45,10 @@ class Owner < ApplicationRecord
   after_create { Rails.cache.increment('owners-count') }
   after_destroy { Rails.cache.decrement('owners-count') }
 
+  def ownername
+    email.split('@').first
+  end
+
   private
 
   # convert email to all lowercase

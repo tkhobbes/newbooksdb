@@ -5,7 +5,7 @@ class UserDestructionsController < ApplicationController
 
   # show the form
   def new
-    @owner = Owner.find(params[:id])
+    @owner = Owner.find(Profile.find(params[:id]).owner.id)
   end
 
   # decide what to do with the books and then destroy the owner
@@ -45,7 +45,7 @@ class UserDestructionsController < ApplicationController
   # delete books
   # This method smells of :reek:UtilityFunction
   def delete_books(owner)
-    Books.delete_all(where: { owner_id: owner.id })
+    Book.destroy(where: { owner_id: owner.id })
   end
 
 end

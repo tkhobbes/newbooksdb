@@ -12,8 +12,11 @@ class Owners::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     super
-    Profile.create(name: ownername)
+    Profile.create(name: @owner.ownername, owner: @owner)
   end
+
+  # GET /resource/:id
+  def show; end
 
   # GET /resource/edit
   # def edit
@@ -60,10 +63,4 @@ class Owners::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
-
-  private
-
-  def ownername
-    email.split('@').first
-  end
 end
