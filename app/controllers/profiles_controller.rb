@@ -8,7 +8,7 @@ class ProfilesController < ApplicationController
   # we list all profiles / owners through the index action here
   # accessible only for admins and deleting profiles will delete the owners too
   def index
-    @profiles = Profile.all.order(:name).includes([avatar_attachment: :blob])
+    @profiles = Profile.all.order(:name).includes(:owner, [avatar_attachment: :blob])
   end
 
   def show; end

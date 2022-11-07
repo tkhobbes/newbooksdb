@@ -5,10 +5,10 @@
     </div>
     <div class="itemlist__title">
       <%= link_to profile.name, profile %>
-      (300 books)
+      (<%= profile.owner.books_count %> books)
     </div>
     <div class="itemlist__title">
-      (Active since bla)
+      (Active since <%= profile.owner.created_at.strftime("%d-%b %Y") %>)
     </div>
     <div class="itemlist__icons">
       <div class="icons">

@@ -34,8 +34,8 @@
           <!-- this needs to link to the members index for admins -->
           <%= link_to(
             'Owners',
-            '#',
-            params[:controller] == 'owners' ? { class: 'active' } : {}
+            profiles_path,
+            params[:controller] == 'profiles' ? { class: 'active' } : {}
           ) %>
         </li>
         <li>

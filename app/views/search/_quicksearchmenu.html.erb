@@ -1,9 +1,10 @@
-<%= form_with url: search_index_path(show: 'list'), method: 'GET',
+<%= form_with url: search_index_path, method: 'GET',
   class: 'search__form peer',
   data: {
     controller: 'quick-search',
     action: 'invalid->quick-search#hideValidationMessage:capture input->quick-search#search'
   } do |f| %>
+  <input type="hidden" name="show" value="list" />
   <input id="query" name="query" type="search"
     pattern=".*\w+.*" required
     placeholder="Search..." data-quick-search-target="searchinput" />
