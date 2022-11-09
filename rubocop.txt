@@ -1,5 +1,5 @@
-Inspecting 84 files
-.....................................C.......C......................................
+Inspecting 86 files
+.......................................C.......C......................................
 
 Offenses:
 
@@ -9,14 +9,8 @@ app/models/book_format.rb:33:8: C: [Correctable] Style/RedundantSelf: Redundant 
 app/models/book_format.rb:38:34: C: [Correctable] Style/RedundantSelf: Redundant self detected.
       Book.where(book_format_id: self.id).update(book_format_id: format_fallback.id)
                                  ^^^^
-app/models/user.rb:53:7: C: [Correctable] Style/ClassMethods: Use self.digest instead of User.digest.
-  def User.digest(string)
-      ^^^^
-app/models/user.rb:55:43: C: [Correctable] Style/HashSyntax: Omit the hash value.
-    BCrypt::Password.create(string, cost: cost)
-                                          ^^^^
-app/models/user.rb:69:7: C: [Correctable] Style/ClassMethods: Use self.new_token instead of User.new_token.
-  def User.new_token
-      ^^^^
+app/models/tag.rb:21:3: C: Rails/UniqueValidationWithoutIndex: Uniqueness validation should have a unique index on the database column.
+  validates :name, presence: true, uniqueness: { scope: :owner_id }
+  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-84 files inspected, 5 offenses detected, 5 offenses autocorrectable
+86 files inspected, 3 offenses detected, 2 offenses autocorrectable

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: profiles
@@ -19,7 +21,7 @@
 #
 FactoryBot.define do
   factory :profile do
-    name { "MyString" }
+    name { 'MyString' }
     admin { false }
     owner { nil }
   end

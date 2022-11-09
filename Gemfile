@@ -37,6 +37,7 @@ group :development do
   gem 'binding_of_caller', '~> 1.0' # required for better_errors
   gem 'bullet', '~> 7.0.2'
   gem 'database_consistency', '~> 1.1', '>= 1.1.15'
+  gem 'letter_opener', '~> 1.8', '>= 1.8.1'
   gem 'rails-erd', '1.7.0'
   gem 'reek', '~> 6.1', '>= 6.1.1'
   gem 'rubocop', ' ~> 1.30.1', require: false
@@ -45,7 +46,6 @@ group :development do
   gem 'rubocop-rspec', '~> 2.11', '>= 2.11.1', require: false
   gem 'solargraph', '~> 0.47.2'
   gem 'solargraph-rails', '~> 0.3.1'
-  gem 'letter_opener', '~> 1.8', '>= 1.8.1'
 end
 
 group :test do

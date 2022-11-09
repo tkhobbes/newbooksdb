@@ -44,8 +44,8 @@ class UserDestructionsController < ApplicationController
 
   # delete books
   # This method smells of :reek:UtilityFunction
-  def delete_books(owner)
-    Book.destroy(where: { owner_id: owner.id })
+  def delete_books(existing_owner)
+    Book.destroy_by(owner: existing_owner)
   end
 
 end

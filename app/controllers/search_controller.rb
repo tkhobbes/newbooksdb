@@ -23,7 +23,9 @@ class SearchController < ApplicationController
   # we use the index method for search results
   # This Method smells of :reek:DuplicateMethodCall
   def index
-    book_results = params[:query] ? Book.search(params[:query]).includes([:author, :owner, cover_attachment: :blob]) : []
+    book_results = []
+    book_results = Book.search(params[:query])
+      .includes([:author, :owner, cover_attachment: :blob]) if params[:query]
     @pagy, @books = pagy(book_results)
   end
 

@@ -5,6 +5,7 @@ class UnusedItemsController < ApplicationController
   ALLOWED_METHODS = ['no_books', 'no_taggings'].freeze
 
   # show method shows all unused items of a model
+  # this method smells of :reek:DuplicateMethodCall
   def index
     return unless ALLOWED_METHODS.include?(params[:show])
     @model = params[:items_in]
