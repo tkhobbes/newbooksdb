@@ -75,19 +75,23 @@ gem 'image_processing', '~> 1.12.2'
 # Core application Gems
 # go back to previous pages easily
 gem 'backpedal', '~> 0.2.1'
-# use nice IDs instead of numbers
-gem 'friendly_id', '~> 5.4', '>= 5.4.2'
-# better way to use SVGs
-gem 'inline_svg', '~> 1.8'
-# Pagination for large collections
-gem 'pagy', '~> 5.10', '>= 5.10.1'
-# Simple form for form inputs
-gem 'simple_form', '~> 5.1'
-# using scoped routes for our shelves etc
-gem 'has_scope', '~> 0.8.0'
 # country selection for books
 gem 'country_select', '~> 8.0'
-# Search
-gem 'search_cop', '~> 1.2', '>= 1.2.3'
 # authentication with devise
 gem 'devise', '~> 4.8', '>= 4.8.1'
+# use nice IDs instead of numbers
+gem 'friendly_id', '~> 5.4', '>= 5.4.2'
+# using scoped routes for our shelves etc
+gem 'has_scope', '~> 0.8.0'
+# better way to use SVGs
+gem 'inline_svg', '~> 1.8'
+# for the business logic / service objects
+gem 'light-service', '~> 0.18.0'
+# web crawler
+gem 'metainspector', '~> 5.13'
+# Pagination for large collections
+gem 'pagy', '~> 5.10', '>= 5.10.1'
+# Search
+gem 'search_cop', '~> 1.2', '>= 1.2.3'
+# Simple form for form inputs
+gem 'simple_form', '~> 5.1'

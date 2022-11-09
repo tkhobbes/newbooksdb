@@ -46,3 +46,7 @@
 
 # Docker stuff
 /docker-compose.yml
+
+# test stuff
+/Scraper\ Concept.md
+/isbnscrapertest.rb
