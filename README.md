@@ -132,7 +132,6 @@ The following Gems are used in this project:
 - search_cop for searching (https://rubygems.org/gems/search_cop)
 - devise for user authentication (https://rubygems.org/gems/devise)
 - metainspector for webcralwing (https://rubygems.org/gems/metainspector)
-- light service for service objects (https://rubygems.org/gems/light-service)
 
 #### Development
 
@@ -146,6 +145,7 @@ The following Gems are used in this project:
 - Factory Bot (https://rubygems.org/search?query=factory_bot_rails) to easily generate test data
 - Better_errors (and dependency binding_of_caller) for nicer error messages (https://rubygems.org/gems/better_errors)
 - letter_opener to to test e-mails (https://rubygems.org/gems/letter_opener)
+- pry-rails (https://rubygems.org/gems/pry-rails) for debugging / console
 
 #### Core Rails / Application
 

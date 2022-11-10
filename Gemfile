@@ -19,6 +19,7 @@ group :development, :test do
   gem 'debug', platforms: %i[ mri mingw x64_mingw ]
   gem 'factory_bot_rails', '~> 6.2'
   gem 'faker', '~> 2.21'
+  gem 'pry-rails', '~> 0.3.9'
   gem 'rails-controller-testing', '~> 1.0', '>= 1.0.5'
   gem 'rspec-rails', '~> 6.0.0.rc1'
   gem 'webdrivers', '~> 5.0'
@@ -85,8 +86,6 @@ gem 'friendly_id', '~> 5.4', '>= 5.4.2'
 gem 'has_scope', '~> 0.8.0'
 # better way to use SVGs
 gem 'inline_svg', '~> 1.8'
-# for the business logic / service objects
-gem 'light-service', '~> 0.18.0'
 # web crawler
 gem 'metainspector', '~> 5.13'
 # Pagination for large collections
