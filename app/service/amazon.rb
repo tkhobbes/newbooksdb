@@ -12,15 +12,11 @@ class Amazon
   def scrape_page
     items = select_amazon_results(crawl_page.css('[data-component-type="s-search-results"] [data-asin]'))
     items.each do |found_item|
-      item = {}
-      item[:ASIN] = found_item.attributes['data-asin'].value
-      item[:title] = found_item.css('h2').text
-      item[:image_url] = found_item.css('img').first['srcset'].split(', ').last.split(' ').first
-      item[:url] = ''
-      puts "----------"
-      @search_results << item
+      if found_item.css('h2 a').first # do we have a link to an item?
+        @search_results << create_item(found_item)
+      end
     end
-    @search_results
+    return @search_results
   end
 
   private
@@ -40,6 +36,15 @@ class Amazon
 
   def select_amazon_results(results)
     results.select{ |r| r['data-asin'] != nil && r['data-asin'] != '' }
+  end
+
+  def create_item(found_item)
+    item = {}
+    item[:ASIN] = found_item.attributes['data-asin'].value
+    item[:title] = found_item.css('h2').text
+    item[:image_url] = found_item.css('img').first['srcset'].split(', ').last.split(' ').first
+    item[:url] = found_item.css('h2 a').first['href']
+    return item
   end
 
 end

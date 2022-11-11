@@ -1,3 +1,20 @@
 <%= page_title('Search Results','', 'heading2') %>
 
-<%= @results %>
+<% if @results.size == 0 %>
+  <p>No results found.
+    <%= link_to 'Try another search', isbn_search_new_path, class: 'color-accent-dark color-hover-accent-light' %>
+  </p>
+<% else %>
+  <ul class="itemlist">
+    <% @results.each do |result| %>
+      <li class="itemlist__item">
+        <div class="itemlist__cover">
+          <%= image_tag result[:image_url] %>
+        </div>
+        <div class="itemlist__title">
+          <%= link_to result[:title], '#' %>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
