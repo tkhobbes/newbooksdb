@@ -1,9 +1,0 @@
-<h1>UZW18 Book Collector Database</h1>
-
-<p>Hi <%= @user.name %>
-
-<p>
-  Welcome to the UZW18 Book Collector Database. Click on the link below to activate your account:
-</p>
-
-<%= link_to 'Activate', edit_account_activation_url(@user.activation_token, email: @user.email) %>

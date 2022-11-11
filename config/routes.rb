@@ -36,11 +36,7 @@ Rails.application.routes.draw do
   resources :user_destructions, only: [:create]
   get 'user_destructions/new/:id', to: 'user_destructions#new', as: 'new_user_destructions'
 
-  # Session & user authentication stuff
-  get 'login', to: 'sessions#new'
-  post 'login', to: 'sessions#create'
-  get 'logout', to: 'sessions#destroy'
-
-  resources :account_activations, only: [:edit]
-  resources :password_resets, only: [:new, :create, :edit, :update]
+  # the whole service logic
+  get 'isbn_search/new', to: 'isbn_search#new'
+  post 'isbn_search/show', to: 'isbn_search#show'
 end

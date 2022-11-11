@@ -7,9 +7,9 @@
       <h1 class="heading1">Book Collector Database UZW18</h1>
       <div class="quickicons">
         <span class="quickicons__filler"></span>
-        <a href="#" title="scan book">
+        <%= link_to isbn_search_new_path, title: 'Scan Book' do %>
           <%= inline_svg_tag 'qr_code.svg', class: 'bigicon' %>
-        </a>
+        <% end %>
         <%= link_to new_book_path, title: 'Add Book' do %>
           <%= inline_svg_tag 'book.svg', class: 'bigicon' %>
         <% end %>

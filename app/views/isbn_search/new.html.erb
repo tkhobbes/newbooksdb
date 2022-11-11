@@ -1,0 +1,15 @@
+<%= page_title('Search for a Book','', 'heading2') %>
+
+  <%= form_with url: isbn_search_show_path, method: :post, data: {turbo: false} do |f| %>
+
+    <div class="big-form width-50">
+      <div class="form-col">
+        <div class="input">
+          <%= f.text_field :isbn , placeholder: 'ISBN' %>
+        </div>
+      </div>
+    </div>
+
+    <%= f.submit 'Search', class: 'btn' %>
+<% end %>
+
