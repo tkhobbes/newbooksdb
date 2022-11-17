@@ -39,4 +39,5 @@ Rails.application.routes.draw do
   # the whole service logic
   get 'isbn_search/new', to: 'isbn_search#new'
   post 'isbn_search/show', to: 'isbn_search#show'
+  post 'isbn_create/create', to: 'isbn_create#create'
 end

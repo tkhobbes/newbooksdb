@@ -10,6 +10,6 @@ class IsbnSearchController < ApplicationController
 
   # show the results
   def show
-    @results = Amazon.new(params[:isbn]).scrape_page
+    @results = AmazonSearch.new(params[:isbn]).scrape_page
   end
 end

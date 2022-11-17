@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # This service class deals with scraping data from amazon
-class Amazon
+class AmazonSearch
   attr_accessor :isbn, :search_results
 
   def initialize(input_isbn)
@@ -43,7 +43,8 @@ class Amazon
     item[:ASIN] = found_item.attributes['data-asin'].value
     item[:title] = found_item.css('h2').text
     item[:image_url] = found_item.css('img').first['srcset'].split(', ').last.split(' ').first
-    item[:url] = found_item.css('h2 a').first['href']
+    # no URL needed, we can use the ASIN to create the URL
+    # item[:url] = found_item.css('h2 a').first['href']
     return item
   end
 
