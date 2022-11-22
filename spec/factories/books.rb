@@ -8,10 +8,13 @@
 #  condition      :integer          default("not_given")
 #  country        :string(255)
 #  edition        :string(255)
+#  isbn           :string(255)
 #  original_title :string(255)
+#  pages          :integer
 #  rating         :integer          default("not_rated")
 #  slug           :string(255)
 #  sort_title     :string(255)
+#  source_url     :string(255)
 #  title          :string(255)      not null
 #  year           :integer
 #  created_at     :datetime         not null
@@ -21,10 +24,12 @@
 #  owner_id       :bigint           not null
 #  publisher_id   :integer
 #  shelf_id       :integer
+#  source_id      :string(255)
 #
 # Indexes
 #
 #  index_books_on_book_format_id      (book_format_id)
+#  index_books_on_isbn_and_owner_id   (isbn,owner_id) UNIQUE
 #  index_books_on_owner_id            (owner_id)
 #  index_books_on_slug                (slug) UNIQUE
 #  index_books_on_title_and_owner_id  (title,owner_id) UNIQUE

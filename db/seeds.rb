@@ -121,7 +121,9 @@ Book.create(
   tags: Owner.first.tags.sample(1),
   publisher: Publisher.first,
   country: 'Switzerland',
-  author: Author.first
+  author: Author.first,
+  pages: 1000,
+  isbn: '978-3-03835-000-0',
 )
 
 99.times do |index|
@@ -140,7 +142,9 @@ Book.create(
     tags: owner.tags.sample(2),
     country: Faker::Address.country,
     publisher: Publisher.all.sample,
-    author: Author.all.sample
+    author: Author.all.sample,
+    pages: Random.rand(100..1000),
+    isbn: Faker::Code.unique.isbn
   )
 
   cover_number = index.modulo(10) + 1
