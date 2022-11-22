@@ -3,19 +3,28 @@
 # This service class deals with scraping data from amazon and creating a book
 # it returns the book object which is saved to the database
 class AmazonCreate
-  attr_accessor :asin, :book_data, :final_message
+  attr_accessor :asin, :book_data, :final_message, :owner
 
   BASE_URL = 'https://www.amazon.de'
 
-  def initialize(asin)
+  def initialize(asin, owner)
     @asin = asin
     @book_data = {}
     @final_message = ''
+    @owner = owner
   end
 
+  # returns a book object if successful, nil if not
   def create_book
     book_results = crawl_book_page
     @book_data[:title] = get_book_title(book_results)
+    @book_data[:owner] = @owner
+    # Return early if the book already exists
+    if Book.exists?(@book_data)
+      @final_message = 'Book already exists'
+      return nil
+    end
+
     @book_data[:year] = get_book_year(book_results)
     @book_data[:edition] = get_book_edition(book_results)
     @book_data[:pages] = get_book_pages(book_results)
@@ -24,16 +33,29 @@ class AmazonCreate
 
     # author object returned that is already saved to the database or NIL if no author could be created
     author = AmazonAuthorCreate.new(get_author_link(book_results)).create_author
-    @final_message << 'Author could not be created. ' unless author
+    if author
+      @book_data[:author] = author
+    else
+      @final_message << 'Author could not be created'
+    end
 
-    # publisher
-    # puts result.css('#rpi-attribute-book_details-publisher .rpi-attribute-value').text.strip
-    # image
-    # puts result.css('#img-canvas img').first['src']
+    # publisher object returned that is already saved to the database or NIL if no author could be created
+    publisher = AmazonPublisherCreate.new(get_book_publisher(book_results)).create_publisher
+    if publisher
+      @book_data[:publisher] = publisher
+    else
+      @final_message << 'Publisher could not be created. '
+    end
 
-    # - also creates the publisher
-    # - creates the genres
-    # - attaches the image
+    # create the book object
+    book = Book.create(@book_data)
+    if book
+      # image
+      PictureAttacher.new(get_book_cover(book_results), book.cover).attach
+      return book
+    else
+      return nil
+    end
   end
 
   private
@@ -68,6 +90,14 @@ class AmazonCreate
 
   def get_author_link(result)
     result.css('#bylineInfo .author a.contributorNameID').first['href']
+  end
+
+  def get_book_publisher(result)
+    result.css('#rpi-attribute-book_details-publisher .rpi-attribute-value').text.strip
+  end
+
+  def get_book_cover(result)
+    result.css('#img-canvas img').first['src']
   end
 
 

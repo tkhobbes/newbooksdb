@@ -6,7 +6,7 @@ class IsbnCreateController < ApplicationController
   # create a book based on an ISBN / URL
   def create
     # use params[:identifier] to determine the Amazon URL
-    book = AmazonCreate.new(params[:identifier]).create_book
+    book = AmazonCreate.new(params[:identifier], current_owner).create_book
     if book
       redirect_to book_path(book)
     else

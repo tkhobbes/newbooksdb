@@ -13,7 +13,7 @@ class TurboDeviseController < ApplicationController
       elsif has_errors? && default_action
         render rendering_options.merge(formats: :html, status: :unprocessable_entity)
       else
-        navigation_location ||= root_path
+        #navigation_location ||= root_path
         redirect_to navigation_location
       end
       # rubocop:enable Style/GuardClause
