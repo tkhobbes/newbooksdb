@@ -94,3 +94,5 @@ gem 'pagy', '~> 5.10', '>= 5.10.1'
 gem 'search_cop', '~> 1.2', '>= 1.2.3'
 # Simple form for form inputs
 gem 'simple_form', '~> 5.1'
+# wrapper for http requests - using for picture grabbing
+gem 'open-uri', '~> 0.2.0'
