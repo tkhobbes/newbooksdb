@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 # This service class deals with scraping data from amazon
+# rubocop:disable all
 class AmazonSearch
   attr_accessor :isbn, :search_results
 
@@ -40,7 +41,7 @@ class AmazonSearch
 
   def create_item(found_item)
     item = {}
-    item[:ASIN] = found_item.attributes['data-asin'].value
+    item[:source_id] = found_item.attributes['data-asin'].value
     item[:title] = found_item.css('h2').text
     item[:image_url] = found_item.css('img').first['srcset'].split(', ').last.split(' ').first
     # no URL needed, we can use the ASIN to create the URL
@@ -49,3 +50,4 @@ class AmazonSearch
   end
 
 end
+# rubocop:enable all
