@@ -12,7 +12,9 @@ class AmazonAuthorCreate
   end
 
   def create_author
+    return if @author_url == BASE_URL
     author_data = get_author_data(crawl_author_page)
+    return unless author_data[:first_name] || author_data[:last_name]
     exist_data = {}
     exist_data[:first_name] = author_data[:first_name]
     exist_data[:last_name] = author_data[:last_name]
@@ -49,15 +51,15 @@ class AmazonAuthorCreate
   end
 
   def get_author_first_name(result)
-    result.css('#authorName h1').text.strip.split(' ').first
+    result.css('#authorName h1').text.strip.split(' ').first if result.css('#authorName h1')
   end
 
   def get_author_last_name(result)
-    result.css('#authorName h1').text.strip.split(' ').last
+    result.css('#authorName h1').text.strip.split(' ').last if result.css('#authorName h1')
   end
 
   def get_author_portrait_url(result)
-    result.css('#authorImage img').first['src']
+    result.css('#authorImage img').first['src'] if result.css('#authorImage img')
   end
 
 end

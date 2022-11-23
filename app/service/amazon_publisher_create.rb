@@ -9,6 +9,7 @@ class AmazonPublisherCreate
   end
 
   def create_publisher
+    return unless @name || name != ''
     publisher_data = {}
     publisher_data[:name] = @name
     if Publisher.exists?(publisher_data)
