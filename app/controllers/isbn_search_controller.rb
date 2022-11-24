@@ -11,6 +11,6 @@ class IsbnSearchController < ApplicationController
   # show the results
   def show
     #@results = AmazonSearch.new(params[:isbn]).scrape_page
-    @results = GoogleSearch.new(params[:isbn]).search_data
+    @results = Google::BookSearch.new(params[:isbn]).search_data
   end
 end
