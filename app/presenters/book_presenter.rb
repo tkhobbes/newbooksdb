@@ -9,7 +9,7 @@ class BookPresenter < SimpleDelegator
 
   # this method decorates the original title of a book into brackets
   def show_original_title(wrapper: '', wrapper_styles: '')
-    wrap_in("(#{original_title})", wrapper, wrapper_styles).html_safe if original_title
+    wrap_in("(#{original_title})", wrapper, wrapper_styles).html_safe if original_title.present?
   end
 
   # this method decorates the link to an author with an optional wrapper and styles

@@ -41,7 +41,7 @@ class PublishersController < ApplicationController
 
   # shows a publisher in detail and lists all books from that publisher
   def show
-    @pagy, @books = pagy(@publisher.books.includes([:owner, cover_attachment: :blob]))
+    @pagy, @books = pagy(@publisher.books.includes([:author, :owner, cover_attachment: :blob]))
   end
 
   #edit action - displayed in a turbo frame within the settings page

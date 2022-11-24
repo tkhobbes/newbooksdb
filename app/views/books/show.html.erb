@@ -57,7 +57,9 @@
     </div>
     <div class="margin-1">
       <!-- this needs to become a link to the profile path -->
-      <%= link_to 'Owned by ' + @book.owner.name, '#', class: 'color-accent-dark color-hover-accent' %>
+      <%= link_to "Owned by #{@book.owner.name}",
+        profile_path(current_owner.profile.id),
+        class: 'color-accent-dark color-hover-accent' %>
       <%== show_shelf(@book) %>
     </div>
     <%= @book.decorate.show_synopsis(
