@@ -10,7 +10,7 @@
     <% @results.each do |result| %>
       <li class="itemlist__item itemlist__border">
         <div class="itemlist__cover">
-          <%= image_tag result[:image_url] %>
+          <%= image_tag result[:image_url] if result[:image_url] %>
         </div>
         <div class="itemlist__title">
           <%= form_with url: isbn_create_create_path, method: :post, data: {turbo: false} do |f| %>

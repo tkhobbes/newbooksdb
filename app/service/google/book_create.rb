@@ -69,7 +69,9 @@ module Google
     end
 
     def get_cover_url
-      @json_data.dig(:volumeInfo, :imageLinks, :small) || @json_data.dig(:volumeInfo, :imageLinks, :thumbnail)
+      @json_data.dig(:volumeInfo, :imageLinks, :medium) ||
+        @json_data.dig(:volumeInfo, :imageLinks, :small) ||
+        @json_data.dig(:volumeInfo, :imageLinks, :thumbnail)
     end
 
     def get_url
