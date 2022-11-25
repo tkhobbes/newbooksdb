@@ -14,7 +14,7 @@
       <ul>
     </div>
     <div class="itemcard-big__footer margin-top-33 margin-bottom-33">
-      <%= link_to "Show all (#{publisher.books_count} books)...", publisher_path(publisher) %>
+      <%= publisher.decorate.more_books %>
     </div>
   </div>
 </div>
