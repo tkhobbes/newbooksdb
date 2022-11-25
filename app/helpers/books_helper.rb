@@ -38,11 +38,22 @@ module BooksHelper
     css_tag = cover_map[size][1]
 
     cover = book.cover
-    cover.attached? ? image_tag(cover.variant(resize_to_limit: [img_size, img_size])) : generate_book_cover_svg(css_tag)
+    if cover.attached?
+      cover_generate = cover.variant(resize_to_limit: [img_size, img_size])
+      options[:link] == "true" ? cover_with_link(book, cover_generate) : image_tag(cover_generate)
+    else
+      generate_book_cover_svg(css_tag)
+    end
   end
   # rubocop:enable Metrics/MethodLength
 
   private
+
+  def cover_with_link(book, cover)
+    link_to rails_blob_path(book.cover, disposition: "inline") do
+      image_tag(cover)
+    end
+  end
 
   # generates a SVG tag with the given class
   def generate_book_cover_svg(css)
