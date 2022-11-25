@@ -1,15 +1,39 @@
 <%= page_title('Search for a Book','', 'heading2') %>
 
-  <%= form_with url: isbn_search_show_path, method: :post, data: {turbo: false} do |f| %>
-
-    <div class="big-form width-50">
-      <div class="form-col">
-        <div class="input">
-          <%= f.text_field :isbn , placeholder: 'ISBN' %>
-        </div>
+<h3 class="heading3 margin-top-50">Search by ISBN</h3>
+<%= form_with url: isbn_search_show_path, method: :post, data: {turbo: false} do |f| %>
+  <div class="big-form width-50">
+    <div class="form-col">
+      <div class="input">
+        <%= f.text_field :isbn , placeholder: 'ISBN' %>
       </div>
     </div>
-
-    <%= f.submit 'Search', class: 'btn' %>
+  </div>
+  <%= f.submit 'Search', class: 'btn' %>
 <% end %>
 
+<h3 class="heading3 margin-top-1">...or Search by Title</h3>
+<%= form_with url: isbn_search_show_path, method: :post, data: {turbo: false} do |f| %>
+  <div class="big-form width-50">
+    <div class="form-col">
+      <div class="input">
+        <%= f.text_field :title , placeholder: 'Title' %>
+      </div>
+    </div>
+  </div>
+  <%= f.submit 'Search', class: 'btn' %>
+<% end %>
+
+<h3 class="heading3 margin-top-1">...or Search by Author Name</h3>
+<%= form_with url: isbn_search_show_path, method: :post, data: {turbo: false} do |f| %>
+
+  <div class="big-form width-50">
+    <div class="form-col">
+      <div class="input">
+        <%= f.text_field :author , placeholder: 'Author Name' %>
+      </div>
+    </div>
+  </div>
+
+  <%= f.submit 'Search', class: 'btn' %>
+<% end %>
