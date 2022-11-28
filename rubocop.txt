@@ -1,5 +1,5 @@
-Inspecting 86 files
-.......................................C.......C......................................
+Inspecting 99 files
+..........................................C.......C................................................
 
 Offenses:
 
@@ -13,4 +13,4 @@ app/models/tag.rb:21:3: C: Rails/UniqueValidationWithoutIndex: Uniqueness valida
   validates :name, presence: true, uniqueness: { scope: :owner_id }
   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-86 files inspected, 3 offenses detected, 2 offenses autocorrectable
+99 files inspected, 3 offenses detected, 2 offenses autocorrectable

@@ -1,4 +1,4 @@
-# frozen_string_literal: true
+# frozen_string_literal: true
 
 # This controller deals with creating books from an ISBN search
 class IsbnCreateController < ApplicationController
