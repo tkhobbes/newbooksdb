@@ -1,5 +1,16 @@
-<div class="itemcard-big min-width-25 max-width-33">
+<%= turbo_frame_tag publisher, class: 'itemcard-big min-width-25 max-width-33' do %>
   <div class="itemcard-big__content">
+    <% if owner_signed_in? %>
+      <%= render 'shared/crud_icons',
+        edit_path: edit_publisher_path(publisher),
+        delete_path: publisher_path(publisher),
+        item_name: publisher.name,
+        url: "/publishers/#{publisher.id}",
+        redirect_url: '/publishers',
+        edit_answer: 'html',
+        delete_answer: 'turbo'
+      %>
+    <% end %>
     <div class="itemcard-big__title">
       <h2 class="heading3">
         <%= publisher.name %>
@@ -17,4 +28,4 @@
       <%= publisher.decorate.more_books %>
     </div>
   </div>
-</div>
+<% end %>
