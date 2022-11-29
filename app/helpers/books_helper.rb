@@ -15,6 +15,13 @@ module BooksHelper
     end
   end
 
+  def scoped_books_path(show_hash)
+    unless current_scopes.empty?
+      show_hash.merge!(current_scopes)
+    end
+    books_path(show_hash)
+  end
+
   # store the number of books in a cache
   def books_count
     Rails.cache.fetch('books-count') { Book.count }
