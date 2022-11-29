@@ -1,0 +1,6 @@
+<% if picture %>
+  <%= image_tag picture, class: 'searchresult' %>
+  <%= image_tag picture, class: 'searchresult__hover' %>
+<% else %>
+  <%= inline_svg_tag 'book.svg', class: 'searchresult-svg' %>
+<% end %>

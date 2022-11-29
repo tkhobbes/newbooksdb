@@ -1,0 +1,31 @@
+.search_cover {
+  position: relative;
+}
+
+.searchresult {
+  //width: 50px;
+  //vertical-align: middle;
+  transition: all 0.5s ease;
+
+  &:hover + .searchresult__hover {
+    visibility: visible;
+  }
+}
+
+.searchresult__hover {
+  position: absolute;
+  height: 10em;
+  left: -1rem;
+  top: -1rem;
+  visibility: hidden;
+  z-index: 10;
+  box-shadow: 5px 5px 10px $color-black;
+
+  &:hover {
+    visibility: visible;
+  }
+}
+
+.itemlist__border:first-child:hover {
+  overflow: visible;
+}

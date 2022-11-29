@@ -10,6 +10,9 @@
         <%= link_to isbn_search_new_path, title: 'Scan Book' do %>
           <%= inline_svg_tag 'qr_code.svg', class: 'bigicon' %>
         <% end %>
+        <%= link_to isbn_search_new_path, title: 'Search Book Online' do %>
+          <%= inline_svg_tag 'doc_search.svg', class: 'bigicon' %>
+        <% end %>
         <%= link_to new_book_path, title: 'Add Book' do %>
           <%= inline_svg_tag 'book.svg', class: 'bigicon' %>
         <% end %>
