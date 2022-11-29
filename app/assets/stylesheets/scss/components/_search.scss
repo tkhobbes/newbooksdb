@@ -11,6 +11,7 @@
     @extend .color-grey-white;
     border-radius: $base-border-radius;
     @extend .border-color-white;
+    justify-content: space-between;
 
     input {
       background-color: inherit;
