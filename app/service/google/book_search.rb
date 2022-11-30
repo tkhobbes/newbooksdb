@@ -20,7 +20,7 @@ module Google
     end
 
     def search_isbn
-      jsondoc = JSON.parse(URI.parse(parse_isbn_url).open.read, symbolize_names: true)
+      jsondoc = JSON.parse(Faraday.get(parse_isbn_url).body, symbolize_names: true)
       return @search_results if jsondoc[:totalItems].zero?
       jsondoc[:items].each do |item|
         @search_results << create_item(item)
@@ -29,7 +29,7 @@ module Google
     end
 
     def search_title
-      jsondoc = JSON.parse(URI.parse(parse_title_url).open.read, symbolize_names: true)
+      jsondoc = JSON.parse(Faraday.get(parse_title_url).body, symbolize_names: true)
       return @search_results if jsondoc[:totalItems].zero?
       jsondoc[:items].each do |item|
         @search_results << create_item(item)
@@ -38,7 +38,7 @@ module Google
     end
 
     def search_author
-      jsondoc = JSON.parse(URI.parse(parse_author_url).open.read, symbolize_names: true)
+      jsondoc = JSON.parse(Faraday.get(parse_author_url).body, symbolize_names: true)
       return @search_results if jsondoc[:totalItems].zero?
       jsondoc[:items].each do |item|
         @search_results << create_item(item)

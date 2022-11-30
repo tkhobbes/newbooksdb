@@ -17,7 +17,7 @@ module Google
     # this method smells of :reek:TooManyStatements
     def create_book
       @json_data = fetch_json_data
-      return nil, 'Something went wrong at the backend.' if @json_data.empty
+      return nil, 'Something went wrong at the backend.' if @json_data.empty?
       return nil, 'Book already exists.' if Book.exists?(title: @json_data.dig(:volumeInfo, :title), owner: @owner)
       author = Google::AuthorCreate.new(@json_data.dig(:volumeInfo, :authors)).create_author
       publisher = Google::PublisherCreate.new(@json_data.dig(:volumeInfo, :publisher)).create_publisher
@@ -31,8 +31,8 @@ module Google
 
     # returns a json document of the google book api data
     def fetch_json_data
-      JSON.parse(URI.parse(parse_url).open.read, symbolize_names: true)
-    rescue OpenURI::HTTPError
+      JSON.parse(Faraday.get(parse_url).body, symbolize_names: true)
+    rescue Faraday::ConnectionFailed
       nil
     end
 

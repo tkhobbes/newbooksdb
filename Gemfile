@@ -96,3 +96,5 @@ gem 'search_cop', '~> 1.2', '>= 1.2.3'
 gem 'simple_form', '~> 5.1'
 # wrapper for http requests - using for picture grabbing
 gem 'open-uri', '~> 0.2.0'
+# Faraday for safer http requests
+gem 'faraday', '~> 2.7', '>= 2.7.1'

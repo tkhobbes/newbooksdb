@@ -17,9 +17,10 @@ class PictureAttacher
     # workaround if file is too small
     # found here: https://gist.github.com/janko/7cd94b8b4dd113c2c193
     if picture_attach.is_a?(StringIO)
-        tempfile = Tempfile.new('open-uri', binmode: true)
-        IO.copy_stream(picture_attach, tempfile.path)
-        picture_attach = tempfile
+        tempfile = Tempfile.new('open-uri', binmode: true) do
+          IO.copy_stream(picture_attach, tempfile.path)
+          picture_attach = tempfile
+        end
     end
     picture_name = File.basename(picture_attach.path)
     @attachment_field.attach(io: picture_attach, filename: picture_name)
