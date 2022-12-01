@@ -19,7 +19,7 @@ directories:
   "app/models":
     InstanceVariableAssumption:
       enabled: false
-  "app/service":
+  "app/service/amazon":
     Attribute:
       enabled: false
     ControlParameter:

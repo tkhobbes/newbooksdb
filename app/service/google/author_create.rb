@@ -3,7 +3,6 @@
 module Google
   # service object to create author from google api response
   class AuthorCreate
-    attr_accessor :author
 
     # accepts authors - which could be an array or a string
     # we set the author to the first name in the array if it is an array

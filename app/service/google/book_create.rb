@@ -3,7 +3,6 @@
 module Google
   # service object to create a book from the google API
   class BookCreate
-    attr_accessor :id, :owner, :json_data
 
     BASE_URL = 'https://www.googleapis.com/books/v1/volumes/'
 
@@ -77,7 +76,7 @@ module Google
     end
 
     def parse_url
-      "#{BASE_URL}#{id}#{add_key}"
+      "#{BASE_URL}#{@id}#{add_key}"
     end
 
     # this method smells of :reek:UtilityFunction

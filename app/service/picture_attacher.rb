@@ -2,7 +2,6 @@
 
 # this service class attaches pictures via active storage
 class PictureAttacher
-  attr_accessor :picture_url, :attachment_field
 
   def initialize(picture_url, attachment_field)
     @picture_url = picture_url

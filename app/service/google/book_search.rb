@@ -4,7 +4,6 @@ module Google
   # this service object searches for books and gives back an array of book items
   # this class smells of :reek:RepeatedConditional
   class BookSearch
-    attr_accessor :isbn, :title, :author, :search_results
 
     BASE_URL = 'https://www.googleapis.com/books/v1/volumes?'
     ISBN_ADDER = 'q=isbn:'
