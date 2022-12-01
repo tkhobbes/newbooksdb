@@ -28,11 +28,11 @@
 #
 # Indexes
 #
-#  index_books_on_book_format_id      (book_format_id)
-#  index_books_on_isbn_and_owner_id   (isbn,owner_id) UNIQUE
-#  index_books_on_owner_id            (owner_id)
-#  index_books_on_slug                (slug) UNIQUE
-#  index_books_on_title_and_owner_id  (title,owner_id) UNIQUE
+#  index_books_on_book_format_id          (book_format_id)
+#  index_books_on_isbn_and_owner_id       (isbn,owner_id) UNIQUE
+#  index_books_on_owner_id                (owner_id)
+#  index_books_on_slug                    (slug) UNIQUE
+#  index_books_on_source_id_and_owner_id  (source_id,owner_id) UNIQUE
 #
 # Foreign Keys
 #

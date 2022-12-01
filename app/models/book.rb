@@ -28,11 +28,11 @@
 #
 # Indexes
 #
-#  index_books_on_book_format_id      (book_format_id)
-#  index_books_on_isbn_and_owner_id   (isbn,owner_id) UNIQUE
-#  index_books_on_owner_id            (owner_id)
-#  index_books_on_slug                (slug) UNIQUE
-#  index_books_on_title_and_owner_id  (title,owner_id) UNIQUE
+#  index_books_on_book_format_id          (book_format_id)
+#  index_books_on_isbn_and_owner_id       (isbn,owner_id) UNIQUE
+#  index_books_on_owner_id                (owner_id)
+#  index_books_on_slug                    (slug) UNIQUE
+#  index_books_on_source_id_and_owner_id  (source_id,owner_id) UNIQUE
 #
 # Foreign Keys
 #
@@ -106,10 +106,15 @@ class Book < ApplicationRecord
   # checks whether a source ID is available - if not, create a dummy one
 
   def check_source_id
-    self.source_id = "#{self.owner_id}-#{Digest::UUID.uuid_v3(Digest::UUID::DNS_NAMESPACE, Book.last.id.to_s)}" if source_id.blank?
+    self.source_id = "#{self.owner_id}-#{create_id}" if source_id.blank?
   end
 
   def check_isbn
-    self.isbn = "dummy-#{self.owner_id}-#{Digest::UUID.uuid_v3(Digest::UUID::DNS_NAMESPACE, Book.last.id.to_s)}" if isbn.blank?
+    self.isbn = "dummy-#{self.owner_id}-#{create_id}" if isbn.blank?
+  end
+
+  def create_id
+    book_id = Book.last ? Book.last.id.to_s : '0'
+    Digest::UUID.uuid_v3(Digest::UUID::DNS_NAMESPACE, book_id)
   end
 end

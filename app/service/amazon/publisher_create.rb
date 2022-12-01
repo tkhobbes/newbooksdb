@@ -3,7 +3,7 @@
 # service class to create a publisher object
 # rubocop:disable all
 module Amazon
-  class AmazonPublisherCreate
+  class PublisherCreate
     attr_accessor :name
 
     def initialize(name)
