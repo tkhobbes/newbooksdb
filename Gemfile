@@ -15,14 +15,14 @@ gem 'rails', '~> 7.0.3'
 gem 'tzinfo-data', platforms: %i[ mingw mswin x64_mingw jruby ]
 
 group :development, :test do
-  gem 'capybara', '~> 3.37', '>= 3.37.1'
+  gem 'capybara', '>= 3.37.1'
   gem 'debug', platforms: %i[ mri mingw x64_mingw ]
-  gem 'factory_bot_rails', '~> 6.2'
-  gem 'faker', '~> 2.21'
-  gem 'pry-rails', '~> 0.3.9'
-  gem 'rails-controller-testing', '~> 1.0', '>= 1.0.5'
-  gem 'rspec-rails', '~> 6.0.0.rc1'
-  gem 'webdrivers', '~> 5.0'
+  gem 'factory_bot_rails'
+  gem 'faker'
+  gem 'pry-rails'
+  gem 'rails-controller-testing', '>= 1.0.5'
+  gem 'rspec-rails'
+  gem 'webdrivers'
 end
 
 group :development do
@@ -33,25 +33,25 @@ group :development do
   # gem "spring"
 
   # Dev Tools
-  gem 'annotate', '~> 3.2'
-  gem 'better_errors', '~> 2.9', '>= 2.9.1'
-  gem 'binding_of_caller', '~> 1.0' # required for better_errors
-  gem 'bullet', '~> 7.0.2'
-  gem 'database_consistency', '~> 1.1', '>= 1.1.15'
-  gem 'letter_opener', '~> 1.8', '>= 1.8.1'
-  gem 'rails-erd', '1.7.0'
-  gem 'reek', '~> 6.1', '>= 6.1.1'
-  gem 'rubocop', ' ~> 1.30.1', require: false
-  gem 'rubocop-performance', ' ~> 1.14.2', require: false
-  gem 'rubocop-rails', '~> 2.14.2', require: false
-  gem 'rubocop-rspec', '~> 2.11', '>= 2.11.1', require: false
-  gem 'solargraph', '~> 0.47.2'
-  gem 'solargraph-rails', '~> 0.3.1'
+  gem 'annotate'
+  gem 'better_errors', '>= 2.9.1'
+  gem 'binding_of_caller' # required for better_errors
+  gem 'bullet'
+  gem 'database_consistency', '>= 1.1.15'
+  gem 'letter_opener', '>= 1.8.1'
+  gem 'rails-erd'
+  gem 'reek', '>= 6.1.1'
+  gem 'rubocop', require: false
+  gem 'rubocop-performance', require: false
+  gem 'rubocop-rails', require: false
+  gem 'rubocop-rspec', '>= 2.11.1', require: false
+  gem 'solargraph'
+  gem 'solargraph-rails'
 end
 
 group :test do
-  gem 'database_cleaner-active_record', '~> 2.0', '>= 2.0.1'
-  gem 'simplecov', '~> 0.21.2'
+  gem 'database_cleaner-active_record', '>= 2.0.1'
+  gem 'simplecov'
 end
 
 # Database
@@ -61,8 +61,8 @@ gem 'redis', '~> 4.6.0'
 gem 'kredis', '~> 1.3'
 
 # Turbo and Stimulus
-gem 'stimulus-rails', '~> 1.1.0' # was 1.0.4
-gem 'turbo-rails', '~> 1.3.0' # was 1.1.1
+gem 'stimulus-rails'
+gem 'turbo-rails'
 
 # Assets, Javascript, CSS
 gem 'cssbundling-rails', '~> 1.1.0'
@@ -71,30 +71,32 @@ gem 'requestjs-rails', '~> 0.0.9'
 gem 'sprockets-rails', '~> 3.4.2'
 
 # Image processing etc
-gem 'image_processing', '~> 1.12.2'
+gem 'image_processing'
 
 # Core application Gems
 # go back to previous pages easily
-gem 'backpedal', '~> 0.2.1'
+gem 'backpedal'
 # country selection for books
-gem 'country_select', '~> 8.0'
+gem 'country_select'
 # authentication with devise
 gem 'devise', '~> 4.8', '>= 4.8.1'
-# use nice IDs instead of numbers
-gem 'friendly_id', '~> 5.4', '>= 5.4.2'
-# using scoped routes for our shelves etc
-gem 'has_scope', '~> 0.8.0'
-# better way to use SVGs
-gem 'inline_svg', '~> 1.8'
-# web crawler
-gem 'metainspector', '~> 5.13'
-# Pagination for large collections
-gem 'pagy', '~> 5.10', '>= 5.10.1'
-# Search
-gem 'search_cop', '~> 1.2', '>= 1.2.3'
-# Simple form for form inputs
-gem 'simple_form', '~> 5.1'
-# wrapper for http requests - using for picture grabbing
-gem 'open-uri', '~> 0.2.0'
 # Faraday for safer http requests
-gem 'faraday', '~> 2.7', '>= 2.7.1'
+gem 'faraday', '>= 2.7.1'
+# use nice IDs instead of numbers
+gem 'friendly_id', '>= 5.4.2'
+# using scoped routes for our shelves etc
+gem 'has_scope'
+# better way to use SVGs
+gem 'inline_svg'
+# web crawler
+gem 'metainspector'
+# wrapper for http requests - using for picture grabbing
+gem 'open-uri'
+# Pagination for large collections
+gem 'pagy', '>= 5.10.1'
+# Search
+gem 'search_cop', '>= 1.2.3'
+# Simple form for form inputs
+gem 'simple_form'
+
+
