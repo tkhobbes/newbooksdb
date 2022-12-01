@@ -42,6 +42,7 @@ class Book < ApplicationRecord
   validates :title, presence: true, uniqueness: { scope: :owner_id }
 
   before_save :create_sort_title
+  before_save :check_source_id
 
   include SearchCop
   # search cop setup
@@ -100,5 +101,15 @@ class Book < ApplicationRecord
   def create_sort_title
     self.sort_title = title.gsub(/^ein |^eine |^der |^die |^das |^the |^a |^an /i, '').gsub(/'|"|!|\?|-/, '').gsub(
 /(?<!\w) /,'').downcase
+  end
+
+  # checks whether a source ID is available - if not, create a dummy one
+
+  def check_source_id
+    self.source_id = "#{self.owner_id}-#{Digest::UUID.uuid_v3(Digest::UUID::DNS_NAMESPACE, Book.last.id.to_s)}" if source_id.blank?
+  end
+
+  def check_isbn
+    self.isbn = "dummy-#{self.owner_id}-#{Digest::UUID.uuid_v3(Digest::UUID::DNS_NAMESPACE, Book.last.id.to_s)}" if isbn.blank?
   end
 end

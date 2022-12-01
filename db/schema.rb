@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_22_121258) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_01_124458) do
   create_table "action_text_rich_texts", charset: "utf8mb4", force: :cascade do |t|
     t.string "name", null: false
     t.text "body", size: :long
@@ -100,7 +100,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_22_121258) do
     t.index ["isbn", "owner_id"], name: "index_books_on_isbn_and_owner_id", unique: true
     t.index ["owner_id"], name: "index_books_on_owner_id"
     t.index ["slug"], name: "index_books_on_slug", unique: true
-    t.index ["title", "owner_id"], name: "index_books_on_title_and_owner_id", unique: true
+    t.index ["source_id", "owner_id"], name: "index_books_on_source_id_and_owner_id", unique: true
   end
 
   create_table "books_authors", charset: "utf8mb4", force: :cascade do |t|
