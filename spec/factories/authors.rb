@@ -20,8 +20,10 @@
 #
 # Indexes
 #
+#  index_authors_on_display_name              (display_name)
 #  index_authors_on_first_name_and_last_name  (first_name,last_name) UNIQUE
 #  index_authors_on_slug                      (slug) UNIQUE
+#  index_authors_on_sort_name                 (sort_name)
 #
 FactoryBot.define do
   factory :author do

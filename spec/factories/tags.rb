@@ -13,8 +13,13 @@
 #
 # Indexes
 #
+#  index_tags_on_name      (name)
 #  index_tags_on_owner_id  (owner_id)
 #  index_tags_on_slug      (slug) UNIQUE
+#
+# Foreign Keys
+#
+#  fk_rails_...  (owner_id => owners.id)
 #
 FactoryBot.define do
   factory :tag do

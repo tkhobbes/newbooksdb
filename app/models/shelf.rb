@@ -13,8 +13,13 @@
 #
 # Indexes
 #
+#  index_shelves_on_name               (name)
 #  index_shelves_on_name_and_owner_id  (name,owner_id) UNIQUE
 #  index_shelves_on_owner_id           (owner_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (owner_id => owners.id)
 #
 class Shelf < ApplicationRecord
   # each shelf must have a name (but not necessarily unique, as different owners can have shelfs with the same name)

@@ -25,6 +25,8 @@ class Owner < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  validates :email, presence: true, uniqueness: true
+
   # convert e-mail address to lowercase before saving
   before_save :downcase_email
 

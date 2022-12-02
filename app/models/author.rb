@@ -20,12 +20,16 @@
 #
 # Indexes
 #
+#  index_authors_on_display_name              (display_name)
 #  index_authors_on_first_name_and_last_name  (first_name,last_name) UNIQUE
 #  index_authors_on_slug                      (slug) UNIQUE
+#  index_authors_on_sort_name                 (sort_name)
 #
 class Author < ApplicationRecord
   # must have a unique combination of first name and last name
   validates :first_name, uniqueness: { scope: :last_name }
+  validates :first_name, presence: true, unless: :last_name
+  validates :last_name, presence: true, unless: :first_name
 
   has_one_attached :portrait
 

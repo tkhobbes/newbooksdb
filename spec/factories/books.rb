@@ -19,24 +19,35 @@
 #  year           :integer
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
-#  author_id      :integer
+#  author_id      :bigint
 #  book_format_id :bigint           not null
 #  owner_id       :bigint           not null
-#  publisher_id   :integer
-#  shelf_id       :integer
+#  publisher_id   :bigint
+#  shelf_id       :bigint
 #  source_id      :string(255)
 #
 # Indexes
 #
+#  fk_rails_53d51ce16a                    (author_id)
+#  fk_rails_5e29c313c6                    (shelf_id)
+#  fk_rails_d7ae2b039e                    (publisher_id)
 #  index_books_on_book_format_id          (book_format_id)
+#  index_books_on_isbn                    (isbn)
 #  index_books_on_isbn_and_owner_id       (isbn,owner_id) UNIQUE
+#  index_books_on_original_title          (original_title)
 #  index_books_on_owner_id                (owner_id)
 #  index_books_on_slug                    (slug) UNIQUE
+#  index_books_on_source_id               (source_id)
 #  index_books_on_source_id_and_owner_id  (source_id,owner_id) UNIQUE
+#  index_books_on_title                   (title)
 #
 # Foreign Keys
 #
+#  fk_rails_...  (author_id => authors.id)
 #  fk_rails_...  (book_format_id => book_formats.id)
+#  fk_rails_...  (owner_id => owners.id)
+#  fk_rails_...  (publisher_id => publishers.id)
+#  fk_rails_...  (shelf_id => shelves.id)
 #
 
 # rubocop:disable Metrics/BlockLength

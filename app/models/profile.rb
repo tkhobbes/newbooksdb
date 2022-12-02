@@ -13,6 +13,7 @@
 #
 # Indexes
 #
+#  index_profiles_on_name      (name)
 #  index_profiles_on_owner_id  (owner_id)
 #
 # Foreign Keys

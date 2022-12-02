@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_01_124458) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_02_150725) do
   create_table "action_text_rich_texts", charset: "utf8mb4", force: :cascade do |t|
     t.string "name", null: false
     t.text "body", size: :long
@@ -62,8 +62,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_01_124458) do
     t.integer "books_count"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["display_name"], name: "index_authors_on_display_name"
     t.index ["first_name", "last_name"], name: "index_authors_on_first_name_and_last_name", unique: true
     t.index ["slug"], name: "index_authors_on_slug", unique: true
+    t.index ["sort_name"], name: "index_authors_on_sort_name"
   end
 
   create_table "book_formats", charset: "utf8mb4", force: :cascade do |t|
@@ -87,20 +89,27 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_01_124458) do
     t.string "slug"
     t.bigint "book_format_id", null: false
     t.string "original_title"
-    t.integer "shelf_id"
-    t.integer "publisher_id"
+    t.bigint "shelf_id"
+    t.bigint "publisher_id"
     t.string "country"
-    t.integer "author_id"
+    t.bigint "author_id"
     t.bigint "owner_id", null: false
     t.string "isbn"
     t.integer "pages"
     t.string "source_id"
     t.string "source_url"
+    t.index ["author_id"], name: "fk_rails_53d51ce16a"
     t.index ["book_format_id"], name: "index_books_on_book_format_id"
     t.index ["isbn", "owner_id"], name: "index_books_on_isbn_and_owner_id", unique: true
+    t.index ["isbn"], name: "index_books_on_isbn"
+    t.index ["original_title"], name: "index_books_on_original_title"
     t.index ["owner_id"], name: "index_books_on_owner_id"
+    t.index ["publisher_id"], name: "fk_rails_d7ae2b039e"
+    t.index ["shelf_id"], name: "fk_rails_5e29c313c6"
     t.index ["slug"], name: "index_books_on_slug", unique: true
     t.index ["source_id", "owner_id"], name: "index_books_on_source_id_and_owner_id", unique: true
+    t.index ["source_id"], name: "index_books_on_source_id"
+    t.index ["title"], name: "index_books_on_title"
   end
 
   create_table "books_authors", charset: "utf8mb4", force: :cascade do |t|
@@ -114,6 +123,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_01_124458) do
   create_table "books_genres", id: false, charset: "utf8mb4", force: :cascade do |t|
     t.bigint "genre_id", null: false
     t.bigint "book_id", null: false
+    t.index ["book_id", "genre_id"], name: "index_books_genres_on_book_id_and_genre_id", unique: true
+    t.index ["book_id"], name: "index_books_genres_on_book_id"
+    t.index ["genre_id"], name: "index_books_genres_on_genre_id"
   end
 
   create_table "genres", charset: "utf8mb4", force: :cascade do |t|
@@ -144,6 +156,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_01_124458) do
     t.bigint "owner_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_profiles_on_name"
     t.index ["owner_id"], name: "index_profiles_on_owner_id"
   end
 
@@ -165,11 +178,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_01_124458) do
     t.integer "books_count"
     t.bigint "owner_id", null: false
     t.index ["name", "owner_id"], name: "index_shelves_on_name_and_owner_id", unique: true
+    t.index ["name"], name: "index_shelves_on_name"
     t.index ["owner_id"], name: "index_shelves_on_owner_id"
   end
 
   create_table "taggings", charset: "utf8mb4", force: :cascade do |t|
-    t.integer "tag_id", null: false
+    t.bigint "tag_id", null: false
     t.string "taggable_type"
     t.integer "taggable_id"
     t.datetime "created_at", null: false
@@ -183,14 +197,24 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_01_124458) do
     t.datetime "updated_at", null: false
     t.string "slug"
     t.bigint "owner_id", null: false
+    t.index ["name"], name: "index_tags_on_name"
     t.index ["owner_id"], name: "index_tags_on_owner_id"
     t.index ["slug"], name: "index_tags_on_slug", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "books", "authors"
   add_foreign_key "books", "book_formats"
+  add_foreign_key "books", "owners"
+  add_foreign_key "books", "publishers"
+  add_foreign_key "books", "shelves"
   add_foreign_key "books_authors", "authors"
   add_foreign_key "books_authors", "books"
+  add_foreign_key "books_genres", "books"
+  add_foreign_key "books_genres", "genres"
   add_foreign_key "profiles", "owners"
+  add_foreign_key "shelves", "owners"
+  add_foreign_key "taggings", "tags"
+  add_foreign_key "tags", "owners"
 end
