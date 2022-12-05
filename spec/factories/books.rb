@@ -8,6 +8,7 @@
 #  condition      :integer          default("not_given")
 #  country        :string(255)
 #  edition        :string(255)
+#  identifier     :string(255)
 #  isbn           :string(255)
 #  original_title :string(255)
 #  pages          :integer
@@ -24,22 +25,21 @@
 #  owner_id       :bigint           not null
 #  publisher_id   :bigint
 #  shelf_id       :bigint
-#  source_id      :string(255)
 #
 # Indexes
 #
-#  fk_rails_53d51ce16a                    (author_id)
-#  fk_rails_5e29c313c6                    (shelf_id)
-#  fk_rails_d7ae2b039e                    (publisher_id)
-#  index_books_on_book_format_id          (book_format_id)
-#  index_books_on_isbn                    (isbn)
-#  index_books_on_isbn_and_owner_id       (isbn,owner_id) UNIQUE
-#  index_books_on_original_title          (original_title)
-#  index_books_on_owner_id                (owner_id)
-#  index_books_on_slug                    (slug) UNIQUE
-#  index_books_on_source_id               (source_id)
-#  index_books_on_source_id_and_owner_id  (source_id,owner_id) UNIQUE
-#  index_books_on_title                   (title)
+#  fk_rails_53d51ce16a                     (author_id)
+#  fk_rails_5e29c313c6                     (shelf_id)
+#  fk_rails_d7ae2b039e                     (publisher_id)
+#  index_books_on_book_format_id           (book_format_id)
+#  index_books_on_identifier               (identifier)
+#  index_books_on_identifier_and_owner_id  (identifier,owner_id) UNIQUE
+#  index_books_on_isbn                     (isbn)
+#  index_books_on_isbn_and_owner_id        (isbn,owner_id) UNIQUE
+#  index_books_on_original_title           (original_title)
+#  index_books_on_owner_id                 (owner_id)
+#  index_books_on_slug                     (slug) UNIQUE
+#  index_books_on_title                    (title)
 #
 # Foreign Keys
 #

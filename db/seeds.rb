@@ -123,7 +123,7 @@ Book.create(
   country: 'Switzerland',
   author: Author.first,
   pages: 1000,
-  isbn: '978-3-03835-000-0',
+  isbn: 'dummy-isbn-1',
 )
 
 99.times do |index|

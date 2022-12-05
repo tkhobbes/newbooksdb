@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_02_150725) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_05_101420) do
   create_table "action_text_rich_texts", charset: "utf8mb4", force: :cascade do |t|
     t.string "name", null: false
     t.text "body", size: :long
@@ -96,10 +96,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_02_150725) do
     t.bigint "owner_id", null: false
     t.string "isbn"
     t.integer "pages"
-    t.string "source_id"
+    t.string "identifier"
     t.string "source_url"
     t.index ["author_id"], name: "fk_rails_53d51ce16a"
     t.index ["book_format_id"], name: "index_books_on_book_format_id"
+    t.index ["identifier", "owner_id"], name: "index_books_on_identifier_and_owner_id", unique: true
+    t.index ["identifier"], name: "index_books_on_identifier"
     t.index ["isbn", "owner_id"], name: "index_books_on_isbn_and_owner_id", unique: true
     t.index ["isbn"], name: "index_books_on_isbn"
     t.index ["original_title"], name: "index_books_on_original_title"
@@ -107,8 +109,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_02_150725) do
     t.index ["publisher_id"], name: "fk_rails_d7ae2b039e"
     t.index ["shelf_id"], name: "fk_rails_5e29c313c6"
     t.index ["slug"], name: "index_books_on_slug", unique: true
-    t.index ["source_id", "owner_id"], name: "index_books_on_source_id_and_owner_id", unique: true
-    t.index ["source_id"], name: "index_books_on_source_id"
     t.index ["title"], name: "index_books_on_title"
   end
 

@@ -42,7 +42,7 @@ module Google
         pages: @json_data.dig(:volumeInfo, :pageCount),
         isbn: parse_isbn13 || parse_isbn10,
         synopsis: @json_data.dig(:volumeInfo, :description),
-        source_id: @json_data[:id],
+        identifier: @json_data[:id],
         book_format: BookFormat.find_by(fallback: true),
         owner: @owner
       }

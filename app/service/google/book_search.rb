@@ -72,7 +72,7 @@ module Google
     # this method smells of :reek:UtilityFunction
     def create_item(found_item)
       item = {}
-      item[:source_id] = found_item[:id]
+      item[:identifier] = found_item[:id]
       item[:title] = found_item.dig(:volumeInfo, :title)
       item[:image_url] = found_item.dig(:volumeInfo, :imageLinks, :thumbnail)
       item

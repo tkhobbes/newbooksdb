@@ -42,7 +42,7 @@ module Amazon
 
     def create_item(found_item)
       item = {}
-      item[:source_id] = found_item.attributes['data-asin'].value
+      item[:identifier] = found_item.attributes['data-asin'].value
       item[:title] = found_item.css('h2').text
       item[:image_url] = found_item.css('img').first['srcset'].split(', ').last.split(' ').first
       # no URL needed, we can use the ASIN to create the URL
