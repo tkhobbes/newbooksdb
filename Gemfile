@@ -88,6 +88,8 @@ gem 'friendly_id', '>= 5.4.2'
 gem 'has_scope'
 # better way to use SVGs
 gem 'inline_svg'
+# mediawiki crawler
+gem 'mediawiki-butt'
 # web crawler
 gem 'metainspector'
 # wrapper for http requests - using for picture grabbing
