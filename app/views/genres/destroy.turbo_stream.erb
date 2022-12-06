@@ -1,1 +1,4 @@
 <%= turbo_stream.remove @genre %>
+<%= turbo_stream.replace 'genres_count' do %>
+  <%= render 'genres/genres_count' %>
+<% end %>

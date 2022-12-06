@@ -1,1 +1,4 @@
 <%= turbo_stream.remove @book %>
+<%= turbo_stream.replace 'books_count' do %>
+  <%= render 'books/books_count' %>
+<% end %>

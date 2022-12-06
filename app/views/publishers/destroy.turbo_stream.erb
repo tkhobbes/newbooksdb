@@ -1,1 +1,4 @@
 <%= turbo_stream.remove @publisher %>
+<%= turbo_stream.replace 'publishers_count' do %>
+  <%= render 'publishers/publishers_count' %>
+<% end %>

@@ -1,10 +1,15 @@
 <footer class="footer">
   <p>
-    <%= books_count %> Books
-    from <%= publishers_count %> Publishers
-    by <%= authors_count %> Authors,
-    across <%= genres_count %> Genres
-    in <%= shelves_count %> Shelves
-    for <%= owners_count %> Owners.
+    <%= render 'books/books_count' %>
+    from
+    <%= render 'publishers/publishers_count' %>
+    by
+    <%= render 'authors/authors_count' %>,
+    across
+    <%= render 'genres/genres_count' %>
+    in
+    <%= render 'shelves/shelves_count' %>
+    for
+    <%= render 'profiles/profiles_count' %>.
   </p>
 </footer>

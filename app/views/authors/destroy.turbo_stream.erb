@@ -1,1 +1,4 @@
 <%= turbo_stream.remove @author %>
+<%= turbo_stream.replace 'authors_count' do %>
+  <%= render 'authors/authors_count' %>
+<% end %>

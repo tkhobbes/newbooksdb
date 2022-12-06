@@ -1,1 +1,4 @@
 <%= turbo_stream.remove @shelf %>
+<%= turbo_stream.replace 'shelves_count' do %>
+  <%= render 'shelves/shelves_count' %>
+<% end %>
