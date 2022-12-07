@@ -1,0 +1,28 @@
+<%= page_title("Welcome to the UZW18 Books Database #{current_owner&.name}",'', 'heading2') %>
+<% if current_owner %>
+  Not you? <%= button_to 'Logout', destroy_owner_session_path, method: 'delete', class: 'btn btn-primary nobutton' %>
+<% else %>
+  Want to register your books? Come and
+  <%= link_to 'Log in', new_owner_session_path %> or
+  <%= link_to 'Sign up', new_owner_registration_path %>
+<% end %>
+<h3 class="heading3 margin-top-1">All Our Genres</h3>
+<div class="genre-cloud">
+<% genre_cloud.each do |genre| %>
+  <span class="genre-cloud-item cloud-size-<%= cloudsize(genre[:size], Book.all.size) %>">
+    <%= link_to genre[:name], genre_path(genre[:id]) %>
+  </span>
+<% end %>
+</div>
+Cloud item test:
+<div class="cloud-size-1">Size 1</div>
+<div class="cloud-size-2">Size 2</div>
+<div class="cloud-size-3">Size 3</div>
+<div class="cloud-size-4">Size 4</div>
+<div class="cloud-size-5">Size 5</div>
+<div class="cloud-size-6">Size 6</div>
+<div class="cloud-size-7">Size 7</div>
+<div class="cloud-size-8">Size 8</div>
+<div class="cloud-size-9">Size 9</div>
+<div class="cloud-size-10">Size 10</div>
+

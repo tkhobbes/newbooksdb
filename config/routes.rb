@@ -4,7 +4,7 @@
 #
 
 Rails.application.routes.draw do
-  root 'books#index'
+  root 'home#index'
 
   devise_for :owners, controllers: {
     registrations: 'owners/registrations'

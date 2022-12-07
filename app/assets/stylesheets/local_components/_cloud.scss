@@ -1,0 +1,11 @@
+.genre-cloud {
+}
+
+.genre-cloud-item {
+}
+
+@for $i from 1 through 10 {
+  .cloud-size-#{$i} {
+    font-size: 0.5em + $i * 0.3em;
+  }
+}
