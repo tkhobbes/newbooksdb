@@ -4,5 +4,6 @@
 class HomeController < ApplicationController
 
   def index
+    @books = Book.all.includes([cover_attachment: :blob]).order(created_at: :desc).limit(5)
   end
 end

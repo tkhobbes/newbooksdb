@@ -1,7 +1,27 @@
 .genre-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  //justify-content: space-between;
+  align-items: center;
 }
 
 .genre-cloud-item {
+  display: block;
+  margin: $margin-4;
+
+  a {
+    display: block;
+    padding: $padding-4;
+    color: $color-secondary-dark;
+    background-color: $color-secondary-light;
+    border-radius: $base-border-radius;
+    @extend .border-color-secondary-dark;
+
+    &:hover {
+      color: $color-secondary;
+      background-color: $color-secondary-dark;
+    }
+  }
 }
 
 @for $i from 1 through 10 {

@@ -1,19 +1,24 @@
-<%= page_title("Welcome to the UZW18 Books Database #{current_owner&.name}",'', 'heading2') %>
+<%= page_title("Welcome to the UZW18 Books Database #{current_owner&.name}",'', 'heading2 color-accent-dark') %>
 <% if current_owner %>
-  Not you? <%= button_to 'Logout', destroy_owner_session_path, method: 'delete', class: 'btn btn-primary nobutton' %>
+  Not you?
+  <%= button_to 'Logout', destroy_owner_session_path, method: 'delete',
+    class: 'nobutton color-accent-dark color-hover-accent-light' %>
 <% else %>
   Want to register your books? Come and
-  <%= link_to 'Log in', new_owner_session_path %> or
-  <%= link_to 'Sign up', new_owner_registration_path %>
+  <%= link_to 'Log in', new_owner_session_path,
+    class: 'color-accent-dark color-hover-accent-light' %> or
+  <%= link_to 'Sign up', new_owner_registration_path,
+    class: 'color-accent-dark color-hover-accent-light' %>
 <% end %>
-<h3 class="heading3 margin-top-1">All Our Genres</h3>
+<h3 class="heading3 margin-top-1">All Genres</h3>
 <div class="genre-cloud">
-<% genre_cloud.each do |genre| %>
-  <span class="genre-cloud-item cloud-size-<%= cloudsize(genre[:size], Book.all.size) %>">
-    <%= link_to genre[:name], genre_path(genre[:id]) %>
-  </span>
-<% end %>
+  <% genre_cloud.each do |genre| %>
+    <span class="genre-cloud-item cloud-size-<%= cloudsize(genre[:size], Book.all.size) %>">
+      <%= link_to genre[:name], genre_path(genre[:id]) %>
+    </span>
+  <% end %>
 </div>
+<!-- >
 Cloud item test:
 <div class="cloud-size-1">Size 1</div>
 <div class="cloud-size-2">Size 2</div>
@@ -25,4 +30,11 @@ Cloud item test:
 <div class="cloud-size-8">Size 8</div>
 <div class="cloud-size-9">Size 9</div>
 <div class="cloud-size-10">Size 10</div>
+-->
+<h3 class="heading3 margin-top-1">Latest Books</h3>
+<ul class="itemlist">
+  <% @books.each do |book| %>
+    <%= render 'books/booklist_small', book: book %>
+  <% end %>
+</ul>
 
