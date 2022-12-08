@@ -2,9 +2,13 @@
   class="empty:hidden peer-invalid:hidden">
   <div class="quicksearch">
     <ul id="quicksearch__list">
-      <% @results_books&.each do |book| %>
+      <% @results&.each do |result| %>
         <li class="quicksearch__result">
-          <%= link_to book.title, book_path(book), data: { turbo_frame: '_top' } %>
+          <% if result.class.name == 'Book' %>
+            <%= link_to result.title, book_path(result), data: { turbo_frame: '_top' } %>
+          <% elsif result.class.name == 'Author' %>
+            <%= link_to result.display_name, author_path(result), data: { turbo_frame: '_top' } %>
+          <% end %>
         </li>
       <% end %>
     </ul>

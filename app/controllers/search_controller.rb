@@ -12,7 +12,7 @@ class SearchController < ApplicationController
   # This Method smells of :reek:DuplicateMethodCall
   # This method smells of :reek:TooManyStatements
   def quicksearch
-    @results_books = params[:query] ? Book.search(params[:query]) : []
+    @results = params[:query] ? Book.search(params[:query]) + Author.search(params[:query], default_operator: :or) : []
     respond_to do |format|
       format.html
       format.turbo_stream { render turbo_stream: turbo_stream.replace('quicksearch_results', partial: 'search/quicksearchresults') }

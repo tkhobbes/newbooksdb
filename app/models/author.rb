@@ -36,9 +36,14 @@ class Author < ApplicationRecord
   # database relations
   has_many :books, dependent: :nullify
 
-    has_many :taggings, as: :taggable, dependent: :destroy
+  has_many :taggings, as: :taggable, dependent: :destroy
   has_many :tags, through: :taggings
 
+  include SearchCop
+  # search cop setup
+  search_scope :search do
+    attributes :display_name, :sort_name
+  end
   # authors can be rated
   include Rateable
 
