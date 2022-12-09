@@ -1,7 +1,7 @@
 <%= turbo_frame_tag 'page' %>
-<% if @books.size >0 %>
+<% if books.size >0 %>
   <ul class="itemlist margin-top-50" id="tag_books">
-    <% @books.each do |book| %>
+    <% books.each do |book| %>
       <%= turbo_frame_tag book, class: "itemlist__border" do %>
         <li class="itemlist__item">
           <div class="itemlist__cover">
@@ -35,7 +35,5 @@
     <% end %>
   </ul>
 <% else %>
-  <div>No books tagged</div>
+  <div>No books</div>
 <% end %>
-
-<%= render 'shared/pager', pagy: @pagy, model_path: tag_path(@tag, page: @pagy.next, list: 'books', show: 'list') %>

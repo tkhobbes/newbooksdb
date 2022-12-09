@@ -1,7 +1,7 @@
 <%= turbo_frame_tag 'page' %>
-<% if @authors.size >0 %>
+<% if authors.size >0 %>
   <ul class="itemlist margin-top-50" id="tag_authors">
-    <% @authors.each do |author| %>
+    <% authors.each do |author| %>
       <%= turbo_frame_tag author, class: "itemlist__border" do %>
         <li class="itemlist__item">
           <div class="itemlist__cover">
@@ -33,7 +33,5 @@
     <% end %>
   </ul>
 <% else %>
-  <div>No authors tagged</div>
+  <div>No authors</div>
 <% end %>
-
-<%= render 'shared/pager', pagy: @pagy_authors, model_path: tag_path(@tag, page: @pagy_authors.next, list: 'authors', show: 'list') %>

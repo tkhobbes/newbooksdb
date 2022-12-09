@@ -29,8 +29,10 @@
 
 <%= turbo_frame_tag @tag do %>
   <% if params[:list] == 'authors' %>
-    <%= render 'details_author' %>
+    <%= render 'authors/details_author', authors: @authors %>
+    <%= render 'shared/pager', pagy: @pagy_authors, model_path: tag_path(@tag, page: @pagy_authors.next, list: 'authors', show: 'list') %>
   <% else %>
-    <%= render 'details_book' %>
+    <%= render 'books/details_book', books: @books %>
+    <%= render 'shared/pager', pagy: @pagy, model_path: tag_path(@tag, page: @pagy.next, list: 'books', show: 'list') %>
   <% end %>
 <% end %>
