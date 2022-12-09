@@ -1,12 +1,32 @@
 <%= page_title("Search Results",'', 'heading2') %>
 
-<%= turbo_frame_tag 'page' %>
-<% if @books.size > 0 %>
-  <ul class="itemlist" id="books">
-    <%= render @books %>
+<div class="tabs margin-top-1">
+  <ul>
+    <li class="placeholder-tab">&nbsp;</li>
+    <li class="content-tab <%= params[:list] == 'books' ? 'active' : '' %>">
+      <%= link_to 'Books', search_index_path(query: params[:query], show: 'list', list: 'books') %>
+    </li>
+    <li class="placeholder-tab">&nbsp;</li>
+    <li class="content-tab <%= params[:list] == 'authors' ? 'active' : '' %>">
+      <%= link_to 'Authors', search_index_path(query: params[:query], show: 'list', list: 'authors') %>
+    </li>
+    <li class="placeholder-tab">&nbsp;</li>
   </ul>
-<% else %>
-No results.
-<% end %>
+</div>
 
-<%= render 'shared/pager', pagy: @pagy, model_path: search_index_path(page: @pagy.next, show: params[:show], query: params[:query]) %>
+
+<%= turbo_frame_tag 'search_results' do %>
+  <% if params[:list] == 'authors' %>
+    bla
+  <% else %>
+    <%= turbo_frame_tag 'page' %>
+    <% if @books.size > 0 %>
+      <ul class="itemlist" id="books">
+        <%= render @books %>
+      </ul>
+      <%= render 'shared/pager', pagy: @pagy, model_path: search_index_path(page: @pagy.next, show: params[:show], query: params[:query], list: params[:list]) %>
+    <% else %>
+      No results.
+    <% end %>
+  <% end %>
+<% end %>

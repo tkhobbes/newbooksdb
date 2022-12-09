@@ -27,6 +27,9 @@ class SearchController < ApplicationController
     book_results = Book.search(params[:query])
       .includes([:author, :owner, cover_attachment: :blob]) if params[:query]
     @pagy, @books = pagy(book_results)
+    author_results = []
+    author_results = Author.search(params[:query], default_operator: :or)
+    @pagy_authors, @authors = pagy(author_results)
   end
 
 end

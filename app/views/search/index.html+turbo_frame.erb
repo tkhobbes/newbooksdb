@@ -7,6 +7,6 @@
   <%= turbo_stream_action_tag(
     'replace',
     target: 'pager',
-    template: %(#{render 'shared/pager', pagy: @pagy, model_path: search_index_path(page: @pagy.next, show: params[:show], query: params[:query])})
+    template: %(#{render 'shared/pager', pagy: @pagy, model_path: search_index_path(page: @pagy.next, show: params[:show], query: params[:query], list: params[:list])})
     ) %>
 <% end %>
