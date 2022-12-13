@@ -5,6 +5,7 @@
     action: 'invalid->quick-search#hideValidationMessage:capture input->quick-search#search'
   } do |f| %>
   <input type="hidden" name="show" value="list" />
+  <input type="hidden" name="list" value="books" />
   <input id="query" name="query" type="search"
     pattern=".*\w+.*" required
     placeholder="Search..." data-quick-search-target="searchinput" />

@@ -18,9 +18,21 @@
 <%= turbo_frame_tag 'search_results' do %>
   <% if params[:list] == 'authors' %>
     <%= render 'authors/details_author', authors: @authors %>
-    <%= render 'shared/pager', pagy: @pagy_authors, model_path: search_index_path(page: @pagy_authors.next, list: 'authors', show: 'list') %>
+    <%= render 'shared/pager', pagy: @pagy_authors,
+      model_path: search_index_path(
+        page: @pagy_authors.next,
+        list: 'authors',
+        show: 'list',
+        query: params[:query]
+      ) %>
   <% else %>
     <%= render 'books/details_book', books: @books %>
-    <%= render 'shared/pager', pagy: @pagy, model_path: search_index_path(page: @pagy.next, list: 'books', show: 'list') %>
+    <%= render 'shared/pager', pagy: @pagy,
+      model_path: search_index_path(
+        page: @pagy.next,
+        list: 'books',
+        show: 'list',
+        query: params[:query]
+      ) %>
   <% end %>
 <% end %>
