@@ -14,16 +14,35 @@ module Google
 
     # returns a book object if created or nil, and a message
     # this method smells of :reek:TooManyStatements
+    # rubocop:disable Metrics/AbcSize
+    # rubocop:disable Layout/LineLength
     def create_book
       @json_data = fetch_json_data
-      return nil, 'Something went wrong at the backend.' if @json_data.empty?
-      return nil, 'Book already exists.' if Book.exists?(title: @json_data.dig(:volumeInfo, :title), owner: @owner)
+      return ReturnBook.new(created: false, msg: 'Something went wrong at the backend.') if @json_data.empty?
+      return ReturnBook.new(created: false, msg: 'Book already exists.') if Book.exists?(title: @json_data.dig(:volumeInfo, :title), owner: @owner)
       author = Google::AuthorCreate.new(@json_data.dig(:volumeInfo, :authors)).create_author
       publisher = Google::PublisherCreate.new(@json_data.dig(:volumeInfo, :publisher)).create_publisher
       book = Book.create(fetch_book_data.merge(author:, publisher:))
-      [nil, 'Something went wrong while saving the book.'] unless book
+      return ReturnBook.new(created: false, msg: 'Something went wrong while saving the book.') unless book
       PictureAttacher.new(parse_cover_url, book.cover).attach
-      [book, 'Book created.']
+      ReturnBook.new(created: true, msg: 'Book created.', book:)
+    end
+    # rubocop:enable Layout/LineLength
+    # rubocop:enable Metrics/AbcSize
+
+    # Return object class
+    class ReturnBook
+      attr_reader :book, :message
+
+      def initialize(created: false, msg: '', book: nil)
+        @created = created
+        @message = msg
+        @book = book
+      end
+
+      def created?
+        @created
+      end
     end
 
     private

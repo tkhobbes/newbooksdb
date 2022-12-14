@@ -1,4 +1,4 @@
-# frozen-string_literal: true
+# frozen_string_literal: true
 
 # standard rails controller for shelves; these actions are all only used within the
 # settings menu
@@ -22,21 +22,14 @@ class ShelvesController < ApplicationController
               end
   end
 
-  # standard rails method to edit a shelf
-  def edit; end
-
-  def update
-    if @shelf.update(shelf_params)
-      redirect_to shelves_path
-    else
-      render :edit, status: :unprocessable_entity
-    end
-  end
 
   # Standard rails new action
   def new
     @shelf = Shelf.new
   end
+
+  # standard rails method to edit a shelf
+  def edit; end
 
   #standard rails create action; answers to:
   # -normal html (fallback and not used)
@@ -62,6 +55,13 @@ class ShelvesController < ApplicationController
   end
 # rubocop:enable Metrics/MethodLength
 
+  def update
+    if @shelf.update(shelf_params)
+      redirect_to shelves_path
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
 
   #standard rails destroy action - responds to
   # -html (not used)

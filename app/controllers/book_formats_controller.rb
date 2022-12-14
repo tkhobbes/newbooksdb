@@ -25,6 +25,9 @@ class BookFormatsController < ApplicationController
     @book_format = BookFormat.new
   end
 
+  #edit action - displayed in a turbo frame within the settings page
+  def edit; end
+
   #standard rails create action; answers to:
   # -normal html (fallback and not used)
   # -turbo stream - default response format, used on the settings page
@@ -45,9 +48,6 @@ class BookFormatsController < ApplicationController
 
     end
   end
-
-  #edit action - displayed in a turbo frame within the settings page
-  def edit; end
 
   #standard rails update action
   def update

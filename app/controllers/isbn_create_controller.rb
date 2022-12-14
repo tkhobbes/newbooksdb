@@ -6,11 +6,11 @@ class IsbnCreateController < ApplicationController
   # create a book based on an ISBN / URL
   def create
     # use params[:identifier] to determine the Amazon URL
-    book, message = Google::BookCreate.new(params[:identifier], current_owner).create_book
-    if book
-      redirect_to book_path(book), notice: message
+    result = Google::BookCreate.new(params[:identifier], current_owner).create_book
+    if result.created?
+      redirect_to book_path(result.book), notice: result.message
     else
-      redirect_to root_path, error: message
+      redirect_to root_path, error: result.message
     end
   end
 end

@@ -10,14 +10,15 @@ module Owners
     #   super
     # end
 
+    # GET /resource/:id
+    def show; end
+
     # POST /resource
     def create
       super
       Profile.create(name: @owner.ownername, owner: @owner)
     end
 
-    # GET /resource/:id
-    def show; end
 
     # GET /resource/edit
     # def edit

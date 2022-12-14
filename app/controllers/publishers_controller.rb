@@ -18,10 +18,18 @@ class PublishersController < ApplicationController
       .order(:name))
   end
 
+  # shows a publisher in detail and lists all books from that publisher
+  def show
+    @pagy, @books = pagy(@publisher.books.includes([:author, :owner, cover_attachment: :blob]))
+  end
+
   # new method to display form
   def new
     @publisher = Publisher.new
   end
+
+  #edit action - displayed in a turbo frame within the settings page
+  def edit; end
 
   # creation / storage of a new publisher
   # also responds to json for on the fly creation through books form
@@ -38,14 +46,6 @@ class PublishersController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
-
-  # shows a publisher in detail and lists all books from that publisher
-  def show
-    @pagy, @books = pagy(@publisher.books.includes([:author, :owner, cover_attachment: :blob]))
-  end
-
-  #edit action - displayed in a turbo frame within the settings page
-  def edit; end
 
   #standard rails update action
   def update

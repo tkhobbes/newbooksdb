@@ -16,9 +16,7 @@ module BooksHelper
   end
 
   def scoped_books_path(show_hash)
-    unless current_scopes.empty?
-      show_hash.merge!(current_scopes)
-    end
+    show_hash.merge!(current_scopes) unless current_scopes.empty?
     books_path(show_hash)
   end
 

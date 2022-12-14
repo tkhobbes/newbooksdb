@@ -3,9 +3,6 @@
 # A simple controller to control the flow to search for an ISBN
 class IsbnSearchController < ApplicationController
 
-  # display a form
-  def new; end
-
   # show the results
   #rubocop:disable Metrics/AbcSize
   # this method smells of :reek:DuplicateMethodCall
@@ -16,4 +13,8 @@ class IsbnSearchController < ApplicationController
     @results = Google::BookSearch.new('author', params[:author]).search_author if params[:author]
   end
   # rubocop:enable Metrics/AbcSize
+
+  # display a form
+  def new; end
+
 end

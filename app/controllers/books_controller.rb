@@ -43,6 +43,9 @@ class BooksController < ApplicationController
     @book = Book.new
   end
 
+  # standard edit method - show form for editing book
+  def edit; end
+
   # creation / storage of a new book
   def create
     new_params = update_book_format_param(book_params)
@@ -55,9 +58,6 @@ class BooksController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
-
-  # standard edit method - show form for editing book
-  def edit; end
 
   # update of a book
   def update

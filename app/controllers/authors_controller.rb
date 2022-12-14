@@ -27,24 +27,20 @@ class AuthorsController < ApplicationController
     @author = Author.new
   end
 
-  # rubocop:disable Metrics/MethodLength
+  def edit; end
+
   def create
     @author = Author.new(author_params)
-
     if @author.save
       if params[:author][:source] == 'book'
         redirect_to new_book_path
       else
-        flash[:success] = 'Author saved'
-        redirect_to author_path(@author)
+        redirect_to author_path(@author), success: 'Author saved'
       end
     else
       render :new, status: :unprocessable_entity
     end
   end
-  # rubocop:enable Metrics/MethodLength
-
-  def edit; end
 
   def update
     if @author.update(author_params)

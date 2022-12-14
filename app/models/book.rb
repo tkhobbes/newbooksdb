@@ -119,11 +119,11 @@ class Book < ApplicationRecord
   # checks whether a source ID is available - if not, create a dummy one
 
   def check_identifier
-    self.identifier = "#{self.owner_id}-#{create_id}" if identifier.blank?
+    self.identifier = "#{owner_id}-#{create_id}" if identifier.blank?
   end
 
   def check_isbn
-    self.isbn = "dummy-#{self.owner_id}-#{create_id}" if isbn.blank?
+    self.isbn = "dummy-#{owner_id}-#{create_id}" if isbn.blank?
   end
 
   def create_id

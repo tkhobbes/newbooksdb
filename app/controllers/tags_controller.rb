@@ -50,11 +50,9 @@ class TagsController < ApplicationController
   def show
     case params[:list]
     when 'books'
-    @pagy, @books = pagy(@tag.books.includes([:author, :owner, cover_attachment: :blob]))
+      @pagy, @books = pagy(@tag.books.includes([:author, :owner, cover_attachment: :blob]))
     when 'authors'
-    @pagy_authors, @authors = pagy(@tag.authors.includes([portrait_attachment: :blob]))
-    else
-      nil
+      @pagy_authors, @authors = pagy(@tag.authors.includes([portrait_attachment: :blob]))
     end
   end
 
@@ -62,6 +60,9 @@ class TagsController < ApplicationController
   def new
     @tag = Tag.new
   end
+
+  #edit action - displayed in a turbo frame within the settings page
+  def edit; end
 
   #standard rails create action; answers to:
   # -normal html (fallback and not used)
@@ -84,9 +85,6 @@ class TagsController < ApplicationController
     end
   end
   # rubocop:enable Metrics/MethodLength
-
-  #edit action - displayed in a turbo frame within the settings page
-  def edit; end
 
   #standard rails update action - can only be used from within turbo frames
   def update
