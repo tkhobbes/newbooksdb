@@ -38,10 +38,6 @@
         Rating: <%= rating_stars(@author.rating_before_type_cast) %> (<%= @author.rating.humanize %>)
       </div>
     </div>
-    <%= form_with url: portrait_search_show_path, method: :post, data: {turbo: false} do |f| %>
-      <input type="hidden" name="author" value="<%= @author.display_name %>" />
-      <%= f.submit 'Find Better Portrait', class: 'btn' %>
-    <% end %>
 
 <% if @books.size == 0 %>
   <div class="margin-top-1">
