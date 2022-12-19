@@ -40,4 +40,6 @@ Rails.application.routes.draw do
   get 'isbn_search/new', to: 'isbn_search#new'
   post 'isbn_search/show', to: 'isbn_search#show'
   post 'isbn_create/create', to: 'isbn_create#create'
+  get 'portrait_search/new', to: 'portrait_search#new'
+  post 'portrait_search/show', to: 'portrait_search#show'
 end

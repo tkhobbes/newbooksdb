@@ -34,19 +34,21 @@
       <% end %>
     </div>
     <div class="bookdetails__meta">
-      <div>
+      <div class="margin-bottom-1">
         Rating: <%= rating_stars(@author.rating_before_type_cast) %> (<%= @author.rating.humanize %>)
       </div>
     </div>
-  </div>
-</div>
+    <%= form_with url: portrait_search_show_path, method: :post, data: {turbo: false} do |f| %>
+      <input type="hidden" name="author" value="<%= @author.display_name %>" />
+      <%= f.submit 'Find Better Portrait', class: 'btn' %>
+    <% end %>
 
 <% if @books.size == 0 %>
-  <div>
+  <div class="margin-top-1">
     (No books by this author in the database)
   </div>
 <% else %>
-  <h2 class="heading3">Books</h2>
+  <h2 class="heading3 margin-top-1">Books</h2>
 
   <%= turbo_frame_tag 'page' %>
   <ul class="itemlist margin-top-50" id="author_books">
