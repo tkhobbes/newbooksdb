@@ -11,8 +11,12 @@ class PictureAttacher
   # this method smells of :reek:TooManyStatements
   def attach
     return if @picture_url.blank?
-    # find the picture
-    picture_attach = URI.parse(@picture_url).open
+    begin
+      # find the picture
+      picture_attach = URI.parse(@picture_url).open
+    rescue OpenURI::HTTPError
+      return
+    end
     # workaround if file is too small
     # found here: https://gist.github.com/janko/7cd94b8b4dd113c2c193
     if picture_attach.is_a?(StringIO)

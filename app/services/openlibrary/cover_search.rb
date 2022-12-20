@@ -6,13 +6,13 @@ module Openlibrary
     BASE_URL = 'https://covers.openlibrary.org/b/'
     COVER_SIZE = 'L'
 
-    def initialize(isbn:, type: 'isbn')
+    def initialize(value:, type: 'isbn')
       @type = type
-      @isbn = isbn
+      @value = value
     end
 
     def cover_url
-      "#{BASE_URL}#{@type}/#{@isbn}-#{COVER_SIZE}.jpg"
+      "#{BASE_URL}#{@type}/#{@value}-#{COVER_SIZE}.jpg"
     end
 
   end
