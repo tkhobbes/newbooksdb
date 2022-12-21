@@ -26,7 +26,7 @@
             book_path(book),
             data: { turbo_frame: "_top" }
             )%>
-          (by Author Author )
+          (by <%= book.author.display_name %>)
         </div>
         <div class="itemlist__icons">
           <% if owner_signed_in? && book.owner == current_owner %>

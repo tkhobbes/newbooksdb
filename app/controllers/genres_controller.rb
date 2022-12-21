@@ -29,7 +29,7 @@ class GenresController < ApplicationController
   # shows a genre in detail and lists all books within that genre
   def show
     @genre = Genre.friendly.find(params[:id])
-    @pagy, @books = pagy(@genre.books.includes([:owner, cover_attachment: :blob]))
+    @pagy, @books = pagy(@genre.books.includes([:author, :owner, cover_attachment: :blob]))
   end
 
   #new action - displayed in a turbo frame within the settings page

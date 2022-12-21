@@ -19,11 +19,7 @@
 class Genre < ApplicationRecord
   # each genre must have a name and can exist only once
   validates :name, presence: true, uniqueness: true
-  # rubocop:disable Rails/HasAndBelongsToMany
-  # has_and_belongs_to_many :books
-  # rubocop:enable Rails/HasAndBelongsToMany
 
-  # new relation through join table
   has_many :books_genres, dependent: :destroy
   has_many :books, through: :books_genres
 
@@ -37,11 +33,4 @@ class Genre < ApplicationRecord
   # scope needed for the bulk action "remove genres without books"
   scope :no_books, -> { left_joins(:books).where(books: { id: [0, nil, ''] }) }
 
-  def increase_books_count
-    self.update(books_count: self.books_count += 1)
-  end
-
-  def decrease_books_count
-    self.update(books_count: self.books_count -= 1)
-  end
 end
