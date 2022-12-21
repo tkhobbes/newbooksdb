@@ -25,7 +25,7 @@
         <div class="gender"><%= author.decorate.gender_icon %></div>
       </div>
       <div class="livingyear"><%= author.decorate.living_years %></div>
-      <div class="books"><%= pluralize(author.books.size, 'Book') %></div>
+      <div class="books"><%= pluralize(author.books_count, 'Book') %></div>
       <div class="rating"><%= rating_stars(author.rating_before_type_cast) %></div>
     </div>
 <% end %>

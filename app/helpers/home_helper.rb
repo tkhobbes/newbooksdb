@@ -7,7 +7,7 @@ module HomeHelper
     Genre.all.each do |genre|
       one_genre = {}
       one_genre[:name] = genre.name
-      one_genre[:size] = genre.books.size
+      one_genre[:size] = genre.books_size
       one_genre[:id] = genre.id
       cloud_data << one_genre
     end

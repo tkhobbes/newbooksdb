@@ -2,7 +2,7 @@
 
 <div class="color-error margin-top-1">
   Apart from removing the owner's profile, you will need to decide what happens to
-  <%= @owner.books.size %> books that are owned by this owner.
+  <%= @owner.books_count %> books that are owned by this owner.
 </div>
 
   <%= form_with url: user_destructions_path, method: :post do |f| %>
