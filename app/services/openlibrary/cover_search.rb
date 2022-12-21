@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Openlibrary
+  # this service object searches for covers and gives back a cover url
   class CoverSearch
 
     BASE_URL = 'https://covers.openlibrary.org/b/'

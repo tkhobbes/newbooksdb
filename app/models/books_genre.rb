@@ -19,7 +19,9 @@
 #  fk_rails_...  (genre_id => genres.id)
 #
 
+# rubocop:disable Rails/ApplicationRecord
 class BooksGenre < ActiveRecord::Base
   belongs_to :genre, counter_cache: :books_count
   belongs_to :book
 end
+# rubocop:enable Rails/ApplicationRecord

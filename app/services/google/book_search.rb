@@ -11,6 +11,7 @@ module Google
     AUTHOR_ADDER = 'q=inauthor:'
     MAXQ_ADDER = '&maxResults=40'
 
+    # this method smells of :reek:ControlParameter
     def initialize(type, value)
       @isbn = normalize_isbn(value) if type == 'isbn'
       @title = value if type == 'title'

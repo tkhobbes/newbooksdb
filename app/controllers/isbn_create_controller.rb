@@ -4,6 +4,7 @@
 class IsbnCreateController < ApplicationController
 
   # create a book based on an ISBN / URL
+  # this method smells of :reek:DuplicateMethodCall
   def create
     # use params[:identifier] to determine the Amazon URL
     result = Google::BookCreate.new(params[:identifier], current_owner).create_book

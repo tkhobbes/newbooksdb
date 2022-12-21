@@ -9,6 +9,7 @@ class PictureAttacher
   end
 
   # this method smells of :reek:TooManyStatements
+  # rubocop:disable Metrics/MethodLength
   def attach
     return if @picture_url.blank?
     begin
@@ -28,4 +29,5 @@ class PictureAttacher
     picture_name = File.basename(picture_attach.path)
     @attachment_field.attach(io: picture_attach, filename: picture_name)
   end
+  # rubocop:enable Metrics/MethodLength
 end

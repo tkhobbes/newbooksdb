@@ -125,6 +125,8 @@ class Book < ApplicationRecord
     self.isbn = "dummy-#{owner_id}-#{create_id}" if isbn.blank?
   end
 
+  # this method smells of :reek:DuplicateMethodCall
+  # this method smells of :reek:UtilityFunction
   def create_id
     book_id = Book.last ? Book.last.id.to_s : '0'
     Digest::UUID.uuid_v3(Digest::UUID::DNS_NAMESPACE, book_id)

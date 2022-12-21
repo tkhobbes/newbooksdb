@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# this class smells of :reek:TooManyInstanceVariables
 class SearchController < ApplicationController
   # delete backlinks stack on book show page
   before_action :dissolve

@@ -2,12 +2,13 @@
 
 module HomeHelper
   # generate a hash of genres and their size
+  # this method smells of :reek:TooManyStatements
   def genre_cloud
     cloud_data = []
     Genre.all.each do |genre|
       one_genre = {}
       one_genre[:name] = genre.name
-      one_genre[:size] = genre.books_size
+      one_genre[:size] = genre.books_count
       one_genre[:id] = genre.id
       cloud_data << one_genre
     end

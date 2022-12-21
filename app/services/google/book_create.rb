@@ -34,6 +34,7 @@ module Google
     class ReturnBook
       attr_reader :book, :message
 
+      # this method smells of :reek:BooleanParameter
       def initialize(created: false, msg: '', book: nil)
         @created = created
         @message = msg
