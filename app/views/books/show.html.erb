@@ -1,8 +1,10 @@
 <%= page_title('', @book.title, 'heading2') %>
 
 <div class="bookdetails">
-  <div class="cover-large">
-    <%= cover_image(@book, size: 'large', link: 'true') %>
+  <div class="cover-container">
+    <div class="cover-large">
+      <%= cover_image(@book, size: 'large', link: 'true') %>
+    </div>
   </div>
   <div class="bookdetails__text">
     <div class="bookdetails__text-title">

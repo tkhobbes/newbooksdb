@@ -27,8 +27,9 @@ module Mediawiki
     def image_file_name(author)
       all_images = search_author_in_wiki(author)
       return unless all_images
-      all_images.detect { |i| i[-3,3] == 'jpg' || i[-3,3] == 'png' }
-        .gsub(' ', '%20')
+      image = all_images.detect { |i| i[-3,3] == 'jpg' || i[-3,3] == 'png' }
+      return unless image
+      image.gsub(' ', '%20')
     end
 
     # this method smells of :reek:UtilityFunction
