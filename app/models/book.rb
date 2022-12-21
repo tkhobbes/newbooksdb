@@ -88,8 +88,12 @@ class Book < ApplicationRecord
   belongs_to :author, optional: true, counter_cache: true
 
   # rubocop:disable Rails/HasAndBelongsToMany
-  has_and_belongs_to_many :genres, optional: true
+  # has_and_belongs_to_many :genres, optional: true
   # rubocop:enable Rails/HasAndBelongsToMany
+
+  # new relation through join table
+  has_many :books_genres, dependent: :destroy
+  has_many :genres, through: :books_genres
 
   has_many :taggings, as: :taggable, dependent: :destroy
   has_many :tags, through: :taggings

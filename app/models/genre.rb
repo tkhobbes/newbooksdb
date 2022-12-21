@@ -4,11 +4,12 @@
 #
 # Table name: genres
 #
-#  id         :bigint           not null, primary key
-#  name       :string(255)      not null
-#  slug       :string(255)
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id          :bigint           not null, primary key
+#  books_count :integer
+#  name        :string(255)      not null
+#  slug        :string(255)
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
 #
 # Indexes
 #
@@ -19,8 +20,12 @@ class Genre < ApplicationRecord
   # each genre must have a name and can exist only once
   validates :name, presence: true, uniqueness: true
   # rubocop:disable Rails/HasAndBelongsToMany
-  has_and_belongs_to_many :books
+  # has_and_belongs_to_many :books
   # rubocop:enable Rails/HasAndBelongsToMany
+
+  # new relation through join table
+  has_many :books_genres, dependent: :destroy
+  has_many :books, through: :books_genres
 
   extend FriendlyId
   friendly_id :name, use: :slugged
