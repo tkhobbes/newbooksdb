@@ -74,6 +74,7 @@ module Google
     def create_item(found_item)
       item = {}
       item[:identifier] = found_item[:id]
+      item[:existing] = Book.exists?(identifier: item[:identifier])
       item[:title] = found_item.dig(:volumeInfo, :title)
       item[:image_url] = found_item.dig(:volumeInfo, :imageLinks, :thumbnail)
       item

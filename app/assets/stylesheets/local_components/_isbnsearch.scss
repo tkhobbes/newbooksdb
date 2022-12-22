@@ -29,3 +29,7 @@
 .itemlist__border:first-child:hover {
   overflow: visible;
 }
+
+.existing {
+  @extend .bg-accent-light;
+}

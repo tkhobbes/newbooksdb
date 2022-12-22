@@ -8,14 +8,14 @@
   <p class="small">Click a title to create the book in the database.</p>
   <ul class="itemlist margin-bottom-1">
     <% @results.each do |result| %>
-      <li class="itemlist__item itemlist__border">
+      <li class="itemlist__item itemlist__border <%= result[:existing] ? 'existing' : '' %>">
         <div class="itemlist__cover search_cover">
           <%= render 'isbn_search/resultpreview', picture: result[:image_url] %>
         </div>
         <div class="itemlist__title">
           <%= form_with url: isbn_create_create_path, method: :post, data: {turbo: false} do |f| %>
             <%= f.hidden_field :identifier, value: result[:identifier], id: "identifier-#{result[:ASIN]}" %>
-            <%= f.submit result[:title], class: 'nobutton color-accent-dark color-hover-accent' %>
+            <%= f.submit "#{result[:title]}#{result[:existing] ? ' (Already in DB!)' : ''}", class: 'nobutton color-accent-dark color-hover-accent' %>
           <% end %>
         </div>
       </li>
