@@ -24,7 +24,7 @@ module Google
       jsondoc = JSON.parse(Faraday.get(parse_isbn_url).body, symbolize_names: true)
       return @search_results if jsondoc[:totalItems].zero?
       jsondoc[:items].each do |item|
-        @search_results << create_item(item)
+        @search_results << create_item(item, isbn_owners)
       end
       @search_results
     end
@@ -33,7 +33,7 @@ module Google
       jsondoc = JSON.parse(Faraday.get(parse_title_url).body, symbolize_names: true)
       return @search_results if jsondoc[:totalItems].zero?
       jsondoc[:items].each do |item|
-        @search_results << create_item(item)
+        @search_results << create_item(item, isbn_owners)
       end
       @search_results
     end
@@ -42,7 +42,7 @@ module Google
       jsondoc = JSON.parse(Faraday.get(parse_author_url).body, symbolize_names: true)
       return @search_results if jsondoc[:totalItems].zero?
       jsondoc[:items].each do |item|
-        @search_results << create_item(item)
+        @search_results << create_item(item, isbn_owners)
       end
       @search_results
     end
@@ -88,19 +88,24 @@ module Google
     # rubocop:enable Style/BlockDelimiters
 
     # this method smells of :reek:UtilityFunction
-    def create_item(found_item)
+    def create_item(found_item, book_list)
       item = {}
       item[:identifier] = found_item[:id]
       item[:isbn] = parse_isbn13(found_item) || parse_isbn10(found_item)
       item[:existing] = if
-        Book.exists?(isbn: item[:isbn], owner: @owner)
+        book_list.find { |book| book[0] == item[:isbn] && book[1] == @owner.id }
           'current_owner'
-        elsif Book.exists?(isbn: item[:isbn])
+        elsif book_list.find { |book| book[0] == item[:isbn] }
           'other_owner'
         end
       item[:title] = found_item.dig(:volumeInfo, :title)
       item[:image_url] = found_item.dig(:volumeInfo, :imageLinks, :thumbnail)
       item
+    end
+
+    # method returns an array of all ISBNs and Owners
+    def isbn_owners
+      Book.all.pluck(:isbn, :owner_id)
     end
   end
 end
