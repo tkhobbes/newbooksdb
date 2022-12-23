@@ -94,9 +94,9 @@ module Google
       item[:isbn] = parse_isbn13(found_item) || parse_isbn10(found_item)
       item[:existing] = if
         Book.exists?(isbn: item[:isbn], owner: @owner)
-          'current_user'
+          'current_owner'
         elsif Book.exists?(isbn: item[:isbn])
-          'other_user'
+          'other_owner'
         end
       item[:title] = found_item.dig(:volumeInfo, :title)
       item[:image_url] = found_item.dig(:volumeInfo, :imageLinks, :thumbnail)

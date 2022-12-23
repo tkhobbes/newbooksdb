@@ -30,6 +30,10 @@
   overflow: visible;
 }
 
-.existing {
+.existing-other {
   @extend .bg-accent-light;
+}
+
+.existing-current {
+  @extend .bg-accent;
 }
