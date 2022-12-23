@@ -12,10 +12,11 @@ module Google
     MAXQ_ADDER = '&maxResults=40'
 
     # this method smells of :reek:ControlParameter
-    def initialize(type, value)
+    def initialize(value:, owner:, type: 'isbn')
       @isbn = normalize_isbn(value) if type == 'isbn'
       @title = value if type == 'title'
       @author = value if type == 'author'
+      @owner = owner
       @search_results = []
     end
 
@@ -70,11 +71,33 @@ module Google
       "&key=#{Rails.application.credentials.google.api}"
     end
 
+    # rubocop:disable Style/BlockDelimiters
+    # This method smells of :reek:UncommunicativeMethodName
+    def parse_isbn13(item)
+      item.dig(:volumeInfo, :industryIdentifiers).find {
+        |hash| hash.value?('ISBN_13')
+      }[:identifier]
+    end
+
+    # this method smells of :reek:UncommunicativeMethodName
+    def parse_isbn10(item)
+      item.dig(:volumeInfo, :industryIdentifiers).find {
+        |hash| hash.values?('ISBN_10')
+      }[:identifier]
+    end
+    # rubocop:enable Style/BlockDelimiters
+
     # this method smells of :reek:UtilityFunction
     def create_item(found_item)
       item = {}
       item[:identifier] = found_item[:id]
-      item[:existing] = Book.exists?(identifier: item[:identifier])
+      item[:isbn] = parse_isbn13(found_item) || parse_isbn10(found_item)
+      item[:existing] = if
+        Book.exists?(isbn: item[:isbn], owner: @owner)
+          'current_user'
+        elsif Book.exists?(isbn: item[:isbn])
+          'other_user'
+        end
       item[:title] = found_item.dig(:volumeInfo, :title)
       item[:image_url] = found_item.dig(:volumeInfo, :imageLinks, :thumbnail)
       item
