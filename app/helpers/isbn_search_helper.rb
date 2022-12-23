@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# this method smells of :reek:ControlParameter
 module IsbnSearchHelper
   # method determines the right CSS for existing books
   def existing_css(existing)
@@ -12,6 +13,7 @@ module IsbnSearchHelper
   end
 
   # this method prints out a book title and formats depending on whether existing
+  # this method smells of :reek:ControlParameter
   def existing_title(title, existing)
     case existing
     when 'current_owner'

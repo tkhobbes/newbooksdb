@@ -8,9 +8,13 @@ class IsbnSearchController < ApplicationController
   # this method smells of :reek:DuplicateMethodCall
   def show
     #@results = AmazonSearch.new(params[:isbn]).scrape_page
-    @results = Google::BookSearch.new(value: params[:isbn], owner: current_owner).search_isbn if params[:isbn]
-    @results = Google::BookSearch.new(type: 'title', value: params[:title], owner: current_owner).search_title if params[:title]
-    @results = Google::BookSearch.new(type: 'author', value: params[:author], owner: current_owner).search_author if params[:author]
+    @results = if params[:isbn]
+      Google::BookSearch.new(value: params[:isbn], owner: current_owner).search_isbn
+    elsif params[:title]
+      @results = Google::BookSearch.new(type: 'title', value: params[:title], owner: current_owner).search_title
+    elsif params[:author]
+      @results = Google::BookSearch.new(type: 'author', value: params[:author], owner: current_owner).search_author
+    end
   end
   # rubocop:enable Metrics/AbcSize
 

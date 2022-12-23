@@ -3,6 +3,7 @@
 module Google
   # this service object searches for books and gives back an array of book items
   # this class smells of :reek:RepeatedConditional
+  # this class smells of :reek:TooManyInstanceVariables
   class BookSearch
 
     BASE_URL = 'https://www.googleapis.com/books/v1/volumes?'
@@ -73,6 +74,7 @@ module Google
 
     # rubocop:disable Style/BlockDelimiters
     # This method smells of :reek:UncommunicativeMethodName
+    # this method smells of :reek:UtilityFunction
     def parse_isbn13(item)
       item.dig(:volumeInfo, :industryIdentifiers).find {
         |hash| hash.value?('ISBN_13')
@@ -80,6 +82,7 @@ module Google
     end
 
     # this method smells of :reek:UncommunicativeMethodName
+    # this method smells of :reek:UtilityFunction
     def parse_isbn10(item)
       item.dig(:volumeInfo, :industryIdentifiers).find {
         |hash| hash.values?('ISBN_10')
@@ -88,6 +91,11 @@ module Google
     # rubocop:enable Style/BlockDelimiters
 
     # this method smells of :reek:UtilityFunction
+    # rubocop:disable Metrics/AbcSize
+    # rubocop:disable Metrics/MethodLength
+    # this method smells of :reek:DuplicateMethodCall
+    # this method smells of :reek:FeatureEnvy
+    # this method smells of :reek:TooManyStatements
     def create_item(found_item, book_list)
       item = {}
       item[:identifier] = found_item[:id]
@@ -102,8 +110,11 @@ module Google
       item[:image_url] = found_item.dig(:volumeInfo, :imageLinks, :thumbnail)
       item
     end
+    # rubocop:enable Metrics/MethodLength
+    # rubocop:enable Metrics/AbcSize
 
     # method returns an array of all ISBNs and Owners
+    # this method smells of :reek:UtilityFunction
     def isbn_owners
       Book.all.pluck(:isbn, :owner_id)
     end
