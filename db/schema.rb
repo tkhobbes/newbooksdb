@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_21_092457) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_05_105611) do
   create_table "action_text_rich_texts", charset: "utf8mb4", force: :cascade do |t|
     t.string "name", null: false
     t.text "body", size: :long
@@ -59,7 +59,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_21_092457) do
     t.string "gender"
     t.integer "rating", default: 0
     t.string "slug"
-    t.integer "books_count"
+    t.integer "books_count", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["display_name"], name: "index_authors_on_display_name"
@@ -73,7 +73,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_21_092457) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "fallback", default: false
-    t.integer "books_count"
+    t.integer "books_count", default: 0
     t.index ["name"], name: "index_book_formats_on_name", unique: true
   end
 
@@ -133,7 +133,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_21_092457) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "slug"
-    t.integer "books_count"
+    t.integer "books_count", default: 0
     t.index ["name"], name: "index_genres_on_name", unique: true
     t.index ["slug"], name: "index_genres_on_slug", unique: true
   end
@@ -146,7 +146,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_21_092457) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "books_count"
+    t.integer "books_count", default: 0
     t.index ["email"], name: "index_owners_on_email", unique: true
     t.index ["reset_password_token"], name: "index_owners_on_reset_password_token", unique: true
   end
@@ -167,7 +167,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_21_092457) do
     t.string "slug"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "books_count"
+    t.integer "books_count", default: 0
     t.index ["name"], name: "index_publishers_on_name", unique: true
     t.index ["slug"], name: "index_publishers_on_slug", unique: true
   end
@@ -176,7 +176,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_21_092457) do
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "books_count"
+    t.integer "books_count", default: 0
     t.bigint "owner_id", null: false
     t.index ["name", "owner_id"], name: "index_shelves_on_name_and_owner_id", unique: true
     t.index ["name"], name: "index_shelves_on_name"

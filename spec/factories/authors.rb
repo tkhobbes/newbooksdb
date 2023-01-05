@@ -5,7 +5,7 @@
 # Table name: authors
 #
 #  id           :bigint           not null, primary key
-#  books_count  :integer
+#  books_count  :integer          default(0)
 #  born         :integer
 #  died         :integer
 #  display_name :string(255)

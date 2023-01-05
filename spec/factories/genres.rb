@@ -5,7 +5,7 @@
 # Table name: genres
 #
 #  id          :bigint           not null, primary key
-#  books_count :integer
+#  books_count :integer          default(0)
 #  name        :string(255)      not null
 #  slug        :string(255)
 #  created_at  :datetime         not null

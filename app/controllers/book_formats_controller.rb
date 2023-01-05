@@ -10,7 +10,7 @@ class BookFormatsController < ApplicationController
   before_action :set_book_format, only: [:edit, :update, :destroy]
 
   # ensure we know the default format for any method where it matters
-  before_action :default_book_format, only: [:index, :set_default, :update_default, :destroy]
+  before_action :default_book_format, only: [:create, :index, :set_default, :update_default, :destroy]
 
   # delete backlinks stack on all bookformat actions except create
   before_action :dissolve, except: [:new, :create]

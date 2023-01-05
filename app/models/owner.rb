@@ -5,7 +5,7 @@
 # Table name: owners
 #
 #  id                     :bigint           not null, primary key
-#  books_count            :integer
+#  books_count            :integer          default(0)
 #  email                  :string(255)      default(""), not null
 #  encrypted_password     :string(255)      default(""), not null
 #  remember_created_at    :datetime
