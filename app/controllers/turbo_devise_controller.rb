@@ -5,7 +5,11 @@ class TurboDeviseController < ApplicationController
     # this method smells of :reek:TooManyStatements
     # This method smells of :reek:UncommunicativeVariableName
     def to_turbo_stream
-      controller.render(options.merge(formats: :html))
+      if @default_response
+        @default_response.call(options.merge(formats: :html))
+      else
+        controller.render(options.merge(formats: :html))
+      end
     rescue ActionView::MissingTemplate => e
       # rubocop:disable Style/GuardClause
       if get?
@@ -13,7 +17,6 @@ class TurboDeviseController < ApplicationController
       elsif has_errors? && default_action
         render rendering_options.merge(formats: :html, status: :unprocessable_entity)
       else
-        #navigation_location ||= root_path
         redirect_to navigation_location
       end
       # rubocop:enable Style/GuardClause
