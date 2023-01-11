@@ -4,6 +4,8 @@ module Google
   # service object to create a book from the google API
   class BookCreate
 
+    include Google::ParseIsbn
+
     BASE_URL = 'https://www.googleapis.com/books/v1/volumes/'
 
     def initialize(id, owner)
@@ -60,7 +62,7 @@ module Google
         title: @json_data.dig(:volumeInfo, :title),
         year: parse_year(@json_data.dig(:volumeInfo, :publishedDate)),
         pages: @json_data.dig(:volumeInfo, :pageCount),
-        isbn: parse_isbn13 || parse_isbn10,
+        isbn: parse_isbn13(@json_data) || parse_isbn10(@json_data),
         synopsis: @json_data.dig(:volumeInfo, :description),
         identifier: @json_data[:id],
         book_format: BookFormat.find_by(fallback: true),
@@ -72,22 +74,6 @@ module Google
     def parse_year(data)
       data[0..3].to_i if data && data.size >= 4
     end
-
-    # rubocop:disable Style/BlockDelimiters
-    # This method smells of :reek:UncommunicativeMethodName
-    def parse_isbn13
-      @json_data.dig(:volumeInfo, :industryIdentifiers).find {
-        |hash| hash.value?('ISBN_13')
-      }[:identifier]
-    end
-
-    # this method smells of :reek:UncommunicativeMethodName
-    def parse_isbn10
-      @json_data.dig(:volumeInfo, :industryIdentifiers).find {
-        |hash| hash.values?('ISBN_10')
-      }[:identifier]
-    end
-    # rubocop:enable Style/BlockDelimiters
 
     def parse_cover_url
       @json_data.dig(:volumeInfo, :imageLinks, :medium) ||

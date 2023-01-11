@@ -6,6 +6,8 @@ module Google
   # this class smells of :reek:TooManyInstanceVariables
   class BookSearch
 
+    include Google::ParseIsbn
+
     BASE_URL = 'https://www.googleapis.com/books/v1/volumes?'
     ISBN_ADDER = 'q=isbn:'
     TITLE_ADDER = 'q=intitle:'
@@ -71,24 +73,6 @@ module Google
     def add_key
       "&key=#{Rails.application.credentials.google.api}"
     end
-
-    # rubocop:disable Style/BlockDelimiters
-    # This method smells of :reek:UncommunicativeMethodName
-    # this method smells of :reek:UtilityFunction
-    def parse_isbn13(item)
-      item.dig(:volumeInfo, :industryIdentifiers).find {
-        |hash| hash.value?('ISBN_13')
-      }[:identifier]
-    end
-
-    # this method smells of :reek:UncommunicativeMethodName
-    # this method smells of :reek:UtilityFunction
-    def parse_isbn10(item)
-      item.dig(:volumeInfo, :industryIdentifiers).find {
-        |hash| hash.values?('ISBN_10')
-      }[:identifier]
-    end
-    # rubocop:enable Style/BlockDelimiters
 
     # this method smells of :reek:UtilityFunction
     # rubocop:disable Metrics/AbcSize
