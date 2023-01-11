@@ -28,8 +28,7 @@
 class Author < ApplicationRecord
   # must have a unique combination of first name and last name
   validates :first_name, uniqueness: { scope: :last_name }
-  validates :first_name, presence: true, unless: :last_name
-  validates :last_name, presence: true, unless: :first_name
+  validate :at_least_first_or_last
 
   has_one_attached :portrait
 
@@ -93,4 +92,13 @@ class Author < ApplicationRecord
   def should_generate_new_friendly_id?
     first_name_changed? || last_name_changed? || super
   end
+
+  # custom validation method
+
+  def at_least_first_or_last
+    unless (self.first_name.present? || self.last_name.present?)
+      errors.add(:first_name, 'Need at least a first or last name')
+    end
+  end
+
 end

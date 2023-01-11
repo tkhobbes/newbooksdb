@@ -53,6 +53,7 @@ class Book < ApplicationRecord
   validates :identifier, uniqueness: { scope: :owner_id }
   validates :isbn, uniqueness: { scope: :owner_id }
   validates :book_format_id, presence: true
+  validates :title, presence: true
 
   before_save :create_sort_title
   before_save :check_identifier
