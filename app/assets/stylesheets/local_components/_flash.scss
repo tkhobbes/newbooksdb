@@ -1,0 +1,41 @@
+.message-flash {
+  display: flex;
+  align-items: center;
+  @extend .padding-50;
+  border-radius: $base-border-radius;
+  position: fixed;
+  top: 5px;
+  right: 5px;
+
+  &-error {
+    @extend .bg-error;
+    @extend .color-white;
+  }
+
+  &-success {
+    @extend .bg-info;
+    @extend .color-white;
+  }
+
+  &-info {
+    @extend .bg-primary-dark;
+    @extend .color-white;
+  }
+
+  &-alert {
+    @extend .bg-warning;
+    @extend .color-white;
+  }
+
+  &-notice {
+    @extend .bg-primary-dark;
+    @extend .color-white;
+  }
+
+  svg {
+    height: 1em;
+    width: 1em;
+    margin-left: 1em;
+    cursor: pointer;
+  }
+}

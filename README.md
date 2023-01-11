@@ -17,6 +17,10 @@ and then augmented from https://thoughtbot.com/blog/hotwire-typeahead-searching
 Quick search and search use search_cop. Search is scoped for book titles, book
 original titles.
 
+#### Flash Messages
+
+Moving away from noty and used turbo - as described in this video: https://youtu.be/gk_qDsKMIrM
+
 #### Presenter Pattern
 
 Moving away from helpers and use the patterns described in this article.
@@ -158,7 +162,6 @@ The following Gems are used in this project:
 The following packages have to be added via yarn:
 
 - dropzone (for uploading images interactively) (https://www.dropzone.dev/js/)
-- noty (for nice animated notifications) (https://ned.im/noty/#/)
 - sweetalert2 to replace the boring browser dialogs (https://sweetalert2.github.io)
 - tom-select (https://tom-select.js.org) for the nice tag-like selection in form select fields - I used this guide: (https://blog.corsego.com/select-or-create-with-tom-select)
 

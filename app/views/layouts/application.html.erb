@@ -11,12 +11,12 @@
   </head>
 
   <body <%= yield :body_attributes %>>
+    <%= render "shared/flash" %>
     <div class="container" data-controller="burgermenu">
       <%= render 'shared/sidebar' %>
       <div class="content">
         <%= render 'shared/title' %>
         <main class="main">
-        <%= render "shared/notification" %>
         <%= render 'shelves/shelves_menu' if params[:controller] == 'books' && params[:action] == 'index' %>
             <%= yield :title %>
             <%= yield %>

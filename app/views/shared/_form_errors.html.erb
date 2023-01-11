@@ -1,8 +1,6 @@
 <% if form.object.errors.any? %>
-    <% form.object.errors.full_messages.each do |message| %>
-    <div data-controller="notification">
-        <input data-notification-target="type" value="error" type="hidden">
-        <input data-notification-target="message" value="<%= message %>" type="hidden">
+    <div data-controller="flash" class="message-flash message-flash-error">
+        <%= form.object.errors.full_messages.join('\n') %>
+        <%= inline_svg_tag 'close.svg', data: { action: 'click->flash#dismiss' } %>
     </div>
-    <% end %>
 <% end %>

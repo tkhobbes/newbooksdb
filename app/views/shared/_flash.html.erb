@@ -1,0 +1,6 @@
+<% flash.each do |key, value| %>
+  <div data-controller="flash" class="message-flash <%= flash_class(key) %>">
+    <%= value %>
+    <%= inline_svg_tag 'close.svg', data: { action: 'click->flash#dismiss' } %>
+  </div>
+<% end %>
