@@ -17,6 +17,7 @@ module Google
     # returns a book object if created or nil, and a message
     # this method smells of :reek:TooManyStatements
     # rubocop:disable Metrics/AbcSize
+    # rubocop:disable Metrics/MethodLength
     # rubocop:disable Layout/LineLength
     def create_book
       @json_data = fetch_json_data
@@ -29,10 +30,11 @@ module Google
         book = Book.create(fetch_book_data.merge(author:, publisher:))
       end
       return ReturnBook.new(created: false, msg: 'Something went wrong while saving the book.') unless book
-      result = PictureAttacher.new(parse_cover_url, book.cover).attach
+      PictureAttacher.new(parse_cover_url, book.cover).attach
       ReturnBook.new(created: true, msg: 'Book created.', book:)
     end
     # rubocop:enable Layout/LineLength
+    # rubocop:enable Metrics/MethodLength
     # rubocop:enable Metrics/AbcSize
 
     # Return object class

@@ -4,6 +4,9 @@ class TurboDeviseController < ApplicationController
   class Responder < ActionController::Responder
     # this method smells of :reek:TooManyStatements
     # This method smells of :reek:UncommunicativeVariableName
+    # this method smells of :reek:DuplicateMethodCall
+    # rubocop:disable Metrics/AbcSize
+    # rubocop:disable Metrics/MethodLength
     def to_turbo_stream
       if @default_response
         @default_response.call(options.merge(formats: :html))
@@ -21,6 +24,8 @@ class TurboDeviseController < ApplicationController
       end
       # rubocop:enable Style/GuardClause
     end
+    # rubocop:enable Metrics/AbcSize
+    # rubocop:enable Metrics/MethodLength
   end
 
   self.responder = Responder

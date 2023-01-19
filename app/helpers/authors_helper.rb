@@ -35,6 +35,6 @@ module AuthorsHelper
 
   # generates a SVG tag with the given class
   def generate_author_portrait_svg(css, size)
-    inline_svg_tag('person.svg', class: css, size: size)
+    inline_svg_tag('person.svg', class: css, size:)
   end
 end

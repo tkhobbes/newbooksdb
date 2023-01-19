@@ -36,6 +36,7 @@ class PictureAttacher
   class ReturnPicture
     attr_reader :picture, :message
 
+    # this method smells of :reek:BooleanParameter
     def initialize(created: false, msg: '', picture: nil)
       @created = created
       @message = msg

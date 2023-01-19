@@ -96,9 +96,8 @@ class Author < ApplicationRecord
   # custom validation method
 
   def at_least_first_or_last
-    unless (self.first_name.present? || self.last_name.present?)
-      errors.add(:first_name, 'Need at least a first or last name')
-    end
+    return if first_name.present? || last_name.present?
+    errors.add(:first_name, 'Need at least a first or last name')
   end
 
 end
