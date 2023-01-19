@@ -16,10 +16,10 @@
       #attach the picture and redirect to the book
       book = Book.find(book_id)
       result = PictureAttacher.new(cover_url, book.cover).attach
-      if result.nil?
-        redirect_to book_path(book_id), error: 'Could not retrieve a cover'
-      else
+      if result.created?
         redirect_to book_path(book_id), success: 'New cover stored'
+      else
+        redirect_to book_path(book_id), error: result.message
       end
     else
       # no cover url found, redirect to the book

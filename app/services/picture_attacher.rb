@@ -16,7 +16,7 @@ class PictureAttacher
       # find the picture
       picture_attach = URI.parse(@picture_url).open
     rescue OpenURI::HTTPError
-      return
+      return ReturnPicture.new(created: false, msg: 'Could not read picture')
     end
     # workaround if file is too small
     # found here: https://gist.github.com/janko/7cd94b8b4dd113c2c193
@@ -27,7 +27,23 @@ class PictureAttacher
         end
     end
     picture_name = File.basename(picture_attach.path)
-    @attachment_field.attach(io: picture_attach, filename: picture_name)
+    picture = @attachment_field.attach(io: picture_attach, filename: picture_name)
+    ReturnPicture.new(created: true, msg: 'Picture attached.', picture:)
   end
   # rubocop:enable Metrics/MethodLength
+
+  # return object
+  class ReturnPicture
+    attr_reader :picture, :message
+
+    def initialize(created: false, msg: '', picture: nil)
+      @created = created
+      @message = msg
+      @picture = picture
+    end
+
+    def created?
+      @created
+    end
+  end
 end

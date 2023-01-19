@@ -26,7 +26,7 @@ module Amazon
         author = Author.create(exist_data)
         # attach picture
         if author
-          PictureAttacher.new(author_data[:portrait_url], author.portrait).attach
+          result = PictureAttacher.new(author_data[:portrait_url], author.portrait).attach
         end
       end
       return author

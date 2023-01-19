@@ -26,7 +26,7 @@ module Google
       publisher = Google::PublisherCreate.new(@json_data.dig(:volumeInfo, :publisher)).create_publisher
       book = Book.create(fetch_book_data.merge(author:, publisher:))
       return ReturnBook.new(created: false, msg: 'Something went wrong while saving the book.') unless book
-      PictureAttacher.new(parse_cover_url, book.cover).attach
+      result = PictureAttacher.new(parse_cover_url, book.cover).attach
       ReturnBook.new(created: true, msg: 'Book created.', book:)
     end
     # rubocop:enable Layout/LineLength

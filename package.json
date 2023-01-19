@@ -10,7 +10,6 @@
     "dropzone": "^6.0.0-beta.2",
     "esbuild": "^0.14.43",
     "lodash.debounce": "^4.0.8",
-    "noty": "^3.2.0-beta-deprecated",
     "sass": "^1.53.0",
     "sweetalert2": "^11.4.24",
     "tom-select": "^2.1.0",
