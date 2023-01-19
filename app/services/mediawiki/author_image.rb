@@ -36,7 +36,11 @@ module Mediawiki
     # this method smells of :reek:UtilityFunction
     def search_author_in_wiki(author)
       wiki = MediaWiki::Butt.new('https://en.wikipedia.org/w/api.php')
-      wiki.get_images_in_page(author) # returns nil if page is not found
+      begin
+        wiki.get_images_in_page(author) # returns nil if page is not found
+      rescue NoMethodError
+        nil
+      end
     end
   end
 end

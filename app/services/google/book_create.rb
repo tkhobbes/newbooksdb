@@ -20,11 +20,14 @@ module Google
     # rubocop:disable Layout/LineLength
     def create_book
       @json_data = fetch_json_data
+      book = nil
       return ReturnBook.new(created: false, msg: 'Something went wrong at the backend.') if @json_data.empty?
       return ReturnBook.new(created: false, msg: 'Book already exists.') if Book.exists?(title: @json_data.dig(:volumeInfo, :title), owner: @owner)
-      author = Google::AuthorCreate.new(@json_data.dig(:volumeInfo, :authors)).create_author
-      publisher = Google::PublisherCreate.new(@json_data.dig(:volumeInfo, :publisher)).create_publisher
-      book = Book.create(fetch_book_data.merge(author:, publisher:))
+      ActiveRecord::Base.transaction do
+        author = Google::AuthorCreate.new(@json_data.dig(:volumeInfo, :authors)).create_author
+        publisher = Google::PublisherCreate.new(@json_data.dig(:volumeInfo, :publisher)).create_publisher
+        book = Book.create(fetch_book_data.merge(author:, publisher:))
+      end
       return ReturnBook.new(created: false, msg: 'Something went wrong while saving the book.') unless book
       result = PictureAttacher.new(parse_cover_url, book.cover).attach
       ReturnBook.new(created: true, msg: 'Book created.', book:)
