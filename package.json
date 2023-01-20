@@ -9,6 +9,7 @@
     "@rails/request.js": "^0.0.6",
     "dropzone": "^6.0.0-beta.2",
     "esbuild": "^0.14.43",
+    "html5-qrcode": "^2.3.4",
     "lodash.debounce": "^4.0.8",
     "sass": "^1.53.0",
     "sweetalert2": "^11.4.24",
