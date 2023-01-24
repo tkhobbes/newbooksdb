@@ -3,7 +3,7 @@
 <div data-controller="barcode" id="barcodereader-container">
   <div id="barcodereader">
   </div>
-  <%= form_with url: scan_show_path, data: {turbo: false}, method: :post do |f| %>
+  <%= form_with url: isbn_search_show_path, data: {turbo: false}, method: :post do |f| %>
     <%= f.hidden_field :isbn, data: { barcode_target: 'isbn' } %>
     <%= f.submit 'bla', class: 'hidden', data: {
       barcode_target: 'search'

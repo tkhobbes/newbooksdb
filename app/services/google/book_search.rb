@@ -54,7 +54,7 @@ module Google
 
     # this method smells of :reek:UtilityFunction
     def normalize_isbn(isbn)
-      isbn.delete!(/-/)
+      isbn.delete('-')
     end
 
     def parse_isbn_url
