@@ -164,6 +164,7 @@ The following packages have to be added via yarn:
 - dropzone (for uploading images interactively) (https://www.dropzone.dev/js/)
 - sweetalert2 to replace the boring browser dialogs (https://sweetalert2.github.io)
 - tom-select (https://tom-select.js.org) for the nice tag-like selection in form select fields - I used this guide: (https://blog.corsego.com/select-or-create-with-tom-select)
+- html5-qrcode (https://github.com/mebjas/html5-qrcode) for the barcode scanning functionality - see also https://blog.minhazav.dev/QR-and-barcode-scanner-using-html-and-javascript/
 
 Check package.json for all dependencies that were added.
 
