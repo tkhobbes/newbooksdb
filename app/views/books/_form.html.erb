@@ -7,17 +7,17 @@
         <div class="big-form flex-align-center">
           <div class="form-col col-wide">
             <%= f.association(
-              :author,
+              :authors,
               label: false,
               collection: Author.order(:sort_name),
               label_method: :display_name, value_method: :id,
-              prompt: 'Author...',
+              prompt: 'Authors...',
               input_html:
                 { data:
                   {
                     controller: 'tom-select'
                   },
-                  placeholder: 'Author',
+                  placeholder: 'Authors',
                   class: 'width-100'
                 }
             ) %>

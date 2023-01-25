@@ -33,7 +33,8 @@ class Author < ApplicationRecord
   has_one_attached :portrait
 
   # database relations
-  has_many :books, dependent: :nullify
+  has_many :books_authors, dependent: :destroy
+  has_many :books, through: :books_authors
 
   has_many :taggings, as: :taggable, dependent: :destroy
   has_many :tags, through: :taggings

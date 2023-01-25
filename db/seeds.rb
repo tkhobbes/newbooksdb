@@ -121,7 +121,7 @@ Book.create(
   tags: Owner.first.tags.sample(1),
   publisher: Publisher.first,
   country: 'Switzerland',
-  author: Author.first,
+  authors: Author.where(last_name: 'Tolkien'),
   pages: 1000,
   isbn: 'dummy-isbn-1',
 )
@@ -142,7 +142,7 @@ Book.create(
     tags: owner.tags.sample(2),
     country: Faker::Address.country,
     publisher: Publisher.all.sample,
-    author: Author.all.sample,
+    authors: Author.all.sample(1),
     pages: Random.rand(100..1000),
     isbn: Faker::Code.unique.isbn
   )

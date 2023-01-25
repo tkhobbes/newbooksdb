@@ -14,13 +14,13 @@ class BookPresenter < SimpleDelegator
 
   # this method decorates the link to an author with an optional wrapper and styles
   def author_link(styles: '', wrapper: nil, wrapper_styles: '')
-    wrap_in(link_to(author.display_name, author, class: styles),
-        wrapper, wrapper_styles).html_safe if author
+    wrap_in(link_to(authors.first.display_name, authors.first, class: styles),
+        wrapper, wrapper_styles).html_safe if authors
   end
 
   # this is a simplified decorator for author - just shows "(by authorname)"
   def author_by
-    "(by #{author.display_name})" if author
+    "(by #{authors.first.display_name})" if authors
   end
 
   # this method decorates the link to a publisher with an optional wrapper and styles

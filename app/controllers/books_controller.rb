@@ -102,7 +102,7 @@ class BooksController < ApplicationController
   # this method smells of :reek:UtilityFunction
   def books_with_includes_sorted
     Book
-      .includes([:owner, :author, cover_attachment: :blob])
+      .includes([:owner, :authors, cover_attachment: :blob])
       .order(:sort_title)
   end
 
@@ -125,6 +125,7 @@ class BooksController < ApplicationController
       :publisher_id,
       :tag_list, # is this needed?
       genre_ids: [],
+      author_ids: [],
       tag_ids: []
     )
   end

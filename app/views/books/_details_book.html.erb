@@ -13,8 +13,8 @@
               book_path(book),
               data: { turbo_frame: "_top" }
               )%>
-            <% if book.author %>
-              (by <%= book.author.display_name %>)
+            <% if book.authors %>
+              (by <%= book.authors.first.display_name %>)
             <% end %>
           </div>
           <div class="itemlist__icons">

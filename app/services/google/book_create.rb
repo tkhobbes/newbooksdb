@@ -27,7 +27,7 @@ module Google
       ActiveRecord::Base.transaction do
         author = Google::AuthorCreate.new(@json_data.dig(:volumeInfo, :authors)).create_author
         publisher = Google::PublisherCreate.new(@json_data.dig(:volumeInfo, :publisher)).create_publisher
-        book = Book.create(fetch_book_data.merge(author:, publisher:))
+        book = Book.create(fetch_book_data.merge(authors: Author.where(id: author.id), publisher:))
       end
       return ReturnBook.new(created: false, msg: 'Something went wrong while saving the book.') unless book
       PictureAttacher.new(parse_cover_url, book.cover).attach

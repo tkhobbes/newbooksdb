@@ -86,7 +86,10 @@ class Book < ApplicationRecord
   belongs_to :owner, counter_cache: true
   belongs_to :shelf, optional: true, counter_cache: true
   belongs_to :publisher, optional: true, counter_cache: true
-  belongs_to :author, optional: true, counter_cache: true
+
+  has_many :books_authors, dependent: :destroy
+  has_many :authors, through: :books_authors
+  accepts_nested_attributes_for :authors
 
   has_many :books_genres, dependent: :destroy
   has_many :genres, through: :books_genres
