@@ -1,0 +1,14 @@
+<%= form.input :first_name, placeholder: 'First Name', label: false %>
+<%= form.input :last_name, placeholder: 'Last Name', label: false %>
+<%= params[:from] %>
+<div class="big-form">
+  <div class="form-col">
+    <%= form.input :born, placeholder: 'Birth Year', label: false %>
+  </div>
+  <div class="form-col">
+    <%= form.input :died, placeholder: 'Death Year', label: false %>
+  </div>
+  <div class="form-col">
+    <%= form.input :gender, collection: ['male', 'female'], label: false %>
+  </div>
+</div>

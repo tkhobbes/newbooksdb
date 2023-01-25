@@ -3,20 +3,7 @@
     <div class="big-form">
       <%= f.hidden_field :source, value: params[:source] %>
       <div class="form-col col-wide">
-        <%= f.input :first_name, placeholder: 'First Name', label: false %>
-        <%= f.input :last_name, placeholder: 'Last Name', label: false %>
-        <%= params[:from] %>
-        <div class="big-form">
-          <div class="form-col">
-            <%= f.input :born, placeholder: 'Birth Year', label: false %>
-          </div>
-          <div class="form-col">
-            <%= f.input :died, placeholder: 'Death Year', label: false %>
-          </div>
-          <div class="form-col">
-            <%= f.input :gender, collection: ['male', 'female'], label: false %>
-          </div>
-        </div>
+        <%= render 'authors/required_fields_form', form: f %>
         <div class="big-form">
           <div
             class="form-col col-wide dropzone dropzone-default dz-clickable"
