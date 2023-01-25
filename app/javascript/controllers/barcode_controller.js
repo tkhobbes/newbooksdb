@@ -6,14 +6,12 @@ export default class extends Controller {
   static targets = ["search", "isbn"];
 
   connect() {
-    console.log("search target", this.searchTarget);
-    console.log("isbn target", this.isbnTarget);
-    let html5QrcodeScanner = new Html5QrcodeScanner(
+    this.html5QrcodeScanner = new Html5QrcodeScanner(
       "barcodereader",
       { fps: 2, qrbox: { width: 400, height: 150 } },
       /* verbose= */ false
     );
-    html5QrcodeScanner.render(this.onScanSuccess, this.onScanFailure);
+    this.html5QrcodeScanner.render(this.onScanSuccess, this.onScanFailure);
   }
 
   // as these functions are triggered unbound, need to be fat arrow functions
@@ -26,5 +24,8 @@ export default class extends Controller {
 
   onScanFailure = (error) => {};
 
-  disconnect() {}
+  disconnect() {
+    this.html5QrcodeScanner.clear();
+    // or ...destroy()?
+  }
 }

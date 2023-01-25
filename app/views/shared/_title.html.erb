@@ -7,14 +7,16 @@
       <h1 class="heading1">Book Collector Database UZW18</h1>
       <div class="quickicons">
         <span class="quickicons__filler"></span>
-        <%= link_to scan_new_path, title: 'Scan Book ISBN Code' do %>
-          <%= inline_svg_tag 'qr_code.svg', class: 'bigicon' %>
-        <% end %>
-        <%= link_to isbn_search_new_path, title: 'Search Book Online' do %>
-          <%= inline_svg_tag 'doc_search.svg', class: 'bigicon' %>
-        <% end %>
-        <%= link_to new_book_path, title: 'Add Book' do %>
-          <%= inline_svg_tag 'book.svg', class: 'bigicon' %>
+        <% if owner_signed_in? %>
+          <%= link_to scan_new_path, title: 'Scan Book ISBN Code' do %>
+            <%= inline_svg_tag 'qr_code.svg', class: 'bigicon' %>
+          <% end %>
+          <%= link_to isbn_search_new_path, title: 'Search Book Online' do %>
+            <%= inline_svg_tag 'doc_search.svg', class: 'bigicon' %>
+          <% end %>
+          <%= link_to new_book_path, title: 'Add Book' do %>
+            <%= inline_svg_tag 'book.svg', class: 'bigicon' %>
+          <% end %>
         <% end %>
         <%= link_to login_or_owner_path, title: 'My Profile' do %>
           <%= inline_svg_tag 'profile.svg', class: 'bigicon' %>
