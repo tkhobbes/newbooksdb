@@ -41,6 +41,7 @@ class BooksController < ApplicationController
   # standard new method - show form for new book
   def new
     @book = Book.new
+    @book.authors.build
   end
 
   # standard edit method - show form for editing book
@@ -125,8 +126,16 @@ class BooksController < ApplicationController
       :publisher_id,
       :tag_list, # is this needed?
       genre_ids: [],
+      tag_ids: [],
       author_ids: [],
-      tag_ids: []
+      authors_attributes: [
+        :id,
+        :first_name,
+        :last_name,
+        :born,
+        :died,
+        :gender
+      ]
     )
   end
   # rubocop:enable Metrics/MethodLength

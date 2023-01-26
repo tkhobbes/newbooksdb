@@ -5,29 +5,40 @@
         <%= f.input :title, placeholder: 'Book Title', label: false %>
         <%= f.input :original_title, placeholder: 'Original Title', label: false %>
         <div class="big-form flex-align-center">
-          <div class="form-col col-wide">
-            <%= f.association(
-              :authors,
-              label: false,
-              collection: Author.order(:sort_name),
-              label_method: :display_name, value_method: :id,
-              prompt: 'Authors...',
-              input_html:
-                { data:
-                  {
-                    controller: 'tom-select'
-                  },
-                  placeholder: 'Authors',
-                  class: 'width-100'
-                }
-            ) %>
+          <div class="form-col">
+            <h2 class="heading4 color-primary-dark">Select Authors...</h2>
           </div>
           <div class="form-col">
-            <%= link_to 'Create new Author',
-            new_author_path(source: 'book'),
-            class: 'button-color-primary text-center',
-            data: { action: "click->modal#open", turbo_stream: "" } %>
+            <%= link_to '...or add an Author',
+            '#',
+            class: 'button-color-primary text-center' %>
           </div>
+        </div>
+        <div class="form-col">
+          <%= f.association(
+            :authors,
+            label: false,
+            collection: Author.order(:sort_name),
+            label_method: :display_name, value_method: :id,
+            prompt: 'Authors...',
+            input_html:
+              { data:
+                {
+                  controller: 'tom-select'
+                },
+                placeholder: 'Authors',
+                class: 'width-100'
+              }
+          ) %>
+        </div>
+        <div class="form-col border-color-primary-dark padding-33 border-radius-1 small">
+          <h2 class="heading4 color-primary-dark">Add New Author</h2>
+          <%= f.fields_for :authors do |form| %>
+            <%= render 'authors/required_fields_form', form: form %>
+            <%= link_to 'Add another Author...',
+            '#',
+            class: 'button-color-primary text-center width-33' %>
+          <% end %>
         </div>
         <div class="big-form">
           <div class="form-col">
