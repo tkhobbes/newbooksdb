@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import AddSubFormController from "./add_sub_form_controller"
+application.register("add-sub-form", AddSubFormController)
+
 import BarcodeController from "./barcode_controller"
 application.register("barcode", BarcodeController)
 
