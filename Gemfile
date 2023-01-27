@@ -39,6 +39,7 @@ group :development do
   gem 'bullet'
   gem 'database_consistency', '>= 1.1.15'
   gem 'letter_opener', '>= 1.8.1'
+  gem 'prosopite'
   gem 'rails-erd'
   gem 'reek', '>= 6.1.1'
   gem 'rubocop', require: false

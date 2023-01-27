@@ -23,14 +23,13 @@ class SearchController < ApplicationController
 
   # we use the index method for search results
   # This Method smells of :reek:DuplicateMethodCall
-  # rubocop:disable Metrics/AbcSize
   # rubocop:disable Metrics/MethodLength
   def index
-    return if params[:query].size.zero?
+    return if params[:query].empty?
     case params[:list]
     when 'books'
       book_results = Book.search(params[:query])
-        .includes([:author, :owner, cover_attachment: :blob])
+        .includes([:authors, :owner, cover_attachment: :blob])
       @pagy, @books = pagy(book_results)
     when 'authors'
       author_results = Author.search(params[:query], default_operator: :or)
@@ -39,6 +38,5 @@ class SearchController < ApplicationController
     end
   end
   # rubocop:enable Metrics/MethodLength
-  # rubocop:enable Metrics/AbcSize
 
 end

@@ -143,6 +143,7 @@ The following Gems are used in this project:
 - Annotate (https://rubygems.org/gems/annotate) is used to auto-annotate models and routes
 - Rails-ERD (https://rubygems.org/gems/rails-erd) is used to draw the entity relationship diagrams as a PDF
 - Bullet (https://rubygems.org/gems/bullet) is used to detect N+1 issues.
+- Prosopite (https://rubygems.org/gems/prosopite) for more N+1 detection
 - Reek (https://github.com/troessner/reek) to detect code smells
 - Database consistency checker (https://rubygems.org/gems/database_consistency) is used to validate database constraints vs validations
 - Faker (https://rubygems.org/gems/faker) to quickly generate data

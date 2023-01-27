@@ -13,6 +13,7 @@ class BookPresenter < SimpleDelegator
   end
 
   # this method decorates the link to an author with an optional wrapper and styles
+  # This method smells of :reek:DuplicateMethodCall
   def author_link(styles: '', wrapper: nil, wrapper_styles: '')
     wrap_in(link_to(authors.first.display_name, authors.first, class: styles),
         wrapper, wrapper_styles).html_safe if authors.present?
