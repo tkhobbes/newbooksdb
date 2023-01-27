@@ -36,6 +36,7 @@ group :development do
   gem 'annotate'
   gem 'better_errors', '>= 2.9.1'
   gem 'binding_of_caller' # required for better_errors
+  gem 'brakeman'
   gem 'bullet'
   gem 'database_consistency', '>= 1.1.15'
   gem 'letter_opener', '>= 1.8.1'

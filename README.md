@@ -145,6 +145,7 @@ The following Gems are used in this project:
 - Bullet (https://rubygems.org/gems/bullet) is used to detect N+1 issues.
 - Prosopite (https://rubygems.org/gems/prosopite) for more N+1 detection
 - Reek (https://github.com/troessner/reek) to detect code smells
+- Brakeman (https://rubygems.org/gems/brakeman) to detect security issues
 - Database consistency checker (https://rubygems.org/gems/database_consistency) is used to validate database constraints vs validations
 - Faker (https://rubygems.org/gems/faker) to quickly generate data
 - Factory Bot (https://rubygems.org/search?query=factory_bot_rails) to easily generate test data
