@@ -1,7 +1,3 @@
-<%= content_for :body_attributes do %>
-data-controller="modal"
-<% end %>
-
 <%= page_title("Edit Book #{@book.title}",'', 'heading2') %>
 
 <%= render 'books/form', book: @book %>

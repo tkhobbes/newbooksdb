@@ -32,11 +32,7 @@ class AuthorsController < ApplicationController
   def create
     @author = Author.new(author_params)
     if @author.save
-      if params[:author][:source] == 'book'
-        redirect_to new_book_path
-      else
-        redirect_to author_path(@author), success: 'Author saved'
-      end
+      redirect_to author_path(@author), success: 'Author saved'
     else
       render :new, status: :unprocessable_entity
     end
