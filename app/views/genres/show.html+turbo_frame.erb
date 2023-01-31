@@ -1,7 +1,7 @@
 <%= turbo_frame_tag 'page' do %>
   <%= turbo_stream_action_tag(
     'append',
-    target: 'genre_books',
+    target: 'tag_books',
     template: %(#{render @books})
   ) %>
   <%= turbo_stream_action_tag(
