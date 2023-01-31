@@ -10,7 +10,7 @@
     <div class="bookdetails__text-title">
       <h1 class="heading3">
         <%= @book.title %><br />
-        <%= @book.decorate.author_link(styles: 'color-accent-dark color-hover-accent'
+        <%= @book.decorate.all_authors_link(styles: 'color-accent-dark color-hover-accent'
         ) %>
       </h1>
         <% if owner_signed_in? && @book.owner == current_owner %>
