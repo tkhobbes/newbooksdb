@@ -2,31 +2,34 @@
 // Run that command whenever you add a new controller or create them with
 // ./bin/rails generate stimulus controllerName
 
-import { application } from "./application";
+import { application } from "./application"
 
-import AddSubFormController from "./add_sub_form_controller";
-application.register("add-sub-form", AddSubFormController);
+import AddSubFormController from "./add_sub_form_controller"
+application.register("add-sub-form", AddSubFormController)
 
-import BarcodeController from "./barcode_controller";
-application.register("barcode", BarcodeController);
+import BarcodeController from "./barcode_controller"
+application.register("barcode", BarcodeController)
 
-import BurgermenuController from "./burgermenu_controller";
-application.register("burgermenu", BurgermenuController);
+import BurgermenuController from "./burgermenu_controller"
+application.register("burgermenu", BurgermenuController)
 
-import CoverdropController from "./coverdrop_controller";
-application.register("coverdrop", CoverdropController);
+import CoverdropController from "./coverdrop_controller"
+application.register("coverdrop", CoverdropController)
 
-import FlashController from "./flash_controller";
-application.register("flash", FlashController);
+import FlashController from "./flash_controller"
+application.register("flash", FlashController)
 
-import QuickSearchController from "./quick_search_controller";
-application.register("quick-search", QuickSearchController);
+import QuickSearchController from "./quick_search_controller"
+application.register("quick-search", QuickSearchController)
 
-import SweetalertController from "./sweetalert_controller";
-application.register("sweetalert", SweetalertController);
+import SweetalertController from "./sweetalert_controller"
+application.register("sweetalert", SweetalertController)
 
-import TomSelectAddController from "./tom_select_add_controller";
-application.register("tom-select-add", TomSelectAddController);
+import TabnavController from "./tabnav_controller"
+application.register("tabnav", TabnavController)
 
-import TomSelectController from "./tom_select_controller";
-application.register("tom-select", TomSelectController);
+import TomSelectAddController from "./tom_select_add_controller"
+application.register("tom-select-add", TomSelectAddController)
+
+import TomSelectController from "./tom_select_controller"
+application.register("tom-select", TomSelectController)

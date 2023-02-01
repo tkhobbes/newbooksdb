@@ -52,6 +52,11 @@ parameters are commonly used:
 - 'books': lists books
 - 'authors': lists authors
 
+#### Stimulus controller for Tab Navigation
+
+There is a stimulus controller to switch between tabs (in tags view), code taken
+from this youtube video: https://youtu.be/I8Np9GHNMDk
+
 ### Models
 
 #### Books

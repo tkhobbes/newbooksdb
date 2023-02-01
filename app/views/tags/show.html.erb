@@ -12,27 +12,35 @@
   </div>
 </div>
 
-<div class="tabs margin-top-1">
-  <ul>
-    <li class="placeholder-tab">&nbsp;</li>
-    <li class="content-tab <%= params[:list] == 'books' ? 'active' : '' %>">
-      <%= link_to 'Books', tag_path(@tag, list: 'books') %>
-    </li>
-    <li class="placeholder-tab">&nbsp;</li>
-    <li class="content-tab <%= params[:list] == 'authors' ? 'active' : '' %>">
-      <%= link_to 'Authors', tag_path(@tag, list: 'authors') %>
-    </li>
-    <li class="placeholder-tab">&nbsp;</li>
-  </ul>
-</div>
+<%= turbo_frame_tag 'tabnav', data: { controller: 'tabnav' } do %>
+  <div class="tabs margin-top-1">
+    <ul>
+      <li class="placeholder-tab">&nbsp;</li>
+      <li class="content-tab <%= params[:list] == 'books' ? 'active' : '' %>">
+        <%= link_to 'Books', '#', data: {
+          action: 'click->tabnav#navigate',
+          url: tag_path(@tag, list: 'books')
+        } %>
+      </li>
+      <li class="placeholder-tab">&nbsp;</li>
+      <li class="content-tab <%= params[:list] == 'authors' ? 'active' : '' %>">
+        <%= link_to 'Authors', '#', data: {
+          action: 'click->tabnav#navigate',
+          url: tag_path(@tag, list: 'authors')
+        } %>
+      </li>
+      <li class="placeholder-tab">&nbsp;</li>
+    </ul>
+  </div>
 
-
-<%= turbo_frame_tag @tag do %>
-  <% if params[:list] == 'authors' %>
-    <%= render 'authors/details_author', authors: @authors %>
-    <%= render 'shared/pager', pagy: @pagy_authors, model_path: tag_path(@tag, page: @pagy_authors.next, list: 'authors', show: 'list') %>
-  <% else %>
-    <%= render 'books/details_book', books: @books %>
-    <%= render 'shared/pager', pagy: @pagy, model_path: tag_path(@tag, page: @pagy.next, list: 'books', show: 'list') %>
+  <%= turbo_frame_tag @tag do %>
+    <% if params[:list] == 'authors' %>
+      <%= render 'authors/details_author', authors: @authors %>
+      <%= render 'shared/pager', pagy: @pagy_authors, model_path: tag_path(@tag, page: @pagy_authors.next, list: 'authors', show: 'list') %>
+    <% else %>
+      <%= render 'books/details_book', books: @books %>
+      <%= render 'shared/pager', pagy: @pagy, model_path: tag_path(@tag, page: @pagy.next, list: 'books', show: 'list') %>
+    <% end %>
   <% end %>
+
 <% end %>
