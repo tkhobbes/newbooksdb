@@ -175,6 +175,11 @@ The following packages have to be added via yarn:
 
 Check package.json for all dependencies that were added.
 
+#### Stimulus Controllers
+
+The controller to add author subforms (another_sub_form) is based on this guide:
+https://ndrean.medium.com/dynamic-nested-forms-with-rails-aa537a3ee758
+
 ### Test Suite
 
 - RSpec is used for writing tests (using the rspec-rails gem https://github.com/rspec/rspec-rails)

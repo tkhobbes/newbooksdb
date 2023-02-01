@@ -8,15 +8,21 @@
           <div class="form-col">
             <h2 class="heading4 color-primary-dark">Select Authors...</h2>
           </div>
-          <div class="form-col">
-            <%= link_to '...or add an Author',
-            '#',
-            class: 'button-color-primary text-center',
-            data: {
-              action: 'click->add-sub-form#toggle',
-              add_sub_form_target: 'togglebutton'
-            } %>
-          </div>
+          <% if params[:action] == 'new' %>
+            <div class="form-col">
+              <%= link_to '...or add an Author',
+              '#',
+              class: 'button-color-primary text-center',
+              data: {
+                action: 'click->add-sub-form#toggle',
+                add_sub_form_target: 'togglebutton'
+              } %>
+              <div class="small margin-top-25">
+                You can select authors first on the left and then click above
+                button to add new ones.
+              </div>
+            </div>
+          <% end %>
         </div>
         <div class="form-col" data-add-sub-form-target="selectmenu">
           <%= f.association(
@@ -35,15 +41,24 @@
               }
           ) %>
         </div>
-        <div class="form-col border-color-primary-dark padding-33 border-radius-1 small hidden margin-top-1" data-add-sub-form-target="subform">
-          <h2 class="heading4 color-primary-dark">Add New Author</h2>
-          <%= f.fields_for :authors do |form| %>
-            <%= render 'authors/required_fields_form', form: form %>
-            <%= link_to 'Add another Author...',
-            '#',
-            class: 'button-color-primary text-center width-33' %>
-          <% end %>
-        </div>
+        <% if params[:action] == 'new' %>
+          <div id="authorform" data-add-sub-form-target="subform" class="hidden">
+            <div
+              class="form-col border-color-primary-dark padding-33 border-radius-1 small margin-top-1"
+              data-controller="another-sub-form"
+              id="0"
+            >
+              <h2 class="heading4 color-primary-dark">Add New Author</h2>
+              <%= f.fields_for :authors do |form| %>
+                <%= render 'authors/required_fields_form', form: form %>
+                <%= link_to 'Add another Author...',
+                '#',
+                class: 'button-color-primary text-center width-33',
+                data: { action: 'click->another-sub-form#addform'} %>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
         <div class="big-form">
           <div class="form-col">
             <%= f.association(
