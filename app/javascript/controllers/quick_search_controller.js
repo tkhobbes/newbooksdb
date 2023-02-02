@@ -1,11 +1,15 @@
-import { Controller } from "@hotwired/stimulus";
 import { Turbo } from "@hotwired/turbo-rails";
-import { debounce } from "lodash.debounce";
+import { ApplicationController, useDebounce } from "stimulus-use";
 
 // Connects to data-controller="quick-search"
 
-export default class extends Controller {
+export default class extends ApplicationController {
   static targets = ["searchinput"];
+  static debounces = ["search"];
+
+  connect() {
+    useDebounce(this, { wait: 300 });
+  }
 
   search() {
     let params = new URLSearchParams();
