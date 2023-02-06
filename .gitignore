@@ -46,8 +46,10 @@
 
 # Docker stuff
 /docker-compose.yml
+/.dockerignore
+/docker-build.sh
+/Dockerfile
+/config/bookdb-production
 
 # test stuff
-/Scraper\ Concept.md
-/isbnscrapertest.rb
-/isbndetailstest.rb
+/mockup/test-code
