@@ -82,6 +82,8 @@ gem 'backpedal'
 gem 'country_select'
 # authentication with devise
 gem 'devise', '~> 4.8', '>= 4.8.1'
+# exception notifications - loaded everywhere but initializer will only kick in for production environment
+gem 'exception_notification'
 # Faraday for safer http requests
 gem 'faraday', '>= 2.7.1'
 # use nice IDs instead of numbers
