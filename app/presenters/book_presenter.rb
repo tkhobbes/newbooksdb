@@ -16,11 +16,14 @@ class BookPresenter < SimpleDelegator
   # this method shows links to all authors of a book
   def all_authors_link(styles: '', wrapper: 'span', wrapper_styles: '')
     return if authors.blank?
-    authors.map do |author|
-      content_tag wrapper, class: wrapper_styles do
-        link_to(author.display_name, author, class: styles)
-      end
-    end.join(', ').html_safe
+    safe_join(
+      authors.map do |author|
+        content_tag wrapper, class: wrapper_styles do
+          link_to(author.display_name, author, class: styles)
+        end
+      end,
+      ', '
+    )
     # author_link = ''
     # authors.each do |author|
     #   author_link << wrap_in(link_to(author.display_name, author, class: styles),
