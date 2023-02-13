@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_05_105611) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_13_140110) do
   create_table "action_text_rich_texts", charset: "utf8mb4", force: :cascade do |t|
     t.string "name", null: false
     t.text "body", size: :long
@@ -120,7 +120,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_05_105611) do
     t.index ["book_id"], name: "index_books_authors_on_book_id"
   end
 
-  create_table "books_genres", id: false, charset: "utf8mb4", force: :cascade do |t|
+  create_table "books_genres", charset: "utf8mb4", force: :cascade do |t|
     t.bigint "genre_id", null: false
     t.bigint "book_id", null: false
     t.index ["book_id", "genre_id"], name: "index_books_genres_on_book_id_and_genre_id", unique: true

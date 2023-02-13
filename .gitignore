@@ -50,6 +50,7 @@
 /docker-build.sh
 /Dockerfile
 /config/bookdb-production
+/config/ssl
 
 # test stuff
 /mockup/test-code

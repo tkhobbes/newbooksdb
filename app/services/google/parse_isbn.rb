@@ -9,7 +9,7 @@ module Google
       # this method smells of :reek:IrresponsibleModule
       # this method smells of :reek:UtilityFunction
       def parse_isbn13(item)
-        item.dig(:volumeInfo, :industryIdentifiers).find {
+        item.dig(:volumeInfo, :industryIdentifiers)&.find {
           |hash| hash.value?('ISBN_13')
         }&.dig(:identifier)
       end
@@ -18,7 +18,7 @@ module Google
       # this method smells of :reek:IrresponsibleModule
       # this method smells of :reek:UtilityFunction
       def parse_isbn10(item)
-        item.dig(:volumeInfo, :industryIdentifiers).find {
+        item.dig(:volumeInfo, :industryIdentifiers)&.find {
           |hash| hash.value?('ISBN_10')
         }&.dig(:identifier)
       end

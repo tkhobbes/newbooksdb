@@ -4,6 +4,7 @@
 #
 # Table name: books_genres
 #
+#  id       :bigint           not null, primary key
 #  book_id  :bigint           not null
 #  genre_id :bigint           not null
 #
