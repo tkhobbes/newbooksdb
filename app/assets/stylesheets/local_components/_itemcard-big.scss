@@ -9,6 +9,10 @@
   flex: 1;
   max-width: 48%;
 
+  &:hover {
+    box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.2);
+  }
+
   &__cover {
     max-width: 40%;
     display: flex;
