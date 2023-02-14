@@ -16,6 +16,12 @@ module BooksHelper
     end
   end
 
+  # establish a map of letters and how many books we have for each letter
+  def letter_map
+    Book.pluck(:sort_title)&.map { |title | title[0] }&.tally
+  end
+
+  # method extends existing scope of books_path with new scope
   def scoped_books_path(show_hash)
     new_scopes = current_scopes.merge(show_hash)
     books_path(new_scopes)

@@ -10,11 +10,21 @@
     display: block;
     flex-grow: 1;
     @extend .color-primary;
-    margin: 0.2em;
     text-align: center;
 
-    &:hover {
-      @extend .bg-primary-dark;
+    a {
+      display: block;
+      @extend .color-primary-dark;
+
+      &:hover {
+        @extend .bg-primary-dark;
+        @extend .color-primary;
+      }
     }
+  }
+
+  .active {
+    @extend .bg-primary;
+    @extend .color-primary-light;
   }
 }
