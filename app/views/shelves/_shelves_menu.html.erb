@@ -26,6 +26,6 @@
 </nav>
 <div class="alpha-list">
   <% ('A'..'Z').each do |letter| %>
-    <a href=“#" class="single-letter"><%= letter %></a>
+    <%= link_to letter, scoped_books_path(letter: letter.downcase), class: 'single-letter' %>
   <% end %>
 </div>

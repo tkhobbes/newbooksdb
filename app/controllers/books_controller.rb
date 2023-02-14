@@ -20,6 +20,7 @@ class BooksController < ApplicationController
   has_scope :my_books
   has_scope :shelf_books
   has_scope :no_shelf, type: :boolean
+  has_scope :letter
 
   # standard index method - show all books
   # books ordered by sort_title; additional variable @pagy for pagination

@@ -17,8 +17,8 @@ module BooksHelper
   end
 
   def scoped_books_path(show_hash)
-    show_hash.merge!(current_scopes) unless current_scopes.empty?
-    books_path(show_hash)
+    new_scopes = current_scopes.merge(show_hash)
+    books_path(new_scopes)
   end
 
   # store the number of books in a cache

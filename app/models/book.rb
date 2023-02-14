@@ -101,6 +101,7 @@ class Book < ApplicationRecord
   scope :my_books, -> (uid) { where(owner_id: uid) }
   scope :shelf_books, -> (shelf) { where(shelf_id: shelf) }
   scope :no_shelf, -> { where(shelf_id: nil) }
+  scope :letter, -> (letter) { where('LEFT(sort_title,1) LIKE ?', "#{letter}%") }
 
   # friendly ID uses slug
   extend FriendlyId
