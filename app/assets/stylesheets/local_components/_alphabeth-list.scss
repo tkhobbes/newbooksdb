@@ -1,0 +1,20 @@
+.alpha-list {
+  @extend .margin-bottom-1;
+  @extend .margin-right-50;
+  @extend .margin-left-50;
+  font-family: var(--menu-text);
+  font-size: 1.1em;
+  display: flex;
+
+  .single-letter {
+    display: block;
+    flex-grow: 1;
+    @extend .color-primary;
+    margin: 0.2em;
+    text-align: center;
+
+    &:hover {
+      @extend .bg-primary-dark;
+    }
+  }
+}

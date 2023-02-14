@@ -6,12 +6,13 @@ module BooksHelper
   # sets the title to display on the index page for books, depending on what we see
   # this method smells of :reek:DuplicateMethodCall
   def book_index_title
+    letter_title = params[:letter] ? " starting with #{params[:letter].upcase}" : ''
     if params[:my_books]
-      'My Books'
+      "My Books#{letter_title}"
     elsif params[:shelf_books]
-      "Books in Shelf '#{Shelf.find(params[:shelf_books]).name}'"
+      "Books in Shelf '#{Shelf.find(params[:shelf_books]).name}'#{letter_title}"
     else
-      'All Books'
+      "All Books#{letter_title}"
     end
   end
 
