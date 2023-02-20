@@ -1,3 +1,10 @@
+<%= render AbcNavigateComponent.new(
+  model: 'Book',
+  existing_scopes: current_scopes,
+  sort_column: :sort_title,
+  current_letter: params[:letter]
+  ) %>
+
 <%= page_title(book_index_title,'', 'heading2') %>
 
 <%= turbo_frame_tag 'page' %>

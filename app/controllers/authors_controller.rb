@@ -11,8 +11,13 @@ class AuthorsController < ApplicationController
 
   before_action :dissolve, only: :index
 
+  has_scope :no_books
+  has_scope :dead
+  has_scope :alive
+  has_scope :letter
+
   def index
-    @pagy, @authors = pagy(Author.includes([portrait_attachment: :blob]).order(:sort_name))
+    @pagy, @authors = pagy(apply_scopes(Author.includes([portrait_attachment: :blob]).order(:sort_name)))
   end
 
   def show

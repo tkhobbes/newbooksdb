@@ -1,3 +1,10 @@
+<%= render AbcNavigateComponent.new(
+  model: 'Author',
+  existing_scopes: current_scopes,
+  sort_column: :sort_name,
+  current_letter: params[:letter]
+  ) %>
+
 <%= page_title('Authors','', 'heading2') %>
 
 <div class="margin-top-1 margin-left-50 margin-bottom-1">

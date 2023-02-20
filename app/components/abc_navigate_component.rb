@@ -24,35 +24,33 @@ class AbcNavigateComponent < ViewComponent::Base
     nav.html_safe
   end
 
-  # method generates proper html for a letter - depending on whether it is active
+  # method generates proper html for ONE letter - depending on whether it is active
   # and whether it has any results
   def span_letter(letter, count)
     if count.positive?
-      if @current_letter&.upcase == letter.upcase
+      if @current_letter == letter
         content_tag(:span, class: 'single-letter active') do
-          letter
+          letter.upcase
         end
       else
         content_tag(:span, class: 'single-letter') do
-          link_to letter, full_scope_path(letter)
+          link_to letter.upcase, full_scope_path(letter)
         end
       end
     else
       content_tag(:span, class: 'single-letter') do
-        letter
+        letter.upcase
       end
     end
   end
 
   # method generates a map for each letter and how many times it occurs in the
-  # column that was to be sorted; it uses the sort_list to find that out
-  # the reason this method exists is because we need ALL letters, not just the one occuring
+  # column that was to be sorted, by mergin in the sort_list hash
+  occuring
   def sort_map
     map = Hash.new(0)
-    ('a'..'z').each do |letter|
-      map[letter] = (sort_list[letter].presence || 0)
-    end
-    map
+    ('a'..'z').each { |letter| map[letter] = 0 }
+    map.merge(sort_list)
   end
 
   # cycles through the model and returns a hash of the first letter of the
@@ -61,19 +59,27 @@ class AbcNavigateComponent < ViewComponent::Base
     if @existing_scopes.present?
       apply_scopes(@model, @existing_scopes)
         .pluck(@sort_column)
-        &.map { |sort| sort[0] }
+        &.map { |sort| sort[0].downcase }
         &.tally
         &.sort
         .to_h
     else
-      @model.pluck(@sort_column)&.map { |sort| sort[0] }&.tally&.sort.to_h
+      @model.pluck(@sort_column)&.map { |sort| sort[0].downcase }&.tally&.sort.to_h
     end
   end
 
   # generates the full path for a letter entry, honouring already existing scopes
   def full_scope_path(letter)
     new_scopes = @existing_scopes.merge(letter:)
-    url_for(action: 'index', controller: 'books', params: new_scopes)
+    url_for(action: 'index', controller: controller_name, params: new_scopes)
+  end
+
+  private
+
+  # extract the controller name from the model name
+  # convert back to string, then downcase, add plural and remove number
+  def controller_name
+    pluralize(2, @model.to_s.downcase).gsub(/\d /,'')
   end
 
 end

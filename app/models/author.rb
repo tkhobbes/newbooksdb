@@ -65,6 +65,7 @@ class Author < ApplicationRecord
   scope :no_books, -> { left_joins(:books).where(books: { id: [0, nil, ''] }) }
   scope :dead, -> { where('died > 0') }
   scope :alive, -> { where(died: [nil, '']) }
+  scope :letter, -> (letter) { where('LEFT(sort_name,1) LIKE ?', "#{letter}%") }
 
   # some easy helper methods
   def dead?
