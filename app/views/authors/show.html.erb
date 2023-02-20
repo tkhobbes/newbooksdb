@@ -52,7 +52,7 @@
       <%= turbo_frame_tag book, class: "itemlist__border" do %>
         <li class="itemlist__item">
           <div class="itemlist__cover">
-            <%= cover_image(book, size: "default") %>
+            <%= render BookCoverComponent.new(book: book) %>
           </div>
           <div class="itemlist__title">
             <%= link_to(

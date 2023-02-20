@@ -1,6 +1,6 @@
 <%= turbo_frame_tag book, class: 'itemcard-big' do %>
     <div class="itemcard-big__cover">
-      <%= cover_image(book, size: "medium") %>
+      <%= render BookCoverComponent.new(book: book, size: :medium) %>
     </div>
     <div class="itemcard-big__content">
     <% if owner_signed_in? && book.owner == current_owner %>
