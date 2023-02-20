@@ -1,0 +1,79 @@
+# frozen_string_literal: false
+
+class AbcNavigateComponent < ViewComponent::Base
+  # we need HasScope from the gem, and we need to make apply_scopes public
+  include HasScope
+  public :apply_scopes
+
+  def initialize(model:, existing_scopes:, sort_column:, current_letter:)
+    @model = Object.const_get(model)
+    @existing_scopes = existing_scopes
+    @sort_column = sort_column
+    @current_letter = current_letter
+    super
+  end
+
+  # method generates the abc nav list and returns it as html_safe
+  # it cycles through the sort map and uses "output_letter" to generate the html
+  # for each nav entry
+  def generate_abc_nav
+    nav = ''
+    sort_map.each do |letter, count|
+      nav << span_letter(letter, count)
+    end
+    nav.html_safe
+  end
+
+  # method generates proper html for a letter - depending on whether it is active
+  # and whether it has any results
+  def span_letter(letter, count)
+    if count.positive?
+      if @current_letter&.upcase == letter.upcase
+        content_tag(:span, class: 'single-letter active') do
+          letter
+        end
+      else
+        content_tag(:span, class: 'single-letter') do
+          link_to letter, full_scope_path(letter)
+        end
+      end
+    else
+      content_tag(:span, class: 'single-letter') do
+        letter
+      end
+    end
+  end
+
+  # method generates a map for each letter and how many times it occurs in the
+  # column that was to be sorted; it uses the sort_list to find that out
+  # the reason this method exists is because we need ALL letters, not just the one occuring
+  def sort_map
+    map = Hash.new(0)
+    ('a'..'z').each do |letter|
+      map[letter] = (sort_list[letter].presence || 0)
+    end
+    map
+  end
+
+  # cycles through the model and returns a hash of the first letter of the
+  # sort column and how many times it occurs ('a' => 3, 'b' => 2, etc.)
+  def sort_list
+    if @existing_scopes.present?
+      apply_scopes(@model, @existing_scopes)
+        .pluck(@sort_column)
+        &.map { |sort| sort[0] }
+        &.tally
+        &.sort
+        .to_h
+    else
+      @model.pluck(@sort_column)&.map { |sort| sort[0] }&.tally&.sort.to_h
+    end
+  end
+
+  # generates the full path for a letter entry, honouring already existing scopes
+  def full_scope_path(letter)
+    new_scopes = @existing_scopes.merge(letter:)
+    url_for(action: 'index', controller: 'books', params: new_scopes)
+  end
+
+end

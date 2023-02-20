@@ -88,6 +88,8 @@ gem 'exception_notification'
 gem 'faraday', '>= 2.7.1'
 # use nice IDs instead of numbers
 gem 'friendly_id', '>= 5.4.2'
+# view components
+gem 'view_component'
 # using scoped routes for our shelves etc
 gem 'has_scope'
 # better way to use SVGs

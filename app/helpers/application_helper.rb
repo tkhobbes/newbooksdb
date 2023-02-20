@@ -72,4 +72,8 @@ module ApplicationHelper
     end
   end
   # rubocop:enable Metrics/MethodLength
+
+  def pluck_list(model, sort_column)
+    model.pluck(sort_column)&.map { |sort| sort[0] }&.tally
+  end
 end

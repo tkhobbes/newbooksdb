@@ -24,18 +24,9 @@
     <% end %>
   </ul>
 </nav>
-<div class="alpha-list">
-  <% ('a'..'z').each do |letter| %>
-    <% if letter_map[letter] %>
-      <% if params[:letter] == letter %>
-        <span class="single-letter active"><%= letter.upcase %></span>
-      <% else %>
-        <span class="single-letter">
-          <%= link_to letter.upcase, scoped_books_path(letter: letter) %>
-        </span>
-      <% end %>
-    <% else %>
-      <span class="single-letter"><%= letter.upcase %></span>
-    <% end %>
-  <% end %>
-</div>
+<%= render AbcNavigateComponent.new(
+  model: 'Book',
+  existing_scopes: current_scopes,
+  sort_column: :sort_title,
+  current_letter: params[:letter]
+  ) %>
