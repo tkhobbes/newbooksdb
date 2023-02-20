@@ -1,6 +1,6 @@
 <%= turbo_frame_tag author, class: 'itemcard-big' do %>
     <div class="itemcard-big__cover">
-      <%= portrait_image(author, size: "medium") %>
+      <%= render AuthorPortraitComponent.new(author: author, size: :medium) %>
     </div>
     <div class="itemcard-big__content">
     <% if owner_signed_in? %>

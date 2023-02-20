@@ -5,7 +5,7 @@
       <%= turbo_frame_tag author, class: "itemlist__border" do %>
         <li class="itemlist__item">
           <div class="itemlist__cover">
-            <%= portrait_image(author, size: "default") %>
+            <%= render AuthorPortraitComponent.new(author: author) %>
           </div>
           <div class="itemlist__title">
             <%= link_to(

@@ -3,7 +3,7 @@
 
 <div class="bookdetails">
   <div class="cover-large">
-    <%= portrait_image(@author, size: "large") %>
+    <%= render AuthorPortraitComponent.new(author: @author, size: :large) %>
   </div>
   <div class="bookdetails__text">
     <div class="bookdetails__text-title">
