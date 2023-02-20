@@ -46,7 +46,7 @@ class BookPresenter < SimpleDelegator
 
   # this is a simplified decorator for author - just shows "(by authorname)"
   def author_by
-    "(by #{authors.first.display_name} #{authors.count > 1 ? ' et al.' : ''})" if authors.present?
+    "(by #{authors.first.display_name}#{authors.count > 1 ? ' et al.' : ''})" if authors.present?
   end
 
   # this method decorates the link to a publisher with an optional wrapper and styles

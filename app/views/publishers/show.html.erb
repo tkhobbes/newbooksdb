@@ -13,7 +13,7 @@
   %>
 </div>
 
-<<%= turbo_frame_tag @genre do %>
+<%= turbo_frame_tag @genre do %>
   <%= render 'books/details_book', books: @books %>
   <%= render 'shared/pager', pagy: @pagy, model_path: publisher_path(@publisher, page: @pagy.next, list: 'books', show: 'list') %>
 <% end %>

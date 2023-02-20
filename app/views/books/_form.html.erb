@@ -63,6 +63,7 @@
           <div class="form-col">
             <%= f.association(
               :publisher,
+              collection: Publisher.order(:name),
               label: false,
               input_html:
                 { data:
@@ -98,6 +99,7 @@
           <div class="form-col">
             <%= f.association(
               :book_format,
+              collection: BookFormat.order(:name),
               label: false,
               input_html:
                 { data:
@@ -162,6 +164,7 @@
         <div class="color-primary-dark margin-bottom-50 margin-top-50">Genres</div>
         <%= f.association(
           :genres,
+          collection: Genre.order(:name),
           label: false,
           input_html:
             { data:
