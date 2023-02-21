@@ -43,5 +43,7 @@ class Publisher < ApplicationRecord
 
   # scopes to delete publishers that have no books
   scope :no_books, -> { left_joins(:books).where(books: { id: [0, nil, ''] }) }
+  # scope to have navigation working
+  scope :letter, -> (letter) { where('LEFT(name,1) LIKE ?', "#{letter}%") }
 
 end

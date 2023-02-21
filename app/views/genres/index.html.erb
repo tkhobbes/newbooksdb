@@ -1,5 +1,12 @@
 <%= page_title('All Genres','', 'heading2') %>
 
+<%= render AbcNavigateComponent.new(
+  model: 'Genre',
+  existing_scopes: current_scopes,
+  sort_column: :name,
+  current_letter: params[:letter]
+  ) %>
+
 <%= turbo_frame_tag 'page' %>
 <div class="flexlist" id="genres">
   <% @genres.each do |genre| %>

@@ -1,5 +1,12 @@
 <%= page_title('All Publishers','', 'heading2') %>
 
+<%= render AbcNavigateComponent.new(
+  model: 'Publisher',
+  existing_scopes: current_scopes,
+  sort_column: :name,
+  current_letter: params[:letter]
+  ) %>
+
 <%= turbo_frame_tag 'page' %>
 <div class="margin-top-1 margin-left-50">
   <%= link_to 'Add Publisher', new_publisher_path, class: 'button-color-secondary' %>

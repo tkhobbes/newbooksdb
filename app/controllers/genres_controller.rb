@@ -11,6 +11,8 @@ class GenresController < ApplicationController
 
   before_action :dissolve, only: [:show]
 
+  has_scope :letter
+
   # index action can answer to either 'settings' page (to administer genres)
   # or otherwise it will display all genres and the first 5 books within each genre
   # this method smells of :reek:DuplicateMethodCall
@@ -20,9 +22,9 @@ class GenresController < ApplicationController
       @genres = Genre.all.order(:name)
       render 'admin', genres: @genres
     else
-      @pagy, @genres = pagy(Genre
+      @pagy, @genres = pagy(apply_scopes(Genre
         .includes([:books_genres, books: [cover_attachment: :blob]])
-        .order(:name))
+        .order(:name)))
     end
   end
 

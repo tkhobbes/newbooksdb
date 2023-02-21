@@ -11,11 +11,13 @@ class PublishersController < ApplicationController
 
   before_action :dissolve, only: [:show]
 
+  has_scope :letter
+
   # index method uses pagy
   def index
-    @pagy, @publishers = pagy(Publisher.all
+    @pagy, @publishers = pagy(apply_scopes(Publisher.all
       .includes([books: [cover_attachment: :blob]])
-      .order(:name))
+      .order(:name)))
   end
 
   # shows a publisher in detail and lists all books from that publisher

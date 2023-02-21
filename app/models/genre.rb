@@ -32,5 +32,7 @@ class Genre < ApplicationRecord
 
   # scope needed for the bulk action "remove genres without books"
   scope :no_books, -> { left_joins(:books).where(books: { id: [0, nil, ''] }) }
+  # scope to have navigation working
+  scope :letter, -> (letter) { where('LEFT(name,1) LIKE ?', "#{letter}%") }
 
 end

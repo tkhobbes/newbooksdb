@@ -46,7 +46,6 @@ class AbcNavigateComponent < ViewComponent::Base
 
   # method generates a map for each letter and how many times it occurs in the
   # column that was to be sorted, by mergin in the sort_list hash
-  occuring
   def sort_map
     map = Hash.new(0)
     ('a'..'z').each { |letter| map[letter] = 0 }
