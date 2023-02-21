@@ -25,7 +25,11 @@
       <ul>
     </div>
     <div class="itemcard-big__footer margin-top-33 margin-bottom-33">
-      <%= publisher.decorate.more_books %>
+      <%= render ShowMoreComponent.new(
+        model: 'Publisher',
+        id: publisher.id,
+        items: publisher.books
+      ) %>
     </div>
   </div>
 <% end %>

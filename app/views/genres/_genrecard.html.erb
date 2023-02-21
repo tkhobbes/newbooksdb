@@ -13,7 +13,11 @@
       </ul>
     </div>
     <div class="itemcard-big__footer margin-top-33 margin-bottom-33">
-      <%= link_to "Show all (#{genre.books_count} books)...", genre_path(genre) %>
+      <%= render ShowMoreComponent.new(
+        model: 'Genre',
+        id: genre.id,
+        items: genre.books
+      ) %>
     </div>
   </div>
 </div>
