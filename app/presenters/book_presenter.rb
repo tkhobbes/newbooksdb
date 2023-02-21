@@ -49,12 +49,6 @@ class BookPresenter < SimpleDelegator
     "(by #{authors.first.display_name}#{authors.count > 1 ? ' et al.' : ''})" if authors.present?
   end
 
-  # this method decorates the link to a publisher with an optional wrapper and styles
-  def publisher_link(styles: '', wrapper: nil, wrapper_styles: '')
-    wrap_in(link_to(publisher.name, publisher, class: styles),
-        wrapper, wrapper_styles).html_safe if publisher
-  end
-
   private
 
   # helper method to wrap content into a wrapper tag such as div or span

@@ -32,11 +32,13 @@
       <%= @book.country %>
       <%= @book.year %>
     </div>
-    <%= @book.decorate.publisher_link(
-      styles: 'color-accent-dark color-hover-accent',
-      wrapper: 'div',
-      wrapper_styles: 'medium'
-    ) %>
+    <% if @book.publisher %>
+      <div class="medium">
+        <%= link_to @book.publisher.name,
+          publisher_path(@book.publisher),
+          class: 'color-accent-dark color-hover-accent' %>
+      </div>
+    <% end %>
     <div class="genre-list">
       <% @book.genres.each do |g| %>
         <%= render 'genres/genre_tag', genre: g %>
