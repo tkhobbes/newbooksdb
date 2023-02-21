@@ -25,7 +25,11 @@
           %>
         <% end %>
     </div>
-    <%= @book.decorate.show_original_title(wrapper: 'h2', wrapper_styles: 'heading4') %>
+    <% if @book.original_title.present? %>
+      <h2 class="heading4">
+        (<%= @book.original_title %>)
+      </h2>
+    <% end %>
     <div class="medium-small">
       <%= @book.book_format.name %> |
       <%= @book.edition %>

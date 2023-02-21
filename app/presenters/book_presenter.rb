@@ -8,11 +8,6 @@ class BookPresenter < SimpleDelegator
   include ActionView::Context # for content_tag to work
   include Rails.application.routes.url_helpers # for the link_to functions
 
-  # this method decorates the original title of a book into brackets
-  def show_original_title(wrapper: '', wrapper_styles: '')
-    wrap_in("(#{original_title})", wrapper, wrapper_styles).html_safe if original_title.present?
-  end
-
   # this method shows links to all authors of a book
   def all_authors_link(styles: '', wrapper: 'span', wrapper_styles: '')
     return if authors.blank?
