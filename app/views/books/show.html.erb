@@ -71,9 +71,8 @@
         <%= f.submit 'Find Better Cover', class: 'btn small' %>
     <% end %>
     <% end %>
-    <%= @book.decorate.show_synopsis(
-      wrapper: 'div',
-      wrapper_styles: 'bookdetails__synposis',
-      title: true) %>
+    <div class="bookdetails__synopsis">
+      <%= render ShowSynopsisComponent.new(book: @book) %>
+    </div>
   </div>
 </div>

@@ -1,0 +1,8 @@
+<% if @type == :truncated %>
+  <%= show_truncated_synopsis %>
+<% else %>
+  <h3 class="bookdetails__synopsis-title">Synopsis</h3>
+  <div class="bookdetails__synopsis">
+    <%= @book.synopsis %>
+  </div>
+<% end %>

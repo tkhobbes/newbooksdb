@@ -38,6 +38,7 @@
           <%= render 'genres/genre_tag', genre: g %>
         <% end %>
       </div>
+      <%= render ShowSynopsisComponent.new(book: book, type: :truncated) %>
       <%= book.decorate.show_trunc_synopsis %>
     </div>
 <% end %>

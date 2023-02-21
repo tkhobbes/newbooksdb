@@ -55,25 +55,6 @@ class BookPresenter < SimpleDelegator
         wrapper, wrapper_styles).html_safe if publisher
   end
 
-  # this method decorates the output of the book synopsis
-  # this method smells of :reek:BooleanParameter
-  # this method smells of :reek:ControlParameter
-  # this method smells of :reek:DuplicateMethodCall
-  def show_synopsis(wrapper: nil, wrapper_styles: '', title: false)
-    return if synopsis.blank?
-    if title
-      "<h3 class='#{wrapper_styles}-title'>Synopsis</h3>".html_safe <<
-      wrap_in(raw(synopsis), wrapper, wrapper_styles).html_safe
-    else
-      wrap_in(raw(synopsis), wrapper, wrapper_styles).html_safe
-    end
-  end
-
-  # decorator for synopsis - shows truncated to x characters
-  def show_trunc_synopsis(characters: 100)
-    truncate(strip_tags(synopsis.to_s), length: characters)
-  end
-
   private
 
   # helper method to wrap content into a wrapper tag such as div or span
