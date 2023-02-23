@@ -31,18 +31,4 @@ module ShelvesHelper
   # rubocop:enable Metrics/MethodLength
   # rubocop:enable Metrics/AbcSize
 
-  # shows the shelf for a book if available
-  # This method smells of :reek:DuplicateMethodCall
-  # rubocop:disable Layout/LineLength
-  def show_shelf(book)
-    return unless owner_signed_in? && book.owner == current_owner && book.shelf
-    "in shelf #{link_to(book.shelf.name, books_path(shelf_books: book.shelf.id), class: 'color-accent-dark color-hover-accent')}"
-  end
-  # rubocop:enable Layout/LineLength
-
-  # helper method to get number of shelves from cache
-  def shelves_count
-    Rails.cache.fetch('genres-count') { Shelf.count }
-  end
-
 end

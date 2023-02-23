@@ -66,7 +66,9 @@
       <%= link_to "Owned by #{@book.owner.name}",
         profile_path(@book.owner.profile.id),
         class: 'color-accent-dark color-hover-accent' %>
-      <%== show_shelf(@book) %>
+      <% if owner_signed_in? %>
+        <%= render ShowShelfComponent.new(book: @book, owner: current_owner) %>
+      <% end %>
     </div>
     <% if @book.isbn.present? %>
       <%= form_with url: cover_search_create_path, method: :post, class: 'margin-bottom-1', data: {turbo: false} do |f| %>

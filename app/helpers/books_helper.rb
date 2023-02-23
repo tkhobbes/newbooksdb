@@ -22,9 +22,4 @@ module BooksHelper
     books_path(new_scopes)
   end
 
-  # store the number of books in a cache
-  def books_count
-    Rails.cache.fetch('books-count') { Book.count }
-  end
-
 end

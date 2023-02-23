@@ -76,4 +76,35 @@ module ApplicationHelper
   def pluck_list(model, sort_column)
     model.pluck(sort_column)&.map { |sort| sort[0] }&.tally
   end
+
+  # Caching methods
+  # books cache
+  def books_count
+    Rails.cache.fetch('books-count') { Book.count }
+  end
+
+  # authors cache
+  def authors_count
+    Rails.cache.fetch('authors-count') { Author.count }
+  end
+
+  # shelves cache
+  def shelves_count
+    Rails.cache.fetch('genres-count') { Shelf.count }
+  end
+
+  # publishers cache
+  def publishers_count
+    Rails.cache.fetch('publishers-count') { Publisher.count }
+  end
+
+  # owners cache
+  def owners_count
+    Rails.cache.fetch('owners-count') { Owner.count }
+  end
+
+  # genres cache
+  def genres_count
+    Rails.cache.fetch('genres-count') { Genre.count }
+  end
 end
