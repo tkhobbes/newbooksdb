@@ -10,8 +10,7 @@
     <div class="bookdetails__text-title">
       <h1 class="heading3">
         <%= @book.title %><br />
-        <%= @book.decorate.all_authors_link(styles: 'color-accent-dark color-hover-accent'
-        ) %>
+        <%= render AuthorListComponent.new(book: @book, type: :list) %>
       </h1>
         <% if owner_signed_in? && @book.owner == current_owner %>
           <%= render 'shared/crud_icons',

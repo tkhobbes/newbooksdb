@@ -24,10 +24,9 @@
         </h2>
         <div class="bookyear"><%= book.year %></div>
       </div>
-      <%= book.decorate.author_link(
-        styles: 'color-accent-dark color-hover-accent',
-        wrapper: 'div',
-        wrapper_styles: 'author') %>
+      <div class="author">
+        <%= render AuthorListComponent.new(book: book, type: :single) %>
+      </div>
         <% if book.publisher %>
           <div class="publisher">
             <%= link_to book.publisher.name,

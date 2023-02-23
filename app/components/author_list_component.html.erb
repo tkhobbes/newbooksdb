@@ -1,0 +1,7 @@
+<% if @type == :list %>
+  <%= all_authors('color-accent-dark color-hover-accent') %>
+<% elsif @type == :single %>
+  <%= one_author('color-accent-dark color-hover-accent') %>
+<% elsif @type == :by %>
+  <%= by_authors %>
+<% end %>

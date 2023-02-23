@@ -14,7 +14,7 @@
               data: { turbo_frame: "_top" }
               )%>
             <% if book.authors %>
-              <%= book.decorate.author_by %>
+              <%= render AuthorListComponent.new(book: book, type: :by) %>
             <% end %>
           </div>
           <div class="itemlist__icons">

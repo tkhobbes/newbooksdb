@@ -9,7 +9,7 @@
         book_path(book),
         data: { turbo_frame: "_top" }
         )%>
-      <%= book.decorate.author_by %>
+      <%= render AuthorListComponent.new(book: book, type: :by) %>
     </div>
     <div class="itemlist__icons">
       <% if owner_signed_in? && book.owner == current_owner %>
