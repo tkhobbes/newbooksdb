@@ -6,6 +6,10 @@
 Rails.application.routes.draw do
   root 'home#index'
 
+  if Rails.env.development?
+    mount Lookbook::Engine, at: "/lookbook"
+  end
+
   devise_for :owners, controllers: {
     registrations: 'owners/registrations'
   }

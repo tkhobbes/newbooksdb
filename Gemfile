@@ -88,12 +88,12 @@ gem 'exception_notification'
 gem 'faraday', '>= 2.7.1'
 # use nice IDs instead of numbers
 gem 'friendly_id', '>= 5.4.2'
-# view components
-gem 'view_component'
 # using scoped routes for our shelves etc
 gem 'has_scope'
 # better way to use SVGs
 gem 'inline_svg'
+# lookbook for viewcomponents
+gem 'lookbook'
 # mediawiki crawler
 gem 'mediawiki-butt'
 # web crawler
@@ -106,5 +106,7 @@ gem 'pagy', '>= 5.10.1'
 gem 'search_cop', '>= 1.2.3'
 # Simple form for form inputs
 gem 'simple_form'
+# view components
+gem 'view_component'
 
 

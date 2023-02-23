@@ -38,5 +38,7 @@ module Newbooksdb
     config.generators.system_tests = nil
 
     config.active_storage.variant_processor = :mini_magick
+
+    config.view_component.preview_paths << "#{Rails.root}/spec/components/previews"
   end
 end
