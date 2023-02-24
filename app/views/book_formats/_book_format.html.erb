@@ -2,7 +2,7 @@
   <li>
     <div class="flexlist">
       <%= link_to(
-        "#{book_format.name}#{print_fallback(book_format)} - #{book_format.books_count} books",
+        "#{book_format.name}#{' (default)' if book_format.fallback} - #{book_format.books_count} books",
         edit_book_format_path(book_format)
        ) %>
       <%= render 'shared/crud_icons',

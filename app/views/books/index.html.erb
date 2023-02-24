@@ -5,7 +5,9 @@
   current_letter: params[:letter]
   ) %>
 
-<%= page_title(book_index_title,'', 'heading2') %>
+<%= page_title(
+  render(BookIndexTitleComponent.new(params:)),
+  '', 'heading2') %>
 
 <%= turbo_frame_tag 'page' %>
 <nav class="pagination list-select-type">

@@ -26,6 +26,8 @@
       </div>
       <div class="livingyear"><%= render LivingYearsComponent.new(author: author) %></div>
       <div class="books"><%= pluralize(author.books_count, 'Book') %></div>
-      <div class="rating"><%= rating_stars(author.rating_before_type_cast) %></div>
+      <div class="rating">
+        <%= render StarRatingComponent.new(rated: author, humanized: false) %>
+      </div>
     </div>
 <% end %>

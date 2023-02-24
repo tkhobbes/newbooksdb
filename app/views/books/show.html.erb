@@ -59,7 +59,8 @@
         Condition: <%= @book.condition.humanize %>
       </div>
       <div>
-        Rating: <%= rating_stars(@book.rating_before_type_cast) %> (<%= @book.rating.humanize %>)
+        Rating:
+        <%= render StarRatingComponent.new(rated: @book, humanized: true) %>
       </div>
     </div>
     <div class="margin-1">

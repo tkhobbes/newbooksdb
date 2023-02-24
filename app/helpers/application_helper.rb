@@ -26,12 +26,11 @@ module ApplicationHelper
     end if title.present?
   end
 
-  # returns span tags with filled stars equal to the rating and empty stars to fill up to 5
-  def rating_stars(rating)
-    content_tag(:span, class: 'color-accent') do
-      (inline_svg_tag('star-filled.svg', class: 'smallicon') * rating) <<
-      (inline_svg_tag('star.svg', class: 'smallicon') * (5- rating))
-    end
+  # method extends existing scope of books_path with new scope. Used in index view
+  # to toggle between grid and list view
+  def scoped_books_path(show_hash)
+    new_scopes = current_scopes.merge(show_hash)
+    books_path(new_scopes)
   end
 
   # method to list out all menu items for main menu
@@ -72,10 +71,6 @@ module ApplicationHelper
     end
   end
   # rubocop:enable Metrics/MethodLength
-
-  def pluck_list(model, sort_column)
-    model.pluck(sort_column)&.map { |sort| sort[0] }&.tally
-  end
 
   # Caching methods
   # books cache

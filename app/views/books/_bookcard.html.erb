@@ -34,7 +34,9 @@
               class: 'color-black color-hover-grey' %>
           </div>
         <% end %>
-      <div class="rating"><%= rating_stars(book.rating_before_type_cast) %></div>
+      <div class="rating">
+        <%= render StarRatingComponent.new(rated: book, humanized: false) %>
+      </div>
       <div class="genre-list">
         <% book.genres.each do |g| %>
           <%= render 'genres/genre_tag', genre: g %>
