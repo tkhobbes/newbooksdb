@@ -1,0 +1,19 @@
+
+  <% cloud.each do |item| %>
+    <span class="genre-cloud-item cloud-size-<%= cloudsize(item[:size], Book.all.size) %>">
+      <%= link_to item[:name], item_path(item[:id]) %>
+    </span>
+  <% end %>
+<!-- >
+Cloud item test:
+<div class="cloud-size-1">Size 1</div>
+<div class="cloud-size-2">Size 2</div>
+<div class="cloud-size-3">Size 3</div>
+<div class="cloud-size-4">Size 4</div>
+<div class="cloud-size-5">Size 5</div>
+<div class="cloud-size-6">Size 6</div>
+<div class="cloud-size-7">Size 7</div>
+<div class="cloud-size-8">Size 8</div>
+<div class="cloud-size-9">Size 9</div>
+<div class="cloud-size-10">Size 10</div>
+-->

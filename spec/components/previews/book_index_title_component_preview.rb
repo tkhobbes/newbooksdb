@@ -6,7 +6,7 @@ class BookIndexTitleComponentPreview < ViewComponent::Preview
   # @!group options
 
   # Book Index Title
-  # ---
+  # ----
   # A component that creates the title for the book index page dynamically
   def default_title
     render(BookIndexTitleComponent.new(params: {}))
