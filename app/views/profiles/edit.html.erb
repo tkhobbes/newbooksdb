@@ -6,7 +6,7 @@
     <div class="big-form">
       <div class="form-col">
         <div class="cover-small">
-          <%= avatar_image(@profile, size: 'small') %>
+          <%= render AvatarImageComponent.new(profile: @profile, size: :small) %>
         </div>
         <%= f.input :name , placeholder: 'Username', label: false %>
       </div>

@@ -1,7 +1,7 @@
 <%= turbo_frame_tag(profile) do %>
   <li class="itemlist__item">
     <div class="itemlist__cover">
-      <%= avatar_image(profile, size: 'default') %>
+      <%= render AvatarImageComponent.new(profile:) %>
     </div>
     <div class="itemlist__title">
       <%= link_to profile.name, profile %>

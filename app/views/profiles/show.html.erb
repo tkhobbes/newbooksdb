@@ -2,7 +2,7 @@
 
 <div class="userdetails">
   <div class="cover-medium">
-    <%= avatar_image(@profile, size: 'medium') %>
+    <%= render AvatarImageComponent.new(profile: @profile, size: :medium) %>
   </div>
   <div class="userdetails__text">
     <div class="userdetails__title">

@@ -33,36 +33,32 @@ module ApplicationHelper
     books_path(new_scopes)
   end
 
+  # method determines the right CSS for existing books
+  def isbn_existing_css(existing)
+    case existing
+    when 'current_owner'
+      'existing-current'
+    when 'other_owner'
+      'existing-other'
+    end
+  end
+
+  # this method prints out a book title and formats depending on whether existing
+  # this method smells of :reek:ControlParameter
+  def isbn_existing_title(title, existing)
+    case existing
+    when 'current_owner'
+      "#{title} (you already own this book!)"
+    when 'other_owner'
+      "#{title} (this book is already owned by another user!)"
+    else
+      title
+    end
+  end
+
   # method to list out all menu items for main menu
-  # rubocop:disable Metrics/MethodLength
-  # this method smells of :reek:DuplicateMethodCall
   def menu_items
-    [
-      {
-        name: 'Home',
-        path: root_path
-      },
-      {
-        name: 'Books',
-        path: books_path,
-      },
-      {
-        name: 'Genres',
-        path: genres_path,
-      },
-      {
-        name: 'Authors',
-        path: authors_path,
-      },
-      {
-        name: 'Publishers',
-        path: publishers_path
-      },
-      {
-        name: 'Tags',
-        path: tags_path(list: 'books')
-      }
-    ].map do |item|
+    menu_entries.map do |item|
       {
         name: item[:name],
         path: item[:path],
@@ -70,7 +66,6 @@ module ApplicationHelper
       }
     end
   end
-  # rubocop:enable Metrics/MethodLength
 
   # Caching methods
   # books cache
@@ -101,5 +96,37 @@ module ApplicationHelper
   # genres cache
   def genres_count
     Rails.cache.fetch('genres-count') { Genre.count }
+  end
+
+  private
+
+  # all entries for the main menu
+  def menu_entries
+    [
+      {
+        name: 'Home',
+        path: root_path
+      },
+      {
+        name: 'Books',
+        path: books_path,
+      },
+      {
+        name: 'Genres',
+        path: genres_path,
+      },
+      {
+        name: 'Authors',
+        path: authors_path,
+      },
+      {
+        name: 'Publishers',
+        path: publishers_path
+      },
+      {
+        name: 'Tags',
+        path: tags_path(list: 'books')
+      }
+    ]
   end
 end
