@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_13_140110) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_03_105848) do
   create_table "action_text_rich_texts", charset: "utf8mb4", force: :cascade do |t|
     t.string "name", null: false
     t.text "body", size: :long
@@ -170,6 +170,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_13_140110) do
     t.integer "books_count", default: 0
     t.index ["name"], name: "index_publishers_on_name", unique: true
     t.index ["slug"], name: "index_publishers_on_slug", unique: true
+  end
+
+  create_table "scan_queues", charset: "utf8mb4", force: :cascade do |t|
+    t.string "isbn"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "shelves", charset: "utf8mb4", force: :cascade do |t|

@@ -1,0 +1,20 @@
+<%= page_title('Scan Barcodes', '', 'heading2') %>
+
+<div class="flex margin-bottom-1">
+  <div class="width-50 padding-33" data-controller="barcode" id="barcodereader-container">
+    <div id="barcodereader">
+    </div>
+    <%= form_with url: isbn_search_show_path, data: {turbo: false}, method: :post do |f| %>
+      <%= f.hidden_field :isbn, data: { barcode_target: 'isbn' } %>
+      <%= f.submit 'bla', class: 'hidden', data: {
+        barcode_target: 'search'
+      } %>
+    <% end %>
+  </div>
+  <div class="width-50 padding-33 border-color-primary border-radius-1">
+    <h3 class="heading3">Scan Results</h3>
+    No codes scanned so far.
+  </div>
+</div>
+
+<%= link_to 'Done', '#', class: 'button-color-primary' %>

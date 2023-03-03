@@ -11,6 +11,9 @@
           <%= link_to scan_new_path, title: 'Scan Book ISBN Code' do %>
             <%= inline_svg_tag 'qr_code.svg', class: 'bigicon' %>
           <% end %>
+          <%= link_to new_scan_queue_path, title: 'Scan multiple codes' do %>
+            <%= inline_svg_tag 'queue_list.svg', class: 'bigicon' %>
+          <% end %>
           <%= link_to isbn_search_new_path, title: 'Search Book Online' do %>
             <%= inline_svg_tag 'doc_search.svg', class: 'bigicon' %>
           <% end %>
