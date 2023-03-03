@@ -13,7 +13,7 @@ module Mediawiki
 
     # this method smells of :reek:TooManyStatements
     def retrieve_picture_for(author)
-      url = "https://www.mediawiki.org/w/api.php?action=query&titles=#{image_file_name(author)}&prop=imageinfo&iiprop=url&format=json"
+      url = URI::DEFAULT_PARSER.escape("https://www.mediawiki.org/w/api.php?action=query&titles=#{image_file_name(author)}&prop=imageinfo&iiprop=url&format=json")
       json_doc = JSON.parse(Faraday.get(url).body, symbolize_names: true)
       return unless json_doc
       urls = json_doc.dig(:query, :pages, :'-1', :imageinfo)
