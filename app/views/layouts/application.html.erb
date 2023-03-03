@@ -17,7 +17,7 @@
       <div class="content">
         <%= render 'shared/title' %>
         <main class="main">
-        <%= render 'shelves/shelves_menu' if params[:controller] == 'books' && params[:action] == 'index' %>
+        <%= render ShelfMenuComponent.new(owner: current_owner) if params[:controller] == 'books' && params[:action] == 'index' %>
             <%= yield :title %>
             <%= yield %>
         </main>

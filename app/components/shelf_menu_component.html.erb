@@ -1,18 +1,19 @@
+<% display_menu %>
 <nav class="tabs">
   <ul>
-    <% shelf_menu(current_owner)[0..3].each do |item| %>
+    <% @display_menu[0..3].each do |item| %>
       <li class="placeholder-tab">&nbsp;</li>
       <li class="content-tab <%= item[:active] ? 'active' : '' %>">
         <%= link_to item[:name], item[:path] %>
       </li>
     <% end %>
     <li class="placeholder-tab">&nbsp;</li>
-    <% if shelf_menu(current_owner).size > 4 %>
+    <% if @display_menu.size > 4 %>
       <li class="content-tab dropdown">
         <%= link_to 'More...', '#', class: 'dropdown-label' %>
         <div class='dropdown-menu'>
           <ul class="dropdown-submenu">
-            <% shelf_menu(current_owner)[4..-1].each do |item| %>
+            <% @display_menu[4..-1].each do |item| %>
               <li class="<%= item[:active] ? 'submenu-active' : '' %>">
                 <%= link_to item[:name], item[:path] %>
               </li>
