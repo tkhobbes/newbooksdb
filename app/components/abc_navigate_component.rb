@@ -56,12 +56,10 @@ class AbcNavigateComponent < ViewComponent::Base
   # sort column and how many times it occurs ('a' => 3, 'b' => 2, etc.)
   def sort_list
     if @existing_scopes.present?
-      apply_scopes(@model, @existing_scopes)
-        .pluck(@sort_column)
-        &.map { |sort| sort[0].downcase }
-        &.tally
-        &.sort
-        .to_h
+      @model.send(@existing_scopes.keys.first, @existing_scopes.values.first)
+        .pluck(@sort_column) # array of sort_column values
+        &.map { |sort| sort[0].downcase } # array of first letter of sort_column values
+        &.tally # hash of first letter of sort_column values and their count (e.g. 'a' => 3, 'b' => 2, etc.)
     else
       @model.pluck(@sort_column)&.map { |sort| sort[0].downcase }&.tally&.sort.to_h
     end
