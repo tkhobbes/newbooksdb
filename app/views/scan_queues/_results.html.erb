@@ -1,0 +1,9 @@
+<% if scan_results.size < 1 %>
+  <span>No results yet</span>
+<% else %>
+  <ul>
+    <% scan_results.each do |result | %>
+      <li><%= result.isbn %>
+    <% end %>
+  </ul>
+<% end %>

@@ -1,1 +1,14 @@
-scan queue index
+<%= page_title('Add Scanned Barcodes', '', 'heading2') %>
+
+<% if @scan_results.size < 1 %>
+  <span>
+    No results -
+    <%= link_to 'Go Scan Some Barcodes!', new_scan_queue_path, class: 'color-accent-dark color-hover-accent-light' %>
+  </span>
+<% else %>
+  <ul>
+    <% @scan_results.each do |result | %>
+      <li><%= result.isbn %>
+    <% end %>
+  </ul>
+<% end %>

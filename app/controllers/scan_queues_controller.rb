@@ -1,16 +1,20 @@
 # frozen_string_literal: true
 
 class ScanQueuesController < ApplicationController
+  before_action :authenticate_owner!
+
   # index: shows the full scan queue
   def index
-    1+1
+    @scan_results = ScanQueue.where(owner: current_owner)
   end
   # show: shows one entry in the scan queue
   def show
     1+1
   end
   # new: shows the scan form
-  def new; end
+  def new
+    @scan_results = ScanQueue.where(owner: current_owner)
+  end
 
   # create: creates an entry in scan queue
   def create

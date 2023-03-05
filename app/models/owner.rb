@@ -41,6 +41,9 @@ class Owner < ApplicationRecord
   # owners are OWNING tags, but tags aren't used to TAG owners
   has_many :tags, dependent: :destroy
 
+  # has many scan queues - this is to prevent showing owners what other owners are scanning
+  has_many :scan_queues, dependent: :destroy
+
   # scopes
   # all owners but the one with a specific ID
   scope :all_but, ->(owner) { where.not(id: owner) }

@@ -4,6 +4,7 @@
   <div class="width-50 padding-33" data-controller="barcode" id="barcodereader-container">
     <div id="barcodereader">
     </div>
+    <!-- this needs to be scan_queue_create_path; the create action must re-render the turbo stream -->
     <%= form_with url: isbn_search_show_path, data: {turbo: false}, method: :post do |f| %>
       <%= f.hidden_field :isbn, data: { barcode_target: 'isbn' } %>
       <%= f.submit 'bla', class: 'hidden', data: {
@@ -13,8 +14,11 @@
   </div>
   <div class="width-50 padding-33 border-color-primary border-radius-1">
     <h3 class="heading3">Scan Results</h3>
-    No codes scanned so far.
+    <%= turbo_frame_tag 'scan_queue_results' do %>
+      <%= render 'scan_queues/results', scan_results: @scan_results %>
+    <% end %>
   </div>
 </div>
 
-<%= link_to 'Done', '#', class: 'button-color-primary' %>
+<%= link_to 'Done scanning - add books', scan_queues_path, class: 'button-color-primary' %>
+
