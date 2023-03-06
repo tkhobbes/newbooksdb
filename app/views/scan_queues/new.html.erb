@@ -5,7 +5,7 @@
     <div id="barcodereader">
     </div>
     <!-- this needs to be scan_queue_create_path; the create action must re-render the turbo stream -->
-    <%= form_with url: isbn_search_show_path, data: {turbo: false}, method: :post do |f| %>
+    <%= form_with url: scan_queues_path, method: :post do |f| %>
       <%= f.hidden_field :isbn, data: { barcode_target: 'isbn' } %>
       <%= f.submit 'bla', class: 'hidden', data: {
         barcode_target: 'search'

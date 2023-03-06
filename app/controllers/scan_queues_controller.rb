@@ -18,7 +18,11 @@ class ScanQueuesController < ApplicationController
 
   # create: creates an entry in scan queue
   def create
-    1+1
+    @queue_entry = ScanQueue.find_or_create_by(isbn: params[:isbn], owner: current_owner)
+    @scan_results = ScanQueue.where(owner: current_owner)
+    respond_to do |format|
+      format.turbo_stream
+    end
   end
 
   # destroy: removes an item from the scan queue
