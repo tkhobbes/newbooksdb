@@ -1,0 +1,23 @@
+<%= turbo_stream.update 'scan_queue_search_results' do %>
+  <% if @results.size == 0 %>
+    <p>No results found.</p>
+  <% else %>
+    <p class="small">Click a title to create the book in the database.</p>
+    <ul class="itemlist margin-bottom-1">
+      <% @results.each do |result| %>
+        <li class="itemlist__item itemlist__border <%= isbn_existing_css(result[:existing]) %>">
+          <div class="itemlist__cover search_cover">
+            <%= render 'isbn_search/resultpreview', picture: result[:image_url] %>
+          </div>
+          <div class="itemlist__title">
+            <%= form_with url: isbn_create_create_path, method: :post do |f| %>
+              <%= f.hidden_field :identifier, value: result[:identifier], id: "identifier-#{result[:identifier]}" %>
+              <%= f.submit isbn_existing_title(result[:title], result[:existing]),
+                class: 'nobutton color-accent-dark color-hover-accent' %>
+            <% end %>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+<% end %>

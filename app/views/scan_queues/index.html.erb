@@ -6,9 +6,33 @@
     <%= link_to 'Go Scan Some Barcodes!', new_scan_queue_path, class: 'color-accent-dark color-hover-accent-light' %>
   </span>
 <% else %>
-  <ul>
-    <% @scan_results.each do |result | %>
-      <li><%= result.isbn %>
-    <% end %>
-  </ul>
+  <p class="small margin-top-1">Click each result in turn to see possible matches.</p>
+  <div class="flex margin-bottom-1">
+    <div class="margin-right-33">
+      <ul class="itemlist">
+        <% @scan_results.each do |result | %>
+          <%= turbo_frame_tag dom_id(result) do %>
+            <li class="itemlist__item itemlist__border padding-1 icons">
+              <%= form_with url: isbn_search_show_path, method: :post do |f| %>
+                <%= f.hidden_field :isbn, value: result.isbn %>
+                <%= f.submit "ISBN #{result.isbn}", class: "nobutton color-accent-dark color-hover-accent" %>
+              <% end %>
+                <%= button_to scan_queue_path(result),
+                  method: :delete,
+                  title: 'Remove this ISBN from the queue',
+                  class: 'delete-icon nobutton' do %>
+                    <%= inline_svg_tag 'delete.svg' %>
+                <% end %>
+            </li>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
+    <div class="width-66 padding-33 border-color-primary border-radius-1 margin-top-1">
+      <h3 class="heading3">Search Results</h3>
+      <%= turbo_frame_tag 'scan_queue_search_results' do %>
+        Click an ISBN to the left to see possible matches.
+      <% end %>
+    </div>
+  </div>
 <% end %>

@@ -46,5 +46,5 @@ Rails.application.routes.draw do
   post 'isbn_create/create', to: 'isbn_create#create'
   post 'cover_search/create', to: 'cover_search#create'
   get 'scan/new', to: 'scan#new'
-  resources :scan_queues, only: %i[index show new create destroy]
+  resources :scan_queues, only: %i[index new create destroy]
 end

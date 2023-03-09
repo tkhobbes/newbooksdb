@@ -4,7 +4,6 @@
   <div class="width-50 padding-33" data-controller="barcode" id="barcodereader-container">
     <div id="barcodereader">
     </div>
-    <!-- this needs to be scan_queue_create_path; the create action must re-render the turbo stream -->
     <%= form_with url: scan_queues_path, method: :post do |f| %>
       <%= f.hidden_field :isbn, data: { barcode_target: 'isbn' } %>
       <%= f.submit 'bla', class: 'hidden', data: {

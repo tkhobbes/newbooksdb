@@ -8,10 +8,17 @@ class IsbnCreateController < ApplicationController
   def create
     # use params[:identifier] to determine the Amazon URL
     result = Google::BookCreate.new(params[:identifier], current_owner).create_book
-    if result.created?
-      redirect_to book_path(result.book), notice: result.message
-    else
-      redirect_to root_path, error: result.message
+    respond_to do |format|
+      format.html do
+        if result.created?
+          redirect_to book_path(result.book), notice: result.message
+        else
+          redirect_to root_path, error: result.message
+        end
+      end
+      format.turbo_stream do
+        @result = ScanQueue.where(isbn: result.book.isbn, owner: current_owner).first.destroy
+      end
     end
   end
 end

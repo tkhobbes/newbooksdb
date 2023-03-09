@@ -1,0 +1,4 @@
+<%= turbo_stream.remove dom_id(@result) %>
+<%= turbo_stream.update 'scan_queue_search_results' do %>
+  Click an ISBN to the left to see possible matches.
+  <% end %>

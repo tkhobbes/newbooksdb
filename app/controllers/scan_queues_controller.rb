@@ -7,10 +7,7 @@ class ScanQueuesController < ApplicationController
   def index
     @scan_results = ScanQueue.where(owner: current_owner)
   end
-  # show: shows one entry in the scan queue
-  def show
-    1+1
-  end
+
   # new: shows the scan form
   def new
     @scan_results = ScanQueue.where(owner: current_owner)
@@ -27,6 +24,10 @@ class ScanQueuesController < ApplicationController
 
   # destroy: removes an item from the scan queue
   def destroy
-    1+1
+    @scan_result = ScanQueue.find(params[:id]).destroy
+    respond_to do |format|
+      format.html { redirect_to new_scan_queue_path, notice: 'Scan queue cleared', status: :see_other }
+      format.turbo_stream
+    end
   end
 end

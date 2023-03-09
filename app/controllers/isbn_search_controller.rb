@@ -15,6 +15,11 @@ class IsbnSearchController < ApplicationController
     elsif params[:author]
       @results = Google::BookSearch.new(type: 'author', value: params[:author], owner: current_owner).search_author
     end
+
+    respond_to do |format|
+      format.html
+      format.turbo_stream
+    end
   end
   # rubocop:enable Metrics/AbcSize
 
