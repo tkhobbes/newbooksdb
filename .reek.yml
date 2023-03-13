@@ -1,3 +1,6 @@
+detectors:
+  BooleanParameter:
+    enabled: false
 directories:
   "app/controllers":
     IrresponsibleModule:

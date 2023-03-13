@@ -16,10 +16,12 @@ class BookIndexTitleComponent < ViewComponent::Base
 
   private
 
+  # this method smells of :reek:DuplicateMethodCall
   def letter
     @params[:letter] ? " starting with #{@params[:letter].upcase}" : ''
   end
 
+  # this method smells of :reek:DuplicateMethodCall
   def shelf
     if @params[:my_books]
       'My Books'

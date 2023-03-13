@@ -1,5 +1,7 @@
 # frozen_string_literal: false
 
+# shows an alphabeth with clickable links for all letters where there are actually
+# objects available with that letter (eg books that start with that letter)
 class AbcNavigateComponent < ViewComponent::Base
   # we need HasScope from the gem, and we need to make apply_scopes public
   include HasScope
@@ -21,11 +23,16 @@ class AbcNavigateComponent < ViewComponent::Base
     sort_map.each do |letter, count|
       nav << span_letter(letter, count)
     end
+    # rubocop:disable Rails/OutputSafety
     nav.html_safe
+    # rubocop:enable Rails/OutputSafety
   end
 
   # method generates proper html for ONE letter - depending on whether it is active
   # and whether it has any results
+  # rubocop:disable Metrics/MethodLength
+  # this method smells of :reek:DuplicateMethodCall
+  # this method smells of :reek:TooManyStatements
   def span_letter(letter, count)
     if count.positive?
       if @current_letter == letter
@@ -43,9 +50,11 @@ class AbcNavigateComponent < ViewComponent::Base
       end
     end
   end
+  # rubocop:enable Metrics/MethodLength
 
   # method generates a map for each letter and how many times it occurs in the
   # column that was to be sorted, by mergin in the sort_list hash
+  # this method smells of :reek:FeatureEnvy
   def sort_map
     map = Hash.new(0)
     ('a'..'z').each { |letter| map[letter] = 0 }
@@ -54,6 +63,10 @@ class AbcNavigateComponent < ViewComponent::Base
 
   # cycles through the model and returns a hash of the first letter of the
   # sort column and how many times it occurs ('a' => 3, 'b' => 2, etc.)
+  # rubocop:disable Metrics/AbcSize
+  # rubocop:disable Metrics/CyclomaticComplexity
+  # rubocop:disable Metrics/PerceivedComplexity
+  # this method smells of :reek:DuplicateMethodCall
   def sort_list
     @existing_scopes.delete(:letter) if @existing_scopes.present?
     if @existing_scopes.present?
@@ -65,6 +78,9 @@ class AbcNavigateComponent < ViewComponent::Base
       @model.pluck(@sort_column)&.map { |sort| sort[0].downcase }&.tally&.sort.to_h
     end
   end
+  # rubocop:enable Metrics/PerceivedComplexity
+  # rubocop:enable Metrics/CyclomaticComplexity
+  # rubocop:enable Metrics/AbcSize
 
   # generates the full path for a letter entry, honouring already existing scopes
   def full_scope_path(letter)

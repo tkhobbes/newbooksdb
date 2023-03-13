@@ -4,7 +4,10 @@
 class IsbnCreateController < ApplicationController
 
   # create a book based on an ISBN / URL
+  # rubocop:disable Metrics/MethodLength
+  # rubocop:disable Metrics/AbcSize
   # this method smells of :reek:DuplicateMethodCall
+  # this method smells of :reek:TooManyStatements
   def create
     # use params[:identifier] to determine the Amazon URL
     result = Google::BookCreate.new(params[:identifier], current_owner).create_book
@@ -21,4 +24,6 @@ class IsbnCreateController < ApplicationController
       end
     end
   end
+  # rubocop:enable Metrics/AbcSize
+  # rubocop:enable Metrics/MethodLength
 end

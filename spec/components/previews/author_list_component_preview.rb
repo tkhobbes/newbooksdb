@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+# preview for author list component
+# rubocop:disable Style/HashSyntax
 class AuthorListComponentPreview < ViewComponent::Preview
   # Author List
   # ----
@@ -13,3 +15,4 @@ class AuthorListComponentPreview < ViewComponent::Preview
     render(AuthorListComponent.new(book: Book.first, type: type))
   end
 end
+# rubocop:enable Style/HashSyntax

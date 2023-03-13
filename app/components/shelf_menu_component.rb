@@ -11,6 +11,7 @@ class ShelfMenuComponent < ViewComponent::Base
   end
 
   # return an array of hashes with items to display
+  # this method smells of :reek:DuplicateMethodCall
   def display_menu
     build_menu
     @menu.map.with_index do |item, index|

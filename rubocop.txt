@@ -1,5 +1,5 @@
-Inspecting 110 files
-................................................C.........C..............................C....................
+Inspecting 126 files
+...................................................C..........C.........................................C.....................
 
 Offenses:
 
@@ -16,4 +16,4 @@ spec/factories/books.rb:69:13: C: [Correctable] Rails/RootPathnameMethods: Rails
         io: File.open(Rails.root.join('db', 'sample', 'images', 'cover-1.jpg')),
             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-110 files inspected, 4 offenses detected, 3 offenses autocorrectable
+126 files inspected, 4 offenses detected, 3 offenses autocorrectable

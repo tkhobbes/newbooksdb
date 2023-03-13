@@ -1,8 +1,11 @@
+# frozen_string_literal: true
 require 'exception_notification/rails'
 
 ExceptionNotification.configure do |config|
   # Ignore additional exception types.
-  # ActiveRecord::RecordNotFound, Mongoid::Errors::DocumentNotFound, AbstractController::ActionNotFound and ActionController::RoutingError are already added.
+  # ActiveRecord::RecordNotFound, Mongoid::Errors::DocumentNotFound,
+  # AbstractController::ActionNotFound and
+  # ActionController::RoutingError are already added.
   # config.ignored_exceptions += %w{ActionView::TemplateError CustomError}
 
   # Adds a condition to decide when an exception must be ignored or not.

@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# shows a link to "show more" for items of a certain type
 class ShowMoreComponent < ViewComponent::Base
 
   def initialize(model:, id:, items:, items_type: 'books')

@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# preview for shelf menu component
 class ShelfMenuComponentPreview < ViewComponent::Preview
   # ShelfMenu
   # ----

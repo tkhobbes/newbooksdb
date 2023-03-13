@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 # preview for ShowMoreComponent
+# this class smells of :reek:DuplicateMethodCall
 class ShowMoreComponentPreview < ViewComponent::Preview
 
    # @!group Type

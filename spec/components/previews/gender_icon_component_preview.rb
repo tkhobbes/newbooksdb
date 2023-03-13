@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# preview for gender icon component
 class GenderIconComponentPreview < ViewComponent::Preview
   # Gender Icon
   # ----

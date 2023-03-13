@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# preview for book cover component
 class BookCoverComponentPreview < ViewComponent::Preview
   # Book Cover
   # ----

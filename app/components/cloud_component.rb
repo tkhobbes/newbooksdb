@@ -11,19 +11,21 @@ class CloudComponent < ViewComponent::Base
 
   # generate a hash of genres and their size
   # this method smells of :reek:TooManyStatements
+  # this method smells of :reek:FeatureEnvy
   def cloud
     cloud_data = []
-    @model.all.each do |m|
+    @model.all.each do |model|
       one_item = {}
-      one_item[:name] = m.name
-      one_item[:size] = m.books_count
-      one_item[:id] = m.id
+      one_item[:name] = model.name
+      one_item[:size] = model.books_count
+      one_item[:id] = model.id
       cloud_data << one_item
     end
     cloud_data
   end
 
   # map actual sizes to manageable sizes (10 buckets)
+  # this method smells of :reek:UtilityFunction
   def cloudsize(a_size, maxsize)
     # size is the ratio rounded up to the next tenth (15 --> 10, 21 --> 20 etc)
     # and then size is divided by 10 to get the bucket

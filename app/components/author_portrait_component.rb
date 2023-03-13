@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# this component shows the portrait picture of an author or a generic SVG
 class AuthorPortraitComponent < ViewComponent::Base
   # returns either the portrait of an author or a placeholder SVG
 
@@ -8,7 +9,7 @@ class AuthorPortraitComponent < ViewComponent::Base
     medium: [300, 'placeholder-medium'],
     small: [150, 'placeholder-small'],
     default: [50, 'placeholder-default']
-  }
+  }.freeze
 
   def initialize(author:, size: :default)
     @author = author
@@ -16,6 +17,7 @@ class AuthorPortraitComponent < ViewComponent::Base
     super
   end
 
+  # this method smells of :reek:DuplicateMethodCall
   def portrait_image
     img_size = PORTRAIT_SIZES[@size][0]
     css_tag = PORTRAIT_SIZES[@size][1]

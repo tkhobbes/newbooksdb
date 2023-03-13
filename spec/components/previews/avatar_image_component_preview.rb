@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+# preview for avatar image component
+# rubocop:disable Style/HashSyntax
 class AvatarImageComponentPreview < ViewComponent::Preview
   # AvatarImage
   # ----
@@ -9,3 +11,4 @@ class AvatarImageComponentPreview < ViewComponent::Preview
     render(AvatarImageComponent.new(profile: Profile.first, size: size))
   end
 end
+# rubocop:enable Style/HashSyntax

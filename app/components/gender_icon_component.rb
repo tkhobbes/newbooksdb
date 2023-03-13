@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# shows either a venus or a mars icon
 class GenderIconComponent < ViewComponent::Base
 
   def initialize(author:)

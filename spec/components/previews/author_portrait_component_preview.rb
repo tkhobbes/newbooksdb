@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# preview for author portrait component
 class AuthorPortraitComponentPreview < ViewComponent::Preview
   # Author Portrait
   # ----

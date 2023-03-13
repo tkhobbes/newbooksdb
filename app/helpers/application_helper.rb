@@ -34,6 +34,7 @@ module ApplicationHelper
   end
 
   # method determines the right CSS for existing books
+  # this method smells of :reek:ControlParameter
   def isbn_existing_css(existing)
     case existing
     when 'current_owner'
@@ -57,6 +58,8 @@ module ApplicationHelper
   end
 
   # method to list out all menu items for main menu
+  # this method smells of :reek:DuplicateMethodCall
+  # this method smells of :reek:FeatureEnvy
   def menu_items
     menu_entries.map do |item|
       {
@@ -101,6 +104,7 @@ module ApplicationHelper
   private
 
   # all entries for the main menu
+  # rubocop:disable Metrics/MethodLength
   def menu_entries
     [
       {
@@ -129,4 +133,5 @@ module ApplicationHelper
       }
     ]
   end
+  # rubocop:enable Metrics/MethodLength
 end

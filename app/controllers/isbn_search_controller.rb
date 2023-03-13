@@ -5,7 +5,9 @@ class IsbnSearchController < ApplicationController
 
   # show the results
   #rubocop:disable Metrics/AbcSize
+  # rubocop:disable Metrics/MethodLength
   # this method smells of :reek:DuplicateMethodCall
+  # this method smells of :reek:TooManyStatements
   def show
     #@results = AmazonSearch.new(params[:isbn]).scrape_page
     @results = if params[:isbn]
@@ -21,6 +23,7 @@ class IsbnSearchController < ApplicationController
       format.turbo_stream # show.turbo_stream.erb --> updates scan_queues/index.html.erb
     end
   end
+  # rubocop:enable Metrics/MethodLength
   # rubocop:enable Metrics/AbcSize
 
   # display a form

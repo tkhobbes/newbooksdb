@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# Preview for Star Ratings
+# Preview for Star Ratings component
 class StarRatingComponentPreview < ViewComponent::Preview
 
   # Star Rating

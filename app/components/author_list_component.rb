@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+# this component contains methods to show authors of a book in different ways
+# this class smells of :reek:RepeatedConditional
 class AuthorListComponent < ViewComponent::Base
 
   def initialize(book:, type:)
@@ -9,6 +11,7 @@ class AuthorListComponent < ViewComponent::Base
     super
   end
 
+  # show all authors of a book, joined by commas
   def all_authors(css_classes)
     return if @authors.blank?
     safe_join(
@@ -19,6 +22,8 @@ class AuthorListComponent < ViewComponent::Base
     )
   end
 
+  # show the first author and append "et al." if there are more
+  # this method smells of :reek:DuplicateMethodCall
   def one_author(css_classes)
     return if @authors.blank?
       link_to(
@@ -26,6 +31,7 @@ class AuthorListComponent < ViewComponent::Base
       ) << (@authors.count > 1 ? ' et al.' : '')
   end
 
+  # shows (by ...) for the first author and adds "et al." if there are more than one
   def by_authors
     return if @authors.blank?
     "(by #{@authors.first.display_name}#{@authors.count > 1 ? ' et al.' : ''})"

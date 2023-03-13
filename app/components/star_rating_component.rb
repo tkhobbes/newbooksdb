@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+# displays a star rating that is equal to the rating of the rated object
+# can also show the rating in a human readable form
 class StarRatingComponent < ViewComponent::Base
 
   def initialize(rated:, humanized:)

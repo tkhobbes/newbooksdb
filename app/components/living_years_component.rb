@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# shows years for authors - "born" or "born - died" or "died"
 class LivingYearsComponent < ViewComponent::Base
 
   def initialize(author:)

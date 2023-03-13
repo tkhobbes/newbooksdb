@@ -1,12 +1,13 @@
 # frozen_string_literal: true
 
+# this component shows the avatar of a user or a generic SVG
 class AvatarImageComponent < ViewComponent::Base
   SIZE_MAP = {
       large: [300, 'placeholder-large'],
       medium: [200, 'placeholder-medium'],
       small: [100, 'placeholder-small'],
       default: [50, 'placeholder-default']
-  }
+  }.freeze
 
   def initialize(profile:, size: :default)
     @profile = profile
@@ -14,6 +15,7 @@ class AvatarImageComponent < ViewComponent::Base
     super
   end
   # returns either the profile image of a user or a placeholder SVG
+  # this method smells of :reek:DuplicateMethodCall
   def avatar_image
     img_size = SIZE_MAP[@size][0]
     css_tag = SIZE_MAP[@size][1]
