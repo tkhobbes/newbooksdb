@@ -40,11 +40,11 @@ Rails.application.routes.draw do
   resources :user_destructions, only: [:create]
   get 'user_destructions/new/:id', to: 'user_destructions#new', as: 'new_user_destructions'
 
+  resources :scan_queues, only: %i[index new create destroy]
+
   # the whole service logic
   get 'isbn_search/new', to: 'isbn_search#new'
   post 'isbn_search/show', to: 'isbn_search#show'
   post 'isbn_create/create', to: 'isbn_create#create'
   post 'cover_search/create', to: 'cover_search#create'
-  get 'scan/new', to: 'scan#new'
-  resources :scan_queues, only: %i[index new create destroy]
 end
