@@ -17,8 +17,8 @@ class IsbnSearchController < ApplicationController
     end
 
     respond_to do |format|
-      format.html
-      format.turbo_stream
+      format.html # show.html.erb --> as response to manual form search
+      format.turbo_stream # show.turbo_stream.erb --> updates scan_queues/index.html.erb
     end
   end
   # rubocop:enable Metrics/AbcSize
