@@ -55,6 +55,7 @@ class AbcNavigateComponent < ViewComponent::Base
   # cycles through the model and returns a hash of the first letter of the
   # sort column and how many times it occurs ('a' => 3, 'b' => 2, etc.)
   def sort_list
+    @existing_scopes.delete(:letter) if @existing_scopes.present?
     if @existing_scopes.present?
       @model.send(@existing_scopes.keys.first, @existing_scopes.values.first)
         .pluck(@sort_column) # array of sort_column values

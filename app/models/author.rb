@@ -84,11 +84,15 @@ class Author < ApplicationRecord
   private
 
   def create_sort_name
-    self.sort_name = "#{last_name}, #{first_name}"
+    self.sort_name = "#{last_name}, #{first_name}" if last_name.present? && first_name.present?
+    self.sort_name = first_name if last_name.blank?
+    self.sort_name = last_name if first_name.blank?
   end
 
   def create_display_name
-    self.display_name = "#{first_name} #{last_name}"
+    self.display_name = "#{first_name} #{last_name}" if last_name.present? && first_name.present?
+    self.display_name = first_name if last_name.blank?
+    self.display_name = last_name if first_name.blank?
   end
 
   def should_generate_new_friendly_id?
