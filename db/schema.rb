@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_05_151018) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_14_122541) do
   create_table "action_text_rich_texts", charset: "utf8mb4", force: :cascade do |t|
     t.string "name", null: false
     t.text "body", size: :long
@@ -172,14 +172,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_05_151018) do
     t.index ["slug"], name: "index_publishers_on_slug", unique: true
   end
 
-  create_table "scan_queues", charset: "utf8mb4", force: :cascade do |t|
-    t.string "isbn"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "owner_id", null: false
-    t.index ["owner_id"], name: "index_scan_queues_on_owner_id"
-  end
-
   create_table "shelves", charset: "utf8mb4", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
@@ -223,7 +215,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_05_151018) do
   add_foreign_key "books_genres", "books"
   add_foreign_key "books_genres", "genres"
   add_foreign_key "profiles", "owners"
-  add_foreign_key "scan_queues", "owners"
   add_foreign_key "shelves", "owners"
   add_foreign_key "taggings", "tags"
   add_foreign_key "tags", "owners"

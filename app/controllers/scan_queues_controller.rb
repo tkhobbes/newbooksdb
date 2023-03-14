@@ -5,18 +5,19 @@ class ScanQueuesController < ApplicationController
 
   # index: shows the full scan queue
   def index
-    @scan_results = ScanQueue.where(owner: current_owner)
+    @scan_results = Kredis.set current_owner.id.to_s
   end
 
   # new: shows the scan form
   def new
-    @scan_results = ScanQueue.where(owner: current_owner)
+    @scan_results = Kredis.set current_owner.id.to_s, typed: :string
   end
 
   # create: creates an entry in scan queue
   def create
-    @queue_entry = ScanQueue.find_or_create_by(isbn: params[:isbn], owner: current_owner)
-    @scan_results = ScanQueue.where(owner: current_owner)
+    @scan_results = Kredis.set current_owner.id.to_s
+    @scan_results << params[:isbn] unless @scan_results.include? params[:isbn]
+
     respond_to do |format|
       format.turbo_stream
     end
@@ -24,7 +25,9 @@ class ScanQueuesController < ApplicationController
 
   # destroy: removes an item from the scan queue
   def destroy
-    @scan_result = ScanQueue.find(params[:id]).destroy
+    scan_results = Kredis.set current_owner.id.to_s
+    @scan_result = params[:id]
+    scan_results.remove @scan_result if scan_results.include? @scan_result
     respond_to do |format|
       format.html { redirect_to new_scan_queue_path, notice: 'Scan queue cleared', status: :see_other }
       format.turbo_stream

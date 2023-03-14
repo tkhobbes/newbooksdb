@@ -1,6 +1,6 @@
 <%= page_title('Add Scanned Barcodes', '', 'heading2') %>
 
-<% if @scan_results.size < 1 %>
+<% if @scan_results.members.size < 1 %>
   <span>
     No results -
     <%= link_to 'Go Scan Some Barcodes!', new_scan_queue_path, class: 'color-accent-dark color-hover-accent-light' %>
@@ -10,12 +10,12 @@
   <div class="flex margin-bottom-1">
     <div class="margin-right-33">
       <ul class="itemlist">
-        <% @scan_results.each do |result | %>
-          <%= turbo_frame_tag dom_id(result) do %>
+        <% @scan_results.members.each do |result | %>
+          <%= turbo_frame_tag "queue-#{result}" do %>
             <li class="itemlist__item itemlist__border padding-1 icons">
               <%= form_with url: isbn_search_show_path, method: :post do |f| %>
-                <%= f.hidden_field :isbn, value: result.isbn %>
-                <%= f.submit "ISBN #{result.isbn}", class: "nobutton color-accent-dark color-hover-accent" %>
+                <%= f.hidden_field :isbn, value: result %>
+                <%= f.submit "ISBN #{result}", class: "nobutton color-accent-dark color-hover-accent" %>
               <% end %>
                 <%= button_to scan_queue_path(result),
                   method: :delete,

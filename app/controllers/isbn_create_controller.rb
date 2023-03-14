@@ -20,7 +20,7 @@ class IsbnCreateController < ApplicationController
         end
       end
       format.turbo_stream do # response to scan_queues/index.html.erb
-        @result = ScanQueue.where(isbn: result.book.isbn, owner: current_owner).first.destroy
+        @result = result.book.isbn
       end
     end
   end

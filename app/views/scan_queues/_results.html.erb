@@ -1,9 +1,11 @@
-<% if scan_results.size < 1 %>
+<%# if scan_results.size < 1 %>
+<% if scan_results.members.size < 1 %>
   <span>No results yet</span>
 <% else %>
   <ul>
-    <% scan_results.each do |result | %>
-      <li><%= result.isbn %>
+    <%# scan_results.each do |result | %>
+      <% scan_results.members.each do |result | %>
+      <li><%#= result.isbn %><%= result %></li>
     <% end %>
   </ul>
 <% end %>
