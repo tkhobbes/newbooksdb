@@ -54,3 +54,5 @@
 
 # test stuff
 /mockup/test-code
+spec/examples.txt
+spec-old/*
