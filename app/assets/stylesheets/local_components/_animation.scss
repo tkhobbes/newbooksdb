@@ -1,0 +1,14 @@
+.list-animate-appear {
+  // can be used for any list where a new item is added dynamically
+  animation-duration: 0.5s;
+  animation-name: animate-fadein;
+}
+
+@keyframes animate-fadein {
+  0% {
+    background-color: $color-accent;
+  }
+  100% {
+    background-color: transparent;
+  }
+}
