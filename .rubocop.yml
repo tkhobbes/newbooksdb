@@ -9,6 +9,9 @@ require:
 Style/Documentation:
   Enabled: false
 
+Style/CommentedKeyword:
+  Enabled: false
+
 Rails/I18nLocaleTexts:
   Enabled: false
 
