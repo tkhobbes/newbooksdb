@@ -82,7 +82,7 @@ class Book < ApplicationRecord
   has_rich_text :synopsis
 
   # relationships to other models
-  belongs_to :book_format, optional: true, counter_cache: true
+  belongs_to :book_format, counter_cache: true
   belongs_to :owner, counter_cache: true
   belongs_to :shelf, optional: true, counter_cache: true
   belongs_to :publisher, optional: true, counter_cache: true

@@ -30,12 +30,12 @@ class BookFormat < ApplicationRecord
   private
   # ensure that all books are assigned to the book format "not specified"
   def destroy_fallback
-    if self.fallback?
+    if fallback?
       errors.add(:base, :undestroyable)
       throw :abort
     else
       format_fallback = BookFormat.find_by(fallback: true)
-      Book.where(book_format_id: self.id).update(book_format_id: format_fallback.id)
+      Book.where(book_format_id: id).update(book_format_id: format_fallback.id)
     end
   end
 

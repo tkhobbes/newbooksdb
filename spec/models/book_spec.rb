@@ -6,8 +6,8 @@ require 'rails_helper'
 RSpec.describe Book, type: :model do
   describe 'Validations' do
     before do
-      @format = BookFormat.create(name: 'default')
-      @owner = Owner.create(email: 'john@doe.com', password: 'password')
+      @format = FactoryBot.create(:book_format)
+      @owner = FactoryBot.create(:owner)
     end
 
     context 'owners and identifiers' do
@@ -28,7 +28,7 @@ RSpec.describe Book, type: :model do
       end
 
       it 'allows books with the same identifier if owners differ' do
-        second_owner = Owner.create(email: 'jane@doe.com', password: 'password')
+        second_owner = FactoryBot.create(:owner, email: 'jane@doe.com')
         book = Book.create(
           title: 'The Hobbit',
           book_format: @format,
@@ -62,7 +62,7 @@ RSpec.describe Book, type: :model do
       end
 
       it 'allows books with the same ISBN if owners differ' do
-        second_owner = Owner.create(email: 'jane@doe.com', password: 'password')
+        second_owner = FactoryBot.create(:owner, email: 'jane@doe.com')
         book = Book.create(
           title: 'The Hobbit',
           book_format: @format,
@@ -110,8 +110,8 @@ RSpec.describe Book, type: :model do
 
   describe 'Ratings and Conditions' do
     before do
-      @format = BookFormat.create(name: 'default')
-      @owner = Owner.create(email: 'john@doe.com', password: 'password')
+      @format = FactoryBot.create(:book_format)
+      @owner = FactoryBot.create(:owner)
     end
     context 'Ratings' do
       it 'has a default rating of not_rated' do
@@ -156,8 +156,8 @@ RSpec.describe Book, type: :model do
 
   describe 'Titles and slugs' do
     before do
-      @format = BookFormat.create(name: 'default')
-      @owner = Owner.create(email: 'john@doe.com', password: 'password')
+      @format = FactoryBot.create(:book_format)
+      @owner = FactoryBot.create(:owner)
     end
     context 'Titles' do
       it 'removes prefixes from the sort title' do
@@ -184,8 +184,8 @@ RSpec.describe Book, type: :model do
 
   describe 'identifiers, ISBNs and IDs are created properly' do
     before do
-      @format = BookFormat.create(name: 'default')
-      @owner = Owner.create(email: 'john@doe.com', password: 'password')
+      @format = FactoryBot.create(:book_format)
+      @owner = FactoryBot.create(:owner)
     end
 
     context 'identifiers' do
@@ -233,8 +233,8 @@ RSpec.describe Book, type: :model do
 
   describe 'scopes display the right books' do
     before do
-      @format = BookFormat.create(name: 'default')
-      @owner = Owner.create(email: 'john@doe.com', password: 'password')
+      @format = FactoryBot.create(:book_format)
+      @owner = FactoryBot.create(:owner)
     end
 
     context 'Owner scopes' do
