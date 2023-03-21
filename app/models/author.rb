@@ -47,8 +47,6 @@ class Author < ApplicationRecord
   # authors can be rated
   include Rateable
 
-  include Presentable
-
   # create all names that are required
   before_save :create_sort_name
   before_save :create_display_name
