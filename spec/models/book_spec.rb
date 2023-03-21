@@ -272,8 +272,8 @@ RSpec.describe Book, type: :model do
 
     context 'shelf scopes' do
       it 'shows books of a certain shelf' do
-        shelf1 = Shelf.create(name: 'Shelf 1', owner: @owner)
-        shelf2 = Shelf.create(name: 'Shelf 2', owner: @owner)
+        shelf1 = FactoryBot.create(:shelf, owner: @owner)
+        shelf2 = FactoryBot.create(:shelf, name: 'Shelf 2', owner: @owner)
         book1 = Book.create(
           title: 'The Hobbit',
           book_format: @format,
@@ -297,7 +297,7 @@ RSpec.describe Book, type: :model do
       end
 
       it 'displays books without a shelf' do
-        shelf = Shelf.create(name: 'Shelf 1', owner: @owner)
+        shelf = FactoryBot.create(:shelf, owner: @owner)
         book1 = Book.create(
           title: 'The Hobbit',
           book_format: @format,
