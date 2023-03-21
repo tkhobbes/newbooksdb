@@ -41,7 +41,13 @@ class Tag < ApplicationRecord
 
   private
 
+  # the name is dependant on the owner name - incl fallback if no profile
+  # as the owner model delegates the name method to profile
   def name_owner
-    "#{name}-#{owner.name}"
+    owner.profile ? "#{name}-#{owner.name}" : "#{name}-#{subst_name}"
+  end
+
+  def subst_name
+    owner.email.split('@').first
   end
 end

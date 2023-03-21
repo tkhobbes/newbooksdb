@@ -136,4 +136,8 @@ class Book < ApplicationRecord
     book_id = Book.last ? Book.last.id.to_s : '0'
     Digest::UUID.uuid_v3(Digest::UUID::DNS_NAMESPACE, book_id)
   end
+
+  def should_generate_new_friendly_id?
+    title_changed? || super
+  end
 end

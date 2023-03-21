@@ -5,4 +5,9 @@ FactoryBot.define do
     email { 'john@doe.com' }
     password { 'password'}
   end
+
+  factory :jimbeam, class: Owner do
+    email { 'jim@beam.com' }
+    password { 'password' }
+  end
 end

@@ -56,7 +56,7 @@ class Author < ApplicationRecord
 
   # use sort name for friendly_id
   extend FriendlyId
-  friendly_id :sort_name, use: :slugged
+  friendly_id :display_name, use: :slugged
 
   # ensure cache is updated after creation and removal of book
   after_create { Rails.cache.increment('authors-count') }

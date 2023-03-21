@@ -179,6 +179,16 @@ RSpec.describe Book, type: :model do
         )
         expect(book.slug).to eq('the-hobbit')
       end
+
+      it 'updates the slug when the title is changed' do
+        book = Book.create(
+          title: 'The Hobbit',
+          book_format: @format,
+          owner: @owner,
+        )
+        book.update!(title: 'Der kleine Hobbit')
+        expect(book.reload.slug).to eq('der-kleine-hobbit')
+      end
     end # Context slugs
   end # Describe Titles and slugs
 

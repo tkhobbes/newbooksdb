@@ -27,15 +27,7 @@ class Publisher < ApplicationRecord
 
   # friendly ID uses slug
   extend FriendlyId
-  friendly_id :slug_candidates, use: :slugged
-
-  # define possibilities for slug: name or name-location
-  def slug_candidates
-    [
-      :name,
-      [:name, :location]
-    ]
-  end
+  friendly_id :name, use: :slugged
 
   # ensure cache is updated after creation and removal of book
   after_create { Rails.cache.increment('publishers-count') }
@@ -45,5 +37,11 @@ class Publisher < ApplicationRecord
   scope :no_books, -> { left_joins(:books).where(books: { id: [0, nil, ''] }) }
   # scope to have navigation working
   scope :letter, -> (letter) { where('LEFT(name,1) LIKE ?', "#{letter}%") }
+
+  private
+
+  def should_generate_new_friendly_id?
+    name_changed? || super
+  end
 
 end
