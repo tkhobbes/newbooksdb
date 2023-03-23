@@ -9,6 +9,58 @@
   render(BookIndexTitleComponent.new(params:)),
   '', 'heading2') %>
 
+<div class="flex">
+
+  <%= render SortComponent.new(
+    model: 'Book',
+    field: :sort_title,
+    existing_scopes: current_scopes
+  ) %>
+
+  <%= render SortComponent.new(
+    model: 'Book',
+    field: :created_at,
+    existing_scopes: current_scopes
+  ) %>
+
+  <%= render SortComponent.new(
+    model: 'Book',
+    field: :modified_at,
+    existing_scopes: current_scopes
+  ) %>
+
+  <%= render SortComponent.new(
+    model: 'Book',
+    field: :author,
+    existing_scopes: current_scopes
+  ) %>
+
+  <%= render SortComponent.new(
+    model: 'Book',
+    field: :year,
+    existing_scopes: current_scopes
+  ) %>
+
+  <%= render SortComponent.new(
+    model: 'Book',
+    field: :publisher,
+    existing_scopes: current_scopes
+  ) %>
+
+  <%= render SortComponent.new(
+    model: 'Book',
+    field: :rating,
+    existing_scopes: current_scopes
+  ) %>
+
+  <%= render SortComponent.new(
+    model: 'Book',
+    field: :condition,
+    existing_scopes: current_scopes
+  ) %>
+
+</div>
+
 <%= turbo_frame_tag 'page' %>
 <nav class="pagination list-select-type">
   <span class="page">

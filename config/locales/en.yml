@@ -30,4 +30,14 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  # View Components
+  SortComponent:
+    Book:
+      sort_title: "Title"
+      created_at: "Created"
+      modified_at: "Modified"
+      year: "Year"
+      authors: "Author"
+      publisher: "Publisher"
+      rating: "Rating"
+      condition: "Condition"
