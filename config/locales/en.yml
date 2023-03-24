@@ -35,7 +35,7 @@ en:
     Book:
       sort_title: "Title"
       created_at: "Created"
-      modified_at: "Modified"
+      updated_at: "Modified"
       year: "Year"
       authors: "Author"
       publisher: "Publisher"

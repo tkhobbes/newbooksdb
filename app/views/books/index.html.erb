@@ -25,11 +25,11 @@
 
   <%= render SortComponent.new(
     model: 'Book',
-    field: :modified_at,
+    field: :updated_at,
     existing_scopes: current_scopes
   ) %>
 
-  <%= render SortComponent.new(
+  <%#= render SortComponent.new(
     model: 'Book',
     field: :author,
     existing_scopes: current_scopes
@@ -41,7 +41,7 @@
     existing_scopes: current_scopes
   ) %>
 
-  <%= render SortComponent.new(
+  <%#= render SortComponent.new(
     model: 'Book',
     field: :publisher,
     existing_scopes: current_scopes

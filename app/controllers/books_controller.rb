@@ -25,15 +25,24 @@ class BooksController < ApplicationController
   # standard index method - show all books
   # books ordered by sort_title; additional variable @pagy for pagination
   def index
-    all_books = apply_scopes(books_with_includes_sorted)
-    if params[:show] == 'list'
-      @pagy, @books = pagy(all_books, items: 20)
-    else
-      @pagy, @books = pagy(
-        all_books
-          .includes([:publisher, :rich_text_synopsis, :books_genres, :genres])
+    # all_books = apply_scopes(books_with_includes_sorted)
+    # if params[:show] == 'list'
+    #   @pagy, @books = pagy(all_books, items: 20)
+    # else
+    #   @pagy, @books = pagy(
+    #     all_books
+    #       .includes([:publisher, :rich_text_synopsis, :books_genres, :genres])
+    #   )
+    # end
+    @pagy, @books = per_page(apply_scopes(
+      order(
+        include_owner(
+          view_includes(
+            default_includes(Book.all)
+          )
+        )
       )
-    end
+    ))
   end
 
   # Standard show method - show book details
@@ -98,6 +107,48 @@ class BooksController < ApplicationController
   # define an instance variable @book
   def set_book
     @book = Book.friendly.find(params[:id])
+  end
+
+  # a set of methods that help to scope the @books variable for the index action
+  # orders the book based on params
+  def order(collection)
+    if params[:sort_by]
+      collection.order("#{params[:sort_by]} #{params[:sort_dir]}")
+    else
+      collection.order(:sort_title)
+    end
+  end
+
+    # inclusion of default associations
+    def default_includes(collection)
+      collection.includes([:authors, cover_attachment: :blob])
+    end
+
+  # includes the owner if somebody is logged in
+  def include_owner(collection)
+    if current_owner
+      collection.includes(:owner)
+    else
+      collection
+    end
+  end
+
+  # includes the right associated models based on the view selected
+  def view_includes(collection)
+    if params[:show] == 'list'
+      collection
+    else
+      collection.includes([:publisher, :rich_text_synopsis, :books_genres, :genres])
+    end
+  end
+
+  # returns the right amount of items for pagination
+  def per_page(collection)
+    if params[:show] == 'list'
+      pagy(collection, items: 20)
+    else
+      pagy(collection)
+    end
   end
 
   # returns all books sorted by sort_title, with associations included to avoid n+1
