@@ -19,7 +19,7 @@ class BooksController < ApplicationController
   # scopes as filters - repeating from model
   has_scope :my_books
   has_scope :shelf_books
-  has_scope :no_shelf, type: :boolean
+  has_scope :no_shelf, type: :boolean, allow_blank: true
   has_scope :letter
 
   # standard index method - show all books
