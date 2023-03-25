@@ -17,7 +17,11 @@ class AuthorsController < ApplicationController
   has_scope :letter
 
   def index
-    @pagy, @authors = pagy(apply_scopes(Author.includes([portrait_attachment: :blob]).order(:sort_name)))
+    @pagy, @authors = per_page(apply_scopes(
+      order(
+        default_includes(Author.all)
+      )
+    ))
   end
 
   def show
@@ -61,6 +65,26 @@ class AuthorsController < ApplicationController
   end
 
   private
+
+  # a set of methods that help to scope the @books variable for the index action
+  # orders the book based on params
+  def order(collection)
+    if params[:sort_by]
+      collection.order("#{params[:sort_by]} #{params[:sort_dir]}")
+    else
+      collection.order(:sort_name)
+    end
+  end
+
+  # inclusion of default associations
+  def default_includes(collection)
+    collection.includes([portrait_attachment: :blob])
+  end
+
+  # returns the right amount of items for pagination
+  def per_page(collection)
+    pagy(collection)
+  end
 
   # rubocop:disable Metrics/MethodLength
   def author_params

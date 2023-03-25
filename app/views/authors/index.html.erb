@@ -11,6 +11,46 @@
   <%= link_to 'Add Author', new_author_path, class: 'button-color-secondary' %>
 </div>
 
+<div class="flex">
+
+  <%= render SortComponent.new(
+    model: 'Author',
+    field: :sort_name,
+    existing_scopes: current_scopes
+  ) %>
+
+  <%= render SortComponent.new(
+    model: 'Author',
+    field: :born,
+    existing_scopes: current_scopes
+  ) %>
+
+  <%= render SortComponent.new(
+    model: 'Author',
+    field: :died,
+    existing_scopes: current_scopes
+  ) %>
+
+  <%= render SortComponent.new(
+    model: 'Author',
+    field: :rating,
+    existing_scopes: current_scopes
+  ) %>
+
+  <%= render SortComponent.new(
+    model: 'Author',
+    field: :gender,
+    existing_scopes: current_scopes
+  ) %>
+
+  <%= render SortComponent.new(
+    model: 'Author',
+    field: :books_count,
+    existing_scopes: current_scopes
+  ) %>
+
+</div>
+
 <%= turbo_frame_tag 'page' %>
 <nav class="pagination list-select-type">
   <span class="page">
