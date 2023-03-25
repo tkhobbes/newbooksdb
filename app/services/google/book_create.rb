@@ -25,9 +25,13 @@ module Google
       return ReturnBook.new(created: false, msg: 'Something went wrong at the backend.') if @json_data.empty?
       return ReturnBook.new(created: false, msg: 'Book already exists.') if Book.exists?(title: @json_data.dig(:volumeInfo, :title), owner: @owner)
       ActiveRecord::Base.transaction do
-        author = Google::AuthorCreate.new(@json_data.dig(:volumeInfo, :authors)).create_author
+        author = Google::AuthorCreate.new(@json_data.dig(:volumeInfo, :authors)).create_author if @json_data.dig(:volumeInfo, :authors)
         publisher = Google::PublisherCreate.new(@json_data.dig(:volumeInfo, :publisher)).create_publisher
-        book = Book.create(fetch_book_data.merge(authors: Author.where(id: author.id), publisher:))
+        book = if author
+          Book.create(fetch_book_data.merge(authors: Author.where(id: author.id), publisher:))
+        else
+          Book.create(fetch_book_data.merge(publisher:))
+        end
       end
       return ReturnBook.new(created: false, msg: 'Something went wrong while saving the book.') unless book
       PictureAttacher.new(parse_cover_url, book.cover).attach
