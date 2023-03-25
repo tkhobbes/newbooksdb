@@ -109,3 +109,9 @@ a {
 .back_link {
   @extend .form-cancel-button;
 }
+
+// 5. other various for specific components
+.active-sort {
+  @extend .color-white;
+  @extend .bg-secondary-dark;
+}

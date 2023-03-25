@@ -19,6 +19,7 @@ class SortComponent < ViewComponent::Base
     url_for(action: 'index', controller: controller_name, params: new_scopes)
   end
 
+  # toggles the current sort order (or set to 'asc' if no order given)
   def toggle(order)
     if order == 'asc'
       'desc'
@@ -27,10 +28,12 @@ class SortComponent < ViewComponent::Base
     end
   end
 
+  # displays the label to be shown for the sort button
   def display_label
     t("SortComponent.#{@model}.#{@field}")
   end
 
+  # creates different arrow icons, depending on sort order
   def sort_icon(field, dir)
     if field == @field.to_s
       if dir == 'asc'
@@ -43,6 +46,13 @@ class SortComponent < ViewComponent::Base
     else
       inline_svg_tag('arrowsupdown.svg', class: 'smallicon')
     end
+  end
+
+  # creates a class if the field is the active sort field
+  def active(sort_by_field)
+    return unless sort_by_field == @field.to_s
+      'active-sort'
+
   end
 
   private
