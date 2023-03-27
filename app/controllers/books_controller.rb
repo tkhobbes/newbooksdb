@@ -22,6 +22,9 @@ class BooksController < ApplicationController
   has_scope :no_shelf, type: :boolean, allow_blank: true
   has_scope :letter
 
+  # ensure we can sort the view of books
+  include Sortable
+
   # standard index method - show all books
   # books ordered by sort_title; additional variable @pagy for pagination
   def index
@@ -35,7 +38,7 @@ class BooksController < ApplicationController
     #   )
     # end
     @pagy, @books = per_page(apply_scopes(
-      order(
+      order(:sort_title,
         include_owner(
           view_includes(
             default_includes(Book.all)
@@ -110,19 +113,10 @@ class BooksController < ApplicationController
   end
 
   # a set of methods that help to scope the @books variable for the index action
-  # orders the book based on params
-  def order(collection)
-    if params[:sort_by]
-      collection.order("#{params[:sort_by]} #{params[:sort_dir]}")
-    else
-      collection.order(:sort_title)
-    end
+  # inclusion of default associations
+  def default_includes(collection)
+    collection.includes([:authors, cover_attachment: :blob])
   end
-
-    # inclusion of default associations
-    def default_includes(collection)
-      collection.includes([:authors, cover_attachment: :blob])
-    end
 
   # includes the owner if somebody is logged in
   def include_owner(collection)

@@ -16,9 +16,12 @@ class AuthorsController < ApplicationController
   has_scope :alive
   has_scope :letter
 
+  # ensure we can sort authors
+  include Sortable
+
   def index
     @pagy, @authors = per_page(apply_scopes(
-      order(
+      order(:sort_name,
         default_includes(Author.all)
       )
     ))
@@ -67,14 +70,6 @@ class AuthorsController < ApplicationController
   private
 
   # a set of methods that help to scope the @books variable for the index action
-  # orders the book based on params
-  def order(collection)
-    if params[:sort_by]
-      collection.order("#{params[:sort_by]} #{params[:sort_dir]}")
-    else
-      collection.order(:sort_name)
-    end
-  end
 
   # inclusion of default associations
   def default_includes(collection)
