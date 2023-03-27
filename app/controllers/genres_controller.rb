@@ -13,6 +13,9 @@ class GenresController < ApplicationController
 
   has_scope :letter
 
+  # ensure genres can be sorted
+  include Sortable
+
   # index action can answer to either 'settings' page (to administer genres)
   # or otherwise it will display all genres and the first 5 books within each genre
   # this method smells of :reek:DuplicateMethodCall
@@ -22,9 +25,11 @@ class GenresController < ApplicationController
       @genres = Genre.all.order(:name)
       render 'admin', genres: @genres
     else
-      @pagy, @genres = pagy(apply_scopes(Genre
-        .includes([:books_genres, books: [cover_attachment: :blob]])
-        .order(:name)))
+      @pagy, @genres = pagy(apply_scopes(
+        order(:name,
+          index_includes(Genre.all)
+        )
+      ))
     end
   end
 
@@ -92,6 +97,13 @@ class GenresController < ApplicationController
   end
 
   private
+
+  # a set of methods that help to scope the @books variable for the index action
+
+  # inclusion of default associations
+  def index_includes(collection)
+    collection.includes([:books_genres, books: [cover_attachment: :blob]])
+  end
 
   def set_genre
     @genre = Genre.friendly.find(params[:id])
