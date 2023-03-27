@@ -7,11 +7,11 @@
   current_letter: params[:letter]
   ) %>
 
-<div class="margin-top-1 margin-left-50 margin-bottom-1">
-  <%= link_to 'Add Publisher', new_publisher_path, class: 'button-color-secondary' %>
-</div>
-
 <div class="flex">
+  <%= link_to 'Add Publisher',
+    new_publisher_path,
+    class: 'button-color-accent margin-right-50 small'
+  %>
 
   <%= render SortComponent.new(
     model: 'Publisher',

@@ -7,11 +7,12 @@
 
 <%= page_title('Authors','', 'heading2') %>
 
-<div class="margin-top-1 margin-left-50 margin-bottom-1">
-  <%= link_to 'Add Author', new_author_path, class: 'button-color-secondary' %>
-</div>
-
 <div class="flex">
+
+  <%= link_to 'Add Author',
+    new_author_path,
+    class: 'button-color-accent margin-right-50 small'
+  %>
 
   <%= render SortComponent.new(
     model: 'Author',
