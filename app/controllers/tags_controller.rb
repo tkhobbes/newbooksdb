@@ -50,9 +50,9 @@ class TagsController < ApplicationController
   def show
     case params[:list]
     when 'books'
-      @pagy, @books = pagy(@tag.books.includes([:authors, :owner, cover_attachment: :blob]))
+      @pagy, @books = pagy(@tag.books.includes([:authors, :owner, cover_attachment: :blob]).order(:sort_title))
     when 'authors'
-      @pagy_authors, @authors = pagy(@tag.authors.includes([portrait_attachment: :blob]))
+      @pagy_authors, @authors = pagy(@tag.authors.includes([portrait_attachment: :blob]).order(:sort_name))
     end
   end
 

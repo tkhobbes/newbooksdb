@@ -13,7 +13,7 @@ class SearchController < ApplicationController
   # This Method smells of :reek:DuplicateMethodCall
   # This method smells of :reek:TooManyStatements
   def quicksearch
-    @results = params[:query] ? Book.search(params[:query]) + Author.search(params[:query], default_operator: :or) : []
+    @results = params[:query] ? Book.search(params[:query]).order(:sort_title) + Author.search(params[:query], default_operator: :or).order(:sort_name) : []
     respond_to do |format|
       format.html
       format.turbo_stream { render turbo_stream: turbo_stream.replace('quicksearch_results', partial: 'search/quicksearchresults') }
@@ -29,11 +29,11 @@ class SearchController < ApplicationController
     case params[:list]
     when 'books'
       book_results = Book.search(params[:query])
-        .includes([:authors, :owner, cover_attachment: :blob])
+        .includes([:authors, :owner, cover_attachment: :blob]).order(:sort_title)
       @pagy, @books = pagy(book_results)
     when 'authors'
       author_results = Author.search(params[:query], default_operator: :or)
-        .includes([portrait_attachment: :blob])
+        .includes([portrait_attachment: :blob]).order(:sort_name)
       @pagy_authors, @authors = pagy(author_results)
     end
   end

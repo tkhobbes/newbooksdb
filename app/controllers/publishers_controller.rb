@@ -27,7 +27,7 @@ class PublishersController < ApplicationController
 
   # shows a publisher in detail and lists all books from that publisher
   def show
-    @pagy, @books = pagy(@publisher.books.includes([:authors, :owner, cover_attachment: :blob]))
+    @pagy, @books = pagy(@publisher.books.includes([:authors, :owner, cover_attachment: :blob]).order(:sort_title))
   end
 
   # new method to display form
