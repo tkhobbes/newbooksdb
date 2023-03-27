@@ -13,11 +13,16 @@ class PublishersController < ApplicationController
 
   has_scope :letter
 
+  # ensure we can sort publishers
+  include Sortable
+
   # index method uses pagy
   def index
-    @pagy, @publishers = pagy(apply_scopes(Publisher.all
-      .includes([books: [cover_attachment: :blob]])
-      .order(:name)))
+    @pagy, @publishers = pagy(apply_scopes(
+      order(:name,
+        default_includes(Publisher.all)
+      )
+    ))
   end
 
   # shows a publisher in detail and lists all books from that publisher
@@ -69,6 +74,13 @@ class PublishersController < ApplicationController
   end
 
   private
+
+  # a set of methods that help to scope the @publishers variable for the index action
+
+  # inclusion of default associations
+  def default_includes(collection)
+    collection.includes([books: [cover_attachment: :blob]])
+  end
 
   # Rails strong params
   def publisher_params

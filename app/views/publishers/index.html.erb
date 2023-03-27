@@ -7,10 +7,46 @@
   current_letter: params[:letter]
   ) %>
 
-<%= turbo_frame_tag 'page' %>
-<div class="margin-top-1 margin-left-50">
+<div class="margin-top-1 margin-left-50 margin-bottom-1">
   <%= link_to 'Add Publisher', new_publisher_path, class: 'button-color-secondary' %>
 </div>
+
+<div class="flex">
+
+  <%= render SortComponent.new(
+    model: 'Publisher',
+    field: :name,
+    existing_scopes: current_scopes
+  ) %>
+
+  <%= render SortComponent.new(
+    model: 'Publisher',
+    field: :location,
+    existing_scopes: current_scopes
+  ) %>
+
+  <%= render SortComponent.new(
+    model: 'Publisher',
+    field: :created_at,
+    existing_scopes: current_scopes
+  ) %>
+
+  <%= render SortComponent.new(
+    model: 'Publisher',
+    field: :updated_at,
+    existing_scopes: current_scopes
+  ) %>
+
+  <%= render SortComponent.new(
+    model: 'Publisher',
+    field: :books_count,
+    existing_scopes: current_scopes
+  ) %>
+
+</div>
+
+<%= turbo_frame_tag 'page' %>
+
 <div class="flexlist" id="publishers">
   <% @publishers.each do |publisher| %>
     <%= render 'publishercard', publisher: publisher  %>

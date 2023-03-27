@@ -48,3 +48,9 @@ en:
       books_count: "# Books"
       rating: "Rating"
       gender: "Gender"
+    Publisher:
+      name: "Name"
+      location: "Location"
+      created_at: "Created"
+      updated_at: "Modified"
+      books_count: "# Books"
