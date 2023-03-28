@@ -16,7 +16,8 @@ class SortComponent < ViewComponent::Base
       sort_by: @field,
       sort_dir: toggle(current_order),
       letter: params[:letter],
-      show: params[:show]
+      show: params[:show],
+      page: params[:page]
     )
     url_for(action: 'index', controller: controller_name, params: new_scopes)
   end

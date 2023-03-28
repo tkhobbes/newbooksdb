@@ -26,13 +26,6 @@ module ApplicationHelper
     end if title.present?
   end
 
-  # method extends existing scope of books_path with new scope. Used in index view
-  # to toggle between grid and list view
-  def scoped_books_path(show_hash)
-    new_scopes = current_scopes.merge(show_hash)
-    books_path(new_scopes)
-  end
-
   # method determines the right CSS for existing books
   # this method smells of :reek:ControlParameter
   def isbn_existing_css(existing)

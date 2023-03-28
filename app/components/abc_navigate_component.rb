@@ -88,7 +88,8 @@ class AbcNavigateComponent < ViewComponent::Base
       letter:,
       sort_by: params[:sort_by],
       sort_dir: params[:sort_dir],
-      show: params[:show]
+      show: params[:show],
+      page: params[:page]
     )
     url_for(action: 'index', controller: controller_name, params: new_scopes)
   end

@@ -68,18 +68,9 @@
 </div>
 
 <%= turbo_frame_tag 'page' %>
-<nav class="pagination list-select-type">
-  <span class="page">
-    <%= link_to scoped_books_path(show: 'grid'), title: 'Display as grid', class: 'list-select-item' do %>
-      <%= inline_svg_tag 'grid.svg', class: 'smallicon' %>
-    <% end %>
-  </span>
-  <span class="page">
-    <%= link_to scoped_books_path(show: 'list'), title: 'Display as list', class: 'list-select-item' do %>
-      <%= inline_svg_tag 'list.svg', class: 'smallicon' %>
-    <% end %>
-  </span>
-</nav>
+
+<%= render ShowTypeComponent.new(model: 'Book', existing_scopes: current_scopes) %>
+
 <% if params[:show] == 'list' %>
   <ul class="itemlist" id="books">
     <%= render @books %>
@@ -91,5 +82,15 @@
 <% end %>
 
 
-<%= render 'shared/pager', pagy: @pagy, model_path: books_path(page: @pagy.next, show: params[:show]) %>
-
+<%#= render 'shared/pager', pagy: @pagy, model_path: books_path(page: @pagy.next, show: params[:show]) %>
+<%= render 'shared/pager',
+  pagy: @pagy,
+  model_path: books_path(
+    params: current_scopes.merge(
+      page: @pagy.next,
+      letter: params[:letter],
+      sort_by: params[:sort_by],
+      sort_dir: params[:sort_dir],
+      show: params[:show]
+    )
+)%>

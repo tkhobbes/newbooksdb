@@ -1,0 +1,12 @@
+<nav class="pagination list-select-type">
+  <span class="page">
+    <%= link_to full_scope_path('grid'), title: 'Display as grid', class: 'list-select-item' do %>
+      <%= inline_svg_tag 'grid.svg', class: 'smallicon' %>
+    <% end %>
+  </span>
+  <span class="page">
+    <%= link_to full_scope_path('list'), title: 'Display as list', class: 'list-select-item' do %>
+      <%= inline_svg_tag 'list.svg', class: 'smallicon' %>
+    <% end %>
+  </span>
+</nav>
