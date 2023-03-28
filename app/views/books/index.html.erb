@@ -29,10 +29,11 @@
     existing_scopes: current_scopes
   ) %>
 
-  <%#= render SortComponent.new(
+  <%#= render SortComplexComponent.new(
     model: 'Book',
-    field: :author,
-    existing_scopes: current_scopes
+    field: :sort_name,
+    existing_scopes: current_scopes,
+    associated_model: 'Author'
   ) %>
 
   <%= render SortComponent.new(

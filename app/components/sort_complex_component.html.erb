@@ -1,0 +1,7 @@
+<% dir = params[:sort_dir] if params[:sort_by] == @field.to_s %>
+<%= link_to full_scope_path(dir),
+  class: "margin-right-50 button-color-secondary small #{active(params[:sort_by])}" do %>
+  Sort by <%= display_label %>
+  <%= @current_order %>
+  <%= sort_icon(params[:sort_by], params[:sort_dir]) %>
+<% end %>
