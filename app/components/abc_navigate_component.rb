@@ -84,7 +84,12 @@ class AbcNavigateComponent < ViewComponent::Base
 
   # generates the full path for a letter entry, honouring already existing scopes
   def full_scope_path(letter)
-    new_scopes = @existing_scopes.merge(letter:)
+    new_scopes = @existing_scopes.merge(
+      letter:,
+      sort_by: params[:sort_by],
+      sort_dir: params[:sort_dir],
+      show: params[:show]
+    )
     url_for(action: 'index', controller: controller_name, params: new_scopes)
   end
 

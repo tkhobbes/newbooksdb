@@ -10,6 +10,11 @@
 
 <div class="flex">
 
+  <%= link_to 'Reset sorting',
+    genres_path,
+    class: 'button-color-secondary margin-right-50 small'
+  %>
+
   <%= render SortComponent.new(
     model: 'Genre',
     field: :name,

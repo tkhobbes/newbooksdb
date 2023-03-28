@@ -13,6 +13,11 @@
     class: 'button-color-accent margin-right-50 small'
   %>
 
+  <%= link_to 'Reset sorting',
+    publishers_path,
+    class: 'button-color-secondary margin-right-50 small'
+  %>
+
   <%= render SortComponent.new(
     model: 'Publisher',
     field: :name,

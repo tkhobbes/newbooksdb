@@ -14,7 +14,9 @@ class SortComponent < ViewComponent::Base
   def full_scope_path(current_order)
     new_scopes = @existing_scopes.merge(
       sort_by: @field,
-      sort_dir: toggle(current_order)
+      sort_dir: toggle(current_order),
+      letter: params[:letter],
+      show: params[:show]
     )
     url_for(action: 'index', controller: controller_name, params: new_scopes)
   end
