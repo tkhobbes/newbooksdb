@@ -2,7 +2,7 @@
   <li>
     <div class="flexlist">
       <%= link_to(
-        "#{tag.name} - #{tag.books.size} books",
+        "#{tag.name} - #{tag.books.size} books / #{tag.authors.size} authors",
         edit_tag_path(tag)
        ) %>
       <%= tag.owner.name %>
