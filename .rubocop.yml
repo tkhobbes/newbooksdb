@@ -31,7 +31,10 @@ RSpec/MultipleExpectations:
 RSpec/ExampleLength:
   Enabled: false
 
-RSpec/InstanceVariable:
+RSpec/LetSetup:
+  Enabled: false
+
+RSpec/MultipleMemoizedHelpers:
   Enabled: false
 
 AllCops:
