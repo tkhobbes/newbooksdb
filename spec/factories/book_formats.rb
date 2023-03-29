@@ -5,7 +5,7 @@ FactoryBot.define do
     name { 'default' }
   end
 
-  factory :fallback_format, class: BookFormat do
+  factory :fallback_format, class: 'BookFormat' do
     name { 'fallback' }
     fallback { true }
   end

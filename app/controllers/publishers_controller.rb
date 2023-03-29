@@ -78,6 +78,7 @@ class PublishersController < ApplicationController
   # a set of methods that help to scope the @publishers variable for the index action
 
   # inclusion of default associations
+  # this method smells of :reek:UtilityFunction
   def default_includes(collection)
     collection.includes([books: [cover_attachment: :blob]])
   end

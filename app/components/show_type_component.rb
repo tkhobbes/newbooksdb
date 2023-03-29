@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# displays icons to show as list or as grid
 class ShowTypeComponent < ViewComponent::Base
   def initialize(model:, existing_scopes:)
     super

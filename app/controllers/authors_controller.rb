@@ -72,6 +72,7 @@ class AuthorsController < ApplicationController
   # a set of methods that help to scope the @books variable for the index action
 
   # inclusion of default associations
+  # this method smells of :reek:UtilityFunction
   def default_includes(collection)
     collection.includes([portrait_attachment: :blob])
   end

@@ -2,12 +2,12 @@
 
 require 'rails_helper'
 
-# rubocop:disable Metrics/BlockLength
-RSpec.describe Publisher, type: :model do
+RSpec.describe Publisher do
   describe 'validations' do
     before do
-      @publisher = FactoryBot.create(:publisher)
+      @publisher = create(:publisher)
     end
+
     context 'uniqueness' do
       it 'cannot have two publishers with the same name' do
         publisher = Publisher.new(name: 'Books Inc.')
@@ -18,7 +18,7 @@ RSpec.describe Publisher, type: :model do
 
   describe 'slugs' do
     before do
-      @publisher = FactoryBot.create(:publisher)
+      @publisher = create(:publisher)
     end
 
     context 'slug based on name' do
@@ -34,4 +34,3 @@ RSpec.describe Publisher, type: :model do
   end # slugs
 
 end
-# rubocop:enable Metrics/BlockLength

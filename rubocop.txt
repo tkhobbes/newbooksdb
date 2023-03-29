@@ -1,19 +1,10 @@
-Inspecting 126 files
-...................................................C..........C.........................................C.....................
+Inspecting 123 files
+................................................................C..........................................................
 
 Offenses:
 
-app/models/book_format.rb:33:8: C: [Correctable] Style/RedundantSelf: Redundant self detected.
-    if self.fallback?
-       ^^^^
-app/models/book_format.rb:38:34: C: [Correctable] Style/RedundantSelf: Redundant self detected.
-      Book.where(book_format_id: self.id).update(book_format_id: format_fallback.id)
-                                 ^^^^
 app/models/tag.rb:26:3: C: Rails/UniqueValidationWithoutIndex: Uniqueness validation should have a unique index on the database column.
   validates :name, presence: true, uniqueness: { scope: :owner_id }
   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-spec/factories/books.rb:69:13: C: [Correctable] Rails/RootPathnameMethods: Rails.root is a Pathname so you can just append #open.
-        io: File.open(Rails.root.join('db', 'sample', 'images', 'cover-1.jpg')),
-            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-126 files inspected, 4 offenses detected, 3 offenses autocorrectable
+123 files inspected, 1 offense detected

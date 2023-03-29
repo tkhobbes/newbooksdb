@@ -2,12 +2,11 @@
 
 require 'rails_helper'
 
-# rubocop:disable Metrics/BlockLength
-RSpec.describe Book, type: :model do
+RSpec.describe Book do
   describe 'Validations' do
     before do
-      @format = FactoryBot.create(:book_format)
-      @owner = FactoryBot.create(:owner)
+      @format = create(:book_format)
+      @owner = create(:owner)
     end
 
     context 'owners and identifiers' do
@@ -28,7 +27,7 @@ RSpec.describe Book, type: :model do
       end
 
       it 'allows books with the same identifier if owners differ' do
-        second_owner = FactoryBot.create(:owner, email: 'jane@doe.com')
+        second_owner = create(:owner, email: 'jane@doe.com')
         book = Book.create(
           title: 'The Hobbit',
           book_format: @format,
@@ -62,7 +61,7 @@ RSpec.describe Book, type: :model do
       end
 
       it 'allows books with the same ISBN if owners differ' do
-        second_owner = FactoryBot.create(:owner, email: 'jane@doe.com')
+        second_owner = create(:owner, email: 'jane@doe.com')
         book = Book.create(
           title: 'The Hobbit',
           book_format: @format,
@@ -110,9 +109,10 @@ RSpec.describe Book, type: :model do
 
   describe 'Ratings and Conditions' do
     before do
-      @format = FactoryBot.create(:book_format)
-      @owner = FactoryBot.create(:owner)
+      @format = create(:book_format)
+      @owner = create(:owner)
     end
+
     context 'Ratings' do
       it 'has a default rating of not_rated' do
         book = Book.new(
@@ -130,15 +130,16 @@ RSpec.describe Book, type: :model do
           owner: @owner,
           rating: 5
         )
-        expect(book.rated?).to eq(true)
+        expect(book.rated?).to be(true)
       end
+
       it 'defaults to rated? false if book is not rated' do
         book = Book.new(
           title: 'The Hobbit',
           book_format: @format,
           owner: @owner,
         )
-        expect(book.rated?).to eq(false)
+        expect(book.rated?).to be(false)
       end
     end # Context Ratings
 
@@ -156,9 +157,10 @@ RSpec.describe Book, type: :model do
 
   describe 'Titles and slugs' do
     before do
-      @format = FactoryBot.create(:book_format)
-      @owner = FactoryBot.create(:owner)
+      @format = create(:book_format)
+      @owner = create(:owner)
     end
+
     context 'Titles' do
       it 'removes prefixes from the sort title' do
         book = Book.create(
@@ -194,8 +196,8 @@ RSpec.describe Book, type: :model do
 
   describe 'identifiers, ISBNs and IDs are created properly' do
     before do
-      @format = FactoryBot.create(:book_format)
-      @owner = FactoryBot.create(:owner)
+      @format = create(:book_format)
+      @owner = create(:owner)
     end
 
     context 'identifiers' do
@@ -243,8 +245,8 @@ RSpec.describe Book, type: :model do
 
   describe 'scopes display the right books' do
     before do
-      @format = FactoryBot.create(:book_format)
-      @owner = FactoryBot.create(:owner)
+      @format = create(:book_format)
+      @owner = create(:owner)
     end
 
     context 'Owner scopes' do
@@ -272,8 +274,8 @@ RSpec.describe Book, type: :model do
 
     context 'shelf scopes' do
       it 'shows books of a certain shelf' do
-        shelf1 = FactoryBot.create(:shelf, owner: @owner)
-        shelf2 = FactoryBot.create(:shelf, name: 'Shelf 2', owner: @owner)
+        shelf1 = create(:shelf, owner: @owner)
+        shelf2 = create(:shelf, name: 'Shelf 2', owner: @owner)
         book1 = Book.create(
           title: 'The Hobbit',
           book_format: @format,
@@ -297,7 +299,7 @@ RSpec.describe Book, type: :model do
       end
 
       it 'displays books without a shelf' do
-        shelf = FactoryBot.create(:shelf, owner: @owner)
+        shelf = create(:shelf, owner: @owner)
         book1 = Book.create(
           title: 'The Hobbit',
           book_format: @format,
@@ -342,4 +344,3 @@ RSpec.describe Book, type: :model do
     end # Context letter scopes
   end # Describe scopes display the right books
 end
-# rubocop:enable Metrics/BlockLength

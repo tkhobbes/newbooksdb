@@ -23,6 +23,8 @@ class SortComponent < ViewComponent::Base
   end
 
   # toggles the current sort order (or set to 'asc' if no order given)
+  # this method smells of :reek:ControlParameter
+  # this method smells of :reek:UtilityFunction
   def toggle(order)
     if order == 'asc'
       'desc'
@@ -37,12 +39,13 @@ class SortComponent < ViewComponent::Base
   end
 
   # creates different arrow icons, depending on sort order
+  # this method smells of :reek:ControlParameter
+  # this method smells of :reek:DuplicateMethodCall
   def sort_icon(field, dir)
     if field == @field.to_s
-      if dir == 'asc'
-        inline_svg_tag('arrowdown.svg', class: 'smallicon')
-      elsif dir == 'desc'
-        inline_svg_tag('arrowup.svg', class: 'smallicon')
+      case dir
+      when 'asc' then inline_svg_tag('arrowdown.svg', class: 'smallicon')
+      when 'desc' then inline_svg_tag('arrowup.svg', class: 'smallicon')
       else
         inline_svg_tag('arrowsupdown.svg', class: 'smallicon')
       end
@@ -52,6 +55,7 @@ class SortComponent < ViewComponent::Base
   end
 
   # creates a class if the field is the active sort field
+  # this method smells of :reek:ControlParameter
   def active(sort_by_field)
     return unless sort_by_field == @field.to_s
       'active-sort'

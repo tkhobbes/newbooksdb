@@ -2,12 +2,11 @@
 
 require 'rails_helper'
 
-# rubocop:disable Metrics/BlockLength
-RSpec.describe Tag, type: :model do
+RSpec.describe Tag do
   describe 'validations' do
     before do
-      @tag1 = FactoryBot.create(:tag)
-      @tag2 = FactoryBot.create(:tag, name: 'blue', owner: FactoryBot.create(:jimbeam))
+      @tag1 = create(:tag)
+      @tag2 = create(:tag, name: 'blue', owner: create(:jimbeam))
     end
 
     context 'uniqueness' do
@@ -31,8 +30,9 @@ RSpec.describe Tag, type: :model do
 
   describe 'slugs' do
     before do
-      @tag = FactoryBot.create(:tag)
+      @tag = create(:tag)
     end
+
     context 'create slugs from name and owner' do
       it 'uses ownername to be part of a slug' do
         expect(@tag.slug).to eq('red-jonnyd')
@@ -43,9 +43,9 @@ RSpec.describe Tag, type: :model do
 
   describe 'scopes' do
     before do
-      @tag1 = FactoryBot.create(:tag)
-      @tag2 = FactoryBot.create(:tag2)
-      @format = FactoryBot.create(:book_format)
+      @tag1 = create(:tag)
+      @tag2 = create(:tag2)
+      @format = create(:book_format)
       Book.create(
         title: 'A book',
         owner: @tag1.owner,
@@ -64,4 +64,3 @@ RSpec.describe Tag, type: :model do
   end # describe scopes
 
 end
-# rubocop:enable Metrics/BlockLength

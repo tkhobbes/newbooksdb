@@ -19,6 +19,21 @@ Rails/I18nLocaleTexts:
 Style/HashAsLastArrayItem:
   Enabled: false
 
+RSpec/ContextWording:
+  Enabled: false
+
+RSpec/DescribedClass:
+  Enabled: false
+
+RSpec/MultipleExpectations:
+  Enabled: false
+
+RSpec/ExampleLength:
+  Enabled: false
+
+RSpec/InstanceVariable:
+  Enabled: false
+
 AllCops:
   NewCops: enable
   Exclude:
@@ -33,3 +48,4 @@ AllCops:
     - "node_modules/**/*"
     - "storage/**/*"
     - "tmp/**/*"
+    - "spec-old/**/*"

@@ -16,6 +16,7 @@ module Google
 
     # returns a book object if created or nil, and a message
     # this method smells of :reek:TooManyStatements
+    # this method smells of :reek:DuplicateMethodCall
     # rubocop:disable Metrics/AbcSize
     # rubocop:disable Metrics/MethodLength
     # rubocop:disable Layout/LineLength

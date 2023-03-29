@@ -2,11 +2,10 @@
 
 require 'rails_helper'
 
-# rubocop:disable Metrics/BlockLength
-RSpec.describe Shelf, type: :model do
+RSpec.describe Shelf do
   describe 'validations' do
     before do
-      @shelf = FactoryBot.create(:shelf)
+      @shelf = create(:shelf)
     end
 
     context 'uniqueness' do
@@ -15,13 +14,13 @@ RSpec.describe Shelf, type: :model do
           name: 'Office',
           owner: @shelf.owner
         )
-        expect(shelf).to_not be_valid
+        expect(shelf).not_to be_valid
       end
 
       it 'can have the same name if owner is different' do
         shelf = Shelf.new(
           name: 'Office',
-          owner: FactoryBot.create(:jimbeam)
+          owner: create(:jimbeam)
         )
         expect(shelf).to be_valid
       end
@@ -30,11 +29,12 @@ RSpec.describe Shelf, type: :model do
 
   describe 'scopes' do
     before do
-      @shelf = FactoryBot.create(:shelf)
-      @shelf2 = FactoryBot.create(:shelf, name: 'Kitchen', owner: @shelf.owner)
-      @format = FactoryBot.create(:book_format)
+      @shelf = create(:shelf)
+      @shelf2 = create(:shelf, name: 'Kitchen', owner: @shelf.owner)
+      @format = create(:book_format)
       @owner = @shelf.owner
     end
+
     context 'book related scopes' do
       it 'shows the right shelves in the no_books scope' do
         Book.create(
@@ -49,10 +49,9 @@ RSpec.describe Shelf, type: :model do
           book_format: @format
         )
         expect(Shelf.no_books).to include(@shelf2)
-        expect(Shelf.no_books).to_not include(@shelf)
+        expect(Shelf.no_books).not_to include(@shelf)
       end
     end
   end
 
 end
-# rubocop:enable Metrics/BlockLength

@@ -3,6 +3,7 @@
 # this component generates a sort button with arrows pointing up or down
 # depending on whether sorted ascending or descending, or no arrow if no sort applied
 # it can be used to sort on associated models
+# this method smells of :reek:InstanceVariableAssumption
 class SortComplexComponent < SortComponent
   def initialize(model:, field:, existing_scopes:, associated_model:)
     @associated_model = Object.const_get(associated_model)
@@ -17,10 +18,11 @@ class SortComplexComponent < SortComponent
       sort_by: @field,
       sort_dir: toggle(current_order)
     )
-    # we somehow need to tell the controller that we want to sort on an associated model - something like this will work:
+    # we somehow need to tell the controller that we want to sort on
+    # an associated model - something like this will work:
     # model.joins(:associated_model).order(@field)
     # Book.joins(:authors).order(:sort_name)
-    # url_for(action: 'index', controller: controller_name, params: new_scopes)
+    url_for(action: 'index', controller: controller_name, params: new_scopes)
   end
 
   private

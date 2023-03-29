@@ -19,6 +19,7 @@ class GenresController < ApplicationController
   # index action can answer to either 'settings' page (to administer genres)
   # or otherwise it will display all genres and the first 5 books within each genre
   # this method smells of :reek:DuplicateMethodCall
+  # rubocop:disable Metrics/MethodLength
   def index
     case params[:show]
     when 'settings'
@@ -32,6 +33,7 @@ class GenresController < ApplicationController
       ))
     end
   end
+  # rubocop:enable Metrics/MethodLength
 
   # shows a genre in detail and lists all books within that genre
   def show
@@ -101,6 +103,7 @@ class GenresController < ApplicationController
   # a set of methods that help to scope the @books variable for the index action
 
   # inclusion of default associations
+  # this method smells of :reek:UtilityFunction
   def index_includes(collection)
     collection.includes([:books_genres, books: [cover_attachment: :blob]])
   end

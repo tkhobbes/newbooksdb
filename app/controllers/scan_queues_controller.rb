@@ -14,6 +14,7 @@ class ScanQueuesController < ApplicationController
   end
 
   # create: creates an entry in scan queue
+  # this method smells of :reek:DuplicateMethodCall
   def create
     @scan_results = Kredis.set current_owner.id.to_s
     @scan_results << params[:isbn] unless @scan_results.include? params[:isbn]
@@ -24,6 +25,7 @@ class ScanQueuesController < ApplicationController
   end
 
   # destroy: removes an item from the scan queue
+  # this method smells of :reek:TooManyStatements
   def destroy
     scan_results = Kredis.set current_owner.id.to_s
     @scan_result = params[:id]

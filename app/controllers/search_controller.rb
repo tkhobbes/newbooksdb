@@ -10,8 +10,9 @@ class SearchController < ApplicationController
 
   # method to respond to quicksearch menu form
   # rubocop:disable Layout/LineLength
+  # rubocop:disable Metrics/AbcSize
   # This Method smells of :reek:DuplicateMethodCall
-  # This method smells of :reek:TooManyStatements
+  # this method smells of :reek:TooManyStatements
   def quicksearch
     @results = params[:query] ? Book.search(params[:query]).order(:sort_title) + Author.search(params[:query], default_operator: :or).order(:sort_name) : []
     respond_to do |format|
@@ -20,10 +21,12 @@ class SearchController < ApplicationController
     end
   end
   # rubocop:enable Layout/LineLength
+  # rubocop:enable Metrics/AbcSize
 
   # we use the index method for search results
   # This Method smells of :reek:DuplicateMethodCall
   # rubocop:disable Metrics/MethodLength
+  # rubocop:disable Metrics/AbcSize
   def index
     return if params[:query].empty?
     case params[:list]
@@ -38,5 +41,6 @@ class SearchController < ApplicationController
     end
   end
   # rubocop:enable Metrics/MethodLength
+  # rubocop:enable Metrics/AbcSize
 
 end

@@ -6,7 +6,7 @@ FactoryBot.define do
     owner { FactoryBot.create(:profile).owner }
   end
 
-  factory :tag2, class: Tag do
+  factory :tag2, class: 'Tag' do
     name { 'blue' }
     owner { FactoryBot.create(:admin_profile).owner }
   end

@@ -52,7 +52,10 @@
 class Book < ApplicationRecord
   validates :identifier, uniqueness: { scope: :owner_id }
   validates :isbn, uniqueness: { scope: :owner_id }
+  # rubocop:disable Rails/RedundantPresenceValidationOnBelongsTo
+  # i want this validation to be explicit so that it renders errors
   validates :book_format_id, presence: true
+  # rubocop:enable Rails/RedundantPresenceValidationOnBelongsTo
   validates :title, presence: true
 
   before_save :create_sort_title

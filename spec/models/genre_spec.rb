@@ -2,14 +2,13 @@
 
 require 'rails_helper'
 
-# rubocop:disable Metrics/BlockLength
-RSpec.describe Genre, type: :model do
+RSpec.describe Genre do
   before do
-    @genre = FactoryBot.create(:genre)
-    @another_genre = FactoryBot.create(:genre, name: 'Arbitrary')
-    @empty_genre = FactoryBot.create(:genre, name: 'Empty')
-    @format = FactoryBot.create(:book_format)
-    @owner = FactoryBot.create(:owner)
+    @genre = create(:genre)
+    @another_genre = create(:genre, name: 'Arbitrary')
+    @empty_genre = create(:genre, name: 'Empty')
+    @format = create(:book_format)
+    @owner = create(:owner)
     @book = Book.create(
       title: 'The Hobbit',
       book_format: @format,
@@ -74,4 +73,3 @@ RSpec.describe Genre, type: :model do
   end # describe 'slugs'
 
 end
-# rubocop:enable Metrics/BlockLength

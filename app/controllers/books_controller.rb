@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 # standard Rails controller for the books model
+# rubocop:disable Metrics/ClassLength
+# this method smells of :reek:TooManyMethods
 class BooksController < ApplicationController
 
   # everybody can see index and an individual book, but only logged in owners can add / update / delete
@@ -114,6 +116,7 @@ class BooksController < ApplicationController
 
   # a set of methods that help to scope the @books variable for the index action
   # inclusion of default associations
+  # this method smells of :reek:UtilityFunction
   def default_includes(collection)
     collection.includes([:authors, cover_attachment: :blob])
   end
@@ -186,3 +189,4 @@ class BooksController < ApplicationController
   end
   # rubocop:enable Metrics/MethodLength
 end
+# rubocop:enable Metrics/ClassLength

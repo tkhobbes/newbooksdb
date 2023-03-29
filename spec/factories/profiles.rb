@@ -7,7 +7,7 @@ FactoryBot.define do
     name { 'JonnyD' }
   end
 
-  factory :admin_profile, class: Profile do
+  factory :admin_profile, class: 'Profile' do
     association :owner, factory: :jimbeam
     admin { true }
     name { 'Admin James' }

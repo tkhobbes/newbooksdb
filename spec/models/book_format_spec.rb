@@ -2,16 +2,16 @@
 
 require 'rails_helper'
 
-# rubocop:disable Metrics/BlockLength
-RSpec.describe BookFormat, type: :model do
+RSpec.describe BookFormat do
   describe 'Fallback' do
     before do
-      @fallback_format = FactoryBot.create(:fallback_format)
+      @fallback_format = create(:fallback_format)
     end
+
     context 'book realignment to fallbacks' do
       before do
-        @format = FactoryBot.create(:book_format)
-        @owner = FactoryBot.create(:owner)
+        @format = create(:book_format)
+        @owner = create(:owner)
         @book = Book.create(
           title: 'The Hobbit',
           book_format: @format,
@@ -28,6 +28,7 @@ RSpec.describe BookFormat, type: :model do
           owner: @owner
         )
       end
+
       it 'moves books to the fallback format if the format is destroyed' do
         @format.destroy
         expect(@fallback_format.reload.books.count).to eq(3)
@@ -45,4 +46,3 @@ RSpec.describe BookFormat, type: :model do
   end # describe Fallback
 
 end
-# rubocop:enable Metrics/BlockLength

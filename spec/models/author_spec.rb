@@ -2,12 +2,11 @@
 
 require 'rails_helper'
 
-# rubocop:disable Metrics/BlockLength
-RSpec.describe Author, type: :model do
+RSpec.describe Author do
   describe 'validations' do
     context 'uniqueness' do
       before do
-        @author = FactoryBot.create(:author)
+        @author = create(:author)
       end
 
       it 'allows two authors with the same last name if first name is different' do
@@ -46,20 +45,21 @@ RSpec.describe Author, type: :model do
 
   describe 'ratings' do
     before do
-      @author = FactoryBot.create(:author)
-      @author_rated = FactoryBot.create(:author, first_name: 'Jane', rating: 5)
+      @author = create(:author)
+      @author_rated = create(:author, first_name: 'Jane', rating: 5)
     end
+
     context 'responds to rating methods' do
       it 'has a default rating of not_rated' do
         expect(@author.rating).to eq('not_rated')
       end
 
       it 'responds to rated? with true if book is rated' do
-        expect(@author_rated.rated?).to eq(true)
+        expect(@author_rated.rated?).to be(true)
       end
 
       it 'defaults to rated? false if book is not rated' do
-        expect(@author.rated?).to eq(false)
+        expect(@author.rated?).to be(false)
       end
 
     end # responds to rating methods
@@ -67,7 +67,7 @@ RSpec.describe Author, type: :model do
 
   describe 'names and slugs' do
     before do
-      @author = FactoryBot.create(:author)
+      @author = create(:author)
     end
 
     context 'sort name' do
@@ -81,12 +81,12 @@ RSpec.describe Author, type: :model do
       end
 
       it 'sets sort name to first name if only first name exists' do
-        author = FactoryBot.create(:author, first_name: 'Jane', last_name: nil)
+        author = create(:author, first_name: 'Jane', last_name: nil)
         expect(author.sort_name).to eq('Jane')
       end
 
       it 'sets sort name to last name if only last name exists' do
-        author = FactoryBot.create(:author, first_name: nil, last_name: 'Doe')
+        author = create(:author, first_name: nil, last_name: 'Doe')
         expect(author.sort_name).to eq('Doe')
       end
 
@@ -103,12 +103,12 @@ RSpec.describe Author, type: :model do
       end
 
       it 'sets display name to first name if only first name exists' do
-        author = FactoryBot.create(:author, first_name: 'Jane', last_name: nil)
+        author = create(:author, first_name: 'Jane', last_name: nil)
         expect(author.display_name).to eq('Jane')
       end
 
       it 'sets display name to last name if only last name exists' do
-        author = FactoryBot.create(:author, first_name: nil, last_name: 'Doe')
+        author = create(:author, first_name: nil, last_name: 'Doe')
         expect(author.display_name).to eq('Doe')
       end
     end # display name
@@ -133,17 +133,17 @@ RSpec.describe Author, type: :model do
 
   describe 'helpers' do
     before do
-      @author = FactoryBot.create(:author, first_name: 'Jane', born: 50.years.ago.year)
-      @dead_author = FactoryBot.create(:author, born: 100.years.ago.year, died: 40.years.ago.year)
+      @author = create(:author, first_name: 'Jane', born: 50.years.ago.year)
+      @dead_author = create(:author, born: 100.years.ago.year, died: 40.years.ago.year)
     end
 
     context 'dead, alive, and age' do
       it 'responds to dead? with true if author is dead' do
-        expect(@dead_author.dead?).to eq(true)
+        expect(@dead_author.dead?).to be(true)
       end
 
       it 'responds to dead? with false if author is alive' do
-        expect(@author.dead?).to eq(false)
+        expect(@author.dead?).to be(false)
       end
 
       it 'calculates the age for a living actor' do
@@ -158,10 +158,11 @@ RSpec.describe Author, type: :model do
 
   describe 'scopes' do
     before do
-      @author1 = FactoryBot.create(:author)
-      @author2 = FactoryBot.create(:author, first_name: 'Jane', born: 50.years.ago.year)
-      @author3 = FactoryBot.create(:author, last_name: 'Smith', born: 100.years.ago.year, died: 40.years.ago.year)
+      @author1 = create(:author)
+      @author2 = create(:author, first_name: 'Jane', born: 50.years.ago.year)
+      @author3 = create(:author, last_name: 'Smith', born: 100.years.ago.year, died: 40.years.ago.year)
     end
+
     context 'search specific' do
       it 'responds to authors with a certain letter' do
         expect(Author.letter('d')).to include(@author1, @author2)
@@ -171,10 +172,10 @@ RSpec.describe Author, type: :model do
 
     context 'other scopes' do
       before do
-        book = Book.create(
+        Book.create(
           title: 'Test Book',
-          book_format: FactoryBot.create(:book_format),
-          owner: FactoryBot.create(:owner),
+          book_format: create(:book_format),
+          owner: create(:owner),
           authors: [ @author1 ]
         )
       end
@@ -198,11 +199,11 @@ RSpec.describe Author, type: :model do
 
   describe 'cache counts' do
     before do
-      @author = FactoryBot.create(:author)
+      @author = create(:author)
       @book = Book.create(
           title: 'Test Book',
-          book_format: FactoryBot.create(:book_format),
-          owner: FactoryBot.create(:owner),
+          book_format: create(:book_format),
+          owner: create(:owner),
           authors: [ @author ]
       )
     end
@@ -212,4 +213,3 @@ RSpec.describe Author, type: :model do
     end
   end # cache counts
 end
-# rubocop:enable Metrics/BlockLength
