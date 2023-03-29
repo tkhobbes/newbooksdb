@@ -11,7 +11,14 @@
 <div class="flex">
 
   <%= link_to 'Reset sorting',
-    genres_path,
+    genres_path(
+      params: current_scopes.merge(
+        letter: params[:letter],
+        sort_by: nil,
+        sort_dir: nil,
+        show: params[:show]
+      )
+    ),
     class: 'button-color-secondary margin-right-50 small'
   %>
 

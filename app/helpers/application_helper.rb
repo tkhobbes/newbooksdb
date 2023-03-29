@@ -76,7 +76,7 @@ module ApplicationHelper
 
   # shelves cache
   def shelves_count
-    Rails.cache.fetch('genres-count') { Shelf.count }
+    Rails.cache.fetch('shelves-count') { Shelf.count }
   end
 
   # publishers cache
