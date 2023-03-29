@@ -20,10 +20,14 @@ class IsbnCreateController < ApplicationController
         end
       end
       format.turbo_stream do # response to scan_queues/index.html.erb
-        @result = result.book.isbn
-        scan_results = Kredis.set current_owner.id.to_s
-        scan_results.remove(@result) if scan_results.include? @result
-        flash.now[:notice] = result.message
+        if result.created?
+          @result = result.book.isbn
+          scan_results = Kredis.set current_owner.id.to_s
+          scan_results.remove(@result) if scan_results.include? @result
+          flash.now[:notice] = result.message
+        else
+          redirect_to scan_queues_path, error: result.message
+        end
       end
     end
   end
