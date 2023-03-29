@@ -58,4 +58,14 @@
   <% end %>
 </div>
 
-<%= render 'shared/pager', pagy: @pagy, model_path: publishers_path(page: @pagy.next, show: params[:show]) %>
+<%= render 'shared/pager',
+  pagy: @pagy,
+  model_path: publishers_path(
+    params: current_scopes.merge(
+      page: @pagy.next,
+      letter: params[:letter],
+      sort_by: params[:sort_by],
+      sort_dir: params[:sort_dir],
+      show: params[:show]
+    )
+) %>
