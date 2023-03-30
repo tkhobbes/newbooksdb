@@ -6,6 +6,34 @@ RSpec.describe Shelf do
   describe 'validations' do
     let(:shelf) { create(:shelf) }
 
+    context 'presence and defaults' do
+      it 'must have a name' do
+        invalid_shelf = Shelf.new(name: nil, owner: shelf.owner)
+        expect(invalid_shelf).not_to be_valid
+      end
+
+      it 'must have an owner' do
+        invalid_shelf = Shelf.new(name: 'Invalid', owner: nil)
+        expect(invalid_shelf).not_to be_valid
+      end
+
+      it 'defaults books_count to 0' do
+        expect(shelf.books_count).to eq 0
+      end
+
+      it 'increases books_count when a book is added' do
+        Book.create(
+          title: 'The Book',
+          owner: shelf.owner,
+          book_format: create(:book_format),
+          shelf:
+        )
+        expect(shelf.reload.books_count).to eq 1
+      end
+
+
+    end
+
     context 'uniqueness' do
       it 'can not have the same name for the same owner' do
         another_shelf = Shelf.new(

@@ -24,6 +24,13 @@ RSpec.describe Tag do
         expect(tag4).not_to be_valid
       end
     end # context uniqueness
+
+    context 'presence' do
+      it 'must have a name' do
+        invalid_tag = Tag.new(name: nil, owner: tag1.owner)
+        expect(invalid_tag).not_to be_valid
+      end
+    end
   end # describe validations
 
   describe 'slugs' do

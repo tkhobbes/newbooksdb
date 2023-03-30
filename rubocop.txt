@@ -1,10 +1,4 @@
-Inspecting 123 files
-................................................................C..........................................................
+Inspecting 124 files
+............................................................................................................................
 
-Offenses:
-
-app/models/tag.rb:26:3: C: Rails/UniqueValidationWithoutIndex: Uniqueness validation should have a unique index on the database column.
-  validates :name, presence: true, uniqueness: { scope: :owner_id }
-  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-123 files inspected, 1 offense detected
+124 files inspected, no offenses detected

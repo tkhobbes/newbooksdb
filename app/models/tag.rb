@@ -13,9 +13,10 @@
 #
 # Indexes
 #
-#  index_tags_on_name      (name)
-#  index_tags_on_owner_id  (owner_id)
-#  index_tags_on_slug      (slug) UNIQUE
+#  index_tags_on_name               (name)
+#  index_tags_on_name_and_owner_id  (name,owner_id) UNIQUE
+#  index_tags_on_owner_id           (owner_id)
+#  index_tags_on_slug               (slug) UNIQUE
 #
 # Foreign Keys
 #

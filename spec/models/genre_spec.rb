@@ -41,6 +41,20 @@ RSpec.describe Genre do
     )
   end
 
+  describe 'validations' do
+    context 'names' do
+      it 'must have a name' do
+        g = Genre.new(name: nil)
+        expect(g).not_to be_valid
+      end
+
+      it 'must have a unique name' do
+        g = Genre.new(name: 'Arbitrary')
+        expect(g).not_to be_valid
+      end
+    end
+  end
+
   describe 'scopes' do
     context 'scopes with books' do
       it 'shows no books for genres with no books' do
