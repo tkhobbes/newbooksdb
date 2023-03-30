@@ -19,7 +19,14 @@
           <% end %>
         <% end %>
         <%= link_to login_or_owner_path, title: 'My Profile' do %>
-          <%= inline_svg_tag 'profile.svg', class: 'bigicon' %>
+          <% if current_owner&.profile&.avatar&.attached? %>
+            <%= render AvatarImageComponent.new(
+              profile: current_owner.profile,
+              classes: 'bigicon circle-image'
+            ) %>
+          <% else %>
+            <%= inline_svg_tag 'profile.svg', class: 'bigicon' %>
+          <% end %>
         <% end %>
         <% if owner_signed_in? %>
           <%= link_to settings_path, title: 'Settings' do %>

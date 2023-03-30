@@ -9,9 +9,10 @@ class AvatarImageComponent < ViewComponent::Base
       default: [50, 'placeholder-default']
   }.freeze
 
-  def initialize(profile:, size: :default)
+  def initialize(profile:, size: :default, classes: nil)
     @profile = profile
     @size = size
+    @classes = classes
     super
   end
   # returns either the profile image of a user or a placeholder SVG
@@ -22,7 +23,7 @@ class AvatarImageComponent < ViewComponent::Base
 
     avatar = @profile.avatar
     if avatar.attached?
-      image_tag(avatar.variant(resize_to_limit: [img_size, img_size]))
+      image_tag(avatar.variant(resize_to_limit: [img_size, img_size]), class: @classes)
     else
       generate_user_avatar_svg(css_tag)
     end

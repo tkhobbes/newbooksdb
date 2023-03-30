@@ -2,7 +2,11 @@
 
 <div class="userdetails">
   <div class="cover-medium">
-    <%= render AvatarImageComponent.new(profile: @profile, size: :medium) %>
+    <%= render AvatarImageComponent.new(
+      profile: @profile,
+      size: :medium,
+      classes: 'circle-image'
+    ) %>
   </div>
   <div class="userdetails__text">
     <div class="userdetails__title">
