@@ -1,4 +1,6 @@
 <% if show? %>
-  in shelf
-  <%= show_shelf(css_classes: 'color-accent-dark color-hover-accent') %>
+  in
+  <%= inline_svg_tag 'building.svg', class: 'smallicon' %>
+  shelf
+  <%= show_shelf('color-accent-dark color-hover-accent') %>
 <% end %>

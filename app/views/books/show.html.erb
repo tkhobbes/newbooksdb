@@ -5,80 +5,99 @@
     <div class="cover-large">
       <%= render BookCoverComponent.new(book: @book, size: :large, link: true) %>
     </div>
+    <% if @book.isbn.present? %>
+      <%= form_with url: cover_search_create_path, method: :post, class: 'margin-top-33', data: {turbo: false} do |f| %>
+        <input type="hidden" name="isbn" value="<%= @book.isbn %>" />
+        <input type="hidden" name="book_id" value="<%= @book.id %>" />
+
+        <%= f.submit 'Find Better Cover', class: 'btn small' %>
+      <% end %>
+    <% end %>
   </div>
   <div class="bookdetails__text">
     <div class="bookdetails__text-title">
-      <h1 class="heading3">
+      <h1 class="heading3 color-primary-dark">
         <%= @book.title %><br />
         <%= render AuthorListComponent.new(book: @book, type: :list) %>
       </h1>
-        <% if owner_signed_in? && @book.owner == current_owner %>
-          <%= render 'shared/crud_icons',
-            edit_path: edit_book_path(@book),
-            delete_path: book_path(@book),
-            item_name: @book.title,
-            url: "/books/#{@book.id}",
-            redirect_url: '/books',
-            edit_answer: 'html',
-            delete_answer: 'html'
-          %>
-        <% end %>
+      <% if owner_signed_in? && @book.owner == current_owner %>
+        <%= render 'shared/crud_icons',
+          edit_path: edit_book_path(@book),
+          delete_path: book_path(@book),
+          item_name: @book.title,
+          url: "/books/#{@book.id}",
+          redirect_url: '/books',
+          edit_answer: 'html',
+          delete_answer: 'html'
+        %>
+      <% end %>
     </div>
     <% if @book.original_title.present? %>
-      <h2 class="heading4">
+      <h2 class="heading4 color-primary-dark">
         (<%= @book.original_title %>)
       </h2>
     <% end %>
     <div class="medium-small">
       <%= @book.book_format.name %> |
       <%= @book.edition %>
-      <%= @book.country %>
-      <%= @book.year %>
-    </div>
-    <% if @book.publisher %>
-      <div class="medium">
+      <% if @book.publisher %>
         <%= link_to @book.publisher.name,
           publisher_path(@book.publisher),
           class: 'color-accent-dark color-hover-accent' %>
-      </div>
-    <% end %>
-    <div class="genre-list">
-      <% @book.genres.each do |g| %>
-        <%= render 'genres/genre_tag', genre: g %>
       <% end %>
+      <% if @book.country %>
+        (<%= @book.country %>)
+      <% end %>
+      <%= @book.year %>
     </div>
-    <% if @book.owner == current_owner %>
-      <div class="tag-list">
-        <% @book.tags.each do |t| %>
-          <%= render 'tags/tag_tag', tag: t %>
+    <div class="margin-top-33 border-color-primary-dark border-radius-1 padding-33">
+      <%= link_to profile_path(@book.owner.profile.id),
+        class: 'color-accent-dark color-hover-accent' do %>
+        Owner:
+        <% if @book.owner.profile.avatar.attached? %>
+          <%= render AvatarImageComponent.new(
+            profile: @book.owner.profile,
+            classes: 'bigicon circle-image'
+          ) %>
         <% end %>
-      </div>
-    <% end %>
-    <div class="bookdetails__meta">
-      <div>
-        Condition: <%= @book.condition.humanize %>
-      </div>
-      <div>
-        Rating:
-        <%= render StarRatingComponent.new(rated: @book, humanized: true) %>
-      </div>
-    </div>
-    <div class="margin-1">
-      <%= link_to "Owned by #{@book.owner.name}",
-        profile_path(@book.owner.profile.id),
-        class: 'color-accent-dark color-hover-accent' %>
+        <%= @book.owner.name %>
+      <% end %>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <% if owner_signed_in? %>
         <%= render ShowShelfComponent.new(book: @book, owner: current_owner) %>
       <% end %>
     </div>
-    <% if @book.isbn.present? %>
-      <%= form_with url: cover_search_create_path, method: :post, class: 'margin-bottom-1', data: {turbo: false} do |f| %>
-        <input type="hidden" name="isbn" value="<%= @book.isbn %>" />
-        <input type="hidden" name="book_id" value="<%= @book.id %>" />
 
-        <%= f.submit 'Find Better Cover', class: 'btn small' %>
-    <% end %>
-    <% end %>
+    <div class="bookdetails__meta border-color-primary-dark border-radius-1">
+      <div class="margin-right-1">
+        <% if @book.genres.present? %>
+          <h3 class="heading4 color-primary-dark">Genres</h3>
+          <div class="genre-list">
+            <% @book.genres.each do |g| %>
+              <%= render 'genres/genre_tag', genre: g %>
+            <% end %>
+          </div>
+        <% end %>
+        <% if @book.owner == current_owner && @book.tags.present? %>
+          <h3 class="heading4 margin-top-50 color-primary-dark">Tags</h3>
+          <div class="tag-list">
+            <% @book.tags.each do |t| %>
+              <%= render 'tags/tag_tag', tag: t %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+      <div>
+        <div class="margin-bottom-50">
+          <h3 class="heading5 color-primary-dark margin-bottom-25">Book Owner's Rating</h3>
+          <%= render StarRatingComponent.new(rated: @book, humanized: true) %>
+        </div>
+        <div>
+          <h3 class="heading5 color-primary-dark margin-bottom-25">Book Condition</h3>
+          <%= @book.condition.humanize %>
+        </div>
+      </div>
+    </div>
     <div class="bookdetails__synopsis">
       <%= render ShowSynopsisComponent.new(book: @book) %>
     </div>
