@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_30_123632) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_31_061144) do
   create_table "action_text_rich_texts", charset: "utf8mb4", force: :cascade do |t|
     t.string "name", null: false
     t.text "body", size: :long
@@ -98,6 +98,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_30_123632) do
     t.integer "pages"
     t.string "identifier"
     t.string "source_url"
+    t.boolean "cover_searched", default: false
     t.index ["author_id"], name: "fk_rails_53d51ce16a"
     t.index ["book_format_id"], name: "index_books_on_book_format_id"
     t.index ["identifier", "owner_id"], name: "index_books_on_identifier_and_owner_id", unique: true

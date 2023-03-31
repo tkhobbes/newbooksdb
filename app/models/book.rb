@@ -7,6 +7,7 @@
 #  id             :bigint           not null, primary key
 #  condition      :integer          default("not_given")
 #  country        :string(255)
+#  cover_searched :boolean          default(FALSE)
 #  edition        :string(255)
 #  identifier     :string(255)
 #  isbn           :string(255)

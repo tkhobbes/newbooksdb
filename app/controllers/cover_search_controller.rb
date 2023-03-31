@@ -10,6 +10,7 @@
   # this method smells of :reek:DuplicateMethodCall
   # this method smells of :reek:NilCheck
   def create
+    Book.find(params[:book_id]).update(cover_searched: true)
     cover_url = Openlibrary::CoverSearch.new(value: params[:isbn]).cover_url
     book_id = params[:book_id]
     if cover_url.present?
