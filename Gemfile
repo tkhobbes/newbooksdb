@@ -44,6 +44,7 @@ group :development do
   gem 'rails-erd'
   gem 'reek', '>= 6.1.1'
   gem 'rubocop', require: false
+  gem 'rubocop-md', require: false
   gem 'rubocop-performance', require: false
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec', '>= 2.11.1', require: false

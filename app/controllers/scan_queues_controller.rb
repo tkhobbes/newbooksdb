@@ -1,5 +1,13 @@
 # frozen_string_literal: true
 
+# Controller to deal with requests for scan queues.
+# A scan queue is stored in Redis as a set and contains lists of ISBNs
+# the set is identified by the owner ID
+# Controller responds to
+# index: shows complete scan queue for a suer (all results)
+# new: shows the scan form
+# create: creates an entry in a scan queue
+# destroy: removes an entry in a scan queue
 class ScanQueuesController < ApplicationController
   before_action :authenticate_owner!
 

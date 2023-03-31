@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 module Owners
+  # Devise generated controller for owner registrations
+  # added one modification for create - to create a profile as soon as owner is created
   class RegistrationsController < Devise::RegistrationsController
     # before_action :configure_sign_up_params, only: [:create]
     # before_action :configure_account_update_params, only: [:update]

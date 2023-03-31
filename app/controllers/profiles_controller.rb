@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Standard rails controller for profiles
 class ProfilesController < ApplicationController
   before_action :authenticate_owner!
 

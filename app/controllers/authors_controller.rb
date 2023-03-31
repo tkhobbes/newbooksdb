@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+# Standard Rails controller for Authors
+# can respond to turbo frames and includes concern Sortable
 class AuthorsController < ApplicationController
   # allow for turbo frame variants
   before_action :turbo_frame_request_variant

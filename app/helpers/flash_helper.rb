@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# module contains method to define the correct CSS classes for flash messages
 module FlashHelper
   # rubocop:disable Metrics/MethodLength
   # this method smells of :reek:ControlParameter

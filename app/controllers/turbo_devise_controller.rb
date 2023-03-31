@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
+# this is a workaround controller to make Devise work with turbo streams
 class TurboDeviseController < ApplicationController
+  # this is a responder class to make Devise work with turbo streams
   class Responder < ActionController::Responder
     # this method smells of :reek:TooManyStatements
     # This method smells of :reek:UncommunicativeVariableName
