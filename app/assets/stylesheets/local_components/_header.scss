@@ -46,3 +46,39 @@
     }
   }
 }
+
+.title-with-icons {
+  display: flex;
+
+  h1 {
+    flex: 3;
+  }
+  .righticons {
+    flex: 1;
+    text-align: right;
+
+    a {
+      @extend .color-primary-dark;
+
+      &:hover {
+        @extend .color-primary-light;
+      }
+
+      .icon {
+        width: 1.1em;
+      }
+    }
+
+    .icon-locale {
+      @extend .border-color-primary-dark;
+      @extend .border-radius-1;
+      @extend .padding-left-25;
+      @extend .padding-right-25;
+      font-family: var(--menu-text);
+
+      &:hover {
+        @extend .border-color-primary-light;
+      }
+    }
+  }
+}

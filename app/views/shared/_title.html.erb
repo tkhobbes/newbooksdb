@@ -4,7 +4,15 @@
       <a href="#" data-action="click->burgermenu#toggle">&#x2261;</a>
     </div>
     <div class="maintitle">
-      <h1 class="heading1"><%= t 'Frame.maintitle' %></h1>
+      <div class="title-with-icons">
+        <h1 class="heading1"><%= t 'Frame.maintitle' %></h1>
+        <div class="righticons">
+          <%= link_to '#' do %>
+            <%= inline_svg_tag 'bell.svg', class: 'icon' %>
+          <% end %>
+          <%= link_to 'EN', '#', class: 'icon-locale' %>
+        </div>
+      </div>
       <div class="quickicons">
         <span class="quickicons__filler"></span>
         <% if owner_signed_in? %>
