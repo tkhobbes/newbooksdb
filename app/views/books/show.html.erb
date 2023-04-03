@@ -5,13 +5,6 @@
     <div class="cover-large">
       <%= render BookCoverComponent.new(book: @book, size: :large, link: true) %>
     </div>
-    <div class="padding-50">
-      @book.isbn.present?: <%= @book.isbn.present? %><br />
-      @book.owner == current_owner: <%= @book.owner == current_owner %><br />
-      @book.owner: <%= @book.owner %><br />
-      current_owner: <%= current_owner %><br />
-      @book.cover_searched == false: <%= @book.cover_searched == false %><br />
-    </div>
     <% if @book.isbn.present? && @book.owner == current_owner && @book.cover_searched == false %>
       <%= form_with url: cover_search_create_path, method: :post, class: 'margin-top-33', data: {turbo: false} do |f| %>
         <input type="hidden" name="isbn" value="<%= @book.isbn %>" />
