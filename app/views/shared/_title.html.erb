@@ -4,21 +4,21 @@
       <a href="#" data-action="click->burgermenu#toggle">&#x2261;</a>
     </div>
     <div class="maintitle">
-      <h1 class="heading1">Book Collector Database UZW18</h1>
+      <h1 class="heading1"><%= t 'Frame.maintitle' %></h1>
       <div class="quickicons">
         <span class="quickicons__filler"></span>
         <% if owner_signed_in? %>
-          <%= link_to new_scan_queue_path, title: 'Scan Book ISBN Codes' do %>
+          <%= link_to new_scan_queue_path, title: t('Frame.Quickicons.scan') do %>
             <%= inline_svg_tag 'qr_code.svg', class: 'bigicon' %>
           <% end %>
-          <%= link_to isbn_search_new_path, title: 'Search Book Online' do %>
+          <%= link_to isbn_search_new_path, title: t('Frame.Quickicons.search') do %>
             <%= inline_svg_tag 'doc_search.svg', class: 'bigicon' %>
           <% end %>
-          <%= link_to new_book_path, title: 'Add Book' do %>
+          <%= link_to new_book_path, title: t('Frame.Quickicons.add') do %>
             <%= inline_svg_tag 'book.svg', class: 'bigicon' %>
           <% end %>
         <% end %>
-        <%= link_to login_or_owner_path, title: 'My Profile' do %>
+        <%= link_to login_or_owner_path, title: t('Frame.Quickicons.profile') do %>
           <% if current_owner&.profile&.avatar&.attached? %>
             <%= render AvatarImageComponent.new(
               profile: current_owner.profile,
@@ -29,7 +29,7 @@
           <% end %>
         <% end %>
         <% if owner_signed_in? %>
-          <%= link_to settings_path, title: 'Settings' do %>
+          <%= link_to settings_path, title: t('Frame.Quickicons.settings') do %>
             <%= inline_svg_tag 'settings.svg', class: 'bigicon' %>
           <% end %>
         <% end %>

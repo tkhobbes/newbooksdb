@@ -115,3 +115,9 @@ a {
   @extend .color-white;
   @extend .bg-secondary-dark;
 }
+
+// debugging
+.translation_missing {
+  background-color: red !important;
+  color: white !important;
+}

@@ -1,7 +1,7 @@
 <%= button_to delete_path, method: :delete, title: "Remove #{item_name}",
           form: {
             data: {
-              turbo_confirm: "Are you sure?",
+              turbo_confirm: "#{t 'CRUD.confirm'}",
               controller: "sweetalert",
               action: 'click->sweetalert#confirm',
               "sweetalert-item-value": item_name,

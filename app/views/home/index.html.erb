@@ -1,24 +1,26 @@
-<%= page_title("Welcome to the UZW18 Books Database #{current_owner&.name}",'', 'heading2 color-accent-dark') %>
+<%= page_title("#{t 'HomePage.hometitle'} #{current_owner&.name}",'', 'heading2 color-accent-dark') %>
 <div class="flex">
 <% if current_owner %>
-  <div class="margin-right-25">Not you?</div>
-  <%= button_to 'Logout', destroy_owner_session_path, method: 'delete',
+  <div class="margin-right-25"><%= t 'HomePage.notyou' %></div>
+  <%= button_to "#{t 'Devise.logout'}", destroy_owner_session_path, method: 'delete',
     class: 'nobutton color-accent-dark color-hover-accent-light' %>
 <% else %>
   <div>
-    Want to register your books? Come and
-    <%= link_to 'Log in', new_owner_session_path,
-      class: 'color-accent-dark color-hover-accent-light' %> or
-    <%= link_to 'Sign up', new_owner_registration_path,
+    <%= t 'HomePage.registerbooks' %>
+    <%= t 'HomePage.registerowner' %>
+    <%= link_to "#{t 'Devise.login'}", new_owner_session_path,
+      class: 'color-accent-dark color-hover-accent-light' %>
+    <%= t 'Homepage.registerowneror' %>
+    <%= link_to "#{t 'Devise.signup'}", new_owner_registration_path,
       class: 'color-accent-dark color-hover-accent-light' %>
   </div>
 <% end %>
 </div>
-<h3 class="heading3 margin-top-1">All Genres</h3>
+<h3 class="heading3 margin-top-1"><%= t 'HomePage.homegenretitle' %></h3>
 <div class="genre-cloud">
   <%= render CloudComponent.new(model: 'Genre') %>
 </div>
-<h3 class="heading3 margin-top-1">Latest Books</h3>
+<h3 class="heading3 margin-top-1"><%= t 'HomePage.homebookstitle' %></h3>
 <ul class="itemlist">
   <% @books.each do |book| %>
     <%= render 'books/booklist_small', book: book %>

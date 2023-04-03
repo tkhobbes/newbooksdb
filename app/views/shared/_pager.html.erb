@@ -2,7 +2,7 @@
   <% if pagy.next %>
     <span class="page">
         <%= link_to(
-          'Load more',
+          "#{t 'Helper.loadmore'}",
           local_assigns[:model_path],
           data: {
             turbo_frame: 'page'

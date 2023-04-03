@@ -30,6 +30,44 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
+  # Devise
+  Devise:
+    logout: "Log out"
+    login: "Log in"
+    signup: "Sign Up"
+  # Generic CRUD
+  CRUD:
+    confirm: "Are you sure?"
+    edit: "Edit"
+  # Pagy and other helpers
+  Helper:
+    loadmore: "Load More"
+  # overall title and menus
+  Frame:
+    maintitle: "Book Collector Database UZW18"
+    Quickicons:
+      scan: "Scan Book ISBN Codes"
+      search: "Search Book Online"
+      add: "Add Book manually"
+      profile: "My Profile"
+      settings: "Settings"
+  # Home Page
+  HomePage:
+    hometitle: "Welcome To The Uzw18 Books Database"
+    notyou: "Not You?"
+    registerbooks: "Want to register your books?"
+    registerowner: "Come and"
+    registerowner_or: "or"
+    homegenretitle: "All Genres"
+    homebookstitle: "Latest Books"
+  # Footer
+  Footer:
+    from: "from"
+    by: "by"
+    across: "across"
+    in: "in"
+    for: "for"
+
   # View Components
   SortComponent:
     Book:

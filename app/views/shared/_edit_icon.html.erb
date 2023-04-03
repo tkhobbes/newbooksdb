@@ -1,7 +1,7 @@
 <% answer == 'html' ? data_content = '_top' : data_content = '' %>
 <%= link_to(
   edit_path,
-  title: 'Edit',
+  title: "#{t 'CRUD.edit'}",
   class: "edit-icon",
   data: { turbo_frame: data_content }
   ) do %>
