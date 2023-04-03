@@ -7,7 +7,7 @@ RSpec.describe Book do
     let(:format) { create(:book_format) }
     let(:owner) { create(:owner) }
 
-    context 'owners and identifiers' do
+    context 'when a book is created' do
       it 'allows only one book with the same identifier by owner' do
         book = Book.create(
           title: 'The Hobbit',
@@ -39,9 +39,7 @@ RSpec.describe Book do
         )
         expect(second_book).to be_valid
       end
-    end # Context owners and identifiers
 
-    context 'owners and ISBNs' do
       it 'allows only one book with the same ISBN by owner' do
         book = Book.create(
           title: 'The Hobbit',
@@ -73,9 +71,7 @@ RSpec.describe Book do
         )
         expect(second_book).to be_valid
       end
-    end # Context owners and ISBNs
 
-    context 'uniqueness validations' do
       it 'is not valid if book_format is missing' do
         book = Book.new(title: 'The Hobbit', owner:)
         book.valid?
@@ -102,14 +98,44 @@ RSpec.describe Book do
         )
         expect(book).to be_valid
       end
-    end # Context uniqueness validations
-  end # Describe validations
+
+      it 'removes prefixes from the sort title' do
+        book = Book.create(
+          title: 'The Hobbit',
+          book_format: format,
+          owner:,
+        )
+        expect(book.sort_title).to eq('hobbit')
+      end
+
+      it 'creates a slug from the title' do
+        book = Book.create(
+          title: 'The Hobbit',
+          book_format: format,
+          owner:,
+        )
+        expect(book.slug).to eq('the-hobbit')
+      end
+    end
+
+    context 'when a book is changed' do
+      it 'updates the slug when the title is changed' do
+        book = Book.create(
+          title: 'The Hobbit',
+          book_format: format,
+          owner:,
+        )
+        book.update!(title: 'Der kleine Hobbit')
+        expect(book.reload.slug).to eq('der-kleine-hobbit')
+      end
+    end
+  end
 
   describe 'Ratings and Conditions' do
     let(:format) { create(:book_format) }
     let(:owner) { create(:owner) }
 
-    context 'Ratings' do
+    context 'Rating methods' do
       it 'has a default rating of not_rated' do
         book = Book.new(
           title: 'The Hobbit',
@@ -139,7 +165,7 @@ RSpec.describe Book do
       end
     end # Context Ratings
 
-    context 'conditions' do
+    context 'condition methods' do
       it 'has a default condition of not_given' do
         book = Book.new(
           title: 'The Hobbit',
@@ -151,42 +177,6 @@ RSpec.describe Book do
     end # Context conditions
   end # Describe Ratings and Conditions
 
-  describe 'Titles and slugs' do
-    let(:format) { create(:book_format) }
-    let(:owner) { create(:owner) }
-
-    context 'Titles' do
-      it 'removes prefixes from the sort title' do
-        book = Book.create(
-          title: 'The Hobbit',
-          book_format: format,
-          owner:,
-        )
-        expect(book.sort_title).to eq('hobbit')
-      end
-    end # Context Titles
-
-    context 'slugs' do
-      it 'creates a slug from the title' do
-        book = Book.create(
-          title: 'The Hobbit',
-          book_format: format,
-          owner:,
-        )
-        expect(book.slug).to eq('the-hobbit')
-      end
-
-      it 'updates the slug when the title is changed' do
-        book = Book.create(
-          title: 'The Hobbit',
-          book_format: format,
-          owner:,
-        )
-        book.update!(title: 'Der kleine Hobbit')
-        expect(book.reload.slug).to eq('der-kleine-hobbit')
-      end
-    end # Context slugs
-  end # Describe Titles and slugs
 
   describe 'identifiers, ISBNs and IDs are created properly' do
     let(:format) { create(:book_format) }

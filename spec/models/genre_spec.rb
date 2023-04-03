@@ -42,7 +42,9 @@ RSpec.describe Genre do
   end
 
   describe 'validations' do
-    context 'names' do
+    subject { genre }
+
+    context 'when a genre is created' do
       it 'must have a name' do
         g = Genre.new(name: nil)
         expect(g).not_to be_valid
@@ -52,11 +54,28 @@ RSpec.describe Genre do
         g = Genre.new(name: 'Arbitrary')
         expect(g).not_to be_valid
       end
+
+      it 'creates a slug based on the genre name' do
+        expect(another_genre.slug).to eq('arbitrary')
+      end
+    end
+
+    context 'when a book is added for a genre' do
+      it 'increases the books_count on the genre' do
+        expect(genre.books_count).to eq(3)
+        Book.create(
+          title: 'another book',
+          owner:,
+          book_format: format,
+          genres: [ genre ]
+        )
+        expect(genre.reload.books_count).to eq(4)
+      end
     end
   end
 
   describe 'scopes' do
-    context 'scopes with books' do
+    context 'when books are added to genres' do
       it 'shows no books for genres with no books' do
         empty_genres = Genre.no_books
         expect(empty_genres).to include(empty_genre)
@@ -70,26 +89,4 @@ RSpec.describe Genre do
       end
     end # context 'scopes with books'
   end # describe 'scopes'
-
-  describe 'slugs and caching' do
-    context 'slugs' do
-      it 'creates a slug based on the genre name' do
-        expect(another_genre.slug).to eq('arbitrary')
-      end
-    end # context 'slugs'
-
-    context 'counter-caches' do
-      it 'increases the books_count on genre if a book is added to that genre' do
-        expect(genre.books_count).to eq(3)
-        Book.create(
-          title: 'another book',
-          owner:,
-          book_format: format,
-          genres: [ genre ]
-        )
-        expect(genre.reload.books_count).to eq(4)
-      end
-    end # context 'counter-caches'
-  end # describe 'slugs'
-
 end

@@ -4,10 +4,13 @@ require 'rails_helper'
 
 RSpec.describe Tag do
   describe 'validations' do
+    subject { tag1 }
+
     let(:tag1) { create(:tag) }
     let(:tag2) { create(:tag, name: 'blue', owner: create(:jimbeam)) }
 
-    context 'uniqueness' do
+
+    context 'when a tag is created' do
       it 'can have the same name if the owners are different' do
         tag3 = Tag.create(
           name: 'red',
@@ -23,34 +26,28 @@ RSpec.describe Tag do
         )
         expect(tag4).not_to be_valid
       end
-    end # context uniqueness
 
-    context 'presence' do
       it 'must have a name' do
         invalid_tag = Tag.new(name: nil, owner: tag1.owner)
         expect(invalid_tag).not_to be_valid
       end
+
+      it 'uses ownername to be part of a slug' do
+        expect(tag1.slug).to eq('red-jonnyd')
+      end
     end
   end # describe validations
 
-  describe 'slugs' do
-    let(:tag) { create(:tag) }
-
-    context 'create slugs from name and owner' do
-      it 'uses ownername to be part of a slug' do
-        expect(tag.slug).to eq('red-jonnyd')
-      end
-    end # context create slugs from name and owner
-
-  end # describe slugs
-
   describe 'scopes' do
+    subject { tag1 }
+
     let(:tag1) { create(:tag) }
     let(:tag2) { create(:tag2) }
     let(:format) { create(:book_format) }
 
-    context 'not used' do
-      it 'shows not used tags properly' do
+
+    context 'when tags are not used' do
+      it 'not used tags properly show up under the no_taggings scope' do
         Book.create(
           title: 'A book',
           owner: tag1.owner,
