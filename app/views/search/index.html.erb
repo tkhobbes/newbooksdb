@@ -1,14 +1,14 @@
-<%= page_title("Search Results for '#{params[:query]}'",'', 'heading2') %>
+<%= page_title("#{t('Search.title')} '#{params[:query]}'",'', 'heading2') %>
 
 <div class="tabs margin-top-1">
   <ul>
     <li class="placeholder-tab">&nbsp;</li>
     <li class="content-tab <%= params[:list] == 'books' ? 'active' : '' %>">
-      <%= link_to 'Books', search_index_path(query: params[:query], show: 'list', list: 'books') %>
+      <%= link_to t('Search.tabs.books'), search_index_path(query: params[:query], show: 'list', list: 'books') %>
     </li>
     <li class="placeholder-tab">&nbsp;</li>
     <li class="content-tab <%= params[:list] == 'authors' ? 'active' : '' %>">
-      <%= link_to 'Authors', search_index_path(query: params[:query], show: 'list', list: 'authors') %>
+      <%= link_to t('Search.tabs.authors'), search_index_path(query: params[:query], show: 'list', list: 'authors') %>
     </li>
     <li class="placeholder-tab">&nbsp;</li>
   </ul>

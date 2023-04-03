@@ -30,7 +30,7 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  # Devise
+  # Devise - see also devise.en.yml
   Devise:
     logout: "Log out"
     login: "Log in"
@@ -51,6 +51,20 @@ en:
       add: "Add Book manually"
       profile: "My Profile"
       settings: "Settings"
+    Menu:
+      home: "Home"
+      books: "Books"
+      genres: "Genres"
+      authors: "Authors"
+      publishers: "Publishers"
+      tags: "Tags"
+  # Search
+  Search:
+    placeholder: "Search..."
+    title: "Search Results for"
+    tabs:
+      books: "Books"
+      authors: "Authors"
   # Home Page
   HomePage:
     hometitle: "Welcome To The Uzw18 Books Database"
