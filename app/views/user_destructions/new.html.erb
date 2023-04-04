@@ -1,8 +1,13 @@
-<%= page_title("Are you sure you want to remove owner #{@owner.name}?", "Remove owner #{@owner.name}", 'heading2 color-error') %>
+<%= page_title(
+  "#{t('UserDestructions.new.title')} #{@owner.name}?",
+  "#{t('UserDestructions.new.browser_title')} #{@owner.name}",
+  'heading2 color-error')
+%>
 
 <div class="color-error margin-top-1">
-  Apart from removing the owner's profile, you will need to decide what happens to
-  <%= @owner.books_count %> books that are owned by this owner.
+  <%= t('UserDestructions.new.comment_a') %>
+  <%= @owner.books_count %>
+  <%= t('UserDestructions.new.comment_b') %>
 </div>
 
   <%= form_with url: user_destructions_path, method: :post do |f| %>
@@ -15,7 +20,7 @@
           <%= f.label :book_selection_transfer do %>
             <span class="fake-button">
             </span>
-            Transfer books to new owner:
+            <%= t('UserDestructions.new.transfer_label') %>
             <%= f.collection_select :transfer_to_owner,
               Owner.all_but(@owner.id).includes([:profile]), :email, :name, {},
               class: 'larger'
@@ -27,12 +32,12 @@
           <%= f.label :book_selection_delete do %>
             <span class="fake-button">
             </span>
-            Delete books from database
+            <%= t('UserDestructions.new.delete_label') %>
           <% end %>
         </span>
       </div>
     </div>
 
-    <%= f.submit 'Confirm', class: 'btn btn-primary-dark' %>
+    <%= f.submit t('UserDestructions.new.confirm_label'), class: 'btn btn-primary-dark' %>
     <%= back_link %>
 <% end %>

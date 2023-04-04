@@ -1,0 +1,18 @@
+en:
+  Settings:
+    index:
+      title: "Settings"
+    menu:
+      shelves: "Shelves"
+      book_formats: "Book Formats"
+      genres: "Genres"
+      tags: "Tags"
+      owners: "Owners"
+      bulk: "Bulk Actions"
+    bulk_actions:
+      title: "Bulk Actions"
+      remove_authors: "Remove Authors without Books"
+      remove_publishers: "Remove Publishers without Books"
+      remove_shelves: "Remove empty Shelves"
+      remove_genres: "Remove Genres without Books"
+      remove_tags: "Remove Tags not used"

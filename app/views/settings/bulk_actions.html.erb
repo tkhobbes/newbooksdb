@@ -1,27 +1,27 @@
-<%= page_title('Settings','', 'heading3') %>
+<%= page_title(t('Settings.index.title'),'', 'heading3') %>
 
 <%= render 'settings_menu' %>
   <div class="submenucontent">
-    <h3 class="heading4">Bulk Actions</h3>
+    <h3 class="heading4"><%= t('Settings.bulk_actions.title') %></h3>
     <ul class="simple-list width-50">
       <li>
-        <%= link_to 'Remove Authors without Books',
+        <%= link_to t('Settings.bulk_actions.remove_authors'),
           unused_items_path(items_in: 'Author', show: 'no_books') %>
       </li>
       <li>
-        <%= link_to 'Remove Publishers without Books',
+        <%= link_to t('Settings.bulk_actions.remove_publishers'),
           unused_items_path(items_in: 'Publisher', show: 'no_books') %>
       </li>
       <li>
-        <%= link_to 'Remove empty Shelves',
+        <%= link_to t('Settings.bulk_actions.remove_shelves'),
           unused_items_path(items_in: 'Shelf', show: 'no_books') %>
       </li>
       <li>
-        <%= link_to 'Remove Genres without Books',
+        <%= link_to t('Settings.bulk_actions.remove_genres'),
           unused_items_path(items_in: 'Genre', show: 'no_books') %>
       </li>
       <li>
-        <%= link_to 'Remove Tags not used',
+        <%= link_to t('Settings.bulk_actions.remove_tags'),
           unused_items_path(items_in: 'Tag', show: 'no_taggings') %>
       </li>
     </ul>

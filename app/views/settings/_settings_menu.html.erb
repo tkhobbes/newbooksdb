@@ -3,28 +3,28 @@
     <ul>
       <li>
         <%= link_to(
-          'Shelves',
+          t('Settings.menu.shelves'),
           shelves_path,
           params[:controller] == 'shelves' ? { class: 'active' } : {}
         ) %>
       </li>
       <li>
         <%= link_to(
-          'Book Formats',
+          t('Settings.menu.book_formats'),
           book_formats_path,
           params[:controller] == 'book_formats' ? { class: 'active' } : {}
         ) %>
       </li>
       <li>
         <%= link_to(
-          'Genres',
+          t('Settings.menu.genres'),
           genres_path(show: 'settings'),
           params[:controller] == 'genres' ? { class: 'active' } : {}
         ) %>
       </li>
       <li>
         <%= link_to(
-          'Tags',
+          t('Settings.menu.tags'),
           tags_path(show: 'settings'),
           params[:controller] == 'tags' && params[:show] == 'settings' ? { class: 'active' } : {}
         ) %>
@@ -33,14 +33,14 @@
         <li>
           <!-- this needs to link to the members index for admins -->
           <%= link_to(
-            'Owners',
+            t('Settings.menu.owners'),
             profiles_path,
             params[:controller] == 'profiles' ? { class: 'active' } : {}
           ) %>
         </li>
         <li>
           <%= link_to(
-            'Bulk Actions',
+            t('Settings.menu.bulk'),
             bulk_actions_settings_path,
             params[:controller] == 'settings' && params[:action] == 'bulk_actions' ? { class: 'active' } : {}
           ) %>

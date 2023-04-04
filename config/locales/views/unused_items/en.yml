@@ -1,0 +1,8 @@
+en:
+  UnusedItems:
+    index:
+      title: "Settings"
+      without_books: "without Books"
+      none_found_a: "There are no"
+      none_found_b: "without any books."
+      delete_label: "Delete"
