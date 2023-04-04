@@ -1,0 +1,16 @@
+en:
+  BookFormats:
+    book_format:
+      default: " (default)"
+      books: "books"
+      delete_name: "books will be reassigned to the default book format"
+    form:
+      placeholder: "Bookformat Name"
+    new_form:
+      link_title: "Add new book format..."
+    set_default:
+      select: "Select..."
+    index:
+      title: "Settings"
+      subtitle: "Available book formats"
+      default_title: "Default Book Format"

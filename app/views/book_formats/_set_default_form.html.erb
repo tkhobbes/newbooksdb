@@ -4,7 +4,7 @@
     class: 'color-primary-dark',
     id: 'change-default'
   ) do %>
-    <%= @default_book_format ? @default_book_format.name : "Select..." %>
+    <%= @default_book_format ? @default_book_format.name : t('BookFormats.set_default.select') %>
     <div class="icons">
       <%= render 'shared/edit_icon', edit_path: set_default_book_formats_path, answer: "turbo" %>
     </div>
