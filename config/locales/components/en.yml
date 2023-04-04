@@ -1,0 +1,29 @@
+en:
+  SortComponent:
+    Book:
+      sort_title: "Title"
+      created_at: "Created"
+      updated_at: "Modified"
+      year: "Year"
+      rating: "Rating"
+      condition: "Condition"
+    Author:
+      sort_name: "Name"
+      born: "Birth Year"
+      died: "Death Year"
+      created_at: "Created"
+      updated_at: "Modified"
+      books_count: "# Books"
+      rating: "Rating"
+      gender: "Gender"
+    Publisher:
+      name: "Name"
+      location: "Location"
+      created_at: "Created"
+      updated_at: "Modified"
+      books_count: "# Books"
+    Genre:
+      name: "Name"
+      created_at: "Created"
+      updated_at: "Modified"
+      books_count: "# Books"

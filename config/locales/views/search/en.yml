@@ -1,0 +1,7 @@
+en:
+  search:
+    placeholder: "Search..."
+    title: "Search Results for"
+    tabs:
+      books: "Books"
+      authors: "Authors"

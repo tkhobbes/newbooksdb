@@ -1,0 +1,23 @@
+en:
+  sidebar:
+    menu:
+      home: "Home"
+      books: "Books"
+      genres: "Genres"
+      authors: "Authors"
+      publishers: "Publishers"
+      tags: "Tags"
+  title:
+    maintitle: "Book Collector Database UZW18"
+    quickicons:
+      scan: "Scan Book ISBN Codes"
+      search: "Search Book Online"
+      add: "Add Book manually"
+      profile: "My Profile"
+      settings: "Settings"
+  footer:
+    from: "from"
+    by: "by"
+    across: "across"
+    in: "in"
+    for: "for"

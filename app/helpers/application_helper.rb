@@ -101,27 +101,27 @@ module ApplicationHelper
   def menu_entries
     [
       {
-        name: t('Frame.Menu.home'),
+        name: t('sidebar.menu.home'),
         path: root_path
       },
       {
-        name: t('Frame.Menu.books'),
+        name: t('sidebar.menu.books'),
         path: books_path,
       },
       {
-        name: t('Frame.Menu.genres'),
+        name: t('sidebar.menu.genres'),
         path: genres_path,
       },
       {
-        name: t('Frame.Menu.authors'),
+        name: t('sidebar.menu.authors'),
         path: authors_path,
       },
       {
-        name: t('Frame.Menu.publishers'),
+        name: t('sidebar.menu.publishers'),
         path: publishers_path
       },
       {
-        name: t('Frame.Menu.tags'),
+        name: t('sidebar.menu.tags'),
         path: tags_path(list: 'books')
       }
     ]

@@ -1,0 +1,9 @@
+en:
+  # Generic CRUD
+  CRUD:
+    confirm: "Are you sure?"
+    edit: "Edit"
+  # Pagy and other helpers
+  Helper:
+    loadmore: "Load More"
+  # overall title and menus
