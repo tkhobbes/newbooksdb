@@ -1,14 +1,24 @@
-<%= form.input :first_name, placeholder: 'First Name', label: false %>
-<%= form.input :last_name, placeholder: 'Last Name', label: false %>
+<%= form.input :first_name,
+  placeholder: t('Authors.required_fields.first_name'),
+  label: false %>
+<%= form.input :last_name,
+  placeholder: t('Authors.required_fields.first_name'),
+  label: false %>
 <%= params[:from] %>
 <div class="big-form">
   <div class="form-col">
-    <%= form.input :born, placeholder: 'Birth Year', label: false %>
+    <%= form.input :born,
+      placeholder: t('Authors.required_fields.born'),
+      label: false %>
   </div>
   <div class="form-col">
-    <%= form.input :died, placeholder: 'Death Year', label: false %>
+    <%= form.input :died,
+      placeholder: t('Authors.required_fields.died'),
+      label: false %>
   </div>
   <div class="form-col">
-    <%= form.input :gender, collection: ['male', 'female'], label: false %>
+    <%= form.input :gender,
+      collection: [t('Authors.required_fields.female'), t('Authors.required_fields.male')],
+      label: false %>
   </div>
 </div>

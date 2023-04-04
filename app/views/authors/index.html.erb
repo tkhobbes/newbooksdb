@@ -5,16 +5,16 @@
   current_letter: params[:letter]
   ) %>
 
-<%= page_title('Authors','', 'heading2') %>
+<%= page_title(t('Authors.index.title'),'', 'heading2') %>
 
 <div class="flex">
 
-  <%= link_to 'Add Author',
+  <%= link_to t('Authors.index.add_button'),
     new_author_path,
     class: 'button-color-accent margin-right-50 small'
   %>
 
-  <%= link_to 'Reset sorting',
+  <%= link_to t('Authors.index.reset_button'),
     authors_path(
       params: current_scopes.merge(
         letter: params[:letter],

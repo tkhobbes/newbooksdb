@@ -25,7 +25,7 @@
         <div class="gender"><%= render GenderIconComponent.new(author: author) %></div>
       </div>
       <div class="livingyear"><%= render LivingYearsComponent.new(author: author) %></div>
-      <div class="books"><%= pluralize(author.books_count, 'Book') %></div>
+      <div class="books"><%= pluralize(author.books_count, t('Authors.books')) %></div>
       <div class="rating">
         <%= render StarRatingComponent.new(rated: author, humanized: false) %>
       </div>
