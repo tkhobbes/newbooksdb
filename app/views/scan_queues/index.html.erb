@@ -1,12 +1,18 @@
-<%= page_title('Add Scanned Barcodes', '', 'heading2') %>
+<%= page_title(t('ScanQueues.index.title'), '', 'heading2') %>
 
 <% if @scan_results.members.size < 1 %>
   <span>
-    No results -
-    <%= link_to 'Go Scan Some Barcodes!', new_scan_queue_path, class: 'color-accent-dark color-hover-accent-light' %>
+    <%= t('ScanQueues.index.no_results') %>
+    -
+    <%= link_to t('ScanQueues.index.scan_some'),
+      new_scan_queue_path,
+      class: 'color-accent-dark color-hover-accent-light'
+    %>
   </span>
 <% else %>
-  <p class="small margin-top-1">Click each result in turn to see possible matches.</p>
+  <p class="small margin-top-1">
+    <%= t('ScanQueues.index.click_each') %>
+  </p>
   <div class="flex margin-bottom-1">
     <div class="margin-right-33">
       <ul class="itemlist">
@@ -15,11 +21,12 @@
             <li class="itemlist__item itemlist__border padding-1 icons">
               <%= form_with url: isbn_search_show_path, method: :post do |f| %>
                 <%= f.hidden_field :isbn, value: result %>
-                <%= f.submit "ISBN #{result}", class: "nobutton color-accent-dark color-hover-accent" %>
+                <%= f.submit "#{t('ScanQueues.index.submit_label')} #{result}",
+                  class: "nobutton color-accent-dark color-hover-accent" %>
               <% end %>
                 <%= button_to scan_queue_path(result),
                   method: :delete,
-                  title: 'Remove this ISBN from the queue',
+                  title: t('ScanQueues.index.delete_label'),
                   class: 'delete-icon nobutton' do %>
                     <%= inline_svg_tag 'delete.svg' %>
                 <% end %>
@@ -29,9 +36,9 @@
       </ul>
     </div>
     <div class="width-66 padding-33 border-color-primary border-radius-1 margin-top-1">
-      <h3 class="heading3">Search Results</h3>
+      <h3 class="heading3"><%= t('ScanQueues.index.result_title') %></h3>
       <%= turbo_frame_tag 'scan_queue_search_results' do %>
-        Click an ISBN to the left to see possible matches.
+        <%= t('ScanQueues.index.click_left') %>
       <% end %>
     </div>
   </div>

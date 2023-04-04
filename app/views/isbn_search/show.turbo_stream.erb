@@ -1,8 +1,10 @@
 <%= turbo_stream.update 'scan_queue_search_results' do %>
   <% if @results.size == 0 %>
-    <p>No results found.</p>
+    <p><%= t('IsbnSearch.show.no_results') %></p>
   <% else %>
-    <p class="small">Click a title to create the book in the database.</p>
+    <p class="small">
+      <%= t('IsbnSearch.show.click') %>
+    </p>
     <ul class="itemlist margin-bottom-1">
       <% @results.each do |result| %>
         <li class="itemlist__item itemlist__border <%= isbn_existing_css(result[:existing]) %>">

@@ -1,36 +1,36 @@
-<%= page_title('Search for a Book','', 'heading2') %>
+<%= page_title(t('IsbnSearch.new.title'),'', 'heading2') %>
 
-<h3 class="heading3 margin-top-50">Search by ISBN</h3>
+<h3 class="heading3 margin-top-50"><%= t('IsbnSearch.new.isbn_title') %></h3>
 <%= form_with url: isbn_search_show_path, method: :post, data: {turbo: false} do |f| %>
   <div class="big-form width-50">
     <div class="form-col">
       <div class="input">
-        <%= f.text_field :isbn , placeholder: 'ISBN' %>
+        <%= f.text_field :isbn , placeholder: t('IsbnSearch.new.isbn_placeholder') %>
+      </div>
+    </div>
+  </div>
+  <%= f.submit t('IsbnSearch.new.submit_label'), class: 'btn' %>
+<% end %>
+
+<h3 class="heading3 margin-top-1"><%= t('IsbnSearch.new.title_title') %></h3>
+<%= form_with url: isbn_search_show_path, method: :post, data: {turbo: false} do |f| %>
+  <div class="big-form width-50">
+    <div class="form-col">
+      <div class="input">
+        <%= f.text_field :title , placeholder: t('IsbnSearch.new.title_placeholder') %>
       </div>
     </div>
   </div>
   <%= f.submit 'Search', class: 'btn' %>
 <% end %>
 
-<h3 class="heading3 margin-top-1">...or Search by Title</h3>
-<%= form_with url: isbn_search_show_path, method: :post, data: {turbo: false} do |f| %>
-  <div class="big-form width-50">
-    <div class="form-col">
-      <div class="input">
-        <%= f.text_field :title , placeholder: 'Title' %>
-      </div>
-    </div>
-  </div>
-  <%= f.submit 'Search', class: 'btn' %>
-<% end %>
-
-<h3 class="heading3 margin-top-1">...or Search by Author Name</h3>
+<h3 class="heading3 margin-top-1"><%= t('IsbnSearch.new.author_title') %></h3>
 <%= form_with url: isbn_search_show_path, method: :post, data: {turbo: false} do |f| %>
 
   <div class="big-form width-50">
     <div class="form-col">
       <div class="input">
-        <%= f.text_field :author , placeholder: 'Author Name' %>
+        <%= f.text_field :author , placeholder: t('IsbnSearch.new.author_placeholder') %>
       </div>
     </div>
   </div>

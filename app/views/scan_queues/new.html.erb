@@ -1,4 +1,4 @@
-<%= page_title('Scan Barcodes', '', 'heading2') %>
+<%= page_title(t('ScanQueues.new.title'), '', 'heading2') %>
 
 <div class="flex margin-bottom-1">
   <div class="width-50 padding-33" data-controller="barcode" id="barcodereader-container">
@@ -12,12 +12,15 @@
     <% end %>
   </div>
   <div class="width-50 padding-33 border-color-primary border-radius-1">
-    <h3 class="heading3">Scan Results</h3>
+    <h3 class="heading3"><%= t('ScanQueues.new.result_title') %></h3>
     <%= turbo_frame_tag 'scan_queue_results' do %>
       <%= render 'scan_queues/results', scan_results: @scan_results %>
     <% end %>
   </div>
 </div>
 
-<%= link_to 'Done scanning - add books', scan_queues_path, class: 'button-color-primary' %>
+<%= link_to t('ScanQueues.new.done_label'),
+  scan_queues_path,
+  class: 'button-color-primary'
+%>
 

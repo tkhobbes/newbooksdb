@@ -1,11 +1,11 @@
 <%# if scan_results.size < 1 %>
 <% if scan_results.members.size < 1 %>
-  <span>No results yet</span>
+  <span><%= t('ScanQueues.result.none_yet') %></span>
 <% else %>
   <ul>
     <%# scan_results.each do |result | %>
       <% scan_results.members.each do |result | %>
-      <li class="list-animate-appear padding-25"><%#= result.isbn %><%= result %></li>
+      <li class="list-animate-appear padding-25"><%= result %></li>
     <% end %>
   </ul>
 <% end %>

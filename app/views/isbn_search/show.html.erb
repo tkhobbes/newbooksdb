@@ -1,11 +1,17 @@
-<%= page_title('Search Results','', 'heading2') %>
+<%= page_title(t('IsbnSearch.show.title'),'', 'heading2') %>
 
 <% if @results.size == 0 %>
-  <p>No results found.
-    <%= link_to 'Try another search', isbn_search_new_path, class: 'color-accent-dark color-hover-accent-light' %>
+  <p>
+    <%= t('IsbnSearch.show.no_results') %>
+    <%= link_to t('IsbnSearch.show.another_search'),
+      isbn_search_new_path,
+      class: 'color-accent-dark color-hover-accent-light'
+    %>
   </p>
 <% else %>
-  <p class="small">Click a title to create the book in the database.</p>
+  <p class="small">
+    <%= t('IsbnSearch.show.click') %>
+  </p>
   <ul class="itemlist margin-bottom-1">
     <% @results.each do |result| %>
       <li class="itemlist__item itemlist__border <%= isbn_existing_css(result[:existing]) %>">
@@ -22,5 +28,8 @@
       </li>
     <% end %>
   </ul>
-  <%= link_to 'Try another Search', isbn_search_new_path, class: 'button-color-accent' %>
+  <%= link_to t('IsbnSearch.show.another_search'),
+    isbn_search_new_path,
+    class: 'button-color-accent'
+  %>
 <% end %>
