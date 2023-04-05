@@ -1,4 +1,4 @@
-<%= page_title('All Publishers','', 'heading2') %>
+<%= page_title(t('Publishers.index.title'),'', 'heading2') %>
 
 <%= render AbcNavigateComponent.new(
   model: 'Publisher',
@@ -8,12 +8,12 @@
   ) %>
 
 <div class="flex">
-  <%= link_to 'Add Publisher',
+  <%= link_to t('Publishers.index.add_label'),
     new_publisher_path,
     class: 'button-color-accent margin-right-50 small'
   %>
 
-  <%= link_to 'Reset sorting',
+  <%= link_to t('Publishers.index.reset_sorting'),
     publishers_path(
       params: current_scopes.merge(
         letter: params[:letter],

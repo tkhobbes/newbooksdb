@@ -1,0 +1,18 @@
+en:
+  Publishers:
+    index:
+      title: "All Publishers"
+      add_label: "Add Publisher"
+      reset_sorting: "Reset Sorting"
+    new:
+      title: "Add a new Publisher"
+    edit:
+      title: "Edit Publisher"
+    form:
+      name_placeholder: "Publisher Name"
+      location_placeholder: "Publisher Location"
+    publishersettings:
+      books: "Books"
+      books_affected: "Books affected"
+    publishers_count:
+      publishers: "Publishers"

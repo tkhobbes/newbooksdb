@@ -2,8 +2,12 @@
     <%= render 'shared/form_errors', form: f %>
     <div class="big-form">
       <div class="form-col col-wide">
-        <%= f.input :name, placeholder: 'Publisher Name', label: false %>
-        <%= f.input :location, placeholder: 'Publisher Location', label: false %>
+        <%= f.input :name,
+          placeholder: t('Publishers.form.name_placeholder'),
+          label: false %>
+        <%= f.input :location,
+          placeholder: t('Publishers.form.location_placeholder'),
+          label: false %>
       </div>
     </div>
     <%= f.button :submit %>
