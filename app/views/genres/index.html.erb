@@ -1,4 +1,4 @@
-<%= page_title('All Genres','', 'heading2') %>
+<%= page_title(t('Genres.index.title'),'', 'heading2') %>
 
 <%= render AbcNavigateComponent.new(
   model: 'Genre',
@@ -10,7 +10,7 @@
 
 <div class="flex">
 
-  <%= link_to 'Reset sorting',
+  <%= link_to t('Genres.index.reset_sorting'),
     genres_path(
       params: current_scopes.merge(
         letter: params[:letter],

@@ -1,0 +1,20 @@
+en:
+  Genres:
+    index:
+      title: "All Genres"
+      reset_sorting: "Reset Sorting"
+    admin:
+      title: "Settings"
+      available_title: "Available Genres"
+      no_genres: "No Genres"
+    show:
+      title: "All Books in Genre"
+    form:
+      name_placeholder: "Genre Name"
+    new_form_entry:
+      new_link: "Add new genre..."
+    genresettings:
+      books: "Books"
+      books_affected: "Books affected"
+    genres_count:
+      genres: "Genres"

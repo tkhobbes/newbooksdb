@@ -1,7 +1,9 @@
 <%= page_title("#{@genre.name}", '', 'heading2') %>
 
 <div class="flexlist">
-  <h4 class="heading3">All Books in Genre</h4>
+  <h4 class="heading3">
+    <%= t('Genres.show.title') %>
+  </h4>
   <div class="icons">
     <%= render 'shared/delete_icon',
       delete_path: genre_path(@genre),

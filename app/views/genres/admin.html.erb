@@ -1,8 +1,10 @@
-<%= page_title('Settings', '', 'heading3') %>
+<%= page_title(t('Genres.admin.title'), '', 'heading3') %>
 
 <%= render 'settings/settings_menu' %>
   <div class="submenucontent">
-    <h3 class="heading4">Available Genres</h3>
+    <h3 class="heading4">
+      <%= t('Genres.admin.available_title') %>
+    </h3>
     <ul class="simple-list width-66 margin-bottom-1" id="genres">
       <%= render 'new_form_entry' %>
       <% if @genres.size > 0 %>
@@ -10,7 +12,9 @@
           <%= render @genres %>
         <% end %>
       <% else %>
-        <div class="margin-top-1">No genres</div>
+        <div class="margin-top-1">
+          <%= t('Genres.admin.no_genres') %>
+        </div>
       <% end %>
     </ul>
   </div>

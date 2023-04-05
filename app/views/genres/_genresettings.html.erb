@@ -2,13 +2,13 @@
   <li>
     <div class="flexlist">
       <%= link_to(
-        "#{genre.name} - #{genre.books_count} books",
+        "#{genre.name} - #{genre.books_count} #{t('Genres.genresettings.books')}",
         edit_genre_path(genre)
        ) %>
       <%= render 'shared/crud_icons',
         edit_path: edit_genre_path(genre),
         delete_path: genre_path(genre),
-        item_name: "#{genre.name}, (#{genre.books_count} books affected)",
+        item_name: "#{genre.name}, (#{genre.books_count} #{t('Genres.genresettings.books_affected')})",
         url: genre_path(genre),
         edit_answer: 'turbo',
         delete_answer: 'turbo',
