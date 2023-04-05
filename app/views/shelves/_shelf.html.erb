@@ -2,7 +2,7 @@
   <li>
     <div class="flexlist">
       <%= link_to(
-        "#{shelf.name} - #{shelf.books_count} books, owned by #{shelf.owner.name}",
+        t('Shelves.shelf.edit_link', name: shelf.name, books: shelf.books_count, owner: shelf.owner.name),
         edit_shelf_path(shelf)
        ) %>
       <%= render 'shared/crud_icons',

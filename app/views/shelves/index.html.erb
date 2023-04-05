@@ -1,8 +1,10 @@
-<%= page_title('Settings', '', 'heading3') %>
+<%= page_title(t('Shelves.index.title'), '', 'heading3') %>
 
 <%= render 'settings/settings_menu' %>
   <div class="submenucontent">
-    <h3 class="heading4">All Shelves</h3>
+    <h3 class="heading4">
+      <%= t('Shelves.index.subtitle') %>
+    </h3>
     <ul class="simple-list width-66 margin-bottom-1" id="shelves">
       <%= render 'new_form_entry' %>
       <% if @shelves.size > 0 %>
@@ -10,7 +12,9 @@
           <%= render @shelves %>
         <% end %>
       <% else %>
-        <div class="margin-top-1">No Shelves</div>
+        <div class="margin-top-1">
+          <%= t('Shelves.index.no_shelves') %>
+        </div>
       <% end %>
     </ul>
   </div>
