@@ -1,8 +1,10 @@
-<%= page_title('Settings', '', 'heading3') %>
+<%= page_title(t('Tags.admin.title'), '', 'heading3') %>
 
 <%= render 'settings/settings_menu' %>
   <div class="submenucontent">
-    <h3 class="heading4">All Tags</h3>
+    <h3 class="heading4">
+      <%= t('Tags.admin.subtitle') %>
+    </h3>
     <ul class="simple-list width-66 margin-bottom-1" id="tags">
       <%= render 'new_form_entry' %>
       <% if @tags.size > 0 %>
@@ -10,7 +12,9 @@
           <%= render @tags %>
         <% end %>
       <% else %>
-        <div class="margin-top-1">No tags</div>
+        <div class="margin-top-1">
+          <%= t('Tags.admin.no_tags') %>
+        </div>
       <% end %>
     </ul>
   </div>

@@ -1,14 +1,18 @@
-<%= page_title("All Tags for owner #{@current_owner.name}",'', 'heading2') %>
+<%= page_title(t('Tags.index.title', owner: @current_owner.name),'', 'heading2') %>
 
 <%= turbo_frame_tag 'page' %>
 <nav class="pagination list-select-type">
   <span class="page">
-    <%= link_to tags_path(list: 'books'), title: 'Show Books', class: 'list-select-item' do %>
+    <%= link_to tags_path(list: 'books'),
+      title: t('Tags.index.show_books'),
+      class: 'list-select-item' do %>
       <%= inline_svg_tag 'book.svg', class: 'smallicon' %>
     <% end %>
   </span>
   <span class="page">
-    <%= link_to tags_path(list: 'authors'), title: 'Show Authors', class: 'list-select-item' do %>
+    <%= link_to tags_path(list: 'authors'),
+      title: t('Tags.index.show_authors'),
+      class: 'list-select-item' do %>
       <%= inline_svg_tag 'person.svg', class: 'smallicon' %>
     <% end %>
   </span>

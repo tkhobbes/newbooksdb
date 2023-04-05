@@ -1,7 +1,9 @@
-<%= page_title('', "Everything tagged '#{@tag.name}'", 'heading2') %>
+<%= page_title('', t('Tags.show.title', name: @tag.name), 'heading2') %>
 
 <div class="flexlist">
-  <h1 class="heading2">Everything tagged '<%= @tag.name %>'</h1>
+  <h1 class="heading2">
+    <%= t('Tags.show.title', name: @tag.name) %>
+  </h1>
   <div class="icons">
     <%= render 'shared/delete_icon',
       delete_path: tag_path(@tag),
@@ -17,14 +19,14 @@
     <ul>
       <li class="placeholder-tab">&nbsp;</li>
       <li class="content-tab <%= params[:list] == 'books' ? 'active' : '' %>">
-        <%= link_to 'Books', '#', data: {
+        <%= link_to t('Tags.show.books'), '#', data: {
           action: 'click->tabnav#navigate',
           url: tag_path(@tag, list: 'books')
         } %>
       </li>
       <li class="placeholder-tab">&nbsp;</li>
       <li class="content-tab <%= params[:list] == 'authors' ? 'active' : '' %>">
-        <%= link_to 'Authors', '#', data: {
+        <%= link_to t('Tags.show.authors'), '#', data: {
           action: 'click->tabnav#navigate',
           url: tag_path(@tag, list: 'authors')
         } %>
