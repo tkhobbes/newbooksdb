@@ -91,6 +91,8 @@ gem 'faraday', '>= 2.7.1'
 gem 'friendly_id', '>= 5.4.2'
 # using scoped routes for our shelves etc
 gem 'has_scope'
+# check i18n keys
+gem 'i18n-tasks', '~> 1.0.12'
 # better way to use SVGs
 gem 'inline_svg'
 # lookbook for viewcomponents

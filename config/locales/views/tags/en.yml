@@ -12,9 +12,8 @@ en:
       title: "Settings"
       subtitle: "All Tags"
       no_tags: "No Tags"
-    new:
     form:
-      placehoder_name: "Tag Name"
+      placeholder_name: "Tag Name"
     new_form_entry:
       add_label: "Add new Tag..."
     tagcard:
