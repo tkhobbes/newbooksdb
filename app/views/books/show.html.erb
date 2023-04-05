@@ -10,7 +10,7 @@
         <input type="hidden" name="isbn" value="<%= @book.isbn %>" />
         <input type="hidden" name="book_id" value="<%= @book.id %>" />
 
-        <%= f.submit 'Find Better Cover', class: 'btn small' %>
+        <%= f.submit t('Books.show.better_cover'), class: 'btn small' %>
       <% end %>
     <% end %>
   </div>
@@ -53,7 +53,7 @@
     <div class="margin-top-33 border-color-primary-dark border-radius-1 padding-33">
       <%= link_to profile_path(@book.owner.profile.id),
         class: 'color-accent-dark color-hover-accent' do %>
-        Owner:
+        <%= t('Books.show.owner') %>:
         <% if @book.owner.profile.avatar.attached? %>
           <%= render AvatarImageComponent.new(
             profile: @book.owner.profile,
@@ -71,7 +71,9 @@
     <div class="bookdetails__meta border-color-primary-dark border-radius-1">
       <div class="margin-right-1">
         <% if @book.genres.present? %>
-          <h3 class="heading4 color-primary-dark">Genres</h3>
+          <h3 class="heading4 color-primary-dark">
+            <%= t('Books.show.genres') %>
+          </h3>
           <div class="genre-list">
             <% @book.genres.each do |g| %>
               <%= render 'genres/genre_tag', genre: g %>
@@ -79,7 +81,9 @@
           </div>
         <% end %>
         <% if @book.owner == current_owner && @book.tags.present? %>
-          <h3 class="heading4 margin-top-50 color-primary-dark">Tags</h3>
+          <h3 class="heading4 margin-top-50 color-primary-dark">
+            <%= t('Books.show.tags') %>
+          </h3>
           <div class="tag-list">
             <% @book.tags.each do |t| %>
               <%= render 'tags/tag_tag', tag: t %>
@@ -89,11 +93,15 @@
       </div>
       <div>
         <div class="margin-bottom-50">
-          <h3 class="heading5 color-primary-dark margin-bottom-25">Book Owner's Rating</h3>
+          <h3 class="heading5 color-primary-dark margin-bottom-25">
+            <%= t('Books.show.rating') %>
+          </h3>
           <%= render StarRatingComponent.new(rated: @book, humanized: true) %>
         </div>
         <div>
-          <h3 class="heading5 color-primary-dark margin-bottom-25">Book Condition</h3>
+          <h3 class="heading5 color-primary-dark margin-bottom-25">
+            <%= t('Books.show.condition') %>
+          </h3>
           <%= @book.condition.humanize %>
         </div>
       </div>

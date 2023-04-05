@@ -2,15 +2,21 @@
     <%= render 'shared/form_errors', form: f %>
     <div class="big-form" data-controller="add-sub-form">
       <div class="form-col col-wide">
-        <%= f.input :title, placeholder: 'Book Title', label: false %>
-        <%= f.input :original_title, placeholder: 'Original Title', label: false %>
+        <%= f.input :title,
+          placeholder: t('Books.form.title_placeholder'),
+          label: false %>
+        <%= f.input :original_title,
+          placeholder: t('Books.form.original_placeholder'),
+          label: false %>
         <div class="big-form flex-align-center">
           <div class="form-col">
-            <h2 class="heading4 color-primary-dark">Select Authors...</h2>
+            <h2 class="heading4 color-primary-dark">
+              <%= t('Books.form.select_authors') %>
+            </h2>
           </div>
           <% if params[:action] == 'new' %>
             <div class="form-col">
-              <%= link_to '...or add an Author',
+              <%= link_to t('Books.form.add_author'),
               '#',
               class: 'button-color-primary text-center',
               data: {
@@ -18,8 +24,7 @@
                 add_sub_form_target: 'togglebutton'
               } %>
               <div class="small margin-top-25">
-                You can select authors first on the left and then click above
-                button to add new ones.
+                <%= t('Books.form.select_authors_comment') %>
               </div>
             </div>
           <% end %>
@@ -30,13 +35,13 @@
             label: false,
             collection: Author.order(:sort_name),
             label_method: :display_name, value_method: :id,
-            prompt: 'Authors...',
+            prompt: t('Books.form.select_authors_prompt'),
             input_html:
               { data:
                 {
                   controller: 'tom-select',
                 },
-                placeholder: 'Authors',
+                placeholder: t('Books.form.authors_placeholder'),
                 class: 'width-100'
               }
           ) %>
@@ -48,10 +53,12 @@
               data-controller="another-sub-form"
               id="0"
             >
-              <h2 class="heading4 color-primary-dark">Add New Author</h2>
+              <h2 class="heading4 color-primary-dark">
+                <%= t('Books.form.new_author_title') %>
+              </h2>
               <%= f.fields_for :authors do |form| %>
                 <%= render 'authors/required_fields_form', form: form %>
-                <%= link_to 'Add another Author...',
+                <%= link_to t('Books.form.new_author_link'),
                 '#',
                 class: 'button-color-primary text-center width-33',
                 data: { action: 'click->another-sub-form#addform'} %>
@@ -71,7 +78,7 @@
                     controller: 'tom-select-add',
                     tom_select_add_url_value: '/publishers'
                   },
-                  placeholder: 'Publisher'
+                  placeholder: t('Books.form.publisher_placeholder')
                 }
             ) %>
           </div>
@@ -81,20 +88,22 @@
           <div class="form-col">
             <%= f.input :country,
               priority: ['United States', 'Germany', 'Switzerland', 'United Kingdom'],
-              prompt: 'Country...',
+              prompt: t('Books.form.country_prompt'),
               label: false,
               input_html: {
                 data: {
                   controller: 'tom-select'
                 },
-                placeholder: 'Country',
+                placeholder: t('Books.form.country_placeholder'),
               }
             %>
           </div>
         </div>
         <div class="big-form">
           <div class="form-col">
-            <%= f.input :edition, placeholder: 'Edition', label: false %>
+            <%= f.input :edition,
+              placeholder: t('Books.form.edition_placeholder'),
+              label: false %>
           </div>
           <div class="form-col">
             <%= f.association(
@@ -107,7 +116,7 @@
                     controller: 'tom-select-add',
                     tom_select_add_url_value: '/book_formats'
                   },
-                  placeholder: 'Book Format'
+                  placeholder: t('Books.form.book_format_placeholder')
                 }
             ) %>
           </div>
@@ -121,8 +130,12 @@
             <%= f.file_field :cover, direct_upload: true,
               'data-coverdrop-target': 'input' %>
             <div class="dropzone-msg dz-message">
-              <h3 class="dropzone-msg-title heading4 color-primary-dark">Drag cover image here or click to browse</h3>
-              <span class="dropzone-msg-desc small color-primary-dark">3 MB file size maximum. Allowed are only image file types.</span>
+              <h3 class="dropzone-msg-title heading4 color-primary-dark">
+                <%= t('Books.form.cover_drag') %>
+              </h3>
+              <span class="dropzone-msg-desc small color-primary-dark">
+                <%= t('Books.form.cover_drag_comment') %>
+              </span>
             </div>
           </div>
           <div class="form-col">
@@ -130,14 +143,18 @@
           </div>
         </div>
         <div class="rich-text-input">
-          <h4 class="heading4 color-primary-dark">Synposis</h4>
+          <h4 class="heading4 color-primary-dark">
+            <%= t('Books.form.synopsis') %>
+          </h4>
           <%= f.rich_text_area :synopsis %>
         </div>
       </div>
       <div class="form-col">
         <div class="big-form">
           <div class="form-col enum_radio_buttons">
-            <div class="color-primary-dark margin-bottom-50">Book Rating</div>
+            <div class="color-primary-dark margin-bottom-50">
+              <%= t('Books.form.rating') %>
+            </div>
             <% Book.ratings.each do |k,v| %>
               <span class="radio">
                 <%= f.radio_button :rating, k.to_sym, class: 'hidden-button' %>
@@ -149,7 +166,9 @@
             <% end %>
           </div>
           <div class="form-col enum_radio_buttons">
-            <div class="color-primary-dark margin-bottom-50">Book Condition</div>
+            <div class="color-primary-dark margin-bottom-50">
+              <%= t('Books.form.condition') %>
+            </div>
             <% Book.conditions.each do |k,v| %>
               <span class="radio">
                 <%= f.radio_button :condition, k.to_sym, class: 'hidden-button' %>
@@ -161,7 +180,9 @@
             <% end %>
           </div>
         </div>
-        <div class="color-primary-dark margin-bottom-50 margin-top-50">Genres</div>
+        <div class="color-primary-dark margin-bottom-50 margin-top-50">
+          <%= t('Books.form.genres') %>
+        </div>
         <%= f.association(
           :genres,
           collection: Genre.order(:name),
@@ -174,7 +195,9 @@
               },
             }
         ) %>
-        <div class="color-primary-dark margin-bottom-50 margin-top-50">Tags</div>
+        <div class="color-primary-dark margin-bottom-50 margin-top-50">
+          <%= t('Books.form.tags') %>
+        </div>
         <%= f.association(
           :tags, collection: Tag.where(owner_id: current_owner.id).order(:name),
           label: false,
@@ -186,7 +209,9 @@
               },
             }
         ) %>
-        <div class="color-primary-dark margin-bottom-50 margin-top-50">Shelf</div>
+        <div class="color-primary-dark margin-bottom-50 margin-top-50">
+          <%= t('Books.form.shelf') %>
+        </div>
         <%= f.association(
           :shelf, collection: Shelf.where(owner_id: current_owner.id).order(:name),
           label: false,

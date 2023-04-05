@@ -11,7 +11,7 @@
 
 <div class="flex">
 
-  <%= link_to 'Reset sorting',
+  <%= link_to t('Books.index.reset_sorting'),
     books_path(
       params: current_scopes.merge(
         letter: params[:letter],
