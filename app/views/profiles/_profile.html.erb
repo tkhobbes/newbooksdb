@@ -5,10 +5,11 @@
     </div>
     <div class="itemlist__title">
       <%= link_to profile.name, profile %>
-      (<%= profile.owner.books_count %> books)
+      (<%= profile.owner.books_count %> <%= t('Profiles.profile.books')%>)
     </div>
     <div class="itemlist__title">
-      (Active since <%= profile.owner.created_at.strftime("%d-%b %Y") %>)
+      (<%= t('Profiles.profile.active') %>
+      <%= profile.owner.created_at.strftime("%d-%b %Y") %>)
     </div>
     <div class="itemlist__icons">
       <div class="icons">

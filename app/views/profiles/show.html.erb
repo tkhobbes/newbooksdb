@@ -1,4 +1,4 @@
-<%= page_title("Profile for #{@profile.name}", '', 'heading3') %>
+<%= page_title("#{t('Profiles.show.title')} #{@profile.name}", '', 'heading3') %>
 
 <div class="userdetails">
   <div class="cover-medium">
@@ -15,14 +15,22 @@
       </h1>
     </div>
     <div class="userdetails__details">
-      Registered <%= time_ago_in_words(@profile.created_at) %> ago
+      <%= t('Profiles.show.registered', reg_time: time_ago_in_words(@profile.created_at)) %>
     </div>
     <% if @profile == current_owner.profile %>
       <div class="userdetails__buttons">
-        <%= link_to 'Edit my Profile', edit_profile_path(@profile) , class: 'btn btn-primary' %>
-        <%= link_to 'Change my Password', edit_owner_registration_path, class: 'btn btn-primary' %>
-        <%= button_to 'Logout', destroy_owner_session_path, method: 'delete', class: 'btn btn-primary nobutton' %>
-        <%= link_to 'Delete my Profile', new_user_destructions_path(@profile), class: 'btn btn-error' %>
+        <%= link_to t('Profiles.show.edit_label'),
+          edit_profile_path(@profile),
+          class: 'btn btn-primary' %>
+        <%= link_to t('Profiles.show.password_label'),
+          edit_owner_registration_path,
+          class: 'btn btn-primary' %>
+        <%= button_to t('Profiles.show.logout_label'),
+          destroy_owner_session_path, method: 'delete',
+          class: 'btn btn-primary nobutton' %>
+        <%= link_to t('Profiles.show.delete_label'),
+          new_user_destructions_path(@profile),
+          class: 'btn btn-error' %>
       </div>
     <% end %>
 </div>

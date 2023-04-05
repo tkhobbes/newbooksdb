@@ -1,4 +1,4 @@
-<%= page_title('Edit your Profile','', 'heading2') %>
+<%= page_title(t('Profiles.edit.title'),'', 'heading2') %>
 
   <%= simple_form_for @profile do |f| %>
     <%= render 'shared/form_errors', form: f %>
@@ -8,7 +8,9 @@
         <div class="cover-small">
           <%= render AvatarImageComponent.new(profile: @profile, size: :small) %>
         </div>
-        <%= f.input :name , placeholder: 'Username', label: false %>
+        <%= f.input :name ,
+          placeholder: t('Profiles.edit.name_placeholder'),
+          label: false %>
       </div>
       <div
         class="form-col dropzone dropzone-default dz-clickable"
@@ -19,8 +21,12 @@
         <%= f.file_field :avatar, direct_upload: true,
           'data-coverdrop-target': 'input' %>
         <div class="dropzone-msg dz-message">
-          <h3 class="dropzone-msg-title heading4 color-primary-dark">Drag cover image here or click to browse</h3>
-          <span class="dropzone-msg-desc small color-primary-dark">3 MB file size maximum. Allowed are only image file types.</span>
+          <h3 class="dropzone-msg-title heading4 color-primary-dark">
+            <%= t('Profiles.edit.avatar_cover') %>
+          </h3>
+          <span class="dropzone-msg-desc small color-primary-dark">
+            <%= t('Profiles.edit.avatar_drag_comment') %>
+          </span>
         </div>
       </div>
     </div>
