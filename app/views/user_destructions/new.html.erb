@@ -1,13 +1,11 @@
 <%= page_title(
-  "#{t('UserDestructions.new.title')} #{@owner.name}?",
-  "#{t('UserDestructions.new.browser_title')} #{@owner.name}",
+  t('UserDestructions.new.title', owner: @owner.name),
+  ('UserDestructions.new.browser_title', owner: @owner.name),
   'heading2 color-error')
 %>
 
 <div class="color-error margin-top-1">
-  <%= t('UserDestructions.new.comment_a') %>
-  <%= @owner.books_count %>
-  <%= t('UserDestructions.new.comment_b') %>
+  <%= t('UserDestructions.new.comment', count: @owner.books_count) %>
 </div>
 
   <%= form_with url: user_destructions_path, method: :post do |f| %>

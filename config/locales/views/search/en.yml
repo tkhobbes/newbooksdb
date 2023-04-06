@@ -1,7 +1,7 @@
 en:
   search:
     placeholder: "Search..."
-    title: "Search Results for"
+    title: "Search Results for %{query}"
     tabs:
       books: "Books"
       authors: "Authors"

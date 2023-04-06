@@ -1,10 +1,9 @@
 en:
   UserDestructions:
     new:
-      title: "Are you sure you want to remove owner"
-      browser_title: "Remove owner"
-      comment_a: "Apart from removing the owner's profile, you will need to decide what happens to"
-      comment_b: "books that are owned by this owner."
+      title: "Are you sure you want to remove owner %{owner}?"
+      browser_title: "Remove owner %{owner}"
+      comment: "Apart from removing the owner's profile, you will need to decide what happens to %{count} books that are owned by this owner."
       transfer_label: "Transfer books to new owner:"
       delete_label: "Delete books from database"
       confirm_label: "Conrifm"

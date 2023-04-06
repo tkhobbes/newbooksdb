@@ -3,13 +3,11 @@
 <%= render 'settings/settings_menu' %>
   <div class="submenucontent">
     <h3 class="heading4">
-      <%= "#{@model.humanize} #{t('UnusedItems.index.without_books')}" %>
+      <%= t('UnusedItems.index.without_books', items: @model.humanize) %>
     </h3>
     <% if @items.size == 0 %>
       <div class="margin-bottom-1">
-        <%= t('UnusedItems.index.none_found_a') %>
-        <%= pluralize(5, @model).gsub(/\d /,'') %>
-        <%= t('UnusedItems.index.none_found_b') %>
+        <%= t('UnusedItems.index.none_found', items: pluralize(5, @model).gsub(/\d /,'')) %>
       </div>
       <%= back_link %>
     <% else %>

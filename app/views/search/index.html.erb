@@ -1,4 +1,4 @@
-<%= page_title("#{t('search.title')} '#{params[:query]}'",'', 'heading2') %>
+<%= page_title(t('search.title', query: params[:query]),'', 'heading2') %>
 
 <div class="tabs margin-top-1">
   <ul>
