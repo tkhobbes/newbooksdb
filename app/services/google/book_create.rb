@@ -92,7 +92,7 @@ module Google
     end
 
     def parse_url
-      "#{BASE_URL}#{@id}#{add_key}"
+      URI::DEFAULT_PARSER.escape("#{BASE_URL}#{@id}#{add_key}")
     end
 
     # this method smells of :reek:UtilityFunction

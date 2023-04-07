@@ -42,7 +42,7 @@ class ShelfMenuComponent < ViewComponent::Base
   # build entries specific to the owner
   def build_owner_entries
     @menu << {name: 'My Books', path: books_path(my_books: @owner.id)}
-    @owner.shelves.each do |shelf|
+    @owner.shelves.order(:name).each do |shelf|
       @menu << {name: shelf.name, path: books_path(shelf_books: shelf.id)}
     end
   end

@@ -14,7 +14,7 @@ class CloudComponent < ViewComponent::Base
   # this method smells of :reek:FeatureEnvy
   def cloud
     cloud_data = []
-    @model.all.each do |model|
+    @model.order(:name).each do |model|
       one_item = {}
       one_item[:name] = model.name
       one_item[:size] = model.books_count

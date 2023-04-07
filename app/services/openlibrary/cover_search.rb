@@ -13,7 +13,7 @@ module Openlibrary
     end
 
     def cover_url
-      "#{BASE_URL}#{@type}/#{@value}-#{COVER_SIZE}.jpg"
+      URI::DEFAULT_PARSER.escape("#{BASE_URL}#{@type}/#{@value}-#{COVER_SIZE}.jpg")
     end
 
   end

@@ -58,15 +58,15 @@ module Google
     end
 
     def parse_isbn_url
-      "#{BASE_URL}#{ISBN_ADDER}#{@isbn}#{add_key}#{MAXQ_ADDER}"
+      URI::DEFAULT_PARSER.escape("#{BASE_URL}#{ISBN_ADDER}#{@isbn}#{add_key}#{MAXQ_ADDER}")
     end
 
     def parse_title_url
-      "#{BASE_URL}#{TITLE_ADDER}#{@title}#{add_key}#{MAXQ_ADDER}"
+      URI::DEFAULT_PARSER.escape("#{BASE_URL}#{TITLE_ADDER}#{@title}#{add_key}#{MAXQ_ADDER}")
     end
 
     def parse_author_url
-      "#{BASE_URL}#{AUTHOR_ADDER}#{@author}#{add_key}#{MAXQ_ADDER}"
+      URI::DEFAULT_PARSER.escape("#{BASE_URL}#{AUTHOR_ADDER}#{@author}#{add_key}#{MAXQ_ADDER}")
     end
 
     # this method smells of :reek:UtilityFunction
