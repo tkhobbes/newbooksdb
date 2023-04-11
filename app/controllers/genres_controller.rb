@@ -23,8 +23,12 @@ class GenresController < ApplicationController
   def index
     case params[:show]
     when 'settings'
-      @genres = Genre.all.order(:name)
-      render 'admin', genres: @genres
+      if current_owner
+        @genres = Genre.all.order(:name)
+        render 'admin', genres: @genres
+      else
+        redirect_to genres_path, error: 'Must be logged in'
+      end
     else
       @pagy, @genres = pagy(apply_scopes(
         order(:name,
@@ -88,7 +92,7 @@ class GenresController < ApplicationController
     if @genre.destroyed?
       respond_to do |format|
         format.turbo_stream
-        format.html { redirect_to genres, status: :see_other }
+        format.html { redirect_to genres_path, status: :see_other }
       end
     else
       # in the rare occasion where the format is not deleted -
