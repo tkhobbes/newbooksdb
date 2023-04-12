@@ -24,6 +24,7 @@ FactoryBot.define do
   factory :profile do
     owner
     name { 'JonnyD' }
+    admin { false }
   end
 
   factory :admin_profile, class: 'Profile' do

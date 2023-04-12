@@ -9,7 +9,6 @@ class ShelvesController < ApplicationController
   before_action :set_shelf, only: [:edit, :update, :destroy]
 
   before_action :authenticate_owner!
-  before_action :correct_or_admin_user, only: [:edit, :update, :destroy]
 
   before_action :dissolve
 
@@ -29,7 +28,10 @@ class ShelvesController < ApplicationController
   end
 
   # standard rails method to edit a shelf
-  def edit; end
+  def edit
+    redirect_to root_path,
+    error: 'You are not authorised to edit this shelf' unless @shelf.owner == current_owner || current_owner.admin
+  end
 
   #standard rails create action; answers to:
   # -normal html (fallback and not used)
@@ -56,10 +58,14 @@ class ShelvesController < ApplicationController
 # rubocop:enable Metrics/MethodLength
 
   def update
-    if @shelf.update(shelf_params)
-      redirect_to shelves_path
+    if @shelf.owner == current_owner || current_owner.admin
+      if @shelf.update(shelf_params)
+        redirect_to shelves_path
+      else
+        render :edit, status: :unprocessable_entity
+      end
     else
-      render :edit, status: :unprocessable_entity
+      redirect_to root_path, error: 'You are not authorised to edit this shelf'
     end
   end
 
@@ -68,27 +74,26 @@ class ShelvesController < ApplicationController
   # -turbo-stream - default response format, used on the settings page
   # This method smells of :reek:TooManyStatements
   def destroy
-   @shelf.destroy
-    if @shelf.destroyed?
-      respond_to do |format|
-        format.turbo_stream
-        format.html { redirect_to shelves, status: :see_other }
+    if @shelf.owner == current_owner || current_owner.admin
+      @shelf.destroy
+      if @shelf.destroyed?
+        respond_to do |format|
+          format.turbo_stream
+          format.html { redirect_to shelves_path, status: :see_other }
+        end
+      else
+        # in the rare occasion where the format is not deleted -
+        # as it is the default - ensure that the corresponding
+        # turbo stream is not removed
+        render json: { nothing: true }
       end
     else
-      # in the rare occasion where the format is not deleted -
-      # as it is the default - ensure that the corresponding
-      # turbo stream is not removed
-      render json: { nothing: true }
+      redirect_to root_path,
+    error: 'You are not authorised to delete this shelf'
     end
   end
 
   private
-  # confirms the correct owner, or owner is an admin
-  def correct_or_admin_user
-    return if current_owner.admin
-    @owner = @shelf.owner
-    redirect_to(root_path, status: :see_other) unless current_owner?(@owner)
-  end
 
   # rails strong params
   def shelf_params

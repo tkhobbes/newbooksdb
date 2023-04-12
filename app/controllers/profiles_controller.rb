@@ -17,7 +17,7 @@ class ProfilesController < ApplicationController
   def edit; end
 
   def update
-    if @profile.update(profile_params)
+    if (current_owner.admin || @profile.owner == current_owner) && @profile.update(profile_params)
       redirect_to profile_path(@profile), success: 'Profile updated'
     else
       render :edit, status: :unprocessable_entity
