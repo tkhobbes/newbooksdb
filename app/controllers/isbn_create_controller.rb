@@ -2,6 +2,7 @@
 
 # This controller deals with creating books from an ISBN search
 class IsbnCreateController < ApplicationController
+  before_action :authenticate_owner!, only: [:create]
 
   # create a book based on an ISBN / URL
   # rubocop:disable Metrics/MethodLength

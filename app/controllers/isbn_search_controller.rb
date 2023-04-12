@@ -2,6 +2,7 @@
 
 # A simple controller to control the flow to search for an ISBN
 class IsbnSearchController < ApplicationController
+  before_action :authenticate_owner!, only: [:new, :show]
 
   # show the results
   #rubocop:disable Metrics/AbcSize
