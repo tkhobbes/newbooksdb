@@ -14,7 +14,7 @@ class ShelvesController < ApplicationController
 
   # lists all shelves - only owner owned if owner is not admin
   def index
-    @shelves = if current_owner.admin
+    @shelves = if current_owner&.admin
                 Shelf.all.order(:name).includes([owner: [:profile]])
               else
                 current_owner.shelves.all.order(:name).includes([:owner])
@@ -30,7 +30,7 @@ class ShelvesController < ApplicationController
   # standard rails method to edit a shelf
   def edit
     redirect_to root_path,
-    error: 'You are not authorised to edit this shelf' unless @shelf.owner == current_owner || current_owner.admin
+    error: 'You are not authorised to edit this shelf' unless @shelf.owner == current_owner || current_owner&.admin
   end
 
   #standard rails create action; answers to:
@@ -58,7 +58,7 @@ class ShelvesController < ApplicationController
 # rubocop:enable Metrics/MethodLength
 
   def update
-    if @shelf.owner == current_owner || current_owner.admin
+    if @shelf.owner == current_owner || current_owner&.admin
       if @shelf.update(shelf_params)
         redirect_to shelves_path
       else
@@ -74,7 +74,7 @@ class ShelvesController < ApplicationController
   # -turbo-stream - default response format, used on the settings page
   # This method smells of :reek:TooManyStatements
   def destroy
-    if @shelf.owner == current_owner || current_owner.admin
+    if @shelf.owner == current_owner || current_owner&.admin
       @shelf.destroy
       if @shelf.destroyed?
         respond_to do |format|
