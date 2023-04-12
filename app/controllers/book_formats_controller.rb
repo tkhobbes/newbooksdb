@@ -91,6 +91,10 @@ class BookFormatsController < ApplicationController
     @new_default.update(fallback: true)
     @default_book_format = @new_default
     @book_formats = BookFormat.all.order(:name)
+    respond_to do |format|
+      format.turbo_stream
+      format.html { redirect_to book_formats_path, status: :see_other }
+    end
   end
 
   private
