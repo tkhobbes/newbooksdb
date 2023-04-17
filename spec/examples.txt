@@ -126,6 +126,8 @@ example_id                                    | status | run_time        |
 ./spec/requests/books_spec.rb[1:1:3:1]        | passed | 0.09906 seconds |
 ./spec/requests/books_spec.rb[1:1:3:2]        | passed | 0.43459 seconds |
 ./spec/requests/books_spec.rb[1:1:3:3]        | passed | 0.31009 seconds |
+./spec/requests/cover_search_spec.rb[1:1:1:1] | passed | 1.17 seconds    |
+./spec/requests/cover_search_spec.rb[1:1:1:2] | passed | 10.05 seconds   |
 ./spec/requests/genres_spec.rb[1:1:1:1]       | passed | 0.06646 seconds |
 ./spec/requests/genres_spec.rb[1:1:1:2]       | passed | 0.08562 seconds |
 ./spec/requests/genres_spec.rb[1:1:2:1]       | passed | 0.01539 seconds |
@@ -157,6 +159,14 @@ example_id                                    | status | run_time        |
 ./spec/requests/publishers_spec.rb[1:1:3:1]   | passed | 0.0483 seconds  |
 ./spec/requests/publishers_spec.rb[1:1:3:2]   | passed | 0.0819 seconds  |
 ./spec/requests/publishers_spec.rb[1:1:3:3]   | passed | 0.07609 seconds |
+./spec/requests/scan_queues_spec.rb[1:1:1:1]  | passed | 0.0163 seconds  |
+./spec/requests/scan_queues_spec.rb[1:1:1:2]  | passed | 0.11215 seconds |
+./spec/requests/scan_queues_spec.rb[1:1:1:3]  | passed | 0.01633 seconds |
+./spec/requests/scan_queues_spec.rb[1:1:1:4]  | passed | 0.02046 seconds |
+./spec/requests/scan_queues_spec.rb[1:1:2:1]  | passed | 0.55501 seconds |
+./spec/requests/scan_queues_spec.rb[1:1:2:2]  | passed | 0.07996 seconds |
+./spec/requests/scan_queues_spec.rb[1:1:2:3]  | passed | 0.11247 seconds |
+./spec/requests/scan_queues_spec.rb[1:1:2:4]  | passed | 0.04221 seconds |
 ./spec/requests/settings_spec.rb[1:1:1:1]     | passed | 0.01276 seconds |
 ./spec/requests/settings_spec.rb[1:1:1:2]     | passed | 0.0141 seconds  |
 ./spec/requests/settings_spec.rb[1:1:2:1]     | passed | 0.07484 seconds |

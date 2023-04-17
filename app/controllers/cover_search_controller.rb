@@ -2,6 +2,7 @@
 
  # controller to find better Covers
  class CoverSearchController < ApplicationController
+  before_action :authenticate_owner!, only: [:create]
 
   # create - a new search
   # rubocop:disable Metrics/AbcSize

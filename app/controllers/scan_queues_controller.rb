@@ -29,6 +29,7 @@ class ScanQueuesController < ApplicationController
 
     respond_to do |format|
       format.turbo_stream
+      format.html { redirect_to new_scan_queue_path, notice: 'Scan queue updated', status: :see_other }
     end
   end
 
