@@ -167,6 +167,8 @@ example_id                                    | status | run_time        |
 ./spec/requests/scan_queues_spec.rb[1:1:2:2]  | passed | 0.07996 seconds |
 ./spec/requests/scan_queues_spec.rb[1:1:2:3]  | passed | 0.11247 seconds |
 ./spec/requests/scan_queues_spec.rb[1:1:2:4]  | passed | 0.04221 seconds |
+./spec/requests/search_spec.rb[1:1]           | passed | 1.59 seconds    |
+./spec/requests/search_spec.rb[1:2]           | passed | 0.36109 seconds |
 ./spec/requests/settings_spec.rb[1:1:1:1]     | passed | 0.01276 seconds |
 ./spec/requests/settings_spec.rb[1:1:1:2]     | passed | 0.0141 seconds  |
 ./spec/requests/settings_spec.rb[1:1:2:1]     | passed | 0.07484 seconds |
