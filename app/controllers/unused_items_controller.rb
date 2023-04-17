@@ -7,15 +7,20 @@ class UnusedItemsController < ApplicationController
   # show method shows all unused items of a model
   # this method smells of :reek:DuplicateMethodCall
   def index
-    return unless ALLOWED_METHODS.include?(params[:show])
+    redirect_to root_path,
+notice: 'You are not allowed to perform that action' unless ALLOWED_METHODS.include?(params[:show]) && current_owner&.admin
     @model = params[:items_in]
     @items = Object.const_get(@model).send(params[:show])
   end
 
   # destroy method actually deletes unused items of a model
   def destroy
-    model = params[:items_in]
-    Object.const_get(model).send(params[:show]).destroy_all
-    redirect_to bulk_actions_settings_path, notice: "Unused #{model}s removed."
+    if current_owner&.admin
+      model = params[:items_in]
+      Object.const_get(model).send(params[:show]).destroy_all
+      redirect_to bulk_actions_settings_path, notice: "Unused #{model}s removed."
+    else
+      redirect_to root_path, notice: 'You are not allowed to perform that action'
+    end
   end
 end
