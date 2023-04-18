@@ -5,6 +5,7 @@ class UserDestructionsController < ApplicationController
 
   # show the form
   def new
+    redirect_to root_path, notice: 'You are not authorized to perform that action' unless current_owner
     @owner = Owner.find(Profile.find(params[:id]).owner.id)
   end
 
@@ -16,18 +17,21 @@ class UserDestructionsController < ApplicationController
   def create
     owner = Owner.find(params[:current_owner_id])
     # are we even allowed to do that?
-    redirect_to root_path unless current_owner.admin || owner == current_owner
-    # transfer books to another owner
-    case params[:book_selection]
-    when 'transfer'
-      transfer_books(owner, Owner.find_by(email: params[:transfer_to_owner]))
-      action_message = "books transferred to owner #{params[:transfer_to_owner]}"
-    when 'delete'
-      delete_books(owner)
-      action_message = 'books removed'
+    if current_owner&.admin || owner == current_owner
+      # transfer books to another owner
+      case params[:book_selection]
+      when 'transfer'
+        transfer_books(owner, Owner.find_by(email: params[:transfer_to_owner]))
+        action_message = "books transferred to owner #{params[:transfer_to_owner]}"
+      when 'delete'
+        delete_books(owner)
+        action_message = 'books removed'
+      end
+      owner.destroy
+      redirect_to root_path, info: "Owner Removed; #{action_message}"
+    else
+      redirect_to root_path
     end
-    owner.destroy
-    redirect_to root_path, info: "Owner Removed; #{action_message}"
   end
   # rubocop:enable Metrics/AbcSize
   # rubocop:enable Metrics/MethodLength
