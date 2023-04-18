@@ -21,8 +21,6 @@ class UserDestructionsController < ApplicationController
       # transfer books to another owner
       case params[:book_selection]
       when 'transfer'
-        # transfer_books(owner, Owner.find_by(email: params[:transfer_to_owner]))
-        # action_message = "books transferred to owner #{params[:transfer_to_owner]}"
         result = BookTransfer.new(
           owner,
           Owner.find_by(email: params[:transfer_to_owner])
@@ -42,20 +40,4 @@ class UserDestructionsController < ApplicationController
   end
   # rubocop:enable Metrics/AbcSize
   # rubocop:enable Metrics/MethodLength
-
-
-  # transfer books to another owner
-  # this method smells of :reek:UtilityFunction
-  # def transfer_books(old_owner, new_owner)
-  #   old_owner.books.each do |book|
-  #     book.update(owner_id: new_owner.id)
-  #   end
-  # end
-
-  # delete books
-  # This method smells of :reek:UtilityFunction
-  # def delete_books(existing_owner)
-  #   Book.destroy_by(owner: existing_owner)
-  # end
-
 end

@@ -34,7 +34,7 @@ RSpec.describe 'User Destructions' do
       it 'can delete the own profile' do
         new_owner = create(:jimbeam)
         format = create(:book_format)
-        Book.create(
+        book = Book.create(
           title: 'The Hobbit',
           book_format: format,
           owner: profile.owner
@@ -50,7 +50,7 @@ RSpec.describe 'User Destructions' do
           book_selection: 'transfer',
           transfer_to_owner: new_owner.email
         }
-        expect(Book.where(owner: new_owner).count).to eq(2)
+        expect(new_owner.reload.books).to include(book)
       end
 
     end
@@ -78,7 +78,7 @@ RSpec.describe 'User Destructions' do
           book_selection: 'transfer',
           transfer_to_owner: new_owner.email
         }
-        expect(Book.where(owner: new_owner).count).to eq(2)
+        expect(new_owner.reload.books.count).to eq(2)
       end
     end
   end
