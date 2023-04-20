@@ -2,7 +2,7 @@
   <li>
     <div class="flexlist">
       <%= link_to(
-        "#{book_format.name}#{t('BookFormats.book_format.default') if book_format.fallback} - #{book_format.books_count} #{t('BookFormats.book_format.books')}",
+        "#{book_format.name}#{t('BookFormats.book_format.default') if book_format.fallback} - #{pluralize(book_format.books_count, Book.model_name.human)}",
         edit_book_format_path(book_format)
        ) %>
       <%= render 'shared/crud_icons',

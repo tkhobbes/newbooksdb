@@ -3,7 +3,7 @@
 <%= render 'settings/settings_menu' %>
   <div class="submenucontent">
     <h3 class="heading4">
-      <%= t('BookFormats.index.subtitle') %>
+      <%= "#{t('BookFormats.index.subtitle')} #{BookFormat.model_name.human}"%>
     </h3>
     <ul class="simple-list width-50" id="book-formats">
       <%= render 'new_form_entry' %>
@@ -15,7 +15,7 @@
     </ul>
 
     <h3 class="heading4 margin-top-1 margin-bottom-50">
-      <%= t('BookFormats.index.default_title') %>
+      <%= "#{t('BookFormats.index.default_title')} #{BookFormat.model_name.human}" %>
     </h3>
     <ul class="simple-list width-50">
       <li>
