@@ -55,7 +55,8 @@ class TagsController < ApplicationController
         @pagy_authors, @authors = pagy(@tag.authors.includes([portrait_attachment: :blob]).order(:sort_name))
       end
     else
-      redirect_to root_path, error: 'You are not authorised to view this tag'
+      redirect_to root_path,
+        error: "You are not authorised to view this #{Tag.model_name.human}"
     end
   end
 
@@ -101,7 +102,8 @@ class TagsController < ApplicationController
         render :edit, status: :unprocessable_entity
       end
     else
-      redirect_to root_path, error: 'You are not authorised to edit this tag'
+      redirect_to root_path,
+        error: "You are not authorised to edit this tag #{Tag.model_name.human}"
     end
   end
 
@@ -126,7 +128,8 @@ class TagsController < ApplicationController
         render json: { nothing: true }
       end
     else
-      redirect_to root_path, error: 'You are not authorised to delete this tag'
+      redirect_to root_path,
+        error: "You are not authorised to delete this #{Tag.model_name.human}"
     end
   end
 

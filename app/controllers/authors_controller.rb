@@ -46,7 +46,7 @@ class AuthorsController < ApplicationController
   def create
     @author = Author.new(author_params)
     if @author.save
-      redirect_to author_path(@author), success: 'Author saved'
+      redirect_to author_path(@author), success: "#{Author.model_name.human} saved"
     else
       render :new, status: :unprocessable_entity
     end
@@ -54,7 +54,7 @@ class AuthorsController < ApplicationController
 
   def update
     if @author.update(author_params)
-      flash[:success] = 'Author updated'
+      flash[:success] = "#{Author.model_name.human} updated"
       redirect_to @author
     else
       render :edit, status: :unprocessable_entity
@@ -65,7 +65,7 @@ class AuthorsController < ApplicationController
     @author.destroy
     respond_to do |format|
       format.turbo_stream
-      format.html { redirect_to authors_url, alert: 'Author removed', status: :see_other }
+      format.html { redirect_to authors_url, alert: "#{Author.model_name.human} removed", status: :see_other }
     end
   end
 

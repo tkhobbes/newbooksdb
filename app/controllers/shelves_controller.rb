@@ -65,7 +65,8 @@ class ShelvesController < ApplicationController
         render :edit, status: :unprocessable_entity
       end
     else
-      redirect_to root_path, error: 'You are not authorised to edit this shelf'
+      redirect_to root_path,
+        error: "You are not authorised to edit this #{Shelf.model_name.human}"
     end
   end
 
@@ -89,7 +90,7 @@ class ShelvesController < ApplicationController
       end
     else
       redirect_to root_path,
-    error: 'You are not authorised to delete this shelf'
+      error: "You are not authorised to delete this #{Shelf.model_name.human}"
     end
   end
 

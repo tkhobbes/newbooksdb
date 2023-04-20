@@ -1,0 +1,84 @@
+en:
+  activerecord:
+    models:
+      author:
+        one: author
+        other: authors
+      book_format:
+        one: book format
+        other: book formats
+      book:
+        one: book
+        other: books
+      genre:
+        one: genre
+        other: genres
+      owner:
+        one: owner
+        other: owners
+      profile:
+        one: profile
+        other: profiles
+      publisher:
+        one: publisher
+        other: publishers
+      shelf:
+        one: shelf
+        other: shelves
+      tag:
+        one: tag
+        other: tags
+    attributes:
+      author:
+        books_count: books
+        born: born
+        died: died
+        display_name: full name
+        first_name: first name
+        gender: gender
+        last_name: last name
+        rating: rating
+        sort_name: sort name
+        created_at: created at
+        updated_at: updated at
+      book_format:
+        books_count: books
+        fallback: default format
+        created_at: created at
+        name: name
+        updated_at: updated at
+      book:
+        condition: condition
+        country: country
+        edition: edition
+        original_title: original title
+        pages: pages
+        rating: rating
+        sort_title: sort title
+        title: title
+        year: year
+        created_at: created at
+        updated_at: updated at
+      genre:
+        books_count: books
+        name: name
+        created_at: created at
+        updated_at: updated at
+      owner:
+        books_count: books
+        email: email
+        created_at: created at
+        updated_at: updated at
+      profile:
+        name: name
+        created_at: created at
+        updated_at: updated at
+      shelf:
+        books_count: books
+        name: name
+        created_at: created at
+        updated_at: updated at
+      tag:
+        name: name
+        created_at: created at
+        updated_at: updated at

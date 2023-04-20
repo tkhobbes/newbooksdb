@@ -105,6 +105,8 @@ gem 'metainspector'
 gem 'open-uri'
 # Pagination for large collections
 gem 'pagy', '>= 5.10.1'
+# i18n
+gem 'rails-i18n'
 # Search
 gem 'search_cop', '>= 1.2.3'
 # Simple form for form inputs

@@ -40,5 +40,8 @@ module Newbooksdb
     config.active_storage.variant_processor = :mini_magick
 
     config.view_component.preview_paths << "#{Rails.root}/spec/components/previews"
+
+    # i18n locales
+    config.i18n.available_locales = %i[en de]
   end
 end
