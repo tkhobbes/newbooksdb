@@ -2,83 +2,83 @@ en:
   activerecord:
     models:
       author:
-        one: author
-        other: authors
+        one: Author
+        other: Authors
       book_format:
-        one: book format
-        other: book formats
+        one: Book Format
+        other: Book Formats
       book:
-        one: book
-        other: books
+        one: Book
+        other: Books
       genre:
-        one: genre
-        other: genres
+        one: Genre
+        other: Genres
       owner:
-        one: owner
-        other: owners
+        one: Owner
+        other: Owners
       profile:
-        one: profile
-        other: profiles
+        one: Profile
+        other: Profiles
       publisher:
-        one: publisher
-        other: publishers
+        one: Publisher
+        other: Publishers
       shelf:
-        one: shelf
-        other: shelves
+        one: Shelf
+        other: Shelves
       tag:
-        one: tag
-        other: tags
+        one: Tag
+        other: Tags
     attributes:
       author:
-        books_count: books
-        born: born
-        died: died
-        display_name: full name
-        first_name: first name
-        gender: gender
-        last_name: last name
-        rating: rating
-        sort_name: sort name
-        created_at: created at
-        updated_at: updated at
+        books_count: Books
+        born: Born
+        died: Bied
+        display_name: Full Name
+        first_name: First Name
+        gender: Gender
+        last_name: Last Name
+        rating: Rating
+        sort_name: Sort Name
+        created_at: Created at
+        updated_at: Updated at
       book_format:
-        books_count: books
-        fallback: default format
-        created_at: created at
-        name: name
-        updated_at: updated at
+        books_count: Books
+        fallback: Default Format
+        name: Name
+        created_at: Created at
+        updated_at: Updated at
       book:
-        condition: condition
-        country: country
-        edition: edition
-        original_title: original title
-        pages: pages
-        rating: rating
-        sort_title: sort title
-        title: title
-        year: year
-        created_at: created at
-        updated_at: updated at
+        condition: Condition
+        country: Country
+        edition: Edition
+        original_title: Original Title
+        pages: Pages
+        rating: Rating
+        sort_title: Sort Title
+        title: Title
+        year: Year
+        created_at: Created at
+        updated_at: Updated at
       genre:
-        books_count: books
-        name: name
-        created_at: created at
-        updated_at: updated at
+        books_count: Books
+        name: Name
+        created_at: Created at
+        updated_at: Updated at
       owner:
-        books_count: books
-        email: email
-        created_at: created at
-        updated_at: updated at
+        books_count: Books
+        email: E-Mail
+        created_at: Created at
+        updated_at: Updated at
       profile:
-        name: name
-        created_at: created at
-        updated_at: updated at
+        name: Name
+        created_at: Created at
+        updated_at: Updated at
       shelf:
-        books_count: books
-        name: name
-        created_at: created at
-        updated_at: updated at
+        books_count: Books
+        name: Name
+        created_at: Created at
+        updated_at: Updated at
       tag:
-        name: name
-        created_at: created at
-        updated_at: updated at
+        name: Name
+        created_at: Created at
+        updated_at: Updated at

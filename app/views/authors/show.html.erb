@@ -35,7 +35,7 @@
     </div>
     <div class="bookdetails__meta">
       <div class="margin-bottom-1">
-        <%= t('Authors.show.rating') %>:
+        <%= Author.human_attribute_name('rating') %>:
         <%= render StarRatingComponent.new(rated: @author, humanized: true) %>
       </div>
     </div>
@@ -46,7 +46,7 @@
   </div>
 <% else %>
   <h2 class="heading3 margin-top-1">
-    <%= t('Authors.show.books') %>
+    <%= Book.model_name.human(count:@books.size) %>
   </h2>
 
   <%= turbo_frame_tag 'page' %>

@@ -13,7 +13,7 @@
               author_path(author),
               data: { turbo_frame: "_top" }
               )%>
-            (<%= pluralize(author.books_count, t('Authors.books')) %>)
+            (<%= pluralize(author.books_count, Book.model_name.human(count:author.books_count)) %>)
           </div>
           <div class="itemlist__icons">
             <% if owner_signed_in? %>

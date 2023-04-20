@@ -1,31 +1,20 @@
 en:
   Authors:
-    books: "Book"
     index:
-      title: "Authors"
-      add_button: "Add Author"
-      reset_button: "Reset Sorting"
+      add_button: Add Author
+      reset_button: Reset Sorting
     show:
-      rating: "Rating"
-      no_books: "No books by this author in the database"
-      books: "Books"
+      no_books: No books by this author in the database
     edit:
-      title: "Edit Author"
+      title: Edit
     new:
-      title: "Add new Author"
+      title: Add new
     form:
-      drag_comment: "Drag portrait image here or click to browse"
-      drag_allowed: "3 MB file size maximum. Allowed are only image file types."
-      rating: "Author Rating"
-      tags: "Tags"
+      drag_comment: Drag portrait image here or click to browse
+      drag_allowed: 3 MB file size maximum. Allowed are only image file types.
+      tags: Tags
     required_fields:
-      first_name: "First Name"
-      last_name: "Last Name"
-      born: "Birth Year"
-      died: "Death Year"
-      male: "male"
-      female: "female"
-    count:
-      authors: "Authors"
+      male: male
+      female: female
     details:
-      no_authors: "No authors"
+      no_authors: No authors

@@ -5,7 +5,7 @@
   current_letter: params[:letter]
   ) %>
 
-<%= page_title(t('Authors.index.title'),'', 'heading2') %>
+<%= page_title(Author.model_name.human(count:10),'', 'heading2') %>
 
 <div class="flex">
 

@@ -1,19 +1,19 @@
 <%= form.input :first_name,
-  placeholder: t('Authors.required_fields.first_name'),
+  placeholder: Author.human_attribute_name('first_name'),
   label: false %>
 <%= form.input :last_name,
-  placeholder: t('Authors.required_fields.last_name'),
+  placeholder: Author.human_attribute_name('last_name'),
   label: false %>
 <%= params[:from] %>
 <div class="big-form">
   <div class="form-col">
     <%= form.input :born,
-      placeholder: t('Authors.required_fields.born'),
+      placeholder: Author.human_attribute_name('born'),
       label: false %>
   </div>
   <div class="form-col">
     <%= form.input :died,
-      placeholder: t('Authors.required_fields.died'),
+      placeholder: Author.human_attribute_name('died'),
       label: false %>
   </div>
   <div class="form-col">

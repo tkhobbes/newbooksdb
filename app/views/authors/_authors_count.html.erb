@@ -1,4 +1,4 @@
 <%= turbo_frame_tag 'authors_count' do %>
   <%= authors_count %>
-  <%= t('Authors.count.authors') %>
+  <%= Author.model_name.human(count:authors_count) %>
 <% end %>

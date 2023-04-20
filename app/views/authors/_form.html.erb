@@ -30,7 +30,7 @@
         <div class="big-form">
           <div class="form-col enum_radio_buttons">
             <div class="color-primary-dark margin-bottom-50">
-              <%= t('Authors.form.rating') %>
+              <%= Author.human_attribute_name('rating') %>
             </div>
             <% Author.ratings.each do |k,v| %>
               <span class="radio">

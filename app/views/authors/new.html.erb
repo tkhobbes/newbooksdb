@@ -1,3 +1,7 @@
-<%= page_title(t('Authors.new.title'),'', 'heading2') %>
+<%= page_title(
+  "#{t('Authors.new.title')} #{Author.model_name.human(count:1)}",
+  '',
+  'heading2'
+) %>
 
 <%= render 'form', author: @author %>
