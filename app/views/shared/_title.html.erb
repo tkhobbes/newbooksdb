@@ -6,12 +6,7 @@
     <div class="maintitle">
       <div class="title-with-icons">
         <h1 class="heading1"><%= t 'title.maintitle' %></h1>
-        <div class="righticons">
-          <%= link_to '#' do %>
-            <%= inline_svg_tag 'bell.svg', class: 'icon' %>
-          <% end %>
-          <%= link_to 'EN', '#', class: 'icon-locale' %>
-        </div>
+        <%= render 'shared/topmenu' %>
       </div>
       <div class="quickicons">
         <span class="quickicons__filler"></span>

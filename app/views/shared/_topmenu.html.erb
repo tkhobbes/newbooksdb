@@ -1,0 +1,18 @@
+<div class="righticons">
+  <div class="right-dropdown">
+    <%= link_to '#', id: 'messageslink' do %>
+      <%= inline_svg_tag 'bell.svg', class: 'icon' %>
+    <% end %>
+    <ul class="messagesmenu">
+      <li><a href="#">Message 1</a></li>
+      <li><a href="#">Message 2</a></li>
+    </ul>
+  </div>
+  <div class="right-dropdown">
+    <%= link_to 'EN', '#', id: 'localelink', class: 'icon-locale' %>
+    <ul class="localesmenu">
+      <li><a href="#">EN</a></li>
+      <li><a href="#">DE</a></li>
+    </ul>
+  </div>
+</div>

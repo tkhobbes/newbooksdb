@@ -54,8 +54,8 @@
     flex: 3;
   }
   .righticons {
-    flex: 1;
     text-align: right;
+    display: flex;
 
     a {
       @extend .color-primary-dark;
@@ -80,5 +80,63 @@
         @extend .border-color-primary-light;
       }
     }
+
+    .right-dropdown {
+      position: relative;
+
+      &:hover .messagesmenu,
+      &:hover .localesmenu {
+        visibility: visible;
+        opacity: 1;
+      }
+    }
+
+    .messagesmenu,
+    .localesmenu {
+      @extend .border-color-primary-dark;
+      border-radius: $base-border-radius;
+      @extend .padding-25;
+      @extend .small;
+      background-color: $color-primary-light;
+      position: absolute;
+      text-align: left;
+      visibility: hidden;
+      opacity: 0;
+
+      &:hover {
+        visibility: visible;
+        opacity: 1;
+      }
+
+      a {
+        @extend .color-primary-dark;
+        display: block;
+        padding: $padding-4;
+
+        &:hover {
+          @extend .bg-primary-dark;
+          @extend .color-primary-light;
+        }
+      }
+    }
+
+    .messagesmenu {
+      top: 1.15em;
+      right: -0.2em;
+      min-width: 10em;
+    }
+
+    .localesmenu {
+    }
+
+    // .localesmenu {
+    //   background-color: $color-accent;
+    //   @extend .border-color-primary-dark;
+    //   @extend .padding-25;
+    //   background-color: $color-secondary;
+    //   position: absolute;
+    //   left: 0;
+    //   min-width: 100%;
+    // }
   }
 }
