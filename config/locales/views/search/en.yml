@@ -1,7 +1,4 @@
 en:
   search:
-    placeholder: "Search..."
-    title: "Search Results for %{query}"
-    tabs:
-      books: "Books"
-      authors: "Authors"
+    placeholder: Search...
+    title: Search Results for %{query}

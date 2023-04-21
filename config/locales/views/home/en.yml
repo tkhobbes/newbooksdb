@@ -1,9 +1,9 @@
 en:
-  HomePage:
-    hometitle: "Welcome To The Uzw18 Books Database"
-    notyou: "Not You?"
-    registerbooks: "Want to register your books?"
-    registerowner: "Come and"
-    registerowner_or: "or"
-    homegenretitle: "All Genres"
-    homebookstitle: "Latest Books"
+  Homepage:
+    hometitle: Welcome To The Uzw18 Books Database
+    notyou: Not You?
+    registerbooks: Want to register your books?
+    registerowner: Come and
+    registerowner_or: or
+    all: All
+    latest: Latest

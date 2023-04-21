@@ -1,7 +1,7 @@
 en:
   UnusedItems:
     index:
-      title: "Settings"
+      title: Settings
       without_books: "%{items} without Books"
-      none_found: "There are no %{items} without any books"
-      delete_label: "Delete"
+      none_found: There are no %{items} without any books
+      delete_label: Delete

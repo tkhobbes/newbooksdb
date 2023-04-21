@@ -1,17 +1,17 @@
 en:
   ScanQueues:
     index:
-      title: "Add Scanned Barcodes"
-      no_results: "No results"
-      scan_some: "Go Scan Some Barcodes!"
-      click_each: "Click each result in turn to see possible matches."
-      submit_label: "ISBN"
-      delete_label: "Remove this ISBN from the queue"
-      result_title: "Search Results"
-      click_left: "Click an ISBN to the left to see possible matches."
+      title: Add Scanned Barcodes
+      no_results: No results
+      scan_some: Go Scan Some Barcodes!
+      click_each: Click each result in turn to see possible matches.
+      submit_label: ISBN
+      delete_label: Remove this ISBN from the queue
+      result_title: Search Results
+      click_left: Click an ISBN to the left to see possible matches.
     result:
-      none_yet: "No results yet"
+      none_yet: No results yet
     new:
-      title: "Scan Barcodes"
-      result_title: "Scan Results"
-      done_label: "Done scanning - add books"
+      title: Scan Barcodes
+      result_title: Scan Results
+      done_label: Done scanning - add books

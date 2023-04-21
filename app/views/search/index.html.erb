@@ -4,11 +4,11 @@
   <ul>
     <li class="placeholder-tab">&nbsp;</li>
     <li class="content-tab <%= params[:list] == 'books' ? 'active' : '' %>">
-      <%= link_to t('search.tabs.books'), search_index_path(query: params[:query], show: 'list', list: 'books') %>
+      <%= link_to Book.model_name.human(count: 10), search_index_path(query: params[:query], show: 'list', list: 'books') %>
     </li>
     <li class="placeholder-tab">&nbsp;</li>
     <li class="content-tab <%= params[:list] == 'authors' ? 'active' : '' %>">
-      <%= link_to t('search.tabs.authors'), search_index_path(query: params[:query], show: 'list', list: 'authors') %>
+      <%= link_to Author.model_name.human(count: 10), search_index_path(query: params[:query], show: 'list', list: 'authors') %>
     </li>
     <li class="placeholder-tab">&nbsp;</li>
   </ul>

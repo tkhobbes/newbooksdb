@@ -1,26 +1,30 @@
-<%= page_title("#{t 'HomePage.hometitle'} #{current_owner&.name}",'', 'heading2 color-accent-dark') %>
+<%= page_title("#{t 'Homepage.hometitle'} #{current_owner&.name}",'', 'heading2 color-accent-dark') %>
 <div class="flex">
 <% if current_owner %>
-  <div class="margin-right-25"><%= t 'HomePage.notyou' %></div>
+  <div class="margin-right-25"><%= t 'Homepage.notyou' %></div>
   <%= button_to "#{t 'Devise.logout'}", destroy_owner_session_path, method: 'delete',
     class: 'nobutton color-accent-dark color-hover-accent-light' %>
 <% else %>
   <div>
-    <%= t 'HomePage.registerbooks' %>
-    <%= t 'HomePage.registerowner' %>
+    <%= t 'Homepage.registerbooks' %>
+    <%= t 'Homepage.registerowner' %>
     <%= link_to "#{t 'Devise.login'}", new_owner_session_path,
       class: 'color-accent-dark color-hover-accent-light' %>
-    <%= t 'HomePage.registerowner_or' %>
+    <%= t 'Homepage.registerowner_or' %>
     <%= link_to "#{t 'Devise.signup'}", new_owner_registration_path,
       class: 'color-accent-dark color-hover-accent-light' %>
   </div>
 <% end %>
 </div>
-<h3 class="heading3 margin-top-1"><%= t 'HomePage.homegenretitle' %></h3>
+<h3 class="heading3 margin-top-1">
+  <%= "#{t('Homepage.all')} #{Genre.model_name.human(count: 10)}" %>
+</h3>
 <div class="genre-cloud">
   <%= render CloudComponent.new(model: 'Genre') %>
 </div>
-<h3 class="heading3 margin-top-1"><%= t 'HomePage.homebookstitle' %></h3>
+<h3 class="heading3 margin-top-1">
+  <%= "#{t('Homepage.latest')} #{Book.model_name.human(count:10)}" %>
+</h3>
 <ul class="itemlist">
   <% @books.each do |book| %>
     <%= render 'books/booklist_small', book: book %>

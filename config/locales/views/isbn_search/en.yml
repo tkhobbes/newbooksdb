@@ -1,16 +1,16 @@
 en:
   IsbnSearch:
     new:
-      title: "Search for a Book"
-      isbn_title: "Search by ISBN"
-      isbn_placeholder: "ISBN"
-      submit_label: "Search"
-      title_title: "...or Search by Title"
-      title_placeholder: "Title"
-      author_title: "...or Search by Author Name"
-      author_placeholder: "Author Name"
+      title: Search for a Book
+      isbn_title: Search by ISBN
+      isbn_placeholder: ISBN
+      submit_label: Search
+      title_title: ...or Search by Title
+      title_placeholder: Title
+      author_title: ...or Search by Author Name
+      author_placeholder: Author Name
     show:
-      title: "Search Results"
-      no_results: "No results found."
-      click: "Click a title to create the book in the database."
-      another_search: "Try another Search"
+      title: Search Results
+      no_results: No results found.
+      click: Click a title to create the book in the database.
+      another_search: Try another Search
