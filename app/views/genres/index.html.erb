@@ -1,4 +1,8 @@
-<%= page_title(t('Genres.index.title'),'', 'heading2') %>
+<%= page_title(
+  "#{t('Genres.index.title')} #{Genre.model_name.human(count: 10)}",
+  '',
+  'heading2'
+) %>
 
 <%= render AbcNavigateComponent.new(
   model: 'Genre',

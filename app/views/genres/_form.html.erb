@@ -1,6 +1,6 @@
   <%= simple_form_for genre, html: { class: 'inline-form' } do |f| %>
     <%= f.input :name,
-      placeholder: t('Genres.form.name_placeholder'),
+      placeholder: Genre.human_attribute_name('name'),
       label: false,
       wrapper_html: { class: 'width-100' }
     %>

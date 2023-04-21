@@ -2,7 +2,7 @@
   <li>
     <div class="flexlist">
       <%= link_to(
-        t('Genres.new_form_entry.new_link'),
+        "#{t('Genres.new_form_entry.new_link')} #{Genre.model_name.human}",
         new_genre_path,
         class: 'alternate',
         data: { turbo_frame: 'new-genre' }
