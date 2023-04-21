@@ -9,7 +9,7 @@
           <%= render AvatarImageComponent.new(profile: @profile, size: :small) %>
         </div>
         <%= f.input :name ,
-          placeholder: t('Profiles.edit.name_placeholder'),
+          placeholder: Profile.human_attribute_name('name'),
           label: false %>
       </div>
       <div

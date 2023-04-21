@@ -73,7 +73,7 @@ en:
         created_at: Created at
         updated_at: Updated at
       profile:
-        name: Name
+        name: Username
         created_at: Created at
         updated_at: Updated at
       shelf:

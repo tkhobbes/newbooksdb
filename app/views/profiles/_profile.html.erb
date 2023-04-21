@@ -5,7 +5,7 @@
     </div>
     <div class="itemlist__title">
       <%= link_to profile.name, profile %>
-      (<%= profile.owner.books_count %> <%= t('Profiles.profile.books')%>)
+      (<%= pluralize(profile.owner.books_count, Book.model_name.human) %>)
     </div>
     <div class="itemlist__title">
       (<%= t('Profiles.profile.active') %>

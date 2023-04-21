@@ -1,22 +1,18 @@
 en:
   Profiles:
     index:
-      title: "Settings"
-      subtitle: "All Owners"
+      title: Settings
+      subtitle: All Owners
     edit:
-      title: "Edit your Profile"
-      name_placeholder: "Username"
-      avatar_drop: "Drag avatar image here or click to browse"
-      avatar_drop_comment: "3 MB file size maximum. Allowed are only image file types."
+      title: Edit your Profile
+      avatar_drop: Drag avatar image here or click to browse
+      avatar_drop_comment: 3 MB file size maximum. Allowed are only image file types.
     show:
-      title: "Profile for"
-      registered: "Registered %{reg_time} ago"
-      edit_label: "Edit my Profile"
-      password_label: "Change my Password"
-      logout_label: "Logout"
-      delete_label: "Delete my Profile"
+      title: Profile for
+      registered: Registered %{reg_time} ago
+      edit_label: Edit my Profile
+      password_label: Change my Password
+      logout_label: Logout
+      delete_label: Delete my Profile
     profile:
-      books: "Books"
-      active: "Active since"
-    profiles_count:
-      profiles: "Owners"
+      active: Active since

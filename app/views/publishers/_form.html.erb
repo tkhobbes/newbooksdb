@@ -3,10 +3,10 @@
     <div class="big-form">
       <div class="form-col col-wide">
         <%= f.input :name,
-          placeholder: t('Publishers.form.name_placeholder'),
+          placeholder: Publisher.human_attribute_name('name'),
           label: false %>
         <%= f.input :location,
-          placeholder: t('Publishers.form.location_placeholder'),
+          placeholder: Publisher.human_attribute_name('location'),
           label: false %>
       </div>
     </div>

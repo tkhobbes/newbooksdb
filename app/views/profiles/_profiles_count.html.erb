@@ -1,1 +1,1 @@
-<%= owners_count %> <%= t('Profiles.profiles_count.profiles') %>
+<%= pluralize(owners_count, Owner.model_name.human) %>

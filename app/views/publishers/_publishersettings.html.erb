@@ -2,7 +2,7 @@
   <li>
     <div class="flexlist">
       <%= link_to(
-        "#{publisher.name} - #{publisher.books_count} #{t('Publishers.publishersettings.books')}",
+        "#{publisher.name} - #{publisher.books_count} #{Book.model_name.human(count: 10)}",
         edit_publisher_path(publisher)
        ) %>
       <%= render 'shared/crud_icons',

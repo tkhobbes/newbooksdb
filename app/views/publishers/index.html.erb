@@ -1,4 +1,8 @@
-<%= page_title(t('Publishers.index.title'),'', 'heading2') %>
+<%= page_title(
+  "#{t('Publishers.index.title')} #{Publisher.model_name.human}",
+  '',
+  'heading2'
+) %>
 
 <%= render AbcNavigateComponent.new(
   model: 'Publisher',
@@ -8,7 +12,7 @@
   ) %>
 
 <div class="flex">
-  <%= link_to t('Publishers.index.add_label'),
+  <%= link_to "#{t('Publishers.index.add_label')} #{Publisher.model_name.human}",
     new_publisher_path,
     class: 'button-color-accent margin-right-50 small'
   %>

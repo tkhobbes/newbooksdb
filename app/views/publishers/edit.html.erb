@@ -1,3 +1,7 @@
-<%= page_title("#{t('Publishers.edit.title')} #{@publisher.name}",'', 'heading2') %>
+<%= page_title(
+  "#{t('Publishers.edit.title')} #{Publisher.model_name.human} #{@publisher.name}",
+  '',
+  'heading2'
+) %>
 
 <%= render 'form', publisher: @publisher %>
