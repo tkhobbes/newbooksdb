@@ -1,42 +1,21 @@
 en:
   Books:
     index:
-      reset_sorting: "Reset Sorting"
+      reset_sorting: Reset Sorting
     show:
-      better_cover: "Find a better Cover"
-      owner: "Owner"
-      genres: "Genres"
-      tags: "Tags"
-      rating: "Book Owner's Rating"
-      condition: "Book Condition"
+      better_cover: Find a better Cover
+      rating: Book Owner's Rating
     new:
-      title: "Add a new Book"
+      title: Add a new
     edit:
-      title: "Edit Book"
+      title: Edit
     form:
-      title_placeholder: "Book Title"
-      original_placeholder: "Original Title"
-      select_authors: "Select Authors..."
-      add_author: "...or add an Author"
-      select_authors_comment: "You can select authors first on the left and then click above button to add new ones."
-      select_authors_prompt: "Authors..."
-      authors_placeholder: "Authors"
-      new_author_title: "Add New Author"
-      new_author_link: "Add another Author..."
-      publisher_placeholder: "Publisher"
-      country_prompt: "Country..."
-      country_placeholder: "Country"
-      edition_placeholder: "Edition"
-      book_format_placeholder: "Book Format"
-      cover_drag: "Drag cover image here or click to browse"
-      cover_drag_comment: "3 MB file size maximum. Allowed are only image file types."
-      synopsis: "Synopsis"
-      rating: "Book Rating"
-      condition: "Book Condition"
-      genres: "Genres"
-      tags: "Tags"
-      shelf: "Shelf"
+      select_authors: Select Authors...
+      add_author: ...or add an Author
+      select_authors_comment: You can select authors first on the left and then click above button to add new ones.
+      new_author_title: Add new
+      new_author_link: Add another
+      cover_drag: Drag cover image here or click to browse
+      cover_drag_comment: 3 MB file size maximum. Allowed are only image file types.
     details_book:
-      no_books: "No Books"
-    books_count:
-      books: "Books"
+      no_books: No Books

@@ -37,6 +37,7 @@ en:
         first_name: First Name
         gender: Gender
         last_name: Last Name
+        portrait: Portrait
         rating: Rating
         sort_name: Sort Name
         created_at: Created at
@@ -55,6 +56,8 @@ en:
         pages: Pages
         rating: Rating
         sort_title: Sort Title
+        synopsis: Synopsis
+        cover: Cover
         title: Title
         year: Year
         created_at: Created at

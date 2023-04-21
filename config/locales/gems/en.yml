@@ -1,6 +1,6 @@
 en:
   # Devise - see also devise.en.yml
   Devise:
-    logout: "Log out"
-    login: "Log in"
-    signup: "Sign Up"
+    logout: Log out
+    login: Log in
+    signup: Sign Up

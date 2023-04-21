@@ -3,10 +3,10 @@
     <div class="big-form" data-controller="add-sub-form">
       <div class="form-col col-wide">
         <%= f.input :title,
-          placeholder: t('Books.form.title_placeholder'),
+          placeholder: Book.human_attribute_name('title'),
           label: false %>
         <%= f.input :original_title,
-          placeholder: t('Books.form.original_placeholder'),
+          placeholder: Book.human_attribute_name('original_title'),
           label: false %>
         <div class="big-form flex-align-center">
           <div class="form-col">
@@ -35,13 +35,13 @@
             label: false,
             collection: Author.order(:sort_name),
             label_method: :display_name, value_method: :id,
-            prompt: t('Books.form.select_authors_prompt'),
+            prompt: "#{Author.model_name.human(count: 10)} ...",
             input_html:
               { data:
                 {
                   controller: 'tom-select',
                 },
-                placeholder: t('Books.form.authors_placeholder'),
+                placeholder: Author.model_name.human(count: 10),
                 class: 'width-100'
               }
           ) %>
@@ -54,11 +54,11 @@
               id="0"
             >
               <h2 class="heading4 color-primary-dark">
-                <%= t('Books.form.new_author_title') %>
+                <%= "#{t('Books.form.new_author_title')} #{Author.model_name.human}" %>
               </h2>
               <%= f.fields_for :authors do |form| %>
                 <%= render 'authors/required_fields_form', form: form %>
-                <%= link_to t('Books.form.new_author_link'),
+                <%= link_to "#{t('Books.form.new_author_link')} #{Author.model_name.human}",
                 '#',
                 class: 'button-color-primary text-center width-33',
                 data: { action: 'click->another-sub-form#addform'} %>
@@ -78,7 +78,7 @@
                     controller: 'tom-select-add',
                     tom_select_add_url_value: '/publishers'
                   },
-                  placeholder: t('Books.form.publisher_placeholder')
+                  placeholder: Publisher.model_name.human
                 }
             ) %>
           </div>
@@ -88,13 +88,13 @@
           <div class="form-col">
             <%= f.input :country,
               priority: ['United States', 'Germany', 'Switzerland', 'United Kingdom'],
-              prompt: t('Books.form.country_prompt'),
+              prompt: Book.human_attribute_name('country'),
               label: false,
               input_html: {
                 data: {
                   controller: 'tom-select'
                 },
-                placeholder: t('Books.form.country_placeholder'),
+                placeholder: Book.human_attribute_name('country'),
               }
             %>
           </div>
@@ -102,7 +102,7 @@
         <div class="big-form">
           <div class="form-col">
             <%= f.input :edition,
-              placeholder: t('Books.form.edition_placeholder'),
+              placeholder: Book.human_attribute_name('edition'),
               label: false %>
           </div>
           <div class="form-col">
@@ -116,7 +116,7 @@
                     controller: 'tom-select-add',
                     tom_select_add_url_value: '/book_formats'
                   },
-                  placeholder: t('Books.form.book_format_placeholder')
+                  placeholder: BookFormat.model_name.human
                 }
             ) %>
           </div>
@@ -144,7 +144,7 @@
         </div>
         <div class="rich-text-input">
           <h4 class="heading4 color-primary-dark">
-            <%= t('Books.form.synopsis') %>
+            <%= Book.human_attribute_name('synopsis') %>
           </h4>
           <%= f.rich_text_area :synopsis %>
         </div>
@@ -153,7 +153,7 @@
         <div class="big-form">
           <div class="form-col enum_radio_buttons">
             <div class="color-primary-dark margin-bottom-50">
-              <%= t('Books.form.rating') %>
+              <%= Book.human_attribute_name('rating') %>
             </div>
             <% Book.ratings.each do |k,v| %>
               <span class="radio">
@@ -167,7 +167,7 @@
           </div>
           <div class="form-col enum_radio_buttons">
             <div class="color-primary-dark margin-bottom-50">
-              <%= t('Books.form.condition') %>
+              <%= Book.human_attribute_name('condition') %>
             </div>
             <% Book.conditions.each do |k,v| %>
               <span class="radio">
@@ -181,7 +181,7 @@
           </div>
         </div>
         <div class="color-primary-dark margin-bottom-50 margin-top-50">
-          <%= t('Books.form.genres') %>
+          <%= Genre.model_name.human(count: 10) %>
         </div>
         <%= f.association(
           :genres,
@@ -196,7 +196,7 @@
             }
         ) %>
         <div class="color-primary-dark margin-bottom-50 margin-top-50">
-          <%= t('Books.form.tags') %>
+          <%= Tag.model_name.human(count: 10) %>
         </div>
         <%= f.association(
           :tags, collection: Tag.where(owner_id: current_owner.id).order(:name),
@@ -210,7 +210,7 @@
             }
         ) %>
         <div class="color-primary-dark margin-bottom-50 margin-top-50">
-          <%= t('Books.form.shelf') %>
+          <%= Shelf.model_name.human %>
         </div>
         <%= f.association(
           :shelf, collection: Shelf.where(owner_id: current_owner.id).order(:name),
