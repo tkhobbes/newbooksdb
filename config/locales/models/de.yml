@@ -1,0 +1,87 @@
+de:
+  activerecord:
+    models:
+      author:
+        one: AutorIn
+        other: AutorInnen
+      book_format:
+        one: Buchformat
+        other: Buchformate
+      book:
+        one: Buch
+        other: Bücher
+      genre:
+        one: Genre
+        other: Genres
+      owner:
+        one: BesitzerIn
+        other: BesitzerInnen
+      profile:
+        one: Profil
+        other: Profile
+      publisher:
+        one: Verlag
+        other: Verlage
+      shelf:
+        one: Schaft
+        other: Schäfte
+      tag:
+        one: Tag
+        other: Tags
+    attributes:
+      author:
+        books_count: Bücher
+        born: Geboren
+        died: Gestorben
+        display_name: Voller Name
+        first_name: Vorname
+        gender: Geschlecht
+        last_name: Nachname
+        portrait: Portrait
+        rating: Bewertung
+        sort_name: Sortiername
+        created_at: Erstellt am
+        updated_at: Modifiziert am
+      book_format:
+        books_count: Bücher
+        fallback: Standard Format
+        name: Name
+        created_at: Erstellt am
+        updated_at: Modifiziert am
+      book:
+        condition: Zustand
+        country: Land
+        edition: Ausagbe
+        original_title: Originaltitel
+        pages: Seiten
+        rating: Bewertung
+        sort_title: Sortiertitel
+        synopsis: Zusammenfassung
+        cover: Cover
+        title: Titel
+        year: Jahr
+        created_at: Erstellt am
+        updated_at: Modifiziert am
+      genre:
+        books_count: Bücher
+        name: Name
+        created_at: Erstellt am
+        updated_at: Modifiziert am
+      owner:
+        books_count: Bücher
+        email: E-Mail
+        created_at: Erstellt am
+        updated_at: Modifiziert am
+      profile:
+        name: Benutzername
+        created_at: Erstellt am
+        updated_at: Modifiziert am
+      shelf:
+        books_count: Bücher
+        name: Name
+        created_at: Erstellt am
+        updated_at: Modifiziert am
+      tag:
+        name: Name
+        created_at: Erstellt am
+        updated_at: Modifiziert am

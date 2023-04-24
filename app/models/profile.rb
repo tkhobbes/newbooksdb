@@ -7,6 +7,7 @@
 #  id         :bigint           not null, primary key
 #  admin      :boolean          default(FALSE)
 #  name       :string(255)
+#  userlocale :string(255)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  owner_id   :bigint           not null
