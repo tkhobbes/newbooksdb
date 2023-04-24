@@ -5,6 +5,17 @@
 # registers the path where somebody is coming from
 # registers flash types info, error and success
 class ApplicationController < ActionController::Base
+  around_action :switch_locale
+
+  # locale handling
+  def default_url_options
+    { locale: I18n.locale }
+  end
+
+  def switch_locale(&)
+    locale = current_owner&.try(:locale) || I18n.default_locale
+    I18n.with_locale(locale, &)
+  end
 
   # include the Pagy Backend helper
   include Pagy::Backend
