@@ -1,0 +1,16 @@
+de:
+  IsbnSearch:
+    new:
+      title: Ein Buch suchen
+      isbn_title: Nach einer ISBN suchen
+      isbn_placeholder: ISBN
+      submit_label: Suchen
+      title_title: ...oder nach einem Titel suchen
+      title_placeholder: Titel
+      author_title: ...oder nach einem/r AutorIn suchen
+      author_placeholder: AutorIn Name
+    show:
+      title: Suchergebnisse
+      no_results: Keine Ergebnisse gefunden.
+      click: Einen Titel anklicken um das Buch hinzuzufügen.
+      another_search: Versuche eine andere Suche

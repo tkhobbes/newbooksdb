@@ -1,0 +1,15 @@
+de:
+  title:
+    maintitle: UZW18 Bücherdatenbank
+    quickicons:
+      scan: ISBN Codes scannen
+      search: Buch online suchen
+      add: Buch manuell hinzufügen
+      profile: Mein Profil
+      settings: Einstellungen
+  footer:
+    from: von
+    by: von
+    across: in
+    in: in
+    for: für

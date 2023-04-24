@@ -1,0 +1,15 @@
+de:
+  Genres:
+    index:
+      title: Alle
+      reset_sorting: Sortierung zurücksetzen
+    admin:
+      title: Einstellungen
+      available_title: Verfügbare Genres
+      no_genres: Keine Genres
+    show:
+      title: Alle
+    new_form_entry:
+      new_link: Hinzufügen
+    genresettings:
+      affected: betroffen

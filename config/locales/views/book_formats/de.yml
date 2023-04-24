@@ -1,0 +1,13 @@
+de:
+  BookFormats:
+    book_format:
+      default: " (Standard)"
+      delete_name: Bücher werden dem Standard-Buchformat zugeordnet
+    new_form:
+      link_title: Hinzufügen
+    set_default:
+      select: Auswählen...
+    index:
+      title: Einstellungen
+      subtitle: Verfügbar
+      default_title: Standard

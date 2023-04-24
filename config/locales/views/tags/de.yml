@@ -1,0 +1,18 @@
+de:
+  Tags:
+    index:
+      title: Alle Tags von %{owner}
+      show_books: Bücher anzeigen
+      show_authors: AutorInnen anzeigen
+    show:
+      title: Alls getaggt nach '%{name}'
+    admin:
+      title: Einstellungen
+      subtitle: Alle Tags
+      no_tags: Keine Tags
+    new_form_entry:
+      add_label: Hinzufügen
+    tagcard:
+      show_all: Zeige alles Getaggte...
+    tagsettings:
+      link_label: "%{books} Bücher / %{authors} AutorInnen"

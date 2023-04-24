@@ -1,0 +1,17 @@
+de:
+  ScanQueues:
+    index:
+      title: Eingescannte Barcodes hinzufügen
+      no_results: Keine Ergebnisse
+      scan_some: Scanne Barcodes ein!
+      click_each: Klicke jedes Resultat an um mögliche Ergebnisse zu sehen.
+      submit_label: ISBN
+      delete_label: ISBN entfernen
+      result_title: Suchergebnisse
+      click_left: Klicke eine ISBN links an um mögliche Resultate zu sehen.
+    result:
+      none_yet: Noch keine Resultate
+    new:
+      title: Scanne Barcodes
+      result_title: Scanne Resultate
+      done_label: Scanning beendet - Bücher hinzufügen

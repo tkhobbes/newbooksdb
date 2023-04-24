@@ -1,0 +1,10 @@
+de:
+  Shelves:
+    index:
+      title: Einstellungen
+      subtitle: Alle
+      no_shelves: Keine Regale
+    new_form_entry:
+      add_label: Hinzufügen
+    shelf:
+      edit_link: "%{name} - %{books} Bücher, im Besitz von %{owner}"

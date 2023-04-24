@@ -1,0 +1,12 @@
+de:
+  Publishers:
+    index:
+      title: Alle
+      add_label: Hinzufügen
+      reset_sorting: Sortierung zurücksetzen
+    new:
+      title: Hinzufügen
+    edit:
+      title: Bearbeiten
+    publishersettings:
+      books_affected: Bücher betroffen

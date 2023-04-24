@@ -1,0 +1,7 @@
+de:
+  UnusedItems:
+    index:
+      title: Einstellungen
+      without_books: "%{items} ohne Bücher"
+      none_found: Es gibt keine %{items} ohne Bücher
+      delete_label: Löschen

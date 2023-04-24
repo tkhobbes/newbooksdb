@@ -1,0 +1,18 @@
+de:
+  Profiles:
+    index:
+      title: Einstellungen
+      subtitle: Alle BesitzerInnen
+    edit:
+      title: Dein Profil anpassen
+      avatar_drop: Avatar-Bild ablegen oder klicken zur Ausfahl
+      avatar_drop_comment: 3 MB Dateigrössen-Limit. Nur Bild-Dateien erlaubt.
+    show:
+      title: Profil von
+      registered: "%{reg_time} registriert"
+      edit_label: Mein Profil anpassen
+      password_label: Mein Passwort ändern
+      logout_label: Abmelden
+      delete_label: Mein Profil löschen
+    profile:
+      active: Aktiv seit

@@ -1,0 +1,21 @@
+de:
+  Books:
+    index:
+      reset_sorting: Soertierung zurücksetzen
+    show:
+      better_cover: Finde ein besseres Cover
+      rating: Bewertung des/r BesitzerIn
+    new:
+      title: Hinzufügen
+    edit:
+      title: Bearbeiten
+    form:
+      select_authors: AutorInnen auswählen...
+      add_author: ...oder eine/n AutorIn hinzufügen
+      select_authors_comment: AutorInnen können zuerst ausgewählt werden und dann mit obenstehendem Button hinzugefügt werden.
+      new_author_title: Hinzufügen
+      new_author_link: Weitere hinzufügen
+      cover_drag: Cover Bild hier ablegen oder klicken zur Auswahl
+      cover_drag_comment: 3 MB Dateigrössen-Limit. Nur Bild-Dateien erlaubt.
+    details_book:
+      no_books: Keine Bücher

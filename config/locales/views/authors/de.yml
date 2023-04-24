@@ -1,0 +1,20 @@
+de:
+  Authors:
+    index:
+      add_button: Autor hinzufügen
+      reset_button: Sortierung zurücksetzen
+    show:
+      no_books: Keine Bücher von diesem/r Autor/in in der Datenbank
+    edit:
+      title: Bearbeiten
+    new:
+      title: Hinzufügen
+    form:
+      drag_comment: Portrait-Bild hier ablegen oder klicken zur Auswahl
+      drag_allowed: 3 MB Dateigrössen-Limit. Nur Bild-Dateien erlaubt.
+      tags: Tags
+    required_fields:
+      male: männlich
+      female: weiblich
+    details:
+      no_authors: Keine AutorInnen

@@ -1,0 +1,9 @@
+de:
+  UserDestructions:
+    new:
+      title: Soll BesitzerIn %{owner} wirklich gelöscht werden?
+      browser_title: BesitzerIn %{owner} löschen
+      comment: Abgesehen vom Entfernen des Profils, musst du auch entscheiden was mit %{count} Büchern geschieht welche momentan im respektiven Besitz sind.
+      transfer_label: "Bücher an neue/n BesitzerIn übertragen:"
+      delete_label: Bücher aus der Datenbank löschen
+      confirm_label: Bestätigen

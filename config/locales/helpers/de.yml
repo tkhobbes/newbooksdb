@@ -1,0 +1,16 @@
+de:
+  # Generic CRUD
+  CRUD:
+    confirm: Bist du sicher?
+    edit: Bearbeiten
+  # Pagy and other helpers
+  Helper:
+    loadmore: Mehr laden
+  # overall title and menus
+  sidebar:
+    menu:
+      home: Home
+  isbn:
+    existing:
+      owned: Dieses Buch gehört dir schon!
+      another: Dieses Buch gehört bereits einem/r anderen Benutzer/in!

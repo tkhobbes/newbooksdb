@@ -1,0 +1,6 @@
+de:
+  # Devise - see also devise.en.yml
+  Devise:
+    logout: Abmelden
+    login: Anmelden
+    signup: Registrieren

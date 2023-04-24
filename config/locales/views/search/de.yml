@@ -1,0 +1,4 @@
+de:
+  search:
+    placeholder: Suchen...
+    title: Suchergebnisse für %{query}

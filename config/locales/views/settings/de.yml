@@ -1,0 +1,13 @@
+de:
+  Settings:
+    index:
+      title: Einstellungen
+    menu:
+      bulk: Massenaktionen
+    bulk_actions:
+      title: Massenaktionen
+      remove_authors: AutorInnen ohne Bücher entfernen
+      remove_publishers: Verlage ohne Bücher entfernen
+      remove_shelves: Leere Regale entfernen
+      remove_genres: Genres ohne Bücher entfernen
+      remove_tags: Unbenutzte Tags entfernen
