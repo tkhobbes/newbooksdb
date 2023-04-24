@@ -4,7 +4,11 @@ en:
       title: Settings
       subtitle: All
       no_shelves: No Shelves
+      title: Settings
+      subtitle: All
+      no_shelves: No Shelves
     new_form_entry:
+      add_label: Add new
       add_label: Add new
     shelf:
       edit_link: "%{name} - %{books} books, owned by %{owner}"
