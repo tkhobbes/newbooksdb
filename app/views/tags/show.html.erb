@@ -19,14 +19,14 @@
     <ul>
       <li class="placeholder-tab">&nbsp;</li>
       <li class="content-tab <%= params[:list] == 'books' ? 'active' : '' %>">
-        <%= link_to t('Tags.show.books'), '#', data: {
+        <%= link_to Book.model_name.human(count:10), '#', data: {
           action: 'click->tabnav#navigate',
           url: tag_path(@tag, list: 'books')
         } %>
       </li>
       <li class="placeholder-tab">&nbsp;</li>
       <li class="content-tab <%= params[:list] == 'authors' ? 'active' : '' %>">
-        <%= link_to t('Tags.show.authors'), '#', data: {
+        <%= link_to Author.model_name.human(count:10), '#', data: {
           action: 'click->tabnav#navigate',
           url: tag_path(@tag, list: 'authors')
         } %>

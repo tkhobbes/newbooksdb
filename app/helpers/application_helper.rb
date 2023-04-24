@@ -42,9 +42,9 @@ module ApplicationHelper
   def isbn_existing_title(title, existing)
     case existing
     when 'current_owner'
-      "#{title} (you already own this book!)"
+      "#{title} (#{t('isbn.existing.owned')})"
     when 'other_owner'
-      "#{title} (this book is already owned by another user!)"
+      "#{title} (#{t('isbn.existing.another')})"
     else
       title
     end
@@ -105,23 +105,23 @@ module ApplicationHelper
         path: root_path
       },
       {
-        name: t('sidebar.menu.books'),
+        name: Book.model_name.human(count:10),
         path: books_path,
       },
       {
-        name: t('sidebar.menu.genres'),
+        name: Genre.model_name.human(count:10),
         path: genres_path,
       },
       {
-        name: t('sidebar.menu.authors'),
+        name: Author.model_name.human(count:10),
         path: authors_path,
       },
       {
-        name: t('sidebar.menu.publishers'),
+        name: Publisher.model_name.human(count:10),
         path: publishers_path
       },
       {
-        name: t('sidebar.menu.tags'),
+        name: Tag.model_name.human(count:10),
         path: tags_path(list: 'books')
       }
     ]

@@ -2,7 +2,7 @@
   <li>
     <div class="flexlist">
       <%= link_to(
-        t('Shelves.new_form_entry.add_label'),
+        "#{t('Shelves.new_form_entry.add_label')} #{Shelf.model_name.human}",
         new_shelf_path,
         class: 'alternate',
         data: { turbo_frame: 'new-shelf' }

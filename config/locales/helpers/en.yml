@@ -7,3 +7,10 @@ en:
   Helper:
     loadmore: Load More
   # overall title and menus
+  sidebar:
+    menu:
+      home: Home
+  isbn:
+    existing:
+      owned: you already own this book!
+      another: this book is already owned by another user!

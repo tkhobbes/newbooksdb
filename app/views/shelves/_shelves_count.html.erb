@@ -1,3 +1,4 @@
 <%= turbo_frame_tag 'shelves_count' do %>
+  <%= pluralize(shelves_count, Shelf.model_name.human) %>
   <%= shelves_count %> <%= t('Shelves.shelves_count.shelves') %>
 <% end %>

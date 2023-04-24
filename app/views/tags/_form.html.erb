@@ -1,6 +1,6 @@
   <%= simple_form_for tag, html: { class: 'inline-form' } do |f| %>
     <%= f.input :name,
-      placeholder: t('Tags.form.placeholder_name'),
+      placeholder: Tag.human_attribute_name('name'),
       label: false,
       wrapper_html: { class: 'width-100' }
     %>
