@@ -44,5 +44,6 @@ module Newbooksdb
     # i18n locales
     config.i18n.available_locales = %i[en de]
     config.i18n.default_locale = :en
+    config.i18n.fallbacks = [:en]
   end
 end

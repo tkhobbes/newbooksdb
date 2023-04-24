@@ -1,3 +1,4 @@
 <%= turbo_frame_tag 'publishers-count' do %>
-  <%= pluralize(publishers_count, Publisher.model_name.human) %>
+  <%= publishers_count %>
+  <%= Publisher.model_name.human(count: publishers_count) %>
 <% end %>

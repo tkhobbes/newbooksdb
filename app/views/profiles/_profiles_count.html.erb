@@ -1,1 +1,2 @@
-<%= pluralize(owners_count, Owner.model_name.human) %>
+<%= owners_count %>
+<%= Owner.model_name.human(count: owners_count) %>
