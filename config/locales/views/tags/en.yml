@@ -1,22 +1,18 @@
 en:
   Tags:
     index:
-      title: "All Tags for owner %{owner}"
-      show_books: "Show Books"
-      show_authors: "Show Authors"
+      title: All Tags for owner %{owner}
+      show_books: Show Books
+      show_authors: Show Authors
     show:
-      title: "Everything tagged '%{name}'"
-      books: "Books"
-      authors: "Authors"
+      title: Everything tagged '%{name}'
     admin:
-      title: "Settings"
-      subtitle: "All Tags"
-      no_tags: "No Tags"
-    form:
-      placeholder_name: "Tag Name"
+      title: Settings
+      subtitle: All Tags
+      no_tags: No Tags
     new_form_entry:
-      add_label: "Add new Tag..."
+      add_label: Add new
     tagcard:
-      show_all: "Show everything tagged..."
+      show_all: Show everything tagged...
     tagsettings:
       link_label: "%{books} Books / %{authors} Authors"

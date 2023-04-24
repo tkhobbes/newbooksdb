@@ -1,14 +1,10 @@
 en:
   Shelves:
     index:
-      title: "Settings"
-      subtitle: "All Shelves"
-      no_shelves: "No Shelves"
+      title: Settings
+      subtitle: All
+      no_shelves: No Shelves
     new_form_entry:
-      add_label: "Add new Shelf..."
-    form:
-      placeholder_name: "Shelf Name"
+      add_label: Add new
     shelf:
       edit_link: "%{name} - %{books} books, owned by %{owner}"
-    shelves_count:
-      shelves: "Shelves"

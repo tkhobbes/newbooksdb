@@ -3,28 +3,28 @@
     <ul>
       <li>
         <%= link_to(
-          t('Settings.menu.shelves'),
+          Shelf.model_name.human(count:10),
           shelves_path,
           params[:controller] == 'shelves' ? { class: 'active' } : {}
         ) %>
       </li>
       <li>
         <%= link_to(
-          t('Settings.menu.book_formats'),
+          BookFormat.model_name.human(count:10),
           book_formats_path,
           params[:controller] == 'book_formats' ? { class: 'active' } : {}
         ) %>
       </li>
       <li>
         <%= link_to(
-          t('Settings.menu.genres'),
+          Genre.model_name.human(count:10),
           genres_path(show: 'settings'),
           params[:controller] == 'genres' ? { class: 'active' } : {}
         ) %>
       </li>
       <li>
         <%= link_to(
-          t('Settings.menu.tags'),
+          Tag.model_name.human(count:10),
           tags_path(show: 'settings'),
           params[:controller] == 'tags' && params[:show] == 'settings' ? { class: 'active' } : {}
         ) %>
@@ -33,7 +33,7 @@
         <li>
           <!-- this needs to link to the members index for admins -->
           <%= link_to(
-            t('Settings.menu.owners'),
+            Owner.model_name.human(count:10),
             profiles_path,
             params[:controller] == 'profiles' ? { class: 'active' } : {}
           ) %>

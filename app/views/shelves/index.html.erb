@@ -3,7 +3,7 @@
 <%= render 'settings/settings_menu' %>
   <div class="submenucontent">
     <h3 class="heading4">
-      <%= t('Shelves.index.subtitle') %>
+      <%= "#{t('Shelves.index.subtitle')} #{Shelf.model_name.human(count:10)}" %>
     </h3>
     <ul class="simple-list width-66 margin-bottom-1" id="shelves">
       <%= render 'new_form_entry' %>
