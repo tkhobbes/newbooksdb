@@ -23,7 +23,9 @@ Rails.application.routes.draw do
       registrations: 'owners/registrations'
     }
     get 'owners/:id', to: 'owners#show', as: 'owner'
-    resources :profiles, only: %i[index show edit update]
+    resources :profiles, only: %i[index show edit update] do
+      put 'update_locale', on: :member
+    end
 
     # application resources
     resources :books

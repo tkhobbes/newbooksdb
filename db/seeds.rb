@@ -17,17 +17,17 @@ o3 = Owner.create(
 Profile.create(
   name: 'tkhobbes',
   admin: true,
-  userlocale: 'de',
+  userlocale: 'DE',
   owner_id: o1.id
 )
 Profile.create(
   name: 'jdoe',
-  userlocale: 'en',
+  userlocale: 'EN',
   owner_id: o2.id
 )
 Profile.create(
   name: 'jane',
-  userlocale: 'en',
+  userlocale: 'EN',
   owner_id: o3.id
 )
 

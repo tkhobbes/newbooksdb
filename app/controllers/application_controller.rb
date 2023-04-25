@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
   end
 
   def switch_locale(&)
-    locale = current_owner&.profile&.[](:userlocale) || I18n.default_locale
+    locale = owner_locale || I18n.default_locale
     I18n.with_locale(locale, &)
   end
 
@@ -41,5 +41,14 @@ class ApplicationController < ActionController::Base
   # enable turbo frame variants
   def turbo_frame_request_variant
     request.variant = :turbo_frame if turbo_frame_request?
+  end
+
+  private
+
+  # retrieve locale
+  def owner_locale
+    return if current_owner.nil?
+    return if current_owner.profile.nil?
+    current_owner.profile[:userlocale]
   end
 end

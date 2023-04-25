@@ -9,10 +9,20 @@
     </ul>
   </div>
   <div class="right-dropdown">
-    <%= link_to 'EN', '#', id: 'localelink', class: 'icon-locale' %>
+    <%= render 'profiles/localemenu' %>
     <ul class="localesmenu">
-      <li><a href="#">EN</a></li>
-      <li><a href="#">DE</a></li>
+      <li>
+        <%= render LocaleComponent.new(
+          locale: 'en',
+          profile: current_owner&.profile
+        ) %>
+      </li>
+      <li>
+        <%= render LocaleComponent.new(
+          locale: 'de',
+          profile: current_owner&.profile
+        ) %>
+      </li>
     </ul>
   </div>
 </div>

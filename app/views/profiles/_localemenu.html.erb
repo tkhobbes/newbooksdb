@@ -1,0 +1,7 @@
+<% if current_owner&.profile %>
+  <%= link_to current_owner.profile[:userlocale],
+    '#', id: 'localelink', class: 'icon-locale' %>
+<% else %>
+  <%= link_to I18n.default_locale,
+    '#', id: 'localelink', class: 'icon-locale' %>
+<% end %>

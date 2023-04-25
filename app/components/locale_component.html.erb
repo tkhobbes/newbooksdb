@@ -1,0 +1,7 @@
+<% if print_link? %>
+  <%= link_to @locale,
+    update_locale_profile_path(@profile, userlocale: @locale),
+    data: { 'turbo-method': :put } %>
+<% else %>
+  <%= @locale %>
+<% end %>

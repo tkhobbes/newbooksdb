@@ -24,6 +24,10 @@ class ProfilesController < ApplicationController
     end
   end
 
+  def update_locale
+    @profile.update(userlocale: params[:userlocale])
+  end
+
   private
 
   def set_profile
