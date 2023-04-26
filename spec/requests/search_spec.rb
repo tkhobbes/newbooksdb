@@ -11,12 +11,12 @@ RSpec.describe 'Search' do
       book_format: format,
       owner:
     )
-    get search_index_path, params: { query: 'hobbit' }
+    get search_index_path(locale: 'en'), params: { query: 'hobbit' }
     expect(response).to have_http_status(:success)
   end
 
   it 'can access the quick search menu' do
-    get quicksearch_path, params: { query: 'hobbit' }, as: :turbo_stream
+    get quicksearch_path(locale: 'en'), params: { query: 'hobbit' }, as: :turbo_stream
     expect(response.media_type).to eq Mime[:turbo_stream]
   end
 end

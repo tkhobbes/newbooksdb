@@ -6,13 +6,13 @@ RSpec.describe 'Authors' do
   describe 'authentication' do
     context 'not logged in' do
       it 'can see authors index without login' do
-        get authors_path
+        get authors_path(locale: 'en')
         expect(response).to have_http_status(:success)
       end
 
       it 'can see authors show without login' do
         author = create(:author)
-        get author_path(author.id)
+        get author_path(author.id, locale: 'en')
         expect(response).to have_http_status(:success)
       end
     end
@@ -30,7 +30,7 @@ RSpec.describe 'Authors' do
 
       it 'cannot update an author without being logged in' do
         author = create(:author)
-        patch author_path(author.id), params: {
+        patch author_path(author.id, locale: 'en'), params: {
           author: {
             first_name: 'new'
           }
@@ -40,7 +40,7 @@ RSpec.describe 'Authors' do
 
       it 'cannot delete an author without being logged in' do
         author = create(:author)
-        delete author_path(author.id)
+        delete author_path(author.id, locale: 'en')
         expect(Author.count).to eq(1)
       end
     end
@@ -62,7 +62,7 @@ RSpec.describe 'Authors' do
       it 'can update an author when logged in' do
         author = create(:author)
         sign_in owner
-        patch author_path(author.id), params: {
+        patch author_path(author.id, locale: 'en'), params: {
           author: {
             first_name: 'new'
           }
@@ -73,7 +73,7 @@ RSpec.describe 'Authors' do
       it 'can delete an author when logged in' do
         author = create(:author)
         sign_in owner
-        delete author_path(author.id)
+        delete author_path(author.id, locale: 'en')
         expect(Author.count).to eq(0)
       end
     end

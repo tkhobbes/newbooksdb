@@ -45,12 +45,12 @@ RSpec.describe 'User Destructions' do
           owner: new_owner
         )
         sign_in profile.owner
-        binding.pry
         post user_destructions_path, params: {
           current_owner_id: profile.owner.id,
           book_selection: 'transfer',
           transfer_to_owner: new_owner.email
         }
+        book.reload
         expect(new_owner.reload.books).to include(book)
       end
 

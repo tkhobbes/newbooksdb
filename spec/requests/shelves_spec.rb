@@ -9,7 +9,7 @@ RSpec.describe 'Shelves' do
   describe 'authentication' do
     context 'must log in' do
       it 'cannot see any shelves if not logged in' do
-        get shelves_path
+        get shelves_path(locale: 'en')
         expect(response).not_to have_http_status(:success)
       end
     end
@@ -19,7 +19,7 @@ RSpec.describe 'Shelves' do
 
       it 'can see their own shelves if logged in' do
         sign_in profile.owner
-        get shelves_path
+        get shelves_path(locale: 'en')
         expect(response).to have_http_status(:success)
       end
 
@@ -35,7 +35,7 @@ RSpec.describe 'Shelves' do
 
       it 'can update a shelf if logged in' do
         sign_in profile.owner
-        patch shelf_path(shelf), params: {
+        patch shelf_path(shelf, locale: 'en'), params: {
           shelf: {
             name: 'New Name'
           }
@@ -45,7 +45,7 @@ RSpec.describe 'Shelves' do
 
       it 'can remove a shelf if logged in' do
         sign_in profile.owner
-        delete shelf_path(shelf)
+        delete shelf_path(shelf, locale: 'en')
         expect(Shelf.count).to eq(0)
       end
     end
@@ -58,7 +58,7 @@ RSpec.describe 'Shelves' do
     context 'own shelves only' do
       it 'cannot update other owners shelves' do
         sign_in profile.owner
-        patch shelf_path(shelf2), params: {
+        patch shelf_path(shelf2, locale: 'en'), params: {
           shelf: {
             name: 'New Name'
           }
@@ -68,7 +68,7 @@ RSpec.describe 'Shelves' do
 
       it 'cannot remove other owners shelves' do
         sign_in profile.owner
-        delete shelf_path(shelf2)
+        delete shelf_path(shelf2, locale: 'en')
         expect(Shelf.find(shelf2.id)).to be_present
       end
     end
@@ -76,7 +76,7 @@ RSpec.describe 'Shelves' do
     context 'is admin' do
       it 'can update any shelf' do
         sign_in admin_profile.owner
-        patch shelf_path(shelf), params: {
+        patch shelf_path(shelf, locale: 'en'), params: {
           shelf: {
             name: 'New Name'
           }
@@ -86,7 +86,7 @@ RSpec.describe 'Shelves' do
 
       it 'can remove any shelf' do
         sign_in admin_profile.owner
-        delete shelf_path(shelf)
+        delete shelf_path(shelf, locale: 'en')
         expect(Shelf.where(id: shelf.id)).to be_empty
       end
     end

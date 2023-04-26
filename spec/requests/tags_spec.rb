@@ -13,12 +13,12 @@ RSpec.describe 'Tags' do
 
     context 'must log in' do
       it 'cannot see any tags when not logged in' do
-        get tags_path
+        get tags_path(locale: 'en')
         expect(response).not_to have_http_status(:success)
       end
 
       it 'cannot see an individual tag when not logged in' do
-        get tag_path(tag)
+        get tag_path(tag, locale: 'en')
         expect(response).not_to have_http_status(:success)
       end
     end
@@ -47,7 +47,7 @@ RSpec.describe 'Tags' do
 
       it 'can update a tag when logged in' do
         sign_in profile.owner
-        patch tag_path(tag), params: {
+        patch tag_path(tag, locale: 'en'), params: {
           tag: {
             name: 'updated'
           }
@@ -56,7 +56,7 @@ RSpec.describe 'Tags' do
       end
 
       it 'cannot update a tag when not logged in' do
-        patch tag_path(tag2), params: {
+        patch tag_path(tag2, locale: 'en'), params: {
           tag: {
             name: 'updated'
           }
@@ -66,12 +66,12 @@ RSpec.describe 'Tags' do
 
       it 'can destroy a tag when logged in' do
         sign_in profile.owner
-        delete tag_path(tag)
+        delete tag_path(tag, locale: 'en')
         expect(Tag.where(id: tag.id)).to be_empty
       end
 
       it 'cannot destroy a tag when not logged in' do
-        delete tag_path(tag2)
+        delete tag_path(tag2, locale: 'en')
         expect(Tag.where(id: tag2.id).count).to eq(1)
       end
     end
@@ -85,13 +85,13 @@ RSpec.describe 'Tags' do
     context 'own tags only' do
       it 'cannot see a tag from another user' do
         sign_in profile.owner
-        get tag_path(tag3)
+        get tag_path(tag3, locale: 'en')
         expect(response).not_to have_http_status(:success)
       end
 
       it 'cannot edit a tag from another user' do
         sign_in profile.owner
-        patch tag_path(tag3), params: {
+        patch tag_path(tag3, locale: 'en'), params: {
           tag: {
             name: 'updated'
           }
@@ -101,7 +101,7 @@ RSpec.describe 'Tags' do
 
       it 'cannot destroy a tag from another user' do
         sign_in profile.owner
-        delete tag_path(tag3)
+        delete tag_path(tag3, locale: 'en')
         expect(Tag.where(id: tag3.id).count).to eq(1)
       end
     end
@@ -109,7 +109,7 @@ RSpec.describe 'Tags' do
     context 'is admin' do
       it 'can edit any tag' do
         sign_in admin_profile.owner
-        patch tag_path(tag), params: {
+        patch tag_path(tag, locale: 'en'), params: {
           tag: {
             name: 'admin update'
           }
@@ -119,7 +119,7 @@ RSpec.describe 'Tags' do
 
       it 'can destroy any tag' do
         sign_in admin_profile.owner
-        delete tag_path(tag2)
+        delete tag_path(tag2, locale: 'en')
         expect(Tag.where(id: tag2.id)).to be_empty
       end
     end

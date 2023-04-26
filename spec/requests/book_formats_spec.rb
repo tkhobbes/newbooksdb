@@ -9,12 +9,12 @@ RSpec.describe 'BookFormats' do
       let(:fallback_format) { create(:fallback_format) }
 
       it 'cannot see any book formats if not logged in' do
-        get book_formats_path
+        get book_formats_path(locale: 'en')
         expect(response).not_to have_http_status(:success)
       end
 
       it 'cannot change a book format if not logged in' do
-        patch book_format_path(format.id), params: {
+        patch book_format_path(format.id, locale: 'en'), params: {
           book_format: {
             name: 'new name'
           }
@@ -23,7 +23,7 @@ RSpec.describe 'BookFormats' do
       end
 
       it 'cannot delete a book format if not logged in' do
-        delete book_format_path(format.id)
+        delete book_format_path(format.id, locale: 'en')
         expect(BookFormat.where(id: format.id).count).to eq(1)
       end
 
@@ -70,7 +70,7 @@ RSpec.describe 'BookFormats' do
 
       it 'can change a book format if logged in' do
         sign_in profile.owner
-        patch book_format_path(format.id), params: {
+        patch book_format_path(format.id, locale: 'en'), params: {
           book_format: {
             name: 'new name'
           }
@@ -80,7 +80,7 @@ RSpec.describe 'BookFormats' do
 
       it 'can delete a book format if logged in' do
         sign_in profile.owner
-        delete book_format_path(format.id)
+        delete book_format_path(format.id, locale: 'en')
         expect(BookFormat.where(id: format.id)).to be_empty
       end
 

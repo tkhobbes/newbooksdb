@@ -9,7 +9,7 @@ RSpec.describe 'Books' do
 
     context 'not logged in' do
       it 'can see books index without login' do
-        get books_path
+        get books_path(locale: 'en')
         expect(response).to have_http_status(:success)
       end
 
@@ -19,7 +19,7 @@ RSpec.describe 'Books' do
           book_format: format,
           owner: profile.owner
         )
-        get book_path(book.id)
+        get book_path(book.id, locale: 'en')
         expect(response).to have_http_status(:success)
       end
     end
@@ -42,7 +42,7 @@ RSpec.describe 'Books' do
           book_format: format,
           owner: profile.owner
         )
-        patch book_path(book.id), params: {
+        patch book_path(book.id, locale: 'en'), params: {
           book: {
             title: 'new'
           }
@@ -56,7 +56,7 @@ RSpec.describe 'Books' do
           book_format: format,
           owner: profile.owner
         )
-        delete book_path(book.id)
+        delete book_path(book.id, locale: 'en')
         expect(Book.count).to eq(1)
       end
     end
@@ -85,7 +85,7 @@ RSpec.describe 'Books' do
           owner: profile.owner
         )
         sign_in profile.owner
-        patch book_path(book.id), params: {
+        patch book_path(book.id, locale: 'en'), params: {
           book: {
             title: 'bla'
           }
@@ -100,7 +100,7 @@ RSpec.describe 'Books' do
           owner: profile.owner
         )
         sign_in profile.owner
-        delete book_path(book.id)
+        delete book_path(book.id, locale: 'en')
         expect(Book.count).to eq(0)
       end
     end

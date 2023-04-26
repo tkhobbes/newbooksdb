@@ -6,13 +6,13 @@ RSpec.describe 'Genres' do
   describe 'authentication' do
     context 'not logged in' do
       it 'can see genres index without login' do
-        get genres_path
+        get genres_path(locale: 'en')
         expect(response).to have_http_status(:success)
       end
 
       it 'can see genres show without login' do
         genre = create(:genre)
-        get genre_path(genre.id)
+        get genre_path(genre.id, locale: 'en')
         expect(response).to have_http_status(:success)
       end
     end
@@ -29,7 +29,7 @@ RSpec.describe 'Genres' do
 
       it 'cannot update a genre without being logged in' do
         genre = create(:genre)
-        patch genre_path(genre.id), params: {
+        patch genre_path(genre.id, locale: 'en'), params: {
           genre: {
             name: 'bla'
           }
@@ -39,12 +39,12 @@ RSpec.describe 'Genres' do
 
       it 'cannot delete a genre without being logged in' do
         genre = create(:genre)
-        delete genre_path(genre.id)
+        delete genre_path(genre.id, locale: 'en')
         expect(Genre.count).to eq(1)
       end
 
       it 'cannot see the admin view without being logged in' do
-        get genres_path, params: { show: 'settings' }
+        get genres_path(locale: 'en'), params: { show: 'settings' }
         expect(response).not_to have_http_status(:success)
       end
     end
@@ -54,7 +54,7 @@ RSpec.describe 'Genres' do
 
       it 'can see the admin view when logged in' do
         sign_in profile.owner
-        get genres_path , params: { show: 'settings' }
+        get genres_path(locale: 'en'), params: { show: 'settings' }
         expect(response).to have_http_status(:success)
       end
 
@@ -71,7 +71,7 @@ RSpec.describe 'Genres' do
       it 'can update a genre when logged in' do
         genre = create(:genre)
         sign_in profile.owner
-        patch genre_path(genre.id), params: {
+        patch genre_path(genre.id, locale: 'en'), params: {
           genre: {
             name: 'SciFi'
           }
@@ -82,7 +82,7 @@ RSpec.describe 'Genres' do
       it 'can delete a genre when logged in' do
         genre = create(:genre)
         sign_in profile.owner
-        delete genre_path(genre.id)
+        delete genre_path(genre.id, locale: 'en')
         expect(Genre.count).to eq(0)
       end
     end

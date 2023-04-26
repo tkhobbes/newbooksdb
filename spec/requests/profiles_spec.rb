@@ -6,7 +6,7 @@ RSpec.describe 'Profiles' do
   describe 'authentication' do
     context 'must log in' do
       it 'cannot see any profiles without being logged in' do
-        get profiles_path
+        get profiles_path(locale: 'en')
         expect(response).not_to have_http_status(:success)
       end
     end
@@ -16,20 +16,20 @@ RSpec.describe 'Profiles' do
 
       it 'can see their own profile' do
         sign_in profile.owner
-        get profile_path(profile)
+        get profile_path(profile, locale: 'en')
         expect(response).to have_http_status(:success)
       end
 
       it 'can see another profile' do
         other_profile = create(:admin_profile)
         sign_in profile.owner
-        get profile_path(other_profile)
+        get profile_path(other_profile, locale: 'en')
         expect(response).to have_http_status(:success)
       end
 
       it 'can see all profiles' do
         sign_in profile.owner
-        get profiles_path
+        get profiles_path(locale: 'en')
         expect(response).to have_http_status(:success)
       end
     end
@@ -42,7 +42,7 @@ RSpec.describe 'Profiles' do
     context 'has logged in but wrong user' do
       it 'cannot change another profile' do
         sign_in profile.owner
-        patch profile_path(admin_profile), params: {
+        patch profile_path(admin_profile, locale: 'en'), params: {
           profile: {
             name: 'New Name'
           }
@@ -54,7 +54,7 @@ RSpec.describe 'Profiles' do
     context 'has logged in and is the correct user' do
       it 'can edit the profile' do
         sign_in profile.owner
-        patch profile_path(profile), params: {
+        patch profile_path(profile, locale: 'en'), params: {
           profile: {
             name: 'New Name'
           }
@@ -66,7 +66,7 @@ RSpec.describe 'Profiles' do
     context 'is admin' do
       it 'can edit any profile' do
         sign_in admin_profile.owner
-        patch profile_path(profile), params: {
+        patch profile_path(profile, locale: 'en'), params: {
           profile: {
             name: 'New Name'
           }
