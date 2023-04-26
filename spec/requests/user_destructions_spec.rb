@@ -8,7 +8,7 @@ RSpec.describe 'User Destructions' do
       let(:profile) { create(:profile) }
 
       it 'cannot access the new form if not logged in' do
-        get new_user_destructions_path(profile.id)
+        get new_user_destructions_path(profile, locale: 'en')
         expect(response).not_to be_successful
       end
 
@@ -27,7 +27,7 @@ RSpec.describe 'User Destructions' do
 
       it 'can access the new form if logged in' do
         sign_in profile.owner
-        get new_user_destructions_path(profile.id)
+        get new_user_destructions_path(profile, locale: 'en')
         expect(response).to be_successful
       end
 
@@ -45,6 +45,7 @@ RSpec.describe 'User Destructions' do
           owner: new_owner
         )
         sign_in profile.owner
+        binding.pry
         post user_destructions_path, params: {
           current_owner_id: profile.owner.id,
           book_selection: 'transfer',

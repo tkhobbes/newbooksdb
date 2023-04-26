@@ -26,11 +26,13 @@ FactoryBot.define do
     owner
     name { 'JonnyD' }
     admin { false }
+    userlocale { 'en' }
   end
 
   factory :admin_profile, class: 'Profile' do
     association :owner, factory: :jimbeam
     admin { true }
     name { 'Admin James' }
+    userlocale { 'de' }
   end
 end

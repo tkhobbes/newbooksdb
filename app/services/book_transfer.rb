@@ -10,7 +10,7 @@ class BookTransfer
   def transfer
     return ReturnTransfer.new(transferred: false, msg: 'No books to transfer') if @from_user.books.empty?
     return ReturnTransfer.new(transferred: false,
-msg: 'No users to transfer from / to') if @from_user.nil? || @to_user.nil?
+      msg: 'No users to transfer from / to') if @from_user.nil? || @to_user.nil?
     @from_user.books.each do |book|
       book.update(owner_id: @to_user.id)
     end
