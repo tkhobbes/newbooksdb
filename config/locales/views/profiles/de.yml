@@ -7,6 +7,12 @@ de:
       title: Dein Profil anpassen
       avatar_drop: Avatar-Bild ablegen oder klicken zur Ausfahl
       avatar_drop_comment: 3 MB Dateigrössen-Limit. Nur Bild-Dateien erlaubt.
+      notifications: Benachrichtigungen
+      notify_books: Beim Erstellen/Ändern/Löschen von Büchern
+      notify_authors: Beim Erstellen/Ändern/Löschen von AutorInnen
+      notify_publishers: Beim Erstellen/Ändern/Löschen von Verlagen
+      notify_genres: Beim Erstellen/Ändern/Löschen von Genres
+      notify_jobs: Beim Starten/Beenden von Hintergrund-Jobs
     show:
       title: Profil von
       registered: vor %{reg_time} registriert

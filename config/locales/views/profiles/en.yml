@@ -7,6 +7,12 @@ en:
       title: Edit your Profile
       avatar_drop: Drag avatar image here or click to browse
       avatar_drop_comment: 3 MB file size maximum. Allowed are only image file types.
+      notifications: Notify me on...
+      notify_books: Book Creation / Updates / Deletions
+      notify_authors: Author Creation / Updates / Deletions
+      notify_publishers: Publisher Creation / Updates / Deletions
+      notify_genres: Genre Creation / Updates / Deletions
+      notify_jobs: Background Job Completions / Failures
     show:
       title: Profile for
       registered: Registered %{reg_time} ago

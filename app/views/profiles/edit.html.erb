@@ -11,6 +11,55 @@
         <%= f.input :name ,
           placeholder: Profile.human_attribute_name('name'),
           label: false %>
+        <h3 class="heading-4">
+          <%= t('Profiles.edit.notifications') %>
+        </h3>
+
+        <div class='input checkbox-container'>
+          <span class='check'>
+            <%= f.check_box :book_notifications, class: 'hidden-button' %>
+            <label id='label_remember_me' for='profile_book_notifications'>
+              <span class='fake-button'>
+              </span>
+              <%= t('Profiles.edit.notify_books') %>
+            </label>
+          </span>
+          <span class='check'>
+            <%= f.check_box :author_notifications, class: 'hidden-button' %>
+            <label id='label_remember_me' for='profile_author_notifications'>
+              <span class='fake-button'>
+              </span>
+              <%= t('Profiles.edit.notify_authors') %>
+            </label>
+          </span>
+          <span class='check'>
+            <%= f.check_box :publisher_notifications, class: 'hidden-button' %>
+            <label id='label_remember_me' for='profile_publisher_notifications'>
+              <span class='fake-button'>
+              </span>
+              <%= t('Profiles.edit.notify_publishers') %>
+            </label>
+          </span>
+          <span class='check'>
+            <%= f.check_box :genre_notifications, class: 'hidden-button' %>
+            <label id='label_remember_me' for='profile_genre_notifications'>
+              <span class='fake-button'>
+              </span>
+              <%= t('Profiles.edit.notify_genres') %>
+            </label>
+          </span>
+          <span class='check'>
+            <%= f.check_box :job_notifications, class: 'hidden-button' %>
+            <label id='label_remember_me' for='profile_job_notifications'>
+              <span class='fake-button'>
+              </span>
+              <%= t('Profiles.edit.notify_jobs') %>
+            </label>
+          </span>
+        </div>
+        <div class='input checkbox-container'>
+
+        </div>
       </div>
       <div
         class="form-col dropzone dropzone-default dz-clickable"
