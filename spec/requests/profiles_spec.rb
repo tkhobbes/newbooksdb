@@ -32,6 +32,14 @@ RSpec.describe 'Profiles' do
         get profiles_path(locale: 'en')
         expect(response).to have_http_status(:success)
       end
+
+      it 'can switch locale' do
+        sign_in profile.owner
+        put update_locale_profile_path(profile, locale: 'en'), params: {
+          userlocale: 'de'
+        }
+        expect(profile.reload.userlocale).to eq('de')
+      end
     end
   end
 

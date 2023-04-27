@@ -4,6 +4,11 @@
 #
 
 Rails.application.routes.draw do
+  # lookbook in development
+  if Rails.env.development?
+    mount Lookbook::Engine, at: "/lookbook"
+  end
+
   # some specific helper stuff
   # locale handling for homepage
   get '/:locale' => 'home#index'
@@ -13,10 +18,6 @@ Rails.application.routes.draw do
 
   # wrapping everything into the locale scope
   scope "(:locale)", locale: /en|de/ do
-    # lookbook in development
-    if Rails.env.development?
-      mount Lookbook::Engine, at: "/lookbook"
-    end
 
     # devise, owners (=users) and profiles
     devise_for :owners, controllers: {
