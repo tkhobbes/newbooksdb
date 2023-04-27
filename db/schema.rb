@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_24_135747) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_27_084925) do
   create_table "action_text_rich_texts", charset: "utf8mb4", force: :cascade do |t|
     t.string "name", null: false
     t.text "body", size: :long
@@ -159,6 +159,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_24_135747) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "userlocale"
+    t.boolean "book_notifications", default: false
+    t.boolean "author_notifications", default: false
+    t.boolean "genre_notifications", default: false
+    t.boolean "publisher_notifications", default: false
+    t.boolean "job_notifications", default: true
     t.index ["name"], name: "index_profiles_on_name"
     t.index ["owner_id"], name: "index_profiles_on_owner_id"
   end

@@ -10,6 +10,11 @@ en:
     show:
       title: Profile for
       registered: Registered %{reg_time} ago
+      notification_title: Notification Settings
+      notifications_on: Enabled Notifications
+      notifications_off: Disabled Notifications
+      create_delete: Creation/Deletion of
+      bg_jobs: Background Jobs
       edit_label: Edit my Profile
       password_label: Change my Password
       logout_label: Logout

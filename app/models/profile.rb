@@ -4,13 +4,18 @@
 #
 # Table name: profiles
 #
-#  id         :bigint           not null, primary key
-#  admin      :boolean          default(FALSE)
-#  name       :string(255)
-#  userlocale :string(255)
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  owner_id   :bigint           not null
+#  id                      :bigint           not null, primary key
+#  admin                   :boolean          default(FALSE)
+#  author_notifications    :boolean          default(FALSE)
+#  book_notifications      :boolean          default(FALSE)
+#  genre_notifications     :boolean          default(FALSE)
+#  job_notifications       :boolean          default(TRUE)
+#  name                    :string(255)
+#  publisher_notifications :boolean          default(FALSE)
+#  userlocale              :string(255)
+#  created_at              :datetime         not null
+#  updated_at              :datetime         not null
+#  owner_id                :bigint           not null
 #
 # Indexes
 #

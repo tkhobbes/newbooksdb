@@ -37,6 +37,14 @@ class ProfilesController < ApplicationController
   end
 
   def profile_params
-    params.require(:profile).permit(:name, :avatar)
+    params.require(:profile).permit(
+      :name,
+      :avatar,
+      :book_notifications,
+      :author_notifications,
+      :genre_notifications,
+      :publisher_notifications,
+      :job_notifications
+    )
   end
 end

@@ -18,6 +18,77 @@
       <%= t('Profiles.show.registered', reg_time: time_ago_in_words(@profile.created_at)) %>
     </div>
     <% if @profile == current_owner.profile %>
+      <div class="border-color-primary-dark border-radius-1 padding-33 margin-top-50 small">
+        <h3 class="heading-4 color-primary-dark margin-bottom-50">
+          <%= t('Profiles.show.notification_title') %>
+        </h3>
+        <div class="flex">
+          <div class="margin-right-1 padding-33">
+            <h4 class="heading-5 color-primary-dark">
+              <%= t('Profiles.show.notifications_on') %>
+            </h4>
+            <ul>
+              <% if @profile[:book_notifications] %>
+                <li>
+                  <%= "#{t('Profiles.show.create_delete')} #{Book.model_name.human(count:10)}" %>
+                </li>
+              <% end %>
+              <% if @profile[:author_notifications] %>
+                <li>
+                  <%= "#{t('Profiles.show.create_delete')} #{Author.model_name.human(count:10)}" %>
+                </li>
+              <% end %>
+              <% if @profile[:publisher_notifications] %>
+                <li>
+                  <%= "#{t('Profiles.show.create_delete')} #{Publisher.model_name.human(count:10)}" %>
+                </li>
+              <% end %>
+              <% if @profile[:genre_notifications] %>
+                <li>
+                  <%= "#{t('Profiles.show.create_delete')} #{Genre.model_name.human(count:10)}" %>
+                </li>
+              <% end %>
+              <% if @profile[:job_notifications] %>
+                <li>
+                  <%= t('Profiles.show.bg_jobs') %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+          <div class="padding-33">
+            <h4 class="heading-5 color-primary">
+              <%= t('Profiles.show.notifications_off') %>
+            </h4>
+            <ul>
+              <% unless @profile[:book_notifications] %>
+                <li class="color-grey">
+                  <%= "#{t('Profiles.show.create_delete')} #{Book.model_name.human(count:10)}" %>
+                </li>
+              <% end %>
+              <% unless @profile[:author_notifications] %>
+                <li class="color-grey">
+                  <%= "#{t('Profiles.show.create_delete')} #{Author.model_name.human(count:10)}" %>
+                </li>
+              <% end %>
+              <% unless @profile[:publisher_notifications] %>
+                <li class="color-grey">
+                  <%= "#{t('Profiles.show.create_delete')} #{Publisher.model_name.human(count:10)}" %>
+                </li>
+              <% end %>
+              <% unless @profile[:genre_notifications] %>
+                <li class="color-grey">
+                  <%= "#{t('Profiles.show.create_delete')} #{Genre.model_name.human(count:10)}" %>
+                </li>
+              <% end %>
+              <% unless @profile[:job_notifications] %>
+                <li class="color-grey">
+                  <%= t('Profiles.show.bg_jobs') %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
       <div class="userdetails__buttons">
         <%= link_to t('Profiles.show.edit_label'),
           edit_profile_path(@profile),

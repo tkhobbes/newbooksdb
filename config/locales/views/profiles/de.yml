@@ -9,7 +9,12 @@ de:
       avatar_drop_comment: 3 MB Dateigrössen-Limit. Nur Bild-Dateien erlaubt.
     show:
       title: Profil von
-      registered: "%{reg_time} registriert"
+      registered: vor %{reg_time} registriert
+      notification_title: Benachrichtigungs-Einstellungen
+      notifications_on: Aktivierte Benachrichtigungen
+      notifications_off: Deaktivierte Benachrichtigungen
+      create_delete: Erstellen/Löschen von
+      bg_jobs: Hintergrund-Jobs
       edit_label: Mein Profil anpassen
       password_label: Mein Passwort ändern
       logout_label: Abmelden
