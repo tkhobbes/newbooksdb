@@ -170,6 +170,9 @@ GEM
       faraday (~> 2.0)
     fastimage (2.2.6)
     ffi (1.15.5)
+    ffi-compiler (1.0.1)
+      ffi (>= 1.0.0)
+      rake
     friendly_id (5.5.0)
       activerecord (>= 4.0.0)
     globalid (1.0.0)
@@ -180,8 +183,14 @@ GEM
     highline (2.1.0)
     htmlbeautifier (1.4.2)
     htmlentities (4.3.4)
+    http (5.1.1)
+      addressable (~> 2.8)
+      http-cookie (~> 1.0)
+      http-form_data (~> 2.2)
+      llhttp-ffi (~> 0.4.0)
     http-cookie (1.0.5)
       domain_name (~> 0.5)
+    http-form_data (2.3.0)
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
     i18n-tasks (1.0.12)
@@ -223,6 +232,9 @@ GEM
     listen (3.8.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
+    llhttp-ffi (0.4.0)
+      ffi-compiler (~> 1.0)
+      rake (~> 13.0)
     loofah (2.19.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -275,6 +287,9 @@ GEM
     nio4r (2.5.8)
     nokogiri (1.14.3-x86_64-darwin)
       racc (~> 1.4)
+    noticed (1.6.0)
+      http (>= 4.0.0)
+      rails (>= 5.2.0)
     open-uri (0.2.0)
       stringio
       time
@@ -538,6 +553,7 @@ DEPENDENCIES
   mediawiki-butt
   metainspector
   mysql2 (~> 0.5.4)
+  noticed
   open-uri
   pagy (>= 5.10.1)
   prosopite

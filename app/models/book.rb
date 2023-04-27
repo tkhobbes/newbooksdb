@@ -99,6 +99,8 @@ class Book < ApplicationRecord
   has_many :taggings, as: :taggable, dependent: :destroy
   has_many :tags, through: :taggings
 
+  has_noticed_notifications
+
   # a scope for my books
   scope :my_books, -> (uid) { where(owner_id: uid) }
   scope :shelf_books, -> (shelf) { where(shelf_id: shelf) }

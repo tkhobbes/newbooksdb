@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_27_084925) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_27_114008) do
   create_table "action_text_rich_texts", charset: "utf8mb4", force: :cascade do |t|
     t.string "name", null: false
     t.text "body", size: :long
@@ -137,6 +137,19 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_27_084925) do
     t.integer "books_count", default: 0
     t.index ["name"], name: "index_genres_on_name", unique: true
     t.index ["slug"], name: "index_genres_on_slug", unique: true
+  end
+
+  create_table "notifications", charset: "utf8mb4", force: :cascade do |t|
+    t.string "recipient_type", null: false
+    t.bigint "recipient_id", null: false
+    t.string "type", null: false
+    t.text "params", size: :long, collation: "utf8mb4_bin"
+    t.datetime "read_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["read_at"], name: "index_notifications_on_read_at"
+    t.index ["recipient_type", "recipient_id"], name: "index_notifications_on_recipient"
+    t.check_constraint "json_valid(`params`)", name: "params"
   end
 
   create_table "owners", charset: "utf8mb4", force: :cascade do |t|

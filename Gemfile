@@ -101,6 +101,8 @@ gem 'lookbook'
 gem 'mediawiki-butt'
 # web crawler
 gem 'metainspector'
+# notifications
+gem 'noticed'
 # wrapper for http requests - using for picture grabbing
 gem 'open-uri'
 # Pagination for large collections
