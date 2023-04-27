@@ -118,6 +118,12 @@
           @extend .color-primary-light;
         }
       }
+
+      span {
+        display: block;
+        padding: $padding-4;
+        @extend .color-primary;
+      }
     }
 
     .messagesmenu {

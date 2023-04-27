@@ -6,6 +6,8 @@ class ProfilesController < ApplicationController
 
   before_action :set_profile, except: :index
 
+  skip_before_action :verify_authenticity_token, only: [:update_locale]
+
   # we list all profiles / owners through the index action here
   # accessible only for admins and deleting profiles will delete the owners too
   def index
