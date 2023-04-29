@@ -1,17 +1,30 @@
-<h1>all Notifications</h1>
-<%= button_to read_notifications_path, data: { 'turbo-method': :post } do %>
-  Mark all as read
-<% end %>
+<%= page_title(
+  t('notifications.index.title'),
+  '', 'heading2') %>
 
-
-<h2>New Notifications</h2>
-<% if @notifications.any? %>
-  <%= render @notifications %>
-<% else %>
-  No new notifications.
-<% end %>
+<div class="border-color-primary-dark border-radius-1 margin-top-1 padding-33">
+  <div class="flex margin-top-1">
+    <h2 class="heading3 color-primary-dark">
+      <%= t('notifications.index.new_title') %>
+    </h2>
+    <%= button_to read_notifications_path,
+      data: { 'turbo-method': :post },
+      class: 'small nobutton margin-left-1 color-secondary-dark color-hover-secondary' do %>
+      <%= t('notifications.index.mark_read') %>
+    <% end %>
+  </div>
+  <% if @notifications.any? %>
+    <%= render @notifications %>
+  <% else %>
+    <%= t('notifications.index.no_new') %>
+  <% end %>
+</div>
 
 <% if @previous_notifications.any? %>
-  <h2>Read Notifications</h2>
-  <%= render(partial: 'notification', collection: @previous_notifications) %>
+  <div class="border-color-primary-dark border-radius-1 padding-33 margin-top-1">
+    <h2 class="heading3 color-primary-dark">
+      <%= t('notifications.index.read_title') %>
+    </h2>
+    <%= render(partial: 'notification', collection: @previous_notifications) %>
+  </div>
 <% end %>

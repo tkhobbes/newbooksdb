@@ -1,0 +1,8 @@
+en:
+  notifications:
+    index:
+      title: Notifications
+      mark_read: Mark all as read
+      new_title: New Notifications
+      no_new: No new Notifications
+      read_title: Read Notifications

@@ -5,8 +5,16 @@
         <%= inline_svg_tag 'bell.svg', class: 'icon' %>
       <% end %>
       <ul class="messagesmenu">
-        <li><a href="#">Message 1</a></li>
-        <li><a href="#">Message 2</a></li>
+        <% if current_owner.profile.notifications.unread.any? %>
+          <% current_owner.profile.notifications.newest_first.unread[0..4].includes([:recipient]).each do |n| %>
+          <li>
+              <%= link_to n.to_notification.message,
+                n.to_notification.url  %>
+          </li>
+          <% end %>
+        <% else %>
+          <li>No unread messages</li>
+        <% end %>
         <li class="bg-secondary-light">
           <%= link_to 'All Messages',
             notifications_path,

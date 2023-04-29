@@ -1,5 +1,18 @@
-<div id="<%= dom_id(notification) %>">
-  <% noticed_notification = notification.to_notification %>
-  <%= link_to noticed_notification.message, noticed_notification.url %> |
-  <%= time_ago_in_words(notification.created_at) %>
-</div>
+<%= turbo_frame_tag dom_id(notification), class: 'flex' do %>
+  <div>
+    <%= link_to notification.to_notification.message,
+      notification.to_notification.url,
+      class: 'color-accent-dark color-hover-accent' %>
+    <span class="color-grey small">
+      <%= time_ago_in_words(notification.created_at) %>
+    </span>
+  </div>
+  <div class="icons">
+    <%= render 'shared/delete_icon',
+      delete_path: notification_path(notification),
+      item_name: "#{notification.to_notification.message[0..20]...}",
+      url: notification_path(notification),
+      redirect_url: notifications_path,
+      answer: 'turbo' %>
+  </div>
+<% end %>

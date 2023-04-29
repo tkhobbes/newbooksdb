@@ -1,0 +1,8 @@
+de:
+  notifications:
+    index:
+      title: Benachrichtigungen
+      mark_read: Alle als gelesen markieren
+      new_title: Neue Benachrichtigungen
+      no_new: Keine neuen Benachrichtigungen
+      read_title: Gelesene Benachrichtigungen
