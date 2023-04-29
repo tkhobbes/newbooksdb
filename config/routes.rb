@@ -44,6 +44,12 @@ Rails.application.routes.draw do
       get 'bulk_actions', on: :collection
     end
 
+    resources :notifications, only: [:index] do
+      collection do
+        post '/mark_as_read', to: 'notifications#read_all', as: :read
+      end
+    end
+
     # Functional controllers without models
     resources :unused_items, only: [:index, :destroy]
 

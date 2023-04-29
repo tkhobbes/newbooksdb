@@ -23,6 +23,8 @@ class Publisher < ApplicationRecord
 
   has_many :books, dependent: :nullify
 
+  has_noticed_notifications
+
   # friendly ID uses slug
   extend FriendlyId
   friendly_id :name, use: :slugged

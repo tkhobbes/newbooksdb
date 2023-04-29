@@ -23,6 +23,8 @@ class Genre < ApplicationRecord
   has_many :books_genres, dependent: :destroy
   has_many :books, through: :books_genres
 
+  has_noticed_notifications
+
   extend FriendlyId
   friendly_id :name, use: :slugged
 

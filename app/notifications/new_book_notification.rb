@@ -15,10 +15,10 @@ class NewBookNotification < Noticed::Base
 
   def message
     #t(".message")
-    "New book #{params[book].title} added to database"
+    "New book #{params[:book].title} added to database"
   end
 
   def url
-    book_path(params[:book])
+    book_path(params[:book], locale: I18n.locale)
   end
 end

@@ -39,6 +39,8 @@ class Author < ApplicationRecord
   has_many :taggings, as: :taggable, dependent: :destroy
   has_many :tags, through: :taggings
 
+  has_noticed_notifications
+
   include SearchCop
   # search cop setup
   search_scope :search do

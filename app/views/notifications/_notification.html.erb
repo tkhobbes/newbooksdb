@@ -1,0 +1,5 @@
+<div id="<%= dom_id(notification) %>">
+  <% noticed_notification = notification.to_notification %>
+  <%= link_to noticed_notification.message, noticed_notification.url %> |
+  <%= time_ago_in_words(notification.created_at) %>
+</div>
