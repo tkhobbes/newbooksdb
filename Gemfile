@@ -39,6 +39,7 @@ group :development do
   gem 'brakeman'
   gem 'bullet'
   gem 'database_consistency', '>= 1.1.15'
+  gem 'erb_lint'
   gem 'letter_opener', '>= 1.8.1'
   gem 'prosopite'
   gem 'rails-erd'

@@ -139,6 +139,13 @@ GEM
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
     e2mmap (0.1.0)
+    erb_lint (0.4.0)
+      activesupport
+      better_html (>= 2.0.1)
+      parser (>= 2.7.1.4)
+      rainbow
+      rubocop
+      smart_properties
     erubi (1.11.0)
     exception_notification (4.5.0)
       actionmailer (>= 5.2, < 8)
@@ -536,6 +543,7 @@ DEPENDENCIES
   database_consistency (>= 1.1.15)
   debug
   devise (~> 4.8, >= 4.8.1)
+  erb_lint
   exception_notification
   factory_bot_rails
   faker
