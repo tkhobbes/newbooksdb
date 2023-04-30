@@ -47,6 +47,7 @@ Rails.application.routes.draw do
     resources :notifications, only: %i[index destroy] do
       collection do
         post '/mark_as_read', to: 'notifications#read_all', as: :read
+        delete '/delete_all', to: 'notifications#delete_all', as: :delete_all
       end
     end
 

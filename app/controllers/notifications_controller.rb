@@ -19,7 +19,18 @@ class NotificationsController < ApplicationController
     @notification.destroy
     respond_to do |format|
       format.turbo_stream
-      format.html { redirect_to notifications_path, alert: "#{Notification.model_name.human} removed", status: :see_other }
+      format.html do
+        redirect_to notifications_path,
+        alert: "#{Notification.model_name.human} removed", status: :see_other
+      end
     end
+  end
+
+  def delete_all
+    @notifications = current_owner.profile.notifications.all
+    @notifications.destroy_all
+    redirect_to notifications_path,
+      alert: "All #{Notification.model_name.human(count: 10)} removed",
+      status: :see_other
   end
 end
