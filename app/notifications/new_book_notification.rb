@@ -14,8 +14,7 @@ class NewBookNotification < Noticed::Base
   param :book
 
   def message
-    #t(".message")
-    "New book #{params[:book].title} added to database"
+    t('.message', book: params[:book].title)
   end
 
   def url
