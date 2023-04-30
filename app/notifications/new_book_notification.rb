@@ -1,8 +1,11 @@
+# frozen_string_literal: true
+
 # To deliver this notification:
 #
 # NewBookNotification.with(post: @post).deliver_later(current_user)
 # NewBookNotification.with(post: @post).deliver(current_user)
 
+# Notification for new book
 class NewBookNotification < Noticed::Base
   # Add your delivery methods
   #

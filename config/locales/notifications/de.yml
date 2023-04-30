@@ -2,3 +2,5 @@ de:
   notifications:
     new_book_notification:
       message: Neues Buch %{book} wurde hinzugefügt.
+    delete_book_notification:
+      message: Buch %{book} wurde gelöscht.

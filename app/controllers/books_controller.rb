@@ -30,15 +30,6 @@ class BooksController < ApplicationController
   # standard index method - show all books
   # books ordered by sort_title; additional variable @pagy for pagination
   def index
-    # all_books = apply_scopes(books_with_includes_sorted)
-    # if params[:show] == 'list'
-    #   @pagy, @books = pagy(all_books, items: 20)
-    # else
-    #   @pagy, @books = pagy(
-    #     all_books
-    #       .includes([:publisher, :rich_text_synopsis, :books_genres, :genres])
-    #   )
-    # end
     @pagy, @books = per_page(apply_scopes(
       order(:sort_title,
         include_owner(
@@ -101,13 +92,15 @@ class BooksController < ApplicationController
   # end notification on book creation
   def send_book_create_notification(book)
     book_subscribers = Profile.where(book_notifications: true)
-    NewBookNotification.with(book: book).deliver_later(book_subscribers)
+    NewBookNotification.with(book:).deliver(book_subscribers)
   end
 
   # ensure the correct user can edit / update / delete a book
   def correct_user
     return if current_owner == Book.friendly.find(params[:id]).owner
-    redirect_to root_path, status: :see_other, error: "You cannot change or delete a #{Book.model_name.human} belonging to another #{Owner.model_name.human}"
+    redirect_to root_path,
+    status: :see_other,
+    error: "You cannot change or delete a #{Book.model_name.human} belonging to another #{Owner.model_name.human}"
   end
 
   # merges the fallback book format into params if no format specified
