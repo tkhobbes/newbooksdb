@@ -67,6 +67,10 @@
       .icon {
         width: 1.1em;
       }
+
+      .filled {
+        fill: var(--color-primary-dark);
+      }
     }
 
     .icon-locale {

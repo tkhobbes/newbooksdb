@@ -2,11 +2,15 @@
   <div class="righticons">
     <div class="right-dropdown">
       <%= link_to '#', id: 'messageslink' do %>
-        <%= inline_svg_tag 'bell.svg', class: 'icon' %>
+        <% if current_owner.profile.notifications.unread.any? %>
+          <%= inline_svg_tag 'bell.svg', class: 'icon filled' %>
+        <% else %>
+          <%= inline_svg_tag 'bell.svg', class: 'icon' %>
+        <% end %>
       <% end %>
       <ul class="messagesmenu">
         <% if current_owner.profile.notifications.unread.any? %>
-          <% current_owner.profile.notifications.newest_first.unread[0..4].includes([:recipient]).each do |n| %>
+          <% current_owner.profile.notifications.includes([:recipient]).newest_first.unread[0..4].each do |n| %>
           <li>
               <%= link_to n.to_notification.message,
                 n.to_notification.url  %>
