@@ -10,7 +10,7 @@
     <li class="placeholder-tab">&nbsp;</li>
     <% if @display_menu.size > 4 %>
       <li class="content-tab dropdown">
-        <%= link_to 'More...', '#', class: 'dropdown-label' %>
+        <%= link_to t('ShelfMenuComponent.more'), '#', class: 'dropdown-label' %>
         <div class='dropdown-menu'>
           <ul class="dropdown-submenu">
             <% @display_menu[4..-1].each do |item| %>

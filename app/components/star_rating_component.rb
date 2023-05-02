@@ -21,7 +21,7 @@ class StarRatingComponent < ViewComponent::Base
   end
 
   def humanized_rating
-    "(#{@rating.humanize})"
+    t("ratings.#{@rating}")
   end
 
 end

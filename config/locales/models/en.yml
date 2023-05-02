@@ -85,3 +85,16 @@ en:
         name: Name
         created_at: Created at
         updated_at: Updated at
+  ratings:
+    favourite: Favourite
+    good: Good
+    ok: OK
+    bad: Bad
+    hated: Hated
+  conditions:
+    like_new: Like new
+    used_ok: Used OK
+    used: Used
+    used_bad: Used bad
+    damaged: Damaged
+    not_given: not given

@@ -35,13 +35,13 @@ class ShelfMenuComponent < ViewComponent::Base
   # build standard entries
   def default_entries
     @menu <<
-      {name: 'All Books', path: books_path} <<
-      {name: 'Books in no Shelf', path: books_path(no_shelf: true)}
+      {name: t('ShelfMenuComponent.all_books'), path: books_path} <<
+      {name: t('ShelfMenuComponent.no_shelf'), path: books_path(no_shelf: true)}
   end
 
   # build entries specific to the owner
   def build_owner_entries
-    @menu << {name: 'My Books', path: books_path(my_books: @owner.id)}
+    @menu << {name: t('ShelfMenuComponent.my_books'), path: books_path(my_books: @owner.id)}
     @owner.shelves.order(:name).each do |shelf|
       @menu << {name: shelf.name, path: books_path(shelf_books: shelf.id)}
     end

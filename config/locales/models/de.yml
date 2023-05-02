@@ -76,6 +76,11 @@ de:
         name: Benutzername
         created_at: Erstellt am
         updated_at: Modifiziert am
+      publisher:
+        name: Name
+        location: Ort
+        created_at: Erstellt am
+        updated_at: Modifiziert am
       shelf:
         books_count: Bücher
         name: Name
@@ -85,3 +90,17 @@ de:
         name: Name
         created_at: Erstellt am
         updated_at: Modifiziert am
+  ratings:
+    favourite: Favorit
+    good: Gut
+    ok: OK
+    bad: Schlecht
+    hated: Sehr schlecht
+    not_rated: nicht bewertet
+  conditions:
+    like_new: Wie neu
+    used_ok: OK
+    used: gebraucht
+    used_bad: schlecht
+    damaged: beschädigt
+    not_given: nicht angegeben

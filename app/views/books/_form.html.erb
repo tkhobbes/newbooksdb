@@ -160,7 +160,7 @@
                 <%= f.radio_button :rating, k.to_sym, class: 'hidden-button' %>
                 <%= f.label :rating, id: "label_rating_#{k}", for: "book_rating_#{k}" do %>
                   <span class="fake-button"></span>
-                  <%= k.humanize %>
+                  <%= t("ratings.#{k}") %>
                 <% end %>
               </span>
             <% end %>
@@ -174,7 +174,7 @@
                 <%= f.radio_button :condition, k.to_sym, class: 'hidden-button' %>
                 <%= f.label :condition, id: "label_condition_#{k}", for: "book_condition_#{k}" do %>
                   <span class="fake-button"></span>
-                  <%= k.humanize %>
+                  <%= t("conditions.#{k}") %>
                 <% end %>
               </span>
             <% end %>

@@ -102,7 +102,7 @@
           <h3 class="heading5 color-primary-dark margin-bottom-25">
             <%= Book.human_attribute_name('condition') %>
           </h3>
-          <%= @book.condition.humanize %>
+          <%= t("conditions.#{@book.condition}") %>
         </div>
       </div>
     </div>

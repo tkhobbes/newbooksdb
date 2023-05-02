@@ -4,9 +4,6 @@
     action: 'click->switch-locale#updatelocale',
     'switch-locale-path-value': update_locale_profile_path(@profile, userlocale: @locale)
   } %>
-  <%#= link_to @locale,
-    update_locale_profile_path(@profile, userlocale: @locale),
-    data: { 'turbo-method': :put } %>
 <% else %>
   <span><%= @locale %></span>
 <% end %>

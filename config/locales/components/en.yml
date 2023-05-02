@@ -1,29 +1,57 @@
 en:
+  AuthorListComponent:
+    by: by %{Author}
+    more: et al.
+  BookIndexTitleComponent:
+    starting_with: starting with %{letter}
+    my_books: My Books
+    in_shelf: Books in Shelf '%{shelf}'
+    no_shelf: Books in no Shelf
+    all_books: All Books
+  LivingYearsComponent:
+    born: Born
+    died: Died
+  ShelfMenuComponent:
+    all_books: All Books
+    no_shelf: Books in no Shelf
+    my_books: My Books
+    more: More...
+  ShowMoreComponent:
+    empty: No %{items} for this %{model}
+    show_all: Show all (%{size} books)...
+  ShowShelfComponent:
+    in: in
+  ShowSynopsisComponent:
+    title: Synopsis
+  ShowTypeComponent:
+    grid: Show as Grid
+    list: Show as List
   SortComponent:
+    sort_by: Sort by
     Book:
-      sort_title: "Title"
-      created_at: "Created"
-      updated_at: "Modified"
-      year: "Year"
-      rating: "Rating"
-      condition: "Condition"
+      sort_title: Title
+      created_at: Created
+      updated_at: Modified
+      year: Year
+      rating: Rating
+      condition: Condition
     Author:
-      sort_name: "Name"
-      born: "Birth Year"
-      died: "Death Year"
-      created_at: "Created"
-      updated_at: "Modified"
+      sort_name: Name
+      born: Birth Year
+      died: Death Year
+      created_at: Created
+      updated_at: Modified
       books_count: "# Books"
-      rating: "Rating"
-      gender: "Gender"
+      rating: Rating
+      gender: Gender
     Publisher:
-      name: "Name"
-      location: "Location"
-      created_at: "Created"
-      updated_at: "Modified"
+      name: Name
+      location: Location
+      created_at: Created
+      updated_at: Modified
       books_count: "# Books"
     Genre:
-      name: "Name"
-      created_at: "Created"
-      updated_at: "Modified"
+      name: Name
+      created_at: Created
+      updated_at: Modified
       books_count: "# Books"

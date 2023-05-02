@@ -1,0 +1,57 @@
+de:
+  AuthorListComponent:
+    by: von %{Author}
+    more: et al.
+  BookIndexTitleComponent:
+    starting_with: welche mit %{letter} beginnen
+    my_books: Meine Bücher
+    in_shelf: Bücher im Regal '%{shelf}'
+    no_shelf: Bücher in keinem Regal
+    all_books: Alle Bücher
+  LivingYearsComponent:
+    born: Geboren
+    died: Gestorben
+  ShelfMenuComponent:
+    all_books: Alle Bücher
+    no_shelf: Bücher in keinem Regal
+    my_books: Meine Bücher
+    more: Weitere...
+  ShowMoreComponent:
+    empty: Keine %{items} für %{model}
+    show_all: Zeige alles (%{size} Bücher)...
+  ShowShelfComponent:
+    in: in
+  ShowSynopsisComponent:
+    title: Zusammenfassung
+  ShowTypeComponent:
+    grid: Zeige als Raster
+    list: Zeige als Liste
+  SortComponent:
+    sort_by: Sortieren nach
+    Book:
+      sort_title: Titel
+      created_at: Erstellungdatum
+      updated_at: Änderungsdatum
+      year: Jahr
+      rating: Bewertung
+      condition: Zustand
+    Author:
+      sort_name: Name
+      born: Geburtsjahr
+      died: Todesjahr
+      created_at: Erstellungsdatum
+      updated_at: Änderungsdatum
+      books_count: "# Bücher"
+      rating: Bewertung
+      gender: Geschlecht
+    Publisher:
+      name: Name
+      location: Ort
+      created_at: Erstellungdatum
+      updated_at: Änderungsdatum
+      books_count: "# Bücher"
+    Genre:
+      name: Name
+      created_at: Erstellungdatum
+      updated_at: Änderungsdatum
+      books_count: "# Bücher"

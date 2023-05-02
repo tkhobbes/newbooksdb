@@ -13,9 +13,9 @@ class LivingYearsComponent < ViewComponent::Base
   def living_years
     return unless @born || @died
     if @dead
-      @born ? "#{@born} - #{@died}" : "Died #{@died}"
+      @born ? "#{@born} - #{@died}" : "#{t('LivingYearsComponent.died')} #{@died}"
     else
-      "Born #{@born}"
+      "#{t('LivingYearsComponent.born')} #{@born}"
     end
   end
 

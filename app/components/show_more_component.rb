@@ -13,9 +13,9 @@ class ShowMoreComponent < ViewComponent::Base
 
   def show_more
     if @items.empty?
-      "No #{@items_type} for this #{@model.to_s.downcase}"
+      t('ShowMoreComponent.empty', items: @items_type, model: @model.to_s.downcase)
     else
-      link_to "Show all (#{@items.size} books)...", show_path
+      link_to t('ShowMoreComponent.show_all', size: @items.size), show_path
     end
   end
 

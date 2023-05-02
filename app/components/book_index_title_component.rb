@@ -18,19 +18,19 @@ class BookIndexTitleComponent < ViewComponent::Base
 
   # this method smells of :reek:DuplicateMethodCall
   def letter
-    @params[:letter] ? " starting with #{@params[:letter].upcase}" : ''
+    @params[:letter] ? " #{t('BookIndexTitleComponent.starting_with', letter: @params[:letter].upcase)}" : ''
   end
 
   # this method smells of :reek:DuplicateMethodCall
   def shelf
     if @params[:my_books]
-      'My Books'
+      t('BookIndexTitleComponent.my_books')
     elsif @params[:shelf_books]
-      "Books in Shelf '#{Shelf.find(@params[:shelf_books]).name}'"
+      t('BookIndexTitleComponent.in_shelf', shelf: Shelf.find(@params[:shelf_books]).name)
     elsif @params[:no_shelf]
-      'Books in no Shelf'
+      t('BookIndexTitleComponent.no_shelf')
     else
-      'All Books'
+      t('BookIndexTitleComponent.all_books')
     end
   end
 

@@ -1,6 +1,6 @@
 <% if show? %>
-  in
+  <%= t('ShowShelfComponent.in') %>
   <%= inline_svg_tag 'building.svg', class: 'smallicon' %>
-  shelf
+  <%= Shelf.model_name.human %>
   <%= show_shelf('color-accent-dark color-hover-accent') %>
 <% end %>
