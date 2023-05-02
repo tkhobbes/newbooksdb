@@ -6,7 +6,7 @@
 class NewPublisherNotification < Noticed::Base
   # Add your delivery methods
   #
-  deliver_by :database
+  deliver_by :database, if: :publisher_notifications?
   # deliver_by :email, mailer: "UserMailer"
   # deliver_by :slack
   # deliver_by :custom, class: "MyDeliveryMethod"
@@ -14,11 +14,13 @@ class NewPublisherNotification < Noticed::Base
   param :publisher
 
   def message
-    #t(".message")
-    "New book #{params[:publisher].name} added to database"
+    t('.message', publisher: params[:publisher].name)
   end
 
   def url
     publisher_path(params[:publisher], locale: I18n.locale)
   end
+
+  delegate :publisher_notifications?, to: :recipient
+
 end

@@ -4,3 +4,7 @@ new:
       message: New Book %{book} added.
     new_author_notification:
       message: New Author %{author} added.
+    new_genre_notification:
+      message: New Genre %{genre} added.
+    new_publisher_notification:
+      message: New Publisher %{publisher} added.

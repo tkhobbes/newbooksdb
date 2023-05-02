@@ -40,4 +40,12 @@ class Profile < ApplicationRecord
   def author_notifications?
     self[:author_notifications]
   end
+
+  def genre_notifications?
+    self[:genre_notifications]
+  end
+
+  def publisher_notifications?
+    self[:publisher_notifications]
+  end
 end

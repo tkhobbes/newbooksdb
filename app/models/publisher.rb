@@ -24,6 +24,7 @@ class Publisher < ApplicationRecord
   has_many :books, dependent: :nullify
 
   has_noticed_notifications
+  after_create_commit :send_publisher_create_notification
 
   # friendly ID uses slug
   extend FriendlyId
@@ -39,6 +40,11 @@ class Publisher < ApplicationRecord
   scope :letter, -> (letter) { where('LEFT(name,1) LIKE ?', "#{letter}%") }
 
   private
+
+  # end notification on book creation
+  def send_publisher_create_notification
+    NewPublisherNotification.with(publisher: self).deliver_later(Profile.all)
+  end
 
   def should_generate_new_friendly_id?
     name_changed? || super

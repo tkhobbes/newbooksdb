@@ -24,6 +24,7 @@ class Genre < ApplicationRecord
   has_many :books, through: :books_genres
 
   has_noticed_notifications
+  after_create_commit :send_genre_create_notification
 
   extend FriendlyId
   friendly_id :name, use: :slugged
@@ -36,5 +37,12 @@ class Genre < ApplicationRecord
   scope :no_books, -> { left_joins(:books).where(books: { id: [0, nil, ''] }) }
   # scope to have navigation working
   scope :letter, -> (letter) { where('LEFT(name,1) LIKE ?', "#{letter}%") }
+
+  private
+
+  # send notification on book creation
+  def send_genre_create_notification
+    NewGenreNotification.with(genre: self).deliver_later(Profile.all)
+  end
 
 end
