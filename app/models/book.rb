@@ -100,6 +100,7 @@ class Book < ApplicationRecord
   has_many :tags, through: :taggings
 
   has_noticed_notifications
+  after_create_commit :send_book_create_notification
 
   # a scope for my books
   scope :my_books, -> (uid) { where(owner_id: uid) }
@@ -116,6 +117,10 @@ class Book < ApplicationRecord
   after_destroy { Rails.cache.decrement('books-count') }
 
   private
+  # end notification on book creation
+  def send_book_create_notification
+    NewBookNotification.with(book: self).deliver_later(Profile.all)
+  end
 
   # Removes common leading words from the title and converts it to downcase
   # @return [String] The sort title (stored in DB)

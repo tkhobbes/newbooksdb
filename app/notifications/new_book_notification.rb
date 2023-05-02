@@ -9,7 +9,7 @@
 class NewBookNotification < Noticed::Base
   # Add your delivery methods
   #
-  deliver_by :database
+  deliver_by :database, if: :book_notifications?
   # deliver_by :email, mailer: "UserMailer"
   # deliver_by :slack
   # deliver_by :custom, class: "MyDeliveryMethod"
@@ -23,4 +23,7 @@ class NewBookNotification < Noticed::Base
   def url
     book_path(params[:book], locale: I18n.locale)
   end
+
+  delegate :book_notifications?, to: :recipient
+
 end

@@ -31,5 +31,9 @@ class Profile < ApplicationRecord
 
   has_one_attached :avatar
 
-  has_many :notifications, as: :recipient
+  has_many :notifications, as: :recipient, dependent: :destroy
+
+  def book_notifications?
+    self[:book_notifications]
+  end
 end

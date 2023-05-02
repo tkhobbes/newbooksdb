@@ -59,7 +59,6 @@ class BooksController < ApplicationController
     @book = Book.new(new_params.merge(owner_id: current_owner.id))
 
     if @book.save
-      send_book_create_notification(@book)
       flash[:success] = "#{Book.model_name.human} saved"
       redirect_to book_path(@book)
     else
@@ -87,13 +86,6 @@ class BooksController < ApplicationController
   end
 
   private
-
-  # notifications
-  # end notification on book creation
-  def send_book_create_notification(book)
-    book_subscribers = Profile.where(book_notifications: true)
-    NewBookNotification.with(book:).deliver(book_subscribers)
-  end
 
   # ensure the correct user can edit / update / delete a book
   def correct_user
