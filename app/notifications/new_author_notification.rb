@@ -17,7 +17,7 @@ class NewAuthorNotification < Noticed::Base
   param :author
 
   def message
-    t('.message', author: params[:author].display_name)
+    t('notifications.new_author_notification.message', author: params[:author].display_name)
   end
 
   def url

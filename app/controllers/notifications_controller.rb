@@ -4,9 +4,10 @@
 class NotificationsController < ApplicationController
   before_action :authenticate_owner!
 
+  # this method smells of :reek:DuplicateMethodCall
   def index
-    @notifications = current_owner.profile.notifications.newest_first.unread.includes([:recipient])
-    @previous_notifications = current_owner.profile.notifications.newest_first.read.includes([:recipient])
+    @notifications = scoped_notifications.newest_first.unread.includes([:recipient])
+    @previous_notifications = scoped_notifications.newest_first.read.includes([:recipient])
   end
 
   def read_all
@@ -14,6 +15,7 @@ class NotificationsController < ApplicationController
     redirect_to notifications_path, notice: 'Marked all as read'
   end
 
+  # this method smells of :reek:TooManyStatements
   def destroy
     @notification = Notification.find(params[:id])
     @notification.destroy
@@ -27,10 +29,16 @@ class NotificationsController < ApplicationController
   end
 
   def delete_all
-    @notifications = current_owner.profile.notifications.all
+    @notifications = scoped_notifications.all
     @notifications.destroy_all
     redirect_to notifications_path,
       alert: "All #{Notification.model_name.human(count: 10)} removed",
       status: :see_other
+  end
+
+  private
+
+  def scoped_notifications
+    current_owner.profile.notifications
   end
 end

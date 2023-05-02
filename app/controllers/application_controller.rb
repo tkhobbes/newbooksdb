@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
   around_action :switch_locale
 
   # locale handling
+  # this method smells of :reek:UtilityFunction
   def default_url_options
     { locale: I18n.locale }
   end
@@ -46,9 +47,10 @@ class ApplicationController < ActionController::Base
   private
 
   # retrieve locale
+  # this method smells of :reek:NilCheck
+  # This method smells of :reek:DuplicateMethodCall
   def owner_locale
-    return if current_owner.nil?
-    return if current_owner.profile.nil?
+    return if current_owner.nil? || current_owner.profile.nil?
     current_owner.profile[:userlocale]
   end
 end

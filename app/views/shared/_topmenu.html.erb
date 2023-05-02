@@ -13,7 +13,7 @@
           <% current_owner.profile.notifications.includes([:recipient]).newest_first.unread[0..4].each do |n| %>
           <li>
               <%= link_to n.to_notification.message,
-                n.to_notification.url  %>
+                n.to_notification.url %>
           </li>
           <% end %>
         <% else %>
@@ -22,27 +22,28 @@
         <li class="bg-secondary-light">
           <%= link_to 'All Messages',
             notifications_path,
-            class: 'margin-top-33'
-          %>
+            class: 'margin-top-33' %>
         </li>
       </ul>
     </div>
-    <div class="right-dropdown">
-      <%= render 'profiles/localemenu' %>
-      <ul class="localesmenu">
-        <li>
-          <%= render LocaleComponent.new(
-            locale: 'en',
-            profile: current_owner.profile
-          ) %>
-        </li>
-        <li>
-          <%= render LocaleComponent.new(
-            locale: 'de',
-            profile: current_owner.profile
-          ) %>
-        </li>
-      </ul>
-    </div>
+    <% if request.method == "GET" %>
+      <div class="right-dropdown">
+        <%= render 'profiles/localemenu' %>
+        <ul class="localesmenu">
+          <li>
+            <%= render LocaleComponent.new(
+              locale: 'en',
+              profile: current_owner.profile
+            ) %>
+          </li>
+          <li>
+            <%= render LocaleComponent.new(
+              locale: 'de',
+              profile: current_owner.profile
+            ) %>
+          </li>
+        </ul>
+      </div>
+    <% end %>
   </div>
 <% end %>

@@ -2,6 +2,7 @@
 
 # standard rails controller for shelves; these actions are all only used within the
 # settings menu
+# this class smells of :reek:RepeatedConditional
 class ShelvesController < ApplicationController
   # allow for turbo frame variants
   before_action :turbo_frame_request_variant
@@ -74,6 +75,8 @@ class ShelvesController < ApplicationController
   # -html (not used)
   # -turbo-stream - default response format, used on the settings page
   # This method smells of :reek:TooManyStatements
+  # rubocop:disable Metrics/AbcSize
+  # rubocop:disable Metrics/MethodLength
   def destroy
     if @shelf.owner == current_owner || current_owner&.admin
       @shelf.destroy
@@ -93,6 +96,8 @@ class ShelvesController < ApplicationController
       error: "You are not authorised to delete this #{Shelf.model_name.human}"
     end
   end
+  # rubocop:enable Metrics/MethodLength
+  # rubocop:enable Metrics/AbcSize
 
   private
 

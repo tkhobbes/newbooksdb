@@ -27,7 +27,7 @@ RSpec.describe 'IsbnSearch' do
 
       it 'can display results if logged in' do
         sign_in profile.owner
-        post isbn_search_show_path, params: {
+        post isbn_search_show_path('en'), params: {
           title: 'The Hobbit'
         }
         expect(response).to have_http_status(:success)

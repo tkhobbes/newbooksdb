@@ -76,6 +76,11 @@ en:
         name: Username
         created_at: Created at
         updated_at: Updated at
+      publisher:
+        name: Name
+        location: Location
+        created_at: Created at
+        updated_at: Updated at
       shelf:
         books_count: Books
         name: Name
@@ -91,6 +96,7 @@ en:
     ok: OK
     bad: Bad
     hated: Hated
+    not_rated: Not rated
   conditions:
     like_new: Like new
     used_ok: Used OK

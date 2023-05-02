@@ -1,8 +1,11 @@
+# frozen_string_literal: true
+
 # To deliver this notification:
 #
 # NewPublisherNotification.with(post: @post).deliver_later(current_user)
 # NewPublisherNotification.with(post: @post).deliver(current_user)
 
+# notifications for new publishers
 class NewPublisherNotification < Noticed::Base
   # Add your delivery methods
   #
@@ -14,7 +17,7 @@ class NewPublisherNotification < Noticed::Base
   param :publisher
 
   def message
-    t('.message', publisher: params[:publisher].name)
+    t('notifications.new_publisher_notification.message', publisher: params[:publisher].name)
   end
 
   def url

@@ -2,6 +2,7 @@
 
 # Standard Rails controller for the tag model
 # this class smells of :reek:TooManyInstanceVariables
+# this class smells of :reek:RepeatedConditional
 class TagsController < ApplicationController
   # allow for turbo frame variants
   before_action :turbo_frame_request_variant
@@ -46,6 +47,8 @@ class TagsController < ApplicationController
   # rubocop:enable Metrics/AbcSize
 
   # standard rails show method to display a tag and get all books within that tag
+  # rubocop:disable Metrics/AbcSize
+  # rubocop:disable Metrics/MethodLength
   def show
     if current_owner == @tag.owner || current_owner&.admin
       case params[:list]
@@ -59,6 +62,8 @@ class TagsController < ApplicationController
         error: "You are not authorised to view this #{Tag.model_name.human}"
     end
   end
+  # rubocop:enable Metrics/AbcSize
+  # rubocop:enable Metrics/MethodLength
 
   #new action - displayed in a turbo frame within the settings page
   def new
@@ -112,6 +117,8 @@ class TagsController < ApplicationController
   # -turbo-stream - default response format, used on the settings page
   # the method also takes care of destroying the taggings in scope (as tags are polymorphic)
   # This method smells of :reek:TooManyStatements
+  # rubocop:disable Metrics/AbcSize
+  # rubocop:disable Metrics/MethodLength
   def destroy
     if @tag.owner == current_owner || current_owner&.admin
       Tagging.where(tag_id: @tag.id).find_each(&:destroy)
@@ -132,6 +139,8 @@ class TagsController < ApplicationController
         error: "You are not authorised to delete this #{Tag.model_name.human}"
     end
   end
+  # rubocop:enable Metrics/AbcSize
+  # rubocop:enable Metrics/MethodLength
 
   private
 

@@ -24,7 +24,7 @@ RSpec.describe 'BookFormats' do
 
       it 'cannot delete a book format if not logged in' do
         delete book_format_path(format.id, locale: 'en')
-        expect(BookFormat.where(id: format.id).count).to eq(1)
+        expect(BookFormat.where(id: format.id).count).to be(1)
       end
 
       it 'cannot create a book format if not logged in' do
@@ -42,7 +42,7 @@ RSpec.describe 'BookFormats' do
             name: 'default'
           }
         }
-        expect(fallback_format.reload.fallback).to eq(true)
+        expect(fallback_format.reload.fallback).to be(true)
       end
 
     end
@@ -65,7 +65,7 @@ RSpec.describe 'BookFormats' do
             name: 'new format'
           }
         }
-        expect(BookFormat.where(name: 'new format').count).to eq(1)
+        expect(BookFormat.where(name: 'new format').count).to be(1)
       end
 
       it 'can change a book format if logged in' do
@@ -91,8 +91,8 @@ RSpec.describe 'BookFormats' do
             name: 'default'
           }
         }
-        expect(fallback_format.reload.fallback).to eq(false)
-        expect(format.reload.fallback).to eq(true)
+        expect(fallback_format.reload.fallback).to be(false)
+        expect(format.reload.fallback).to be(true)
       end
     end
   end

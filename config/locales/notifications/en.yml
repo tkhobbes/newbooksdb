@@ -1,4 +1,4 @@
-new:
+en:
   notifications:
     new_book_notification:
       message: New Book %{book} added.

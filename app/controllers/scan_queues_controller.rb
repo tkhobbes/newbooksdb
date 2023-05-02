@@ -23,6 +23,7 @@ class ScanQueuesController < ApplicationController
 
   # create: creates an entry in scan queue
   # this method smells of :reek:DuplicateMethodCall
+  # this method smells of :reek:TooManyStatements
   def create
     @scan_results = Kredis.set current_owner.id.to_s
     @scan_results << params[:isbn] unless @scan_results.include? params[:isbn]

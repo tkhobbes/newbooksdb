@@ -1,8 +1,11 @@
+# frozen_string_literal: true
+
 # To deliver this notification:
 #
 # NewGenreNotification.with(post: @post).deliver_later(current_user)
 # NewGenreNotification.with(post: @post).deliver(current_user)
 
+# notifications for new genres
 class NewGenreNotification < Noticed::Base
   # Add your delivery methods
   #
@@ -14,7 +17,7 @@ class NewGenreNotification < Noticed::Base
   param :genre
 
   def message
-    t('.message', genre: params[:genre].name)
+    t('notifications.new_genre_notification.message', genre: params[:genre].name)
   end
 
   def url

@@ -5,7 +5,7 @@
 # NewBookNotification.with(post: @post).deliver_later(current_user)
 # NewBookNotification.with(post: @post).deliver(current_user)
 
-# Notification for new book
+# notifications for new books
 class NewBookNotification < Noticed::Base
   # Add your delivery methods
   #
@@ -17,7 +17,7 @@ class NewBookNotification < Noticed::Base
   param :book
 
   def message
-    t('.message', book: params[:book].title)
+    t('notifications.new_book_notification.message', book: params[:book].title)
   end
 
   def url

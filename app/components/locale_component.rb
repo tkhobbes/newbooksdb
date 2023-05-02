@@ -9,7 +9,7 @@ class LocaleComponent < ViewComponent::Base
   end
 
   def print_link?
-    return true if @profile.nil?
+    return true unless @profile
     @locale != @profile[:userlocale]
   end
 

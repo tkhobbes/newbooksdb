@@ -85,6 +85,7 @@ class BookFormatsController < ApplicationController
 
   # custom method to actually update the default book format
   # removes the fallback flag from the previous default book format
+  # this method smells of :reek:TooManyStatements
   def update_default
     @new_default = BookFormat.find_by(name: book_format_params[:name])
     @default_book_format.update(fallback: false)

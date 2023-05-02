@@ -203,8 +203,4 @@ RSpec.describe Author do
       end
     end # other scopes
   end # scopes
-
-  describe 'cache counts' do
-
-  end # cache counts
 end

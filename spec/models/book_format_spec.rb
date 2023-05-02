@@ -18,7 +18,7 @@ RSpec.describe BookFormat do
       end
 
       it 'has zero books by default' do
-        expect(fallback_format.books_count).to eq 0
+        expect(fallback_format.books_count).to be 0
       end
 
       it 'defaults fallback to false' do
@@ -36,7 +36,7 @@ RSpec.describe BookFormat do
           owner:,
           book_format: fallback_format
         )
-        expect(fallback_format.books_count).to eq 1
+        expect(fallback_format.books_count).to be 1
       end
     end
   end
@@ -70,7 +70,7 @@ RSpec.describe BookFormat do
 
       it 'moves books to the fallback format' do
         format.destroy
-        expect(fallback_format.reload.books.count).to eq(3)
+        expect(fallback_format.reload.books.count).to be 3
         expect(book.reload.book_format).to eq(fallback_format)
       end
 
