@@ -36,4 +36,8 @@ class Profile < ApplicationRecord
   def book_notifications?
     self[:book_notifications]
   end
+
+  def author_notifications?
+    self[:author_notifications]
+  end
 end

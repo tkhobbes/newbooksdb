@@ -40,6 +40,7 @@ class Author < ApplicationRecord
   has_many :tags, through: :taggings
 
   has_noticed_notifications
+  after_create_commit :send_author_create_notification
 
   include SearchCop
   # search cop setup
@@ -82,6 +83,11 @@ class Author < ApplicationRecord
   end
 
   private
+
+  # send notification on book creation
+  def send_author_create_notification
+    NewAuthorNotification.with(author: self).deliver_later(Profile.all)
+  end
 
   def create_sort_name
     self.sort_name = "#{last_name}, #{first_name}" if last_name.present? && first_name.present?
