@@ -1,6 +1,6 @@
 en:
   AuthorListComponent:
-    by: by %{Author}
+    by: by %{author}
     more: et al.
   BookIndexTitleComponent:
     starting_with: starting with %{letter}

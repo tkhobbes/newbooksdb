@@ -34,7 +34,7 @@ class AuthorListComponent < ViewComponent::Base
   # shows (by ...) for the first author and adds "et al." if there are more than one
   def by_authors
     return if @authors.blank?
-    "(#{t('AuthorListComponent.by', author: @authors.first.display_name)} \
+    "(#{t('AuthorListComponent.by', author: @authors.first.display_name)}\
     #{@authors.count > 1 ? t('AuthorListComponent.more') : ''})"
   end
 
