@@ -7,6 +7,11 @@
 class ApplicationController < ActionController::Base
   around_action :switch_locale
 
+  # Devise i18n
+  before_action do
+    I18n.locale = owner_locale || I18n.default_locale
+  end
+
   # locale handling
   # this method smells of :reek:UtilityFunction
   def default_url_options

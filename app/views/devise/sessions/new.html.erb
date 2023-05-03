@@ -1,4 +1,4 @@
-<%= page_title('Log In','', 'heading2') %>
+<%= page_title(t('.sign_in'),'', 'heading2') %>
 
 <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <%= render 'shared/form_errors', form: f %>
@@ -8,14 +8,14 @@
       <%= f.input :email,
                   required: false,
                   autofocus: true,
-                  input_html: { autocomplete: 'email' },
-                  placeholder: 'E-Mail',
-                  label: false %>
+                  placeholder: t('.email'),
+                  label: false,
+                  input_html: { autocomplete: 'email' } %>
       <%= f.input :password,
                   required: false,
-                  input_html: { autocomplete: 'current-password' },
-                  placeholder: 'Password',
-                  label: false %>
+                  placeholder: t('.password'),
+                  label: false,
+                  input_html: { autocomplete: 'current-password' } %>
       <% if devise_mapping.rememberable? %>
         <div class='input checkbox-container'>
           <span class='check'>
@@ -23,16 +23,15 @@
             <label id='label_remember_me' for='owner_remember_me'>
               <span class='fake-button'>
               </span>
-              Remember me on this computer
+              <%= t('.remember_me') %>
             </label>
           </span>
         </div>
       <% end %>
-      <%= f.button :submit, 'Log in' %>
+      <%= f.button :submit, t('.sign_in') %>
       <div class='margin-top-50 flexlist'>
         <%= render 'devise/shared/links' %>
       </div>
     </div>
   </div>
 <% end %>
-

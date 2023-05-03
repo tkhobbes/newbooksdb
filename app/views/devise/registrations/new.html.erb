@@ -1,4 +1,4 @@
-<%= page_title('Sign Up','', 'heading2') %>
+<%= page_title(t('.sign_up'),'', 'heading2') %>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render 'shared/form_errors', form: f %>
@@ -6,25 +6,26 @@
   <div class='big-form width-50'>
     <div class='form-col'>
       <%= f.input :email,
+                  required: true,
                   autofocus: true,
-                  input_html: { autocomplete: 'email' },
-                  placeholder: 'E-Mail',
-                  label: false %>
+                  placeholder: t('.email'),
+                  label: false,
+                  input_html: { autocomplete: 'email' }%>
       <%= f.input :password,
-                  hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                  input_html: { autocomplete: 'new-password' },
-                  placeholder: 'Password',
-                  label: false %>
+                  required: true,
+                  label: false,
+                  placeholder: t('.password'),
+                  hint: (t('devise.shared.minimum_password_length', count: @minimum_password_length) if @minimum_password_length),
+                  input_html: { autocomplete: 'new-password' } %>
       <%= f.input :password_confirmation,
-                  input_html: { autocomplete: 'new-password' },
-                  placeholder: 'Confirm Password',
-                  label: false %>
-
-      <%= f.button :submit, 'Sign up' %>
+                  required: true,
+                  placeholder: t('.password_confirmation'),
+                  label: false,
+                  input_html: { autocomplete: "new-password" } %>
+      <%= f.button :submit, t('.sign_up') %>
       <div class='margin-top-50 flexlist'>
         <%= render 'devise/shared/links' %>
       </div>
     </div>
   </div>
 <% end %>
-

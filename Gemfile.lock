@@ -134,6 +134,8 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    devise-i18n (1.10.3)
+      devise (>= 4.8.0)
     diff-lcs (1.5.0)
     docile (1.4.0)
     domain_name (0.5.20190701)
@@ -543,6 +545,7 @@ DEPENDENCIES
   database_consistency (>= 1.1.15)
   debug
   devise (~> 4.8, >= 4.8.1)
+  devise-i18n
   erb_lint
   exception_notification
   factory_bot_rails

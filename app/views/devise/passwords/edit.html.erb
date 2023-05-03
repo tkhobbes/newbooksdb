@@ -1,4 +1,4 @@
-<%= page_title('Change Your Password','', 'heading2') %>
+<%= page_title(t('.change_your_password'),'', 'heading2') %>
 
 <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
   <%= render 'shared/form_errors', form: f %>
@@ -9,18 +9,20 @@
   <div class='big-form width-50'>
     <div class='form-col'>
       <%= f.input :password,
-        placeholder: 'New password',
-        label: false,
-        autofocus: true,
-        hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-        input_html: { autocomplete: 'new-password' } %>
+                  placeholder: t('.new_password'),
+                  label: false,
+                  required: true,
+                  autofocus: true,
+                  hint: (t('devise.shared.minimum_password_length', count: @minimum_password_length) if @minimum_password_length),
+                  input_html: { autocomplete: 'new-password' } %>
       <%= f.input :password_confirmation,
-        placeholder: 'Confirm your new password',
-        label: false,
-        input_html: { autocomplete: "new-password" } %>
-      <%= f.button :submit, 'Change my password' %>
+                  placeholder: t('.confirm_new_password'),
+                  label: false,
+                  required: true,
+                  input_html: { autocomplete: 'new-password' } %>
+      <%= f.button :submit, t('.change_my_password') %>
       <div class='margin-top-50 flexlist'>
-        <%= render "devise/shared/links" %>
+        <%= render 'devise/shared/links' %>
       </div>
     </div>
   </div>

@@ -1,6 +1,11 @@
 en:
-  # Devise - see also devise.en.yml
   Devise:
     logout: Log out
     login: Log in
     signup: Sign Up
+  devise:
+    sessions:
+      new:
+        email: E-Mail
+        password: Password
+        remember_me: Remember Me on this Computer
