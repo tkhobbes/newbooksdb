@@ -27,7 +27,7 @@ class GenresController < ApplicationController
         @genres = Genre.all.order(:name)
         render 'admin', genres: @genres
       else
-        redirect_to genres_path, error: 'Must be logged in'
+        redirect_to genres_path, error: t('genres.logged_in')
       end
     else
       @pagy, @genres = pagy(apply_scopes(

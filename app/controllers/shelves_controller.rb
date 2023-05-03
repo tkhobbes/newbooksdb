@@ -31,7 +31,7 @@ class ShelvesController < ApplicationController
   # standard rails method to edit a shelf
   def edit
     redirect_to root_path,
-    error: 'You are not authorised to edit this shelf' unless @shelf.owner == current_owner || current_owner&.admin
+    error: t('shelves.unauthorized') unless @shelf.owner == current_owner || current_owner&.admin
   end
 
   #standard rails create action; answers to:
@@ -67,7 +67,7 @@ class ShelvesController < ApplicationController
       end
     else
       redirect_to root_path,
-        error: "You are not authorised to edit this #{Shelf.model_name.human}"
+        error: t('shelves.unauthorized')
     end
   end
 
@@ -75,7 +75,6 @@ class ShelvesController < ApplicationController
   # -html (not used)
   # -turbo-stream - default response format, used on the settings page
   # This method smells of :reek:TooManyStatements
-  # rubocop:disable Metrics/AbcSize
   # rubocop:disable Metrics/MethodLength
   def destroy
     if @shelf.owner == current_owner || current_owner&.admin
@@ -93,11 +92,10 @@ class ShelvesController < ApplicationController
       end
     else
       redirect_to root_path,
-      error: "You are not authorised to delete this #{Shelf.model_name.human}"
+      error: t('shelves.unauthorized_delete')
     end
   end
   # rubocop:enable Metrics/MethodLength
-  # rubocop:enable Metrics/AbcSize
 
   private
 

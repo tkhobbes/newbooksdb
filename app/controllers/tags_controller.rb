@@ -59,7 +59,7 @@ class TagsController < ApplicationController
       end
     else
       redirect_to root_path,
-        error: "You are not authorised to view this #{Tag.model_name.human}"
+        error: t('tags.unauthorized')
     end
   end
   # rubocop:enable Metrics/AbcSize
@@ -73,7 +73,7 @@ class TagsController < ApplicationController
   #edit action - displayed in a turbo frame within the settings page
   def edit
     redirect_to root_path,
-    error: 'You are not authorised to edit this tag' unless @tag.owner == current_owner || current_owner&.admin
+    error: t('tags.unauthorized_edit') unless @tag.owner == current_owner || current_owner&.admin
   end
 
   #standard rails create action; answers to:
@@ -108,7 +108,7 @@ class TagsController < ApplicationController
       end
     else
       redirect_to root_path,
-        error: "You are not authorised to edit this tag #{Tag.model_name.human}"
+        error: t('tags.unauthorized_edit')
     end
   end
 
@@ -136,7 +136,7 @@ class TagsController < ApplicationController
       end
     else
       redirect_to root_path,
-        error: "You are not authorised to delete this #{Tag.model_name.human}"
+        error: t('tags.unauthorized_destroy')
     end
   end
   # rubocop:enable Metrics/AbcSize

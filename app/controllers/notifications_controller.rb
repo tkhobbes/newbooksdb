@@ -12,7 +12,7 @@ class NotificationsController < ApplicationController
 
   def read_all
     current_owner.profile.notifications.mark_as_read!
-    redirect_to notifications_path, notice: 'Marked all as read'
+    redirect_to notifications_path, notice: t('notifications.marked_read')
   end
 
   # this method smells of :reek:TooManyStatements
@@ -23,7 +23,7 @@ class NotificationsController < ApplicationController
       format.turbo_stream
       format.html do
         redirect_to notifications_path,
-        alert: "#{Notification.model_name.human} removed", status: :see_other
+        alert: t('notifications.removed'), status: :see_other
       end
     end
   end
@@ -32,8 +32,7 @@ class NotificationsController < ApplicationController
     @notifications = scoped_notifications.all
     @notifications.destroy_all
     redirect_to notifications_path,
-      alert: "All #{Notification.model_name.human(count: 10)} removed",
-      status: :see_other
+      alert: t('notifications.removed_all'), status: :see_other
   end
 
   private

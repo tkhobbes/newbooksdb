@@ -5,7 +5,7 @@ class UserDestructionsController < ApplicationController
 
   # show the form
   def new
-    redirect_to root_path, notice: 'You are not authorized to perform that action' unless current_owner
+    redirect_to root_path, notice: t('user_destructions.unauthorized') unless current_owner
     @owner = Owner.find(Profile.find(params[:id]).owner.id)
   end
 
@@ -27,12 +27,12 @@ class UserDestructionsController < ApplicationController
         ).transfer
         if result.transferred?
           owner.destroy
-          redirect_to root_path, info: "Owner Removed; #{result.message}"
+          redirect_to root_path, info: t('user_destructions.remove', message: result.message)
         end
       when 'delete'
         Book.destroy_by(owner:)
         owner.destroy
-        redirect_to root_path, info: 'Owner Removed; books removed'
+        redirect_to root_path, info: t('user_destructions.removed_books')
       end
     else
       redirect_to root_path

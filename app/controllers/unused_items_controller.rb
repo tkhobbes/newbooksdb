@@ -8,7 +8,7 @@ class UnusedItemsController < ApplicationController
   # this method smells of :reek:DuplicateMethodCall
   def index
     unless ALLOWED_METHODS.include?(params[:show]) && current_owner&.admin
-      redirect_to root_path, notice: 'You are not allowed to perform that action'
+      redirect_to root_path, notice: t('unused_items.unauthorized')
     end
     @model = params[:items_in]
     @items = Object.const_get(@model).send(params[:show])
@@ -19,9 +19,9 @@ class UnusedItemsController < ApplicationController
     if current_owner&.admin
       model = params[:items_in]
       Object.const_get(model).send(params[:show]).destroy_all
-      redirect_to bulk_actions_settings_path, notice: "Unused #{model}s removed."
+      redirect_to bulk_actions_settings_path, notice: t('unused_items.removed', model:)
     else
-      redirect_to root_path, notice: 'You are not allowed to perform that action'
+      redirect_to root_path, notice: t('unused_items.unauthorized')
     end
   end
 end

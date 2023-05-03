@@ -20,7 +20,7 @@ class ProfilesController < ApplicationController
 
   def update
     if (current_owner.admin || @profile.owner == current_owner) && @profile.update(profile_params)
-      redirect_to profile_path(@profile), success: "#{Profile.model_name.human} updated"
+      redirect_to profile_path(@profile), success: t('profiles.update')
     else
       render :edit, status: :unprocessable_entity
     end

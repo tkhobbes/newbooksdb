@@ -1,0 +1,42 @@
+en:
+  authors:
+    save: Author saved
+    update: Author updated
+    destroy: Author removed
+  books:
+    save: Book saved
+    update: Book updated
+    destroy: Book removed
+    correct_user: You cannot change or delete a Book belonging to another Owner
+  covers:
+    success: New Cover stored
+    error: Could not retrieve a cover
+  genres:
+    logged_in: Must be logged in
+  notifications:
+    marked_read: Marked all as read
+    removed: Notification removed
+    removed_all: All Notifications removed
+  profiles:
+    update: Profile updated
+  publishers:
+    save: Publisher saved
+    update: Publisher updated
+    destroy: Publisher removed
+  scan_queues:
+    update: Scan Queue updated
+    destroy: Scan Queue cleared
+  shelves:
+    unauthorized: You are not authorised to edit this shelf
+    unauthorized_delete: You are not authorised to delete this shelf
+  tags:
+    unauthorized: You are not authorised to view this Tag
+    unauthorized_edit: You are not authorised to edit this Tag
+    unauthorized_destroy: You are not authorized to delete this Tag
+  unused_items:
+    unauthorized: You are not allowed to perform that action
+    removed: Unused %{model}s removed
+  user_destructions:
+    unauthorized: You are not authorized to perform that action
+    remove: Owner removed, %{message}
+    removed_books: Owner and Books removed

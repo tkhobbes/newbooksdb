@@ -59,7 +59,7 @@ class BooksController < ApplicationController
     @book = Book.new(new_params.merge(owner_id: current_owner.id))
 
     if @book.save
-      flash[:success] = "#{Book.model_name.human} saved"
+      flash[:success] = t('books.save')
       redirect_to book_path(@book)
     else
       render :new, status: :unprocessable_entity
@@ -69,7 +69,7 @@ class BooksController < ApplicationController
   # update of a book
   def update
     if @book.update(book_params)
-      flash[:success] = "#{Book.model_name.human} updated"
+      flash[:success] = t('books.update')
       redirect_to @book
     else
       render :edit, status: :unprocessable_entity
@@ -81,7 +81,7 @@ class BooksController < ApplicationController
     @book.destroy
     respond_to do |format|
       format.turbo_stream
-      format.html { redirect_to books_url, alert: "#{Book.model_name.human} removed", status: :see_other }
+      format.html { redirect_to books_url, alert: t('books.destroy'), status: :see_other }
     end
   end
 
@@ -92,7 +92,7 @@ class BooksController < ApplicationController
     return if current_owner == Book.friendly.find(params[:id]).owner
     redirect_to root_path,
     status: :see_other,
-    error: "You cannot change or delete a #{Book.model_name.human} belonging to another #{Owner.model_name.human}"
+    error: t('books.correct_user')
   end
 
   # merges the fallback book format into params if no format specified

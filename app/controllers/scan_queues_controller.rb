@@ -30,7 +30,7 @@ class ScanQueuesController < ApplicationController
 
     respond_to do |format|
       format.turbo_stream
-      format.html { redirect_to new_scan_queue_path, notice: 'Scan queue updated', status: :see_other }
+      format.html { redirect_to new_scan_queue_path, notice: t('scan_queues.update'), status: :see_other }
     end
   end
 
@@ -41,7 +41,7 @@ class ScanQueuesController < ApplicationController
     @scan_result = params[:id]
     scan_results.remove @scan_result if scan_results.include? @scan_result
     respond_to do |format|
-      format.html { redirect_to new_scan_queue_path, notice: 'Scan queue cleared', status: :see_other }
+      format.html { redirect_to new_scan_queue_path, notice: t('scan_queues.destroy'), status: :see_other }
       format.turbo_stream
     end
   end

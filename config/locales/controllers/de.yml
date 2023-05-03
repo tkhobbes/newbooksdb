@@ -1,0 +1,42 @@
+de:
+  authors:
+    save: Autor gespeichert
+    update: Autor aktualisiert
+    destroy: Autor entfernt
+  books:
+    save: Buch gespeichert
+    update: Buch aktualisiert
+    destroy: Buch entfernt
+    correct_user: Dieses Buch kann nur vom entsprechenden Besitzer geändert oder entfernt werden
+  covers:
+    success: Neues Cover gespeichert
+    error: Konnte kein Cover finden
+  genres:
+    logged_in: Anmelden erforderlich
+  notifications:
+    marked_read: Alle als gelesen markiert
+    removed: Benachrichtigung entfernt
+    removed_all: Alle Benachrichtigungen entfernt
+  profiles:
+    update: Profil aktualisiert
+  publishers:
+    save: Verlag gespeichert
+    update: Verlag aktualisiert
+    destroy: Verlag entfernt
+  scan_queues:
+    update: Scan Queue aktualisiert
+    destroy: Scan Queue geleert
+  shelves:
+    unauthorized: Dieses Regal kann nur vom entsprechenden Besitzer geändert werden
+    unauthorized_delete: Dieses Regal kann nur vom entsprechenden Besitzer gelöscht werden
+  tags:
+    unauthorized: Dieser Tag kann nur vom entsprechenden Besitzer angesehen werden
+    unauthorized_edit: Dieser Tag kann nur vom entsprechenden Besitzer geändert werden
+    unauthorized_destroy: Dieser Tag kann nur vom entsprechenden Besitzer gelöscht werden
+  unused_items:
+    unauthorized: Aktion nicht erlaubt
+    removed: Unbenutzte Einträge gelöscht (%{model})
+  user_destructions:
+    unauthorized: Aktion nichtt erlaubt
+    remove: Besitzer entfernt, %{message}
+    removed_books: Besitzer und Bücher entfernt

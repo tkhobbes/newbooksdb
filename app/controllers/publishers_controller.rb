@@ -46,7 +46,7 @@ class PublishersController < ApplicationController
 
     if @publisher.save
       respond_to do |format|
-        format.html { redirect_to publisher_path(@publisher), success: "#{Publisher.model_name.human} saved" }
+        format.html { redirect_to publisher_path(@publisher), success: t('publishers.save') }
         format.json { render json: @publisher }
       end
     else
@@ -57,7 +57,7 @@ class PublishersController < ApplicationController
   #standard rails update action
   def update
     if @publisher.update(publisher_params)
-      flash[:success] = "#{Publisher.model_name.human} updated"
+      flash[:success] = t('publishers.update')
       redirect_to publisher_path(@publisher)
     else
       render :edit, status: :unprocessable_entity
@@ -69,7 +69,7 @@ class PublishersController < ApplicationController
     @publisher.destroy
     respond_to do |format|
       format.turbo_stream
-      format.html { redirect_to publishers_path, alert: "#{Publisher.model_name.human} removed", status: :see_other }
+      format.html { redirect_to publishers_path, alert: t('publishers.destroy'), status: :see_other }
     end
   end
 

@@ -19,13 +19,13 @@
       book = Book.find(book_id)
       result = PictureAttacher.new(cover_url, book.cover).attach
       if result.created?
-        redirect_to book_path(book_id), success: 'New cover stored'
+        redirect_to book_path(book_id), success: t('covers.success')
       else
         redirect_to book_path(book_id), error: result.message
       end
     else
       # no cover url found, redirect to the book
-      redirect_to book_path(book_id), error: 'Could not retrieve a cover'
+      redirect_to book_path(book_id), error: t('covers.error')
     end
   end
   # rubocop:enable Metrics/MethodLength
