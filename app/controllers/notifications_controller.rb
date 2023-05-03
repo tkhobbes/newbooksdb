@@ -18,13 +18,17 @@ class NotificationsController < ApplicationController
   # this method smells of :reek:TooManyStatements
   def destroy
     @notification = Notification.find(params[:id])
-    @notification.destroy
-    respond_to do |format|
-      format.turbo_stream
-      format.html do
-        redirect_to notifications_path,
-        alert: t('notifications.removed'), status: :see_other
+    if current_owner.profile == @notification.recipient
+      @notification.destroy
+      respond_to do |format|
+        format.turbo_stream
+        format.html do
+          redirect_to notifications_path,
+          alert: t('notifications.removed'), status: :see_other
+        end
       end
+    else
+      redirect_to root_path
     end
   end
 
