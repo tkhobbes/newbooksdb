@@ -18,7 +18,7 @@
   </div>
   <div class="form-col">
     <%= form.input :gender,
-      collection: [t('Authors.required_fields.female'), t('Authors.required_fields.male')],
+      collection: [[t('Authors.required_fields.female'), 'female'], [t('Authors.required_fields.male'), 'male']],
       label: false %>
   </div>
 </div>

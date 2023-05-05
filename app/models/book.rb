@@ -91,7 +91,7 @@ class Book < ApplicationRecord
 
   has_many :books_authors, dependent: :destroy
   has_many :authors, through: :books_authors
-  accepts_nested_attributes_for :authors
+  accepts_nested_attributes_for :authors, reject_if: :reject_authors
 
   has_many :books_genres, dependent: :destroy
   has_many :genres, through: :books_genres
@@ -120,6 +120,11 @@ class Book < ApplicationRecord
   # end notification on book creation
   def send_book_create_notification
     NewBookNotification.with(book: self).deliver_later(Profile.all)
+  end
+
+  # rejects author record if neither first name nor last name is given
+  def reject_authors
+    attributes['first_name'].blank? && attributes['last_name'].blank?
   end
 
   # Removes common leading words from the title and converts it to downcase
