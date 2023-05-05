@@ -1,0 +1,26 @@
+<%= turbo_frame_tag 'notifications' do %>
+  <%= link_to '#', id: 'messageslink' do %>
+    <% if notifications.any? %>
+      <%= inline_svg_tag 'bell.svg', class: 'icon filled' %>
+    <% else %>
+      <%= inline_svg_tag 'bell.svg', class: 'icon' %>
+    <% end %>
+  <% end %>
+  <ul class="messagesmenu">
+    <% if notifications.any? %>
+      <% notifications.each do |n| %>
+      <li>
+          <%= link_to n.to_notification.message,
+            n.to_notification.url %>
+      </li>
+      <% end %>
+    <% else %>
+      <li>No unread messages</li>
+    <% end %>
+    <li class="bg-secondary-light">
+      <%= link_to 'All Messages',
+        notifications_path,
+        class: 'margin-top-33' %>
+    </li>
+  </ul>
+<% end %>

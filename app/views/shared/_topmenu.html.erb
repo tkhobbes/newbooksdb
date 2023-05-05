@@ -1,30 +1,11 @@
 <% if current_owner %>
   <div class="righticons">
     <div class="right-dropdown">
-      <%= link_to '#', id: 'messageslink' do %>
-        <% if current_owner.profile.notifications.unread.any? %>
-          <%= inline_svg_tag 'bell.svg', class: 'icon filled' %>
-        <% else %>
-          <%= inline_svg_tag 'bell.svg', class: 'icon' %>
-        <% end %>
+      <%= turbo_stream_from :public_notifications %>
+      <%= turbo_frame_tag 'notifications' do %>
+        <%= render 'notifications/top_index',
+          notifications: current_owner.profile.notifications.includes([:recipient]).newest_first.unread[0..4] %>
       <% end %>
-      <ul class="messagesmenu">
-        <% if current_owner.profile.notifications.unread.any? %>
-          <% current_owner.profile.notifications.includes([:recipient]).newest_first.unread[0..4].each do |n| %>
-          <li>
-              <%= link_to n.to_notification.message,
-                n.to_notification.url %>
-          </li>
-          <% end %>
-        <% else %>
-          <li>No unread messages</li>
-        <% end %>
-        <li class="bg-secondary-light">
-          <%= link_to 'All Messages',
-            notifications_path,
-            class: 'margin-top-33' %>
-        </li>
-      </ul>
     </div>
     <% if request.method == "GET" %>
       <div class="right-dropdown">
