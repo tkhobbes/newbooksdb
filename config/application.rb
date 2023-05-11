@@ -45,5 +45,11 @@ module Newbooksdb
     config.i18n.available_locales = %i[en de]
     config.i18n.default_locale = :en
     config.i18n.fallbacks = [:en]
+
+    # deal with depreciations
+    # frome here:
+    # https://blog.testdouble.com/posts/2023-04-24-stop-ignoring-your-ruby-and-rails-deprecations/
+    config.active_support.deprecation = :notify
+    Warning[:deprecated] = true
   end
 end

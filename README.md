@@ -167,8 +167,9 @@ https://ndrean.medium.com/dynamic-nested-forms-with-rails-aa537a3ee758
 ### Test Suite
 
 - RSpec is used for writing tests (using the rspec-rails gem https://github.com/rspec/rspec-rails)
-- - RSpec is enhanced with Rails-controller-testing (https://rubygems.org/gems/rails-controller-testing)
-    Using Simplecov to analyze code coverage (https://rubygems.org/gems/simplecov)
+- RSpec is enhanced with Rails-controller-testing (https://rubygems.org/gems/rails-controller-testing)
+  Using Simplecov to analyze code coverage (https://rubygems.org/gems/simplecov)
+- The depcreciation warning logic is from here: https://blog.testdouble.com/posts/2023-04-24-stop-ignoring-your-ruby-and-rails-deprecations/
 
 ### Database creation and initialization
 
