@@ -1,0 +1,40 @@
+  <h3 class="heading3">
+    <%= t('Stats.authors.by_age') %>
+    <% ages = [
+            {legend: '10 or below', start_age: 0, end_age: 10, count: 0},
+            {legend: '11-20', start_age: 11, end_age: 20, count: 0},
+            {legend: '21-30', start_age: 21, end_age: 30, count: 0},
+            {legend: '31-40', start_age: 31, end_age: 40, count: 0},
+            {legend: '41-50', start_age: 41, end_age: 50, count: 0},
+            {legend: '51-60', start_age: 51, end_age: 60, count: 0},
+            {legend: '61-70', start_age: 61, end_age: 70, count: 0},
+            {legend: '71-80', start_age: 71, end_age: 80, count: 0},
+            {legend: 'above 80', start_age: 81, end_age: 300, count: 0}
+    ] %>
+    <% years = @authors.alive.group(:born).size %>
+    <% ages.each do |a| %>
+    <% a[:count] = years.select{|k,v| k.to_i <= DateTime.now.year - a[:start_age] && k.to_i >= DateTime.now.year - a[:end_age]}.values.sum %>
+    <% end %>
+    <%= column_chart ages.pluck(:legend, :count) %>
+  </h3>
+  <h3 class="heading3">
+    <%= t('Stats.authors.by_gender') %>
+    <%= pie_chart @authors.group(:gender).size %>
+  </h3>
+  <h3 class="heading3">
+    <%= t('Stats.authors.by_alive') %>
+    <% deadalive = {
+      alive: @authors.alive.count,
+      dead: @authors.dead.count
+    } %>
+    <%= pie_chart deadalive %>
+  </h3>
+  <h3 class="heading3">
+    <%= t('Stats.authors.by_rating') %>
+    <%= pie_chart @authors.group(:rating).size %>
+  </h3>
+  <h3 class="heading3">
+    <%= t('Stats.authors.by_books') %>
+    <%= column_chart @authors.order(books_count: :desc).limit(15).pluck(:display_name, :books_count) %>
+  </h3>
+

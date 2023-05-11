@@ -1,0 +1,21 @@
+de:
+  Stats:
+    index:
+      title: "%{list} Statistiken"
+      show_books: Bücher-Statistiken
+      show_authors: AutorInnen-Statistiken
+    books:
+      by_year: Bücher nach Jahr
+      by_genre: Bücher nach Genre
+      by_publisher: Bücher nach Verlag
+      by_format: Bücher nach Format
+      by_country: Bücher nach Land
+      by_rating: Bücher nach Bewertung
+      by_condition: Bücher nach Zustand
+      by_shelf: Bücher nach Regal
+    authors:
+      by_age: AutorInnen nach Alter
+      by_alive: Lebende / verstorbene AutorInnen
+      by_gender: AutorInnen nach Geschlecht
+      by_books: AutorInnen nach Anzahl Büchern
+      by_rating: AutorInnen nach Bewertung

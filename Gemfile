@@ -81,6 +81,8 @@ gem 'image_processing'
 # Core application Gems
 # go back to previous pages easily
 gem 'backpedal'
+# charts and statistics
+gem 'chartkick'
 # country selection for books
 gem 'country_select'
 # authentication with devise
@@ -93,6 +95,8 @@ gem 'exception_notification'
 gem 'faraday', '>= 2.7.1'
 # use nice IDs instead of numbers
 gem 'friendly_id', '>= 5.4.2'
+# group dates for charts
+gem 'groupdate'
 # using scoped routes for our shelves etc
 gem 'has_scope'
 # check i18n keys

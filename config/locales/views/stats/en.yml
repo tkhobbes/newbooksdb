@@ -1,0 +1,21 @@
+en:
+  Stats:
+    index:
+      title: "%{list} Statistics"
+      show_books: Book Statistics
+      show_authors: Author Statistics
+    books:
+      by_year: Books by Year
+      by_genre: Books by Genre
+      by_publisher: Books by Publisher
+      by_format: Books by Format
+      by_country: Books by Country
+      by_rating: Books by Rating
+      by_condition: Books by Condition
+      by_shelf: Books by Shelf
+    authors:
+      by_age: Authors by Age
+      by_alive: Living / Dead Authors
+      by_gender: Authors by Gender
+      by_books: Authors by Number of Books
+      by_rating: Authors by Rating
