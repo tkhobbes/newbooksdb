@@ -29,7 +29,9 @@ class CloudComponent < ViewComponent::Base
   def cloudsize(a_size, maxsize)
     # size is the ratio rounded up to the next tenth (15 --> 10, 21 --> 20 etc)
     # and then size is divided by 10 to get the bucket
-    (a_size / maxsize.to_f * 100).round.to_i.ceil(-1) / 10
+    percentage = (a_size / maxsize.to_f * 100).round.to_i
+    # ...but if the percentage is too small and rounds to 0 then we need to make it 1
+    percentage.positive? ? percentage.ceil(-1) / 10 : 1
   end
 
   # generates the path for the cloud item
