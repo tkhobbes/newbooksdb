@@ -8,7 +8,7 @@ module CaptureRubyWarnings
     'Using the last argument as keyword parameters is deprecated',
     'Passing the keyword argument as the last hash parameter is deprecated',
     'Splitting the last argument into positional and keyword parameters is deprecated',
-  ]
+  ].freeze
 
   def warn(message)
     if RUBY_2_7_DEPRECATIONS.any? { |warning| message.include?(warning) }

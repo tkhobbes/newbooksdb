@@ -16,6 +16,7 @@ class NotificationsController < ApplicationController
   end
 
   # this method smells of :reek:TooManyStatements
+  # rubocop:disable Metrics/MethodLength
   def destroy
     @notification = Notification.find(params[:id])
     if current_owner.profile == @notification.recipient
@@ -31,6 +32,7 @@ class NotificationsController < ApplicationController
       redirect_to root_path
     end
   end
+  # rubocop:enable Metrics/MethodLength
 
   def delete_all
     @notifications = scoped_notifications.all

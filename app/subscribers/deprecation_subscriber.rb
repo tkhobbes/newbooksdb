@@ -15,12 +15,16 @@ class DeprecationSubscriber < ActiveSupport::Subscriber
   ALLOWED_DEPRECATIONS = [
     'A message for some deprecation',
     'Another message for a different deprecation',
-  ]
+  ].freeze
 
+  # rubocop:disable Metrics/AbcSize
+  # this method smells of :reek:DuplicateMethodCall
+  # this method smells of :reek:FeatureEnvy
+  # this method smells of :reek:TooManyStatements
   def deprecation(event)
     return if ALLOWED_DEPRECATIONS.any? { |allowed| event.payload[:message].include?(allowed) }
 
-    if Rails.env.development? || Rails.env.test?
+    if Rails.env.development? || Rails.env.test?
       exception = UnallowedDeprecation.new(event.payload[:message])
       exception.set_backtrace(event.payload[:callstack].map(&:to_s))
       raise exception
@@ -28,4 +32,5 @@ class DeprecationSubscriber < ActiveSupport::Subscriber
       Rails.logger.warn("Unallowed deprecation found\n#{event.payload[:message]}")
     end
   end
+  # rubocop:enable Metrics/AbcSize
 end
