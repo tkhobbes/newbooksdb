@@ -21,6 +21,9 @@
             <%= inline_svg_tag 'book.svg', class: 'bigicon' %>
           <% end %>
         <% end %>
+        <%= link_to stats_path, title: t('title.quickicons.stats') do %>
+          <%= inline_svg_tag 'stats.svg', class: 'bigicon' %>
+        <% end %>
         <%= link_to login_or_owner_path, title: t('title.quickicons.profile') do %>
           <% if current_owner&.profile&.avatar&.attached? %>
             <%= render AvatarImageComponent.new(

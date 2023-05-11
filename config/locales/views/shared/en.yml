@@ -5,6 +5,7 @@ en:
       scan: Scan Book ISBN Codes
       search: Search Book Online
       add: Add Book manually
+      stats: Statistics
       profile: My Profile
       settings: Settings
   footer:
