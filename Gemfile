@@ -40,6 +40,7 @@ group :development do
   gem 'bullet'
   gem 'database_consistency', '>= 1.1.15'
   gem 'erb_lint'
+  gem 'i18n-debug'
   gem 'letter_opener', '>= 1.8.1'
   gem 'prosopite'
   gem 'rails-erd'
