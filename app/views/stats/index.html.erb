@@ -1,16 +1,15 @@
-<% list = params[:list] == 'author' ? Author.model_name.human : Book.model_name.human %>
-<%= page_title(t('Stats.index.title', list:),'', 'heading2') %>
+<%= page_title(t('Stats.index.title'),'', 'heading2') %>
 
 <nav class="pagination list-select-type">
   <span class="page">
-    <%= link_to stats_path(list: 'books'),
+    <%= link_to stats_path(list: 'books', type: 'years'),
       title: t('Stats.index.show_books'),
       class: 'list-select-item' do %>
       <%= inline_svg_tag 'book.svg', class: 'smallicon' %>
     <% end %>
   </span>
   <span class="page">
-    <%= link_to stats_path(list: 'authors'),
+    <%= link_to stats_path(list: 'authors', type: 'age'),
       title: t('Stats.index.show_authors'),
       class: 'list-select-item' do %>
       <%= inline_svg_tag 'person.svg', class: 'smallicon' %>

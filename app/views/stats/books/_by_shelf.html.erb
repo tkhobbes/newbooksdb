@@ -1,0 +1,6 @@
+<% if current_owner %>
+  <h4 class="heading4">
+    <%= t('Stats.books.by_shelf') %>
+  </h4>
+  <%= column_chart @shelves.order(books_count: :desc).pluck(:name, :books_count) %>
+<% end %>

@@ -1,10 +1,11 @@
 en:
   Stats:
     index:
-      title: "%{list} Statistics"
+      title: Statistics
       show_books: Book Statistics
       show_authors: Author Statistics
     books:
+      title: Book Statistics
       by_year: Books by Year
       by_genre: Books by Genre
       by_publisher: Books by Publisher
@@ -14,6 +15,7 @@ en:
       by_condition: Books by Condition
       by_shelf: Books by Shelf
     authors:
+      title: Author Statistics
       by_age: Authors by Age
       by_alive: Living / Dead Authors
       by_gender: Authors by Gender

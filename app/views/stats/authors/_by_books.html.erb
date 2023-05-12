@@ -1,0 +1,4 @@
+<h4 class="heading4">
+  <%= t('Stats.authors.by_books') %>
+</h4>
+<%= column_chart @authors.order(books_count: :desc).limit(15).pluck(:display_name, :books_count) %>

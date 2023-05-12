@@ -1,0 +1,4 @@
+<h4 class="heading4">
+  <%= t('Stats.authors.by_gender') %>
+</h4>
+<%= pie_chart @authors.group(:gender).size %>

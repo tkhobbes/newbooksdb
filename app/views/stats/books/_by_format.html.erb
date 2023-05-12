@@ -1,0 +1,4 @@
+<h4 class="heading4">
+  <%= t('Stats.books.by_format') %>
+</h4>
+<%= pie_chart @book_formats.order(books_count: :desc).pluck(:name, :books_count) %>

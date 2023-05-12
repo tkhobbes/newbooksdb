@@ -1,0 +1,4 @@
+<h4 class="heading4">
+  <%= t('Stats.books.by_condition') %>
+</h4>
+<%= pie_chart @books.group(:condition).size %>

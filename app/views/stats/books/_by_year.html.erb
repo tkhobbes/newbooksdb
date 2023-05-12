@@ -1,0 +1,19 @@
+<h4 class="heading4">
+  <%= t('Stats.books.by_year') %>
+</h4>
+<% decades = [
+        { legend: '1900-20s', start_year: 1900, end_year: 1929, count: 0 },
+        { legend: '1930-40s', start_year: 1930 , end_year: 1949, count: 0 },
+        { legend: '1950-60s', start_year: 1950, end_year: 1969, count: 0 },
+        { legend: '1970s', start_year: 1970, end_year: 1979, count: 0 },
+        { legend: '1980s', start_year: 1980, end_year: 1989, count: 0 },
+        { legend: '1990s', start_year: 1990, end_year: 1999, count: 0 },
+        { legend: '2000s', start_year: 2000, end_year: 2009, count: 0 },
+        { legend: '2010s', start_year: 2010, end_year: 2019, count: 0 },
+        { legend: '2020s', start_year: 2020, end_year: 2029, count: 0 },
+    ] %>
+<% years = @books.group(:year).size %>
+<% decades.each do |d| %>
+<% d[:count] = years.select{|k,v| k.to_i >= d[:start_year] && k.to_i <= d[:end_year]}.values.sum %>
+<% end %>
+<%= column_chart decades.pluck(:legend, :count) %>

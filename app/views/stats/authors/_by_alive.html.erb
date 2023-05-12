@@ -1,0 +1,8 @@
+<h4 class="heading4">
+  <%= t('Stats.authors.by_alive') %>
+</h4>
+<% deadalive = {
+  alive: @authors.alive.count,
+  dead: @authors.dead.count
+} %>
+<%= pie_chart deadalive %>

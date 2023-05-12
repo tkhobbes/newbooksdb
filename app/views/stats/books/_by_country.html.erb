@@ -1,0 +1,4 @@
+<h4 class="heading4">
+  <%= t('Stats.books.by_country') %>
+</h4>
+<%= column_chart @books.group(:country).limit(15).size.sort_by{|k,v| -v} %>

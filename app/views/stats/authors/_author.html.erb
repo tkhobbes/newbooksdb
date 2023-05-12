@@ -1,0 +1,5 @@
+<% if params[:type] %>
+  <%= render "stats/authors/by_#{params[:type]}" %>
+<% else %>
+  <%= render 'stats/authors/by_age' %>
+<% end %>

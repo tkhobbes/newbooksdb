@@ -1,0 +1,5 @@
+<% if params[:type] %>
+  <%= render "stats/books/by_#{params[:type]}" %>
+<% else %>
+  <%= render 'stats/books/by_year' %>
+<% end %>
