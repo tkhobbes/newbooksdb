@@ -60,6 +60,7 @@ en:
         cover: Cover
         title: Title
         year: Year
+        isbn: ISBN
         created_at: Created at
         updated_at: Updated at
       genre:

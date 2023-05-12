@@ -49,6 +49,9 @@
         (<%= @book.country %>)
       <% end %>
       <%= @book.year %>
+      <% if @book.isbn %>
+        | ISBN: <%= @book.isbn %>
+      <% end %>
     </div>
     <div class="margin-top-33 border-color-primary-dark border-radius-1 padding-33">
       <%= link_to profile_path(@book.owner.profile.id),

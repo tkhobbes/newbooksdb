@@ -101,6 +101,11 @@
         </div>
         <div class="big-form">
           <div class="form-col">
+            <%= f.input :isbn,
+              placeholder: Book.human_attribute_name('isbn'),
+              label: false %>
+          </div>
+          <div class="form-col">
             <%= f.input :edition,
               placeholder: Book.human_attribute_name('edition'),
               label: false %>
