@@ -14,7 +14,7 @@ export default class extends ApplicationController {
   search() {
     let params = new URLSearchParams();
     params.append("query", this.searchinputTarget.value);
-    fetch(`/quicksearch?${params}`, {
+    fetch(`/en/quicksearch?${params}`, {
       method: "GET",
       headers: {
         Accept: "text/vnd.turbo-stream.html",
