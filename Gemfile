@@ -80,7 +80,7 @@ gem 'image_processing'
 
 # Core application Gems
 # go back to previous pages easily
-gem 'backpedal'
+gem 'backpedal', git: 'https://github.com/tkhobbes/backpedal'
 # charts and statistics
 gem 'chartkick'
 # country selection for books
