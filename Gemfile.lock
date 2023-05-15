@@ -1,8 +1,8 @@
 GIT
   remote: https://github.com/tkhobbes/backpedal
-  revision: 3651a50d3ba8b4f71f187545052596e43bd94d37
+  revision: 7ab6fe6276fcd4cb53bca8becda5b3bd96ad2e6c
   specs:
-    backpedal (0.2.1.4)
+    backpedal (0.2.2)
 
 GEM
   remote: https://rubygems.org/
