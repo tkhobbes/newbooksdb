@@ -17,6 +17,9 @@
   </span>
 </nav>
 
-<div class="margin-top-1 margin-left-50 margin-right-50">
+<div
+  class="margin-top-1 margin-left-50 margin-right-50"
+  data-controller="chart-select"
+  data-chart-select-id-value="statChart">
   <%= params[:list] == 'authors' ? render('stats/authors') : render('stats/books') %>
 </div>

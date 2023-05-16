@@ -6,13 +6,13 @@ class StatsController < ApplicationController
     if params[:list] == 'authors'
       @authors = Author.all
     else
-      @books = Book.all
+      @books = Book
+        .includes([:owner, :authors, cover_attachment: :blob])
+        .order(:sort_title)
       @genres = Genre.all
       @publishers = Publisher.all
       @book_formats = BookFormat.all
-      if current_owner
-        @shelves = current_owner.shelves.all
-      end
+      @shelves = current_owner.shelves.all if current_owner
     end
   end
 end

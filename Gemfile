@@ -82,7 +82,7 @@ gem 'image_processing'
 # go back to previous pages easily
 gem 'backpedal', git: 'https://github.com/tkhobbes/backpedal'
 # charts and statistics
-gem 'chartkick'
+gem 'chartkick', git: 'https://github.com/tkhobbes/chartkick.git'
 # country selection for books
 gem 'country_select'
 # authentication with devise

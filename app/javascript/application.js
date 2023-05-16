@@ -8,6 +8,3 @@ import "./controllers";
 //import "./swal";
 import "trix";
 import "@rails/actiontext";
-
-// chart stuff - this might move to a stimulus controller
-import "chartkick/chart.js";

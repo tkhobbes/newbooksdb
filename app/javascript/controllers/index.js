@@ -16,6 +16,9 @@ application.register("barcode", BarcodeController)
 import BurgermenuController from "./burgermenu_controller"
 application.register("burgermenu", BurgermenuController)
 
+import ChartSelectController from "./chart_select_controller"
+application.register("chart-select", ChartSelectController)
+
 import CoverdropController from "./coverdrop_controller"
 application.register("coverdrop", CoverdropController)
 
