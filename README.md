@@ -4,6 +4,9 @@
 
 ## Set up and configuration
 
+Run 'bundle exec rails bookdb_prep:seed_formats' to seed a default format. Otherwise the app will
+crash when starting - it expects one book format to be available.
+
 ## Technical Information
 
 ### Programming ideas

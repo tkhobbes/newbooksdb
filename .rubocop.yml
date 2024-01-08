@@ -1,5 +1,4 @@
 inherit_from:
-  - /usr/local/lib/node_modules/@prettier/plugin-ruby/rubocop.yml
   - .rubocop_strict.yml
 
 require:
@@ -45,8 +44,7 @@ AllCops:
     - "doc/**/*"
     - "lib/**/*"
     - "log/**/*"
-    - "mockup"
     - "node_modules/**/*"
     - "storage/**/*"
     - "tmp/**/*"
-    - "spec-old/**/*"
+    - "spec/*_helper.rb"
