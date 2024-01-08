@@ -11,12 +11,12 @@ gem 'bcrypt', '~> 3.1', '>= 3.1.18'
 gem 'bootsnap', require: false
 gem 'jbuilder', '~> 2.11.5'
 gem 'puma', '~> 5.6.4'
-gem 'rails', '~> 7.0.3'
-gem 'tzinfo-data', platforms: %i[ mingw mswin x64_mingw jruby ]
+gem 'rails', '~> 7.0.4'
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 group :development, :test do
   gem 'capybara', '>= 3.37.1'
-  gem 'debug', platforms: %i[ mri mingw x64_mingw ]
+  gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'factory_bot_rails'
   gem 'faker'
   gem 'pry-rails'
@@ -61,9 +61,9 @@ end
 
 # Database
 gem 'mysql2', '~>0.5'
-gem 'redis', '~> 4.6.0'
+gem 'redis'
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
-gem 'kredis', '~> 1.3'
+gem 'kredis'
 
 # Turbo and Stimulus
 gem 'stimulus-rails'
@@ -123,5 +123,3 @@ gem 'search_cop', '>= 1.2.3'
 gem 'simple_form'
 # view components
 gem 'view_component'
-
-
