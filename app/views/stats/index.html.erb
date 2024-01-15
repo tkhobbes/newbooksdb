@@ -2,7 +2,7 @@
 
 <nav class="pagination list-select-type">
   <span class="page">
-    <%= link_to stats_path(list: 'books', type: 'years'),
+    <%= link_to stats_path(list: 'books', type: 'year'),
       title: t('Stats.index.show_books'),
       class: 'list-select-item' do %>
       <%= inline_svg_tag 'book.svg', class: 'smallicon' %>
@@ -17,9 +17,6 @@
   </span>
 </nav>
 
-<div
-  class="margin-top-1 margin-left-50 margin-right-50"
-  data-controller="chart-select"
-  data-chart-select-id-value="statChart">
+<div class="margin-top-1 margin-left-50 margin-right-50">
   <%= params[:list] == 'authors' ? render('stats/authors') : render('stats/books') %>
 </div>

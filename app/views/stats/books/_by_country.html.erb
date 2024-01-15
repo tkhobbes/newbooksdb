@@ -1,4 +1,12 @@
-<h4 class="heading4">
-  <%= t('Stats.books.by_country') %>
-</h4>
-<%= column_chart @books.group(:country).limit(15).size.sort_by{|k,v| -v} %>
+<div
+  data-controller="chart-select"
+  data-chart-select-id-value="statChart"
+  data-chart-select-criteria-value="country"
+  data-chart-select-url-value="<%= stats_books_path %>">
+  <h4 class="heading4">
+    <%= t('Stats.books.by_country') %>
+  </h4>
+  <%= column_chart @books.group(:country).limit(15).size.sort_by{ |_k, v| -v }, defer: false, id: 'statChart' %>
+
+  <%= render 'books/stats', books: @books.limit(10) %>
+</div>

@@ -1,4 +1,12 @@
-<h4 class="heading4">
-  <%= t('Stats.books.by_format') %>
-</h4>
-<%= pie_chart @book_formats.order(books_count: :desc).pluck(:name, :books_count) %>
+<div
+  data-controller="chart-select"
+  data-chart-select-id-value="statChart"
+  data-chart-select-criteria-value="book_format"
+  data-chart-select-url-value="<%= stats_books_path %>">
+  <h4 class="heading4">
+    <%= t('Stats.books.by_format') %>
+  </h4>
+  <%= pie_chart @book_formats.order(books_count: :desc).pluck(:name, :books_count), defer: false, id: 'statChart' %>
+
+  <%= render 'books/stats', books: @books.limit(10) %>
+</div>

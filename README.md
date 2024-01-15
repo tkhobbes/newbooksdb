@@ -94,6 +94,13 @@ parameters are commonly used:
 There is a stimulus controller to switch between tabs (in tags view), code taken
 from this youtube video: https://youtu.be/I8Np9GHNMDk
 
+#### Stimulus controller for chart clicking
+
+This stimulus controller makes sure we can click charts and then a table with data appears.
+Taken from here: https://psmy.medium.com/rails-7-stimulus-and-chartkick-9d889b32f97c
+With some help from discord: https://discord.com/channels/629472241427415060/1107953223152713778/1107972491328102451
+Every chart has to have the iD of "statChart" and the corresponding value in the div as well.
+
 ### Models
 
 - Owners: The "user" field and used for authentication

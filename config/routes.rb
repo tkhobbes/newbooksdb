@@ -29,7 +29,10 @@ Rails.application.routes.draw do
     end
 
     # application resources
-    resources :books
+    resources :books do
+      get 'stats', on: :collection
+    end
+
     resources :authors
     resources :publishers
     resources :book_formats, except: [:show] do
