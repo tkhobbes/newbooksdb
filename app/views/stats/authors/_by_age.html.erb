@@ -19,6 +19,7 @@
   ] %>
   <% @authors.dead.each do |a| %>
     <% ages.each do |age| %>
+      <% next if a.born.nil? %>
       <% age[:count] += 1 if a.died - a.born >= age[:start_age] && a.died - a.born <= age[:end_age] %>
     <% end %>
   <% end %>
