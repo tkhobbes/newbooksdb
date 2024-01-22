@@ -33,7 +33,10 @@ Rails.application.routes.draw do
       get 'stats', on: :collection
     end
 
-    resources :authors
+    resources :authors do
+      get 'stats', on: :collection
+    end
+
     resources :publishers
     resources :book_formats, except: [:show] do
       get 'set_default', on: :collection

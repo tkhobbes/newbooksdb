@@ -5,7 +5,9 @@ class StatsController < ApplicationController
   # rubocop:disable Metrics/MethodLength
   def index
     if params[:list] == 'authors'
-      @authors = Author.all
+      @authors = Author
+                 .includes([portrait_attachment: :blob])
+                 .order(:sort_name)
     else
       @books = Book
                .includes([cover_attachment: :blob])

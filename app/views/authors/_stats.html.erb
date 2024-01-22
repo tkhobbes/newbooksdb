@@ -1,0 +1,7 @@
+  <%= turbo_frame_tag :itemlist do %>
+    <ul class="itemlist" id="authors">
+      <% authors.each do |author| %>
+        <%= render('authors/authorlist_small', author:) %>
+      <% end %>
+    </ul>
+  <% end %>

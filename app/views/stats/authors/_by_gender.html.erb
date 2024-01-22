@@ -1,4 +1,12 @@
-<h4 class="heading4">
-  <%= t('Stats.authors.by_gender') %>
-</h4>
-<%= pie_chart @authors.group(:gender).size %>
+<div
+  data-controller="chart-select"
+  data-chart-select-id-value="statChart"
+  data-chart-select-criteria-value="gender"
+  data-chart-select-url-value="<%= stats_authors_path %>">
+  <h4 class="heading4">
+    <%= t('Stats.authors.by_gender') %>
+  </h4>
+  <%= pie_chart @authors.group(:gender).size, defer: false, id: 'statChart' %>
+
+  <%= render 'authors/stats', authors: @authors.limit(10) %>
+</div>

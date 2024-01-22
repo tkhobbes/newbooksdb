@@ -12,6 +12,7 @@ export default class extends Controller {
   };
 
   connect() {
+    console.log(this.urlValue);
     setTimeout(() => {
       // wrapped into timeout to ensure chart is available when we call this
       var chart = Chartkick.charts[this.idValue]; // get the chart (always the same id)

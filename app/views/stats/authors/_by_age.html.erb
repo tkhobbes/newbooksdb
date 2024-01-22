@@ -1,19 +1,34 @@
-<h4 class="heading4">
-  <%= t('Stats.authors.by_age') %>
-</h4>
-<% ages = [
-        {legend: '10 or below', start_age: 0, end_age: 10, count: 0},
-        {legend: '11-20', start_age: 11, end_age: 20, count: 0},
-        {legend: '21-30', start_age: 21, end_age: 30, count: 0},
-        {legend: '31-40', start_age: 31, end_age: 40, count: 0},
-        {legend: '41-50', start_age: 41, end_age: 50, count: 0},
-        {legend: '51-60', start_age: 51, end_age: 60, count: 0},
-        {legend: '61-70', start_age: 61, end_age: 70, count: 0},
-        {legend: '71-80', start_age: 71, end_age: 80, count: 0},
-        {legend: 'above 80', start_age: 81, end_age: 300, count: 0}
-] %>
-<% years = @authors.alive.group(:born).size %>
-<% ages.each do |a| %>
-<% a[:count] = years.select{|k,v| k.to_i <= DateTime.now.year - a[:start_age] && k.to_i >= DateTime.now.year - a[:end_age]}.values.sum %>
-<% end %>
-<%= column_chart ages.pluck(:legend, :count) %>
+<div
+  data-controller="chart-select"
+  data-chart-select-id-value="statChart"
+  data-chart-select-criteria-value="age"
+  data-chart-select-url-value="<%= stats_authors_path %>">
+  <h4 class="heading4">
+    <%= t('Stats.authors.by_age') %>
+  </h4>
+  <% ages = [
+          {legend: '10 or below', start_age: 0, end_age: 10, count: 0},
+          {legend: '11-20', start_age: 11, end_age: 20, count: 0},
+          {legend: '21-30', start_age: 21, end_age: 30, count: 0},
+          {legend: '31-40', start_age: 31, end_age: 40, count: 0},
+          {legend: '41-50', start_age: 41, end_age: 50, count: 0},
+          {legend: '51-60', start_age: 51, end_age: 60, count: 0},
+          {legend: '61-70', start_age: 61, end_age: 70, count: 0},
+          {legend: '71-80', start_age: 71, end_age: 80, count: 0},
+          {legend: 'above 80', start_age: 81, end_age: 300, count: 0}
+  ] %>
+  <% @authors.dead.each do |a| %>
+    <% ages.each do |age| %>
+      <% age[:count] += 1 if a.died - a.born >= age[:start_age] && a.died - a.born <= age[:end_age] %>
+    <% end %>
+  <% end %>
+  <% years = @authors.alive.group(:born).size %>
+  <% ages.each do |a| %>
+  <% a[:count] = a[:count] + years.select{|k,v| k.to_i <= DateTime.now.year - a[:start_age] && k.to_i >= DateTime.now.year - a[:end_age]}.values.sum %>
+  <% end %>
+  <%= column_chart ages.pluck(:legend, :count), defer: false, id: 'statChart' %>
+
+  <%= render 'authors/stats', authors: @authors.limit(10) %>
+
+</div>
+

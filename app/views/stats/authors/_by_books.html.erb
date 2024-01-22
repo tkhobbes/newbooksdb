@@ -1,4 +1,13 @@
-<h4 class="heading4">
-  <%= t('Stats.authors.by_books') %>
-</h4>
-<%= column_chart @authors.order(books_count: :desc).limit(15).pluck(:display_name, :books_count) %>
+<div
+  data-controller="chart-select"
+  data-chart-select-id-value="statChart"
+  data-chart-select-criteria-value="books_author"
+  data-chart-select-url-value="<%= stats_authors_path %>">
+  <h4 class="heading4">
+    <%= t('Stats.authors.by_books') %>
+  </h4>
+  <%= column_chart @authors.order(books_count: :desc).limit(15).pluck(:display_name, :books_count), defer: false, id: 'statChart' %>
+
+  <%= render 'authors/stats', authors: @authors.limit(10) %>
+</div>
+
