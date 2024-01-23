@@ -7,6 +7,17 @@
   <%= turbo_stream_action_tag(
     'replace',
     target: 'pager',
-    template: %(#{render 'shared/pager', pagy: @pagy, model_path: authors_path(page: @pagy.next, show: params[:show])})
-    ) %>
+    template: %(#{render 'shared/pager',
+      pagy: @pagy,
+      model_path: authors_path(
+        params: current_scopes.merge(
+          page: @pagy.next,
+          letter: params[:letter],
+          sort_by: params[:sort_by],
+          sort_dir: params[:sort_dir],
+          show: params[:show]
+        )
+      )
+    })
+  ) %>
 <% end %>
