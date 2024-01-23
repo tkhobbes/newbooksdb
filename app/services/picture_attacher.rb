@@ -2,7 +2,6 @@
 
 # this service class attaches pictures via active storage
 class PictureAttacher
-
   def initialize(picture_url, attachment_field)
     @picture_url = picture_url
     @attachment_field = attachment_field
@@ -11,26 +10,18 @@ class PictureAttacher
   # this method smells of :reek:TooManyStatements
   def attach
     return if @picture_url.blank?
+
+    # download picture
     begin
-      # find the picture
-      picture_attach = URI.parse(@picture_url).open
-    rescue OpenURI::HTTPError
+      tempfile = Down.download(@picture_url, extension: 'jpg')
+    rescue Down::Error
       return ReturnPicture.new(created: false, msg: 'Could not read picture')
     end
-    # workaround if file is too small
-    # found here: https://gist.github.com/janko/7cd94b8b4dd113c2c193
-    # ditched workaround - if StringIO, return and do nothing
-    return ReturnPicture.new(created: false, msg: 'No Valid Picture') if picture_attach.is_a?(StringIO)
-    #     tempfile = Tempfile.new('open-uri', binmode: true) do
-    #       IO.copy_stream(picture_attach, tempfile.path)
-    #       picture_attach = tempfile
-    #     end
-    # end
-    picture_name = File.basename(picture_attach.path)
-    picture = @attachment_field.attach(io: picture_attach, filename: picture_name)
+    picture = @attachment_field.attach(io: tempfile, filename: 'picture.jpg')
     ReturnPicture.new(created: true, msg: 'Picture attached.', picture:)
   end
-    # return object
+
+  # return object
   class ReturnPicture
     attr_reader :picture, :message
 

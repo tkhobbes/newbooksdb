@@ -113,6 +113,8 @@ gem 'metainspector'
 gem 'noticed'
 # wrapper for http requests - using for picture grabbing
 gem 'open-uri'
+# download gem
+gem 'down'
 # Pagination for large collections
 gem 'pagy', '>= 5.10.1'
 # i18n

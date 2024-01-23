@@ -152,6 +152,8 @@ GEM
     docile (1.4.0)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
+    down (5.4.1)
+      addressable (~> 2.8)
     e2mmap (0.1.0)
     erb_lint (0.4.0)
       activesupport
@@ -579,6 +581,7 @@ DEPENDENCIES
   debug
   devise (~> 4.8, >= 4.8.1)
   devise-i18n
+  down
   erb_lint
   exception_notification
   factory_bot_rails
