@@ -3,20 +3,18 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '~> 3.1'
+ruby '~> 3.3.0'
 
 # Rails & Core Gems
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 gem 'bcrypt', '~> 3.1', '>= 3.1.18'
-gem 'bootsnap', require: false
 gem 'jbuilder', '~> 2.11.5'
-gem 'puma', '~> 5.6.4'
-gem 'rails', '~> 7.0.4'
+gem 'puma'
+gem 'rails', '~> 7.1.3'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 group :development, :test do
-  gem 'capybara', '>= 3.37.1'
-  gem 'debug', platforms: %i[mri mingw x64_mingw]
+  gem 'capybara'
   gem 'factory_bot_rails'
   gem 'faker'
   gem 'pry-rails'
@@ -60,7 +58,7 @@ group :test do
 end
 
 # Database
-gem 'mysql2', '~>0.5'
+gem 'mysql2', '0.5.6'
 gem 'redis'
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 gem 'kredis'
@@ -70,10 +68,10 @@ gem 'stimulus-rails'
 gem 'turbo-rails'
 
 # Assets, Javascript, CSS
-gem 'cssbundling-rails', '~> 1.1.0'
-gem 'jsbundling-rails', '~> 1.0.2'
-gem 'requestjs-rails', '~> 0.0.9'
-gem 'sprockets-rails', '~> 3.4.2'
+gem 'cssbundling-rails'
+gem 'jsbundling-rails'
+gem 'requestjs-rails'
+gem 'sprockets-rails'
 
 # Image processing etc
 gem 'image_processing'
@@ -100,7 +98,7 @@ gem 'groupdate'
 # using scoped routes for our shelves etc
 gem 'has_scope'
 # check i18n keys
-gem 'i18n-tasks', '~> 1.0.12'
+gem 'i18n-tasks'
 # better way to use SVGs
 gem 'inline_svg'
 # lookbook for viewcomponents
@@ -116,11 +114,11 @@ gem 'open-uri'
 # download gem
 gem 'down'
 # Pagination for large collections
-gem 'pagy', '>= 5.10.1'
+gem 'pagy', '~> 5.10'
 # i18n
 gem 'rails-i18n'
 # Search
-gem 'search_cop', '>= 1.2.3'
+gem 'search_cop'
 # Simple form for form inputs
 gem 'simple_form'
 # view components
